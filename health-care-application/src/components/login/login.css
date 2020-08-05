@@ -1,0 +1,66 @@
+body {
+    background: url('../images/bg1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+.color {
+  background-color: chartreuse;
+}
+.bg-transbox {
+    /* background: transparent; */
+    background-color: rgb(255, 255, 255);
+    border: 1.3px solid #707070;
+    opacity: 0.9;
+    border-radius: 30px;
+    /* text-align: center; */
+    width: 70%;
+    height: auto;
+}
+
+.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 22%;
+  height: auto;
+}
+
+input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input[type="password"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+input[type="password"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.forget-pw {
+  position: absolute;
+  right: 0;
+  font-size: small;
+}
