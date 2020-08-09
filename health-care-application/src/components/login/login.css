@@ -5,25 +5,29 @@ body {
     background-size: cover;
     -o-background-size: cover;
   }
-.color {
-  background-color: chartreuse;
+.test {
+  margin-top: auto;
 }
+
+.form-position {
+  padding: 7%;
+}
+
 .bg-transbox {
-    /* background: transparent; */
     background-color: rgb(255, 255, 255);
     border: 1.3px solid #707070;
     opacity: 0.9;
-    border-radius: 30px;
-    /* text-align: center; */
+    /* border-radius: 30px; */
     width: 70%;
     height: auto;
+    max-width: 500px;
 }
 
-.displayed {
+.img-displayed {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 22%;
+  width: 25%;
   height: auto;
 }
 
@@ -31,10 +35,11 @@ input[type="text"],
 select.form-control {
   background: transparent;
   border: none;
-  border-bottom: 2px solid #000000;
+  border-bottom: 1px solid #707070;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
+  /* min-width: 180.734px; */
 }
 
 input[type="text"]:focus,
@@ -47,7 +52,7 @@ input[type="password"],
 select.form-control {
   background: transparent;
   border: none;
-  border-bottom: 2px solid #000000;
+  border-bottom: 1px solid #707070;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
@@ -63,4 +68,8 @@ select.form-control:focus {
   position: absolute;
   right: 0;
   font-size: small;
+}
+
+.button {
+  border-radius: inherit;
 }

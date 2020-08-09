@@ -1,55 +1,82 @@
 import React, { Component } from "react";
+import Axios from "axios";
 import "./login.css";
-import logo1 from "../images/logo1.svg";
-import { Button, Form} from "react-bootstrap";
-import { Container, Row, Col} from "reactstrap";
+import logo1 from "../images/logo-saensukcity.png";
+// import { Img } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Card,
+  NavLink,
+} from "reactstrap";
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: "",
+      password: "",
+    };
+  }
+
+  onClickLogin = () => {
+    Axios.post("url", this.state);
+  };
+
   render() {
     return (
-      <Container className="">
-        <div className="row">
-          <div className="col"></div>
-          {/* <Button className="button" type="submit">ลงชื่อเข้าใช้</Button> */}
-          <div className="col-7 shadow mx-auto my-5 p-3 mb-2 bg-transbox">
-            <img className="displayed" src={logo1} />
-            <div className="card-body">
-              {/* <Col md={2} className="col-4 mx-auto">
-            <Image src={logo1}/>
-          </Col> */}
+      <Container className="form-position">
+        <Card
+          className="bg-transbox mx-auto"
+          style={{ borderRadius: 30, borderColor: "#707070", minWidth:350 }}
+        >
+          <br />
+          <img className="img-displayed" src={logo1} />
+          <Form className="mx-auto" style={{ maxWidth: 400 }}>
+            <br />
 
-              <Form action="#" className="mx-5">
-                <Row>
-                  <Col xs={2}></Col>
-                  <Col xs={8} className="">
-                <Form.Group>
-                  <Form.Label>ชื่อผู้ใช้งาน</Form.Label>
-                  <Form.Control type="text" placeholder="เลขบัตรประชาชน" />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>รหัสผ่าน</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
-                  <a href="#" className="forget-pw">ลืมรหัสผ่าน?</a>
-                </Form.Group>
-                <br></br>
-                </Col>
-                <Col xs={2}></Col>
-                </Row>
-                
-                <Button
-                  className="mx-auto d-block btn-circle btn-xl"
-                  type="submit"
-                >
-                  Login
-                </Button>
-              </Form>
-              <br />
-              <p style={{textAlign:"center"}}>footer</p>
-            </div>
-          </div>
-
-          <div className="col"></div>
-        </div>
+            <Col>
+              <FormGroup>
+                <Label>ชื่อผู้ใช้งาน</Label>
+                <Input
+                  type="text"
+                  name="username"
+                  placeholder="เลขบัตรประชาชน"
+                  required
+                ></Input>
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label>รหัสผ่าน</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="รหัสผ่าน"
+                  required
+                ></Input>
+                  <NavLink className="forget-pw text-muted" href="#">ลืมรหัวผ่าน?</NavLink><br/>
+              </FormGroup>
+              
+            </Col>
+            <Button
+              color="primary"
+              className="mx-auto d-block"
+              style={{ borderRadius: 20 }}
+            >
+              Login
+            </Button>
+            {/* <br /> */}
+            
+          </Form>
+          <p style={{textAlign:"center"}}>MyApp 2020</p>
+        </Card>
       </Container>
     );
   }
