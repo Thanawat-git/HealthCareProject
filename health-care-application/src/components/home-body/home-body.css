@@ -1,0 +1,13 @@
+.homeBody-Input{
+    max-width: 650px;
+}
+
+.input input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #707070;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}

@@ -1,4 +1,4 @@
-body {
+.body {
     background: url('../images/bg1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -31,7 +31,7 @@ body {
   height: auto;
 }
 
-input[type="text"],
+.body input[type="text"],
 select.form-control {
   background: transparent;
   border: none;
@@ -39,7 +39,6 @@ select.form-control {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
-  /* min-width: 180.734px; */
 }
 
 input[type="text"]:focus,
@@ -47,6 +46,7 @@ select.form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
 
 input[type="password"],
 select.form-control {
@@ -70,6 +70,6 @@ select.form-control:focus {
   font-size: small;
 }
 
-.button {
-  border-radius: inherit;
+label {
+  margin: -10px;
 }

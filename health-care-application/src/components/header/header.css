@@ -1,0 +1,19 @@
+.bg-test{
+    background-color: black;
+    border-bottom: 3px;
+    border-color: aqua;
+}
+
+.header {
+    border: 1px;
+    border-color: black;
+}
+
+.header-logo{
+    width: 70px;
+    object-fit: contain;
+}
+
+.header-link{
+    text-align: right;
+}
