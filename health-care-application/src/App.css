@@ -1,0 +1,11 @@
+.viewport{
+    background-color: brown;
+    height: 100vh;
+}
+
+.sss{
+    background-color: aliceblue;
+    position: fixed;
+    bottom: 0;   
+    right: 0;;
+}

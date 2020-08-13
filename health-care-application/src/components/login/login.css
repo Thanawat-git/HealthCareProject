@@ -1,16 +1,17 @@
-.body {
+.bg-img {
     background: url('../images/bg1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    height: 100vh;
   }
-.test {
-  margin-top: auto;
-}
 
-.form-position {
-  padding: 7%;
+.test {
+  /* background-color: #707070; */
+  background-image: url('../images/bg1.jpg');
+  /* width: 100vw; */
+  /* height: 100vh; */
 }
 
 .bg-transbox {

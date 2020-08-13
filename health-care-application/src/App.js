@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-import Login from './components/login/login'
-import Header from './components/header/header'
-import HomeBody from './components/home-body/home-body'
-import Footer from './components/footer/footer'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import "./App.css";
+import Login from "./components/login/login";
+import Header from "./components/header/header";
+import HomeBody from "./components/home-body/home-body";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 export default class App extends Component {
   render() {
     return (
       <Router>
-        <Header/>
         <Switch>
           <Route path="/login" component={Login}></Route>
-          <Route path="/"> 
-            <HomeBody/>
-            <Footer/> 
+          <Route path="/">
+            <Header />
+            <HomeBody />
           </Route>
         </Switch>
       </Router>

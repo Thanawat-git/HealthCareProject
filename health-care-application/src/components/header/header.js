@@ -17,7 +17,7 @@ class Header extends Component {
             />
           </Navbar.Brand>
           <Nav.Link href="#home">
-            <h3>Project Name</h3>
+            Project Name
           </Nav.Link>
           
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
