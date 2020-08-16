@@ -54,14 +54,19 @@ class Login extends Component {
                   placeholder="รหัสผ่าน"
                   required
                 ></FormControl>
-                <NavLink className="forget-pw text-muted" href="#">
+                <Button
+                  onClick={()=>this.props.history.push("/verify")}
+                  className="forget-pw text-muted"
+                  size="sm"
+                  variant="link"
+                >
                   ลืมรหัวผ่าน?
-                </NavLink>
+                </Button>
                 <br />
               </FormGroup>
             </Col>
             <Button
-              // onClick={this.onClickValidate}
+              onClick={()=>this.props.history.push("/home")}
               color="primary"
               className="mx-auto d-block"
               style={{ borderRadius: 20 }}

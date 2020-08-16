@@ -34,10 +34,19 @@ class VerifyIdentity extends Component {
             <Form.Control type="date" required></Form.Control>
             <br />
             <ButtonToolbar>
-              <Button size="lg" className="bt-verify mx-auto d-block" variant="secondary">
+              <Button
+                onClick={()=>this.props.history.goBack()}
+                size="lg"
+                className="bt-verify mx-auto d-block"
+                variant="secondary"
+              >
                 ยกเลิก
               </Button>
-              <Button size="lg" className="bt-verify mx-auto d-block">ยืนยัน</Button>
+              <Button 
+              onClick={()=>this.props.history.push("/resetpassword")}
+              size="lg" className="bt-verify mx-auto d-block">
+                ยืนยัน
+              </Button>
             </ButtonToolbar>
           </Form>
         </Col>
