@@ -14,9 +14,9 @@ function btAdd() {
           <Row>
             <Col></Col>
             <Col className="align-self-end">
-              <Button variant="link">
-                <GroupAddIcon className="homeAdd-icon" />
-                <br />
+              <Button variant="link" size="sm">
+                <GroupAddIcon className="homeAdd-icon"/>
+                <br style={{lineHeight:0}} />
                 <Button variant="success" className="homeAdd-bt" size="sm">
                   เพิ่มผู้สูงอายุรายใหม่
                 </Button>

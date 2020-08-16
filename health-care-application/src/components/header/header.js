@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./header.css";
-import SideMenu from './sideMenu'
 import logo1 from "../images/logo-saensukcity.png";
 import { Container, Navbar, Nav } from "react-bootstrap";
 

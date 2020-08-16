@@ -32,7 +32,7 @@
   height: auto;
 }
 
-.body input[type="text"],
+input[type="text"],
 select.form-control {
   background: transparent;
   border: none;

@@ -14,7 +14,7 @@ class HomeBody extends Component {
   render() {
     return (
       <Container fluid className="homeBody">
-        <p className="text-center">ค้นหาผู้สูงอายุ</p> <br />
+        <h4 className="text-center">ค้นหาผู้สูงอายุ</h4> <br />
         <Container className="homeBody-Input">
           <InputGroup className="mb-3">
             <FormControl

@@ -1,0 +1,44 @@
+.form-verify{
+    max-width: 350px;
+    min-width: 300px;
+}
+
+.form-verify .bt-verify{
+    border-radius: 10px;
+}
+
+.form-verify input[type="text"],
+select.form-control {
+    padding: 20px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.form-verify input[type="text"]:focus,
+select.form-control:focus {
+    border: 1px solid #555;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-verify input[type="date"],
+select.form-control {
+    padding: 20px;
+    border: 1px snow #707070;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.form-verify input[type="date"]:focus,
+select.form-control:focus {
+    border: 1px solid #555;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.titel {
+    text-align: center;
+}
