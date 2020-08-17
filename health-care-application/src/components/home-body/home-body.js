@@ -11,6 +11,14 @@ import {
 } from "react-bootstrap";
 
 class HomeBody extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableShow: false
+    }
+  }
+
   render() {
     return (
       <Container fluid className="homeBody">
@@ -23,12 +31,16 @@ class HomeBody extends Component {
               className="input"
             />
             <InputGroup.Append>
-              <Button variant="link">
+              <Button 
+              onClick={()=>this.setState({ tableShow: true})}
+              variant="link">
                 <SearchIcon />
               </Button>
             </InputGroup.Append>
           </InputGroup>
-          <Table/>
+          { this.state.tableShow ? <Table /> : null }
+          {/* <Table show={false}/> */}
+          {/* <Table/> */}
         </Container>
         <ButtonAdd />
       </Container>
