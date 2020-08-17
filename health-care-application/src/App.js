@@ -8,6 +8,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import { Container, Button, Row, Col } from "react-bootstrap";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
 import ResetPassword from "./components/reset-password/reset-password";
+import AdminHeader from "./components/admin-header/admin-header"
+import AdminMenu from "./components/admin-menu/admin-menu"
+import AdminContent from "./components/admin-content/admin-content"
+import AdminFooter from "./components/admin-footer/admin-footer"
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -17,6 +21,12 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
+          <Route path="/adminhomepage">
+            <AdminHeader/>
+            <AdminMenu/>
+            <AdminContent/>
+            <AdminFooter/>
+          </Route>
           <Route path="/resetpassword" component={ResetPassword} />
           <Route path="/verify" component={VerifyIdentity}></Route>
           <Route path="/login" component={Login}></Route>
