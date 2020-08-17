@@ -51,6 +51,8 @@ class VerifyIdentity extends Component {
           </Form>
         </Col>
         <Col></Col>
+        <br />
+        <br />
       </Container>
     );
   }

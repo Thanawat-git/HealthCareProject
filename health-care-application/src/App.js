@@ -7,7 +7,7 @@ import HomeBody from "./components/home-body/home-body";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
-import ResetPassword from "./components/reset-password/reset-password"
+import ResetPassword from "./components/reset-password/reset-password";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
