@@ -29,7 +29,7 @@ class Header extends Component {
             <Nav.Link href="#home" className="header-link">
                 เปลี่ยนรหัสผ่าน
             </Nav.Link>
-            <Nav.Link href="../login/login" className="header-link">
+            <Nav.Link href="../login" className="header-link">
                 ออกจากระบบ
             </Nav.Link>
           </Navbar.Collapse>
