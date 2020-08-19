@@ -42,7 +42,7 @@ class HomeBody extends Component {
           {/* <Table show={false}/> */}
           {/* <Table/> */}
         </Container>
-        <ButtonAdd />
+        <ButtonAdd className="homeAdd bg-success" />
       </Container>
     );
   }

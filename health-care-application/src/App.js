@@ -31,6 +31,7 @@ export default class App extends Component {
           <Route path="/verify" component={VerifyIdentity}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/home">
+            {/* <AdminHeader/> */}
             <Header />
             <HomeBody />
           </Route>

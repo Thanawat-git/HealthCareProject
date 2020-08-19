@@ -15,10 +15,9 @@ function btAdd() {
             <Col></Col>
             <Col className="align-self-end">
               <Button variant="link" size="sm">
-                <GroupAddIcon className="homeAdd-icon"/>
-                <br style={{lineHeight:0}} />
+                <GroupAddIcon className="homeAdd-icon"/><br/>
                 <Button variant="success" className="homeAdd-bt" size="sm">
-                  เพิ่มผู้สูงอายุรายใหม่
+                  เพิ่มผู้สูงอายุรายใหม่ 
                 </Button>
               </Button>
             </Col>

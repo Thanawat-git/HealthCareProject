@@ -21,7 +21,6 @@ class Login extends Component {
         <br />
         <br />
         <br />
-        <br />
         <Card
           className="bg-transbox mx-auto"
           style={{ borderRadius: 30, borderColor: "#707070", minWidth: 300 }}
