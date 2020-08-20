@@ -5,7 +5,7 @@ export default function adminMenu() {
   return (
   <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
-      <a href="index3.html" className="brand-link" style={{marginTop:10, marginBottom:10}}>
+      <a href="index3.html" className="brand-link" style={{marginTop:10}}>
         <img
           src={logo1}
           alt="Logo"
@@ -110,7 +110,38 @@ export default function adminMenu() {
                 </p>
               </a>
             </li>
-            
+
+            {/* up date form */}
+            <li className="nav-item">
+              <a href="#" className="nav-link">
+                <i className="nav-icon fas fa-home" />
+                <p>
+                  Form
+                  <i className="right fas fa-angle-left" />
+                </p>
+              </a>
+              {/* sub-menu */}
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <a href="./index.html" className="nav-link">
+                    <i className="far fa-circle nav-icon" />
+                    <p>ข้อมูลพื้นฐาน</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="./index2.html" className="nav-link">
+                    <i className="far fa-circle nav-icon" />
+                    <p>ส่วนที่ 1</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="./index3.html" className="nav-link">
+                    <i className="far fa-circle nav-icon" />
+                    <p>ส่วนที่ 2</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
             
           </ul>
         </nav>

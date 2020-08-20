@@ -17,8 +17,7 @@ class Login extends Component {
   render() {
     return (
       <Container fluid className="bg-img">
-        <br />
-        <br />
+        
         <br />
         <br />
         <Card

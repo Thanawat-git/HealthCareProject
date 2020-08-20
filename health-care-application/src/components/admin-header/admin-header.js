@@ -1,10 +1,11 @@
 import React from "react";
+import SubMenu from "./admin-header-submenu";
 
 export default function adminHeader() {
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
       {/* Left navbar links */}
-      <ul className="navbar-nav">
+      <ul className="navbar-nav" style={{marginTop:10}}>
         <li className="nav-item">
           <a className="nav-link" data-widget="pushmenu" href="#" role="button">
             <i className="fas fa-bars" />
@@ -18,13 +19,13 @@ export default function adminHeader() {
       </ul>
 
 {/* center */}
-      <ul className="mx-auto">
+      {/* <ul className="mx-auto">
       <li className="nav-item d-none d-sm-inline-block">
           <a href="#" className="nav-link" style={{marginTop:12}}>
             Project Nameeeeeeeeeeeeeeeeeeeee
           </a>
         </li>
-      </ul>
+      </ul> */}
 
       {/* Right navbar links */}
       <ul className="navbar-nav ml-auto">
@@ -46,12 +47,11 @@ export default function adminHeader() {
                   Alexander Pierce
                 </a>
               </i>
-              {/* <i className="nav-icon fas fa-caret-down"></i> */}
             </i>
           </a>
 
           <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" className="dropdown-item">
+            {/* <a href="#" className="dropdown-item">
               <i className="fas fa-user" style={{ paddingRight: 10 }}></i>
               ข้อมูลส่วนตัว
             </a>
@@ -64,14 +64,16 @@ export default function adminHeader() {
             <a href="/login" className="dropdown-item">
               <i class="fas fa-sign-out-alt" style={{ paddingRight: 10 }}></i>
               ออกจากระบบ
-            </a>
+            </a> */}
+            <SubMenu/>
           </div>
           
         </li>
 
-        {/* <li className="nav-item">
+        <li className="nav-item dropdown">
           <a
             className="nav-link"
+            data-toggle="dropdown"
             data-widget="control-sidebar"
             data-slide="true"
             href="#"
@@ -79,7 +81,10 @@ export default function adminHeader() {
           >
             <i className="fas fa-caret-down" />
           </a>
-        </li> */}
+          <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <SubMenu/>
+            </div>
+        </li>
       </ul>
     </nav>
   );
