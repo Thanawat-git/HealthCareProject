@@ -12,6 +12,8 @@ import AdminHeader from "./components/admin-header/admin-header"
 import AdminMenu from "./components/admin-menu/admin-menu"
 import AdminContent from "./components/admin-content/admin-content"
 import AdminFooter from "./components/admin-footer/admin-footer"
+import Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
+
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -21,6 +23,9 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
+          <Route path="/form">
+              <Pages1/>
+          </Route>
           <Route path="/adminhomepage">
             <AdminHeader/>
             <AdminMenu/>

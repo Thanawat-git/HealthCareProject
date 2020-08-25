@@ -39,7 +39,7 @@ class Header extends Component {
                 <i className="image">
                   <img
                     src="dist/img/user2-160x160.jpg"
-                    className="img-circle elevation-2"
+                    className="img-circle"
                     alt="User Image"
                   />
                 </i>

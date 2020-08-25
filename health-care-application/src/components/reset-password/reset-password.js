@@ -37,11 +37,11 @@ class ResetPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      oldpass: null,
-      newpass: null,
+      newPassword: null,
+      confirmPasword: null,
       formErrors: {
-        oldpass: "", //กรุณากรอกเลขบัตรประชาชน 13 หลัก
-        newpass: "", //กรุณากรอกรหัสผ่าน
+        newPassword: "", //กรุณากรอกเลขบัตรประชาชน 13 หลัก
+        confirmPasword: "", //กรุณากรอกรหัสผ่าน
       },
     };
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,8 +51,8 @@ class ResetPassword extends Component {
     if (formValid(this.state.formErrors)) {
       console.log(`
       --Submitting--
-      oldpass: ${this.state.oldpass}
-      newpass: ${this.state.newpass}`);
+      newPassword: ${this.state.newPassword}
+      confirmPasword: ${this.state.confirmPasword}`);
     } else {
       console.error("Error");
     }
@@ -64,14 +64,14 @@ class ResetPassword extends Component {
     let formErrors = this.state.formErrors;
 
     switch (name) {
-      case "oldpass":
-        formErrors.oldpass =
+      case "newPassword":
+        formErrors.newPassword =
           value.length > 7 && value.length < 25
           ? "" 
           : "กรุณากรอกรหัสผ่าน 8-25 หลัก";
         break;
-      case "newpass":
-        formErrors.newpass = 
+      case "confirmPasword":
+        formErrors.confirmPasword = 
           value.length > 7 && value.length < 25
             ? ""
             : "กรุณากรอกรหัสผ่านให้ตรงกัน";
@@ -226,22 +226,22 @@ class ResetPassword extends Component {
               type="text"
               minLength="13"
               maxLength="13"
-              name="oldpass"
+              name="newPassword"
               onChange={this.handleChange}
               required
             ></FormControl>
-            <Form.Label className="errorMessage">{this.state.formErrors.oldpass}</Form.Label>
+            <Form.Label className="errorMessage">{this.state.formErrors.newPassword}</Form.Label>
             <br />
             <Form.Label>ยืนยันรหัสผ่าน</Form.Label>
             <Form.Control
               type="text"
               minLength="8"
               maxLength="25"
-              name="newpass"
+              name="confirmPasword"
               required
               onChange={this.handleChange}
             ></Form.Control>
-            <Form.Label className="errorMessage">{this.state.formErrors.newpass}</Form.Label>
+            <Form.Label className="errorMessage">{this.state.formErrors.confirmPasword}</Form.Label>
             <br />
             <ButtonToolbar>
               <Button

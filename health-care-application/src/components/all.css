@@ -1,0 +1,7 @@
+input[type="text"],select.form-control {
+    border-radius: 20px;
+}
+
+span {
+    font-size: large;
+}

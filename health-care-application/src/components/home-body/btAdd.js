@@ -15,7 +15,7 @@ function btAdd() {
             <Col></Col>
             <Col className="align-self-end">
               <Button variant="link" size="sm">
-                <GroupAddIcon className="homeAdd-icon"/><br/>
+                <GroupAddIcon className="homeAdd-icon elevation-2"/><br/>
                 <Button variant="success" className="homeAdd-bt" size="sm">
                   เพิ่มผู้สูงอายุรายใหม่ 
                 </Button>

@@ -1,0 +1,25 @@
+.pagelayout{
+    background-color: white;
+    margin-top: 10px;
+    /* height: 100vh; */
+}
+
+.rowlayout{
+    /* height: 90vh; */
+    text-align: center;
+    /* align-items: center; */
+}
+
+.rowlayout .cardSize{
+    /* background-color: red; */
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+.rowlayout .cardSize .dateLabel{
+    /* color: red; */
+    /* background: #000; */
+    text-align: start !important;
+}

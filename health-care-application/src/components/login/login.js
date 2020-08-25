@@ -121,7 +121,7 @@ class Login extends Component {
                   size="sm"
                   variant="link"
                 >
-                  ลืมรหัวผ่าน?
+                  ลืมรหัสผ่าน?
                 </Button>
                 <br />
               </FormGroup>
