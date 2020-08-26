@@ -2,9 +2,24 @@ import React, { Component } from "react";
 import "./Pages1.css";
 import FormHeader from "../../formHeader/formHeader";
 import FormFooter from "../../formFooter/formFooter";
-import { Card, Col, Row, Form, InputGroup, FormControl, Button } from "react-bootstrap";
+import {
+  Card,
+  Col,
+  Row,
+  Form,
+  InputGroup,
+  FormControl,
+  Button,
+} from "react-bootstrap";
+
+
 
 class Pages1 extends Component {
+
+  getAge = e=>{
+    
+  }
+
   render() {
     return (
       <div className="pagelayout">
@@ -23,6 +38,7 @@ class Pages1 extends Component {
                     className="ml-2"
                     aria-label="Default"
                     aria-describedby="inputGroup-sizing-default"
+                    required
                   />
                 </InputGroup>
 
@@ -35,6 +51,7 @@ class Pages1 extends Component {
                       className="ml-2"
                       aria-label="Default"
                       aria-describedby="inputGroup-sizing-default"
+                      required
                     />
                   </Col>
                   <Col>
@@ -45,6 +62,7 @@ class Pages1 extends Component {
                       className="ml-2"
                       aria-label="Default"
                       aria-describedby="inputGroup-sizing-default"
+                      required
                     />
                   </Col>
                 </Row>
@@ -76,37 +94,49 @@ class Pages1 extends Component {
                 </InputGroup>
                 <br />
                 {/* <span className="text-danger dateLabel">วันเกิด</span> */}
-                  
+
                 <Row>
                   <Col className="dateLabel">
-                  <InputGroup className="mb-3">
-                  <span className="text-danger">*</span>
-                  วันเกิด
-                  <FormControl
-                    type="date"
-                    className="ml-2"
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                  />
-                </InputGroup>
+                    <InputGroup className="mb-3">
+                      <span className="text-danger">*</span>
+                      วันเกิด
+                      <FormControl
+                        type="date"
+                        className="ml-2"
+                        aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default"
+                        onChange={this.getAge}
+                        required
+                      />
+                    </InputGroup>
                   </Col>
-                  <Col className="dateLabel">
+                  {/* <Col className="dateLabel">
                     <Row>
                       <Col xs={5}>อายุ</Col>
-                      <Col xs={4}><span className="text-danger">72</span></Col>
+                      <Col xs={4}>
+                        <span className="text-danger">72</span>
+                      </Col>
+                      <Col>ปี</Col>
+                    </Row>
+                  </Col> */}
+                </Row>
+
+                <Row>
+                  <Col></Col>
+                  <Col xs={7}>
+                    <Row>
+                      <Col>อายุ</Col>
+                      <Col>
+                        <span className="text-danger">72</span>
+                      </Col>
                       <Col>ปี</Col>
                     </Row>
                   </Col>
+                  <Col></Col>
                 </Row>
+                <br />
                 
-                <Row>
-                      <Col>อายุ</Col>
-                      <Col><span className="text-danger">72</span></Col>
-                      <Col>ปี</Col>
-                    </Row>
-                    <br/>
-                <Button size="lg">ถัดไป</Button>
-
+                <Button type="submit" size="lg">ถัดไป</Button>
               </Form>
             </Card>
           </Col>

@@ -16,6 +16,7 @@
     margin-left: 20px;
     margin-right: 20px;
     padding: 10px 20px 10px 20px;
+    min-width: 340px;
 }
 
 .rowlayout .cardSize .dateLabel{

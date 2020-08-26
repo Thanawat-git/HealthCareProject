@@ -1,5 +1,6 @@
 import React from 'react'
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
+import add from "../images/add.png"
 import {
     Container,
     Button,
@@ -14,11 +15,13 @@ function btAdd() {
           <Row>
             <Col></Col>
             <Col className="align-self-end">
-              <Button variant="link" size="sm">
-                <GroupAddIcon className="homeAdd-icon elevation-2"/><br/>
-                <Button variant="success" className="homeAdd-bt" size="sm">
-                  เพิ่มผู้สูงอายุรายใหม่ 
-                </Button>
+              <Button variant="link">
+                {/* <GroupAddIcon className="homeAdd-icon" />
+                <br /> */}
+                {/* <Button variant="success" className="homeAdd-bt" size="sm">
+                  เพิ่มผู้สูงอายุรายใหม่
+                </Button> */}
+                <img className="add" src={add}/>
               </Button>
             </Col>
           </Row>

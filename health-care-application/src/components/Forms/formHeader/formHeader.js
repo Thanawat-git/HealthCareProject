@@ -5,7 +5,7 @@ class FormHeader extends Component {
   render() {
     return (
       <div className="formHeader">
-        <h5>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h5>
+        <h4>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h4>
       </div>
     );
   }

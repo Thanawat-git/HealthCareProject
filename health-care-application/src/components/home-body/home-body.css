@@ -1,9 +1,13 @@
+.homeBody{
+  font-size: 30px;
+}
 
 .homeBody-Input{
     max-width: 650px;
 }
 
 .homeAdd{
+  /* background-color: #707070; */
   position: fixed;
   bottom: 20px;   
   right: 0;
@@ -13,8 +17,37 @@
   font-size: 80px;
   text-align: center;
 }
- 
+
 .homeAdd .homeAdd-bt{
   box-shadow: 0 3px 3px 0 #707070;
   border-radius: 35px;
+}
+
+.homeBody input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #707070;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 30px;
+}
+.errorMessage2 {
+  background-color: rgb(255, 152, 152);
+  border-radius: 10px;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: red;
+}
+.warning-img {
+  height: 50px;
+  width: 50px;
+}
+.add{
+  height: 60%;
+  width: 60%;
+  /* background-color: white; */
 }
