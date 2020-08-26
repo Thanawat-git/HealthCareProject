@@ -16,8 +16,47 @@ import {
 
 class Pages1 extends Component {
 
-  getAge = e=>{
+  constructor(props){
+    super(props);
+    this.state = {
+      age: 0
+    }
+  }
+
+  getAge = e => {
+    // console.log(typeof(e.target.value))
+    const str = e.target.value; // yyyy-mm-dd
+    const strAge = str.split("-") // ["yyyy","mm","dd"] => string
+    const year = parseInt(strAge[0]);
+    const month = parseInt(strAge[1]);
+    const day = parseInt(strAge[2]);
     
+    console.log(strAge)
+    // date now
+    const now = new Date();
+    const nd = parseInt(now.getDate());
+    const nm = parseInt(now.getMonth());
+    const ny = parseInt(now.getFullYear());
+
+    var numage = ny - year;
+
+    if (nm > month || nm == month) {
+      if (nd < day) {
+        numage = numage-1;
+        this.setAge(numage)
+      } else {
+        this.setAge(numage)
+      }
+    } else {
+      this.setAge(numage)
+    }
+    // console.log(nd)
+  }
+
+  setAge = numage =>{
+    // console.log(numage)
+    this.setState({age:numage});
+    // console.log(this.state.age);
   }
 
   render() {
@@ -103,8 +142,10 @@ class Pages1 extends Component {
                       <FormControl
                         type="date"
                         className="ml-2"
+                        name="birthday"
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        // placeholder="dd/mm/yyyy"
                         onChange={this.getAge}
                         required
                       />
@@ -127,7 +168,7 @@ class Pages1 extends Component {
                     <Row>
                       <Col>อายุ</Col>
                       <Col>
-                        <span className="text-danger">72</span>
+                        <span className="text-danger">{this.state.age}</span>
                       </Col>
                       <Col>ปี</Col>
                     </Row>
