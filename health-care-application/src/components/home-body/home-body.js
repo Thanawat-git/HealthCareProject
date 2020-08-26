@@ -27,7 +27,7 @@ class HomeBody extends Component {
     e.preventDefault();
     const {name,value} = e.target;
     let formErrors = this.state.formErrors;
-    formErrors.search = value === 'test' ? <Form.Label className="errorMessage2"><img className="warning-img" src={warning}/>ไม่พบข้อมูลผู้สูงอายุ กรุณาเพิ่มผู้สูงอายุรายใหม่</Form.Label>:<Table />;
+    formErrors.search = value === 'นางจำปา' || value === 'จำปา' || value === 'ศรีเมือง' || value === 'แจ่มจันทร์' ? <Table /> : <Form.Label className="errorMessage2"><img className="warning-img" src={warning}/>ไม่พบข้อมูลผู้สูงอายุ กรุณาเพิ่มผู้สูงอายุรายใหม่</Form.Label>;
     this.setState({formErrors,[name]:value},console.log(this.state.formErrors));
   }
 
