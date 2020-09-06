@@ -6,13 +6,6 @@
     max-width: 650px;
 }
 
-.homeAdd{
-  /* background-color: #707070; */
-  position: fixed;
-  bottom: 20px;   
-  right: 0;
-}
-
 .homeAdd .homeAdd-icon{
   font-size: 80px;
   text-align: center;
@@ -46,8 +39,28 @@ select.form-control {
   height: 50px;
   width: 50px;
 }
-.add{
+
+.homeAdd{
+  position: fixed;
+  bottom: 20px;   
+  right: 0;
+}
+
+.add{ 
   height: 60%;
   width: 60%;
-  /* background-color: white; */
+}
+
+@media screen and (min-width: 800px){
+  .homeAdd{
+    position: relative;
+    background-color: #707070;
+  }
+  .add{
+    position: absolute;
+    right: 10px;
+    height: 100px;
+    width: auto;
+  }
+
 }

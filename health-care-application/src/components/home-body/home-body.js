@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SearchIcon from "@material-ui/icons/Search";
 import warning from "../images/warning-triangle.png";
 import ButtonAdd from "./btAdd";
 import Table from './table'
@@ -47,16 +46,15 @@ class HomeBody extends Component {
             />
             <InputGroup.Append>
               <Button variant="link">
-                <SearchIcon />
+                <i class="fas fa-search"></i>
               </Button>
             </InputGroup.Append>
              
           </InputGroup>
           {this.state.formErrors.search}
-          {/* <Table/> */}
         </Container>
+        <br/>
         <ButtonAdd />
-        {/* <Button ><img className="add" src={add}/></Button> */}
       </Container>
     );
   }
