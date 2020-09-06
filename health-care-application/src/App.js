@@ -13,7 +13,7 @@ import AdminMenu from "./components/admin-menu/admin-menu"
 import AdminContent from "./components/admin-content/admin-content"
 import AdminFooter from "./components/admin-footer/admin-footer"
 import Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
-
+import MedicSidebar from "./components/MedicalStaff/SidebarMenu/SidebarMenu"
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -23,15 +23,28 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
+          {/* Medical Staff */}
+          <Route path="/medicalstaff">
+            <AdminHeader/>
+            <MedicSidebar/>
+          </Route>
+          {/* Medical Staff */}
+
+          {/* Form */}
           <Route path="/form">
               <Pages1/>
           </Route>
+          {/* Form */}
+
+          {/* Super Admin */}
           <Route path="/adminhomepage">
             <AdminHeader/>
             <AdminMenu/>
             <AdminContent/>
             <AdminFooter/>
           </Route>
+          {/* Super Admin */}
+
           <Route path="/resetpassword" component={ResetPassword} />
           <Route path="/verify" component={VerifyIdentity}></Route>
           <Route path="/login" component={Login}></Route>

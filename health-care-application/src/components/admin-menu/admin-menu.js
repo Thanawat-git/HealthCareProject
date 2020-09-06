@@ -114,7 +114,7 @@ export default function adminMenu() {
             {/* up date form */}
             <li className="nav-item">
               <a href="#" className="nav-link">
-                <i className="nav-icon fas fa-home" />
+                <i className="nav-icon fas fa-align-left" />
                 <p>
                   Form
                   <i className="right fas fa-angle-left" />
