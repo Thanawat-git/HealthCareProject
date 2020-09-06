@@ -23,7 +23,7 @@ export default function popup(props) {
         <img src={Smile} className="popup-img" /> <br />
       </Modal.Header>
       <Modal.Body className="mx-auto">
-        <h4>เปลี่ยนรหัสผ่านสำเร็จ</h4>
+        <h4>{props.titles}</h4>
       </Modal.Body>
       <Modal.Footer className="mx-auto">
         <Button
