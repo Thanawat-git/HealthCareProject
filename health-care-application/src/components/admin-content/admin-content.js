@@ -42,7 +42,7 @@ export default function adminContent() {
                   <i className="fas fa-user-shield" />
                 </span>
                 <div className="info-box-content">
-                  <span className="info-box-text">จำนวนผอาสาสมัคร</span>
+                  <span className="info-box-text">จำนวนอาสาสมัคร</span>
                   <span className="info-box-number">20</span>
                 </div>
                 {/* /.info-box-content */}

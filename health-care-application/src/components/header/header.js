@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./header.css";
 import logo1 from "../images/logo-saensukcity.png";
+import profile from "../images/face.svg"
 import { Container, Navbar, Nav } from "react-bootstrap";
 
 class Header extends Component {
@@ -38,8 +39,8 @@ class Header extends Component {
               <i className="user-panel d-flex">
                 <i className="image">
                   <img
-                    src="dist/img/user2-160x160.jpg"
-                    className="img-circle"
+                    src={profile}
+                    className="img-circle header-logo"
                     alt="User Image"
                   />
                 </i>
