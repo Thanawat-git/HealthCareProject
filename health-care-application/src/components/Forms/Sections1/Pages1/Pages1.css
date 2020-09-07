@@ -1,26 +1,61 @@
-.pagelayout{
-    background-color: white;
-    margin-top: 10px;
-    /* height: 100vh; */
-}
-
-.rowlayout{
-    /* height: 90vh; */
+.Page1 h1{
     text-align: center;
-    /* align-items: center; */
+    margin-top: 30px;
+    font-size: 40px;
+}
+.Page1 form {
+    border: 1px solid #707070;
+    border-radius: 43px;
+    box-shadow: 5px 5px 8px #707070;
+    padding: 25px 20px 15px 20px;
+    margin: 35px 90px;
+    /* max-width: 720px; */
+    height: auto;    
+    /* min-width: 300px; */
+    transition: 0.3s;
+}
+.Page1 form h2{
+    text-align: center;
+    font-size: 35px;
 }
 
-.rowlayout .cardSize{
-    /* background-color: red; */
-    border-radius: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px 20px 10px 20px;
-    min-width: 340px;
+.Page1 form span{
+    color: red;
+}
+.idcard {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.fullname, .sex, .localname, .date {
+    margin-bottom: 15px;
 }
 
-.rowlayout .cardSize .dateLabel{
-    /* color: red; */
-    /* background: #000; */
-    text-align: start !important;
+.Page1 form .localname span {
+    color: #F0AD4E;
+}
+
+.sex label{
+    margin-left: 2px;
+}
+.date p {
+    text-align: center;
+}
+
+
+/* ********************** #Mobile ******************************* */
+@media screen and (max-width: 450px){
+    .Page1 form{
+        margin: 45px 20px;
+    }
+    .date p {
+        padding-top: 10px
+    }
+}
+
+/* ********************** #lg screen ******************************* */
+@media screen and (min-width: 1100px){
+    .Page1 form {
+        /* background-color: red; */
+        margin: 35px 270px;
+    }
 }

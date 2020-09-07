@@ -1,37 +1,26 @@
 import React, { Component } from "react";
 import "./Pages1.css";
-import FormHeader from "../../formHeader/formHeader";
-import FormFooter from "../../formFooter/formFooter";
 import {
-  Card,
-  Col,
-  Row,
-  Form,
-  InputGroup,
-  FormControl,
   Button,
 } from "react-bootstrap";
 
-
-
 class Pages1 extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      age: 0
-    }
+      age: 0,
+    };
   }
 
-  getAge = e => {
+  getAge = (e) => {
     // console.log(typeof(e.target.value))
     const str = e.target.value; // yyyy-mm-dd
-    const strAge = str.split("-") // ["yyyy","mm","dd"] => string
+    const strAge = str.split("-"); // ["yyyy","mm","dd"] => string
     const year = parseInt(strAge[0]);
     const month = parseInt(strAge[1]);
     const day = parseInt(strAge[2]);
-    
-    console.log(strAge)
+
+    console.log(strAge);
     // date now
     const now = new Date();
     const nd = parseInt(now.getDate());
@@ -42,148 +31,133 @@ class Pages1 extends Component {
 
     if (nm > month || nm == month) {
       if (nd < day) {
-        numage = numage-1;
-        this.setAge(numage)
+        numage = numage - 1;
+        this.setAge(numage);
       } else {
-        this.setAge(numage)
+        this.setAge(numage);
       }
     } else {
-      this.setAge(numage)
+      this.setAge(numage);
     }
     // console.log(nd)
-  }
+  };
 
-  setAge = numage =>{
+  setAge = (numage) => {
     // console.log(numage)
-    this.setState({age:numage});
+    this.setState({ age: numage });
     // console.log(this.state.age);
-  }
+  };
 
   render() {
     return (
-      <div className="pagelayout">
-        <FormHeader />
-        <br />
-        <Row className="justify-content-md-center rowlayout">
-          <Col xs lg="4">
-            <Card className="cardSize">
-              <Form>
-                <p>ส่วนที่ 1 ข้อมูลพื้นฐาน</p>
-                <InputGroup className="mb-3">
-                  <span className="text-danger">*</span>
-                  รหัสบัตรประชาชน
-                  <FormControl
-                    type="text"
-                    className="ml-2"
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    required
-                  />
-                </InputGroup>
+      <div className="Page1" >
+        <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
+        <form>
+          <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
 
-                <Row>
-                  <Col>
-                    <span className="text-danger">*</span>
-                    ชื่อ
-                    <FormControl
-                      type="text"
-                      className="ml-2"
-                      aria-label="Default"
-                      aria-describedby="inputGroup-sizing-default"
-                      required
-                    />
-                  </Col>
-                  <Col>
-                    <span className="text-danger">*</span>
-                    นามสกุล
-                    <FormControl
-                      type="text"
-                      className="ml-2"
-                      aria-label="Default"
-                      aria-describedby="inputGroup-sizing-default"
-                      required
-                    />
-                  </Col>
-                </Row>
-                <br />
+          <div className="container">
+            <div className="idcard row">
+              <div className="col-12 con-sm-12 col-md-3 col-lg-2">
+                <label htmlFor="box1">
+                  <span>*</span>เลขบัตรประชาชน
+                </label>
+              </div>
+              <div className="col-12 col-sm-12 col-md-9 col-lg-10">
+                <input type="text" className="form-control" />
+              </div>
+            </div>
 
-                <Row>
-                  <Col>
-                    <span className="text-danger">*</span>เพศ
-                  </Col>
-                  <Col>
-                    <Form.Check inline name="sex" type="radio" value="Male" />
-                    <span>ชาย</span>
-                  </Col>
-                  <Col>
-                    <Form.Check inline name="sex" type="radio" value="Female" />
-                    <span>หญิง</span>
-                  </Col>
-                </Row>
-                <br />
-                <InputGroup className="mb-3">
-                  ชื่อในชุมชน
-                  <span className="text-warning">(ถ้ามี)</span>
-                  <FormControl
-                    type="text"
-                    className="ml-2"
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                  />
-                </InputGroup>
-                <br />
-                {/* <span className="text-danger dateLabel">วันเกิด</span> */}
+            <div className="fullname row">
+              <div className="fname col-12 col-sm-12 col-md-6 col-lg-6">
+                <label htmlFor="fname">
+                  <span>*</span>ชื่อ
+                </label>
+                <input type="text" name="fname" className="form-control" />
+              </div>
+              <div className="lname col-12 col-sm-12 col-md-6 col-lg-6">
+                <label htmlFor="lname">
+                  <span>*</span>นามสกุล
+                </label>
+                <input type="text" name="lname" className="form-control" />
+              </div>
+            </div>
 
-                <Row>
-                  <Col className="dateLabel">
-                    <InputGroup className="mb-3">
-                      <span className="text-danger">*</span>
-                      วันเกิด
-                      <FormControl
-                        type="date"
-                        className="ml-2"
-                        name="birthday"
-                        aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default"
-                        // placeholder="dd/mm/yyyy"
-                        onChange={this.getAge}
-                        required
-                      />
-                    </InputGroup>
-                  </Col>
-                  {/* <Col className="dateLabel">
-                    <Row>
-                      <Col xs={5}>อายุ</Col>
-                      <Col xs={4}>
-                        <span className="text-danger">72</span>
-                      </Col>
-                      <Col>ปี</Col>
-                    </Row>
-                  </Col> */}
-                </Row>
+            <div className="sex row">
+              <div className="col-4">
+                <label>
+                  <span>*</span>เพศ
+                </label>
+              </div>
+              <div className="col-4">
+                <input
+                  type="radio"
+                  id="male"
+                  className="form-check-input"
+                  name="sex"
+                  value="M"
+                />
+                <label htmlFor="male" className="form-check-label">
+                  ชาย
+                </label>
+              </div>
+              <div className="col-4">
+                <input
+                  type="radio"
+                  id="female"
+                  className="form-check-input"
+                  name="sex"
+                  value="F"
+                />
+                <label htmlFor="female" className="form-check-label">
+                  หญิง
+                </label>
+              </div>
+            </div>
 
-                <Row>
-                  <Col></Col>
-                  <Col xs={7}>
-                    <Row>
-                      <Col>อายุ</Col>
-                      <Col>
-                        <span className="text-danger">{this.state.age}</span>
-                      </Col>
-                      <Col>ปี</Col>
-                    </Row>
-                  </Col>
-                  <Col></Col>
-                </Row>
-                <br />
-                
-                <Button type="submit" size="lg">ถัดไป</Button>
-              </Form>
-            </Card>
-          </Col>
-        </Row>
-
-        {/* <FormFooter /> */}
+            <div className="localname row">
+              <div className="col-12 con-sm-12 col-md-3 col-lg-2">
+                <label htmlFor="box1">
+                  ชื่อในชุมชน<span>(ถ้ามี)</span>
+                </label>
+              </div>
+              <div className="col-12 col-sm-12 col-md-9 col-lg-10">
+                <input type="text" className="form-control" />
+              </div>
+            </div>
+            <div className="date row align-items-end">
+              <div className="col-12 col-sm-12 col-md-7 col-lg-8">
+                <label>
+                  <span>*</span>วันเกิด
+                </label>
+                <input
+                  type="date"
+                  onChange={this.getAge}
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="col-12 col-sm-12 col-md-5 col-lg-4">
+                <div className="row">
+                  <div className="col-4">
+                    <p>อายุ</p>
+                  </div>
+                  <div className="col-4">
+                    <p> {this.state.age} </p>
+                  </div>
+                  <div className="col-4">
+                    <p>ปี</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row justify-content-center">
+            <Button type="submit" size="lg">
+              ถัดไป
+            </Button>
+            </div>
+            
+          </div>
+        </form>
       </div>
     );
   }
