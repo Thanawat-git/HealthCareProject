@@ -23,32 +23,39 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* Medical Staff */}
-          <Route path="/medicalstaff">
-            <AdminHeader/>
-            <MedicSidebar/>
-          </Route>
-          {/* Medical Staff */}
+          
 
           {/* Form */}
           <Route path="/form">
               <Pages1/>
           </Route>
-          {/* Form */}
 
           {/* Super Admin */}
-          <Route path="/adminhomepage">
+          <Route path="/super-admin">
             <AdminHeader/>
             <AdminMenu/>
             <AdminContent/>
             <AdminFooter/>
           </Route>
-          {/* Super Admin */}
 
-          <Route path="/resetpassword" component={ResetPassword} />
+          {/* Genaral Admin */}
+          <Route path="/genaral-admin">
+
+          </Route>
+
+          {/* Medical Staff */}
+          <Route path="/medical-staff">
+            <AdminHeader/>
+            <MedicSidebar/>
+          </Route>
+
+          {/* Genaral Path */}
+          <Route path="/reset-password" component={ResetPassword} />
           <Route path="/verify" component={VerifyIdentity}></Route>
           <Route path="/login" component={Login}></Route>
-          <Route path="/home">
+
+          {/* Volunteer Page */}
+          <Route path="/volunteer-page">
             {/* <AdminHeader/>      */}
             <Header />
             <HomeBody />

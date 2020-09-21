@@ -133,7 +133,7 @@ class Login extends Component {
               style={{ borderRadius: 20 }}
               noValidate
               // onClick={this.handleSubmit}
-              onClick={()=>this.props.history.push("/home")}
+              onClick={()=>this.props.history.push("/volunteer-page")}
             >
               Login
               </Button>
