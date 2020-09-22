@@ -26,11 +26,10 @@ export default function leftSidebar() {
               {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
               <li className="nav-item has-treeview menu-open">
-                <a href="#" className="nav-link active">
+                <a href="#" className="nav-link">
                   <i className="nav-icon fas fa-home" />
                   <p>
                     หน้าแรก
-                    <i className="right fas fa-angle-left" />
                   </p>
                 </a>
               </li>

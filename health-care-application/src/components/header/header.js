@@ -5,6 +5,7 @@ import profile from "../images/face.svg"
 import { Container, Navbar, Nav } from "react-bootstrap";
 
 class Header extends Component {
+
   render() {
     return (
       <nav className="navbar navbar-expand header border-bottom shadow-sm p-3 mb-5 bg-white rounded">
@@ -43,6 +44,11 @@ class Header extends Component {
                     className="img-circle header-logo"
                     alt="User Image"
                   />
+                  <i className="info">
+                    <a href="#" className="d-block">
+                      {this.props.name}
+                    </a>
+                  </i>
                 </i>
                 <i className="info">
                   <a href="#" className="d-block">

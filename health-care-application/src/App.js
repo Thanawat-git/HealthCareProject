@@ -32,7 +32,7 @@ export default class App extends Component {
 
           {/* Super Admin */}
           <Route path="/super-admin">
-            <AdminHeader/>
+            <AdminHeader name="Super Admin Name"/>
             <AdminMenu/>
             <AdminContent/>
             <AdminFooter/>
@@ -45,7 +45,7 @@ export default class App extends Component {
 
           {/* Medical Staff */}
           <Route path="/medical-staff">
-            <AdminHeader/>
+            <AdminHeader name="Medical Admin Name"/>
             <MedicSidebar/>
             <MedicContent/>
           </Route>
@@ -58,7 +58,7 @@ export default class App extends Component {
           {/* Volunteer Page */}
           <Route path="/volunteer-page">
             {/* <AdminHeader/>      */}
-            <Header />
+            <Header name="Volunteer Name"/>
             <HomeBody />
           </Route>
           <Route exact={true} path="/" component={this.redirectToLogin}></Route>

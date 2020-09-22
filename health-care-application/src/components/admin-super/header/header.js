@@ -1,7 +1,7 @@
 import React from 'react'
 import SubMenu from './subMenu'
 
-export default function header() {
+export default function header(props) {
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
       {/* Left navbar links */}
@@ -44,7 +44,7 @@ export default function header() {
               </i>
               <i className="info">
                 <a href="#" className="d-block">
-                  Alexander Pierce
+                  {props.name}
                 </a>
               </i>
             </i>
