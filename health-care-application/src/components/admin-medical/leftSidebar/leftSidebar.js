@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 import logo1 from '../../images/logo-saensukcity.png'
 
-export default function SidebarMenu() {
+export default function leftSidebar() {
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* Brand Logo */}
@@ -32,29 +32,6 @@ export default function SidebarMenu() {
                     หน้าแรก
                     <i className="right fas fa-angle-left" />
                   </p>
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a href="pages/widgets.html" className="nav-link">
-                  <i className="nav-icon fas fa-users-cog" />
-                  <p>
-                    จัดการผู้ดูแลระบบ
-                  </p>
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a href="pages/widgets.html" className="nav-link">
-                  <i className="nav-icon fas fa-user-shield" />
-                  <p>จัดการอาสาสมัคร</p>
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a href="pages/widgets.html" className="nav-link">
-                  <i className="nav-icon fas fa-star-of-life" />
-                  <p>จัดการแพทย์</p>
                 </a>
               </li>
 

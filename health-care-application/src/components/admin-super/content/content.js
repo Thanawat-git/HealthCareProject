@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export default function adminContent() {
+export default function content() {
   return (
     <div className="content-wrapper">
       <div className="content-header">

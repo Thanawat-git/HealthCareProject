@@ -1,7 +1,7 @@
-import React from "react";
-import SubMenu from "./admin-header-submenu";
+import React from 'react'
+import SubMenu from './subMenu'
 
-export default function adminHeader() {
+export default function header() {
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
       {/* Left navbar links */}

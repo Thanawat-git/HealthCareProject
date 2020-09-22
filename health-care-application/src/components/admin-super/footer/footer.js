@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export default function adminFooter() {
+export default function footer() {
   return (
     <footer className="main-footer">
       <strong>

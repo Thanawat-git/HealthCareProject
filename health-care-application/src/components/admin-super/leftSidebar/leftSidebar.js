@@ -1,9 +1,9 @@
-import React from "react";
-import logo1 from '../images/logo-saensukcity.png'
+import React from 'react'
+import logo1 from '../../images/logo-saensukcity.png'
 
-export default function adminMenu() {
+export default function leftSidebar() {
   return (
-  <aside className="main-sidebar sidebar-dark-primary elevation-4">
+    <aside className="main-sidebar sidebar-dark-primary elevation-4">
       {/* Brand Logo */}
       <a href="index3.html" className="brand-link" style={{marginTop:10}}>
         <img

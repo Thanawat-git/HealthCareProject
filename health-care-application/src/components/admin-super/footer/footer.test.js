@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AdminHeader from './admin-header';
+import Footer from './footer';
 
-describe('AdminHeader', () => {
+describe('Footer', () => {
   test('matches snapshot', () => {
-    const wrapper = shallow(<AdminHeader />);
+    const wrapper = shallow(<Footer />);
     expect(wrapper).toMatchSnapshot();
   });
 });

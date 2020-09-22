@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AdminContent from './admin-content';
+import LeftSidebar from './leftSidebar';
 
-describe('AdminContent', () => {
+describe('LeftSidebar', () => {
   test('matches snapshot', () => {
-    const wrapper = shallow(<AdminContent />);
+    const wrapper = shallow(<LeftSidebar />);
     expect(wrapper).toMatchSnapshot();
   });
 });

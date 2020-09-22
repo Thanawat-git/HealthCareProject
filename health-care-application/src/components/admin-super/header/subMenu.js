@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function adminHeaderSubmenu() {
+export default function subMenu() {
     return (
         <div>
             <a href="#" className="dropdown-item">

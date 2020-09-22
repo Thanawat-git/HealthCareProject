@@ -5,15 +5,15 @@ import Header from "./components/header/header";
 import HomeBody from "./components/home-body/home-body";
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { Container, Button, Row, Col } from "react-bootstrap";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
 import ResetPassword from "./components/reset-password/reset-password";
-import AdminHeader from "./components/admin-header/admin-header"
-import AdminMenu from "./components/admin-menu/admin-menu"
-import AdminContent from "./components/admin-content/admin-content"
-import AdminFooter from "./components/admin-footer/admin-footer"
+import AdminHeader from "./components/admin-super/header/header"
+import AdminMenu from "./components/admin-super/leftSidebar/leftSidebar"
+import AdminContent from "./components/admin-super/content/content"
+import AdminFooter from "./components/admin-super/footer/footer"
 import Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
-import MedicSidebar from "./components/MedicalStaff/SidebarMenu/SidebarMenu"
+import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
+import MedicContent from "./components/admin-medical/mainContent/mainContent";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -47,6 +47,7 @@ export default class App extends Component {
           <Route path="/medical-staff">
             <AdminHeader/>
             <MedicSidebar/>
+            <MedicContent/>
           </Route>
 
           {/* Genaral Path */}
