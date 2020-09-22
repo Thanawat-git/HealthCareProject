@@ -36,7 +36,7 @@ export default function leftSidebar() {
 
               <li className="nav-header">อื่นๆ</li>
               <li className="nav-item">
-                <a href="pages/calendar.html" className="nav-link">
+                <a href="#" className="nav-link">
                   <i className="nav-icon fas fa-calendar-alt" />
                   <p>
                     ตารางนัดหมาย
