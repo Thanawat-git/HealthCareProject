@@ -111,6 +111,16 @@ export default function leftSidebar() {
               </a>
             </li>
 
+            {/* Report */}
+            <li className="nav-item">
+                <a href="#" className="nav-link">
+                  <i className="nav-icon fas fa-file-alt" />
+                  <p>
+                    Report
+                  </p>
+                </a>
+              </li>
+
             {/* up date form */}
             <li className="nav-item">
               <a href="#" className="nav-link">

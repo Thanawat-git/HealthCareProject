@@ -14,6 +14,7 @@ import AdminFooter from "./components/admin-super/footer/footer"
 import Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
+import FollowUp from "./components/admin-medical/followUp/followUp";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -47,7 +48,18 @@ export default class App extends Component {
           <Route path="/medical-staff">
             <AdminHeader name="Medical Admin Name"/>
             <MedicSidebar/>
+            {/* <Route path="/medical-staff/maim-content" component={MedicContent} /> */}
             <MedicContent/>
+            {/* <Route path="/medical-staff/follow-up" component={FollowUp} /> */}
+            <AdminFooter/>
+          </Route>
+          
+          {/* Follow Up */}
+          <Route path="/follow-up">
+            <AdminHeader name="Medical Admin Name"/>
+            <MedicSidebar/>
+            <FollowUp/>
+            <AdminFooter/>
           </Route>
 
           {/* Genaral Path */}

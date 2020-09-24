@@ -1,7 +1,12 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo1 from '../../images/logo-saensukcity.png'
 
+// add active class on click
+
+
 export default function leftSidebar() {
+
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* Brand Logo */}
@@ -15,7 +20,7 @@ export default function leftSidebar() {
           <span className="brand-text font-weight-light">Project Name</span>
         </a>
         {/* Sidebar */}
-        <div className="sidebar">
+        <div className="sidebar" id="sidemenu">
           <nav className="mt-2">
             <ul
               className="nav nav-pills nav-sidebar flex-column"
@@ -25,24 +30,34 @@ export default function leftSidebar() {
             >
               {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
-              <li className="nav-item has-treeview menu-open">
-                <a href="#" className="nav-link">
+              <li className="nav-item">
+                <Link to="/medical-staff" className="nav-link">
                   <i className="nav-icon fas fa-home" />
                   <p>
                     หน้าแรก
                   </p>
-                </a>
+                </Link>
               </li>
 
               <li className="nav-header">อื่นๆ</li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to="/follow-up" className="nav-link active">
                   <i className="nav-icon fas fa-calendar-alt" />
                   <p>
                     ตารางนัดหมาย
                     <span className="badge badge-info right">2</span>
                   </p>
-                </a>
+                </Link>
+              </li>
+
+            {/* Report */}
+              <li className="nav-item">
+                <Link to="#" className="nav-link">
+                  <i className="nav-icon fas fa-file-alt" />
+                  <p>
+                    Report
+                  </p>
+                </Link>
               </li>
 
               {/* up date form */}

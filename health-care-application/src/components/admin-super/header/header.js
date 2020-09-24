@@ -1,5 +1,6 @@
 import React from 'react'
 import SubMenu from './subMenu'
+import logo from "../../images/logo-saensukcity.png"
 
 export default function header(props) {
   return (
@@ -37,7 +38,7 @@ export default function header(props) {
             <i className="user-panel d-flex">
               <i className="image">
                 <img
-                  src="dist/img/user2-160x160.jpg"
+                  src={logo}
                   className="img-circle elevation-2"
                   alt="User Image"
                 />
