@@ -3,7 +3,6 @@ import React from "react";
 import { Modal, Button, Nav } from "react-bootstrap";
 import Smile from "../images/face.svg";
 import "./popup.css";
-import { Component } from "react";
 
 export default function popup(props) {
   // let history = useHistory();
