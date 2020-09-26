@@ -28,6 +28,7 @@ export default function followUp() {
             <th scope="col">หัวข้อ</th>
             <th scope="col">วันที่</th>
             <th scope="col">สถานะ</th>
+            <th scope="col">ชื่อ อสม.</th>
           </tr>
         </thead>
 
@@ -37,7 +38,7 @@ export default function followUp() {
             <td>ป้าจุบแจง</td>
             <td>ตรวจความดัน</td>
             <td>29/09/2020</td>
-            <td class="text-warning">อีก 7 วัน</td>
+            <td class="text-warning">อีก 5 วัน</td>
           </tr>
           <tr>
             <td>2</td>
