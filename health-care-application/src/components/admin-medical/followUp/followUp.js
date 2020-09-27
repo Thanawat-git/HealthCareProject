@@ -56,10 +56,10 @@ export default function FollowUp() {
             <td className="number">1</td>
             <td>ป้าจุบแจง</td>
             <td>ตรวจความดัน</td>
-            <td 
-            onDoubleClick={toEditMode}>{isInEditMode ? dateValue : 
-            <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
-            <a href="#" onClick={upDateDate} ><i class="fas fa-check"></i></a></div> } 
+            <td onDoubleClick={toEditMode}>
+              {isInEditMode ? dateValue : 
+              <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
+              <a href="#" onClick={upDateDate} ><i class="fas fa-check"></i></a></div> } 
             </td>
             <td class="text-warning">อีก 5 วัน</td>
           </tr>

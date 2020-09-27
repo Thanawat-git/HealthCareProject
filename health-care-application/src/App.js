@@ -14,8 +14,8 @@ import AdminFooter from "./components/admin-super/footer/footer"
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
-import Sec1Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
-
+import Sec1Page1 from "./components/Forms/Sections1/Pages1/Pages1";
+import Sec1Page2 from "./components/Forms/Sections1/Pages2/Pages2";
 import Sec4Page1 from "./components/Forms/Sections4/Page1/Page1";
 import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2"
 
@@ -31,9 +31,10 @@ export default class App extends Component {
 
           {/* Form */}
           <Route path="/form">
-              <Sec1Pages1/>
+              <Sec1Page1/>
           </Route>
           {/* Dev Path */}
+          <Route path="/sec1-page2" component={Sec1Page2} />
           <Route path="/sec4-page1" component={Sec4Page1} />
           <Route path="/sec4-page2" component={Sec4Page2} />
 
