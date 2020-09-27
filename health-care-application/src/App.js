@@ -11,10 +11,13 @@ import AdminHeader from "./components/admin-super/header/header"
 import AdminMenu from "./components/admin-super/leftSidebar/leftSidebar"
 import AdminContent from "./components/admin-super/content/content"
 import AdminFooter from "./components/admin-super/footer/footer"
-import Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
+import Sec1Pages1 from "./components/Forms/Sections1/Pages1/Pages1";
+
+import Sec4Page1 from "./components/Forms/Sections4/Page1/Page1";
+import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2"
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -28,8 +31,11 @@ export default class App extends Component {
 
           {/* Form */}
           <Route path="/form">
-              <Pages1/>
+              <Sec1Pages1/>
           </Route>
+          {/* Dev Path */}
+          <Route path="/sec4-page1" component={Sec4Page1} />
+          <Route path="/sec4-page2" component={Sec4Page2} />
 
           {/* Super Admin */}
           <Route path="/super-admin">

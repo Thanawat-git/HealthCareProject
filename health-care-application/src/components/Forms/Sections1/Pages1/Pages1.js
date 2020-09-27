@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "./Pages1.css";
 import {
   Button,
 } from "react-bootstrap";
+
+// Use css form App.css Not Import
 
 class Pages1 extends Component {
   constructor(props) {
@@ -50,10 +51,10 @@ class Pages1 extends Component {
 
   render() {
     return (
-      <div className="Page1" >
+      <div className="css-form" >
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
         <form>
-          <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
+          <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2> 
 
           <div className="container">
             <div className="idcard row">

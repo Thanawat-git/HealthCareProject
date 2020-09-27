@@ -3,7 +3,6 @@ import './followUp.css';
 
 export default function FollowUp() {
   
-  const [btnEdit, setbtnEdit] = useState(true);
   const [dateValue, setdateValue] = useState("Date Value");
 
   const [isInEditMode, setisInEditMode] = useState(true);
@@ -47,7 +46,6 @@ export default function FollowUp() {
             <th scope="col">ชื่อ - นามสกุล</th>
             <th scope="col">หัวข้อ</th>
             <th scope="col">วันที่</th>
-            <th scope="col"></th>
             <th scope="col">สถานะ</th>
             <th scope="col">ชื่อ อสม.</th>
           </tr>
@@ -61,20 +59,19 @@ export default function FollowUp() {
             <td 
             onDoubleClick={toEditMode}>{isInEditMode ? dateValue : 
             <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
-            <a href="#" onClick={toEditMode} ><i class="fas fa-times"></i></a>
             <a href="#" onClick={upDateDate} ><i class="fas fa-check"></i></a></div> } 
             </td>
-
-            <td>{ btnEdit ? <a href="#" onClick={()=> setbtnEdit(false)} className="text-warning"><i class="fas fa-pencil-alt" /></a> : 
-              <a href="#" className="text-success"><i class="fas fa-check" /></a> }</td>
             <td class="text-warning">อีก 5 วัน</td>
           </tr>
           <tr>
             <td className="number">2</td>
             <td>ป้าแตงโม</td>
             <td>ตรวจความดัน</td>
-            <td>5/10/2020</td>
-            <td></td>
+            <td>
+              {isInEditMode ? <div> {dateValue} <a href="#" onClick={toEditMode} className="text-warning"><i class="fas fa-pencil-alt" /></a> </div>: 
+              <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
+              <a href="#" onClick={upDateDate} className="text-success" ><i class="fas fa-check"></i></a></div> } 
+            </td>
             <td class="text-primary">อีก 9 วัน</td>
           </tr>
           <tr>
@@ -82,7 +79,6 @@ export default function FollowUp() {
             <td>ลุงโมเสธ</td>
             <td>ตรวจน้ำตาล</td>
             <td>5/10/2020</td>
-            <td></td>
             <td class="text-primary">อีก 9 วัน</td>
           </tr>
           <tr>
@@ -90,7 +86,6 @@ export default function FollowUp() {
             <td>ลุงสุทิน</td>
             <td>ตรวจน้ำตาล</td>
             <td>7/10/2020</td>
-            <td></td>
             <td class="text-primary">อีก 11 วัน</td>
           </tr>
           <tr>
@@ -98,7 +93,6 @@ export default function FollowUp() {
             <td>ยายสำอาง</td>
             <td>ตรวจน้ำตาล</td>
             <td>8/10/2020</td>
-            <td></td>
             <td class="text-primary">อีก 12 วัน</td>
           </tr>
           <tr>
@@ -106,7 +100,6 @@ export default function FollowUp() {
             <td>ลุงเริง</td>
             <td>ตรวจน้ำตาล</td>
             <td>22/09/2020</td>
-            <td></td>
             <td class="text-danger">เกินกำหนด</td>
           </tr>
           <tr>
@@ -114,7 +107,6 @@ export default function FollowUp() {
             <td>ลุงธารา</td>
             <td>ตรวจน้ำตาล</td>
             <td>23/10/2020</td>
-            <td></td>
             <td class="text-danger">เกินกำหนด</td>
           </tr>
           <tr>
@@ -122,14 +114,12 @@ export default function FollowUp() {
             <td>ลุงเริง</td>
             <td>ตรวจน้ำตาล</td>
             <td></td>
-            <td></td>
             <td class="text-secondary">ยังไม่ได้นัดหมาย</td>
           </tr>
           <tr>
             <td className="number">9</td>
             <td>ลุงธารา</td>
             <td>ตรวจน้ำตาล</td>
-            <td></td>
             <td></td>
             <td class="text-secondary">ยังไม่ได้นัดหมาย</td>
           </tr>
