@@ -16,6 +16,11 @@ import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
 import Sec1Page1 from "./components/Forms/Sections1/Pages1/Pages1";
 import Sec1Page2 from "./components/Forms/Sections1/Pages2/Pages2";
+import Sec1Page3 from "./components/Forms/Sections1/Pages3/Pages3";
+import Sec1Page4 from "./components/Forms/Sections1/Page4/Page4";
+import Sec1Page5 from "./components/Forms/Sections1/Page5/Page5";
+import Sec1Page6 from "./components/Forms/Sections1/Page6/Page6";
+import Sec1Page7 from "./components/Forms/Sections1/Page7/Page7";
 import Sec4Page1 from "./components/Forms/Sections4/Page1/Page1";
 import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2"
 
@@ -35,6 +40,12 @@ export default class App extends Component {
           </Route>
           {/* Dev Path */}
           <Route path="/sec1-page2" component={Sec1Page2} />
+          <Route path="/sec1-page3" component={Sec1Page3} />
+          <Route path="/sec1-page4" component={Sec1Page4} />
+          <Route path="/sec1-page5" component={Sec1Page5} />
+          <Route path="/sec1-page6" component={Sec1Page6} />
+          <Route path="/sec1-page7" component={Sec1Page7} />
+
           <Route path="/sec4-page1" component={Sec4Page1} />
           <Route path="/sec4-page2" component={Sec4Page2} />
 

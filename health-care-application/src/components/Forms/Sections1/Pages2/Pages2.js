@@ -45,10 +45,10 @@ class Pages2 extends Component {
 <hr/>
             <p> <span>*</span>ที่อยู่ปัจจุบัน </p>
             <div className="row align-items-end">
-              <div className="col-6">
+              <div className="col-7">
                 <p>ที่อยู่เดียวกับบัตรประชาชนใช่หรือไม่</p>
               </div>
-              <div className="col-6">
+              <div className="col-5">
                 <div className="form-check form-check-inline">
                   <input type="radio" name="addressSame" id="addressSameY" value="Y" onClick={e => {this.setState({address:"Y"})}} className="form-check-input"/>
                   <label htmlFor="addressSameY" className="form-check-label">ใช่</label>
@@ -62,7 +62,7 @@ class Pages2 extends Component {
 
             {/* Condition needed */}
             {this.state.address == "N" ? <p></p> :
-            <div className="row">
+            <div className="row address2">
               <div className="col-6 col-md-4">
                 <p>เลขที่</p>
                 <input type="text" className="form-control" />

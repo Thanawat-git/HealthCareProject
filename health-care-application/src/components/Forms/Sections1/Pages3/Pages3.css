@@ -1,0 +1,29 @@
+.css-form h4 span {
+    font-size: small;
+}
+
+.css-form h4, h5 {
+    padding-left: 20px;
+}
+
+.row1 p {
+    margin-top: 0;
+}
+
+.css-form .question .relative .col-md-3 .form-check,.time-with-old .col-md-2 .form-check,.time-with-old .col-md-3 .form-check {
+    padding-left: 0;
+}
+
+.css-form .question .relative .col-md-3 {
+    padding: 0 0 0 15px;
+    /* padding-left: 15px; */
+}
+
+@media screen and (max-width: 450px){ 
+    .css-form h4, h5 {
+        padding-left:0;
+    }
+    .css-form h4 {
+        font-size: larger;
+    }
+}
