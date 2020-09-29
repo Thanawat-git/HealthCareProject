@@ -143,20 +143,20 @@ class Pages3 extends Component {
               </div>
               <div className="col-md-2 col-sm-4 col-4">
                 <div className="form-check form-check-inline">
-                  <input type="radio" name="time-with-old" id="otherperson1" value="otherperson" className="form-check-input"/>
-                  <label htmlFor="otherperson1" className="form-check-label">ทั้งวัน</label>
+                  <input type="radio" name="time-with-old" id="allday1" value="allday" className="form-check-input"/>
+                  <label htmlFor="allday1" className="form-check-label">ทั้งวัน</label>
                 </div>
               </div>
               <div className="col-md-3 col-sm-4 col-4">
                 <div className="form-check form-check-inline">
-                  <input type="radio" name="time-with-old" id="otherperson1" value="otherperson" className="form-check-input"/>
-                  <label htmlFor="otherperson1" className="form-check-label">กลางวัน</label>
+                  <input type="radio" name="time-with-old" id="day1" value="day" className="form-check-input"/>
+                  <label htmlFor="day1" className="form-check-label">กลางวัน</label>
                 </div>
               </div>
               <div className="col-md-3 col-sm-4 col-4">
                 <div className="form-check form-check-inline">
-                  <input type="radio" name="time-with-old" id="otherperson1" value="otherperson" className="form-check-input"/>
-                  <label htmlFor="otherperson1" className="form-check-label">กลางคืน</label>
+                  <input type="radio" name="time-with-old" id="night1" value="night" className="form-check-input"/>
+                  <label htmlFor="night1" className="form-check-label">กลางคืน</label>
                 </div>
               </div>
             </div>

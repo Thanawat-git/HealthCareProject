@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // Use css form App.css Not Import
+import './Page1.css'
 
 class Page1 extends Component {
   render() {
