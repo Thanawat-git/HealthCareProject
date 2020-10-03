@@ -25,6 +25,10 @@ import Sec4Page1 from "./components/Forms/Sections4/Page1/Page1";
 import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2";
 
 import {Page1, Page2} from "./components/Forms/Sections5/index";
+import {sec6_1} from "./components/Forms/Sections6/index";
+import {sec7_1} from "./components/Forms/Sections7/index";
+import {sec8_1} from "./components/Forms/Sections8/index";
+import {sec9_1} from "./components/Forms/Sections9/index";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
