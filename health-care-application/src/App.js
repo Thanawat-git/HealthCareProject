@@ -22,7 +22,9 @@ import Sec1Page5 from "./components/Forms/Sections1/Page5/Page5";
 import Sec1Page6 from "./components/Forms/Sections1/Page6/Page6";
 import Sec1Page7 from "./components/Forms/Sections1/Page7/Page7";
 import Sec4Page1 from "./components/Forms/Sections4/Page1/Page1";
-import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2"
+import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2";
+
+import {Page1, Page2} from "./components/Forms/Sections5/index";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -48,6 +50,8 @@ export default class App extends Component {
 
           <Route path="/sec4-page1" component={Sec4Page1} />
           <Route path="/sec4-page2" component={Sec4Page2} />
+          <Route path="/sec5-page1" component={Page1} />
+          <Route path="/sec5-page2" component={Page2} />
 
           {/* Super Admin */}
           <Route path="/super-admin">
