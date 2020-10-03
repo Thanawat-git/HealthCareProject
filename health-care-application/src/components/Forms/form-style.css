@@ -1,0 +1,74 @@
+/* Common config All Screen */
+.css-form h1{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+.css-form form {
+    border: 1px solid #707070;
+    border-radius: 43px;
+    box-shadow: 5px 5px 8px #707070;
+    padding: 25px 20px 15px 20px;
+    margin: 35px 90px;
+    height: auto;    
+    transition: 0.3s;
+}
+
+.css-form form h2{
+    text-align: center;
+    font-size: 35px;
+}
+
+.css-form form span{
+    color: red;
+}
+
+.form-btn {
+    margin: 0 30px;
+}
+.css-form .btn-back {
+    background-color: #99CCFF;
+    color: white;
+}
+
+.css-form .question {
+    margin: 30px;
+}
+
+/* small phone  width < 576px  */
+/* iPhone XS, Galaxy S9 Plus, Galaxy Note 8 */
+@media screen and (max-width: 576px) { 
+    .css-form form{
+        margin: 45px 20px;
+    }
+    .css-form h1 {
+        font-size: 30px;
+    }
+    .css-form form h2 {
+        font-size: 25px;
+    }
+    .css-form p {
+        font-size: 17px;
+    }
+    .css-form .question {
+        margin: 30px 0;
+    }
+    .date p {
+        padding-top: 10px
+    }
+}
+
+/* tablet and com 576px >= width < 992px */
+@media screen and (min-width: 577px) and (max-width: 1099px) { 
+    .css-form {
+        background-color: aqua;
+    }
+}
+
+/* com */
+@media screen and (min-width: 1100px) { 
+    .css-form form {
+        margin: 35px 270px;
+    }
+}

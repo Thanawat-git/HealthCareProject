@@ -14,10 +14,7 @@ export default function FollowUp() {
     setisInEditMode(true);
   }
 
-
   // Filter table
-  const [showTable, setshowTable] = useState("");
-  // let y = true
   const filterTable = (e)=> {
     // console.log(e.target.value);
     var filter = e.target.value;
@@ -39,16 +36,6 @@ export default function FollowUp() {
         }
       }
     }
-
-    // var i;
-    // for (i = 0; i < x.length; i++) {
-    //   if (y===true){
-    //     x[i].style.display = "none";
-    //   } else {
-    //     x[i].style.display = "";
-    //   }
-    // }
-    // y = !y
 
   }
 
@@ -82,17 +69,20 @@ export default function FollowUp() {
       <table className="table table-hover">
         <thead>
           <tr>
+            <th scope="col">ลบ</th>
             <th scope="col" className="number">ลำดับ</th>
             <th scope="col">ชื่อ - นามสกุล</th>
             <th scope="col">หัวข้อ</th>
             <th scope="col">วันที่</th>
             <th scope="col">สถานะ</th>
             <th scope="col">ชื่อ อสม.</th>
+            <th scope="col">แก้ไข</th>
           </tr>
         </thead>
 
         <tbody>
           <tr name="less30">
+            <td className="number"><input type="checkbox"/></td>
             <td className="number">1</td>
             <td>ป้าจุบแจง</td>
             <td>ตรวจความดัน</td>
@@ -101,6 +91,8 @@ export default function FollowUp() {
               <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
               <a href="#" onClick={upDateDate} ><i class="fas fa-check"></i></a></div> } 
             </td>
+            <td class="text-warning">อีก 5 วัน</td>
+            <td class="text-warning">อีก 5 วัน</td>
             <td class="text-warning">อีก 5 วัน</td>
           </tr>
           <tr name="less30" >

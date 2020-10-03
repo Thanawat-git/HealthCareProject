@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Pages2.css'
+// import './Pages2.css'
+import '../../form-style.css'
 
 class Pages2 extends Component {
 
@@ -9,12 +10,11 @@ class Pages2 extends Component {
       address : "N"
     }
   }
-
+ 
   render() {
     return (
       <div className="css-form">
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-        <div className="box-form">
         <form>
           <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2> 
           <div className="question">
@@ -102,7 +102,6 @@ class Pages2 extends Component {
             <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
           </div>
         </form>
-        </div>
       </div>
     );
   }
