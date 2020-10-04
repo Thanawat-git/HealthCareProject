@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import './followUp.css';
 
 export default function FollowUp() {
-  
-  const [dateValue, setdateValue] = useState("Date Value");
- 
-  const [isInEditMode, setisInEditMode] = useState(true);
-  const toEditMode = ()=>{
-    setisInEditMode(!isInEditMode)
-  }
-
-  const upDateDate = (e)=>{
-    setisInEditMode(true);
-  }
+  const SimpleData = [
+    {name: "นางจุบแจง", title: "ความดัน", date: "5/10/2020", status: "overdue", numDay: "เกินกำหนด", nameV: "สมหมาย"},
+    {name: "นางแตงไทย", title: "เบาหวาน", date: "15/10/2020", status: "less30", numDay: "อีก 7 วัน",  nameV: "สมหมาย"},
+    {name: "นางจรินทร์", title: "ความดัน", date: "15/10/2020", status: "less30", numDay: "อีก 7 วัน",  nameV: "สมหมาย"},
+    {name: "นายใจดี", title: "ความดัน", date: "1/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
+    {name: "นางวรรณา", title: "เบาหวาน", date: "1/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
+    {name: "นายธาดา", title: "เบาหวาน", date: "8/11/2020", status: "less30", numDay: "อีก 26 วัน",  nameV: "ชบา"},
+    {name: "นายปกรณ์", title: "เบาหวาน", date: "", status: "nodue", numDay: "",  nameV: ""},
+    {name: "นายมงคล", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
+    {name: "นางชื่นใจ", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
+    {name: "นายชีพ", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
+    {name: "นางปลายฟ้า", title: "ความดัน", date: "", status: "nodue", numDay: "",  nameV: ""},
+    {name: "นางชูใจ", title: "ความดัน", date: "", status: "nodue", numDay: "",  nameV: ""}
+  ]
 
   // Filter table
   const filterTable = (e)=> {
@@ -54,7 +57,7 @@ export default function FollowUp() {
         {/* /.container-fluid */}
       </div>
       <div className="top-input">
-          <input type="text" className="form-control" placeholder="filter table" />
+          <input type="text" className="form-control" placeholder={SimpleData[1].name} />
       </div>
 
       <div className="filter-btnav">
@@ -64,8 +67,9 @@ export default function FollowUp() {
         <button type="button" class="btn btn-secondary" value="nodue" onClick={filterTable} >ยังไม่ได้นัดหมาย</button>
         <button type="button" class="btn btn-secondary" value="canceldue" onClick={filterTable} >ยกเลิกนัด</button>
       </div>
-
+ 
       <div className="content2" id="table">
+        
       <table className="table table-hover">
         <thead>
           <tr>
@@ -81,80 +85,32 @@ export default function FollowUp() {
         </thead>
 
         <tbody>
-          <tr name="less30">
+        {SimpleData.map((value, index) => {
+          index++
+          return (
+            <tr name={value.status} id={index} >
+              <td className="number"><input type="checkbox"/></td>
+              <td className="number">{index}</td>
+              <td>{value.name}</td>
+              <td>ตรวจ{value.title}</td>
+              <td> {value.date} </td>
+              <td className="text-warning">{value.numDay}</td>
+              <td className="text"> {value.nameV} </td>
+              <td></td>
+            </tr>
+          )
+        })}
+          {/* <tr name={data.status}>
             <td className="number"><input type="checkbox"/></td>
             <td className="number">1</td>
             <td>ป้าจุบแจง</td>
             <td>ตรวจความดัน</td>
-            <td onDoubleClick={toEditMode}>
-              {isInEditMode ? dateValue : 
-              <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
-              <a href="#" onClick={upDateDate} ><i class="fas fa-check"></i></a></div> } 
-            </td>
-            <td class="text-warning">อีก 5 วัน</td>
-            <td class="text-warning">อีก 5 วัน</td>
-            <td class="text-warning">อีก 5 วัน</td>
-          </tr>
-          <tr name="less30" >
-            <td className="number">2</td>
-            <td>ป้าแตงโม</td>
-            <td>ตรวจความดัน</td>
-            <td>
-              {isInEditMode ? <div> {dateValue} <a href="#" onClick={toEditMode} className="text-warning"><i class="fas fa-pencil-alt" /></a> </div>: 
-              <div><input type="text" defaultValue={dateValue} onChange={e => setdateValue(e.target.value)} />
-              <a href="#" onClick={upDateDate} className="text-success" ><i class="fas fa-check"></i></a></div> } 
-            </td>
-            <td class="text-primary">อีก 9 วัน</td>
-          </tr>
-          <tr name="less30" >
-            <td className="number">3</td>
-            <td>ลุงโมเสธ</td>
-            <td>ตรวจน้ำตาล</td>
-            <td>5/10/2020</td>
-            <td class="text-primary">อีก 9 วัน</td>
-          </tr>
-          <tr name="less30" >
-            <td className="number">4</td>
-            <td>ลุงสุทิน</td>
-            <td>ตรวจน้ำตาล</td>
-            <td>7/10/2020</td>
-            <td class="text-primary">อีก 11 วัน</td>
-          </tr>
-          <tr  name="less30" >
-            <td className="number">5</td>
-            <td>ยายสำอาง</td>
-            <td>ตรวจน้ำตาล</td>
-            <td>8/10/2020</td>
-            <td class="text-primary">อีก 12 วัน</td>
-          </tr>
-          <tr  name="overdue" >
-            <td className="number">6</td>
-            <td>ลุงเริง</td>
-            <td>ตรวจน้ำตาล</td>
-            <td>22/09/2020</td>
-            <td class="text-danger">เกินกำหนด</td>
-          </tr>
-          <tr name="overdue" >
-            <td className="number">7</td>
-            <td>ลุงธารา</td>
-            <td>ตรวจน้ำตาล</td>
-            <td>23/10/2020</td>
-            <td class="text-danger">เกินกำหนด</td>
-          </tr>
-          <tr name="nodue" >
-            <td className="number">8</td>
-            <td>ลุงเริง</td>
-            <td>ตรวจน้ำตาล</td>
             <td></td>
-            <td class="text-secondary">ยังไม่ได้นัดหมาย</td>
-          </tr>
-          <tr name="nodue" >
-            <td className="number">9</td>
-            <td>ลุงธารา</td>
-            <td>ตรวจน้ำตาล</td>
-            <td></td>
-            <td class="text-secondary">ยังไม่ได้นัดหมาย</td>
-          </tr>
+            <td class="text-warning">อีก 5 วัน</td>
+            <td class="text-warning">อีก 5 วัน</td>
+            <td class="text-warning">อีก 5 วัน</td>
+          </tr> */}
+          
         </tbody>
       </table>
       </div>
