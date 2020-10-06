@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './followUp.css';
+import DatePicker from 'react-date-picker';
 
 export default function FollowUp() {
+  const [value, onChange] = useState(new Date());
+
   const SimpleData = [
-    {name: "นางจุบแจง", title: "ความดัน", date: "5/10/2020", status: "overdue", numDay: "เกินกำหนด", nameV: "สมหมาย"},
+    {name: "นางจุบแจง", title: "ความดัน", date: "05/10/2020", status: "overdue", numDay: "เกินกำหนด", nameV: "สมหมาย"},
     {name: "นางแตงไทย", title: "เบาหวาน", date: "15/10/2020", status: "less30", numDay: "อีก 7 วัน",  nameV: "สมหมาย"},
     {name: "นางจรินทร์", title: "ความดัน", date: "15/10/2020", status: "less30", numDay: "อีก 7 วัน",  nameV: "สมหมาย"},
-    {name: "นายใจดี", title: "ความดัน", date: "1/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
-    {name: "นางวรรณา", title: "เบาหวาน", date: "1/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
-    {name: "นายธาดา", title: "เบาหวาน", date: "8/11/2020", status: "less30", numDay: "อีก 26 วัน",  nameV: "ชบา"},
+    {name: "นายใจดี", title: "ความดัน", date: "01/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
+    {name: "นางวรรณา", title: "เบาหวาน", date: "01/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
+    {name: "นายธาดา", title: "เบาหวาน", date: "08/11/2020", status: "over30", numDay: "อีก 26 วัน",  nameV: "ชบา"},
     {name: "นายปกรณ์", title: "เบาหวาน", date: "", status: "nodue", numDay: "",  nameV: ""},
     {name: "นายมงคล", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
     {name: "นางชื่นใจ", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
@@ -42,6 +45,40 @@ export default function FollowUp() {
 
   }
 
+  const getDay = (day) => {
+    console.log(day)
+    const dayArr = day.split("/")
+    const year = dayArr[2]
+    const month = dayArr[1]
+    const days = dayArr[0]
+    const datef = `${month}/${days}/${year}`
+    // console.log(datef)
+
+    // date now
+    const now = new Date();
+
+    const date1 = new Date(datef)
+    const date2 = new Date(now)
+    // console.log(date1)
+    // console.log(date2)
+
+    const diffTime = date1.getTime() - date2.getTime()
+    const diffDay = diffTime / (1000 * 3600 * 24)
+    return Math.floor(diffDay)
+  }
+  
+  const getIndex = (e)=>{
+    let indexs = e.target.value
+    // console.log(e.target.value)
+    document.getElementById("oldname").innerHTML = SimpleData[indexs].name;
+    document.getElementById("title").innerHTML = SimpleData[indexs].title;
+    document.getElementById("status").innerHTML = SimpleData[indexs].status;
+  }
+
+  const updateSimpleDate = () => {
+    var newDate = document.getElementById("updateDate").value
+    console.log(newDate)
+  }
 
   return (
     <div className="content-wrapper">
@@ -56,9 +93,9 @@ export default function FollowUp() {
         </div>
         {/* /.container-fluid */}
       </div>
-      <div className="top-input">
+      {/* <div className="top-input">
           <input type="text" className="form-control" placeholder={SimpleData[1].name} />
-      </div>
+      </div> */}
 
       <div className="filter-btnav">
         <button type="button" class="btn btn-warning" value="less30" onClick={filterTable} >น้อยกว่า 30 วัน</button>
@@ -74,7 +111,7 @@ export default function FollowUp() {
         <thead>
           <tr>
             <th scope="col">ลบ</th>
-            <th scope="col" className="number">ลำดับ</th>
+            {/* <th scope="col" className="number">ลำดับ</th> */}
             <th scope="col">ชื่อ - นามสกุล</th>
             <th scope="col">หัวข้อ</th>
             <th scope="col">วันที่</th>
@@ -86,35 +123,65 @@ export default function FollowUp() {
 
         <tbody>
         {SimpleData.map((value, index) => {
-          index++
+          // index++
+          var statusColorTxt = ""
+          if (value.status != "nodue" && value.status != "overdue") {
+            var day = getDay(value.date)
+            day > 30 ? statusColorTxt = "primary" : statusColorTxt = "warning"
+            day = `อีก ${day} วัน`
+          } else if(value.status === "overdue"){
+            day = "เกินกำหนด"
+            statusColorTxt = "danger"
+          } else {
+            day = "ไม่ได้นัดหมาย"
+          }
           return (
             <tr name={value.status} id={index} >
               <td className="number"><input type="checkbox"/></td>
-              <td className="number">{index}</td>
+              {/* <td className="number">{index}</td> */}
               <td>{value.name}</td>
               <td>ตรวจ{value.title}</td>
               <td> {value.date} </td>
-              <td className="text-warning">{value.numDay}</td>
+              <td className={`text-${statusColorTxt}`}>{day}</td>
               <td className="text"> {value.nameV} </td>
-              <td></td>
+              <td>
+                <button type="button" className="btn btn-warning" value={index} data-toggle="modal" data-target="#editTable" onClick={getIndex}>แก้ไข</button>
+              </td>
             </tr>
           )
-        })}
-          {/* <tr name={data.status}>
-            <td className="number"><input type="checkbox"/></td>
-            <td className="number">1</td>
-            <td>ป้าจุบแจง</td>
-            <td>ตรวจความดัน</td>
-            <td></td>
-            <td class="text-warning">อีก 5 วัน</td>
-            <td class="text-warning">อีก 5 วัน</td>
-            <td class="text-warning">อีก 5 วัน</td>
-          </tr> */}
-          
+        })} 
         </tbody>
       </table>
+      </div>
+
+      {/* <!-- Modal (Pop-Up) --> */}
+      <div class="modal fade" id="editTable" tabindex="-1" role="dialog" aria-labelledby="editTableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">แก้ไขนัดหมาย</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form onSubmit={updateSimpleDate}>
+              <p id="oldname" ></p>
+              <p id="title" ></p>
+              <DatePicker onChange={onChange} value={value} id="updateDate" />
+              <button type="submit" class="btn btn-primary" >บันทึก</button>
+              <p id="status" ></p>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
 
