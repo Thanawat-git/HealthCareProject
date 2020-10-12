@@ -21,13 +21,13 @@ import Sec1Page4 from "./components/Forms/Sections1/Page4/Page4";
 import Sec1Page5 from "./components/Forms/Sections1/Page5/Page5";
 import Sec1Page6 from "./components/Forms/Sections1/Page6/Page6";
 import Sec1Page7 from "./components/Forms/Sections1/Page7/Page7";
-import Sec4Page1 from "./components/Forms/Sections4/Page1/Page1";
-import Sec4Page2 from "./components/Forms/Sections4/Page2/Page2";
+
+import {sec4_1, sec4_2, sec4_3} from "./components/Forms/Sections4/index"
 
 import {Page1, Page2} from "./components/Forms/Sections5/index";
 import {sec6_1} from "./components/Forms/Sections6/index";
-import {sec7_1} from "./components/Forms/Sections7/index";
-import {sec8_1} from "./components/Forms/Sections8/index";
+import {sec7_1, sec7_2} from "./components/Forms/Sections7/index";
+import {sec8_1, sec8_9q} from "./components/Forms/Sections8/index";
 import {sec9_1} from "./components/Forms/Sections9/index";
 
 export default class App extends Component {
@@ -52,10 +52,19 @@ export default class App extends Component {
           <Route path="/sec1-page6" component={Sec1Page6} />
           <Route path="/sec1-page7" component={Sec1Page7} />
 
-          <Route path="/sec4-page1" component={Sec4Page1} />
-          <Route path="/sec4-page2" component={Sec4Page2} />
+          <Route path="/sec4-page1" component={sec4_1} />
+          <Route path="/sec4-page2" component={sec4_2} />
+          <Route path="/sec4-page3" component={sec4_3} />
+
+
           <Route path="/sec5-page1" component={Page1} />
           <Route path="/sec5-page2" component={Page2} />
+
+          <Route path="/sec7-page1" component={sec7_1} />
+          <Route path="/sec7-page2" component={sec7_2} />
+
+          <Route path="/sec8-page1" component={sec8_1} />
+          <Route path="/sec8-9q" component={sec8_9q} />
 
           {/* Super Admin */}
           <Route path="/super-admin">

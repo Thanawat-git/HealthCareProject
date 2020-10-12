@@ -5,19 +5,21 @@ import DatePicker from 'react-date-picker';
 export default function FollowUp() {
   const [value, onChange] = useState(new Date());
 
+  const [status, setStatus] = useState("nodue");
+
   const SimpleData = [
-    {name: "นางจุบแจง", title: "ความดัน", date: "05/10/2020", status: "overdue", numDay: "เกินกำหนด", nameV: "สมหมาย"},
-    {name: "นางแตงไทย", title: "เบาหวาน", date: "15/10/2020", status: "less30", numDay: "อีก 7 วัน",  nameV: "สมหมาย"},
-    {name: "นางจรินทร์", title: "ความดัน", date: "15/10/2020", status: "less30", numDay: "อีก 7 วัน",  nameV: "สมหมาย"},
-    {name: "นายใจดี", title: "ความดัน", date: "01/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
-    {name: "นางวรรณา", title: "เบาหวาน", date: "01/12/2020", status: "over30", numDay: "อีก 54 วัน",  nameV: "ดารินทร์"},
-    {name: "นายธาดา", title: "เบาหวาน", date: "08/11/2020", status: "over30", numDay: "อีก 26 วัน",  nameV: "ชบา"},
-    {name: "นายปกรณ์", title: "เบาหวาน", date: "", status: "nodue", numDay: "",  nameV: ""},
-    {name: "นายมงคล", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
-    {name: "นางชื่นใจ", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
-    {name: "นายชีพ", title: "น้ำตาล", date: "", status: "nodue", numDay: "",  nameV: ""},
-    {name: "นางปลายฟ้า", title: "ความดัน", date: "", status: "nodue", numDay: "",  nameV: ""},
-    {name: "นางชูใจ", title: "ความดัน", date: "", status: "nodue", numDay: "",  nameV: ""}
+    {name: "นางจุบแจง", title: "ความดัน", date: "10/10/2020", status: "" , nameV: "สมหมาย"},
+    {name: "นางแตงไทย", title: "เบาหวาน", date: "15/10/2020", status: "" ,  nameV: "สมหมาย"},
+    {name: "นางจรินทร์", title: "ความดัน", date: "15/10/2020", status: "", nameV: "สมหมาย"},
+    {name: "นายใจดี", title: "ความดัน", date: "01/12/2020", status: "", nameV: "ดารินทร์"},
+    {name: "นางวรรณา", title: "เบาหวาน", date: "01/12/2020", status: "", nameV: "ดารินทร์"},
+    {name: "นายธาดา", title: "เบาหวาน", date: "08/11/2020", status: "", nameV: "ชบา"},
+    {name: "นายปกรณ์", title: "เบาหวาน", date: "", status: "", nameV: ""},
+    {name: "นายมงคล", title: "น้ำตาล", date: "", status: "", nameV: ""},
+    {name: "นางชื่นใจ", title: "น้ำตาล", date: "", status: "", nameV: ""},
+    {name: "นายชีพ", title: "น้ำตาล", date: "", status: "", nameV: ""},
+    {name: "นางปลายฟ้า", title: "ความดัน", date: "", status: "", nameV: ""},
+    {name: "นางชูใจ", title: "ความดัน", date: "", status: "", nameV: ""}
   ]
 
   // Filter table
@@ -45,7 +47,7 @@ export default function FollowUp() {
 
   }
 
-  const getDay = (day) => {
+  const getDay = (day, index) => {
     console.log(day)
     const dayArr = day.split("/")
     const year = dayArr[2]
@@ -64,7 +66,16 @@ export default function FollowUp() {
 
     const diffTime = date1.getTime() - date2.getTime()
     const diffDay = diffTime / (1000 * 3600 * 24)
-    return Math.floor(diffDay)
+
+    const IntDay = Math.floor(diffDay)+1
+    if (IntDay < 0) {
+      SimpleData[index].status = "overdue"
+    } else if (IntDay<= 30) {
+      SimpleData[index].status = "less30"
+    } else {
+      SimpleData[index].status = "over30"
+    }
+    return IntDay
   }
   
   const getIndex = (e)=>{
@@ -126,7 +137,7 @@ export default function FollowUp() {
           // index++
           var statusColorTxt = ""
           if (value.status != "nodue" && value.status != "overdue") {
-            var day = getDay(value.date)
+            var day = getDay(value.date, index)
             day > 30 ? statusColorTxt = "primary" : statusColorTxt = "warning"
             day = `อีก ${day} วัน`
           } else if(value.status === "overdue"){
@@ -137,7 +148,7 @@ export default function FollowUp() {
           }
           return (
             <tr name={value.status} id={index} >
-              <td className="number"><input type="checkbox"/></td>
+              <td className="number"><input type="checkbox" name={index} /></td>
               {/* <td className="number">{index}</td> */}
               <td>{value.name}</td>
               <td>ตรวจ{value.title}</td>
@@ -183,5 +194,3 @@ export default function FollowUp() {
     </div>
   );
 }
-
-

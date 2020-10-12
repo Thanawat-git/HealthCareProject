@@ -5,6 +5,15 @@
     font-size: 40px;
 }
 
+.css-form p {
+    font-size: 20px;
+}
+
+.css-form input[type=radio] {
+    transform:scale(1.5);
+}
+
+
 .css-form form {
     border: 1px solid #707070;
     border-radius: 43px;
@@ -36,6 +45,20 @@
     margin: 30px;
 }
 
+.css-form .question label {
+    margin: 0;
+    font-size: 20px;
+}
+
+.css-form .question .each-question {
+    margin-bottom: inherit;
+}
+
+.css-form .question .each-question .form-check-inline {
+    margin-right: 30px;
+}
+
+
 /* small phone  width < 576px  */
 /* iPhone XS, Galaxy S9 Plus, Galaxy Note 8 */
 @media screen and (max-width: 576px) { 
@@ -48,9 +71,9 @@
     .css-form form h2 {
         font-size: 25px;
     }
-    .css-form p {
+    /* .css-form p {
         font-size: 17px;
-    }
+    } */
     .css-form .question {
         margin: 30px 0;
     }
@@ -62,7 +85,7 @@
 /* tablet and com 576px >= width < 992px */
 @media screen and (min-width: 577px) and (max-width: 1099px) { 
     .css-form {
-        background-color: aqua;
+        /* background-color: aqua; */
     }
 }
 
