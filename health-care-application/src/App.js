@@ -14,15 +14,17 @@ import AdminFooter from "./components/admin-super/footer/footer"
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
-import Sec1Page1 from "./components/Forms/Sections1/Pages1/Pages1";
-import Sec1Page2 from "./components/Forms/Sections1/Pages2/Pages2";
-import Sec1Page3 from "./components/Forms/Sections1/Pages3/Pages3";
-import Sec1Page4 from "./components/Forms/Sections1/Page4/Page4";
-import Sec1Page5 from "./components/Forms/Sections1/Page5/Page5";
-import Sec1Page6 from "./components/Forms/Sections1/Page6/Page6";
-import Sec1Page7 from "./components/Forms/Sections1/Page7/Page7";
+// import Sec1Page1 from "./components/Forms/Sections1/Pages1/Pages1";
+// import Sec1Page2 from "./components/Forms/Sections1/Pages2/Pages2";
+// import Sec1Page3 from "./components/Forms/Sections1/Pages3/Pages3";
+// import Sec1Page4 from "./components/Forms/Sections1/Page4/Page4";
+// import Sec1Page5 from "./components/Forms/Sections1/Page5/Page5";
+// import Sec1Page6 from "./components/Forms/Sections1/Page6/Page6";
+// import Sec1Page7 from "./components/Forms/Sections1/Page7/Page7";
 
-import {sec4_1, sec4_2, sec4_3} from "./components/Forms/Sections4/index"
+import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_5, sec1_6, sec1_7, sec1_8, sec1_9} from './components/Forms/Sections1/index';
+
+import {sec4_1, sec4_2, sec4_3} from "./components/Forms/Sections4/index";
 
 import {Page1, Page2} from "./components/Forms/Sections5/index";
 import {sec6_1} from "./components/Forms/Sections6/index";
@@ -41,16 +43,21 @@ export default class App extends Component {
           
 
           {/* Form */}
-          <Route path="/form">
+          {/* <Route path="/form">
               <Sec1Page1/>
-          </Route>
+          </Route> */}
           {/* Dev Path */}
-          <Route path="/sec1-page2" component={Sec1Page2} />
-          <Route path="/sec1-page3" component={Sec1Page3} />
-          <Route path="/sec1-page4" component={Sec1Page4} />
-          <Route path="/sec1-page5" component={Sec1Page5} />
-          <Route path="/sec1-page6" component={Sec1Page6} />
-          <Route path="/sec1-page7" component={Sec1Page7} />
+          <Route path="/sec1-page1" component={sec1_1} />
+          <Route path="/sec1-page2" component={sec1_2} />
+          <Route path="/sec1-page3" component={sec1_3} />
+          <Route path="/sec1-page4" component={sec1_4} />
+          <Route path="/sec1-page5" component={sec1_5} />
+          <Route path="/sec1-page6" component={sec1_6} />
+          <Route path="/sec1-page7" component={sec1_7} />
+          <Route path="/sec1-page8" component={sec1_8} />
+          <Route path="/sec1-page9" component={sec1_9} />
+
+
 
           <Route path="/sec4-page1" component={sec4_1} />
           <Route path="/sec4-page2" component={sec4_2} />

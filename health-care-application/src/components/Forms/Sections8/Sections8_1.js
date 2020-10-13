@@ -24,7 +24,7 @@ export default function Sections8_1() {
                 return (
                   <tr id={index} className="sec7-one-row" >
                     <td>
-                        <div className="input-group-prepend">{`${i}. ${value}`}</div>
+                        {`${i}. ${value}`}
                     </td>
                     <td className="sec7-text-center" ><input type="radio" name={`a${i}`} value="" /></td>
                     <td className="sec7-text-center" ><input type="radio" name={`a${i}`} value="" /></td>

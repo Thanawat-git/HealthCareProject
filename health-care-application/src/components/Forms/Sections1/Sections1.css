@@ -1,0 +1,19 @@
+.input-sec1 {
+    margin: 0 10px;
+}
+
+.input-sec1-row4 {
+    max-width: fit-content;
+}
+
+.mb-15 {
+    /* Sections1_4 */
+    margin-bottom: 15px;
+}
+.mt-15 {
+    margin-top: 15px;
+}
+
+.pl-30 {
+    padding-left: 30px !important;
+}

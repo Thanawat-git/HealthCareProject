@@ -31,6 +31,7 @@ export default function Sections4_2() {
                 <input type="radio" name={`4.${i}`} id={`art4.${i}n`} value="N" className="form-check-input"/>
                 <label htmlFor={`art4.${i}n`} className="form-check-label">ไม่ใช่</label>
               </div>
+              <hr/>
             </div>
           )
         })}

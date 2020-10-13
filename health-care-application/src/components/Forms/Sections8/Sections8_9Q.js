@@ -30,9 +30,9 @@ export default function Sections8_9Q() {
                             <th width="5%" >ข้อ</th>
                             <th width="50%" >ในช่วง 2 สัปดาห์ที่ผ่านมารวมทั้งวันนี้ท่านมีอาการเหล่านี้บ่อยแค่ไหน</th>
                             <th width="10%" >ไม่มีเลย</th>
-                            <th width="10%" > <p>บางวัน</p> <span>(1-7 วัน)</span></th>
-                            <th width="10%" > <p>เป็นบ่อย</p> <span>{`(> 7 วัน)`}</span></th>
-                            <th width="10%" > <p>เป็นทุกวัน</p></th>
+                            <th width="10%" > บางวัน <span>(1-7 วัน)</span></th>
+                            <th width="10%" > เป็นบ่อย <span>{`(> 7 วัน)`}</span></th>
+                            <th width="10%" > เป็นทุกวัน </th>
                         </tr>
                     </thead>
                 {qusetions.map((value, index) =>  {

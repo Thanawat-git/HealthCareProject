@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './followUp.css';
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-date-picker'; 
 
 export default function FollowUp() {
   const [value, onChange] = useState(new Date());
