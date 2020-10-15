@@ -1,7 +1,7 @@
 import React from 'react'
 import "../form-style.css";
 
-export default function Sections6_1() {
+export default function Sections6_3() {
   return (
     <div className="css-form">
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -12,9 +12,9 @@ export default function Sections6_1() {
             {/* content */}
             <div>
                 <span>*</span>
-                <label className="form-check-label">1.กินอาหารได้เอง เมื่อเตรียมสำรับไว้ให้ต่อหน้า</label>
+                <label className="form-check-label">7.การขึ้นลงบันได </label>
               </div>
-             <div className="row pl-30"> 
+             <div className="row"> 
               <div className="form-check form-check-inline">
                 <input
                   type="radio"
@@ -23,9 +23,10 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">ทำได้เอง</label>
+                <label className="form-check-label">ขึ้นลงได้เอง / ถ้าใช้เครื่องช่วยต้องเอาขึ้นลงได้</label>
               </div>
-
+              </div>
+              <div className="row"> 
               <div className="form-check form-check-inline">
                 <input
                   type="radio"
@@ -34,7 +35,7 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label  className="form-check-label">ทำเองได้บ้างแต่ต้องมีคนช่วย</label>
+                <label  className="form-check-label">ต้องมีคนช่วย จึงจะขึ้นได้</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -49,9 +50,9 @@ export default function Sections6_1() {
 </div>
               <div>
                 <span>*</span>
-                <label className="form-check-label">2.ล้างหน้า หวีผม แปรงฟัน โกนหนวด 1-2 วันที่ผ่านมา</label>
+                <label className="form-check-label">8.การอาบน้ำ</label>
               </div>
-              <div className="row pl-30"> 
+              <div className="row"> 
               <div className="form-check form-check-inline">
                 <input
                   type="radio"
@@ -60,7 +61,7 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">ทำได้เอง</label>
+                <label className="form-check-label">อาบน้ำได้เอง</label>
               </div>
 
               <div className="form-check form-check-inline">
@@ -71,13 +72,23 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label  className="form-check-label">ต้องการความช่วยเหลือ</label>
+                <label  className="form-check-label">ต้องมีคนช่วย หรือทำให้</label>
               </div>
+              <div className="form-check form-check-inline">
+                <input
+                  type="radio"
+                  name="relativeGender2"
+                  id="male2"
+                  value="male"
+                  className="form-check-input"
+                />
+                <label  className="form-check-label">ใช้รถเข็น แต่ไม่ต้องช่วย</label>
               </div>
-
+            
+              </div>
               <div>
                 <span>*</span>
-                <label className="form-check-label">3.ลุกนั่งจากที่นอน หรือจากเตียงไปเก้าอี้</label>
+                <label className="form-check-label">9.การกลั้นอุจจาระ ในระยะ 1 สัปดาห์ที่ผ่านมา</label>
               </div>
               <div className="row"> 
               <div className="form-check form-check-inline">
@@ -88,7 +99,7 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">ทำได้เอง</label>
+                <label className="form-check-label">กลั้นได้ปกติ</label>
               </div>
 
               <div className="form-check form-check-inline">
@@ -99,7 +110,7 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">ต้องการความช่วยเหลือ</label>
+                <label className="form-check-label">กลั้นไม่ได้</label>
               </div>
               </div>
               <div className="row"> 
@@ -111,25 +122,12 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">ต้องช่วยเหลือบ้าง</label>
+                <label className="form-check-label">กลั้นไม่ได้บางครั้ง แต่น้อยกว่า 1 ครั้ง / สัปดาห์</label>
               </div>
-
-              <div className="form-check form-check-inline">
-                <input
-                  type="radio"
-                  name="relativeGender2"
-                  id="male2"
-                  value="male"
-                  className="form-check-input"
-                />
-                <label className="form-check-label">ทำไม่ได้</label>
-              </div>
- </div>
-
               </div>
               </div>
 
-
+          </div>
 
           {/* bt */}
           <div className="row justify-content-between">

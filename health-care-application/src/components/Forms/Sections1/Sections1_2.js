@@ -40,7 +40,7 @@ export default class Sections1_2 extends Component {
                 <input type="text" className="form-control" />
               </div>
             </div>
-            <p>อำเภอเมื่อง ชลบุรี</p>
+            <p>อำเภอเมือง ชลบุรี</p>
 <hr/>
             <p> <span>*</span>ที่อยู่ปัจจุบัน </p>
             <div className="row">
@@ -84,7 +84,7 @@ export default class Sections1_2 extends Component {
                 <p>ชุมชน</p>
                 <input type="text" className="form-control" />
               </div>
-            <p>อำเภอเมื่อง ชลบุรี</p>
+            <p>อำเภอเมือง ชลบุรี</p> <br/>
             </div>
           }
 

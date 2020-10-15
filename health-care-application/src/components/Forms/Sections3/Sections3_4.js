@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import sademoji from '../images/sad.jpg';
+// import sademoji from '../images/sad.jpg';
 
 class Sections3 extends Component {
   render() {
@@ -93,7 +93,7 @@ class Sections3 extends Component {
               </button>
             </div>
             <div class="modal-body" style={{textAlign:"center"}}>
-            <p><img className="img-displayed" src={sademoji} /></p>
+            {/* <p><img className="img-displayed" src={sademoji} /></p> */}
               <p className="heading1">มีความเสี่ยงสูง</p>
               <p className="heading2">ติดตามการปรับพฤติกรรมสุขภาพ</p>
               <p className="heading2">ทุก 6 เดือน</p>
