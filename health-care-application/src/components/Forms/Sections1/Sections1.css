@@ -17,3 +17,22 @@
 .pl-30 {
     padding-left: 30px !important;
 }
+
+
+.TextField{
+    display: grid !important;
+}
+
+.TextField label{
+    background-color: white;
+    padding-right: 5px;
+    color: black;
+}
+
+.radio-space {
+    margin-right: 10rem !important;
+    margin-left: 10px !important;
+}
+strong {
+    color: black;
+}

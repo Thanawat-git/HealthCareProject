@@ -24,7 +24,7 @@ export default function Sections1_6() {
               {/* content */}
               <div className="row">
                 <div className="col-12 p-0">
-                    <p><span>*</span><strong>ระดับการศึกษา</strong></p>
+                    <p><span>*</span><strong>สิทธิการรักษา</strong></p>
                 </div>
 
                 {Treatment.map((data, index)=>{

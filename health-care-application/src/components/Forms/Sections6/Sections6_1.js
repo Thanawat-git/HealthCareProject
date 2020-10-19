@@ -99,7 +99,7 @@ export default function Sections6_1() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">ต้องการความช่วยเหลือ</label>
+                <label className="form-check-label">ต้องการความช่วยเหลืออย่างมาก</label>
               </div>
               </div>
               <div className="row"> 

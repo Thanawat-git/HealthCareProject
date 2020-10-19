@@ -44,39 +44,13 @@ export default function Sections6_4() {
                   value="male"
                   className="form-check-input"
                 />
-                <label className="form-check-label">กลั้นไม่ได้บางครั้ง แต่น้อยกว่า 1 ครั้ง / สัปดาห์</label>
+                <label className="form-check-label">กลั้นไม่ได้บางครั้ง แต่น้อยกว่า วันละ 1 ครั้ง</label>
               </div>
               </div>
 
               <p>แปลผล:</p>
 
-              <div>
-                <span>*</span>
-                <label className="form-check-label">ปัสสาวะเล็ดหรือราดทำให้การใช้ชีวิตประจำวันของผู้สูงอายุมีปัญหาหรือไม่</label>
-              </div>  
-              <div className="row"> 
-              <div className="form-check form-check-inline">
-                <input
-                  type="radio"
-                  name="relativeGender2"
-                  id="male2"
-                  value="male"
-                  className="form-check-input"
-                />
-                <label className="form-check-label">มี</label>
-              </div>
-
-              <div className="form-check form-check-inline">
-                <input
-                  type="radio"
-                  name="relativeGender2"
-                  id="male2"
-                  value="male"
-                  className="form-check-input"
-                />
-                <label  className="form-check-label">ไม่มี</label>
-              </div>
-              </div>
+              
               
       </div>
 

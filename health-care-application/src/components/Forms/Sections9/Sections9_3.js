@@ -47,7 +47,6 @@ export default function Sections9_3() {
                     </div>
 
 
-                    <p>แปลผล:</p>
                 </div>
                 <div className="row justify-content-between">
                     <button type="button" class="btn form-btn btn-back btn-lg">ย้อนกลับ</button>

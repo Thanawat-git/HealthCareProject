@@ -74,16 +74,7 @@ export default function Sections6_3() {
                 />
                 <label  className="form-check-label">ต้องมีคนช่วย หรือทำให้</label>
               </div>
-              <div className="form-check form-check-inline">
-                <input
-                  type="radio"
-                  name="relativeGender2"
-                  id="male2"
-                  value="male"
-                  className="form-check-input"
-                />
-                <label  className="form-check-label">ใช้รถเข็น แต่ไม่ต้องช่วย</label>
-              </div>
+              
             
               </div>
               <div>
