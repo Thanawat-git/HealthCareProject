@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {OutlinedInput, InputAdornment} from '@material-ui/core';
 
 export default function Sections2_2() {
+
+    const [waight, setWeight] = useState()
+    const [high, setHigh] = useState()
+
     return (
         <div className="css-form">
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -8,32 +13,40 @@ export default function Sections2_2() {
           <h2>ส่วนที่ 2 แบบคัดกรองสภาวะสุขภาพ</h2> 
           <div className="question">
             {/* content */}
-            <div className="row sec2">
-                <div className="col-12">
+            <div className="row">
+                <div className="col-12 txt-center">
                     <p><strong>ดัชนีมวลการ(BMI)</strong></p>
                 </div>
-              <div className="col-3">
+              <div className="col-xl-3 col-12">
                 <p>น้ำหนัก</p>
               </div>
-              <div className="col-6">
-                <input type="text" className="form-control" />
+              <div className="col-xl-9 col-12 mb-15">
+              <OutlinedInput
+                id="weight"
+                value={waight}
+                onChange={(e)=>{setWeight(e.target.value)} }
+                endAdornment={<InputAdornment position="end">กก.</InputAdornment>}
+                fullWidth
+              />
               </div>
-              <div className="col-3">
-                <p>กก.</p>
-              </div>
+              
                 {/* col */}
 
-              <div className="col-3">
+              <div className="col-xl-3 col-12">
                 <p>ส่วนสูง</p>
               </div>
-              <div className="col-6">
-                <input type="text" className="form-control" />
+              <div className="col-xl-9 col-12 mb-15">
+              <OutlinedInput
+                id="high"
+                value={high}
+                onChange={(e)=>{setHigh(e.target.value)} }
+                endAdornment={<InputAdornment position="end">ซม.</InputAdornment>}
+                fullWidth
+              />
               </div>
-              <div className="col-3">
-                <p>ซม.</p>
-              </div>
+              <br/>
               {/* col */}
-              <div className="col-12">
+              <div className="col-12 txt-center">
                 <p>ดัชนีมวลการ(BMI)</p>
               </div>
 

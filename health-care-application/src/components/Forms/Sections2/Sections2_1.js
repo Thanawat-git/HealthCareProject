@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Sections2.css'
+import {OutlinedInput, InputAdornment} from '@material-ui/core';
 
 export default function Sections2_1() {
+
+  const [waist, setWaist] = useState()
+
   return (
     <div className="css-form">
     <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -9,12 +13,18 @@ export default function Sections2_1() {
       <h2>ส่วนที่ 2 แบบคัดกรองสภาวะสุขภาพ</h2> 
       <div className="question">
         {/* content */}
-        <div className="row sec2">
+        <div className="row">
           <div className="col-12">
-            <p><strong>ความยาวเส้นรอบเอว(ซม.)</strong></p>
+            <p><strong>ความยาวเส้นรอบเอว</strong></p>
           </div>
-          <div className="col-12 align-self-center">
-            <input type="text" className="form-control" />
+          <div className="col-12 mb-15">
+              <OutlinedInput
+                id="waist"
+                value={waist}
+                onChange={(e)=>{setWaist(e.target.value)} }
+                endAdornment={<InputAdornment position="end">ซม.</InputAdornment>}
+                fullWidth
+              />
           </div>
           <div className="col-12">
             <p><strong>ผลการประเมิน : </strong></p>

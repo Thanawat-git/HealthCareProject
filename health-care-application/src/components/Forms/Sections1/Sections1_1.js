@@ -25,23 +25,26 @@ export default function Sections1_1() {
     setValue(event.target.value);
     // console.log(event.target.value)
   };
-
+ 
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-      <form action="#">
+      <form action="#" className="bg-light">
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
         <div className="question">
           {/* content */}
 
           {/* row-1 */}
           <div className="row">
+            <div className="col-12 mb-15">
+              <InputLabel htmlFor=""><span className="text-danger" >*</span><strong>รหัสบัตรประชาชน 13 หลัก</strong> </InputLabel>
+            </div>
             <div className="col-12">
-              <TextField id="" label="*รหัสบัตรประชาชน 13 หลัก" variant="outlined" placeholder="รหัสบัตรประชาชน 13 หลัก" className="TextField"
-              onClick={handleError}
-              onChange={handleError}
+              <TextField id="" label="รหัสบัตรประชาชน 13 หลัก" variant="outlined" placeholder="รหัสบัตรประชาชน 13 หลัก" className="TextField"
+              // onClick={handleError}
+              // onChange={handleError}
               error={error}
-              helperText="กรุณากรอกหมายเลขบัตรประชาชน 13 หลัก"
+              // helperText="กรุณากรอกหมายเลขบัตรประชาชน 13 หลัก"
               />
             </div>
             {/* <div className="input-group">
@@ -135,7 +138,9 @@ export default function Sections1_1() {
           {/* row-5 */}
           <div className="row">
             <div className="col-12 mb-15">
-              <InputLabel htmlFor="bday"><span className="text-danger" >*</span><strong>วันเดือนปีเกิดที่ปรากฎในบัตรประชาชน</strong> </InputLabel>
+              <InputLabel htmlFor="bday"><span className="text-danger" >*</span><strong>วันเดือนปีเกิด</strong> 
+              <small> หากไม่ทราบ เดือน หรือวัน ให้เลือกเป็น "วันที่ 1 เดือน มกราคม"</small> 
+              </InputLabel>
             </div>
             <div className="col-12">
             <MyDatePicker xxx="years"/>

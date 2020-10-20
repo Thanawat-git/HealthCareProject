@@ -1,99 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../form-style.css'
 import './Sections1.css'
+import { TextField, InputLabel, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
-export default class Sections1_2 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      address : "Y"
-    }
-  }
-  render() {
+function AddressInfo(porps) {
+  const titleInfo = ['เลขที่', 'ตรอก/ซอย', 'ถนน', 'ตำบล', 'ชุมชน']
+
+  return (
+    <div className="row">
+      {titleInfo.map((value)=>{
+        return(
+          <React.Fragment>
+            <div className="col-xl-6 col-12 mb-15">
+            <TextField id={`${porps.addressID}`} label={value} variant="outlined" placeholder={value} className="TextField"/>
+            </div>
+          </React.Fragment>
+        )
+      })}
+    </div>
+  )
+}
+
+
+export default function Sections1_2() {
+  
+    const [radioValue, setRadioValue] = useState('yes');
+
+    const handleChange = (event) => {
+      setRadioValue(event.target.value);
+      // console.log(event.target.value)
+    };
+
     return (
       <div className="css-form">
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-        <form action="#">
+        <form action="#" className="color-sec">
           <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
           <div className="question">
             {/* content */}
-            <p> <span>*</span>ที่อยู่ตามบัตรประชาชน </p>
-            <div className="row">
-              <div className="col-6 col-md-4">
-                <p>เลขที่</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ตรอก/ซอย</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ถนน</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ตำบล</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ชุมชน</p>
-                <input type="text" className="form-control" />
-              </div>
-            </div>
+            <p><span className="text-danger">*</span>ที่อยู่ตามบัตรประชาชน </p>
+            <AddressInfo addressID='1' />
             <p>อำเภอเมือง ชลบุรี</p>
 <hr/>
-            <p> <span>*</span>ที่อยู่ปัจจุบัน </p>
-            <div className="row">
-              <div className="col-6">
-                <p>ที่อยู่เดียวกับบัตรประชาชนใช่หรือไม่</p>
+            
+            <div className="row align-items-end">
+              <div className="col-12">
+                <p>ที่อยู่ปัจจุบันเป็นที่อยู่เดียวกับบัตรประชาชนใช่หรือไม่</p>
               </div>
-              <div className="col-3 p-0">
-                <div className="form-check form-check-inline">
-                  <input type="radio" name="addressSame" id="addressSameY" value="Y" onClick={e => {this.setState({address:"Y"})}} className="form-check-input"/>
-                  <label htmlFor="addressSameY" className="form-check-label">ใช่</label>
-                </div>
+              <div className="col-12 mb-15">
+              <RadioGroup row aria-label="add2" name="add2" value={radioValue} onChange={handleChange}>
+                <FormControlLabel className="radio-space" value="yes" control={<Radio color='primary' />} label="ใช่"  />
+                <FormControlLabel value="no" control={<Radio color='primary' />} label="ไม่ใช่" />
+              </RadioGroup>
               </div>
-              <div className="col-3 p-0">
-                <div className="form-check form-check-inline">
-                  <input type="radio" name="addressSame" id="addressSameN" value="N" onClick={e => {this.setState({address:"N"})}} className="form-check-input"/>
-                  <label htmlFor="addressSameN" className="form-check-label">ไม่ใช่</label>
-                </div>
-              </div>
+              
             </div>
 
             {/* Condition needed */}
-            {this.state.address == "Y" ? <p></p> :
-            <div className="row address2">
-              <div className="col-6 col-md-4">
-                <p>เลขที่</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ตรอก/ซอย</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ถนน</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ตำบล</p>
-                <input type="text" className="form-control" />
-              </div>
-              <div className="col-6 col-md-4">
-                <p>ชุมชน</p>
-                <input type="text" className="form-control" />
-              </div>
-            <p>อำเภอเมือง ชลบุรี</p> <br/>
+            {radioValue === 'no' ? 
+            <div>
+              <p><span className="text-danger">*</span>ที่อยู่ปัจจุบัน </p>
+              <AddressInfo addressID='2'/> 
+              <p>อำเภอเมือง ชลบุรี</p>
             </div>
-          }
+            : ''}
 
             {/* <div className="row"> */}
               <div className="input-group">
-                <div className="input-group-prepend">
-                  <p>เบอร์โทรศัพท์</p><span className="text-warning">(ถ้ามี)</span>
-                </div>
-                <input type="text" name="" id="" className="form-control input-sec1" />
+                <p>เบอร์โทรศัพท์ <small className="text-warning">(ถ้ามี)</small></p>
+                <TextField id="" label="" variant="outlined" placeholder="+66" className="TextField" fullWidth />
               </div>
             {/* </div> */}
           </div>
@@ -106,5 +81,4 @@ export default class Sections1_2 extends Component {
         </form>
       </div>
     );
-  }
 }

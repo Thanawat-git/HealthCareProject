@@ -1,7 +1,7 @@
 import React from 'react'
 import '../form-style.css'
 import './Sections1.css'
-
+ 
 function Allergy(props) {
     return (
     <div className="row">

@@ -1,3 +1,12 @@
+/* Genaral Class */
+.txt-center{
+    text-align: center;
+}
+
+.pl-10{
+    padding-left: 10px;
+}
+
 /* Common config All Screen */
 .css-form h1{
     text-align: center;
@@ -15,6 +24,7 @@
 
 
 .css-form form {
+    /* background-color: #707070; */
     border: 1px solid #707070;
     border-radius: 43px;
     box-shadow: 5px 5px 8px #707070;
@@ -58,6 +68,9 @@
     margin-right: 30px;
 }
 
+.css-form .radio-size span {
+    font-size: 20px !important;
+}
 
 /* small phone  width < 576px  */
 /* iPhone XS, Galaxy S9 Plus, Galaxy Note 8 */

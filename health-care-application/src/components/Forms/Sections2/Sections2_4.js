@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {OutlinedInput, InputAdornment} from '@material-ui/core';
 
 export default function Sections2_4() {
+
+    const [sugar, setSugar] = useState()
+
     return (
         <div className="css-form">
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -8,12 +12,18 @@ export default function Sections2_4() {
           <h2>ส่วนที่ 2 แบบคัดกรองสภาวะสุขภาพ</h2> 
           <div className="question">
             {/* content */}
-            <div className="row sec2">
+            <div className="row">
               <div className="col-12">
-                <p><strong>ระดับน้ำตาลจากปลายนิ้ว (มก./ดล.)</strong></p>
+                <p><strong>ระดับน้ำตาลจากปลายนิ้ว</strong></p>
               </div>
-              <div className="col-12 align-self-center">
-                <input type="text" className="form-control" />
+              <div className="col-12 mb-15">
+              <OutlinedInput
+                id="sugar"
+                value={sugar}
+                onChange={(e)=>{setSugar(e.target.value)} }
+                endAdornment={<InputAdornment position="end">มก./ดล.</InputAdornment>}
+                fullWidth
+              />
               </div>
               <div className="col-12">
                 <p><strong>ผลการประเมิน : </strong></p>
