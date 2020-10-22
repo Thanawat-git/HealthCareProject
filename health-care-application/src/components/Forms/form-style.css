@@ -3,10 +3,6 @@
     text-align: center;
 }
 
-.pl-10{
-    padding-left: 10px;
-}
-
 /* Common config All Screen */
 .css-form h1{
     text-align: center;
@@ -60,13 +56,13 @@
     font-size: 20px;
 }
 
-.css-form .question .each-question {
+/* .css-form .question .each-question {
     margin-bottom: inherit;
 }
 
 .css-form .question .each-question .form-check-inline {
     margin-right: 30px;
-}
+} */
 
 .css-form .radio-size span {
     font-size: 20px !important;

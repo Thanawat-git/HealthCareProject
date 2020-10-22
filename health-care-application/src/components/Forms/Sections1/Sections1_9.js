@@ -2,23 +2,26 @@ import React, { useState } from "react";
 import "../form-style.css";
 import "./Sections1.css";
 import DatePicker from 'react-date-picker';
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 export default function Sections1_9() {
-  const [showInput, setShowInput] = useState(false);
-  const [valueDisease, setValueDisease ] = useState("");
-  const [disease, setDisease] = useState([]);
   const [value, onChange] = useState(new Date());
 
-  const setDiseaseData = (e) => {
+  const [valueDisease, setValueDisease ] = useState();
+  const [disease, setDisease] = useState([]);
+
+
+  const setDiseaseData = (event, value) => {
     //   console.log(e.target.value)
-    setValueDisease(e.target.value)
-    console.log(valueDisease)
+    setValueDisease(value)
+    // console.log(valueDisease)
   };
 
   const confirm = () => {
     setDisease(disease=>[...disease, valueDisease])
-    setValueDisease("")
-    console.log(disease)
+    setValueDisease(" ")
+    // console.log(disease)
   }
 
   return (
@@ -28,43 +31,38 @@ export default function Sections1_9() {
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
         <div className="question">
           <div className="row">
-            <div className="col-4 p-0">
+            <div className="col-12">
               <p>
-                <span>*</span>
+                {/* <span>*</span> */}
                 <strong>โรคประจำตัว</strong>
               </p>
             </div>
+            <div className="col-1"></div>
             <div className="col-8">
-              <div className="input-group">
-                {showInput ? (
-                  <div className="input-group-append">
-                    <input
-                      type="text"
-                      name="diseaseName"
-                      id=""
+                    <Autocomplete
+                      id="SimpleDisease"
+                      options={SimpleDisease}
+                      getOptionLabel={(option) => option}
+                      disableClearable={true}
+                      size="small"
                       value={valueDisease}
-                      className="form-control"
-                      onChange={setDiseaseData}
+                      // getOptionSelected={setDiseaseData}
+                      //   style={{ width: 300 }}
+                      onInputChange={setDiseaseData}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant="outlined"
+                        />
+                        )}
                     />
-                    <button type="button" className="btn btn-secondary btn-md"
-                        onClick={confirm}
-                    >
-                      เพิ่ม
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-md"
-                    onClick={()=>setShowInput(true)}
-                  >
-                    เพิ่ม
-                  </button>
-                )}
-              </div>
             </div>
+            <button type="button" className="btn btn-secondary btn-md"
+                    onClick={confirm}
+            > เพิ่ม
+            </button>
 
-            <div className="col-12">
+            <div className="col-12 mt-10">
               <ol>
                 {disease.map((value, index) => {
                   return <li> {`${value}`} </li>;
@@ -72,8 +70,10 @@ export default function Sections1_9() {
               </ol>
             </div>
           </div>
+
+<br/>
           <div className="row justify-content-center">
-              <div className="col-6">
+              <div className="col-4">
                   <strong>วันที่สำรวจ</strong>
               </div>
               <div className="col-6">
@@ -93,3 +93,38 @@ export default function Sections1_9() {
     </div>
   );
 }
+
+const SimpleDisease = [
+  'ความดันโลหิตสูง',
+  'เบาหวาน',
+  'ไขมันในเส้นเลือดสูง',
+  'โรคหัวใจ',
+  'อัมพฤต อัมพาต',
+  'หลอดเลือดในสมอง',
+  'หลอดเลือดหัวใจ',
+  'กระดูกพรุน',
+  'ข้อเข่าเสื่อม/อักเสบ',
+  'กระดูกทับเส้น',
+  'กล้ามเนื้ออ่อนแรง/ชา',
+  'เก๊าซ์',
+  'รูมาตอยด์',
+  'ปวดเมื่อยกล้ามเนื้อ',
+  'ไตเรื้อรัง',
+  'นิ่วในไต',
+  'ต่อมลูกหมากโต',
+  'หอบหืด/หลอดลมตีบ/ภูมิแพ้/ไซนัส',
+  'ปอด',
+  'โรคกระเพาะ/กรดไหลย้อน/ลำไส้',
+  'ริดสีดวง',
+  'ตับ/ถุงน้ำดี',
+  'โรคตา',
+  'หูพิการ',
+  'พิการ',
+  'ลมชัก',
+  'พากินสัน',
+  'ไมเกรน',
+  'โรคประสาท',
+  'Hypothyroid',
+  'มะเร็ง/เนื้องอก',
+  'โลหิตจาง'
+]

@@ -1,9 +1,15 @@
-import React from 'react'
-// Some css in Sections7.css
+import React, {useState} from 'react'
+import { RadioGroup, Radio, FormControlLabel, TextField } from '@material-ui/core';
+import '../form-style.css'
+import '../../genaralConfig.css'
+import './Sections8.css'
 
 export default function Sections8_1() {
 
-  const qusetions = ["ผู้สูงอายุรู้สึกหดหู่ เศร้า หรือท้อแท้สิ้นหวัง", "ผู้สูงอายุรู้สึกทำอะไรก็ไม่เพลิดเพลิน"]
+  const [ans8_1, setAns8_1] = useState()
+  const [ans8_2, setAns8_2] = useState()
+
+  // const qusetions = ["ผู้สูงอายุรู้สึกหดหู่ เศร้า หรือท้อแท้สิ้นหวัง", "ผู้สูงอายุรู้สึกทำอะไรก็ไม่เพลิดเพลิน"]
 
   return (
     <div className="css-form">
@@ -12,31 +18,34 @@ export default function Sections8_1() {
         <h2>ส่วนที่ 8 การคัดกรองโรคซึมเศร้า</h2>
         <div className="question">
           {/* content */}
-          {/* <form action="#"> */}
-            <table width="100%" >
-              <tr className="sec7-text-center" >
-                <td width="75%"> <strong>ช่วง 2 สัปดาห์ที่ผ่านมา</strong> </td>
-                <td> <strong>มี</strong> </td>
-                <td> <strong>ไม่มี</strong> </td>
-              </tr><br/>
-              {qusetions.map((value, index) =>  {
-                var i = index+1
-                return (
-                  <tr id={index} className="sec7-one-row" >
-                    <td>
-                        {`${i}. ${value}`}
-                    </td>
-                    <td className="sec7-text-center" ><input type="radio" name={`a${i}`} value="" /></td>
-                    <td className="sec7-text-center" ><input type="radio" name={`a${i}`} value="" /></td>
-                  </tr>
-                )
-              })}
-            </table>
-          {/* </form> */}
-
-          <div className="resua">
-              การแปลผล :
+          <div className="row">
+            <div className="col-12">
+              <p>1. ช่วง 2 สัปดาห์ที่ผ่านมา ผู้สูงอายุรู้สึกหดหู่ เศร้า หรือท้อแท้สิ้นหวัง</p>
+            </div>
+            <div className="col-12">
+            <RadioGroup className="pl-20" aria-label='questions8.1' name='questions8.1' value={ans8_1} onChange={(e)=>setAns8_1(e.target.value)}>
+              <FormControlLabel className="radio-size" value='yes'  control={<Radio color="primary" />} label="มี" />
+              <FormControlLabel className="radio-size" value='no' control={<Radio color="primary" />} label="ไม่มี" />
+            </RadioGroup>             
+            </div>
           </div>
+          <hr/>
+          {/* row-1 */}
+
+          <div className="row">
+            <div className="col-12">
+              <p>2. ช่วง 2 สัปดาห์ที่ผ่านมา ผู้สูงอายุรู้สึกทำอะไรก็ไม่เพลิดเพลิน</p>
+            </div>
+            <div className="col-12">
+            <RadioGroup className="pl-20" aria-label='questions8.2' name='questions8.2' value={ans8_2} onChange={(e)=>setAns8_2(e.target.value)}>
+              <FormControlLabel className="radio-size" value='yes'  control={<Radio color="primary" />} label="มี" />
+              <FormControlLabel className="radio-size" value='no' control={<Radio color="primary" />} label="ไม่มี" />
+            </RadioGroup>             
+            </div>
+          </div>
+          <hr/>
+          {/* row-2 */}
+          
           {/* question */}
         </div>
 

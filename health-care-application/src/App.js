@@ -17,14 +17,15 @@ import FollowUp from "./components/admin-medical/followUp/followUp";
 
 import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_5, sec1_6, sec1_7, sec1_8, sec1_9} from './components/Forms/Sections1/index';
 import {sec2_1, sec2_2, sec2_3, sec2_4} from "./components/Forms/Sections2/index";
-import {sec3_1, sec3_2, sec3_3, sec3_4} from "./components/Forms/Sections3/index";
-import {sec4_1, sec4_2, sec4_3} from "./components/Forms/Sections4/index";
+import {sec3} from "./components/Forms/Sections3/index";
+import {sec4_1} from "./components/Forms/Sections4/index";
 
-import {sec5_1, sec5_2, sec5_3,sec5_4,sec5_5} from "./components/Forms/Sections5/index";
-import {sec6_1, sec6_2, sec6_3, sec6_4, sec6_5, sec6_6, sec6_7, sec6_8, sec6_9} from "./components/Forms/Sections6/index";
+import {sec5_1} from "./components/Forms/Sections5/index";
+import {sec6_1} from "./components/Forms/Sections6/index";
 import {sec7_1, sec7_2} from "./components/Forms/Sections7/index";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8/index";
-import {sec9_1, sec9_2, sec9_3, sec9_4} from "./components/Forms/Sections9/index";
+import {sec9} from "./components/Forms/Sections9/index";
+import {sec10} from "./components/Forms/Sections10/index";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -56,15 +57,9 @@ export default class App extends Component {
           <Route path="/sec2-page3" component={sec2_3} />
           <Route path="/sec2-page4" component={sec2_4} />
 
-          <Route path="/sec3-page1" component={sec3_1} />
-          <Route path="/sec3-page2" component={sec3_2} />
-          <Route path="/sec3-page3" component={sec3_3} />
-          <Route path="/sec3-page4" component={sec3_4} />
+          <Route path="/sec3" component={sec3} />
 
           <Route path="/sec4-page1" component={sec4_1} />
-          <Route path="/sec4-page2" component={sec4_2} />
-          <Route path="/sec4-page3" component={sec4_3} />
-
 
           <Route path="/sec5-page1" component={sec5_1} />
           <Route path="/sec5-page2" component={sec5_2} />
@@ -88,10 +83,9 @@ export default class App extends Component {
           <Route path="/sec8-page1" component={sec8_1} />
           <Route path="/sec8-9q" component={sec8_9q} />
 
-          <Route path="/sec9-page1" component={sec9_1} />
-          <Route path="/sec9-page2" component={sec9_2} />
-          <Route path="/sec9-page3" component={sec9_3} />
-          <Route path="/sec9-page4" component={sec9_4} />
+          <Route path="/sec9" component={sec9} />
+         
+          <Route path="/sec10" component={sec10} />
 
           {/* Super Admin */}
           <Route path="/super-admin">

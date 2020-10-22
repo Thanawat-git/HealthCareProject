@@ -26,7 +26,7 @@ export default function neighbor(props) {
 <br/>
           {/* row-2 */}
           <div className="row">
-            <div className="col-3 p-0">
+            <div className="col-xl-3 col-12 p-0">
               <span>*</span><strong>เพศ</strong>
             </div>
             <div className="col-3">
@@ -53,73 +53,73 @@ export default function neighbor(props) {
       {/* row 3 */}
       <p><span>*</span>ความสัมพันธ์กับผู้สูงอายุ</p>
       <div className="row relative">
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="son1" value="son1" className="form-check-input"/>
             <label htmlFor="son1" className="form-check-label">บุตรชาย</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="daughter1" value="daughter" className="form-check-input"/>
             <label htmlFor="daughter1" className="form-check-label">ลูกสาว</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="sonInLaw1" value="sonInLaw" className="form-check-input"/>
             <label htmlFor="sonInLaw1" className="form-check-label">ลูกเขย</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="daughterInLaw1" value="daughterInLaw" className="form-check-input"/>
             <label htmlFor="daughterInLaw1" className="form-check-label">ลูกสะใภ้</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="grandson1" value="grandson" className="form-check-input"/>
             <label htmlFor="grandson1" className="form-check-label">หลานชาย</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id={`granddaughter${props.neighborID}`} value="granddaughter" className="form-check-input"/>
             <label htmlFor="granddaughter1" className="form-check-label">หลานสาว</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="siblings1" value="siblings" className="form-check-input"/>
             <label htmlFor="siblings1" className="form-check-label">พี่น้อง</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="father1" value="father" className="form-check-input"/>
             <label htmlFor="father1" className="form-check-label">บิดา</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="mother1" value="mother" className="form-check-input"/>
             <label htmlFor="mother1" className="form-check-label">มารดา</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="husband1" value="husband" className="form-check-input"/>
             <label htmlFor="husband1" className="form-check-label">สามี</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="wife1" value="wife" className="form-check-input"/>
             <label htmlFor="wife1" className="form-check-label">ภรรยา</label>
           </div>
         </div>
-        <div className="col-md-3 col-sm-4 col-4">
+        <div className="col-md-3 col-sm-4 col-12">
           <div className="form-check form-check-inline">
             <input type="radio" name={`relative-relational${props.neighborID}`} id="otherperson1" value="otherperson" className="form-check-input"/>
             <label htmlFor="otherperson1" className="form-check-label">บุคคลอื่น</label>

@@ -4,15 +4,17 @@ import './Sections1.css'
 import Neighbor from './neighbor'
 
 export default function Sections1_3() {
-    const [twoNeighbor, setTowNeighbor] = useState(false);
+  const [oneNeighbor, setOneNeighbor] = useState(false);
+  const [twoNeighbor, setTowNeighbor] = useState(false);
 
     return (
         <div className="css-form">
           <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
           <form action="#">
             <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
-            <h4>ข้อมูลญาติผู้ดูแล <span>*ถ้าไม่มีญาติที่ดูแลให้กดถัดไป*</span> </h4>
+            <h4>ข้อมูลญาติผู้ดูแล <span className="text-danger">*ถ้าไม่มีญาติที่ดูแลให้กดถัดไป*</span> </h4>
             <div className="question">
+
                 <Neighbor neighborID="1" />
                 <hr/>
 <br/>
@@ -34,7 +36,7 @@ export default function Sections1_3() {
                     </div>
                 </div>
 
-                {twoNeighbor ? <Neighbor neighborID="2" /> :  <p></p> }
+                {twoNeighbor ? <Neighbor neighborID="2" /> :  '' }
               {/* content */}
             </div>
   
