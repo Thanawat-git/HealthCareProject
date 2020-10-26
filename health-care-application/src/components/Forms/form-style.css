@@ -65,6 +65,9 @@
 .css-form .radio-size span {
     font-size: 20px !important;
 }
+.css-form span {
+    font-size: 20px;
+}
 
 /* small phone  width < 576px  */
 /* iPhone XS, Galaxy S9 Plus, Galaxy Note 8 */

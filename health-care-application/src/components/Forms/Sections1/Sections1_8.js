@@ -1,52 +1,49 @@
-import React from 'react'
+import React, {useState} from 'react'
+import '../../genaralConfig.css'
 import '../form-style.css'
 import './Sections1.css'
- 
-function Allergy(props) {
-    return (
-    <div className="row">
-        <div className="col-12 p-0">
-            <p><span>*</span><strong>{`ประวัติการแพ้${props.name}`}</strong></p>
-        </div>
-        <div className="col-12">
-            <div className="form-check form-check-inline">
-                <input type="radio" name={`${props.type}Allergy`} id={`${props.type}A`} value={`${props.type}A`} className="form-check-input"/>
-                <label htmlFor={`${props.type}A`} className="form-check-label">
-                    <div className="input-group input-group-sm">
-                    <div className="input-group-prepend"> <label className="form-check-label">{`แพ้ ระบุชื่อ${props.name}`}</label></div>
-                        <input type="text" name="" id="" className="form-control input-sec1"/> 
-                    </div>
-                </label>
-            </div>
-        </div>
-        <div className="col-12">
-            <div className="form-check form-check-inline">
-                <input type="radio" name={`${props.type}Allergy`} id={`N${props.type}A`} value={`N${props.type}A`} className="form-check-input"/>
-                <label htmlFor={`N${props.type}A`} className="form-check-label">ไม่แพ้</label>
-            </div>
-        </div>
-        <div className="col-12">
-            <div className="form-check form-check-inline">
-                <input type="radio" name={`${props.type}Allergy`} id={`Unknow${props.type}A`} value={`Unknow${props.type}A`} className="form-check-input"/>
-                <label htmlFor={`Unknow${props.type}A`} className="form-check-label">ไม่ทราบ/ไม่แน่ใจ</label>
-            </div>
-        </div>
-    </div>
-    )
-}
+import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
 export default function Sections1_8() {
+
+    const [drug, setDrug] = useState('')
+    const [food, setFood] = useState('')
+
+    const handleChange1 = (event) => {setDrug(event.target.value)}
+    const handleChange2 = (event) => {setFood(event.target.value)}
+
     return (
         <div className="css-form">
           <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-          <form action="#">
+          <form action="#" className="shadow p-3 mb-5 bg-white rounded" >
             <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
             <div className="question">
+                <div className="row">
+                    <div className="col-12">
+                        <p><span className="text-danger" >*</span ><strong>ประวัติการแพ้ยา</strong></p>
+                    </div>
+                    <RadioGroup className="pl-5" aria-label="drug" name="drug" value={drug} onChange={handleChange1}>
+                        <FormControlLabel value="allergic" control={<Radio color='primary' />} label="แพ้ยา"  />
+                        {drug === 'allergic'? <TextField id="outlined-basic" label="ระบุชื่อยา" variant="outlined" size="small" fullWidth/> :''}
+                        <FormControlLabel value="noallergic" control={<Radio color='primary' />} label="ไม่แพ้ยา" />
+                        <FormControlLabel value="notsure" control={<Radio color='primary' />} label="ไม่ทราบ/ไม่แน่ใจ" />
+                     </RadioGroup>
+                </div>
             {/* row-1 */}
-            <Allergy name="ยา" type="drug"/>
-            <br/>
-            <Allergy name="อาหาร" type="food"/>
-              {/* content */}
+<hr/>
+                <div className="row">
+                    <div className="col-12">
+                        <p><span className="text-danger" >*</span ><strong>ประวัติการแพ้อาหาร</strong></p>
+                    </div>
+                    <RadioGroup className="pl-5" aria-label="food" name="food" value={food} onChange={handleChange2}>
+                        <FormControlLabel value="allergic" control={<Radio color='primary' />} label="แพ้อาหาร"  />
+                        {food === 'allergic'? <TextField id="outlined-basic" label="ระบุชื่ออาหาร" variant="outlined" size="small" fullWidth/> :''}
+                        <FormControlLabel value="noallergic" control={<Radio color='primary' />} label="ไม่แพ้ยา" />
+                        <FormControlLabel value="notsure" control={<Radio color='primary' />} label="ไม่ทราบ/ไม่แน่ใจ" />
+                     </RadioGroup>
+                </div>
+            {/* row-2 */}
+            {/* content */}
             </div>
   
             {/* bt */}
