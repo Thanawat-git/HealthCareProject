@@ -29,7 +29,7 @@ export default function Sections1_1() {
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-      <form action="#" className="bg-light">
+      <form action="#" className="shadow p-3 mb-5 bg-white rounded" >
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
         <div className="question">
           {/* content */}

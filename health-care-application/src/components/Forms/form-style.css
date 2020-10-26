@@ -18,9 +18,7 @@
     transform:scale(1.5);
 }
 
-
-.css-form form {
-    /* background-color: #707070; */
+/* .css-form form {
     border: 1px solid #707070;
     border-radius: 43px;
     box-shadow: 5px 5px 8px #707070;
@@ -28,7 +26,7 @@
     margin: 35px 90px;
     height: auto;    
     transition: 0.3s;
-}
+} */
 
 .css-form form h2{
     text-align: center;
