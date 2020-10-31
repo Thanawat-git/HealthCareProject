@@ -6,12 +6,20 @@ import { OutlinedInput, InputAdornment, TextField } from "@material-ui/core";
 
 export default function Sections2_1() {
   const [waist, setWaist] = useState();
-  const [waight, setWeight] = useState();
-  const [high, setHigh] = useState();
+  const [weight, setWeight] = useState(0);
+  const [high, setHigh] = useState(0);
+  const [bmi, setBmi] = useState(0);
   const [pulse, setPulse] = useState();
   const [bloodPressure1, setBloodPressure1] = useState();
   const [bloodPressure2, setBloodPressure2] = useState();
   const [sugar, setSugar] = useState();
+
+  const culBMI = ()=>{
+    // e.preventDefault();
+    if (high != 0){
+      setBmi(weight/((high/100)*2))
+    }
+  }
 
   return (
     <div className="css-form">
@@ -60,9 +68,10 @@ export default function Sections2_1() {
             <div className="col-12 mb-15">
               <OutlinedInput
                 id="weight"
-                value={waight}
+                value={weight}
                 onChange={(e) => {
                   setWeight(e.target.value);
+                  culBMI()
                 }}
                 endAdornment={
                   <InputAdornment position="end">กก.</InputAdornment>
@@ -70,9 +79,7 @@ export default function Sections2_1() {
                 fullWidth
               />
             </div>
-
             {/* col */}
-
             <div className="col-12">
               <p>ส่วนสูง</p>
             </div>
@@ -82,6 +89,7 @@ export default function Sections2_1() {
                 value={high}
                 onChange={(e) => {
                   setHigh(e.target.value);
+                  culBMI()
                 }}
                 endAdornment={
                   <InputAdornment position="end">ซม.</InputAdornment>
@@ -93,7 +101,11 @@ export default function Sections2_1() {
             {/* col */}
             <div className="col-12 txt-center">
               <p>ดัชนีมวลการ(BMI)</p>
-              <h1 className="display-1 text-black-50">Display 1</h1>
+              {/* <small> {weight} </small>
+              <small> {(high/100)*2} </small>
+              <small> {weight/((high/100)*2)} </small> */}
+              <h1 className="display-1 text-black-50"> {(weight/((high/100)*2)).toFixed(2)} </h1>
+              {/* <h1 className="display-1 text-black-50"> {bmi} </h1> */}
 <br/>
             </div>
             {/* BMI Resulte */}
