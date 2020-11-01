@@ -110,7 +110,7 @@ export default class App extends Component {
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/verify" component={VerifyIdentity}></Route>
           <Route path="/login" component={Login}></Route>
-
+ 
           {/* Volunteer Page */}
           <Route path="/volunteer-page">
             {/* <AdminHeader/>      */}

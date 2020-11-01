@@ -3,6 +3,7 @@ import "./Sections2.css";
 import '../form-style.css'
 import '../../genaralConfig.css'
 import { OutlinedInput, InputAdornment, TextField } from "@material-ui/core";
+import ShowResultPopup from '../ResuleShowsPopUp'
 
 export default function Sections2_1() {
   const [waist, setWaist] = useState();
@@ -14,11 +15,22 @@ export default function Sections2_1() {
   const [bloodPressure2, setBloodPressure2] = useState();
   const [sugar, setSugar] = useState();
 
+  const [show, setShow] = useState(false);
+
+  const resultArray = [
+    {title: 'แปลผลเส้นรอบเอว', result: waist},
+    {title: 'แปลผลค่า BMI', result: bmi}
+  ]
+  
   const culBMI = ()=>{
-    // e.preventDefault();
-    if (high != 0){
-      setBmi(weight/((high/100)*2))
-    }
+    // var w = weight
+    // var h = high
+    // var b = (w/((h/100)*2)).toFixed(2)
+    // setBmi(b)
+    setBmi((weight/((high/100)*2)).toFixed(2))
+    // console.log(weight)
+    // console.log(high)
+    // console.log(bmi)
   }
 
   return (
@@ -105,7 +117,7 @@ export default function Sections2_1() {
               <small> {(high/100)*2} </small>
               <small> {weight/((high/100)*2)} </small> */}
               <h1 className="display-1 text-black-50"> {(weight/((high/100)*2)).toFixed(2)} </h1>
-              {/* <h1 className="display-1 text-black-50"> {bmi} </h1> */}
+              <h1 className="display-1 text-black-50"> {bmi} </h1>
 <br/>
             </div>
             {/* BMI Resulte */}
@@ -120,9 +132,9 @@ export default function Sections2_1() {
 
           <hr />
           <div className="row">
-            {/* <div className="col-12 txt-center">
+            <div className="col-12 txt-center">
                 <p><strong>ความดันโลหิต</strong></p>
-              </div> */}
+              </div>
             <div className="col-12">
               <p>ความดันโลหิต</p>
             </div>
@@ -208,13 +220,22 @@ export default function Sections2_1() {
 
         <div className="row justify-content-between">
           <button type="button" class="btn form-btn btn-back btn-lg">
-            ย้อนกลับ
+            ยกเลิก
           </button>
-          <button type="button" class="btn form-btn btn-primary btn-lg">
-            ถัดไป
+          <button type="button" class="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
+            บันทึก
           </button>
         </div>
       </form>
+      <ShowResultPopup
+          title='ผลส่วนที่ 2' 
+          dataShow={resultArray}
+          show={show}
+          onHide={()=>setShow(false)}
+          backdrop="static"
+          keyboard={false}
+          // onHide={showResule}  
+        />
     </div>
   );
 }
