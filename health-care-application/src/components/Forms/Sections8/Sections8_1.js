@@ -14,7 +14,7 @@ export default function Sections8_1() {
   return (
     <div className="css-form">
       <h1>ข้อมูลของผู้สูงอายุ</h1>
-      <form action="#">
+      <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded" >
         <h2>ส่วนที่ 8 การคัดกรองโรคซึมเศร้า</h2>
         <div className="question">
           {/* content */}

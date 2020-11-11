@@ -15,14 +15,16 @@ import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
 
+import mainMenu from './components/Forms/MainMenu'
+
 import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_5, sec1_6, sec1_7, sec1_8, sec1_9} from './components/Forms/Sections1/index';
 import {sec2} from "./components/Forms/Sections2/index";
 import {sec3} from "./components/Forms/Sections3/index";
-import {sec4_1} from "./components/Forms/Sections4/index";
+import {sec4} from "./components/Forms/Sections4/index";
 
-import {sec5_1} from "./components/Forms/Sections5/index";
-import {sec6_1} from "./components/Forms/Sections6/index";
-import {sec7_1, sec7_2} from "./components/Forms/Sections7/index";
+import {sec5} from "./components/Forms/Sections5/index";
+import {sec6} from "./components/Forms/Sections6/index";
+import {sec7} from "./components/Forms/Sections7/index";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8/index";
 import {sec9} from "./components/Forms/Sections9/index";
 import {sec10} from "./components/Forms/Sections10/index";
@@ -42,6 +44,7 @@ export default class App extends Component {
               <Sec1Page1/>
           </Route> */}
           {/* Dev Path */}
+          <Route path='/mainmenu' component={mainMenu} />
           <Route path="/sec1-page1" component={sec1_1} />
           <Route path="/sec1-page2" component={sec1_2} />
           <Route path="/sec1-page3" component={sec1_3} />
@@ -52,23 +55,14 @@ export default class App extends Component {
           <Route path="/sec1-page8" component={sec1_8} />
           <Route path="/sec1-page9" component={sec1_9} />
 
-          <Route path="/sec2-page1" component={sec2} />
-
+          <Route path="/sec2" component={sec2} />
           <Route path="/sec3" component={sec3} />
+          <Route path="/sec4" component={sec4} />
+          <Route path="/sec5" component={sec5} />
+          <Route path="/sec6" component={sec6} />
+          <Route path="/sec7" component={sec7} />
 
-          <Route path="/sec4-page1" component={sec4_1} />
-
-          <Route path="/sec5-page1" component={sec5_1} />
-          
-
-          <Route path="/sec6-page1" component={sec6_1} />
-          
-          
-
-          <Route path="/sec7-page1" component={sec7_1} />
-          <Route path="/sec7-page2" component={sec7_2} />
-
-          <Route path="/sec8-page1" component={sec8_1} />
+          <Route path="/sec8" component={sec8_1} />
           <Route path="/sec8-9q" component={sec8_9q} />
 
           <Route path="/sec9" component={sec9} />

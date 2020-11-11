@@ -15,7 +15,7 @@ export default function Sections4_1() {
   return (
     <div className="css-form">
     <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-    <form>
+    <form className="shadow-lg p-3 mb-5 bg-white rounded" >
       <h2>ส่วนที่ 4 แบบคัดกรองสุขภาพตา</h2> 
       <div className="question">
         

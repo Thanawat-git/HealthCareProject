@@ -25,7 +25,7 @@ export default function Sections7_1() {
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-      <form action="#">
+      <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded" >
         <h2>ส่วนที่ 7 การประเมินภาวะสมองเสื่อม</h2>
         <div className="question">
           {/* content */}
@@ -33,7 +33,7 @@ export default function Sections7_1() {
             <div className="col-12">
               <p>1. อายุเท่าไร</p>
             </div>
-            <div className="col-6">
+            <div className="col-12">
             <RadioGroup className="pl-20" aria-label='questions7.1' name='questions7.1' value={ans7_1} onChange={(e)=>setAns7_1(e.target.value)}>
               <FormControlLabel className="radio-size" value='false'  control={<Radio color="primary" />} label="ผิด" />
               <FormControlLabel className="radio-size" value='true' control={<Radio color="primary" />} label="ถูก" />
@@ -93,7 +93,7 @@ export default function Sections7_1() {
             <div className="col-12">
               <p>4. ปีนี้ปีอะไร</p>
             </div>
-            <div className="col-6">
+            <div className="col-12">
             <RadioGroup className="pl-20" aria-label='questions7.4' name='questions7.4' value={ans7_4} onChange={(e)=>setAns7_4(e.target.value)}>
               <FormControlLabel className="radio-size" value='false'  control={<Radio color="primary" />} label="ผิด" />
               <FormControlLabel className="radio-size" value='true' control={<Radio color="primary" />} label="ถูก" />
@@ -153,7 +153,7 @@ export default function Sections7_1() {
             <div className="col-12">
               <p>7. วันเดือนปีเกิดของท่านคือ</p>
             </div>
-            <div className="col-6">
+            <div className="col-12">
             <RadioGroup className="pl-20" aria-label='questions7.7' name='questions7.7' value={ans7_7} onChange={(e)=>setAns7_7(e.target.value)}>
               <FormControlLabel className="radio-size" value='false'  control={<Radio color="primary" />} label="ผิด" />
               <FormControlLabel className="radio-size" value='true' control={<Radio color="primary" />} label="ถูก" />

@@ -42,8 +42,8 @@ class VerifyIdentity extends Component {
               >
                 ยกเลิก
               </Button>
-              <Button 
-              onClick={()=>this.props.history.push("/resetpassword")}
+              <Button
+              onClick={()=>this.props.history.push("/reset-password")}
               size="lg" className="bt-verify mx-auto d-block">
                 ยืนยัน
               </Button>

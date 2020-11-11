@@ -1,4 +1,4 @@
-import sec5_1 from "./Sections5_1";
+import sec5 from "./Sections5";
 
 
-export { sec5_1};
+export { sec5};
