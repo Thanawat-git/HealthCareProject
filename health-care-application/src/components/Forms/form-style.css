@@ -38,7 +38,7 @@
 } */
 
 .form-btn {
-    margin: 0 30px;
+    margin: 0 45px;
 }
 .css-form .btn-back {
     background-color: #99CCFF;
@@ -89,6 +89,10 @@
     }
     .date p {
         padding-top: 10px
+    }
+
+    .form-btn {
+        margin: 0 15px;
     }
 }
 
