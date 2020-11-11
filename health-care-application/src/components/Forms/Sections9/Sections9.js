@@ -175,7 +175,6 @@ export default function Sections9() {
                 <div className="question">
                     <div className="each-question">
                         <p>Time Up & Go</p>
-                        
                         <div className="form-check form-check-inline">
                             <div>
                             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
@@ -189,7 +188,6 @@ export default function Sections9() {
                                   />
                                 </FormControl>
                             </div>
-
                             <div>
                                 <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                                   <OutlinedInput
@@ -202,7 +200,6 @@ export default function Sections9() {
                                   />
                                 </FormControl>
                             </div>
-
                         </div> 
 
                         <p>เสี่ยงต่อการพลัดตกหกล้มสูงจากการตรวจ Time Up & Go</p>
