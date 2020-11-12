@@ -1,7 +1,21 @@
 import React, {useState} from 'react'
 import { RadioGroup, Radio, FormControlLabel, Checkbox } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import '../form-style.css'
 import './Sections9.css'
+
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  textField: {
+    width: '15ch',
+    height: '8ch'
+  },
+}));
 
 export default function Sections9() {
 
@@ -23,6 +37,12 @@ export default function Sections9() {
     const [ans3, setAns3] = useState()
     const [ans4, setAns4] = useState()
     const [ans5, setAns5] = useState()
+
+    const classes = useStyles();
+
+    // const handleChange = (prop) => (event) => {
+    //   setValues({ ...values, [prop]: event.target.value });
+    // };
 
     return (
       <div className="css-form">
@@ -154,26 +174,32 @@ export default function Sections9() {
         <h4>ประเมินสมรรถภาพทางกาย</h4>
                 <div className="question">
                     <div className="each-question">
-
+                        <p>Time Up & Go</p>
                         <div className="form-check form-check-inline">
-                            <div className="col-3 col-sm-3 col-md-4 col-lg-4">
-                                <p>Time Up & Go</p>
+                            <div>
+                            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                                  <OutlinedInput
+                                    // value={values.min}
+                                    // onChange={handleChange('min')}
+                                    endAdornment={<InputAdornment position="end">นาที</InputAdornment>}
+                                    aria-describedby="outlined-weight-helper-text"
+                                    // inputProps={{ 'aria-label': 'min', }}
+                                    // labelWidth={0}
+                                  />
+                                </FormControl>
                             </div>
-
-                            <div className="col-2 col-sm-2 col-md-2 col-lg-2">
-                                <input type="text" name="min" className="form-control" />
+                            <div>
+                                <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                                  <OutlinedInput
+                                    // value={values.sec}
+                                    // onChange={handleChange('sec')}
+                                    endAdornment={<InputAdornment position="end">วินาที</InputAdornment>}
+                                    aria-describedby="outlined-weight-helper-text"
+                                    // inputProps={{ 'aria-label': 'sec', }}
+                                    // labelWidth={0}
+                                  />
+                                </FormControl>
                             </div>
-                            <div className="col-2 col-sm-2 col-md-2 col-lg-2">
-                                <p htmlFor="min">นาที</p>
-                            </div>
-
-                            <div className="col-2 col-sm-2 col-md-2 col-lg-2">
-                                <input type="text" name="sec" className="form-control" />
-                            </div>
-                            <div className="col-3 col-sm-3 col-md-2 col-lg-2">
-                                <p htmlFor="sec">วินาที</p>
-                            </div>
-
                         </div> 
 
                         <p>เสี่ยงต่อการพลัดตกหกล้มสูงจากการตรวจ Time Up & Go</p>
