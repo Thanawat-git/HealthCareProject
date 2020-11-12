@@ -4,6 +4,7 @@ import '../form-style.css'
 import '../../genaralConfig.css'
 import { OutlinedInput, InputAdornment, TextField } from "@material-ui/core";
 import ShowResultPopup from '../ResuleShowsPopUp'
+import { Link } from 'react-router-dom';
 
 export default function Sections2_1() {
   const [waist, setWaist] = useState();
@@ -219,9 +220,11 @@ export default function Sections2_1() {
         </div>
 
         <div className="row justify-content-between">
+          <Link to="/mainmenu">
           <button type="button" class="btn form-btn btn-back btn-lg">
             ยกเลิก
           </button>
+          </Link>
           <button type="button" class="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
             บันทึก
           </button>
@@ -234,7 +237,6 @@ export default function Sections2_1() {
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}
-          // onHide={showResule}  
         />
     </div>
   );

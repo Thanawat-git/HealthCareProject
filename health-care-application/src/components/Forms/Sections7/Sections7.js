@@ -3,6 +3,8 @@ import { RadioGroup, Radio, FormControlLabel, TextField } from '@material-ui/cor
 import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections7.css'
+import ShowResultPopup from '../ResuleShowsPopUp'
+import { Link } from 'react-router-dom';
 
 export default function Sections7_1() {
 
@@ -16,6 +18,13 @@ export default function Sections7_1() {
   const [ans7_8, setAns7_8] = useState()
   const [ans7_9, setAns7_9] = useState()
   const [ans7_10, setAns7_10] = useState()
+
+  const [show, setShow] = useState(false);
+
+  const resultArray = [
+    // {title: 'แปลผลเส้นรอบเอว', result: waist},
+    // {title: 'แปลผลค่า BMI', result: bmi}
+  ]
 
   // const qusetions = ["อายุเท่าไร", "ขณะนี้เวลาอะไร", "ที่อยู่ปัจจุบันของท่านคือ", 
   // "ปีนี้ปีอะไร", "สถานที่ตรงนี้เรียกว่าอะไร", "คนนี้คือใคร (ชี้คนสัมภาษณ์) และ"
@@ -237,10 +246,24 @@ export default function Sections7_1() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
-          <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+          <Link to="/mainmenu">
+          <button type="button" class="btn form-btn btn-back btn-lg">
+            ยกเลิก
+          </button>
+          </Link>
+          <button type="button" class="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
+            บันทึก
+          </button>
         </div>
       </form>
+      <ShowResultPopup
+          title='ผลส่วนที่ 7' 
+          dataShow={resultArray}
+          show={show}
+          onHide={()=>setShow(false)}
+          backdrop="static"
+          keyboard={false}
+        />
     </div>
   );
 }

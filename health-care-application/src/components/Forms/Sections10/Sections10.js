@@ -7,7 +7,7 @@ class Sections3 extends Component {
       <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <div className="box-form">
-      <form>
+      <form className="shadow-lg p-3 mb-5 bg-white rounded" >
         <h2>ส่วนที่ 10 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h2> 
         <div className="question">
           <p>ปัสสาวะเล็ดหรือราดทำให้การใช้ชีวิตประจำวันของผู้สูงอายุมีปัญหาหรือไม่</p>

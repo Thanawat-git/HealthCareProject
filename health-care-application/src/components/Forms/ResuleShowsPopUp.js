@@ -1,9 +1,17 @@
 import React from 'react'
 import { Modal, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+});
 
 export default function ResuleShowsPopUp(props) {
     const resultArray = props.dataShow
-
+    const classes = useStyles();
   return (
         <Modal
         {...props}
@@ -29,7 +37,11 @@ export default function ResuleShowsPopUp(props) {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="primary">Save changes</Button>
+              <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block>
+                  บันทึก
+                </Button>
+              </Link>
           </Modal.Footer>
         </Modal>
   )

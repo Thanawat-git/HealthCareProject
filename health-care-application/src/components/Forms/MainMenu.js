@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 
 export default function MainMenu() {
     const classes = useStyles();
-    const preventDefault = (event) => event.preventDefault();
     return (
         <React.Fragment>
             <div className="row ">
@@ -42,7 +41,7 @@ export default function MainMenu() {
                     ส่วนที่ 5 การประเมินสุขภาพช่องปาก
                 </Link><br/> <hr/>
                 <Link to="/sec6">
-                    ส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ
+                    ส่วนที่ 6 การประเมินความสามารถในการทำกิจวัตรประจำ
                 </Link><br/> <hr/>
                 <Link to="/sec7">
                     ส่วนที่ 7 การประเมินภาวะสมองเสื่อม
@@ -54,7 +53,7 @@ export default function MainMenu() {
                     ส่วนที่ 9 สุขภาพกระดูกและกล้ามเนื้อ
                 </Link><br/> <hr/>
                 <Link to="/sec10">
-                    ส่วนที่ 10 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
+                    ส่วนที่ 10 -----
                 </Link>
                 
                 </CardContent>

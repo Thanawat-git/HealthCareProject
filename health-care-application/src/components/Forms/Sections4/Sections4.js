@@ -3,6 +3,8 @@ import { RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
 import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections4.css'
+import ShowResultPopup from '../ResuleShowsPopUp'
+import { Link } from 'react-router-dom';
 
 export default function Sections4_1() {
   
@@ -11,6 +13,13 @@ export default function Sections4_1() {
   const [ans4_3, setAns4_3] = useState()
   const [ans4_4, setAns4_4] = useState()
   const [ans4_5, setAns4_5] = useState()
+
+  const [show, setShow] = useState(false);
+
+  const resultArray = [
+    // {title: 'แปลผลเส้นรอบเอว', result: waist},
+    // {title: 'แปลผลค่า BMI', result: bmi}
+  ]
 
   return (
     <div className="css-form">
@@ -56,14 +65,26 @@ export default function Sections4_1() {
           </RadioGroup>
           <hr/>
 
-          <p>แปลผล:</p>
-
       </div>
       <div className="row justify-content-between">
-        <button type="button" class="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
-        <button type="button" class="btn form-btn btn-primary btn-lg">ถัดไป</button>
-      </div>
-    </form>
+          <Link to="/mainmenu">
+          <button type="button" class="btn form-btn btn-back btn-lg">
+            ยกเลิก
+          </button>
+          </Link>
+          <button type="button" class="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
+            บันทึก
+          </button>
+        </div>
+      </form>
+      <ShowResultPopup
+          title='ผลส่วนที่ 4' 
+          dataShow={resultArray}
+          show={show}
+          onHide={()=>setShow(false)}
+          backdrop="static"
+          keyboard={false}
+        />
   </div>
   );
 }
