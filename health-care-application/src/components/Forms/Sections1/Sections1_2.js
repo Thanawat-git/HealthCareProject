@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../form-style.css'
 import './Sections1.css'
 import { TextField, InputLabel, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 function AddressInfo(porps) {
   const titleInfo = ['เลขที่', 'ตรอก/ซอย', 'ถนน', 'ตำบล', 'ชุมชน']
@@ -75,8 +76,12 @@ export default function Sections1_2() {
 
           {/* bt */}
           <div className="row justify-content-between">
+            <Link to="/sec1-page1">
             <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
+            </Link>
+            <Link to="/sec1-page3">
             <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+            </Link>
           </div>
         </form>
       </div>

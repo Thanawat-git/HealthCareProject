@@ -17,7 +17,7 @@ import FollowUp from "./components/admin-medical/followUp/followUp";
 
 import mainMenu from './components/Forms/MainMenu'
 
-import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_5, sec1_6, sec1_7, sec1_8, sec1_9} from './components/Forms/Sections1/index';
+import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_8, sec1_9} from './components/Forms/Sections1/index';
 import {sec2} from "./components/Forms/Sections2/index";
 import {sec3} from "./components/Forms/Sections3/index";
 import {sec4} from "./components/Forms/Sections4/index";
@@ -49,9 +49,6 @@ export default class App extends Component {
           <Route path="/sec1-page2" component={sec1_2} />
           <Route path="/sec1-page3" component={sec1_3} />
           <Route path="/sec1-page4" component={sec1_4} />
-          <Route path="/sec1-page5" component={sec1_5} />
-          <Route path="/sec1-page6" component={sec1_6} />
-          <Route path="/sec1-page7" component={sec1_7} />
           <Route path="/sec1-page8" component={sec1_8} />
           <Route path="/sec1-page9" component={sec1_9} />
 

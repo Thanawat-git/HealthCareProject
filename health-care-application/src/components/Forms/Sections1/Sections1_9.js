@@ -4,6 +4,7 @@ import "./Sections1.css";
 import DatePicker from 'react-date-picker';
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Link } from "react-router-dom";
 
 export default function Sections1_9() {
   const [value, onChange] = useState(new Date());
@@ -84,10 +85,13 @@ export default function Sections1_9() {
         </div>
 
         {/* bt */}
-        <div className="row justify-content-center">
-          <button type="button" className="btn form-btn btn-primary btn-lg">
-            บันทึก
-          </button>
+        <div className="row justify-content-between">
+          <Link to="/sec1-page8">
+            <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
+          </Link>
+          <Link to="/mainmenu">
+            <button type="button" className="btn form-btn btn-primary btn-lg">สำเร็จ</button>
+          </Link>
         </div>
       </form>
     </div>

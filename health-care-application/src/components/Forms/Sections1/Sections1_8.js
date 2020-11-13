@@ -3,6 +3,7 @@ import '../../genaralConfig.css'
 import '../form-style.css'
 import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default function Sections1_8() {
 
@@ -48,8 +49,12 @@ export default function Sections1_8() {
   
             {/* bt */}
             <div className="row justify-content-between">
-              <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
-              <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+            <Link to="/sec1-page4">
+            <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
+            </Link>
+            <Link to="/sec1-page9">
+            <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+            </Link>
             </div>
           </form>
         </div>

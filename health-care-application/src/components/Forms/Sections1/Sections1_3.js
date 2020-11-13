@@ -3,6 +3,7 @@ import '../../genaralConfig.css'
 import '../form-style.css'
 import './Sections1.css'
 import { TextField, InputLabel, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 function Neighbor1(props) {
   const [gender1, setGender1] = useState('')
@@ -129,8 +130,12 @@ export default function Sections1_3() {
   
             {/* bt */}
             <div className="row justify-content-between">
-              <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
-              <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+            <Link to="/sec1-page2">
+            <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
+            </Link>
+            <Link to="/sec1-page4">
+            <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+            </Link>
             </div>
           </form>
         </div>
