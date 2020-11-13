@@ -169,10 +169,10 @@ export default function Sections1_4() {
            {/* bt */}
            <div className="row justify-content-between">
             <Link to="/sec1-page3">
-            <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
+             <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
             </Link>
             <Link to="/sec1-page8">
-            <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+              <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
             </Link>
            </div>
          </form>

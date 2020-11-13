@@ -33,7 +33,6 @@ export default function MyDatePicker(props) {
     // console.log(mon)
   };
 
-  // (yea != ' ' && yea != undefined) && (mon != ' ' && mon != undefined)
   const getday = () => {
     console.log(yea);
     console.log(mon);
