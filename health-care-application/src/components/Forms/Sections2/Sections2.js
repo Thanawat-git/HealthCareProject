@@ -7,10 +7,11 @@ import ShowResultPopup from '../ResuleShowsPopUp'
 import { Link } from 'react-router-dom';
 
 export default function Sections2_1() {
+  const [elderlyGender, setElderlyGender] = useState('Male');
   const [waist, setWaist] = useState();
-  const [weight, setWeight] = useState(0);
-  const [high, setHigh] = useState(0);
-  const [bmi, setBmi] = useState(0);
+  const [weight, setWeight] = useState();
+  const [high, setHigh] = useState();
+  const [bmi, setBmi] = useState();
   const [pulse, setPulse] = useState();
   const [bloodPressure1, setBloodPressure1] = useState();
   const [bloodPressure2, setBloodPressure2] = useState();
@@ -18,25 +19,62 @@ export default function Sections2_1() {
 
   const [show, setShow] = useState(false);
 
-  const resultArray = [
-    {title: 'แปลผลเส้นรอบเอว', result: waist},
-    {title: 'แปลผลค่า BMI', result: bmi}
-  ]
+  // result State
+  const [waistR, setWaistR] = useState()
+  const [BMIR, setBMIR] = useState('')
+  const [BPR, setBPR] = useState()
+  const [sugarR, setSugarR] = useState()
   
-  const culBMI = ()=>{
-    // var w = weight
-    // var h = high
-    // var b = (w/((h/100)*2)).toFixed(2)
-    // setBmi(b)
-    setBmi((weight/((high/100)*2)).toFixed(2))
-    // console.log(weight)
-    // console.log(high)
-    // console.log(bmi)
+  // cul waist
+  const culWaist = ()=>{
+    if(elderlyGender=='Male'){
+      waist <=90 ? setWaistR('ปกติ'):setWaistR('อ้วนลงพุง')
+    } else {
+      waist <=80 ? setWaistR('ปกติ'):setWaistR('อ้วนลงพุง')
+    }
   }
 
+  const culBloodPressure = ()=>{
+    if(bloodPressure1<=139 && bloodPressure2<=89){
+      setBPR('ปรับพฤติกรรม')
+    } else if (139<bloodPressure1<=179 && 89<bloodPressure2<=109){
+      setBPR('วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน')
+    } else {
+      setBPR('ส่งพบผู้เชี่ยวชาญทันที')
+    }
+  }
+
+  const culSugar = ()=>{
+    if (sugar<=125){
+      setSugarR('ตรวจซ้ำภายใน 1 เดือน')
+    } else {
+      setSugarR('ตรวจซ้ำ DTX ภายใน 2 สัปดาห์')
+    }
+  }
+  // เอาไว้ก่อน ยังแก้ไม่ได้
+  var r = 0
+  const culBMI = ()=>{
+    if (r<20){
+      setBMIR('ผอม')
+    } else {
+      setBMIR('ปกติ')
+    }
+    console.log(BMIR)
+
+  }
+
+  const handleWeight = (event)=>{setWeight(event.target.value)}
+  const handleHigh = (event)=>{setHigh(event.target.value)}
+  const resultArray = [
+    {title: 'แปลผลเส้นรอบเอว', result: waistR},
+    {title: 'แปลผลค่า BMI', result: bmi},
+    {title: 'แปลผลความดันโลหิต', result: BPR},
+    {title: 'แปลผลการตรวจระดับน้ำตาล', result: sugarR}
+
+  ]
   return (
     <div className="css-form">
-      <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
+      {/* <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1> */}
       <form className="shadow-lg p-3 mb-5 bg-white rounded" >
         <h2>ส่วนที่ 2 แบบคัดกรองสภาวะสุขภาพ</h2>
         <div className="question">
@@ -53,6 +91,7 @@ export default function Sections2_1() {
                 value={waist}
                 onChange={(e) => {
                   setWaist(e.target.value);
+                  culWaist()
                 }}
                 endAdornment={
                   <InputAdornment position="end">ซม.</InputAdornment>
@@ -60,11 +99,6 @@ export default function Sections2_1() {
                 fullWidth
               />
             </div>
-            {/* <div className="col-12">
-              <p>
-                <strong>ผลการประเมิน : </strong>
-              </p>
-            </div> */}
           </div>
           {/* row-1 */}
           <hr />
@@ -82,10 +116,10 @@ export default function Sections2_1() {
               <OutlinedInput
                 id="weight"
                 value={weight}
-                onChange={(e) => {
-                  setWeight(e.target.value);
-                  culBMI()
-                }}
+                onChange={
+                  handleWeight
+                  // culBMI()
+                }
                 endAdornment={
                   <InputAdornment position="end">กก.</InputAdornment>
                 }
@@ -100,10 +134,11 @@ export default function Sections2_1() {
               <OutlinedInput
                 id="high"
                 value={high}
-                onChange={(e) => {
-                  setHigh(e.target.value);
-                  culBMI()
-                }}
+                onChange={
+                  handleHigh
+                  // culBMI()
+                  // setBmi(r)
+                }
                 endAdornment={
                   <InputAdornment position="end">ซม.</InputAdornment>
                 }
@@ -114,10 +149,7 @@ export default function Sections2_1() {
             {/* col */}
             <div className="col-12 txt-center">
               <p>ดัชนีมวลการ(BMI)</p>
-              {/* <small> {weight} </small>
-              <small> {(high/100)*2} </small>
-              <small> {weight/((high/100)*2)} </small> */}
-              <h1 className="display-1 text-black-50"> {(weight/((high/100)*2)).toFixed(2)} </h1>
+              <h1 className="display-1 text-black-50"> {r = (weight/((high/100)*2)).toFixed(2)} </h1>
               <h1 className="display-1 text-black-50"> {bmi} </h1>
 <br/>
             </div>
@@ -146,6 +178,7 @@ export default function Sections2_1() {
                 value={bloodPressure1}
                 onChange={(e) => {
                   setBloodPressure1(e.target.value);
+                  culBloodPressure()
                 }}
                 fullWidth
               />
@@ -156,6 +189,7 @@ export default function Sections2_1() {
                 value={bloodPressure2}
                 onChange={(e) => {
                   setBloodPressure2(e.target.value);
+                  culBloodPressure()
                 }}
                 endAdornment={
                   <InputAdornment position="end">มม.ปรอท</InputAdornment>
@@ -202,6 +236,7 @@ export default function Sections2_1() {
                 value={sugar}
                 onChange={(e) => {
                   setSugar(e.target.value);
+                  culSugar()
                 }}
                 endAdornment={
                   <InputAdornment position="end">มก./ดล.</InputAdornment>
@@ -221,11 +256,11 @@ export default function Sections2_1() {
 
         <div className="row justify-content-between">
           <Link to="/mainmenu">
-          <button type="button" class="btn form-btn btn-back btn-lg">
+          <button type="button" className="btn form-btn btn-back btn-lg">
             ยกเลิก
           </button>
           </Link>
-          <button type="button" class="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
+          <button type="button" className="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
             บันทึก
           </button>
         </div>
