@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from 'react'
 import "../form-style.css";
 import "./Sections1.css";
 // import DatePicker from 'react-date-picker';
@@ -199,6 +199,27 @@ function Sections1_1(props) {
     // console.log(`Age = ${Age}`)
   }
 
+  // const xxx = [
+  //   {key:'1', value: 'test'}
+  // ]
+
+  useEffect(() => {
+    var i=0
+    for(const [key, value] of Object.entries(props.elderlyInfos)){
+      console.log(`${key}: ${value}`);
+      console.log(value)
+      // console.log(value[0].id)
+        for(const [key1, value1] of Object.entries(value)){
+            // if(value1!=''){
+            //     setI8('green')
+            // } else {setI8('')}
+            console.log(`in ${key1}: ${value1.peopleID}`);
+        }
+        i++;
+    }
+    
+  }, []);
+
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -309,7 +330,7 @@ function Sections1_1(props) {
                 <small>
                   {" "}
                   หากไม่ทราบ เดือน หรือวัน ให้เลือกเป็น "วันที่ 1 เดือน มกราคม" 
-                  {props.elderlyInfos.map((elderlyInfo)=> elderlyInfo.Age )}
+                  {/* {props.elderlyInfos.map((elderlyInfo)=> elderlyInfo.Age )} */}
                 </small>
               </InputLabel>
             </div>
@@ -395,7 +416,7 @@ function Sections1_1(props) {
         </div>
       </form>
       <p> type:  { typeof props.elderlyInfos} </p>
-      <p> ELD_IDN_ADDR_NUMBER:  {props.elderlyInfos.map((elderlyInfo)=> `${elderlyInfo.ELD_IDN_ADDR_NUMBER} to ` )} </p>
+      {/* <p> ELD_IDN_ADDR_NUMBER:  {props.elderlyInfos.map((elderlyInfo)=> `${elderlyInfo.ELD_IDN_ADDR_NUMBER} to ` )} </p> */}
       {/* {props.elderlyInfos.map((elderlyInfo)=> <ShowState key={elderlyInfo.id} Info={elderlyInfo} /> )} */}
       {/* {
         console.log('state'),

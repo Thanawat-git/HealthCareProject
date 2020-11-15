@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import {Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles({
     root: {
@@ -20,7 +21,8 @@ const useStyles = makeStyles({
     },
 });
 
-export default function MainMenu() {
+function MainMenu(props) {
+    const i = 0;
     const classes = useStyles();
     const [i1, setI1] = useState('')
     const [i2, setI2] = useState('')
@@ -31,6 +33,20 @@ export default function MainMenu() {
     const [i7, setI7] = useState('')
     const [i8, setI8] = useState('')
     const [i9, setI9] = useState('')
+
+    useEffect(() => {
+        // props.elderlyInfos.map((elderlyInfo)=> {}
+        for(const [key, value] of Object.entries(props.elderlyInfos)){
+            for(const [key1, value1] of Object.entries(value)){
+                if(value1!=''){
+                    setI8('green')
+                } else {setI8('')}
+                console.log(`${key1}: ${value1}`);
+            }
+        }
+        
+    }, []);
+
     const useStyles2 = makeStyles({
         i1: {
             color:i1
@@ -61,6 +77,8 @@ export default function MainMenu() {
         },
     });
     const colorIcon = useStyles2();
+
+
 
     return (
         <React.Fragment>
@@ -159,3 +177,10 @@ export default function MainMenu() {
         </React.Fragment>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        elderlyInfos: state
+    }
+}
+
+export default connect(mapStateToProps)(MainMenu);

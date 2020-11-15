@@ -8,6 +8,7 @@ import elderlyReducer from './Reducers/elderlyReducer'
 import { Provider } from 'react-redux'
 
 const store = createStore(elderlyReducer);
+console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store} >

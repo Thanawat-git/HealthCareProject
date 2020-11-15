@@ -3,13 +3,26 @@ import { RadioGroup, Radio, FormControlLabel, TextField } from '@material-ui/cor
 import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections8.css'
+import { Link } from 'react-router-dom';
+import { ADD_NEW_ELDERLY } from '../../../Reducers/Actions/actionsType'
+import { connect } from 'react-redux'
 
-export default function Sections8_1() {
+function Sections8_1(props) {
 
-  const [ans8_1, setAns8_1] = useState()
-  const [ans8_2, setAns8_2] = useState()
+  const [ans8_1, setAns8_1] = useState('')
+  const [ans8_2, setAns8_2] = useState('')
 
   // const qusetions = ["ผู้สูงอายุรู้สึกหดหู่ เศร้า หรือท้อแท้สิ้นหวัง", "ผู้สูงอายุรู้สึกทำอะไรก็ไม่เพลิดเพลิน"]
+  const handelSubmit = ()=>{
+    const data = {
+      ans8_1,
+      ans8_2
+    }
+    props.dispatch({
+      type: ADD_NEW_ELDERLY,
+      data
+    })
+  }
 
   return (
     <div className="css-form">
@@ -52,9 +65,12 @@ export default function Sections8_1() {
         {/* bt */}
         <div className="row justify-content-between">
           <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
-          <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+          <Link to="/mainmenu">
+            <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handelSubmit} >ถัดไป</button>
+          </Link>
         </div>
       </form>
     </div>
   );
 }
+export default connect()(Sections8_1);
