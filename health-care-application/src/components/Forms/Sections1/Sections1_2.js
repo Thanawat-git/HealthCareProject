@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../form-style.css'
 import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { ADD_NEW_ELDERLY } from '../../../Reducers/Actions/actionsType'
+import { ADD_NEW_ELDERLY_ADDRESS } from '../../../Reducers/Actions/actionsType'
 import { connect } from 'react-redux'
 
 function Sections1_2(props) {
@@ -27,12 +27,23 @@ function Sections1_2(props) {
     const [curSubDistrict, setCurSubDistrict] = useState('') // ตำบล
     const [curArea, setCurArea] = useState('') // ชุมชน
 
-    const handelClick = (e)=>{
-      e.preventDefault()
-      console.log(homeNumber)
-    }
+    const [PID, setPID] = useState('')
+    useEffect(() => {
+      for(const [key, value] of Object.entries(props.elderlyInfos)){
+        console.log(`${key}: ${value}`);
+        if(key==='ELD_BASIC_INFO'){
+          for(const [key1, value1] of Object.entries(value)){
+            setPID(value1.peopleID)
+            console.log(`in ${key1}: ${value1.peopleID}`);
+            // console.log(PID)
+          }
+        }
+      }
+      
+    }, []);
 
     const handelSubmit = (e)=>{
+      // console.log('PID in Submit '+PID)
       const ELD_IDN_ADDR_NUMBER = homeNumber;
       const ELD_IDN_ADDR_LANE = alley;
       const ELD_IDN_ADDR_STREET = street;
@@ -43,7 +54,7 @@ function Sections1_2(props) {
       const ELD_CUR_ADDR_STREET = curStreet;
       const ELD_CUR_ADDR_SUB_DISTRICT = curSubDistrict;
       const ELD_CUR_ADDR_VILLAGE = curArea;
-      const ELD_ID_NUMBER = 0;
+      const ELD_ID_NUMBER = PID;
 
       const data = {
         ELD_ID_NUMBER,
@@ -59,7 +70,7 @@ function Sections1_2(props) {
         ELD_CUR_ADDR_VILLAGE
       }
       props.dispatch({
-        type: ADD_NEW_ELDERLY,
+        type: ADD_NEW_ELDERLY_ADDRESS,
         data
       })
 
@@ -152,5 +163,9 @@ function Sections1_2(props) {
       </div>
     );
 }
-
-export default connect()(Sections1_2);
+const mapStateToProps = (state) => {
+  return {
+      elderlyInfos: state
+  }
+}
+export default connect(mapStateToProps)(Sections1_2);

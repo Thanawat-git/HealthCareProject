@@ -203,8 +203,8 @@ function Sections1_1(props) {
   //   {key:'1', value: 'test'}
   // ]
 
+  // DEBUG
   useEffect(() => {
-    var i=0
     for(const [key, value] of Object.entries(props.elderlyInfos)){
       console.log(`${key}: ${value}`);
       console.log(value)
@@ -215,9 +215,7 @@ function Sections1_1(props) {
             // } else {setI8('')}
             console.log(`in ${key1}: ${value1.peopleID}`);
         }
-        i++;
     }
-    
   }, []);
 
   return (

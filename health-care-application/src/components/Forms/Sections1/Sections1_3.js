@@ -25,6 +25,8 @@ function Neighbor1(props) {
         break;
     }
   };
+
+  
   return (
     <React.Fragment>
       <h4>ญาติคนที่ {props.no}</h4>

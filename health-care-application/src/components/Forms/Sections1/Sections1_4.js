@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../genaralConfig.css'
 import '../form-style.css'
 import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { ADD_NEW_ELDERLY_DATA } from '../../../Reducers/Actions/actionsType'
 
-
-export default function Sections1_4() {
-  
+function Sections1_4(props) {
     const [elderlyStatus, setElderlyStatus] = useState('')
     const [elderlyBeing, setElderlyBeing] = useState('')
     const [elderlyBeingDetail, setElderlyBeingDetail] = useState('')
@@ -26,7 +26,49 @@ export default function Sections1_4() {
     const handleChange5 = (event) => {setCareers(event.target.value);};
     const handleChange6 = (event) => {setTreatment(event.target.value);};
     const handleChange7 = (event) => {setSalary(event.target.value);};
+    
+    const [PID, setPID] = useState('')
+    useEffect(() => {
+      for(const [key, value] of Object.entries(props.elderlyInfos)){
+        // console.log(`${key}: ${value}`);
+        if(key==='ELD_BASIC_INFO'){
+          for(const [key1, value1] of Object.entries(value)){
+            setPID(value1.peopleID)
+            // console.log(`in ${key1}: ${value1.peopleID}`);
+            // console.log(PID)
+          }
+        }
+      }
+      
+    }, []);
+    const handelSubmit = (e)=>{
+      const ELD_ID_NUMBER = PID;
+      const ELD_STATUS = elderlyStatus;
+      const ELD_LIVELIHOOD = elderlyBeing;
+      const ELD_RELIGION = religion;
+      const ELD_EDUCATION = educations;
+      const ELD_JOB = careers;
+      const ELD_TREATMENT = treatment;
+      const ELD_INCOME = salary;
 
+      const data = {
+        ELD_ID_NUMBER,
+        ELD_STATUS,
+        ELD_LIVELIHOOD,
+        ELD_RELIGION,
+        ELD_EDUCATION,
+        ELD_JOB,
+        ELD_TREATMENT,
+        ELD_INCOME
+      }
+
+      props.dispatch({
+        type: ADD_NEW_ELDERLY_DATA,
+        data
+      })
+
+    }
+    
     return (
     <div className="css-form">
         <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -172,10 +214,18 @@ export default function Sections1_4() {
              <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
             </Link>
             <Link to="/sec1-page8">
-              <button type="button" className="btn form-btn btn-primary btn-lg">ถัดไป</button>
+              <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handelSubmit} >ถัดไป</button>
             </Link>
            </div>
          </form>
     </div>
     );
 }
+
+const mapStateToProps = (state) => {
+  return {
+      elderlyInfos: state
+  }
+}
+
+export default connect(mapStateToProps)(Sections1_4);
