@@ -15,19 +15,21 @@ import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
 
+
 import mainMenu from './components/Forms/MainMenu'
 
 import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_8, sec1_9} from './components/Forms/Sections1';
 import {sec2} from "./components/Forms/Sections2";
 import {sec3} from "./components/Forms/Sections3";
 import {sec4} from "./components/Forms/Sections4";
-
 import {sec5} from "./components/Forms/Sections5";
 import {sec6} from "./components/Forms/Sections6";
 import {sec7} from "./components/Forms/Sections7";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8";
 import {sec9} from "./components/Forms/Sections9";
 import {sec10} from "./components/Forms/Sections10";
+
+// import ShowState from './ShowState'
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -37,7 +39,7 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          
+          {/* <Route path='/showstate' component={ShowState} /> */}
 
           {/* Form */}
           {/* <Route path="/form">

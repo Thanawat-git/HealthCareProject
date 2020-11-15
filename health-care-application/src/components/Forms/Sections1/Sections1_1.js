@@ -12,14 +12,17 @@ import {
 import Autocomplete from "@material-ui/lab/Autocomplete";
 // import MyDatePicker from "../MyDatePicker";
 import { Link } from "react-router-dom";
+import { ADD_NEW_ELDERLY } from '../../../Reducers/Actions/actionsType'
+import { connect } from 'react-redux'
+import ShowState from '../../../ShowState'
 
-export default function Sections1_1() {
+function Sections1_1(props) {
 
-  const [PID, setPID] = useState()
-  const [firstname, setFirstname] = useState()
-  const [lastanme, setLastname] = useState()
-  const [elderlyGender, setElderlyGender] = useState()
-  const [nickname, setNickname] = useState()
+  const [PID, setPID] = useState('')
+  const [firstname, setFirstname] = useState('')
+  const [lastanme, setLastname] = useState('')
+  const [elderlyGender, setElderlyGender] = useState('')
+  const [nickname, setNickname] = useState('')
 
   const handleChange = (event) => {setElderlyGender(event.target.value);};
 
@@ -32,9 +35,9 @@ export default function Sections1_1() {
   const [days, setDays] = useState([]);
   const [cy, setCY] = useState(true);
 
-  const [yea, setYea] = useState();
-  const [mon, setMon] = useState();
-  const [day, setDay] = useState();
+  const [yea, setYea] = useState(0);
+  const [mon, setMon] = useState('');
+  const [day, setDay] = useState(0);
 
   const [cd, setCD] = useState(true);
 
@@ -60,29 +63,29 @@ export default function Sections1_1() {
   };
 
   const getday = () => {
-    console.log(yea);
-    console.log(mon);
+    // console.log(yea);
+    // console.log(mon);
     // console.log(a)
     if (mon != undefined) {
-      console.log(2);
-      console.log(typeof mon);
-      console.log(mon);
+      // console.log(2);
+      // console.log(typeof mon);
+      // console.log(mon);
       if (mon === "กุมภาพันธ์") {
         console.log(5);
         if (yea === undefined) {
-          console.log(3);
+          // console.log(3);
           loopDays(28);
         } else {
-          console.log(4);
+          // console.log(4);
           var a = parseInt(yea) - 543;
           if (
             (a % 4 == 0 && a % 100 != 0) ||
             (a % 4 == 0 && a % 100 == 0 && a % 400 == 0)
           ) {
-            console.log(5.1);
+            // console.log(5.1);
             loopDays(29);
           } else {
-            console.log(5.2);
+            // console.log(5.2);
             loopDays(28);
           }
         }
@@ -92,11 +95,11 @@ export default function Sections1_1() {
         mon === "กันยายน" ||
         mon === "พฤศจิกายน"
       ) {
-        console.log(6);
+        // console.log(6);
         // setDays([])
         loopDays(30);
       } else {
-        console.log(7);
+        // console.log(7);
         loopDays(31);
       }
     }
@@ -108,9 +111,9 @@ export default function Sections1_1() {
     const countDay = (s) => {
       return s + 1;
     };
-    console.log(`mon ${mon}`);
-    console.log(`d ${d}`);
-    console.log(`length day ${days.length}`);
+    // console.log(`mon ${mon}`);
+    // console.log(`d ${d}`);
+    // console.log(`length day ${days.length}`);
     // days.length!=d || days === undefined ? setCD(true) : setCD(false)
     if (days.length != d || days === undefined || days.length / 2 != d) {
       setCD(true);
@@ -129,9 +132,13 @@ export default function Sections1_1() {
     }
   };
 
+  const [numMon, setNumMon] = useState(0)
   function handleInputMonthChange(event, value) {
     setMon(value)
-    
+    Months.map((m, index)=>{
+      if (value===m){setNumMon(index+1)}
+    })
+    // console.log(`numMon = ${numMon}`)
   }
   function handleInputYearChange(event, value) {
     setYea(value)
@@ -141,11 +148,61 @@ export default function Sections1_1() {
   }
 // DatePicker
 
+  const handelSubmit = (e)=>{
+    // e.preventDefault()
+    const peopleID = PID
+    const elderlyFristName = firstname
+    const elderlyLastName = lastanme
+    const elderlyNickName = nickname
+    const elderlyBirthday = `${day}-${numMon}-${yea}`
+    const id = new Date()
+
+    // cul Age
+    const nowDate = new Date();
+    const nowDay = nowDate.getDate();
+    const nowMonth = nowDate.getMonth()+1;
+    const nowYear = nowDate.getFullYear()+543;
+    // console.log(nowDay)
+    // console.log(nowMonth)
+    // console.log(nowYear)
+
+    // console.log( typeof day)
+    // console.log(numMon)
+    var Age = nowYear-parseInt(yea)
+    // console.log(parseInt(yea))
+    // setElderlyAge(Age)
+    if(numMon==nowMonth) {
+      parseInt(day)>=nowDay ? Age=Age : Age=Age-1
+    } else if(numMon>nowMonth) {
+      Age = Age-1
+    } else {
+      Age = Age
+    }
+
+    const data = {
+      id,
+      peopleID,
+      elderlyFristName,
+      elderlyLastName,
+      elderlyGender,
+      elderlyNickName,
+      elderlyBirthday,
+      Age
+    }
+
+    props.dispatch({
+      type: ADD_NEW_ELDERLY,
+      data
+    });
+    // console.log(data)
+    // console.log(typeof Age)
+    // console.log(`Age = ${Age}`)
+  }
 
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-      <form action="#" className="shadow p-3 mb-5 bg-white rounded">
+      <form onSubmit={handelSubmit} className="shadow p-3 mb-5 bg-white rounded">
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
         <div className="question">
           {/* content */}
@@ -160,7 +217,8 @@ export default function Sections1_1() {
             </div>
             <div className="col-12">
               <TextField
-                id=""
+                id="PID"
+                // name='PID'
                 label="รหัสบัตรประชาชน 13 หลัก"
                 variant="outlined"
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
@@ -250,7 +308,8 @@ export default function Sections1_1() {
                 <strong>วันเดือนปีเกิด</strong>
                 <small>
                   {" "}
-                  หากไม่ทราบ เดือน หรือวัน ให้เลือกเป็น "วันที่ 1 เดือน มกราคม"
+                  หากไม่ทราบ เดือน หรือวัน ให้เลือกเป็น "วันที่ 1 เดือน มกราคม" 
+                  {props.elderlyInfos.map((elderlyInfo)=> elderlyInfo.Age )}
                 </small>
               </InputLabel>
             </div>
@@ -328,16 +387,40 @@ export default function Sections1_1() {
               type="submit"
               value="Submit"
               className="btn form-btn btn-primary btn-lg"
-              onClick={handleClick}
+              onClick={handelSubmit}
             >
               ถัดไป
             </button>
           </Link>
         </div>
       </form>
+      <p> type:  { typeof props.elderlyInfos} </p>
+      <p> ELD_IDN_ADDR_NUMBER:  {props.elderlyInfos.map((elderlyInfo)=> `${elderlyInfo.ELD_IDN_ADDR_NUMBER} to ` )} </p>
+      {/* {props.elderlyInfos.map((elderlyInfo)=> <ShowState key={elderlyInfo.id} Info={elderlyInfo} /> )} */}
+      {/* {
+        console.log('state'),
+        props.elderlyInfos.map((re)=>{
+          // console.log(typeof re.peopleID)
+          // console.log('state')
+          console.log(re)
+          // re.map((a)=>{
+          //   console.log(`${a} = ${re[a]}`)
+          // })
+          // console.log(`${re.id} = ${props.elderlyInfos[re.id]}`)
+        })
+      } */}
     </div>
   );
+
+  
 }
+
+const mapStateToProps = (state) => {
+  return {
+      elderlyInfos: state
+  }
+}
+export default connect(mapStateToProps)(Sections1_1);
 
 const Months = [
   "มกราคม",
