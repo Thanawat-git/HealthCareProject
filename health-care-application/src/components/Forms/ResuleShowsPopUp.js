@@ -2,6 +2,8 @@ import React from 'react'
 import { Modal, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { ADD_NEW_FORM_SEC2 } from '../../Reducers/Actions/actionsType'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles({
   root: {
@@ -9,9 +11,24 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ResuleShowsPopUp(props) {
-    const resultArray = props.dataShow
+function ResuleShowsPopUp(props) {
+    const ResultArray = props.dataShow
+    const RawData = props.RawData
+    const Collect = props.collect
     const classes = useStyles();
+
+    const onSubmit = ()=>{
+
+      const data = {
+        ResultArray,
+        RawData,
+        Collect
+      }
+      props.dispatch({
+        type: ADD_NEW_FORM_SEC2,
+        data
+      })
+    }
   return (
         <Modal
         {...props}
@@ -21,7 +38,7 @@ export default function ResuleShowsPopUp(props) {
           </Modal.Header>
 
           <Modal.Body>
-            {resultArray.map((value) =>
+            {ResultArray.map((value) =>
             <React.Fragment>
               <div className="row">
                 <div className="col-12 col-xl-6">
@@ -34,11 +51,14 @@ export default function ResuleShowsPopUp(props) {
               <hr/>
             </React.Fragment>
             )}
+            <ul>
+              {RawData.map(data => <li> {data} </li> )}
+            </ul>
           </Modal.Body>
 
           <Modal.Footer>
               <Link to="/mainmenu" className={classes.root}>
-                <Button variant="primary" block>
+                <Button variant="primary" block onClick={onSubmit} >
                   บันทึก
                 </Button>
               </Link>
@@ -46,3 +66,5 @@ export default function ResuleShowsPopUp(props) {
         </Modal>
   )
 }
+
+export default connect()(ResuleShowsPopUp);

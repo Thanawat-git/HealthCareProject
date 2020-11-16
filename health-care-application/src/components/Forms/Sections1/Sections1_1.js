@@ -24,11 +24,7 @@ function Sections1_1(props) {
   const [elderlyGender, setElderlyGender] = useState('')
   const [nickname, setNickname] = useState('')
 
-  const handleChange = (event) => {setElderlyGender(event.target.value);};
-
-  function handleClick(e) {
-    alert("The paragraph was clicked."+day+mon+yea);
-  }
+  const handleChange = (event) => {setElderlyGender(event.target.value)};
 
 // DatePicker
   const [years, setYears] = useState([]);
@@ -194,7 +190,7 @@ function Sections1_1(props) {
       type: ADD_NEW_ELDERLY,
       data
     });
-    // console.log(data)
+    console.log(data)
     // console.log(typeof Age)
     // console.log(`Age = ${Age}`)
   }

@@ -26,6 +26,7 @@ function Sections1_2(props) {
     const [curStreet, setCurStreet] = useState('') //ถนน
     const [curSubDistrict, setCurSubDistrict] = useState('') // ตำบล
     const [curArea, setCurArea] = useState('') // ชุมชน
+    const [phoneNumber, setPhoneNumber] = useState('')
 
     const [PID, setPID] = useState('')
     useEffect(() => {
@@ -55,6 +56,7 @@ function Sections1_2(props) {
       const ELD_CUR_ADDR_SUB_DISTRICT = curSubDistrict;
       const ELD_CUR_ADDR_VILLAGE = curArea;
       const ELD_ID_NUMBER = PID;
+      const ELD_PHONE = phoneNumber;
 
       const data = {
         ELD_ID_NUMBER,
@@ -67,7 +69,8 @@ function Sections1_2(props) {
         ELD_CUR_ADDR_LANE,
         ELD_CUR_ADDR_STREET,
         ELD_CUR_ADDR_SUB_DISTRICT,
-        ELD_CUR_ADDR_VILLAGE
+        ELD_CUR_ADDR_VILLAGE,
+        ELD_PHONE
       }
       props.dispatch({
         type: ADD_NEW_ELDERLY_ADDRESS,
@@ -145,7 +148,7 @@ function Sections1_2(props) {
             {/* <div className="row"> */}
               <div className="input-group">
                 <p>เบอร์โทรศัพท์ <small className="text-warning">(ถ้ามี)</small></p>
-                <TextField id="" label="" variant="outlined" placeholder="+66" className="TextField" fullWidth />
+                <TextField id="" value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} variant="outlined" placeholder="+66" className="TextField" fullWidth />
               </div>
             {/* </div> */}
           </div>

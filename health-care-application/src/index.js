@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore } from 'redux';
-import elderlyReducer from './Reducers/elderlyReducer'
+import reducer from './Reducers'
 import { Provider } from 'react-redux'
 
-const store = createStore(elderlyReducer);
-console.log(store.getState())
+const store = createStore(reducer);
+
+store.subscribe(()=>{
+  console.log(store.getState())
+})
 
 ReactDOM.render(
   <Provider store={store} >

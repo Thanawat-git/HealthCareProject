@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Sections2.css";
 import '../form-style.css'
 import '../../genaralConfig.css'
@@ -18,12 +18,20 @@ export default function Sections2_1() {
   const [sugar, setSugar] = useState();
 
   const [show, setShow] = useState(false);
+  const [collect, setCollect] = useState(false)
+
+  useEffect(()=>{
+    if (waist && weight && high && pulse && bloodPressure1 && bloodPressure2 && sugar){
+      setCollect(true)
+    }
+  }, [waist,weight,high,pulse,bloodPressure1,bloodPressure2,sugar]);
 
   // result State
-  const [waistR, setWaistR] = useState()
+  const [waistR, setWaistR] = useState('')
   const [BMIR, setBMIR] = useState('')
-  const [BPR, setBPR] = useState()
-  const [sugarR, setSugarR] = useState()
+  const [BPR, setBPR] = useState('')
+  const [sugarR, setSugarR] = useState('')
+  
   
   // cul waist
   const culWaist = ()=>{
@@ -71,6 +79,9 @@ export default function Sections2_1() {
     {title: 'แปลผลความดันโลหิต', result: BPR},
     {title: 'แปลผลการตรวจระดับน้ำตาล', result: sugarR}
 
+  ]
+  const RawData = [
+    waist, weight, high, bmi, pulse, bloodPressure1, bloodPressure2, sugar
   ]
   return (
     <div className="css-form">
@@ -244,11 +255,6 @@ export default function Sections2_1() {
                 fullWidth
               />
             </div>
-            {/* <div className="col-12">
-              <p>
-                <strong>ผลการประเมิน : </strong>
-              </p>
-            </div> */}
           </div>
           {/* row-4 */}
           {/* content */}
@@ -268,6 +274,8 @@ export default function Sections2_1() {
       <ShowResultPopup
           title='ผลส่วนที่ 2' 
           dataShow={resultArray}
+          RawData={RawData}
+          collect={collect}
           show={show}
           onHide={()=>setShow(false)}
           backdrop="static"

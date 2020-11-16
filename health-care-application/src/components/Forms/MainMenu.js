@@ -35,14 +35,32 @@ function MainMenu(props) {
     const [i9, setI9] = useState('')
 
     useEffect(() => {
-        // props.elderlyInfos.map((elderlyInfo)=> {}
-        for(const [key, value] of Object.entries(props.elderlyInfos)){
-            for(const [key1, value1] of Object.entries(value)){
-                if(value1!=''){
-                    setI8('green')
-                } else {setI8('')}
-                console.log(`${key1}: ${value1}`);
-            }
+        for(const [key, value] of Object.entries(props.FormStatus)){
+            // console.log(`MainMume1: ${key}: ${value}`);
+            if(key==='FormReducer'){
+        // รูปแบบของข้อมูลใน state
+                // FormReducer = {
+                //     SEC2: [{
+                //         RawData: [{}],
+                //         ResultArray: [{}],
+                //         Collect: true or false
+                //     }]
+                // }
+                for(const [key1, value1] of Object.entries(value)){
+                    // if(value1!=''){
+                    //     setI8('green')
+                    // } else {setI8('')}
+                    if(key1==='SEC2'){
+                        for(const [key2, value2] of Object.entries(value1)){ // เข้าถึง Collect
+                            // ถ้าจะเข้าถึง RawData กับ ResultArray ต้อง loop อีกชั้นนึง
+                            console.log(`MainMume loop3: ${key2}: ${value2.Collect}`);
+                            value2.Collect && setI2('green')
+                        }
+                    }
+                    // console.log(`MainMume: ${key1}: ${value1}`);
+                }
+            } 
+            
         }
         
     }, []);
@@ -179,7 +197,7 @@ function MainMenu(props) {
 }
 const mapStateToProps = (state) => {
     return {
-        elderlyInfos: state
+        FormStatus: state
     }
 }
 
