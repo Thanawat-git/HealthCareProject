@@ -15,11 +15,46 @@ export default function Sections4_1() {
   const [ans4_5, setAns4_5] = useState()
 
   const [show, setShow] = useState(false);
+  const [res, setResult] = useState();
 
+  var count = 0;
+  
+
+  const calResult = () =>{
+    if(ans4_1=="N"){
+      count = count+1;
+      // console.log("1",ans4_1,count)
+    }
+    if(ans4_2=="N"){
+      count = count+1;
+      // console.log("2",ans4_2,count)
+    }
+    if(ans4_3=="N"){
+      count = count+1;
+      // console.log("3",ans4_3,count)
+    }
+    if(ans4_4=="N"){
+      count = count+1;
+      // console.log("4",ans4_4,count)
+    }
+    if(ans4_5=="N"){
+      count = count+1;
+      // console.log("5",ans4_5,count)
+    }
+    if(count===5){
+      // setResult('ปกติ');
+      console.log('normal')
+    }else{
+      // setResult('มีปัญหาการมองเห็น');
+      console.log('tracking')
+    }
+  }
+ 
   const resultArray = [
-    // {title: 'แปลผลเส้นรอบเอว', result: waist},
-    // {title: 'แปลผลค่า BMI', result: bmi}
+    {title: 'แปลผลสุขภาพตา', result: count===5?'ปกติ':'มีปัญหาการมองเห็น'}
   ]
+    
+  
 
   return (
     <div className="css-form">
@@ -30,14 +65,14 @@ export default function Sections4_1() {
         
           <p>4.1 นับนิ้วในระยะ 3 เมตรผิด 2 ครั้งขึ้นไปจาก 4 ครั้ง</p>
           <RadioGroup className="pl-20" aria-label='questions4.1' name='questions4.1' value={ans4_1} onChange={(e)=>setAns4_1(e.target.value)}>
-            <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ใช่" />
-            <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ไม่ใช่" />
+            <FormControlLabel className="radio-size" value="Y"  control={<Radio color="primary" />} label="ใช่" />
+            <FormControlLabel className="radio-size" value="N" control={<Radio color="primary" />} label="ไม่ใช่" />
           </RadioGroup>
           <hr/>
           <p>4.2 อ่านหนังสือพิมพ์ในระยะ 1 ฟุต ไม่ได้</p>
           <RadioGroup className="pl-20" aria-label='questions4.2' name='questions4.2' value={ans4_2} onChange={(e)=>setAns4_2(e.target.value)}>
-            <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ใช่" />
-            <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ไม่ใช่" />
+            <FormControlLabel className="radio-size" value="Y"  control={<Radio color="primary" />} label="ใช่" />
+            <FormControlLabel className="radio-size" value="N" control={<Radio color="primary" />} label="ไม่ใช่" />
           </RadioGroup>
           <hr/>
           <p>4.3 ตามัวคล้ายมีหมอกบัง</p>
@@ -72,7 +107,7 @@ export default function Sections4_1() {
             ยกเลิก
           </button>
           </Link>
-          <button type="button" class="btn form-btn btn-primary btn-lg" onClick={()=>setShow(true)} >
+          <button type="button" class="btn form-btn btn-primary btn-lg" onChange={calResult()} onClick={()=>setShow(true)} >
             บันทึก
           </button>
         </div>
