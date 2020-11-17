@@ -11,3 +11,13 @@ export const ADD_NEW_FORM_SEC7 = 'ADD_NEW_FORM_SEC7';
 export const ADD_NEW_FORM_SEC8 = 'ADD_NEW_FORM_SEC8';
 export const ADD_NEW_FORM_SEC9 = 'ADD_NEW_FORM_SEC9';
 export const ADD_NEW_FORM_SEC0 = 'ADD_NEW_FORM_SEC0';
+
+export const EDIT_FORM_SEC2 = 'EDIT_FORM_SEC2';
+export const EDIT_FORM_SEC3 = 'EDIT_FORM_SEC3';
+export const EDIT_FORM_SEC4 = 'EDIT_FORM_SEC4';
+export const EDIT_FORM_SEC5 = 'EDIT_FORM_SEC5';
+export const EDIT_FORM_SEC6 = 'EDIT_FORM_SEC6';
+export const EDIT_FORM_SEC7 = 'EDIT_FORM_SEC7';
+export const EDIT_FORM_SEC8 = 'EDIT_FORM_SEC8';
+export const EDIT_FORM_SEC9 = 'EDIT_FORM_SEC9';
+export const EDIT_FORM_SEC0 = 'EDIT_FORM_SEC0';

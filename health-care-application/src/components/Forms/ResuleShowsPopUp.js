@@ -51,9 +51,9 @@ function ResuleShowsPopUp(props) {
               <hr/>
             </React.Fragment>
             )}
-            <ul>
+            {/* <ul>
               {RawData.map(data => <li> {data} </li> )}
-            </ul>
+            </ul> */}
           </Modal.Body>
 
           <Modal.Footer>
