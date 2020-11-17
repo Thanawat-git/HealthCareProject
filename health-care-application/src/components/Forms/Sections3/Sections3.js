@@ -6,12 +6,12 @@ import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
 
 export default function Sections3() {
-  const [ans3_1, setAns3_1] = useState("");
-  const [ans3_2, setAns3_2] = useState("");
-  const [ans3_3, setAns3_3] = useState("");
-  const [ans3_4, setAns3_4] = useState("");
-  const [ans3_5, setAns3_5] = useState("");
-  const [ans3_6, setAns3_6] = useState("");
+  const [ans3_1, setAns3_1] = useState();
+  const [ans3_2, setAns3_2] = useState();
+  const [ans3_3, setAns3_3] = useState();
+  const [ans3_4, setAns3_4] = useState();
+  const [ans3_5, setAns3_5] = useState();
+  const [ans3_6, setAns3_6] = useState();
   const [check, setCheck] = useState();
   const [count, setCount] = useState(1);
 
@@ -35,7 +35,7 @@ export default function Sections3() {
     var c = "มีความเสี่ยงสูงมาก";
     console.log("Input count is " + count);
 
-    if (count == 1 || count == 2) {
+    if (count >= 1 && count <= 2) {
       setCheck(a);
       console.log(a);
     } else if (count == 3 || count == 4) {
@@ -61,29 +61,28 @@ export default function Sections3() {
     var d = "y4";
     var e = "y5";
     var f = "y6";
-    if (ans3_1 === a) {
-      //addCount(1)
+    if (ans3_1 == a) {
       setCount(count + 1);
       resu();
     }
-    if (ans3_2 === b) {
-      setCount(count + 1);
+    if (ans3_2 == b) {
+      setCount(count + 2);
       resu();
     }
-    if (ans3_3 === c) {
-      setCount(count + 1);
+    if (ans3_3 == c) {
+      setCount(count + 3);
       resu();
     }
-    if (ans3_4 === d) {
-      setCount(count + 1);
+    if (ans3_4 == d) {
+      setCount(count + 4);
       resu();
     }
-    if (ans3_5 === e) {
-      setCount(count + 1);
+    if (ans3_5 == e) {
+      setCount(count + 5);
       resu();
     }
-    if (ans3_6 === f) {
-      setCount(count + 1);
+    if (ans3_6 == f) {
+      setCount(count + 6);
       resu();
     } else {
       console.log("Not set");
@@ -111,15 +110,12 @@ export default function Sections3() {
             <FormControlLabel
               className="radio-size"
               value="y1"
-              //defaultChecked={ans3_1 ==="y1"}
-              //checked={ans3_1 === "y1"}
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
               value="n1"
-              //defaultChecked={ans3_1 ==="n1"}
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
