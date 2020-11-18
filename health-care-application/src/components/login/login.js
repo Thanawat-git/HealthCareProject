@@ -84,7 +84,9 @@ class Login extends Component {
                 <input type="password" placeholder="Password" />
               </div>
               {/* <Button className="btn-login solid" >ลงชื่อเข้าใช้</Button> */}
+              <Link to="/volunteer-page" >
               <input type="submit" value="ลงชื่อเข้าใช้" className="btn-login solid" />
+              </Link>
               <Link to="/verify" >ลืมรหัสผ่าน</Link>
             </form>
           </div>
