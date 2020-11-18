@@ -15,31 +15,14 @@ export default function Sections4_1() {
   const [ans4_5, setAns4_5] = useState()
 
   const [show, setShow] = useState(false);
-  const [res, setResult] = useState();
+  const [res, setResult] = useState('มีปัญหาการมองเห็น');
 
   var count = 0;
-  
 
   const calResult = () =>{
-    if(ans4_1=="N"){
-      count = count+1;
-      // console.log("1",ans4_1,count)
-    }
-    if(ans4_2=="N"){
-      count = count+1;
-      // console.log("2",ans4_2,count)
-    }
-    if(ans4_3=="N"){
-      count = count+1;
-      // console.log("3",ans4_3,count)
-    }
-    if(ans4_4=="N"){
-      count = count+1;
-      // console.log("4",ans4_4,count)
-    }
-    if(ans4_5=="N"){
-      count = count+1;
-      // console.log("5",ans4_5,count)
+    if(ans4_1=="N" && ans4_2=="N" && ans4_3=="N" && ans4_4=="N" && ans4_5=="N"){
+      count = 5;
+      console.log(count)
     }
     if(count===5){
       // setResult('ปกติ');
@@ -52,6 +35,7 @@ export default function Sections4_1() {
  
   const resultArray = [
     {title: 'แปลผลสุขภาพตา', result: count===5?'ปกติ':'มีปัญหาการมองเห็น'}
+    // {title: 'แปลผลสุขภาพตา', result: res}
   ]
     
   
