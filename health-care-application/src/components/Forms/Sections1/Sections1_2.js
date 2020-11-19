@@ -3,7 +3,7 @@ import '../form-style.css'
 import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { ADD_NEW_ELDERLY_ADDRESS } from '../../../Reducers/Actions/actionsType'
+import { ADD_NEW_ELDERLY_ADDRESS } from '../../../reducers/Actions/actionsType'
 import { connect } from 'react-redux'
 
 function Sections1_2(props) {

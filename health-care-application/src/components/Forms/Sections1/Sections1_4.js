@@ -5,7 +5,7 @@ import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { ADD_NEW_ELDERLY_DATA } from '../../../Reducers/Actions/actionsType'
+import { ADD_NEW_ELDERLY_DATA } from '../../../reducers/Actions/actionsType'
 
 function Sections1_4(props) {
     const [elderlyStatus, setElderlyStatus] = useState('')

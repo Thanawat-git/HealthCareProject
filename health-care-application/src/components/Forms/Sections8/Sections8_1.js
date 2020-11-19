@@ -4,7 +4,7 @@ import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections8.css'
 import { Link } from 'react-router-dom';
-import { ADD_NEW_ELDERLY } from '../../../Reducers/Actions/actionsType'
+import { ADD_NEW_ELDERLY } from '../../../reducers/Actions/actionsType'
 import { connect } from 'react-redux'
 
 function Sections8_1(props) {

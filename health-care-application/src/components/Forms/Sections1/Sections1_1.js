@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import "../form-style.css";
 import "./Sections1.css";
-// import DatePicker from 'react-date-picker';
 import {
   TextField,
   InputLabel,
@@ -12,17 +11,18 @@ import {
 import Autocomplete from "@material-ui/lab/Autocomplete";
 // import MyDatePicker from "../MyDatePicker";
 import { Link } from "react-router-dom";
-import { ADD_NEW_ELDERLY } from '../../../Reducers/Actions/actionsType'
-import { connect } from 'react-redux'
-import ShowState from '../../../ShowState'
+import { ADD_NEW_ELDERLY } from '../../../reducers/Actions/actionsType'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import * as formAction from "../../../actions/form.action";
 
 function Sections1_1(props) {
-
-  const [PID, setPID] = useState('')
-  const [firstname, setFirstname] = useState('')
-  const [lastanme, setLastname] = useState('')
-  const [elderlyGender, setElderlyGender] = useState('')
-  const [nickname, setNickname] = useState('')
+  const formsec1_1Reducer = useSelector(({formsec1_1Reducer}) => formsec1_1Reducer)
+  const dispatch = useDispatch();
+  const [PID, setPID] = useState(formsec1_1Reducer.peopleID)
+  const [firstname, setFirstname] = useState(formsec1_1Reducer.firstname)
+  const [lastanme, setLastname] = useState(formsec1_1Reducer.lastname)
+  const [elderlyGender, setElderlyGender] = useState(formsec1_1Reducer.elderlyGender)
+  const [nickname, setNickname] = useState(formsec1_1Reducer.nickname)
 
   const handleChange = (event) => {setElderlyGender(event.target.value)};
 
@@ -158,15 +158,9 @@ function Sections1_1(props) {
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth()+1;
     const nowYear = nowDate.getFullYear()+543;
-    // console.log(nowDay)
-    // console.log(nowMonth)
-    // console.log(nowYear)
 
-    // console.log( typeof day)
-    // console.log(numMon)
     var Age = nowYear-parseInt(yea)
-    // console.log(parseInt(yea))
-    // setElderlyAge(Age)
+    
     if(numMon==nowMonth) {
       parseInt(day)>=nowDay ? Age=Age : Age=Age-1
     } else if(numMon>nowMonth) {
@@ -195,30 +189,41 @@ function Sections1_1(props) {
     // console.log(`Age = ${Age}`)
   }
 
-  // const xxx = [
-  //   {key:'1', value: 'test'}
-  // ]
+// Redux Hooks
+  
 
-  // DEBUG
-  useEffect(() => {
-    for(const [key, value] of Object.entries(props.elderlyInfos)){
-      console.log(`${key}: ${value}`);
-      console.log(value)
-      // console.log(value[0].id)
-        for(const [key1, value1] of Object.entries(value)){
-            // if(value1!=''){
-            //     setI8('green')
-            // } else {setI8('')}
-            console.log(`in ${key1}: ${value1.peopleID}`);
-        }
+  const handelSubmit2 = (e)=>{
+    // e.preventDefault()
+    const elderlyBirthday = `${day}-${numMon}-${yea}`
+    const id = new Date()
+
+    // cul Age
+    const nowDate = new Date();
+    const nowDay = nowDate.getDate();
+    const nowMonth = nowDate.getMonth()+1;
+    const nowYear = nowDate.getFullYear()+543;
+
+    var Age = nowYear-parseInt(yea)
+    
+    if(numMon==nowMonth) {
+      parseInt(day)>=nowDay ? Age=Age : Age=Age-1
+    } else if(numMon>nowMonth) {
+      Age = Age-1
+    } else {
+      Age = Age
     }
-  }, []);
+    const data = [
+      PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age
+    ]
+
+    dispatch(formAction.add(data))
+  }
 
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <form onSubmit={handelSubmit} className="shadow p-3 mb-5 bg-white rounded">
-        <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน</h2>
+        <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน {formsec1_1Reducer.elderlyAge} </h2>
         <div className="question">
           {/* content */}
 
@@ -239,7 +244,8 @@ function Sections1_1(props) {
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
                 // error={error}
-                value={PID}
+                defaultValue={formsec1_1Reducer.peopleID}
+                // value={formsec1_1Reducer.peopleID}
                 onChange={(e)=>setPID(e.target.value)}
               />
             </div>
@@ -254,7 +260,7 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="ชื่อ"
                 className="TextField"
-                value={firstname}
+                value={formsec1_1Reducer.firstname}
                 onChange={(e)=>setFirstname(e.target.value)}
               />
             </div>
@@ -265,7 +271,7 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="นามสกุล"
                 className="TextField"
-                value={lastanme}
+                value={formsec1_1Reducer.lastname}
                 onChange={(e)=>setLastname(e.target.value)}
               />
             </div>
@@ -309,7 +315,7 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="ชื่อในชุมชน"
                 className="TextField"
-                value={nickname}
+                value={formsec1_1Reducer.nickname}
                 onChange={(e)=>setNickname(e.target.value)}
               />
             </div>
@@ -402,7 +408,7 @@ function Sections1_1(props) {
               type="submit"
               value="Submit"
               className="btn form-btn btn-primary btn-lg"
-              onClick={handelSubmit}
+              onClick={handelSubmit2}
             >
               ถัดไป
             </button>
