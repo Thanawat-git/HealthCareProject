@@ -1,5 +1,10 @@
-export const FORM_ADD = 'FORM_ADD';
+// Action type
+export const FORMS1P1_ADD_NEW = 'FORMS1P1_ADD_NEW';
+export const FORMS1P2_ADD_NEW = 'FORMS1P2_ADD_NEW';
+export const FORMS1P3_ADD_NEW = 'FORMS1P3_ADD_NEW';
 export const FORM_EDIT = 'FORM_EDIT';
+
+
 // // Login Page
 // export const APP_INIT = "APP_INIT";
 

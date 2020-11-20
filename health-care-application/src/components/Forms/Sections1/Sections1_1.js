@@ -9,34 +9,28 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-// import MyDatePicker from "../MyDatePicker";
 import { Link } from "react-router-dom";
-import { ADD_NEW_ELDERLY } from '../../../reducers/Actions/actionsType'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import * as formAction from "../../../actions/form.action";
+import * as formAction from "../../../actions/forms1p1.action";
 
 function Sections1_1(props) {
-  const formsec1_1Reducer = useSelector(({formsec1_1Reducer}) => formsec1_1Reducer)
+  const forms1p1Reducer = useSelector(({forms1p1Reducer}) => forms1p1Reducer)
   const dispatch = useDispatch();
-  const [PID, setPID] = useState(formsec1_1Reducer.peopleID)
-  const [firstname, setFirstname] = useState(formsec1_1Reducer.firstname)
-  const [lastanme, setLastname] = useState(formsec1_1Reducer.lastname)
-  const [elderlyGender, setElderlyGender] = useState(formsec1_1Reducer.elderlyGender)
-  const [nickname, setNickname] = useState(formsec1_1Reducer.nickname)
+  const [PID, setPID] = useState(forms1p1Reducer.peopleID)
+  const [firstname, setFirstname] = useState(forms1p1Reducer.firstname)
+  const [lastanme, setLastname] = useState(forms1p1Reducer.lastname)
+  const [elderlyGender, setElderlyGender] = useState(forms1p1Reducer.elderlyGender)
+  const [nickname, setNickname] = useState(forms1p1Reducer.nickname)
+  const [yea, setYea] = useState(forms1p1Reducer.year);
+  const [mon, setMon] = useState(forms1p1Reducer.month);
+  const [day, setDay] = useState(forms1p1Reducer.day);
 
   const handleChange = (event) => {setElderlyGender(event.target.value)};
-
 // DatePicker
   const [years, setYears] = useState([]);
   const [days, setDays] = useState([]);
   const [cy, setCY] = useState(true);
-
-  const [yea, setYea] = useState(0);
-  const [mon, setMon] = useState('');
-  const [day, setDay] = useState(0);
-
   const [cd, setCD] = useState(true);
-
   const getyear = (e) => {
     var i = 60;
     var ny = new Date();
@@ -142,62 +136,14 @@ function Sections1_1(props) {
   function handleInputDayChange(event, value) {
     setDay(value)
   }
-// DatePicker
-
-  const handelSubmit = (e)=>{
-    // e.preventDefault()
-    const peopleID = PID
-    const elderlyFristName = firstname
-    const elderlyLastName = lastanme
-    const elderlyNickName = nickname
-    const elderlyBirthday = `${day}-${numMon}-${yea}`
-    const id = new Date()
-
-    // cul Age
-    const nowDate = new Date();
-    const nowDay = nowDate.getDate();
-    const nowMonth = nowDate.getMonth()+1;
-    const nowYear = nowDate.getFullYear()+543;
-
-    var Age = nowYear-parseInt(yea)
-    
-    if(numMon==nowMonth) {
-      parseInt(day)>=nowDay ? Age=Age : Age=Age-1
-    } else if(numMon>nowMonth) {
-      Age = Age-1
-    } else {
-      Age = Age
-    }
-
-    const data = {
-      id,
-      peopleID,
-      elderlyFristName,
-      elderlyLastName,
-      elderlyGender,
-      elderlyNickName,
-      elderlyBirthday,
-      Age
-    }
-
-    props.dispatch({
-      type: ADD_NEW_ELDERLY,
-      data
-    });
-    console.log(data)
-    // console.log(typeof Age)
-    // console.log(`Age = ${Age}`)
-  }
 
 // Redux Hooks
-  
-
-  const handelSubmit2 = (e)=>{
+  const handelSubmit = (e)=>{
     // e.preventDefault()
     const elderlyBirthday = `${day}-${numMon}-${yea}`
     const id = new Date()
 
-    // cul Age
+    // cal Age
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth()+1;
@@ -213,9 +159,8 @@ function Sections1_1(props) {
       Age = Age
     }
     const data = [
-      PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age
+      PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age, yea, mon, day
     ]
-
     dispatch(formAction.add(data))
   }
 
@@ -223,7 +168,7 @@ function Sections1_1(props) {
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <form onSubmit={handelSubmit} className="shadow p-3 mb-5 bg-white rounded">
-        <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน {formsec1_1Reducer.elderlyAge} </h2>
+        <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน {forms1p1Reducer.elderlyAge} </h2>
         <div className="question">
           {/* content */}
 
@@ -244,8 +189,8 @@ function Sections1_1(props) {
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
                 // error={error}
-                defaultValue={formsec1_1Reducer.peopleID}
-                // value={formsec1_1Reducer.peopleID}
+                defaultValue={forms1p1Reducer.peopleID}
+                // value={forms1p1Reducer.peopleID}
                 onChange={(e)=>setPID(e.target.value)}
               />
             </div>
@@ -260,7 +205,7 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="ชื่อ"
                 className="TextField"
-                value={formsec1_1Reducer.firstname}
+                value={forms1p1Reducer.firstname}
                 onChange={(e)=>setFirstname(e.target.value)}
               />
             </div>
@@ -271,7 +216,7 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="นามสกุล"
                 className="TextField"
-                value={formsec1_1Reducer.lastname}
+                value={forms1p1Reducer.lastname}
                 onChange={(e)=>setLastname(e.target.value)}
               />
             </div>
@@ -315,7 +260,7 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="ชื่อในชุมชน"
                 className="TextField"
-                value={formsec1_1Reducer.nickname}
+                value={forms1p1Reducer.nickname}
                 onChange={(e)=>setNickname(e.target.value)}
               />
             </div>
@@ -345,12 +290,13 @@ function Sections1_1(props) {
           disableClearable={true}
           //   style={{ width: 300 }}
           onInputChange={handleInputYearChange}
+          defaultValue={forms1p1Reducer.year}
           renderInput={(params) => (
             <TextField
               {...params}
               label="ปี พ.ศ."
               variant="outlined"
-              value={yea}
+              // value={yea}
               onClick={getyear}
             />
           )}
@@ -365,6 +311,7 @@ function Sections1_1(props) {
           //   style={{ width: 300 }}
         //   value={mon}
           onInputChange={handleInputMonthChange}
+          defaultValue={forms1p1Reducer.month}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -383,6 +330,7 @@ function Sections1_1(props) {
           disableClearable={true}
           //   style={{ width: 300 }}
           onInputChange={handleInputDayChange}
+          defaultValue={forms1p1Reducer.day}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -393,7 +341,6 @@ function Sections1_1(props) {
           )}
         />
       </div>
-      {/* <button type="button" onClick={show} >show</button> */}
     </div>
             </div>
           </div>
@@ -408,28 +355,13 @@ function Sections1_1(props) {
               type="submit"
               value="Submit"
               className="btn form-btn btn-primary btn-lg"
-              onClick={handelSubmit2}
+              onClick={handelSubmit}
             >
               ถัดไป
             </button>
           </Link>
         </div>
       </form>
-      <p> type:  { typeof props.elderlyInfos} </p>
-      {/* <p> ELD_IDN_ADDR_NUMBER:  {props.elderlyInfos.map((elderlyInfo)=> `${elderlyInfo.ELD_IDN_ADDR_NUMBER} to ` )} </p> */}
-      {/* {props.elderlyInfos.map((elderlyInfo)=> <ShowState key={elderlyInfo.id} Info={elderlyInfo} /> )} */}
-      {/* {
-        console.log('state'),
-        props.elderlyInfos.map((re)=>{
-          // console.log(typeof re.peopleID)
-          // console.log('state')
-          console.log(re)
-          // re.map((a)=>{
-          //   console.log(`${a} = ${re[a]}`)
-          // })
-          // console.log(`${re.id} = ${props.elderlyInfos[re.id]}`)
-        })
-      } */}
     </div>
   );
 

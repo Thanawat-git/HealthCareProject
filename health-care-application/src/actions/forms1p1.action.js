@@ -1,7 +1,7 @@
-import { FORM_ADD, FORM_EDIT } from "../constants";
+import { FORMS1P1_ADD_NEW, FORM_EDIT } from "../constants";
 
 export const setStateToAdd = (payload) => ({
-    type: FORM_ADD,
+    type: FORMS1P1_ADD_NEW,
     payload
 })
 
