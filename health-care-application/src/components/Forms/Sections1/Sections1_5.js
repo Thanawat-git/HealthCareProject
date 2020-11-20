@@ -34,6 +34,8 @@ export default function Sections1_8() {
   };
 
   const handleSubmit = (e) => {
+    drugAllergy===null && emptyValue()
+    foodAllergy===null && emptyValue()
     drugAllergy=="drugallergic" && drugs.length==0 && emptyValue()
     foodAllergy=="foodallergic" && foods.length==0 && emptyValue()
     const data = [drugAllergy, drugs, foodAllergy, foods];
@@ -128,7 +130,7 @@ export default function Sections1_8() {
                 {drugs.map((value, index) => {
                   let i = index
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={index=>{drugs.splice(i, 1); console.log('index: ', i); setdrugs([...drugs])}}>ลบ</button> </span> 
+                  <span> <button onClick={i=>{drugs.splice(i, 1); console.log('index: ', i); setdrugs([...drugs])}}>ลบ</button> </span> 
                   </li>;
                 })}
               </ul>
@@ -199,7 +201,7 @@ export default function Sections1_8() {
                 {foods.map((value, index) => {
                   let i = index
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={index=>{foods.splice(i, 1); console.log('index: ', i); setfoods([...foods])}}>ลบ</button> </span> 
+                  <span> <button onClick={i=>{foods.splice(i, 1); console.log('index: ', i); setfoods([...foods])}}>ลบ</button> </span> 
                   </li>;
                 })}
               </ul>

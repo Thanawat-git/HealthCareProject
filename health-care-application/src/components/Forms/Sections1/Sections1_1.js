@@ -140,9 +140,12 @@ function Sections1_1(props) {
 // Redux Hooks
   const handleSubmit = (e)=>{
     // e.preventDefault()
-    const elderlyBirthday = `${day}-${numMon}-${yea}`
-    const id = new Date()
 
+    if(PID===null || firstname===null || lastanme===null || elderlyGender===null || yea===null || mon===null || day===null){
+      emptyValue()
+    }
+
+    const elderlyBirthday = `${day}-${numMon}-${yea}`
     // cal Age
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
@@ -162,6 +165,11 @@ function Sections1_1(props) {
       PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age, yea, mon, day
     ]
     dispatch(formAction.add(data))
+    function emptyValue(){
+      e.preventDefault(); 
+      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+      // return;
+    }
   }
 
   return (

@@ -46,8 +46,24 @@ export default function Sections1_3() {
   const [neighborRelative2, setneighborRelative2] = useState(forms1p3Reducer.neighborRelative2);
   const [neighborPhoneNumber2, setneighborPhoneNumber2] = useState(forms1p3Reducer.neighborPhoneNumber2);
 
-  const handleSubmit = ()=>{
-    if(neighborFirstName1 === null || neighborLastName1 === null) return
+  const handleSubmit = (e)=>{
+    if(firstNeighbor=='yes1'){
+      if(neighborFirstName1 === null || 
+        neighborLastName1 === null ||
+        neighborGender1=== null ||
+        neighbortime1=== null ||
+        neighborRelative1=== null
+        ){   emptyValue()   }
+    } 
+
+    if(secondNeighbor=='yes2'){
+      if(neighborFirstName2 === null || 
+        neighborLastName2 === null ||
+        neighborGender2=== null ||
+        neighbortime2=== null ||
+        neighborRelative2=== null
+        ){   emptyValue()   }
+    } 
 
     const data = [
       neighborFirstName1,
@@ -65,6 +81,11 @@ export default function Sections1_3() {
     ]
 
     dispatch(formAction.add(data))
+    function emptyValue(){
+      e.preventDefault(); 
+      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+      // return;
+    }
   }
 
   useEffect(() => {

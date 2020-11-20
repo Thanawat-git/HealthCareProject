@@ -8,7 +8,6 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-// import { ADD_NEW_ELDERLY_ADDRESS } from "../../../reducers/Actions/actionsType";
 import { connect, useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p2.action";
 
@@ -42,11 +41,9 @@ function Sections1_2(props) {
   const [curArea, setCurArea] = useState(forms1p2Reducer.curArea); // ชุมชน
   const [phoneNumber, setPhoneNumber] = useState(forms1p2Reducer.phoneNumber);
 
-  const [PID, setPID] = useState("");
-
   const handleSubmit = (e) => {
     if (homeNumber===null && alley===null && street===null && subDistrict===null && area===null) {
-      return;
+      emptyValue()
     }
     const data = [
       homeNumber,
@@ -63,6 +60,11 @@ function Sections1_2(props) {
     ];
 
     dispatch(formAction.add(data));
+    function emptyValue(){
+      e.preventDefault(); 
+      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+      // return;
+    }
   };
 
   // useEffect(() => {
