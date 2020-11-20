@@ -138,7 +138,7 @@ function Sections1_1(props) {
   }
 
 // Redux Hooks
-  const handelSubmit = (e)=>{
+  const handleSubmit = (e)=>{
     // e.preventDefault()
     const elderlyBirthday = `${day}-${numMon}-${yea}`
     const id = new Date()
@@ -167,7 +167,7 @@ function Sections1_1(props) {
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-      <form onSubmit={handelSubmit} className="shadow p-3 mb-5 bg-white rounded">
+      <form onSubmit={handleSubmit} className="shadow p-3 mb-5 bg-white rounded">
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน {forms1p1Reducer.elderlyAge} </h2>
         <div className="question">
           {/* content */}
@@ -355,7 +355,7 @@ function Sections1_1(props) {
               type="submit"
               value="Submit"
               className="btn form-btn btn-primary btn-lg"
-              onClick={handelSubmit}
+              onClick={handleSubmit}
             >
               ถัดไป
             </button>

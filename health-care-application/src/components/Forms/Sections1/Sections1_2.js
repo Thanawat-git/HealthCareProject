@@ -44,7 +44,7 @@ function Sections1_2(props) {
 
   const [PID, setPID] = useState("");
 
-  const handelSubmit = (e) => {
+  const handleSubmit = (e) => {
     if (homeNumber===null && alley===null && street===null && subDistrict===null && area===null) {
       return;
     }
@@ -79,7 +79,7 @@ function Sections1_2(props) {
 
   // }, []);
 
-  // const handelSubmit = (e)=>{
+  // const handleSubmit = (e)=>{
   //   // console.log('PID in Submit '+PID)
   //   const ELD_IDN_ADDR_NUMBER = homeNumber;
   //   const ELD_IDN_ADDR_LANE = alley;
@@ -300,7 +300,7 @@ function Sections1_2(props) {
             <button
               type="button"
               className="btn form-btn btn-primary btn-lg"
-              onClick={handelSubmit}
+              onClick={handleSubmit}
             >
               ถัดไป
             </button>

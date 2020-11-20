@@ -94,7 +94,7 @@ export default function Sections1_9() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/sec1-page8">
+          <Link to="/sec1-page5">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ย้อนกลับ
             </button>

@@ -3,6 +3,8 @@ export const FORMS1P1_ADD_NEW = 'FORMS1P1_ADD_NEW';
 export const FORMS1P2_ADD_NEW = 'FORMS1P2_ADD_NEW';
 export const FORMS1P3_ADD_NEW = 'FORMS1P3_ADD_NEW';
 export const FORMS1P4_ADD_NEW = 'FORMS1P4_ADD_NEW';
+export const FORMS1P5_ADD_NEW = 'FORMS1P5_ADD_NEW';
+export const FORMS1P6_ADD_NEW = 'FORMS1P6_ADD_NEW';
 
 export const FORM_EDIT = 'FORM_EDIT';
 

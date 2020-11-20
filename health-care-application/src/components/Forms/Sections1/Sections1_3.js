@@ -46,7 +46,7 @@ export default function Sections1_3() {
   const [neighborRelative2, setneighborRelative2] = useState(forms1p3Reducer.neighborRelative2);
   const [neighborPhoneNumber2, setneighborPhoneNumber2] = useState(forms1p3Reducer.neighborPhoneNumber2);
 
-  const clickSubmit = ()=>{
+  const handleSubmit = ()=>{
     if(neighborFirstName1 === null || neighborLastName1 === null) return
 
     const data = [
@@ -438,7 +438,7 @@ export default function Sections1_3() {
             </button>
           </Link>
           <Link to="/sec1-page4">
-            <button type="button" className="btn form-btn btn-primary btn-lg" onClick={clickSubmit} >
+            <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >
               ถัดไป
             </button>
           </Link>

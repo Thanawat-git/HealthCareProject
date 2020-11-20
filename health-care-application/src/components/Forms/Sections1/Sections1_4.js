@@ -4,7 +4,7 @@ import '../form-style.css'
 import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as formAction from "../../../actions/forms1p4.action";
 
 function Sections1_4(props) {
@@ -27,50 +27,50 @@ function Sections1_4(props) {
     const [salary, setSalary] = useState(forms1p4Reducer.salary) // หลัก
     const [otherCareers, setotherCareers] = useState(forms1p4Reducer.otherCareers)
     
-    const handelSubmit = (e)=>{
+    const handleSubmit = (e)=>{
       const data = [
         elderlyStatus, elderlyBeing, elderlyBeingDetail, being, neighborName, religion, educations, careers, treatment, hospital, otherTreatment, salary, otherReligion, otherCareers
       ]
 
-      elderlyStatus===null && emptyValue()
+      // elderlyStatus===null && emptyValue()
 
-      if(elderlyBeing!==null){
-        if(elderlyBeing=="alone"){
-          if(elderlyBeingDetail!==null){
-            if(elderlyBeingDetail!= "D/N"){
-              if(neighborName===null)emptyValue()
-            }
-          }else {emptyValue()}
-        } else {
-          if(neighborName===null)emptyValue()
-        }
-      } else {emptyValue()}
+      // if(elderlyBeing!==null){
+      //   if(elderlyBeing=="alone"){
+      //     if(elderlyBeingDetail!==null){
+      //       if(elderlyBeingDetail!= "D/N"){
+      //         if(neighborName===null)emptyValue()
+      //       }
+      //     }else {emptyValue()}
+      //   } else {
+      //     if(neighborName===null)emptyValue()
+      //   }
+      // } else {emptyValue()}
 
-      if(religion!==null){
-        if(religion=="otherReligion"){
-          if(otherReligion===null)emptyValue()
-        }
-      } else {emptyValue()}
+      // if(religion!==null){
+      //   if(religion=="otherReligion"){
+      //     if(otherReligion===null)emptyValue()
+      //   }
+      // } else {emptyValue()}
 
-      educations===null && emptyValue()
+      // educations===null && emptyValue()
 
-      if(careers!==null){
-        if(careers=="otherCareers"){
-          if(otherCareers===null)emptyValue()
-        }
-      }else {emptyValue()}
+      // if(careers!==null){
+      //   if(careers=="otherCareers"){
+      //     if(otherCareers===null)emptyValue()
+      //   }
+      // }else {emptyValue()}
 
-      if(treatment!==null){
-        if(treatment!="withdrawMoney" && treatment!="payMyself") {
-          if(treatment=="otherTreatment"){
-            if(otherTreatment===null){emptyValue()}
-          } else {
-            if(hospital===null){emptyValue()}
-          }
-        }
-      }else {emptyValue()}
+      // if(treatment!==null){
+      //   if(treatment!="withdrawMoney" && treatment!="payMyself") {
+      //     if(treatment=="otherTreatment"){
+      //       if(otherTreatment===null){emptyValue()}
+      //     } else {
+      //       if(hospital===null){emptyValue()}
+      //     }
+      //   }
+      // }else {emptyValue()}
 
-      salary===null && emptyValue()
+      // salary===null && emptyValue()
 
       dispatch(formAction.add(data))
       function emptyValue(){
@@ -224,8 +224,8 @@ function Sections1_4(props) {
             <Link to="/sec1-page3">
              <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
             </Link>
-            <Link to="/sec1-page8">
-              <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handelSubmit} >ถัดไป</button>
+            <Link to="/sec1-page5">
+              <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >ถัดไป</button>
             </Link>
            </div>
          </form>
@@ -233,10 +233,4 @@ function Sections1_4(props) {
     );
 }
 
-const mapStateToProps = (state) => {
-  return {
-      elderlyInfos: state
-  }
-}
-
-export default connect(mapStateToProps)(Sections1_4);
+export default Sections1_4
