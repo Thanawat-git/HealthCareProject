@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { ADD_NEW_FORM_SEC2 } from '../../Reducers/Actions/actionsType'
+import { ADD_NEW_FORM_SEC2 } from '../../reducers/Actions/actionsType'
 import { connect } from 'react-redux'
 
 const useStyles = makeStyles({

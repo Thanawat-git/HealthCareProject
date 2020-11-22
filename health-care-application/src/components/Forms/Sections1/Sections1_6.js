@@ -1,30 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../form-style.css";
 import "./Sections1.css";
 import DatePicker from "react-date-picker";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import * as formAction from "../../../actions/forms1p6.action";
 
 export default function Sections1_9() {
-  const [value, onChange] = useState(new Date());
 
-  const [valueDisease, setValueDisease] = useState('');
-  const [disease, setDisease] = useState([]);
+  const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
+  const dispatch = useDispatch()
 
-  const setDiseaseData = (event, value) => {
-    //   console.log(e.target.value)
-    setValueDisease(value);
-    // console.log(valueDisease)
-  };
+  const [disease, setdisease] = useState(null);
+  const [diseases, setdiseases] = useState(forms1p6Reducer.diseases);
+  const [date, setdate] = useState(new Date());
 
   const confirm = () => {
-    if (valueDisease) {
-      setDisease((disease) => [...disease, valueDisease]);
-      setValueDisease("");
-    }
-    // console.log(disease)
+    disease && setdiseases([...diseases, disease])
+    setdisease(null)
   };
+
+  const handleSubmit = ()=>{
+    const data = [diseases, date]
+    dispatch(formAction.add(data))
+  }
 
   return (
     <div className="css-form">
@@ -45,10 +46,10 @@ export default function Sections1_9() {
                 getOptionLabel={(option) => option}
                 disableClearable={true}
                 size="small"
-                value={valueDisease}
+                value={disease}
                 // getOptionSelected={setDiseaseData}
                 //   style={{ width: 300 }}
-                onInputChange={setDiseaseData}
+                onInputChange={(event, value)=>setdisease(value)}
                 renderInput={(params) => (
                   <TextField {...params} variant="outlined" />
                 )}
@@ -67,8 +68,11 @@ export default function Sections1_9() {
             <br />
             <div className="col-12" style={{marginTop:20}} >
               <ol>
-                {disease.map((value, index) => {
-                  return <li key={index} > {`${value}`} </li>;
+                {diseases.map((value, index) => {
+                  let i = index
+                  return <li key={index}> {`${index} ${value}`} 
+                  <span> <button onClick={i=>{diseases.splice(i, 1); console.log('index: ', i); setdiseases([...diseases])}}>ลบ</button> </span> 
+                  </li>;
                 })}
               </ol>
             </div>
@@ -82,10 +86,8 @@ export default function Sections1_9() {
             <div className="col-6">
               <DatePicker
                 dateFormat="dd/MM/yyyy"
-                onChange={onChange}
-                value={value}
-                id=""
-                className=""
+                onChange={setdate}
+                value={date}
               />
             </div>
           </div>
@@ -94,13 +96,13 @@ export default function Sections1_9() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/sec1-page8">
+          <Link to="/sec1-page5">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ย้อนกลับ
             </button>
           </Link>
           <Link to="/mainmenu">
-            <button type="button" className="btn form-btn btn-primary btn-lg">
+            <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit}>
               สำเร็จ
             </button>
           </Link>

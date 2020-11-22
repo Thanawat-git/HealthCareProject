@@ -4,16 +4,6 @@ import "./login.css";
 import logo1 from "../images/logo-saensukcity.png";
 import loginImg from '../images/undraw_surfer_m6jb.svg'
 import { Link } from "react-router-dom";
-// import {
-//   Container,
-//   Col,
-//   Form,
-//   FormGroup,
-//   Button,
-//   Card,
-//   NavLink,
-//   FormControl,
-// } from "react-bootstrap";
 
 const formValid = formErrors => {
   let valid = true;
