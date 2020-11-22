@@ -12,8 +12,14 @@ export default function Sections3() {
   const [ans3_4, setAns3_4] = useState();
   const [ans3_5, setAns3_5] = useState();
   const [ans3_6, setAns3_6] = useState();
+  const [ans3_7, setAns3_7] = useState({
+    Y:true,
+    N:false
+  });
   const [check, setCheck] = useState();
   const [count, setCount] = useState(1);
+  const [radio, setRadio] = useState("y");
+  const [isradio, setIsRadio] = useState();
 
   const [show, setShow] = useState(false);
 
@@ -22,14 +28,9 @@ export default function Sections3() {
 
     // {title: 'แปลผลเส้นรอบเอว', result: waist},
     // {title: 'แปลผลค่า BMI', result: bmi}
-  ];
-  //console.log("Input1 is " + ans3_1);
-  //  console.log("Input2 is "+ ans3_2)
-  //  console.log("Input3 is "+ input)
-  //  console.log("Input4 is "+ check)
-
-  const resu = () => {
-    //var i = 0;
+  ]
+  var cou = count;
+  function resu() {
     var a = "มีความเสี่ยง";
     var b = "มีความเสี่ยงสูง";
     var c = "มีความเสี่ยงสูงมาก";
@@ -45,48 +46,65 @@ export default function Sections3() {
       setCheck(c);
       console.log(c);
     }
-  };
-
-  const handleChange = () => {
-    console.log("Input ans3_1 is " + ans3_1);
-    // console.log("Input ans3_2 is " + ans3_2);
+  }
+function setAns(){
+//setAns3_7(ans3_7.Y)
+  
+  //console.log("3_7: "+ans3_7.Y)
+  if (
+   ans3_2 == radio &&
+   ans3_3 == radio &&
+   ans3_4 == radio &&
+   ans3_5 == radio
+  ) {
+    setAns3_7(ans3_7.Y)
+    console.log("3_7: "+ans3_7.Y)
+  }
+}
+  const handleChange = (e) => {
+    // console.log("Input ans3_1 is " + ans3_1);
+    //console.log("Input ans3_2 is " + ans3_2);
     // console.log("Input ans3_3 is " + ans3_3);
     // console.log("Input ans3_4 is " + ans3_4);
     // console.log("Input ans3_5 is " + ans3_5);
-    // console.log("Input ans3_6 is " + ans3_6);
-    // console.log("Count is " + count);
-    var a = "y1";
-    var b = "y2";
-    var c = "y3";
-    var d = "y4";
-    var e = "y5";
-    var f = "y6";
-    if (ans3_1 == a) {
-      setCount(count + 1);
-      resu();
-    }
-    if (ans3_2 == b) {
-      setCount(count + 2);
-      resu();
-    }
-    if (ans3_3 == c) {
-      setCount(count + 3);
-      resu();
-    }
-    if (ans3_4 == d) {
-      setCount(count + 4);
-      resu();
-    }
-    if (ans3_5 == e) {
-      setCount(count + 5);
-      resu();
-    }
-    if (ans3_6 == f) {
-      setCount(count + 6);
-      resu();
+    // console.log("Input ans3_7 is " + ans3_7);
+    //console.log("Count is " + cou);
+    //console.log("Value " + setAns3_1(e.target.value))
+    resu()
+    if (ans3_1 == radio) {
+      cou += 1
+      setCount(cou)
+      resu()
+      console.log("Input ans3_1 is " + ans3_1);
+    } else if (ans3_2 == radio) {
+      cou += 1
+      setCount(cou)
+      resu()
+      console.log("Input ans3_1 is " + ans3_2);
+    } else if (ans3_3 === radio) {
+      cou += 1
+      setCount(cou)
+      resu()
+      console.log("Input ans3_2 is " + ans3_2);
+    } else if (ans3_4 === radio) {
+      cou += 1
+      setCount(cou)
+      resu()
+      console.log("Input ans3_2 is " + ans3_3);
+    } else if (ans3_5 === radio) {
+      cou += 1
+      setCount(cou)
+      resu()
+      //setAns()
+      console.log("Input ans3_2 is " + ans3_5);
+    } else if (ans3_6 === radio) {
+      cou += 1
+      setCount(cou)
+      resu()
+      //setAns()
+      console.log("Input ans3_2 is " + ans3_6);
     } else {
-      console.log("Not set");
-      //setCount(0)
+      console.log("Not set")
     }
   };
 
@@ -109,7 +127,7 @@ export default function Sections3() {
           >
             <FormControlLabel
               className="radio-size"
-              value="y1"
+              value="y"
               control={<Radio color="primary" />}
               label="ใช่"
             />
@@ -134,7 +152,7 @@ export default function Sections3() {
           >
             <FormControlLabel
               className="radio-size"
-              value="y2"
+              value="y"
               control={<Radio color="primary" />}
               label="ใช่"
             />
@@ -159,7 +177,7 @@ export default function Sections3() {
           >
             <FormControlLabel
               className="radio-size"
-              value="y3"
+              value="y"
               control={<Radio color="primary" />}
               label="ใช่"
             />
@@ -183,7 +201,7 @@ export default function Sections3() {
           >
             <FormControlLabel
               className="radio-size"
-              value="y4"
+              value="y"
               control={<Radio color="primary" />}
               label="ใช่"
             />
@@ -203,11 +221,12 @@ export default function Sections3() {
             onChange={(e) => {
               setAns3_5(e.target.value);
               handleChange();
+              setAns();
             }}
           >
             <FormControlLabel
               className="radio-size"
-              value="y5"
+              value="y"
               control={<Radio color="primary" />}
               label="ใช่"
             />
@@ -227,11 +246,12 @@ export default function Sections3() {
             onChange={(e) => {
               setAns3_6(e.target.value);
               handleChange();
+              setAns();
             }}
           >
             <FormControlLabel
               className="radio-size"
-              value="y6"
+              value="y"
               control={<Radio color="primary" />}
               label="ใช่"
             />
@@ -242,7 +262,31 @@ export default function Sections3() {
               label="ไม่ใช่"
             />
           </RadioGroup>
+          <p>
+            3.7 มีพ่อ แม่ พี่น้องท้องเดียวกันเป็นโรคหัวใจขาดเลือด หรืออัมพฤกษ์
+            อัมพาต ก่อนวัยอันควร(ชายเป็นก่อน อายุ 55 ปี หญิงเป็นก่อน 65 )
+          </p>
+         
+          
+            <FormControlLabel
+              className="radio-size"
+              value={ans3_7.Y}
+              checked={ans3_7 === true}
+              onChange={(e) => setAns3_7(e.target.value)}
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value={ans3_7.N}
+              checked={ans3_7 === false}
+              onChange={(e) => setAns3_7(e.target.value)}
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+       
         </div>
+
         <div className="row justify-content-between">
           <Link to="/mainmenu">
             <button type="button" class="btn form-btn btn-back btn-lg">
@@ -252,6 +296,8 @@ export default function Sections3() {
           <button
             type="button"
             class="btn form-btn btn-primary btn-lg"
+            //onChange={handleChange()}
+            //onChange={resu()}
             onClick={() => setShow(true)}
           >
             บันทึก
@@ -262,6 +308,7 @@ export default function Sections3() {
         title="ผลส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
         dataShow={resultArray}
         show={show}
+        //isradio={() =>setIsRadio(false)}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
