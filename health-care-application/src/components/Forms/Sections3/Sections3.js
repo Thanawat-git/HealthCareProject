@@ -62,7 +62,7 @@ function setAns(){
   }
 }
   const handleChange = (e) => {
-    // console.log("Input ans3_1 is " + ans3_1);
+     console.log("Input ans3_1 is " + ans3_1);
     //console.log("Input ans3_2 is " + ans3_2);
     // console.log("Input ans3_3 is " + ans3_3);
     // console.log("Input ans3_4 is " + ans3_4);
