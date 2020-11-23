@@ -11,6 +11,10 @@ import forms1p5Reducer from './forms1p5.reducer'
 import forms1p6Reducer from './forms1p6.reducer'
 import forms2Reducer from './forms2.reducer'
 import forms3Reducer from './forms3.reducer'
+import forms4Reducer from './forms4.reducer'
+import forms5Reducer from './forms5.reducer'
+import forms7Reducer from './forms7.reducer'
+import forms8Reducer from './forms8.reducer'
 
 export default combineReducers({
     ElderlyReducer,
@@ -23,4 +27,8 @@ export default combineReducers({
     forms1p6Reducer,
     forms2Reducer,
     forms3Reducer,
+    forms4Reducer,
+    forms5Reducer,
+    forms7Reducer,
+    forms8Reducer,
 })

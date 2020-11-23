@@ -231,7 +231,7 @@ export default function Sections1_3() {
                   <FormControlLabel
                     value="grandchild1"
                     control={<Radio color="primary" />}
-                    label="หลานสาว/หลานสาว"
+                    label="หลานชาย/หลานสาว"
                   />
                   <FormControlLabel
                     value="siblings1"
@@ -404,7 +404,7 @@ export default function Sections1_3() {
                   <FormControlLabel
                     value="grandchild1"
                     control={<Radio color="primary" />}
-                    label="หลานสาว/หลานสาว"
+                    label="หลานชาย/หลานสาว"
                   />
                   <FormControlLabel
                     value="siblings1"

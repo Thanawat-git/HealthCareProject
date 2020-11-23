@@ -4,6 +4,14 @@
 }
 
 /* Common config All Screen */
+.css-form{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+
 .css-form h1{
     text-align: center;
     margin-top: 30px;
@@ -59,7 +67,7 @@
     color: #A9A9A9;
 }
 .result-result{
-    font-size: 25px;
+    font-size: 20px;
 }
 
 /* small phone  width < 576px  */

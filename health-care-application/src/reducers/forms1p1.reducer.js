@@ -1,4 +1,5 @@
 import { FORMS1P1_ADD_NEW } from "../constants"
+import Axiso from 'axios';
 
 const initialState = {
     peopleID: null,
@@ -12,7 +13,7 @@ const initialState = {
     month: null,
     day: null
 }
-
+ 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 

@@ -322,7 +322,7 @@ export default function Sections2_1() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>ผลส่วนที่ 2</Modal.Title>
+          <Modal.Title>ผลการประเมินสภาวะสุขภาพ</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -334,7 +334,8 @@ export default function Sections2_1() {
               <strong>
                 <p> {forms2Reducer.waistResult} </p>
               </strong>
-            </div> 
+            </div>
+            <hr/>
             <div className="col-12 col-xl-6 title-result">
               <p> แปลผลค่า BMI </p>
             </div>
@@ -365,7 +366,7 @@ export default function Sections2_1() {
         <Modal.Footer>
           <Link to="/mainmenu" className={classes.root}>
             <Button variant="primary" block>
-              บันทึก
+              กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>
         </Modal.Footer>

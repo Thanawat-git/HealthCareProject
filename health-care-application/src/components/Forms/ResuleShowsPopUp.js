@@ -11,13 +11,8 @@ const useStyles = makeStyles({
 });
 
 function ResuleShowsPopUp(props) {
-    // const resultTitle = props.title
-    const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
     const classes = useStyles();
 
-    for (var key of Object.keys(forms2Reducer)) {
-      console.log(key + " -> " + forms2Reducer[key])
-    }
   return (
         <Modal
         {...props}
@@ -29,21 +24,20 @@ function ResuleShowsPopUp(props) {
           <Modal.Body>
             <React.Fragment>
               <div className="row">
-                <div className="col-12 col-xl-6">
-                <strong><p> ผลการประเมิน </p></strong>
+                <div className="col-12 title-result">
+                <p> ผลการประเมิน </p>
                 </div>
-                <div className="col-12 col-xl-6">
+                <div className="col-12 result-result">
                 <p> {props.result} </p>
                 </div>
               </div>
-              <hr/>
             </React.Fragment>
           </Modal.Body>
 
           <Modal.Footer>
               <Link to="/mainmenu" className={classes.root}>
                 <Button variant="primary" block>
-                  บันทึก
+                  กลับสู่หน้าเมนูหลัก
                 </Button>
               </Link>
           </Modal.Footer>

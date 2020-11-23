@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p5.action";
 
-export default function Sections1_8() {
+export default function Sections1_5() {
   const forms1p5Reducer = useSelector(({ forms1p5Reducer }) => forms1p5Reducer);
   const dispatch = useDispatch();
 
@@ -130,7 +130,7 @@ export default function Sections1_8() {
                 {drugs.map((value, index) => {
                   let i = index
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={i=>{drugs.splice(i, 1); console.log('index: ', i); setdrugs([...drugs])}}>ลบ</button> </span> 
+                  <span> <button onClick={()=>{drugs.splice(index, 1); console.log('index: ', index); setdrugs([...drugs])}}>ลบ</button> </span> 
                   </li>;
                 })}
               </ul>
@@ -199,9 +199,10 @@ export default function Sections1_8() {
             <div className="col-12">
               <ul>
                 {foods.map((value, index) => {
-                  let i = index
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={i=>{foods.splice(i, 1); console.log('index: ', i); setfoods([...foods])}}>ลบ</button> </span> 
+                  <span> <button onClick={()=>{foods.splice(index, 1); setfoods([...foods])}}>ลบ</button> </span> 
+                  {/* <span> <button onClick={()=>{diseases.splice(index, 1); console.log('index: ', index); setdiseases([...diseases])}}>ลบ</button> </span> */}
+                  
                   </li>;
                 })}
               </ul>

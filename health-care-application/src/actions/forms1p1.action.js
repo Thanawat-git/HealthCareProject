@@ -4,7 +4,7 @@ export const setStateToAdd = (payload) => ({
     type: FORMS1P1_ADD_NEW,
     payload
 })
-
+ 
 export const setStateToEdit = () => ({
     type: FORM_EDIT,
 })

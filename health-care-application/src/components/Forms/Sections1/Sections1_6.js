@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p6.action";
 
-export default function Sections1_9() {
+export default function Sections1_6() {
 
   const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
   const dispatch = useDispatch()
@@ -20,6 +20,7 @@ export default function Sections1_9() {
   const confirm = () => {
     disease && setdiseases([...diseases, disease])
     setdisease(null)
+    // console.log(diseases)
   };
 
   const handleSubmit = ()=>{
@@ -69,11 +70,11 @@ export default function Sections1_9() {
             <div className="col-12" style={{marginTop:20}} >
               <ol>
                 {diseases.map((value, index) => {
-                  let i = index
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={i=>{diseases.splice(i, 1); console.log('index: ', i); setdiseases([...diseases])}}>ลบ</button> </span> 
+                  <span> <button onClick={()=>{diseases.splice(index, 1); console.log('index: ', index); setdiseases([...diseases])}}>ลบ</button> </span> 
                   </li>;
                 })}
+                {}
               </ol>
             </div>
           </div>

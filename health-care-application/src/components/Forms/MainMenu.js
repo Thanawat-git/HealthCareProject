@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 const useStyles = makeStyles({
     root: {
@@ -22,7 +22,11 @@ const useStyles = makeStyles({
 });
 
 function MainMenu(props) {
-    const i = 0;
+    const collect2 = useSelector(({forms2Reducer}) => forms2Reducer.collect)
+    const collect4 = useSelector(({forms4Reducer}) => forms4Reducer.collect)
+    const collect5 = useSelector(({forms5Reducer}) => forms5Reducer.collect)
+    const collect7 = useSelector(({forms7Reducer}) => forms7Reducer.collect)
+    const collect8 = useSelector(({forms8Reducer}) => forms8Reducer.collect)
     const classes = useStyles();
     const [i1, setI1] = useState('')
     const [i2, setI2] = useState('')
@@ -36,60 +40,11 @@ function MainMenu(props) {
     const [i0, setI0] = useState('')
 
     useEffect(() => {
-        // console.log('fff',typeof props.StateForm)
-        // for(const [key, value] of Object.entries(props.FormStatus)){
-        //     // console.log(`MainMume1: ${key}: ${value}`);
-        //     if(key==='FormReducer'){
-        //     // รูปแบบของข้อมูลใน state
-        //         // FormReducer = {
-        //         //     SEC2: [{
-        //         //         RawData: [{}],
-        //         //         ResultArray: [{}],
-        //         //         Collect: true or false
-        //         //     }]
-        //         // }
-                for(const [key1, value1] of Object.entries(props.StateForm)){
-                    switch (key1) {
-                        case 'SEC2':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI2('green')}
-                            break;
-                        case 'SEC3':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI3('green')}
-                            break;
-                        case 'SEC4':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI4('green')}
-                            break;
-                        case 'SEC5':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI5('green')}
-                            break;
-                        case 'SEC6':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI6('green')}
-                            break;
-                        case 'SEC7':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI7('green')}
-                            break;
-                        case 'SEC8':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI8('green')}
-                            break;
-                        case 'SEC9':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI9('green')}
-                            break;
-                        case 'SEC0':
-                            for(const [key2, value2] of Object.entries(value1)){value2.Collect && setI0('green')}
-                            break;
-                    
-                    }
-        //             // if(key1==='SEC2'){
-        //             //     for(const [key2, value2] of Object.entries(value1)){ // เข้าถึง Collect
-        //             //         // ถ้าจะเข้าถึง RawData กับ ResultArray ต้อง loop อีกชั้นนึง
-        //             //         console.log(`MainMume loop3: ${key2}: ${value2.Collect}`);
-        //             //         value2.Collect && setI2('green')
-        //             //     }
-        //             // }
-        //             // console.log(`MainMume: ${key1}: ${value1}`);
-                }
-        //     } 
-        // }
+        collect2 && setI2('green')
+        collect4 && setI4('green')
+        collect5 && setI5('green')
+        collect7 && setI7('green')
+        collect8 && setI8('green')
     }, []);
 
     const useStyles2 = makeStyles({
