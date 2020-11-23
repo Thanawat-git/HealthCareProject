@@ -2,8 +2,7 @@ import React from 'react'
 import { Modal, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { ADD_NEW_FORM_SEC2 } from '../../reducers/Actions/actionsType'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 const useStyles = makeStyles({
   root: {
@@ -12,22 +11,12 @@ const useStyles = makeStyles({
 });
 
 function ResuleShowsPopUp(props) {
-    const ResultArray = props.dataShow
-    const RawData = props.RawData
-    const Collect = props.collect
+    // const resultTitle = props.title
+    const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
     const classes = useStyles();
 
-    const onSubmit = ()=>{
-
-      const data = {
-        ResultArray,
-        RawData,
-        Collect
-      }
-      props.dispatch({
-        type: ADD_NEW_FORM_SEC2,
-        data
-      })
+    for (var key of Object.keys(forms2Reducer)) {
+      console.log(key + " -> " + forms2Reducer[key])
     }
   return (
         <Modal
@@ -38,27 +27,22 @@ function ResuleShowsPopUp(props) {
           </Modal.Header>
 
           <Modal.Body>
-            {ResultArray.map((value) =>
             <React.Fragment>
               <div className="row">
                 <div className="col-12 col-xl-6">
-                <strong><p> {value.title} </p></strong>
+                <strong><p> ผลการประเมิน </p></strong>
                 </div>
                 <div className="col-12 col-xl-6">
-                <p> {value.result} </p>
+                <p> {props.result} </p>
                 </div>
               </div>
               <hr/>
             </React.Fragment>
-            )}
-            {/* <ul>
-              {RawData.map(data => <li> {data} </li> )}
-            </ul> */}
           </Modal.Body>
 
           <Modal.Footer>
               <Link to="/mainmenu" className={classes.root}>
-                <Button variant="primary" block onClick={onSubmit} >
+                <Button variant="primary" block>
                   บันทึก
                 </Button>
               </Link>
@@ -66,5 +50,5 @@ function ResuleShowsPopUp(props) {
         </Modal>
   )
 }
-
-export default connect()(ResuleShowsPopUp);
+export default ResuleShowsPopUp;
+// export default connect()(ResuleShowsPopUp);

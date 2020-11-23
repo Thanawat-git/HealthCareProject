@@ -18,24 +18,10 @@
     transform:scale(1.5);
 }
 
-/* .css-form form {
-    border: 1px solid #707070;
-    border-radius: 43px;
-    box-shadow: 5px 5px 8px #707070;
-    padding: 25px 20px 15px 20px;
-    margin: 35px 90px;
-    height: auto;    
-    transition: 0.3s;
-} */
-
 .css-form form h2{
     text-align: center;
     font-size: 35px;
 }
-
-/* .css-form form span{
-    color: red;
-} */
 
 .form-btn {
     margin: 0 45px;
@@ -67,6 +53,13 @@
 }
 .css-form span {
     font-size: 20px;
+}
+
+.title-result{
+    color: #A9A9A9;
+}
+.result-result{
+    font-size: 25px;
 }
 
 /* small phone  width < 576px  */

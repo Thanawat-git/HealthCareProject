@@ -4,18 +4,57 @@ import "../form-style.css";
 import "../../genaralConfig.css";
 import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import * as formAction from "../../../actions/forms3.action";
 
 export default function Sections3() {
-  const [ans3_1, setAns3_1] = useState();
-  const [ans3_2, setAns3_2] = useState();
-  const [ans3_3, setAns3_3] = useState();
-  const [ans3_4, setAns3_4] = useState();
-  const [ans3_5, setAns3_5] = useState();
-  const [ans3_6, setAns3_6] = useState();
+  const forms3Reducer = useSelector(({forms3Reducer}) => forms3Reducer)
+  const dispatch = useDispatch()
+  const [ans3_1, setAns3_1] = useState(forms3Reducer.ans3_1);
+  const [ans3_2, setAns3_2] = useState(forms3Reducer.ans3_2);
+  const [ans3_3, setAns3_3] = useState(forms3Reducer.ans3_3);
+  const [ans3_4, setAns3_4] = useState(forms3Reducer.ans3_4);
+  const [ans3_5, setAns3_5] = useState(forms3Reducer.ans3_5);
+  const [ans3_6, setAns3_6] = useState(forms3Reducer.ans3_6);
   const [check, setCheck] = useState();
   const [count, setCount] = useState(1);
+  const [collect, setCollect] = useState(forms3Reducer.collect);
+  const [results3, setresults3] = useState(forms3Reducer.results3);
+
+
+  useEffect(() => {
+    if(collect){
+      const count = ans3_1+ans3_2+ans3_3+ans3_4+ans3_5+ans3_6
+      setresults3()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (
+    ans3_1 &&
+    ans3_2 &&
+    ans3_3 &&
+    ans3_4 &&
+    ans3_5 &&
+    ans3_6
+  ) {
+    setCollect(true);
+  }
+  }, [ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6])
+
+  useEffect(() => {
+
+  }, [ans3_1])
+
+
+ 
 
   const [show, setShow] = useState(false);
+  const handleSubmit = ()=>{
+    setShow(true)
+    const data = [ans3_1,results3]
+    dispatch(formAction.add(data))
+  }
 
   const resultArray = [
     { title: "แปลผลความเสี่ยง", result: check },
@@ -94,7 +133,7 @@ export default function Sections3() {
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
-        <h2>ส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h2>
+        <h2>ส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด {forms3Reducer.ans3_1} </h2>
         <div className="question">
           <p>3.1 ยังสูบบุหรี่ ยาเส้น หรือหยุดสูบไม่เกิน 1 ปี </p>
           <RadioGroup
@@ -252,7 +291,7 @@ export default function Sections3() {
           <button
             type="button"
             class="btn form-btn btn-primary btn-lg"
-            onClick={() => setShow(true)}
+            onClick={handleSubmit}
           >
             บันทึก
           </button>
@@ -260,7 +299,7 @@ export default function Sections3() {
       </form>
       <ShowResultPopup
         title="ผลส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
-        dataShow={resultArray}
+        result={results3}
         show={show}
         onHide={() => setShow(false)}
         backdrop="static"
