@@ -22,26 +22,25 @@ export default function Sections6() {
 
   return (
     <div className="css-form">
-      <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <form className="shadow-lg p-3 mb-5 bg-white rounded" >
         <h2>ส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ</h2>
         <div className="question">
          
             {/* content */}
-            <p>6.1 กินอาหารได้เอง เมื่อเตรียมสำรับไว้ให้ต่อหน้า</p>
+            <p>กินอาหารได้เอง เมื่อเตรียมสำรับไว้ให้ต่อหน้า</p>
           <RadioGroup className="pl-20" aria-label='questions6.1' name='questions6.1' value={ans6_1} onChange={(e)=>setAns6_1(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ทำได้เอง" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="ทำเองได้บ้างแต่ต้องมีคนช่วย" />
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ทำไม่ได้" />
           </RadioGroup>
           <hr/>
-          <p>6.2 ล้างหน้า หวีผม แปรงฟัน โกนหนวด 1-2 วันที่ผ่านมา</p>
+          <p>ล้างหน้า หวีผม แปรงฟัน โกนหนวด 1-2 วันที่ผ่านมา</p>
           <RadioGroup className="pl-20" aria-label='questions6.2' name='questions6.2' value={ans6_2} onChange={(e)=>setAns6_2(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ทำได้เอง" />
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ต้องการความช่วยเหลือ" />
           </RadioGroup>
           <hr/>
-          <p>6.3 ลุกนั่งจากที่นอน หรือจากเตียงไปเก้าอี้</p>
+          <p>ลุกนั่งจากที่นอน หรือจากเตียงไปเก้าอี้</p>
           <RadioGroup className="pl-20" aria-label='questions6.3' name='questions6.3' value={ans6_3} onChange={(e)=>setAns6_3(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ทำได้เอง" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="ทำเองได้บ้างแต่ต้องมีคนช่วย" />
@@ -49,14 +48,14 @@ export default function Sections6() {
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ทำไม่ได้" />
           </RadioGroup>
           <hr/>
-          <p>6.4 การใช้ห้องน้ำ ห้องส้วม</p>
+          <p>การใช้ห้องน้ำ ห้องส้วม</p>
           <RadioGroup className="pl-20" aria-label='questions6.4' name='questions6.4' value={ans6_4} onChange={(e)=>setAns6_4(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ทำได้เอง" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="ทำได้บ้าง หรือต้องช่วยเหลือบางอย่าง" />
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ช่วยเหลือตนเองไม่ได้" />
           </RadioGroup>
           <hr/>
-          <p>6.5 การเคลื่อนที่ภายในห้องหรือบ้าน</p>
+          <p>การเคลื่อนที่ภายในห้องหรือบ้าน</p>
           <RadioGroup className="pl-20" aria-label='questions6.5' name='questions6.5' value={ans6_5} onChange={(e)=>setAns6_5(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="เดินได้เอง" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="เดินได้ต้องช่วยพยุง" />
@@ -64,34 +63,34 @@ export default function Sections6() {
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ทำไม่ได้" />
           </RadioGroup>
           <hr/>
-          <p>6.6 การสวมเสื้อผ้า</p>
+          <p>การสวมเสื้อผ้า</p>
           <RadioGroup className="pl-20" aria-label='questions6.6' name='questions6.6' value={ans6_6} onChange={(e)=>setAns6_6(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ทำได้เอง" />
             <FormControlLabel className="radio-size" value="maybe one" control={<Radio color="primary" />} label="ทำได้ แต่ต้องช่วยประมาณครึ่งหนึ่ง" />
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ต้องมีคนสวมใส่ให้" />
           </RadioGroup>
           <hr/>
-          <p>6.7 การขึ้นลงบันได</p>
+          <p>การขึ้นลงบันได</p>
           <RadioGroup className="pl-20" aria-label='questions6.7' name='questions6.7' value={ans6_7} onChange={(e)=>setAns6_7(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="ขึ้นลงได้เอง / ถ้าใช้เครื่องช่วยต้องเอาขึ้นลงได้" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="ต้องมีคนช่วย จึงจะขึ้นได้" />
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="ทำไม่ได้" />
           </RadioGroup>
           <hr/>
-          <p>6.8 การอาบน้ำ</p>
+          <p>การอาบน้ำ</p>
           <RadioGroup className="pl-20" aria-label='questions6.8' name='questions6.8' value={ans6_8} onChange={(e)=>setAns6_8(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="อาบน้ำได้เอง" />
             <FormControlLabel className="radio-size" value="help" control={<Radio color="primary" />} label="ต้องมีคนช่วย หรือทำให้" />
           </RadioGroup>
           <hr/>
-          <p>6.9 การกลั้นอุจจาระ ในระยะ 1 สัปดาห์ที่ผ่านมา</p>
+          <p>การกลั้นอุจจาระ ในระยะ 1 สัปดาห์ที่ผ่านมา</p>
           <RadioGroup className="pl-20" aria-label='questions6.9' name='questions6.9' value={ans6_9} onChange={(e)=>setAns6_9(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="กลั้นได้ปกติ" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="กลั้นไม่ได้บางครั้ง แต่น้อยกว่าวันละ 1 ครั้ง" />
             <FormControlLabel className="radio-size" value="no" control={<Radio color="primary" />} label="กลั้นไม่ได้" />
           </RadioGroup>
           <hr/>
-          <p>6.10 การกลั้นปัสสาวะ ในระยะ 1 สัปดาห์ที่ผ่านมา</p>
+          <p>การกลั้นปัสสาวะ ในระยะ 1 สัปดาห์ที่ผ่านมา</p>
           <RadioGroup className="pl-20" aria-label='questions6.10' name='questions6.10' value={ans6_10} onChange={(e)=>setAns6_10(e.target.value)}>
             <FormControlLabel className="radio-size" value="yes"  control={<Radio color="primary" />} label="กลั้นได้ปกติ" />
             <FormControlLabel className="radio-size" value="maybe" control={<Radio color="primary" />} label="กลั้นไม่ได้บางครั้ง แต่น้อยกว่าวันละ 1 ครั้ง" />
@@ -119,7 +118,7 @@ export default function Sections6() {
           </RadioGroup>
           <hr/>
           <p>Feed</p>
-          <RadioGroup className="pl-20" aria-label='questions6.Fe' name='questions6.Fe' value={ans6_10} onChange={(e)=>setAns6_Fe(e.target.value)}>
+          <RadioGroup className="pl-20" aria-label='questions6.Fe' name='questions6.Fe' value={ans6_Fe} onChange={(e)=>setAns6_Fe(e.target.value)}>
             <FormControlLabel className="radio-size" value="IV"  control={<Radio color="primary" />} label="IV" />
             <FormControlLabel className="radio-size" value="NG" control={<Radio color="primary" />} label="NG Tube" />
             <FormControlLabel className="radio-size" value="help" control={<Radio color="primary" />} label="ต้องป้อน และกลืนลำบาก" />
