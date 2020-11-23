@@ -334,7 +334,7 @@ export default function Sections2_1() {
               <strong>
                 <p> {forms2Reducer.waistResult} </p>
               </strong>
-            </div>
+            </div> 
             <div className="col-12 col-xl-6 title-result">
               <p> แปลผลค่า BMI </p>
             </div>

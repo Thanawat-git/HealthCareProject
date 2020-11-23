@@ -84,15 +84,15 @@ function setAns(){
 //setAns3_7(ans3_7.Y)
   
   //console.log("3_7: "+ans3_7.Y)
-  if (
-   ans3_2 == radio &&
-   ans3_3 == radio &&
-   ans3_4 == radio &&
-   ans3_5 == radio
-  ) {
-    setAns3_7(ans3_7.Y)
-    console.log("3_7: "+ans3_7.Y)
-  }
+  // if (
+  //  ans3_2 == radio &&
+  //  ans3_3 == radio &&
+  //  ans3_4 == radio &&
+  //  ans3_5 == radio
+  // ) {
+  //   setAns3_7(ans3_7.Y)
+  //   console.log("3_7: "+ans3_7.Y)
+  // }
 }
   const handleChange = (e) => {
      console.log("Input ans3_1 is " + ans3_1);
@@ -104,41 +104,41 @@ function setAns(){
     //console.log("Count is " + cou);
     //console.log("Value " + setAns3_1(e.target.value))
     resu()
-    if (ans3_1 == radio) {
-      cou += 1
-      setCount(cou)
-      resu()
-      console.log("Input ans3_1 is " + ans3_1);
-    } else if (ans3_2 == radio) {
-      cou += 1
-      setCount(cou)
-      resu()
-      console.log("Input ans3_1 is " + ans3_2);
-    } else if (ans3_3 === radio) {
-      cou += 1
-      setCount(cou)
-      resu()
-      console.log("Input ans3_2 is " + ans3_2);
-    } else if (ans3_4 === radio) {
-      cou += 1
-      setCount(cou)
-      resu()
-      console.log("Input ans3_2 is " + ans3_3);
-    } else if (ans3_5 === radio) {
-      cou += 1
-      setCount(cou)
-      resu()
-      //setAns()
-      console.log("Input ans3_2 is " + ans3_5);
-    } else if (ans3_6 === radio) {
-      cou += 1
-      setCount(cou)
-      resu()
-      //setAns()
-      console.log("Input ans3_2 is " + ans3_6);
-    } else {
-      console.log("Not set")
-    }
+    // if (ans3_1 == radio) {
+    //   cou += 1
+    //   setCount(cou)
+    //   resu()
+    //   console.log("Input ans3_1 is " + ans3_1);
+    // } else if (ans3_2 == radio) {
+    //   cou += 1
+    //   setCount(cou)
+    //   resu()
+    //   console.log("Input ans3_1 is " + ans3_2);
+    // } else if (ans3_3 === radio) {
+    //   cou += 1
+    //   setCount(cou)
+    //   resu()
+    //   console.log("Input ans3_2 is " + ans3_2);
+    // } else if (ans3_4 === radio) {
+    //   cou += 1
+    //   setCount(cou)
+    //   resu()
+    //   console.log("Input ans3_2 is " + ans3_3);
+    // } else if (ans3_5 === radio) {
+    //   cou += 1
+    //   setCount(cou)
+    //   resu()
+    //   //setAns()
+    //   console.log("Input ans3_2 is " + ans3_5);
+    // } else if (ans3_6 === radio) {
+    //   cou += 1
+    //   setCount(cou)
+    //   resu()
+    //   //setAns()
+    //   console.log("Input ans3_2 is " + ans3_6);
+    // } else {
+    //   console.log("Not set")
+    // }
   };
 
   return (
@@ -303,17 +303,17 @@ function setAns(){
           
             <FormControlLabel
               className="radio-size"
-              value={ans3_7.Y}
-              checked={ans3_7 === true}
-              onChange={(e) => setAns3_7(e.target.value)}
+              // value={ans3_7.Y}
+              // checked={ans3_7 === true}
+              // onChange={(e) => setAns3_7(e.target.value)}
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value={ans3_7.N}
-              checked={ans3_7 === false}
-              onChange={(e) => setAns3_7(e.target.value)}
+              // value={ans3_7.N}
+              // checked={ans3_7 === false}
+              // onChange={(e) => setAns3_7(e.target.value)}
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
