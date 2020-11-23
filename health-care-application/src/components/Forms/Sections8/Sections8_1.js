@@ -92,9 +92,7 @@ function Sections8_1() {
         {/* bt */}
         <div className="row justify-content-between">
           <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
-          {/* <Link to="/mainmenu"> */}
             <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >ถัดไป</button>
-          {/* </Link> */}
         </div>
       </form>
       <Modal
