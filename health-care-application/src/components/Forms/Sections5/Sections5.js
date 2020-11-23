@@ -18,7 +18,6 @@ export default function Sections5_1() {
 
   return (
     <div className="css-form">
-      <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
         <h2>ส่วนที่ 5 การประเมินสุขภาพช่องปาก</h2>
         <div className="question">
