@@ -20,13 +20,16 @@ export default function Sections4_1() {
   const [ans4_5, setAns4_5] = useState(forms4Reducer.ans4_5)
   const [collect, setCollect] = useState(forms4Reducer.collect);
   const [results, setresults] = useState(forms4Reducer.result);
+  const [count ,setCount] = useState(forms4Reducer.count)
 
   const [show, setShow] = useState(false);
   useEffect(() => {
-    if(!collect) return
-    const count = parseInt(ans4_1)+parseInt(ans4_2)+parseInt(ans4_3)+parseInt(ans4_4)+parseInt(ans4_5)
-    count>0 ? setresults('มีปัญหาการมองเห็น'):setresults('ปกติ')
-  }, [collect])
+    if(collect === true){
+    const c = parseInt(ans4_1)+parseInt(ans4_2)+parseInt(ans4_3)+parseInt(ans4_4)+parseInt(ans4_5)
+    setCount(c)
+    c>0 ? setresults('มีปัญหาการมองเห็น'):setresults('ปกติ')
+    }
+  }, [collect,ans4_1,ans4_2,ans4_3,ans4_4,ans4_5])
 
   useEffect(() => {
     if(ans4_1 && ans4_2 && ans4_3 && ans4_4 && ans4_5){
@@ -36,7 +39,7 @@ export default function Sections4_1() {
 
   const handleSubmit = ()=>{
     setShow(true)
-    const data = [ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,results,collect]
+    const data = [ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,results,collect,count]
     dispatch(formAction.add(data))
   }
 

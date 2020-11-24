@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Sections2.css";
 import "../form-style.css";
 import "../../genaralConfig.css";
-import { OutlinedInput, InputAdornment, TextField } from "@material-ui/core";
+import { OutlinedInput, InputAdornment, TextField, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms2.action";
@@ -38,6 +38,7 @@ export default function Sections2_1() {
 
   const [show, setShow] = useState(false);
   const [collect, setCollect] = useState(forms2Reducer.collect);
+  const [noFood, setnoFood] = useState(null)
 
   useEffect(() => {
     if (
@@ -115,11 +116,20 @@ export default function Sections2_1() {
     }
   };
   const calsugar = () => {
-    sugar < 100
-      ? setsugarResult("ยังไม่มีข้อมูลสำหรับ case นี้")
+    if(noFood == true){
+      sugar < 100
+      ? setsugarResult("ปกติ")
       : sugar < 126
       ? setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน")
       : setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
+    } else {
+      sugar < 100
+      ? setsugarResult("ยังไม่มีแปลผลสำหรับ case นี้")
+      : sugar < 126
+      ? setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน")
+      : setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
+    }
+    
   };
 
   const handleSubmit = () => {
@@ -282,6 +292,14 @@ export default function Sections2_1() {
                 <strong>ระดับน้ำตาลจากปลายนิ้ว</strong>
               </p>
             </div>
+            <div className="col-12">
+              <p>ผู้สูงอายุมีการงดอาหารก่อนมาตรวจอย่างน้อย 8 ชั่วโมงหรือไม่</p>
+              <RadioGroup className="pl-20" aria-label='nofood' name='nofood' value={noFood} onChange={(e)=>setnoFood(!noFood)}>
+                <FormControlLabel className="radio-size" value={true}  control={<Radio color="primary" />} label="ใช่" />
+                <FormControlLabel className="radio-size" value={false} control={<Radio color="primary" />} label="ไม่ใช่" />
+              </RadioGroup>
+            </div>
+            {noFood !== null && 
             <div className="col-12 mb-15">
               <OutlinedInput
                 id="sugar"
@@ -295,6 +313,7 @@ export default function Sections2_1() {
                 fullWidth
               />
             </div>
+            }
           </div>
           {/* row-4 */}
           {/* content */}

@@ -6,6 +6,7 @@ const initialState = {
   ans4_3: 0,
   ans4_4: 0,
   ans4_5: 0,
+  count: 0,
   result: 'ยังไม่สามารถแปลผลได้เนื่องจากข้อมูลยังไม่ครบ',
   collect: false,
 };
@@ -23,6 +24,7 @@ export default (state = initialState, { type, payload }) => {
         ans4_5: payload[4],
         result: payload[5],
         collect: payload[6],
+        count: payload[7]
       };
 
     default:
