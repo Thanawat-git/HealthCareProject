@@ -83,7 +83,7 @@ export default function Sections7_1() {
             <div className="col-6"><p>เฉลย: </p></div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns1} onChange={(e)=>textAns1(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns1} onChange={(e)=>settextAns1(e.target.value)}
               />
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Sections7_1() {
             {/* <div className="col-6"><p>เฉลย: </p></div> */}
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns2} onChange={(e)=>textAns2(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns2} onChange={(e)=>settextAns2(e.target.value)}
               />
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function Sections7_1() {
             {/* <div className="col-6"><p>เฉลย: </p></div> */}
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns3} onChange={(e)=>textAns3(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns3} onChange={(e)=>settextAns3(e.target.value)}
               />
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function Sections7_1() {
             <div className="col-6"><p>เฉลย: </p></div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns4} onChange={(e)=>textAns4(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns4} onChange={(e)=>settextAns4(e.target.value)}
               />
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function Sections7_1() {
             {/* <div className="col-6"><p>เฉลย: </p></div> */}
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns5} onChange={(e)=>textAns5(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns5} onChange={(e)=>settextAns5(e.target.value)}
               />
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function Sections7_1() {
             {/* <div className="col-6"><p>เฉลย: </p></div> */}
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns6} onChange={(e)=>textAns6(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns6} onChange={(e)=>settextAns6(e.target.value)}
               />
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function Sections7_1() {
             <div className="col-6"><p>เฉลย: </p></div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
-              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns7} onChange={(e)=>textAns7(e.target.value)}
+              <TextField id="" variant="outlined" className="TextField" size="small" defaultValue={textAns7} onChange={(e)=>settextAns7(e.target.value)}
               />
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function Sections7_1() {
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
               <TextField id="" variant="outlined" className="TextField" size="small"
-              defaultValue={textAns8} onChange={(e)=>textAns8(e.target.value)}
+              defaultValue={textAns8} onChange={(e)=>settextAns8(e.target.value)}
               />
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function Sections7_1() {
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
               <TextField id="" variant="outlined" className="TextField" size="small"
-              defaultValue={textAns9} onChange={(e)=>textAns9(e.target.value)}
+              defaultValue={textAns9} onChange={(e)=>settextAns9(e.target.value)}
               />
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function Sections7_1() {
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
               <TextField id="" variant="outlined" className="TextField" size="small" label='ใส่ตัวเลขล่าสุดที่ผู้สูงอายุตอบ' 
-              defaultValue={textAns10} onChange={(e)=>textAns10(e.target.value)}
+              defaultValue={textAns10} onChange={(e)=>settextAns10(e.target.value)}
               // InputLabelProps={{
               //   shrink: true,
               // }}
