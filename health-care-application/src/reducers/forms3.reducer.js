@@ -1,14 +1,16 @@
 import { CREATE_NEW_FORMS3 } from "../constants"
 
 const initialState = {
-    ans3_1: null,
-    ans3_2: null,
-    ans3_3: null,
-    ans3_4: null,
-    ans3_5: null,
-    ans3_6: null,
-    results3: 'aaaaaa',
+    ans3_1: 0,
+    ans3_2: 0,
+    ans3_3: 0,
+    ans3_4: 0,
+    ans3_5:0,
+    ans3_6: 0,
+    ans3_7: 0,
+    results3:null,
     collect: false
+
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -17,12 +19,15 @@ export default (state = initialState, { type, payload }) => {
     case CREATE_NEW_FORMS3:
         return { 
             ans3_1: payload[0],
-            ans3_2: null,
-            ans3_3: null,
-            ans3_4: null,
-            ans3_5: null,
-            ans3_6: null,
-            results3: payload[0]
+            ans3_2: payload[1],
+            ans3_3: payload[2],
+            ans3_4: payload[3],
+            ans3_5: payload[4],
+            ans3_6: payload[5],
+            results3: payload[6],
+            collect:payload[7]
+
+
         }
 
     default:

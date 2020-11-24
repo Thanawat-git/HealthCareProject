@@ -74,6 +74,7 @@ export default function Sections1_5() {
                 <strong>ประวัติการแพ้ยา</strong>
               </p>
             </div>
+            <input type="radio"></input>
             <RadioGroup
               className="pl-5"
               aria-label="drugAllergy"

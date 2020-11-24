@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms3.action";
 
 export default function Sections3() {
-
   const forms3Reducer = useSelector(({forms3Reducer}) => forms3Reducer)
   const dispatch = useDispatch()
   const [ans3_1, setAns3_1] = useState(forms3Reducer.ans3_1);
@@ -17,18 +16,26 @@ export default function Sections3() {
   const [ans3_4, setAns3_4] = useState(forms3Reducer.ans3_4);
   const [ans3_5, setAns3_5] = useState(forms3Reducer.ans3_5);
   const [ans3_6, setAns3_6] = useState(forms3Reducer.ans3_6);
-  const [check, setCheck] = useState();
-  const [count, setCount] = useState(1);
+  const [ans3_7, setAns3_7] = useState(forms3Reducer.ans3_7);
   const [collect, setCollect] = useState(forms3Reducer.collect);
   const [results3, setresults3] = useState(forms3Reducer.results3);
-
+ const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if(collect){
-      const count = ans3_1+ans3_2+ans3_3+ans3_4+ans3_5+ans3_6
-      setresults3()
+   if(collect){
+   const countNum =parseInt(ans3_1) + parseInt(ans3_2) + parseInt(ans3_3)
+      +parseInt(ans3_4) + parseInt(ans3_5) + parseInt(ans3_6) + parseInt(ans3_7);
+        //const countNum =4;
+       console.log("countNum : "+ countNum)
+      if (countNum >= 1 && countNum <= 2) {
+         setresults3("มีความเสี่ยง")
+      } else if (countNum >= 3 && countNum <= 4) {
+        setresults3("มีความเสี่ยงสูง")
+      } else if (countNum >= 5) {
+        setresults3("มีความเสี่ยงสูงมาก")
+      }
     }
-  }, [])
+  }, [collect])
 
   useEffect(() => {
     if (
@@ -37,115 +44,23 @@ export default function Sections3() {
     ans3_3 &&
     ans3_4 &&
     ans3_5 &&
-    ans3_6
+    ans3_6 &&
+    ans3_7
   ) {
     setCollect(true);
   }
-  }, [ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6])
+  }, [ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,results3])
 
-  useEffect(() => {
-
-  }, [ans3_1])
-
-
-
-  const [show, setShow] = useState(false);
   const handleSubmit = ()=>{
     setShow(true)
-    const data = [ans3_1,results3]
+    const data = [ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,results3,collect]
     dispatch(formAction.add(data))
   }
 
-  const resultArray = [
-    { title: "แปลผลความเสี่ยง", result: check },
-
-    // {title: 'แปลผลเส้นรอบเอว', result: waist},
-    // {title: 'แปลผลค่า BMI', result: bmi}
-  ]
-  var cou = count;
-  function resu() {
-    var a = "มีความเสี่ยง";
-    var b = "มีความเสี่ยงสูง";
-    var c = "มีความเสี่ยงสูงมาก";
-    console.log("Input count is " + count);
-
-    if (count >= 1 && count <= 2) {
-      setCheck(a);
-      console.log(a);
-    } else if (count == 3 || count == 4) {
-      setCheck(b);
-      console.log(b);
-    } else if (count >= 5) {
-      setCheck(c);
-      console.log(c);
-    }
-  }
-function setAns(){
-//setAns3_7(ans3_7.Y)
-  
-  //console.log("3_7: "+ans3_7.Y)
-  // if (
-  //  ans3_2 == radio &&
-  //  ans3_3 == radio &&
-  //  ans3_4 == radio &&
-  //  ans3_5 == radio
-  // ) {
-  //   setAns3_7(ans3_7.Y)
-  //   console.log("3_7: "+ans3_7.Y)
-  // }
-}
-  const handleChange = (e) => {
-     console.log("Input ans3_1 is " + ans3_1);
-    //console.log("Input ans3_2 is " + ans3_2);
-    // console.log("Input ans3_3 is " + ans3_3);
-    // console.log("Input ans3_4 is " + ans3_4);
-    // console.log("Input ans3_5 is " + ans3_5);
-    // console.log("Input ans3_7 is " + ans3_7);
-    //console.log("Count is " + cou);
-    //console.log("Value " + setAns3_1(e.target.value))
-    resu()
-    // if (ans3_1 == radio) {
-    //   cou += 1
-    //   setCount(cou)
-    //   resu()
-    //   console.log("Input ans3_1 is " + ans3_1);
-    // } else if (ans3_2 == radio) {
-    //   cou += 1
-    //   setCount(cou)
-    //   resu()
-    //   console.log("Input ans3_1 is " + ans3_2);
-    // } else if (ans3_3 === radio) {
-    //   cou += 1
-    //   setCount(cou)
-    //   resu()
-    //   console.log("Input ans3_2 is " + ans3_2);
-    // } else if (ans3_4 === radio) {
-    //   cou += 1
-    //   setCount(cou)
-    //   resu()
-    //   console.log("Input ans3_2 is " + ans3_3);
-    // } else if (ans3_5 === radio) {
-    //   cou += 1
-    //   setCount(cou)
-    //   resu()
-    //   //setAns()
-    //   console.log("Input ans3_2 is " + ans3_5);
-    // } else if (ans3_6 === radio) {
-    //   cou += 1
-    //   setCount(cou)
-    //   resu()
-    //   //setAns()
-    //   console.log("Input ans3_2 is " + ans3_6);
-    // } else {
-    //   console.log("Not set")
-    // }
-  };
-
   return (
     <div className="css-form">
-      <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
-        <h2>ส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด {forms3Reducer.ans3_1} </h2>
+        <h2>ส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h2>
         <div className="question">
           <p>3.1 ยังสูบบุหรี่ ยาเส้น หรือหยุดสูบไม่เกิน 1 ปี </p>
           <RadioGroup
@@ -153,20 +68,19 @@ function setAns(){
             aria-label="questions3.1"
             name="questions3.1"
             value={ans3_1}
-            onChange={(e) => {
-              setAns3_1(e.target.value);
-              handleChange();
-            }}
+            onChange={(e) => 
+              setAns3_1(e.target.value)
+            }
           >
             <FormControlLabel
               className="radio-size"
-              value="y"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="n1"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
@@ -178,20 +92,19 @@ function setAns(){
             aria-label="questions3.2"
             name="questions3.2"
             value={ans3_2}
-            onChange={(e) => {
-              setAns3_2(e.target.value);
-              handleChange();
-            }}
+            onChange={(e) => 
+              setAns3_2(e.target.value)
+            }
           >
             <FormControlLabel
               className="radio-size"
-              value="y"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="n2"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
@@ -203,121 +116,126 @@ function setAns(){
             aria-label="questions3.3"
             name="questions3.3"
             value={ans3_3}
-            onChange={(e) => {
-              setAns3_3(e.target.value);
-              handleChange();
-            }}
+            onChange={(e) => 
+              setAns3_3(e.target.value)
+
+            }
           >
             <FormControlLabel
               className="radio-size"
-              value="y"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="n3"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
           </RadioGroup>
+          <hr />
           <p>3.4 แพทย์หรือพยาบาลบอกว่ามีไขมันในเลือดสูง</p>
           <RadioGroup
             className="pl-20"
             aria-label="questions3.4"
             name="questions3.4"
             value={ans3_4}
-            onChange={(e) => {
-              setAns3_4(e.target.value);
-              handleChange();
-            }}
+            onChange={(e) => 
+              setAns3_4(e.target.value)
+
+            }
           >
             <FormControlLabel
               className="radio-size"
-              value="y"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="n4"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
           </RadioGroup>
+          <hr />
           <p>3.5 เส้นรอบเอวเกินเกณฑ์</p>
           <RadioGroup
             className="pl-20"
             aria-label="questions3.5"
             name="questions3.5"
             value={ans3_5}
-            onChange={(e) => {
-              setAns3_5(e.target.value);
-              handleChange();
-              setAns();
-            }}
+            onChange={(e) => 
+              setAns3_5(e.target.value)
+
+            }
           >
             <FormControlLabel
               className="radio-size"
-              value="y"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="n5"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
           </RadioGroup>
+          <hr />
           <p>3.6 แพทย์บอกว่าเป็นโรคหัวใจขาดเลือดหรือ อัมพฤกษ์ อัมพาต</p>
           <RadioGroup
             className="pl-20"
             aria-label="questions3.6"
             name="questions3.6"
             value={ans3_6}
-            onChange={(e) => {
-              setAns3_6(e.target.value);
-              handleChange();
-              setAns();
-            }}
+            onChange={(e) => 
+              setAns3_6(e.target.value)
+
+            }
           >
             <FormControlLabel
               className="radio-size"
-              value="y"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="n6"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
           </RadioGroup>
+          <hr />
           <p>
             3.7 มีพ่อ แม่ พี่น้องท้องเดียวกันเป็นโรคหัวใจขาดเลือด หรืออัมพฤกษ์
             อัมพาต ก่อนวัยอันควร(ชายเป็นก่อน อายุ 55 ปี หญิงเป็นก่อน 65 )
           </p>
-         
-          
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.7"
+            name="questions3.7"
+            value={ans3_7}
+            onChange={(e) => 
+              setAns3_7(e.target.value)
+            }
+          >
             <FormControlLabel
               className="radio-size"
-              // value={ans3_7.Y}
-              // checked={ans3_7 === true}
-              // onChange={(e) => setAns3_7(e.target.value)}
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              // value={ans3_7.N}
-              // checked={ans3_7 === false}
-              // onChange={(e) => setAns3_7(e.target.value)}
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
-       
+          </RadioGroup>
         </div>
 
         <div className="row justify-content-between">
@@ -330,7 +248,6 @@ function setAns(){
             type="button"
             class="btn form-btn btn-primary btn-lg"
             onClick={handleSubmit}
-
           >
             บันทึก
           </button>
@@ -340,7 +257,6 @@ function setAns(){
         title="ผลส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
         result={results3}
         show={show}
-        //isradio={() =>setIsRadio(false)}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
