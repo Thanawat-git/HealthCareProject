@@ -40,10 +40,9 @@ export default function Sections9() {
 
     const classes = useStyles();
 
-    // const handleChange = (prop) => (event) => {
-    //   setValues({ ...values, [prop]: event.target.value });
-    // };
-
+    const [collect, setCollect] = useState();
+    const [results, setresults] = useState();
+    const [show, setShow] = useState(false);
     return (
       <div className="css-form">
         <h1>ข้อมูลของผู้สูงอายุ</h1>
