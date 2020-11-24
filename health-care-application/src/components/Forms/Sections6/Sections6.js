@@ -48,21 +48,20 @@ export default function Sections6() {
         parseInt(ans6_10);
       if (countNum <= 4) {
          setresults6(3)
-          setgroup(3);
+          //setgroup(3);
           x.style.display = "block";
-          setdisabled(false)
+         
       } else if (countNum >= 5 && countNum <= 11) {
+         x.style.display = "block";
         setresults6(2)
-        setgroup(2);
-        x.style.display = "block";
-        setdisabled(false)
+        //setgroup(2);
+       
       } else if (countNum > 12) {
         setresults6(1)
-        setgroup(1);
-        setdisabled(true)
+       // setgroup(1);
       }
     }
-  }, [collect, group]);
+  }, [collect])
 
   //  useEffect(() => {
 
@@ -80,11 +79,7 @@ export default function Sections6() {
   //   }
   //   }, [collect])
 
-  // useEffect(() => {
-  //  if(group === 2 || group === 3){
-  //       setdisabled(false)
-  //  }
-  // }, [disabled]);
+  
 
   useEffect(() => {
     if (
@@ -139,15 +134,6 @@ export default function Sections6() {
     dispatch(formAction.add(data));
   };
 
-  // function myFunction() {
-    
-  //   // var x = document.getElementById("myDIV");
-  //   // if (x.style.display === "none") {
-  //   //   x.style.display = "block";
-  //   // } else {
-  //   //   x.style.display = "none";
-  //   // }
-  // }
 
   return (
     <div className="css-form">
@@ -450,42 +436,42 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="นอนบนเตียงตะแคงไม่ได้"
-                disabled={disabled}
+          
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="นอนบนเตียงตะแคงไปมาได้"
-                disabled={disabled}
+          
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="ลุกนั่งและลงมายืนข้างเตียงได้"
-                disabled={disabled}
+          
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="เดินทางราบได้โดยไม่ต้องช่วยเหลือ"
-                disabled={disabled}
+          
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="ขึ้นบันไดไม่ได้ แต่เดินทางราบได้โดยไม่ต้องช่วย"
-                disabled={disabled}
+          
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="เดินขึ้นบันไดได้"
-                disabled={disabled}
+          
               />
             </RadioGroup>
             <hr />
@@ -502,42 +488,42 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="No Response"
-                disabled={disabled}
+            
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="มีปัญหาทั้ง Orientation อย่างรุนเเรงและปัญหาพฤติกรรม"
-                disabled={disabled}
+            
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="มีปัญหาเฉพาะเรื่อง Orientation อย่างรุนเเรง"
-                disabled={disabled}
+            
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="ไม่มีปัญหาเรื่อง Orientation แต่มีปัญหาพฤติกรรมจนสร้างความรำคาญ"
-                disabled={disabled}
+            
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="มีปัญหาเรื่องการตัดสินใจและความจำ ด้านพฤติกรรม"
-                disabled={disabled}
+            
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="ไม่มีปัญหาเรื่องความจำ / การตัดสินใจ Orientation และพฤติกรรม"
-                disabled={disabled}
+            
               />
             </RadioGroup>
             <hr />
@@ -554,42 +540,42 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="IV"
-                disabled={disabled}
+              
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="NG Tube"
-                disabled={disabled}
+              
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="ต้องป้อน และกลืนลำบาก"
-                disabled={disabled}
+              
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="ต้องป้อน แต่กลืนเองได้ปกติ"
-                disabled={disabled}
+              
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="กินได้เอง หกเลอะเทอะ"
-                disabled={disabled}
+              
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="กินได้เอง ไม่หกเลอะเทอะ"
-                disabled={disabled}
+              
               />
             </RadioGroup>
             <hr />
@@ -606,42 +592,42 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="คาสายสวนปัสสาวะ"
-                disabled={disabled}
+                
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="ใส่/เปลี่ยนผ้าอ้อมด้วยความยากลำบาก"
-                disabled={disabled}
+                
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="ใส่/เปลี่ยนผ้าอ้อมไม่ลำบาก ต้องช่วยบ้าง"
-                disabled={disabled}
+                
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="ต้องช่วยประคองไปห้องน้ำและช่วยจัดการหลังถ่ายเสร็จ"
-                disabled={disabled}
+                
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="ไปห้องน้ำเองได้ แต่ถ่ายไม่สำเร็จเป็นบางครั้ง"
-                disabled={disabled}
+                
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="ไปห้องน้ำเองได้ ถ่ายสำเร็จทุกครั้งใน 2 อาทิตย์ที่ผ่านมา"
-                disabled={disabled}
+                
               />
             </RadioGroup>
           </div>
