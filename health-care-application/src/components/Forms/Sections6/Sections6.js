@@ -48,17 +48,17 @@ export default function Sections6() {
         parseInt(ans6_10);
       if (countNum <= 4) {
          setresults6(3)
-          //setgroup(3);
+          setgroup(3);
           x.style.display = "block";
          
       } else if (countNum >= 5 && countNum <= 11) {
          x.style.display = "block";
         setresults6(2)
-        //setgroup(2);
+        setgroup(2);
        
       } else if (countNum > 12) {
         setresults6(1)
-       // setgroup(1);
+       setgroup(1);
       }
     }
   }, [collect,ans6_1,ans6_2,ans6_3,ans6_4,ans6_5,ans6_6,ans6_7,ans6_8,ans6_9,ans6_10,])
@@ -403,7 +403,8 @@ export default function Sections6() {
             />
           </RadioGroup>
           <hr />
-
+          <h3>แปลผล : คะแนนของคุณจัดอยู่ในกลุ่ม {group} </h3>
+          <hr />
           <div id="myDIV" >
             <p>Immobilize</p>
             <RadioGroup
