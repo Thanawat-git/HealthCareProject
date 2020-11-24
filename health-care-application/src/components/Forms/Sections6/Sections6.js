@@ -403,9 +403,10 @@ export default function Sections6() {
             />
           </RadioGroup>
           <hr />
-          <h3>แปลผล : คะแนนของคุณจัดอยู่ในกลุ่ม {group} </h3>
-          <hr />
+         
           <div id="myDIV" >
+             <h3>คะแนนของคุณจัดอยู่ในกลุ่ม {group} ต้องทำแบบประเมิน TAI Classified</h3>
+             <hr />
             <p>Immobilize</p>
             <RadioGroup
               className="pl-20"
