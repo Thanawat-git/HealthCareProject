@@ -45,7 +45,6 @@ export default function Sections9() {
     const [show, setShow] = useState(false);
     return (
       <div className="css-form">
-        <h1>ข้อมูลของผู้สูงอายุ</h1>
         <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded" >
           <h2>ส่วนที่ 9 สุขภาพกระดูกและกล้ามเนื้อ</h2>
           <h4>การคัดกรองความเสี่ยงต่อการพลัดตกหกล้ม</h4>
