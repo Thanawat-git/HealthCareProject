@@ -172,53 +172,39 @@ export default function Sections9() {
 
 
         <h4>ประเมินสมรรถภาพทางกาย</h4>
-                <div className="question">
-                    <div className="each-question">
-                        <p>Time Up & Go</p>
-                        <div className="form-check form-check-inline">
-                            <div>
-                            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                                  <OutlinedInput
-                                    // value={values.min}
-                                    // onChange={handleChange('min')}
-                                    endAdornment={<InputAdornment position="end">นาที</InputAdornment>}
-                                    aria-describedby="outlined-weight-helper-text"
-                                    // inputProps={{ 'aria-label': 'min', }}
-                                    // labelWidth={0}
-                                  />
-                                </FormControl>
-                            </div>
-                            <div>
-                                <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                                  <OutlinedInput
-                                    // value={values.sec}
-                                    // onChange={handleChange('sec')}
-                                    endAdornment={<InputAdornment position="end">วินาที</InputAdornment>}
-                                    aria-describedby="outlined-weight-helper-text"
-                                    // inputProps={{ 'aria-label': 'sec', }}
-                                    // labelWidth={0}
-                                  />
-                                </FormControl>
-                            </div>
-                        </div> 
+          <div className="question">
+              <div className="each-question">
+                  <p>Time Up & Go</p>
+                  <div className="form-check form-check-inline">
+                      <div>
+                      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                            <OutlinedInput
+                              // value={values.min}
+                              // onChange={handleChange('min')}
+                              endAdornment={<InputAdornment position="end">นาที</InputAdornment>}
+                              aria-describedby="outlined-weight-helper-text"
+                              // inputProps={{ 'aria-label': 'min', }}
+                              // labelWidth={0}
+                            />
+                          </FormControl>
+                      </div>
+                      <div>
+                          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                            <OutlinedInput
+                              // value={values.sec}
+                              // onChange={handleChange('sec')}
+                              endAdornment={<InputAdornment position="end">วินาที</InputAdornment>}
+                              aria-describedby="outlined-weight-helper-text"
+                              // inputProps={{ 'aria-label': 'sec', }}
+                              // labelWidth={0}
+                            />
+                          </FormControl>
+                      </div>
+                  </div> 
 
-                        <p>เสี่ยงต่อการพลัดตกหกล้มสูงจากการตรวจ Time Up & Go</p>
-                        {/* <span>ผล</span> */}
-
-                        {/* <div className="row align-items-end">
-                                <div className="col-md-3" />
-                                <div className="col-md-2 col-sm-12 col-xs-12">
-                                    <p><span>*</span>วันที่สำรวจ</p>
-                                </div>
-                                <div className="col-md-3">
-                                    <input type="date" className="form-control" required />
-                                </div>
-                                <div className="col-md-4" />
-                            </div> */}
-                    </div>
-
-
-                </div>
+                  <p>เสี่ยงต่อการพลัดตกหกล้มสูงจากการตรวจ Time Up & Go</p>
+              </div>
+          </div>
   
           {/* bt */}
           <div className="row justify-content-between">
