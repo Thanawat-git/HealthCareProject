@@ -25,7 +25,6 @@ export default function Sections3() {
    if(collect){
    const countNum =parseInt(ans3_1) + parseInt(ans3_2) + parseInt(ans3_3)
       +parseInt(ans3_4) + parseInt(ans3_5) + parseInt(ans3_6) + parseInt(ans3_7);
-        //const countNum =4;
        console.log("countNum : "+ countNum)
       if (countNum >= 1 && countNum <= 2) {
          setresults3("มีความเสี่ยง")

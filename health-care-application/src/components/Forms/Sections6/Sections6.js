@@ -61,25 +61,7 @@ export default function Sections6() {
        // setgroup(1);
       }
     }
-  }, [collect])
-
-  //  useEffect(() => {
-
-  //    if(collect){
-  //   if(parseInt(ans6_Fe) >= 4 && parseInt(ans6_To) >=4){
-  //       setresults6('สปสช Group')
-  //   }else if(parseInt(ans6_Fe) <=3 && parseInt(ans6_To) <=3){
-  //     setresults6('Group 1')
-  //   }else if(parseInt(ans6_Fe) >= 4 && parseInt(ans6_To) >=4){
-  //     setresults6('Group 2')
-  //   }else if(parseInt(ans6_Fe) >= 4){
-  //     setresults6('Group 3')
-  //   }
-
-  //   }
-  //   }, [collect])
-
-  
+  }, [collect,ans6_1,ans6_2,ans6_3,ans6_4,ans6_5,ans6_6,ans6_7,ans6_8,ans6_9,ans6_10,])
 
   useEffect(() => {
     if (
