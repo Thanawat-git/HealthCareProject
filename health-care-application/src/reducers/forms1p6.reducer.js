@@ -1,7 +1,7 @@
 import { FORMS1P6_ADD_NEW } from "../constants"
 
 const initialState = {
-    diseases: [],
+    diseases: ['ความดันโลหิตสูง','เบาหวาน','ไขมันในเส้นเลือดสูง','โรคหัวใจ'],
     date: null
 }
 

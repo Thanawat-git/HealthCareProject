@@ -21,6 +21,7 @@ const initialState = {
     ans5_17: null,
     result: 'ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ',
     collect: false,
+    count: 0,
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -48,6 +49,7 @@ export default (state = initialState, { type, payload }) => {
             ans5_17: payload[17],
             result: payload[18],
             collect: payload[19],
+            count: payload[20],
         }
 
     default:

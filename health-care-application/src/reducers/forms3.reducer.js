@@ -8,9 +8,9 @@ const initialState = {
     ans3_5:0,
     ans3_6: 0,
     ans3_7: 0,
-    results3:null,
-    collect: false
-
+    results3:"ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+    collect: false,
+    count: 0
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -24,10 +24,10 @@ export default (state = initialState, { type, payload }) => {
             ans3_4: payload[3],
             ans3_5: payload[4],
             ans3_6: payload[5],
-            results3: payload[6],
-            collect:payload[7]
-
-
+            ans3_7: payload[6],
+            results3: payload[7],
+            collect: payload[8],
+            count: payload[9],
         }
 
     default:

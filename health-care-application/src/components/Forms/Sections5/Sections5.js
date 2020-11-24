@@ -31,6 +31,7 @@ export default function Sections5_1() {
   const [collect, setCollect] = useState(forms5Reducer.collect);
   const [results, setresults] = useState(forms5Reducer.result);
   const [show, setShow] = useState(false);
+  const [count, setCount] = useState(forms5Reducer.count);
 
   useEffect(() => {
     if(ans5_1 && ans5_2 && ans5_3 && ans5_4 && ans5_5 && ans5_6 && ans5_7 && ans5_8 && ans5_9 && ans5_10 && ans5_11 && ans5_12 && ans5_13 && ans5_14 && ans5_15 && ans5_16 && ans5_17){
@@ -39,16 +40,21 @@ export default function Sections5_1() {
   }, [ans5_1, ans5_2, ans5_3, ans5_4, ans5_5, ans5_6, ans5_7, ans5_8, ans5_9, ans5_10, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15, ans5_16, ans5_17])
 
   useEffect(() => {
-    let count = 0
+    let c = 0
     if(collect){
-      count = parseInt(ans5_11)+parseInt(ans5_12)+parseInt(ans5_13)+parseInt(ans5_14)+parseInt(ans5_15)
-      count == 5 ? setresults('ส่งต่อเพื่อดูแลรักษาช่องปาก'): setresults('ไม่ต้องส่งต่อ')
+      c = parseInt(ans5_11)+parseInt(ans5_12)+parseInt(ans5_13)+parseInt(ans5_14)+parseInt(ans5_15)
+      c == 5 ? setresults('ส่งต่อเพื่อดูแลรักษาช่องปาก'): setresults('ไม่ต้องส่งต่อ')
+      setCount(c)
     }
-  }, [collect])
+  }, [collect,ans5_11, ans5_12, ans5_13, ans5_14, ans5_15])
 
   const handleSubmit = ()=>{
+    console.log('c',count)
     setShow(true)
-    const data = [ans5_1, moreInfoAns5_1, ans5_2, ans5_3, ans5_4, ans5_5, ans5_6, ans5_7, ans5_8, ans5_9, ans5_10, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,results,collect]
+    const data = [
+      ans5_1, moreInfoAns5_1, ans5_2, ans5_3, ans5_4, ans5_5, 
+      ans5_6, ans5_7, ans5_8, ans5_9, ans5_10, ans5_11, ans5_12, 
+      ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,results,collect,count]
     dispatch(formAction.add(data))
   }
   return (
@@ -75,7 +81,7 @@ export default function Sections5_1() {
               value="withouttoothbrush"
               control={<Radio color="primary" />}
               label="แปรงแต่ไม่ได้ใช้แปรงสีฟัน"
-            />
+            /> 
             <FormControlLabel
               className="radio-size"
               value="atimeforday"
@@ -114,13 +120,13 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="yes"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช้"
             />
             <FormControlLabel
               className="radio-size"
-              value="no"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช้"
             />
@@ -136,13 +142,13 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="yes"
+              value="1"
               control={<Radio color="primary" />}
               label="ทำ"
             />
             <FormControlLabel
               className="radio-size"
-              value="no"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ทำ"
             />
@@ -219,13 +225,13 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="yes"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="no"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
@@ -241,13 +247,13 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="yes"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="no"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
@@ -361,13 +367,13 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="yes"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="no"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />
@@ -381,13 +387,13 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="yes"
+              value="1"
               control={<Radio color="primary" />}
               label="ใช่"
             />
             <FormControlLabel
               className="radio-size"
-              value="no"
+              value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
             />

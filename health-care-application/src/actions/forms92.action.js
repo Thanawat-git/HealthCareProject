@@ -1,7 +1,7 @@
-import { CREATE_NEW_FORMS9 } from "../constants";
+import { CREATE_NEW_FORMS92 } from "../constants";
 
 export const setStateToAdd = (payload) => ({
-    type: CREATE_NEW_FORMS9,
+    type: CREATE_NEW_FORMS92,
     payload
 })
 
