@@ -10,17 +10,16 @@ import {
 import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p2.action";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
-function Sections1_2(props) {
+export default function Sections1_2(props) {
   const [radioValue, setRadioValue] = useState("yes");
   const handleChange = (event) => {
     setRadioValue(event.target.value);
   };
 
   // Redux hook
-  const forms1p2Reducer = useSelector(
-    ({ forms1p2Reducer }) => forms1p2Reducer
-  );
+  const forms1p2Reducer = useSelector(({ forms1p2Reducer }) => forms1p2Reducer);
   const dispatch = useDispatch();
   // Redux hook
 
@@ -42,8 +41,14 @@ function Sections1_2(props) {
   const [phoneNumber, setPhoneNumber] = useState(forms1p2Reducer.phoneNumber);
 
   const handleSubmit = (e) => {
-    if (homeNumber===null && alley===null && street===null && subDistrict===null && area===null) {
-      emptyValue()
+    if (
+      homeNumber === null &&
+      alley === null &&
+      street === null &&
+      subDistrict === null &&
+      area === null
+    ) {
+      emptyValue();
     }
     const data = [
       homeNumber,
@@ -60,9 +65,9 @@ function Sections1_2(props) {
     ];
 
     dispatch(formAction.add(data));
-    function emptyValue(){
-      e.preventDefault(); 
-      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+    function emptyValue() {
+      e.preventDefault();
+      alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
       // return;
     }
   };
@@ -169,13 +174,24 @@ function Sections1_2(props) {
               />
             </div>
             <div className="col-xl-6 col-12 mb-15">
-              <TextField
+              {/* <TextField
                 label="ชุมชน"
                 variant="outlined"
                 placeholder="ชุมชน"
                 defaultValue={area}
                 onChange={(e) => setArea(e.target.value)}
                 className="TextField"
+              /> */}
+              <Autocomplete
+                options={Areas}
+                getOptionLabel={(option) => option}
+                disableClearable={true}
+                // size="small"
+                defaultValue={area}
+                onInputChange={(event, value) => setArea(value)}
+                renderInput={(params) => (
+                  <TextField {...params} label="ชุมชน" variant="outlined" />
+                )}
               />
             </div>
           </div>
@@ -257,13 +273,24 @@ function Sections1_2(props) {
                   />
                 </div>
                 <div className="col-xl-6 col-12 mb-15">
-                  <TextField
+                  {/* <TextField
                     label="ชุมชน"
                     variant="outlined"
                     placeholder="ชุมชน"
                     defaultValue={curArea}
                     onChange={(e) => setCurArea(e.target.value)}
                     className="TextField"
+                  /> */}
+                  <Autocomplete
+                    options={Areas}
+                    getOptionLabel={(option) => option}
+                    disableClearable={true}
+                    // size="small"
+                    defaultValue={curArea}
+                    onInputChange={(event, value) => setCurArea(value)}
+                    renderInput={(params) => (
+                      <TextField {...params} label="ชุมชน" variant="outlined" />
+                    )}
                   />
                 </div>
               </div>
@@ -313,10 +340,30 @@ function Sections1_2(props) {
   );
 }
 
-export default Sections1_2;
-// const mapStateToProps = (state) => {
-//   return {
-//     elderlyInfos: state,
-//   };
-// };
-// export default connect(mapStateToProps)(Sections1_2);
+const Areas = [
+  "ชุมชนมณีแก้ว",
+  "ชุมชนดอนบน",
+  "ชุมชนบางแสนทาวเวอร์",
+  "ชุมชนตาลล้อม 1",
+  "ชุมชนตาลล้อม 2",
+  "ชุมชนบ้านเหมือง",
+  "ชุมชนพัฒนา 2",
+  "ชุมชนดอนนารา",
+  "ชุมชนวัดกลางดอน",
+  "ชุมชนแสนสุข",
+  "ชุมชนมาบมะยม",
+  "ชุมชนท้ายตลาด",
+  "ชุมชนร่วมใจพัฒนา",
+  "ชุมชนบางแสนบน",
+  "ชุมชนหาดวอนนภา",
+  "ชุมชนบางเป้ง",
+  "ชุมชนหน้ามอ",
+  "ชุมชนโชคดี",
+  "ชุมชนสมใจนึก",
+  "ชุมชนหน้าเทศบาล",
+  "ชุมชนวัดแสนสุข",
+  "ชุมชนมุขแสนเจริญ 1",
+  "ชุมชนมุขแสนเจริญ 2",
+  "ชุมชนเขาสามมุข",
+  "ชุมชนบ้านแหลมแท่น",
+];

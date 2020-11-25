@@ -31,7 +31,7 @@ function MainMenu(props) {
     const collect8 = useSelector(({forms8Reducer}) => forms8Reducer.collect)
     const collect9 = useSelector(({forms9Reducer}) => forms9Reducer)
     const collect92 = useSelector(({forms92Reducer}) => forms92Reducer.collect)
-    // const collect10 = useSelector(({forms10Reducer}) => forms10Reducer.ans10)
+    const collect10 = useSelector(({forms10Reducer}) => forms10Reducer.ans10)
     const classes = useStyles();
     const [i1, setI1] = useState('')
     const [i2, setI2] = useState('')
@@ -54,7 +54,7 @@ function MainMenu(props) {
         collect8 && setI8('green')
         (collect9.collect1 && collect9.collect2) && setI8('green')
         collect92 && setI8('green')
-        // collect10 && setI8('green')
+        collect10 && setI0('green')
     }, []);
 
     const useStyles2 = makeStyles({
