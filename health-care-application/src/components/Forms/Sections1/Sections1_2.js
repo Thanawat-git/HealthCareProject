@@ -71,57 +71,6 @@ export default function Sections1_2(props) {
       // return;
     }
   };
-
-  // useEffect(() => {
-  //   for(const [key, value] of Object.entries(props.elderlyInfos)){
-  //     console.log(`${key}: ${value}`);
-  //     if(key==='ELD_BASIC_INFO'){
-  //       for(const [key1, value1] of Object.entries(value)){
-  //         setPID(value1.peopleID)
-  //         console.log(`in ${key1}: ${value1.peopleID}`);
-  //         // console.log(PID)
-  //       }
-  //     }
-  //   }
-
-  // }, []);
-
-  // const handleSubmit = (e)=>{
-  //   // console.log('PID in Submit '+PID)
-  //   const ELD_IDN_ADDR_NUMBER = homeNumber;
-  //   const ELD_IDN_ADDR_LANE = alley;
-  //   const ELD_IDN_ADDR_STREET = street;
-  //   const ELD_IDN_ADDR_SUB_DISTRICT = subDistrict;
-  //   const ELD_IDN_ADDR_VILLAGE = area;
-  //   const ELD_CUR_ADDR_NUMBER = curHomeNumber;
-  //   const ELD_CUR_ADDR_LANE = curAlley;
-  //   const ELD_CUR_ADDR_STREET = curStreet;
-  //   const ELD_CUR_ADDR_SUB_DISTRICT = curSubDistrict;
-  //   const ELD_CUR_ADDR_VILLAGE = curArea;
-  //   const ELD_ID_NUMBER = PID;
-  //   const ELD_PHONE = phoneNumber;
-
-  //   const data = {
-  //     ELD_ID_NUMBER,
-  //     ELD_IDN_ADDR_NUMBER,
-  //     ELD_IDN_ADDR_LANE,
-  //     ELD_IDN_ADDR_STREET,
-  //     ELD_IDN_ADDR_SUB_DISTRICT,
-  //     ELD_IDN_ADDR_VILLAGE,
-  //     ELD_CUR_ADDR_NUMBER,
-  //     ELD_CUR_ADDR_LANE,
-  //     ELD_CUR_ADDR_STREET,
-  //     ELD_CUR_ADDR_SUB_DISTRICT,
-  //     ELD_CUR_ADDR_VILLAGE,
-  //     ELD_PHONE
-  //   }
-  //   props.dispatch({
-  //     type: ADD_NEW_ELDERLY_ADDRESS,
-  //     data
-  //   })
-
-  // }
-
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -174,14 +123,6 @@ export default function Sections1_2(props) {
               />
             </div>
             <div className="col-xl-6 col-12 mb-15">
-              {/* <TextField
-                label="ชุมชน"
-                variant="outlined"
-                placeholder="ชุมชน"
-                defaultValue={area}
-                onChange={(e) => setArea(e.target.value)}
-                className="TextField"
-              /> */}
               <Autocomplete
                 options={Areas}
                 getOptionLabel={(option) => option}
@@ -273,14 +214,6 @@ export default function Sections1_2(props) {
                   />
                 </div>
                 <div className="col-xl-6 col-12 mb-15">
-                  {/* <TextField
-                    label="ชุมชน"
-                    variant="outlined"
-                    placeholder="ชุมชน"
-                    defaultValue={curArea}
-                    onChange={(e) => setCurArea(e.target.value)}
-                    className="TextField"
-                  /> */}
                   <Autocomplete
                     options={Areas}
                     getOptionLabel={(option) => option}
