@@ -84,44 +84,6 @@ export default function Sections9_2() {
             <FormControlLabel className="radio-size" value="N" control={<Checkbox color="primary" />} label="ไม่ใช่" />
           </RadioGroup>
           {/* <hr/> */}
-          
-          </div>
-
-
-
-        <h4>ประเมินสมรรถภาพทางกาย</h4>
-          <div className="question">
-              <div className="each-question">
-                  <p>Time Up & Go</p>
-                  <div className="form-check form-check-inline">
-                      <div>
-                      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                            <OutlinedInput
-                              // value={values.min}
-                              // onChange={handleChange('min')}
-                              endAdornment={<InputAdornment position="end">นาที</InputAdornment>}
-                              aria-describedby="outlined-weight-helper-text"
-                              // inputProps={{ 'aria-label': 'min', }}
-                              // labelWidth={0}
-                            />
-                          </FormControl>
-                      </div>
-                      <div>
-                          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                            <OutlinedInput
-                              // value={values.sec}
-                              // onChange={handleChange('sec')}
-                              endAdornment={<InputAdornment position="end">วินาที</InputAdornment>}
-                              aria-describedby="outlined-weight-helper-text"
-                              // inputProps={{ 'aria-label': 'sec', }}
-                              // labelWidth={0}
-                            />
-                          </FormControl>
-                      </div>
-                  </div> 
-
-                  <p>เสี่ยงต่อการพลัดตกหกล้มสูงจากการตรวจ Time Up & Go</p>
-              </div>
           </div>
   
           {/* bt */}
