@@ -26,6 +26,8 @@ export default function Sections1_6() {
   const handleSubmit = ()=>{
     const data = [diseases, date]
     dispatch(formAction.add(data))
+    formAction.createExa2Waist()
+    
   }
 
   return (

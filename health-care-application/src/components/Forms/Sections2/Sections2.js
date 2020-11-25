@@ -151,6 +151,10 @@ export default function Sections2_1() {
     dispatch(formAction.add(data));
   };
 
+  const saveDataToServer =()=>{
+    // formAction.updateExa2Waist([waist,waistResult])
+  }
+
   return (
     <div className="css-form">
       {/* <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1> */}
@@ -384,7 +388,7 @@ export default function Sections2_1() {
 
         <Modal.Footer>
           <Link to="/mainmenu" className={classes.root}>
-            <Button variant="primary" block>
+            <Button variant="primary" block onClick={saveDataToServer} >
               กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>

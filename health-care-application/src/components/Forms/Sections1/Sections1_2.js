@@ -8,7 +8,7 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p2.action";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 

@@ -33,7 +33,6 @@ export default function Sections3() {
       value=='โรคหัวใจ' && setAns3_6('1')
     })
     forms2Reducer==='อ้วนลงพุง' && setAns3_5('1')
-
   }, [])
 
   useEffect(() => {
