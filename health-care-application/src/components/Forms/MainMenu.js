@@ -23,10 +23,15 @@ const useStyles = makeStyles({
 
 function MainMenu(props) {
     const collect2 = useSelector(({forms2Reducer}) => forms2Reducer.collect)
+    const collect3 = useSelector(({forms3Reducer}) => forms3Reducer.collect)
     const collect4 = useSelector(({forms4Reducer}) => forms4Reducer.collect)
     const collect5 = useSelector(({forms5Reducer}) => forms5Reducer.collect)
+    // const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect)
     const collect7 = useSelector(({forms7Reducer}) => forms7Reducer.collect)
     const collect8 = useSelector(({forms8Reducer}) => forms8Reducer.collect)
+    const collect9 = useSelector(({forms9Reducer}) => forms9Reducer)
+    const collect92 = useSelector(({forms92Reducer}) => forms92Reducer.collect)
+    // const collect10 = useSelector(({forms10Reducer}) => forms10Reducer.ans10)
     const classes = useStyles();
     const [i1, setI1] = useState('')
     const [i2, setI2] = useState('')
@@ -41,10 +46,15 @@ function MainMenu(props) {
 
     useEffect(() => {
         collect2 && setI2('green')
+        collect3 && setI3('green')
         collect4 && setI4('green')
         collect5 && setI5('green')
+        // collect6 && setI6('green')
         collect7 && setI7('green')
         collect8 && setI8('green')
+        (collect9.collect1 && collect9.collect2) && setI8('green')
+        collect92 && setI8('green')
+        // collect10 && setI8('green')
     }, []);
 
     const useStyles2 = makeStyles({
