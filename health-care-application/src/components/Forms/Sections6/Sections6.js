@@ -27,7 +27,7 @@ export default function Sections6() {
   const [results6, setresults6] = useState(forms6Reducer.results6);
   const [group, setgroup] = useState(forms6Reducer.group);
   const [collect, setCollect] = useState(forms6Reducer.collect);
-  const [disabled, setdisabled] = useState(true)
+  const [count, setCount] = useState()
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -46,6 +46,7 @@ export default function Sections6() {
         parseInt(ans6_8) +
         parseInt(ans6_9) +
         parseInt(ans6_10);
+        setCount(countNum)
       if (countNum <= 4) {
          setresults6(3)
           setgroup(3);

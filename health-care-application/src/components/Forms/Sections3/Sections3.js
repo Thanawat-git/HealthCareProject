@@ -78,7 +78,7 @@ export default function Sections3() {
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
         <h2>ส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h2>
-        <div className="question">
+          <div className="question">
           <p>3.1 ยังสูบบุหรี่ ยาเส้น หรือหยุดสูบไม่เกิน 1 ปี </p>
           <RadioGroup
             className="pl-20"

@@ -14,6 +14,7 @@ import forms6Reducer from './forms6.reducer'
 import forms7Reducer from './forms7.reducer'
 import forms8Reducer from './forms8.reducer'
 import forms89qReducer from './forms89q.reducer'
+import forms10Reducer from './forms10reducer'
 
 export default combineReducers({
     forms1p1Reducer,
@@ -30,4 +31,5 @@ export default combineReducers({
     forms7Reducer,
     forms8Reducer,
     forms89qReducer,
+    forms10Reducer
 })

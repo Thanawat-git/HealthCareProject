@@ -17,7 +17,8 @@ const initialState = {
     ans6_Me:null,
     ans6_To:null,
     ans6_Fe:null,
-    group:null
+    group:null,
+    count:0
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -41,7 +42,9 @@ export default (state = initialState, { type, payload }) => {
             ans6_Me:payload[13],
             ans6_To:payload[14],
             ans6_Fe:payload[15],
-            group:payload[16]
+            group:payload[16],
+            count:payload[17]
+
         }
 
     default:
