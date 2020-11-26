@@ -85,9 +85,9 @@ export default function Sections9_2() {
         dispatch(formAction.add(data))
     }
     const saveDataToServer = ()=>{
-        formAction.updateExa9_1Osteoarthritis({
+        formAction.updateExa9_1Osteoarthritis([
             ans1R,ans2R,ans3R,ans4R,ans5R,ans1L,ans2L,ans3L,ans4L,ans5L,ans1N,ans2N,ans3N,ans4N,ans5N,results
-        })
+        ])
     }
     
     return (
@@ -167,7 +167,7 @@ export default function Sections9_2() {
             />
             <FormControlLabel
                 control={<Checkbox checked={ans5L} onChange={handleChange} name="ans5L" color="primary" />}
-                label="ซ้าย" disabled={dis4Y}
+                label="ซ้าย" disabled={dis5Y}
             />
             <FormControlLabel
                 control={<Checkbox checked={ans5N} onChange={handleChange} name="ans5N" />}

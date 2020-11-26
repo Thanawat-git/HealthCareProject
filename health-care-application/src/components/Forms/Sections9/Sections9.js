@@ -83,7 +83,7 @@ export default function Sections9() {
     }
 
     const saveDataToServer = ()=>{
-      formAction.updateExa9BoneMuscle({ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2})
+      formAction.updateExa9BoneMuscle([ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])
     }
 
     return (

@@ -22,29 +22,27 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
-export const updateExa9_1Osteoarthritis= (
-    {ans1R,ans2R,ans3R,ans4R,ans5R,ans1L,ans2L,ans3L,ans4L,ans5L,ans1N,ans2N,ans3N,ans4N,ans5N,results}
-)=>{
+export const updateExa9_1Osteoarthritis= (payload)=>{
     Axios.put("http://localhost:3001/osteoarthritis/update/1",{
         OST_1_KNEE_PAIN: null,
         OST_1_LVL_PAIN: null,
         OST_1_RESULT: null,
-        OST_2_1_R: ans1R,
-        OST_2_1_L: ans1L,
-        OST_2_1_N: ans1N,
-        OST_2_2_R: ans2R,
-        OST_2_2_L: ans2L,
-        OST_2_2_N: ans2N,
-        OST_2_3_R: ans3R,
-        OST_2_3_L: ans3L,
-        OST_2_3_N: ans3N,
-        OST_2_4_R: ans4R,
-        OST_2_4_L: ans4L,
-        OST_2_4_N: ans4N,
-        OST_2_5_R: ans5R,
-        OST_2_5_L: ans5L,
-        OST_2_5_N: ans5N,
-        OST_2_RESULT: results,
+        OST_2_1_R: payload[0],
+        OST_2_1_L: payload[1],
+        OST_2_1_N: payload[2],
+        OST_2_2_R: payload[3],
+        OST_2_2_L: payload[4],
+        OST_2_2_N: payload[5],
+        OST_2_3_R: payload[6],
+        OST_2_3_L: payload[7],
+        OST_2_3_N: payload[8],
+        OST_2_4_R: payload[9],
+        OST_2_4_L: payload[10],
+        OST_2_4_N: payload[11],
+        OST_2_5_R: payload[12],
+        OST_2_5_L: payload[13],
+        OST_2_5_N: payload[14],
+        OST_2_RESULT: payload[15],
     }).then(()=>{
       alert("Osteoarthritis Update Success")
     })
