@@ -57,6 +57,9 @@ export default function Sections5_1() {
       ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,results,collect,count]
     dispatch(formAction.add(data))
   }
+  const saveDataToServer = () => {
+    formAction.createExa5OralHealth();
+  };
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -417,6 +420,7 @@ export default function Sections5_1() {
           title='ผลการประเมินสุขภาพช่องปาก' 
           result={results}
           show={show}
+          onClick={saveDataToServer}
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}

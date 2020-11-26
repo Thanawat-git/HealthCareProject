@@ -8,10 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms3.action";
 
 export default function Sections3() {
-  const forms3Reducer = useSelector(({forms3Reducer}) => forms3Reducer)
-  const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer.diseases)
-  const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer.waistResult)
-  const dispatch = useDispatch()
+  const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
+  const forms1p6Reducer = useSelector(
+    ({ forms1p6Reducer }) => forms1p6Reducer.diseases
+  );
+  const forms2Reducer = useSelector(
+    ({ forms2Reducer }) => forms2Reducer.waistResult
+  );
+  const dispatch = useDispatch();
   const [ans3_1, setAns3_1] = useState(forms3Reducer.ans3_1);
   const [ans3_2, setAns3_2] = useState(forms3Reducer.ans3_2);
   const [ans3_3, setAns3_3] = useState(forms3Reducer.ans3_3);
@@ -22,71 +26,80 @@ export default function Sections3() {
   const [collect, setCollect] = useState(forms3Reducer.collect);
   const [results3, setresults3] = useState(forms3Reducer.results3);
   const [show, setShow] = useState(false);
-
-  const [count, setCount] = useState(forms3Reducer.count)
-
-  useEffect(() => {
-    forms1p6Reducer.map(value=>{
-      value=='ความดันโลหิตสูง' && setAns3_2('1')
-      value=='เบาหวาน' && setAns3_3('1')
-      value=='ไขมันในเส้นเลือดสูง' && setAns3_4('1')
-      value=='โรคหัวใจ' && setAns3_6('1')
-    })
-    forms2Reducer==='อ้วนลงพุง' && setAns3_5('1')
-  }, [])
+  const [count, setCount] = useState(forms3Reducer.count);
 
   useEffect(() => {
-   if(collect){
-   const countNum =parseInt(ans3_1) + parseInt(ans3_2) + parseInt(ans3_3)
-      +parseInt(ans3_4) + parseInt(ans3_5) + parseInt(ans3_6) + parseInt(ans3_7);
-       console.log("countNum : "+ countNum)
-       setCount(countNum)
-      if(countNum==0){
-        setresults3("ไม่มีความเสี่ยง")
-      }else if (countNum >= 1 && countNum <= 2) {
-         setresults3("มีความเสี่ยง")
+    forms1p6Reducer.map((value) => {
+      value == "ความดันโลหิตสูง" && setAns3_2("1");
+      value == "เบาหวาน" && setAns3_3("1");
+      value == "ไขมันในเส้นเลือดสูง" && setAns3_4("1");
+      value == "โรคหัวใจ" && setAns3_6("1");
+    });
+    forms2Reducer === "อ้วนลงพุง" && setAns3_5("1");
+  }, []);
+
+  useEffect(() => {
+    if (collect) {
+      const countNum =
+        parseInt(ans3_1) +
+        parseInt(ans3_2) +
+        parseInt(ans3_3) +
+        parseInt(ans3_4) +
+        parseInt(ans3_5) +
+        parseInt(ans3_6) +
+        parseInt(ans3_7);
+      console.log("countNum : " + countNum);
+      setCount(countNum);
+      if (countNum == 0) {
+        setresults3("ไม่มีความเสี่ยง");
+      } else if (countNum >= 1 && countNum <= 2) {
+        setresults3("มีความเสี่ยง");
       } else if (countNum >= 3 && countNum <= 4) {
-        setresults3("มีความเสี่ยงสูง")
+        setresults3("มีความเสี่ยงสูง");
       } else if (countNum >= 5) {
-        setresults3("มีความเสี่ยงสูงมาก")
+        setresults3("มีความเสี่ยงสูงมาก");
       }
     }
-  }, [collect,ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7])
+  }, [collect, ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7]);
 
   useEffect(() => {
-    if (
-    ans3_1 &&
-    ans3_2 &&
-    ans3_3 &&
-    ans3_4 &&
-    ans3_5 &&
-    ans3_6 &&
-    ans3_7
-  ) {
-    setCollect(true);
-  }
-  }, [ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,results3])
+    if (ans3_1 && ans3_2 && ans3_3 && ans3_4 && ans3_5 && ans3_6 && ans3_7) {
+      setCollect(true);
+    }
+  }, [ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7, results3]);
 
-  const handleSubmit = ()=>{
-    setShow(true)
-    const data = [ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,results3,collect,count]
-    dispatch(formAction.add(data))
-  }
+  const handleSubmit = () => {
+    setShow(true);
+    const data = [
+      ans3_1,
+      ans3_2,
+      ans3_3,
+      ans3_4,
+      ans3_5,
+      ans3_6,
+      ans3_7,
+      results3,
+      collect,
+      count,
+    ];
+    dispatch(formAction.add(data));
+  };
+  const saveDataToServer = () => {
+    formAction.createExa3Cardiovascular();
+  };
 
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
         <h2>ส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h2>
-          <div className="question">
+        <div className="question">
           <p>3.1 ยังสูบบุหรี่ ยาเส้น หรือหยุดสูบไม่เกิน 1 ปี </p>
           <RadioGroup
             className="pl-20"
             aria-label="questions3.1"
             name="questions3.1"
             value={ans3_1}
-            onChange={(e) => 
-              setAns3_1(e.target.value)
-            }
+            onChange={(e) => setAns3_1(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -108,9 +121,7 @@ export default function Sections3() {
             aria-label="questions3.2"
             name="questions3.2"
             value={ans3_2}
-            onChange={(e) => 
-              setAns3_2(e.target.value)
-            }
+            onChange={(e) => setAns3_2(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -132,10 +143,7 @@ export default function Sections3() {
             aria-label="questions3.3"
             name="questions3.3"
             value={ans3_3}
-            onChange={(e) => 
-              setAns3_3(e.target.value)
-
-            }
+            onChange={(e) => setAns3_3(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -157,10 +165,7 @@ export default function Sections3() {
             aria-label="questions3.4"
             name="questions3.4"
             value={ans3_4}
-            onChange={(e) => 
-              setAns3_4(e.target.value)
-
-            }
+            onChange={(e) => setAns3_4(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -182,10 +187,7 @@ export default function Sections3() {
             aria-label="questions3.5"
             name="questions3.5"
             value={ans3_5}
-            onChange={(e) => 
-              setAns3_5(e.target.value)
-
-            }
+            onChange={(e) => setAns3_5(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -207,10 +209,7 @@ export default function Sections3() {
             aria-label="questions3.6"
             name="questions3.6"
             value={ans3_6}
-            onChange={(e) => 
-              setAns3_6(e.target.value)
-
-            }
+            onChange={(e) => setAns3_6(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -235,9 +234,7 @@ export default function Sections3() {
             aria-label="questions3.7"
             name="questions3.7"
             value={ans3_7}
-            onChange={(e) => 
-              setAns3_7(e.target.value)
-            }
+            onChange={(e) => setAns3_7(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
@@ -273,6 +270,7 @@ export default function Sections3() {
         title="ผลส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
         result={results3}
         show={show}
+        onClick={saveDataToServer}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}

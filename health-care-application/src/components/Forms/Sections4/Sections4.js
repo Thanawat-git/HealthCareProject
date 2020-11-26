@@ -42,6 +42,9 @@ export default function Sections4_1() {
     const data = [ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,results,collect,count]
     dispatch(formAction.add(data))
   }
+  const saveDataToServer = () => {
+    formAction.createExa4Eye();
+  };
 
   return (
     <div className="css-form ">
@@ -102,6 +105,7 @@ export default function Sections4_1() {
           title='ผลการประเมินสุขภาพตา' 
           result={results}
           show={show}
+          onClick={saveDataToServer}
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}

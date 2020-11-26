@@ -25,6 +25,7 @@ export default function Sections10() {
     setShow(true);
     const data = [ans10];
     dispatch(formAction.add(data));
+    formAction.createExa10Urination();
   };
   return (
     <div className="css-form">

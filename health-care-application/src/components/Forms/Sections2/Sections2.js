@@ -152,7 +152,10 @@ export default function Sections2_1() {
   };
 
   const saveDataToServer =()=>{
-    // formAction.updateExa2Waist([waist,waistResult])
+     formAction.updateExa2Waist([waist,waistResult])
+     formAction.updateExa2Bmi([weight,high,bmi,bmiResult])
+     formAction.updateExa2Bp([pulse, bloodPressure1,bloodPressure2, bloodPressureResult])
+     formAction.updateExa2Fbs([sugar,sugarResult])
   }
 
   return (
