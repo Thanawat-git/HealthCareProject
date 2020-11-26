@@ -25,8 +25,8 @@ export const updateDepressionScreening = (payload)=>{
     Axios.put("http://localhost:3001/depressionScreening/update/1",{
       DEP_DEPRESSED: payload[0],
       DEP_NOT_ENJOYING: payload[1],
-      DEP_CHECK:payload[3],
-      DEP_RESULT: payload[4],
+      DEP_CHECK:payload[2],
+      DEP_RESULT: payload[3],
     }).then(()=>{
       alert("Depression_Screening Update Success")
     })
