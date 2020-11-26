@@ -86,7 +86,7 @@ export const createAllElder = ()=>{
 
 //Sec1_2
 const updateElder = ()=>{
-  Axios.put("http://localhost:3001/elder/update/1103702726761",{
+  Axios.put("http://localhost:3001/elder/update/"+{PID},{
     ELD_PHONE: phoneNumber,
   }).then(()=>{
     alert("Update Elder Success")

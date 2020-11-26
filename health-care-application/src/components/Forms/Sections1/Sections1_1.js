@@ -145,7 +145,7 @@ function Sections1_1(props) {
       emptyValue()
     }
 
-    const elderlyBirthday = `${day}-${numMon}-${yea}`
+    const elderlyBirthday = `${yea}-${numMon}-${day}`
     // cal Age
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
@@ -168,8 +168,9 @@ function Sections1_1(props) {
     function emptyValue(){
       e.preventDefault(); 
       alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
-      // return;
+      return;
     }
+    formAction.createAllElder(data)
   }
 
   return (

@@ -11,6 +11,8 @@ import * as formAction from "../../../actions/forms1p6.action";
 export default function Sections1_6() {
 
   const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
+  const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
+
   const dispatch = useDispatch()
 
   const [disease, setdisease] = useState(null);
@@ -18,16 +20,16 @@ export default function Sections1_6() {
   const [date, setdate] = useState(new Date());
 
   const confirm = () => {
+    formAction.createDisease([peopleID, disease])
     disease && setdiseases([...diseases, disease])
     setdisease(null)
     // console.log(diseases)
   };
 
   const handleSubmit = ()=>{
+    formAction.createAllDatabase()
     const data = [diseases, date]
     dispatch(formAction.add(data))
-    formAction.createExa2Waist()
-    
   }
 
   return (

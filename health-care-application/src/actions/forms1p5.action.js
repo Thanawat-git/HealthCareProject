@@ -1,4 +1,5 @@
 import { FORMS1P5_ADD_NEW } from "../constants";
+import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
     type: FORMS1P5_ADD_NEW,
@@ -21,3 +22,23 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
+
+export const createDrug = (payload)=>{
+    Axios.post("http://localhost:3001/elder/drug/create",{
+      ELD_ID_NUMBER: payload[0],
+      DRUG_NAME: payload[1],
+      EXAM_DATE: new Date()
+    }).then(()=>{
+      alert("Drug Success")
+    })
+  }
+  
+export const createFood = (payload)=>{
+    Axios.post("http://localhost:3001/elder/food/create",{
+      ELD_ID_NUMBER: payload[0],
+      FOOD_NAME: payload[1],
+      EXAM_DATE: new Date()
+    }).then(()=>{
+      alert("Food Success")
+    })
+  }

@@ -1,4 +1,5 @@
 import { FORMS1P3_ADD_NEW } from "../constants";
+import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
     type: FORMS1P3_ADD_NEW,
@@ -21,3 +22,26 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
+
+export function updateElderRelative(payload) {
+    Axios.put("http://localhost:3001/elder/relative/update/1103702726761",{
+      ELD_REL_FIRSTNAME: payload[0],
+      ELD_REL_LASTNAME: payload[1],
+      ELD_REL_RELATION: payload[4],
+      ELD_REL_PHONE: payload[5],
+    }).then(()=>{
+      alert("Update Elder Relative Success")
+    })
+  }
+  
+export function createElderRelative2(payload) {
+    Axios.post("http://localhost:3001/elder/relative/create",{
+      ELD_REL_FIRSTNAME: payload[0],
+      ELD_REL_LASTNAME: payload[1],
+      ELD_REL_RELATION: payload[4],
+      ELD_REL_PHONE: payload[5],
+      ELD_ID_NUMBER: "1103702726761"
+    }).then(()=>{
+      alert("Elder Relative Success")
+    })
+  }

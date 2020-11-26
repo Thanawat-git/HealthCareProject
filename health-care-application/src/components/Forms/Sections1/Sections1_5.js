@@ -14,6 +14,7 @@ import * as formAction from "../../../actions/forms1p5.action";
 
 export default function Sections1_5() {
   const forms1p5Reducer = useSelector(({ forms1p5Reducer }) => forms1p5Reducer);
+  const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
   const dispatch = useDispatch();
 
   const [drugAllergy, setdrugAllergy] = useState(forms1p5Reducer.drugAllergy);
@@ -25,10 +26,12 @@ export default function Sections1_5() {
   const [drugs, setdrugs] = useState(forms1p5Reducer.drugs); //array
 
   const confirmdrug = () => {
+    formAction.createDrug([peopleID, drug])
     drug && setdrugs([...drugs, drug]);
     setdrug("");
   };
   const confirmfood = () => {
+    formAction.createFood([peopleID, food])
     food && setfoods([...foods, food]);
     setfood("");
   };
@@ -74,7 +77,6 @@ export default function Sections1_5() {
                 <strong>ประวัติการแพ้ยา</strong>
               </p>
             </div>
-            <input type="radio"></input>
             <RadioGroup
               className="pl-5"
               aria-label="drugAllergy"
