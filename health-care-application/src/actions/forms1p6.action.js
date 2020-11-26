@@ -35,8 +35,12 @@ export const createDisease = (payload)=>{
   })
 }
 
+export  const deleteDisease = (payload)=>{
+  Axios.delete("http://localhost:3001/elder/disease/delete/"+payload[0]+"/diseasename/"+payload[1]).then(()=>{
+    alert("Delete disease Success")
+  })
+}
 // create null table form 2-10
-
 const createExa2Waist = ()=>{
   Axios.post("http://localhost:3001/waist/create",{
     WAI_WAIST: null,

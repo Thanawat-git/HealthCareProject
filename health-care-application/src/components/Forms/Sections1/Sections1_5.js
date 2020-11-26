@@ -64,6 +64,20 @@ export default function Sections1_5() {
     foods.length==0 && setdisabled2(false)
   }, [foods]);
 
+  const deletedrug = (index,value)=>{
+    console.log('index: ',index,' drug: ',value);
+    formAction.deleteDrug([peopleID,value])
+    drugs.splice(index, 1); 
+    setdrugs([...drugs])
+  } 
+
+  const deletefood = (index,value)=>{
+    console.log('index: ',index,' food: ',value);
+    formAction.deleteFood([peopleID,value])
+    foods.splice(index, 1); 
+    setfoods([...foods])
+  }
+
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -133,7 +147,7 @@ export default function Sections1_5() {
                 {drugs.map((value, index) => {
                   let i = index
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={()=>{drugs.splice(index, 1); console.log('index: ', index); setdrugs([...drugs])}}>ลบ</button> </span> 
+                  <span> <button onClick={()=>deletedrug(index,value)}>ลบ</button> </span> 
                   </li>;
                 })}
               </ul>
@@ -203,7 +217,7 @@ export default function Sections1_5() {
               <ul>
                 {foods.map((value, index) => {
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={()=>{foods.splice(index, 1); setfoods([...foods])}}>ลบ</button> </span> 
+                  <span> <button onClick={()=>deletefood(index,value)}>ลบ</button> </span> 
                   {/* <span> <button onClick={()=>{diseases.splice(index, 1); console.log('index: ', index); setdiseases([...diseases])}}>ลบ</button> </span> */}
                   
                   </li>;
