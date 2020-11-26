@@ -1,6 +1,6 @@
 import { FORMS1P1_ADD_NEW } from "../constants";
 import Axios from 'axios';
-const apiUrl = 'http://localhost:3001/'
+// const apiUrl = 'http://localhost:3001/'
 
 export const setStateToAdd = (payload) => ({
   type: FORMS1P1_ADD_NEW,
@@ -15,10 +15,12 @@ export const add = (payload) => {
 
 // fetchData form server to defualt state
 export const fetchData = ()=> {
+  // console.log("2222222222")
   return (dispatch)=>{
     return Axios.get("http://localhost:3001/elder/searchOne/9999999900000")
-    .then(res => {
-      return res.data
+    .then(response => {
+      console.log("res " + response)
+      return response.data
     })
     .then(data => {
       dispatch(setStateToAdd(data));

@@ -15,6 +15,7 @@ import * as formAction from "../../../actions/forms1p1.action";
 
 function Sections1_1(props) {
   useEffect(() => {
+    console.log("111111111111111")
     formAction.fetchData()
   }, [])
   const forms1p1Reducer = useSelector(({forms1p1Reducer}) => forms1p1Reducer)
