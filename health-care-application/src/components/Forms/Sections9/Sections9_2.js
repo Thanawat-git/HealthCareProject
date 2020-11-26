@@ -84,6 +84,11 @@ export default function Sections9_2() {
         ]
         dispatch(formAction.add(data))
     }
+    const saveDataToServer = ()=>{
+        formAction.updateExa9_1Osteoarthritis({
+            ans1R,ans2R,ans3R,ans4R,ans5R,ans1L,ans2L,ans3L,ans4L,ans5L,ans1N,ans2N,ans3N,ans4N,ans5N,results
+        })
+    }
     
     return (
       <div className="css-form">
@@ -185,6 +190,7 @@ export default function Sections9_2() {
           title='ผลการประเมินโรคข้อเข่าเสื่อม' 
           result={results}
           show={show}
+          onClick={saveDataToServer}
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}

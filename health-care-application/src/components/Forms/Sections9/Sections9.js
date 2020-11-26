@@ -82,6 +82,10 @@ export default function Sections9() {
       dispatch(formAction.add(data))
     }
 
+    const saveDataToServer = ()=>{
+      formAction.updateExa9BoneMuscle({ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2})
+    }
+
     return (
       <div className="css-form">
         <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded" >
@@ -246,7 +250,7 @@ export default function Sections9() {
         <Modal.Footer>
          
           <Link to="/sec9-2" className={classes.root}>
-            <Button variant="primary" block>
+            <Button variant="primary" block onClick={saveDataToServer} >
               ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
             </Button>
           </Link>
