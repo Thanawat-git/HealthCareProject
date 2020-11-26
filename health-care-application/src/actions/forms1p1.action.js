@@ -1,14 +1,11 @@
-import { FORMS1P1_ADD_NEW, FORM_EDIT } from "../constants";
+import { FORMS1P1_ADD_NEW } from "../constants";
 import Axios from 'axios';
+const apiUrl = 'http://localhost:3001/'
 
 export const setStateToAdd = (payload) => ({
   type: FORMS1P1_ADD_NEW,
   payload,
 });
-
-// export const setStateToEdit = () => ({
-//     type: FORM_EDIT,
-// })
 
 export const add = (payload) => {
   return (dispatch) => {
@@ -16,11 +13,18 @@ export const add = (payload) => {
   };
 };
 
-// export const edit = () =>{
-//     return dispatch=>{
-//         dispatch(setStateToEdit())
-//     }
-// }
+// fetchData form server to defualt state
+export const fetchData = ()=> {
+  return (dispatch)=>{
+    return Axios.get("http://localhost:3001/elder/searchOne/9999999900000")
+    .then(res => {
+      return res.data
+    })
+    .then(data => {
+      dispatch(setStateToAdd(data));
+    })
+  }
+}
 
 // create new elder table
 const createElder = (payload) => {

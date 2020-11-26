@@ -14,6 +14,9 @@ import { connect, useDispatch, useSelector } from 'react-redux'
 import * as formAction from "../../../actions/forms1p1.action";
 
 function Sections1_1(props) {
+  useEffect(() => {
+    formAction.fetchData()
+  }, [])
   const forms1p1Reducer = useSelector(({forms1p1Reducer}) => forms1p1Reducer)
   const dispatch = useDispatch();
   const [PID, setPID] = useState(forms1p1Reducer.peopleID)
