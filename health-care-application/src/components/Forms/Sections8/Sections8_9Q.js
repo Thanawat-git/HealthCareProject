@@ -53,6 +53,8 @@ export default function Sections8_9Q() {
             results,collect
         ]
         dispatch(formAction.add(data))
+        formAction.updateDepressionScreening9q([ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
+            collect,results])
     }
 
     return (

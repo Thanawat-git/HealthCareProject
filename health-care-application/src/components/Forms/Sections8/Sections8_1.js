@@ -49,6 +49,7 @@ function Sections8_1() {
     setShow(true)
     const data = [ans8_1,ans8_2,collect,results]
     dispatch(formAction.add(data))
+    formAction.updateDepressionScreening(ans8_1,ans8_2,collect,results)
   }
 
   return (

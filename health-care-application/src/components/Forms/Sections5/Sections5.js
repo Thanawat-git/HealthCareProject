@@ -58,8 +58,8 @@ export default function Sections5_1() {
     dispatch(formAction.add(data))
   }
   const saveDataToServer = () => {
-    formAction.createExa5OralHealth();
-  };
+    formAction.updateOralHealth(ans5_1,ans5_2, ans5_3, ans5_4, ans5_5,ans5_6, ans5_7, ans5_8, ans5_9, ans5_10, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,count,results);
+  }
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
