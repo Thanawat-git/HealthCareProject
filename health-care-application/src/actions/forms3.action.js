@@ -41,7 +41,7 @@ export const add = (payload) =>{
 //   }
 
 export const updateExa3Cardiovascular = (payload)=>{
-    Axios.put("http://localhost:3001/cardiovascular/update",{
+    Axios.put("http://localhost:3001/cardiovascular/update/1",{
         CARDIO_3_1: payload[0],
         CARDIO_3_1_COUNT: payload[1],
         CARDIO_3_2: payload[2],
@@ -52,8 +52,6 @@ export const updateExa3Cardiovascular = (payload)=>{
         CARDIO_3_7: payload[7],
         CARDIO_COUNT: payload[8],
         CARDIO_COUNT_RESULT: payload[9],
-        VIS_ID: "1",
-        VIS_DATE: new Date()
     }).then(()=>{
       alert("Cardiovascular update Success")
     })

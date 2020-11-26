@@ -23,7 +23,7 @@ export const add = (payload) =>{
 //     }
 // }
 export const updateExa4Eye = (payload)=>{
-    Axios.put("http://localhost:3001/eye/update",{
+    Axios.put("http://localhost:3001/eye/update/1",{
         EYE_4_1: payload[0],
         EYE_4_2: payload[1],
         EYE_4_3: payload[2],
@@ -31,8 +31,6 @@ export const updateExa4Eye = (payload)=>{
         EYE_4_5: payload[4],
         EYE_COUNT: payload[5],
         EYE_RESULT: payload[6],
-        VIS_ID: "1",
-        VIS_DATE: new Date()
     }).then(()=>{
       alert("Eye update Success")
     })

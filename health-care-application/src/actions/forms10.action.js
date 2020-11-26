@@ -22,10 +22,8 @@ export const add = (payload) =>{
 //     }
 // }
 export const upadateExa10Urination= (payload)=>{
-    Axios.put("http://localhost:3001/urination/update",{
+    Axios.put("http://localhost:3001/urination/update/1",{
         URI_10_1: payload,
-        VIS_ID: "1",
-        VIS_DATE: new Date()
     }).then(()=>{
       alert("Urination update Success")
     })
