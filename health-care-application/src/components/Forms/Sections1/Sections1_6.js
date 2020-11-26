@@ -32,6 +32,13 @@ export default function Sections1_6() {
     dispatch(formAction.add(data))
   }
 
+  const deletedisease = (index,value)=>{
+    console.log('index: ',index,' Disease: ',value);
+    formAction.deleteDisease([peopleID,value])
+    diseases.splice(index, 1); 
+    setdiseases([...diseases])
+  }
+
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
@@ -75,7 +82,7 @@ export default function Sections1_6() {
               <ol>
                 {diseases.map((value, index) => {
                   return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={()=>{diseases.splice(index, 1); console.log('index: ', index); setdiseases([...diseases])}}>ลบ</button> </span> 
+                  <span> <button onClick={()=>deletedisease(index,value)}>ลบ</button> </span> 
                   </li>;
                 })}
                 {}
