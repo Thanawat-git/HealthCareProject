@@ -250,7 +250,7 @@ export default function Sections9() {
         <Modal.Footer>
          
           <Link to="/sec9-2" className={classes.root}>
-            <Button variant="primary" block onClick={saveDataToServer} >
+            <Button variant="primary" block onClick={()=>saveDataToServer} >
               ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
             </Button>
           </Link>

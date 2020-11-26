@@ -190,7 +190,7 @@ export default function Sections9_2() {
           title='ผลการประเมินโรคข้อเข่าเสื่อม' 
           result={results}
           show={show}
-          onClick={saveDataToServer}
+          onClick={()=>saveDataToServer}
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}
