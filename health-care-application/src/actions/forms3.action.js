@@ -40,21 +40,21 @@ export const add = (payload) =>{
 //     })
 //   }
 
-export const createExa3Cardiovascular = ()=>{
-    Axios.post("http://localhost:3001/cardiovascular/create",{
-        CARDIO_3_1: null,
-        CARDIO_3_1_COUNT: null,
-        CARDIO_3_2: null,
-        CARDIO_3_3: null,
-        CARDIO_3_4: null,
-        CARDIO_3_5: null,
-        CARDIO_3_6: null,
-        CARDIO_3_7: null,
-        CARDIO_COUNT: null,
-        CARDIO_COUNT_RESULT: null,
+export const updateExa3Cardiovascular = (payload)=>{
+    Axios.put("http://localhost:3001/cardiovascular/update",{
+        CARDIO_3_1: payload[0],
+        CARDIO_3_1_COUNT: payload[1],
+        CARDIO_3_2: payload[2],
+        CARDIO_3_3: payload[3],
+        CARDIO_3_4: payload[4],
+        CARDIO_3_5: payload[5],
+        CARDIO_3_6: payload[6],
+        CARDIO_3_7: payload[7],
+        CARDIO_COUNT: payload[8],
+        CARDIO_COUNT_RESULT: payload[9],
         VIS_ID: "1",
         VIS_DATE: new Date()
     }).then(()=>{
-      alert("Cardiovascular Create Success")
+      alert("Cardiovascular update Success")
     })
   }

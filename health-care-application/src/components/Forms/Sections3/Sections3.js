@@ -85,7 +85,17 @@ export default function Sections3() {
     dispatch(formAction.add(data));
   };
   const saveDataToServer = () => {
-    formAction.createExa3Cardiovascular();
+    formAction.updateExa3Cardiovascular([ans3_1,
+      "บุหรี่",
+      ans3_2,
+      ans3_3,
+      ans3_4,
+      ans3_5,
+      ans3_6,
+      ans3_7,
+      collect,
+      results3,
+    ]);
   };
 
   return (

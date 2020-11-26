@@ -26,7 +26,7 @@ function MainMenu(props) {
     const collect3 = useSelector(({forms3Reducer}) => forms3Reducer.collect)
     const collect4 = useSelector(({forms4Reducer}) => forms4Reducer.collect)
     const collect5 = useSelector(({forms5Reducer}) => forms5Reducer.collect)
-    // const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect)
+    // const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect) 
     const collect7 = useSelector(({forms7Reducer}) => forms7Reducer.collect)
     const collect8 = useSelector(({forms8Reducer}) => forms8Reducer.collect)
     const collect9 = useSelector(({forms9Reducer}) => forms9Reducer)
@@ -42,9 +42,10 @@ function MainMenu(props) {
     const [i7, setI7] = useState('')
     const [i8, setI8] = useState('')
     const [i9, setI9] = useState('')
-    const [i0, setI0] = useState('')
+    const [i10, setI0] = useState('')
 
     useEffect(() => {
+        console.log('ans10: ',collect10)
         collect2 && setI2('green')
         collect3 && setI3('green')
         collect4 && setI4('green')
@@ -52,9 +53,10 @@ function MainMenu(props) {
         // collect6 && setI6('green')
         collect7 && setI7('green')
         collect8 && setI8('green')
-        (collect9.collect1 && collect9.collect2) && setI8('green')
-        collect92 && setI8('green')
-        collect10 && setI0('green')
+        if(collect9.collect1 && collect9.collect2 && collect92){
+            setI9('green')
+        }
+        collect10&&setI0('green')
     }, []);
 
     const useStyles2 = makeStyles({
@@ -84,6 +86,9 @@ function MainMenu(props) {
         },
         i9: {
             color:i9
+        },
+        i10: {
+            color:i10
         },
     });
     const colorIcon = useStyles2();
@@ -173,7 +178,7 @@ function MainMenu(props) {
                 <Link to="/sec10">
                     <ListItem button>
                         <ListItemIcon>
-                            <CheckCircleIcon className={colorIcon.i0}/>
+                            <CheckCircleIcon className={colorIcon.i10}/>
                         </ListItemIcon>
                      -----
                     </ListItem>

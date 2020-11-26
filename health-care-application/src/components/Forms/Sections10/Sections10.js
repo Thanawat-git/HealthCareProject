@@ -12,20 +12,12 @@ export default function Sections10() {
   const dispatch = useDispatch();
 
   const [ans10, setAns10] = useState(forms10Reducer.ans10);
-  const [show, setShow] = useState(false);
-  const [collect, setCollect] = useState(forms10Reducer.collect);
-
-  useEffect(() => {
-    if (ans10) {
-      setCollect(true);
-    }
-  }, [ans10]);
+  // const [show, setShow] = useState(false);
 
   const handleSubmit = () => {
-    setShow(true);
-    const data = [ans10];
-    dispatch(formAction.add(data));
-    formAction.createExa10Urination();
+    // setShow(true); 
+    dispatch(formAction.add(ans10));
+    formAction.upadateExa10Urination(ans10);
   };
   return (
     <div className="css-form">
