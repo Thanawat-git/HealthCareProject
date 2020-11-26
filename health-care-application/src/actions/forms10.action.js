@@ -21,12 +21,12 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
-export const createExa10Urination= ()=>{
-    Axios.post("http://localhost:3001/urination/create",{
-        URI_10_1: null,
+export const upadateExa10Urination= (payload)=>{
+    Axios.put("http://localhost:3001/urination/update",{
+        URI_10_1: payload,
         VIS_ID: "1",
         VIS_DATE: new Date()
     }).then(()=>{
-      alert("Urination Create Success")
+      alert("Urination update Success")
     })
   }

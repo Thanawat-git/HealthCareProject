@@ -29,8 +29,17 @@ function Sections1_4(props) {
     
     const handleSubmit = (e)=>{
       const data = [
-        elderlyStatus, elderlyBeing, elderlyBeingDetail, being, neighborName, religion, educations, careers, treatment, hospital, otherTreatment, salary, otherReligion, otherCareers
+        elderlyStatus, 
+        elderlyBeing, 
+        elderlyBeingDetail, 
+        being, neighborName, 
+        religion, educations, careers, 
+        treatment, hospital, otherTreatment, 
+        salary, otherReligion, otherCareers
       ]
+      formAction.updateElderinfo([elderlyStatus,elderlyBeing,religion,educations,
+        careers,treatment,salary
+      ])
 
       // elderlyStatus===null && emptyValue()
 

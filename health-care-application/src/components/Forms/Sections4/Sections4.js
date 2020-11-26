@@ -31,7 +31,7 @@ export default function Sections4_1() {
     }
   }, [collect,ans4_1,ans4_2,ans4_3,ans4_4,ans4_5])
 
-  useEffect(() => {
+  useEffect(() => { 
     if(ans4_1 && ans4_2 && ans4_3 && ans4_4 && ans4_5){
       setCollect(true)
     }
@@ -43,7 +43,7 @@ export default function Sections4_1() {
     dispatch(formAction.add(data))
   }
   const saveDataToServer = () => {
-    formAction.createExa4Eye();
+    formAction.updateExa4Eye([ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,count,results]);
   };
 
   return (

@@ -20,7 +20,8 @@ export default function Sections1_2(props) {
 
   // Redux hook
   const forms1p2Reducer = useSelector(({ forms1p2Reducer }) => forms1p2Reducer);
-  const dispatch = useDispatch();
+  const peopleID = useSelector(({forms1p1Reducer})=>forms1p1Reducer.peopleID)
+  const dispatch = useDispatch()
   // Redux hook
 
   const [homeNumber, setHomeNummber] = useState(forms1p2Reducer.homeNumber); //บ้านเลขที่
@@ -64,6 +65,12 @@ export default function Sections1_2(props) {
       phoneNumber,
     ];
 
+    phoneNumber && formAction.updateElder([peopleID, phoneNumber])
+    formAction.updateElderIdCurrent([homeNumber,alley,street,subDistrict,area,]);
+    radioValue == 'no' ? formAction.updateElderCurrent([curHomeNumber,curAlley,curStreet,curSubDistrict,curArea]) 
+    : formAction.updateElderCurrent([homeNumber,alley,street,subDistrict,area,])
+    
+    
     dispatch(formAction.add(data));
     function emptyValue() {
       e.preventDefault();
