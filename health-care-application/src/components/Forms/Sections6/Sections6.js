@@ -24,7 +24,7 @@ export default function Sections6() {
   const [ans6_Me, setAns6_Me] = useState(forms6Reducer.ans6_Me);
   const [ans6_Fe, setAns6_Fe] = useState(forms6Reducer.ans6_Fe);
   const [ans6_To, setAns6_To] = useState(forms6Reducer.ans6_To);
-  const [results6, setresults6] = useState(forms6Reducer.results6);
+  const [results, setresults] = useState(forms6Reducer.results);
   const [group, setgroup] = useState(forms6Reducer.group);
   const [collect, setCollect] = useState(forms6Reducer.collect);
   const [count, setCount] = useState()
@@ -48,17 +48,17 @@ export default function Sections6() {
         parseInt(ans6_10);
         setCount(countNum)
       if (countNum <= 4) {
-         setresults6(3)
+         setresults(3)
           setgroup(3);
           x.style.display = "block";
          
       } else if (countNum >= 5 && countNum <= 11) {
          x.style.display = "block";
-        setresults6(2)
+        setresults(2)
         setgroup(2);
        
       } else if (countNum > 12) {
-        setresults6(1)
+        setresults(1)
        setgroup(1);
       }
     }
@@ -90,7 +90,7 @@ export default function Sections6() {
     ans6_8,
     ans6_9,
     ans6_10,
-    results6,
+    results,
     collect,
   ]);
 
@@ -107,7 +107,7 @@ export default function Sections6() {
       ans6_8,
       ans6_9,
       ans6_10,
-      results6,
+      results,
       collect,
       ans6_Im,
       ans6_Me,
@@ -636,7 +636,7 @@ export default function Sections6() {
       </form>
       <ShowResultPopup
         title="ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ"
-        result={results6}
+        results={results}
         show={show}
         onHide={() => setShow(false)}
         backdrop="static"

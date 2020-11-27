@@ -16,14 +16,13 @@ export const add = (payload) =>{
         dispatch(setStateToAdd(payload))
     }
 }
-
 // export const edit = () =>{
 //     return dispatch=>{
 //         dispatch(setStateToEdit())
 //     }
 // }
 export const updateExa9_1Osteoarthritis= (payload)=>{
-    console.log('xxxxxxxxxxxxx1111')
+   
     Axios.put("http://localhost:3001/osteoarthritis/update/1",{
         OST_1_KNEE_PAIN: null,
         OST_1_LVL_PAIN: null,

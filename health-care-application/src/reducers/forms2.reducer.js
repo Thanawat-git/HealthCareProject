@@ -8,10 +8,10 @@ const initialState = {
   bloodPressure1: null,
   bloodPressure2: null,
   sugar: null,
-  waistResult: null,
-  bmiResult: null,
-  bloodPressureResult: null,
-  sugarResult: null,
+  waistResult: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+  bmiResult: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+  bloodPressureResult: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+  sugarResult: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
   collect: false,
 };
 

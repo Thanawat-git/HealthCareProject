@@ -15,7 +15,7 @@ export const add = (payload) => {
 
 // fetchData form server to defualt state
 export const fetchData = ()=> {
-  // console.log("2222222222")
+  
   return (dispatch)=>{
     return Axios.get("http://localhost:3001/elder/searchOne/9999999900000")
     .then(response => {
@@ -27,7 +27,7 @@ export const fetchData = ()=> {
     })
   }
 }
-
+ 
 // create new elder table
 const createElder = (payload) => {
   Axios.post("http://localhost:3001/elder/create", {

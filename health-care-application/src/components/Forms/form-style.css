@@ -17,6 +17,21 @@
     margin-top: 30px;
     font-size: 40px;
 }
+.css-form h5{
+    margin-top: 10px;
+    margin-left: 15%;
+    padding: 5px;
+}
+.css-form h4{
+    margin-bottom: 5px;
+    margin-left: 10%;
+    
+}
+.css-form h6{
+    margin-top: 5px;
+    margin-left: 23%;
+    padding: 5px;
+}
 
 .css-form p {
     font-size: 20px;

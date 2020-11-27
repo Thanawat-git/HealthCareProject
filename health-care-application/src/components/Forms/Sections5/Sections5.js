@@ -29,7 +29,7 @@ export default function Sections5_1() {
   const [ans5_16, setAns5_16] = useState(forms5Reducer.ans5_16);
   const [ans5_17, setAns5_17] = useState(forms5Reducer.ans5_17);
   const [collect, setCollect] = useState(forms5Reducer.collect);
-  const [results, setresults] = useState(forms5Reducer.result);
+  const [results, setresults] = useState(forms5Reducer.results);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(forms5Reducer.count);
 

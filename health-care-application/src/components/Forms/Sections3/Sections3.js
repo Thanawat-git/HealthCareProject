@@ -24,7 +24,7 @@ export default function Sections3() {
   const [ans3_6, setAns3_6] = useState(forms3Reducer.ans3_6);
   const [ans3_7, setAns3_7] = useState(forms3Reducer.ans3_7);
   const [collect, setCollect] = useState(forms3Reducer.collect);
-  const [results3, setresults3] = useState(forms3Reducer.results3);
+  const [results, setresults] = useState(forms3Reducer.results3);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(forms3Reducer.count);
 
@@ -51,13 +51,13 @@ export default function Sections3() {
       console.log("countNum : " + countNum);
       setCount(countNum);
       if (countNum == 0) {
-        setresults3("ไม่มีความเสี่ยง");
+        setresults("ไม่มีความเสี่ยง");
       } else if (countNum >= 1 && countNum <= 2) {
-        setresults3("มีความเสี่ยง");
+        setresults("มีความเสี่ยง");
       } else if (countNum >= 3 && countNum <= 4) {
-        setresults3("มีความเสี่ยงสูง");
+        setresults("มีความเสี่ยงสูง");
       } else if (countNum >= 5) {
-        setresults3("มีความเสี่ยงสูงมาก");
+        setresults("มีความเสี่ยงสูงมาก");
       }
     }
   }, [collect, ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7]);
@@ -66,7 +66,7 @@ export default function Sections3() {
     if (ans3_1 && ans3_2 && ans3_3 && ans3_4 && ans3_5 && ans3_6 && ans3_7) {
       setCollect(true);
     }
-  }, [ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7, results3]);
+  }, [ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7, results]);
 
   const handleSubmit = () => {
     setShow(true);
@@ -78,7 +78,7 @@ export default function Sections3() {
       ans3_5,
       ans3_6,
       ans3_7,
-      results3,
+      results,
       collect,
       count,
     ];
@@ -94,7 +94,7 @@ export default function Sections3() {
       ans3_6,
       ans3_7,
       collect,
-      results3,
+      results,
     ]);
   };
 
@@ -278,7 +278,7 @@ export default function Sections3() {
       </form>
       <ShowResultPopup
         title="ผลส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
-        result={results3}
+        result={results}
         show={show}
         onClick={saveDataToServer}
         onHide={() => setShow(false)}

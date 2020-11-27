@@ -19,7 +19,7 @@ const initialState = {
     ans5_15: null, 
     ans5_16: null, 
     ans5_17: null,
-    result: 'ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ',
+    results: 'ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ',
     collect: false,
     count: 0,
 }
@@ -47,7 +47,7 @@ export default (state = initialState, { type, payload }) => {
             ans5_15: payload[15], 
             ans5_16: payload[16], 
             ans5_17: payload[17],
-            result: payload[18],
+            results: payload[18],
             collect: payload[19],
             count: payload[20],
         }

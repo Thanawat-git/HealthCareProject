@@ -19,7 +19,7 @@ export default function Sections4_1() {
   const [ans4_4, setAns4_4] = useState(forms4Reducer.ans4_4)
   const [ans4_5, setAns4_5] = useState(forms4Reducer.ans4_5)
   const [collect, setCollect] = useState(forms4Reducer.collect);
-  const [results, setresults] = useState(forms4Reducer.result);
+  const [results, setresults] = useState(forms4Reducer.results);
   const [count ,setCount] = useState(forms4Reducer.count)
 
   const [show, setShow] = useState(false);
