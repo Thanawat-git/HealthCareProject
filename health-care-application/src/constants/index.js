@@ -17,8 +17,10 @@ export const CREATE_NEW_FORMS9 = 'CREATE_NEW_FORMS9';
 export const CREATE_NEW_FORMS92 = 'CREATE_NEW_FORMS92';
 export const CREATE_NEW_FORMS10 = 'CREATE_NEW_FORMS10';
 
-export const FORM_EDIT = 'FORM_EDIT';
+export const FETCH_DATA_FORM_SERVER = 'FETCH_DATA_FORM_SERVER';
 
+// Search elderly
+export const FOUND_ELD = 'FOUND_ELD';
 
 // // Login Page
 // export const APP_INIT = "APP_INIT";

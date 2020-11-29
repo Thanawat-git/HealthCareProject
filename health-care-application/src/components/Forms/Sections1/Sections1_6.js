@@ -22,9 +22,14 @@ export default function Sections1_6() {
   const confirm = () => {
     formAction.createDisease([peopleID, disease])
     disease && setdiseases([...diseases, disease])
-    setdisease(null)
-    // console.log(diseases)
+    setdisease("")
+    console.log(disease)
   };
+
+  useEffect(() => {
+    // setdisease('')
+    console.log(disease)
+  }, [disease])
 
   const handleSubmit = ()=>{
     formAction.createAllDatabase()
@@ -55,15 +60,14 @@ export default function Sections1_6() {
               <Autocomplete
                 id="SimpleDisease"
                 options={SimpleDisease}
-                getOptionLabel={(option) => option}
-                disableClearable={true}
+                getOptionLabel={(option) => option.name}
+                // disableClearable={true}
                 size="small"
-                value={disease}
-                // getOptionSelected={setDiseaseData}
-                //   style={{ width: 300 }}
                 onInputChange={(event, value)=>setdisease(value)}
                 renderInput={(params) => (
-                  <TextField {...params} variant="outlined" />
+                  <TextField {...params} 
+                  defaultValue={disease}
+                  variant="outlined" />
                 )}
               />
             </div>
@@ -125,36 +129,36 @@ export default function Sections1_6() {
 }
 
 const SimpleDisease = [
-  "ความดันโลหิตสูง",
-  "เบาหวาน",
-  "ไขมันในเส้นเลือดสูง",
-  "โรคหัวใจ",
-  "อัมพฤต อัมพาต",
-  "หลอดเลือดในสมอง",
-  "หลอดเลือดหัวใจ",
-  "กระดูกพรุน",
-  "ข้อเข่าเสื่อม/อักเสบ",
-  "กระดูกทับเส้น",
-  "กล้ามเนื้ออ่อนแรง/ชา",
-  "เก๊าซ์",
-  "รูมาตอยด์",
-  "ปวดเมื่อยกล้ามเนื้อ",
-  "ไตเรื้อรัง",
-  "นิ่วในไต",
-  "ต่อมลูกหมากโต",
-  "หอบหืด/หลอดลมตีบ/ภูมิแพ้/ไซนัส",
-  "ปอด",
-  "โรคกระเพาะ/กรดไหลย้อน/ลำไส้",
-  "ริดสีดวง",
-  "ตับ/ถุงน้ำดี",
-  "โรคตา",
-  "หูพิการ",
-  "พิการ",
-  "ลมชัก",
-  "พากินสัน",
-  "ไมเกรน",
-  "โรคประสาท",
-  "Hypothyroid",
-  "มะเร็ง/เนื้องอก",
-  "โลหิตจาง",
+  {name: "ความดันโลหิตสูง"},
+  {name: "เบาหวาน"},
+  {name: "ไขมันในเส้นเลือดสูง"},
+  {name: "โรคหัวใจ"},
+  {name: "อัมพฤต อัมพาต"},
+  {name: "หลอดเลือดในสมอง"},
+  {name: "หลอดเลือดหัวใจ"},
+  {name: "กระดูกพรุน"},
+  {name: "ข้อเข่าเสื่อม/อักเสบ"},
+  {name: "กระดูกทับเส้น"},
+  {name: "กล้ามเนื้ออ่อนแรง/ชา"},
+  {name: "เก๊าซ์"},
+  {name: "รูมาตอยด์"},
+  {name: "ปวดเมื่อยกล้ามเนื้อ"},
+  {name: "ไตเรื้อรัง"},
+  {name: "นิ่วในไต"},
+  {name: "ต่อมลูกหมากโต"},
+  {name: "หอบหืด/หลอดลมตีบ/ภูมิแพ้/ไซนัส"},
+  {name: "ปอด"},
+  {name: "โรคกระเพาะ/กรดไหลย้อน/ลำไส้"},
+  {name: "ริดสีดวง"},
+  {name: "ตับ/ถุงน้ำดี"},
+  {name: "โรคตา"},
+  {name: "หูพิการ"},
+  {name: "พิการ"},
+  {name: "ลมชัก"},
+  {name: "พากินสัน"},
+  {name: "ไมเกรน"},
+  {name: "โรคประสาท"},
+  {name: "Hypothyroid"},
+  {name: "มะเร็ง/เนื้องอก"},
+  {name: "โลหิตจาง"},
 ];

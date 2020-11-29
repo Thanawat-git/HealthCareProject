@@ -14,6 +14,7 @@ import AdminFooter from "./components/admin-super/footer/footer"
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
+import Volunteer from "./components/volunteer/Volunteer";
 
 
 import mainMenu from './components/Forms/MainMenu'
@@ -31,8 +32,6 @@ import {sec9, sec9_2} from "./components/Forms/Sections9";
 import {sec10} from "./components/Forms/Sections10";
 import mmsiThai2002 from "./components/Forms/Sections7/mmsiThai2002";
 
-// import ShowState from './ShowState'
-
 export default class App extends Component {
   redirectToLogin = ()=>{
     return <Redirect to="/login"/>
@@ -41,7 +40,7 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* <Route path='/showstate' component={ShowState} /> */}
+          <Route path='/volunteer' component={Volunteer} />
 
           {/* Form */}
           {/* <Route path="/form">

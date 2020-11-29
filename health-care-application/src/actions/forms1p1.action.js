@@ -15,7 +15,6 @@ export const add = (payload) => {
 
 // fetchData form server to defualt state
 export const fetchData = ()=> {
-  
   return (dispatch)=>{
     return Axios.get("http://localhost:3001/elder/searchOne/9999999900000")
     .then(response => {

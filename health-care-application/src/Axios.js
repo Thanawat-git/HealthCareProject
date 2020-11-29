@@ -659,8 +659,8 @@ const updateAlzheimer = ()=>{
 
 //EXAMINATION 9 
 //SEC9
-const updateExa9BoneMuscle= ()=>{
-  Axios.put("http://localhost:3001/boneMuscle/update",{
+const updateExa9BoneMuscle= (payload)=>{
+  Axios.put("http://localhost:3001/boneMuscle/update/1",{
       BONE_9_1: ans9_1,
       BONE_9_2: ans9_2,
       BONE_9_3: ans9_3,

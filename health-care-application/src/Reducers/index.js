@@ -17,6 +17,7 @@ import forms89qReducer from './forms89q.reducer'
 import forms10Reducer from './forms10reducer'
 import forms9Reducer from './forms9.reducer'
 import forms92Reducer from './forms92.reducer'
+import searchEld from "./searchEld.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -36,4 +37,5 @@ export default combineReducers({
     forms10Reducer,
     forms9Reducer,
     forms92Reducer,
+    searchEld,
 })

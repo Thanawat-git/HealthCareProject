@@ -1,0 +1,42 @@
+.vtcontainer {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+    /* overflow: hidden; */
+}
+.vtcontainer h3{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.seach-eld{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    /* background-color: aqua; */
+    /* position: absolute; */
+    /* top: 20%; */
+    /* left: 50%; */
+}
+.inner-seach2{
+    margin-top: 20px;
+}
+.inner-seach2 table{
+    color: aqua;
+    text-align: start;
+}
+@media (min-width: 770px){
+    .seach-eld input{
+        width: 500px;
+    } 
+}
+.nav-bottom p{
+    color: black;
+    text-align: center;
+    flex-grow: 1;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
