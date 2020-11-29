@@ -5,11 +5,11 @@ import {AppBar, Avatar, Button, Divider, Drawer, Fab, Input, InputAdornment, Lis
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
-import AddIcon from "@material-ui/icons/Add";
-import SearchIcon from '@material-ui/icons/Search';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import './volunteer.css'
 import Search from './Search'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -67,22 +67,30 @@ export default function Volunteer() {
             </ListItem>
           </List>
           <Divider />
-          <List>
+          <List className="link" >
+            <Link to="/sec1-page1">
+            <ListItem button >
+              <ListItemIcon> <PersonAddIcon /> </ListItemIcon>
+              <ListItemText primary='เพิ่มผู้สูงอายุรายใหม่' />
+            </ListItem>
+            </Link>
             <ListItem button >
               <ListItemIcon> <VpnKeyIcon /> </ListItemIcon>
               <ListItemText primary='เปลี่ยนรหัสผ่าน' />
             </ListItem>
+            <Link to="/login">
             <ListItem button>
               <ListItemIcon><ExitToAppIcon /></ListItemIcon>
               <ListItemText primary='ออกจากระบบ' />
             </ListItem>
+            </Link>
           </List>
         </div>
       );
     
       return (
         <div className="vtcontainer">
-            <div className="nav-vtcontainer">
+            <div className="nav-vtcontainer linkicon">
                 <div className={classes.root}>
                     <AppBar position="fixed">
                         <Toolbar>
@@ -95,7 +103,9 @@ export default function Volunteer() {
                             <Typography variant="h6" className={classes.title}>
                                 Project Name
                             </Typography>
+                            <Link to="/login">
                             <Button color="inherit"><ExitToAppIcon /></Button>
+                            </Link>
                         </Toolbar>
                     </AppBar>
                 </div>
@@ -109,10 +119,12 @@ export default function Volunteer() {
             <div className="nav-bottom">
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
+                <Link to="/sec1-page1">
                 <Fab color="secondary" aria-label="add" className={classes.fabButton}>
-                    <AddIcon />
+                    <PersonAddIcon />
                 </Fab>
-                <p>เพิ่มผู้สูงอายุรายใหม่</p>
+                </Link>
+                {/* <p>เพิ่มผู้สูงอายุรายใหม่</p> */}
                 </Toolbar>
             </AppBar>
             </div>

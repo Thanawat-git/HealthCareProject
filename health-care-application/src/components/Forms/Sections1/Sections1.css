@@ -39,6 +39,10 @@ strong {
     color: black;
 }
 
-.xxx:disabled {
-    color: red;
+.links1p6{
+    display: flex;
+    justify-content: space-around;
+}
+.links1p6 a, .links1p6 a:hover{
+    text-decoration: none;
 }

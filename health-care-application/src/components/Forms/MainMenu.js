@@ -33,7 +33,6 @@ function MainMenu(props) {
     const collect92 = useSelector(({forms92Reducer}) => forms92Reducer.collect)
     const collect10 = useSelector(({forms10Reducer}) => forms10Reducer.collect)
     const classes = useStyles();
-    const [i1, setI1] = useState('')
     const [i2, setI2] = useState('')
     const [i3, setI3] = useState('')
     const [i4, setI4] = useState('')
@@ -60,9 +59,6 @@ function MainMenu(props) {
     }, []);
 
     const useStyles2 = makeStyles({
-        i1: {
-            color:i1
-        },
         i2: {
             color:i2
         },
@@ -102,15 +98,6 @@ function MainMenu(props) {
             </div>
             <Card className={classes.root}>
                 <CardContent>
-                <Link to="/sec1-page1">
-                    <ListItem button>
-                        <ListItemIcon>
-                            <CheckCircleIcon className={colorIcon.i1}/>
-                        </ListItemIcon>
-                        ส่วนที่ 1 ข้อมูลพื้นฐาน
-                    </ListItem>
-                </Link> <hr/>
-
                 <Link to="/sec2">
                     <ListItem button>
                         <ListItemIcon>

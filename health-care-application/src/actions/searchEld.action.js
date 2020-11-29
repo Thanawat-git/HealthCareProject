@@ -11,10 +11,3 @@ export const add = (payload) => {
     dispatch(setStateToAdd(payload));
   };
 };
-
-export const fetchData = () =>{
-  Axios.get(`https://jsonplaceholder.typicode.com/users`)
-    .then(res=>{
-      return add(res.data)
-    })
-}

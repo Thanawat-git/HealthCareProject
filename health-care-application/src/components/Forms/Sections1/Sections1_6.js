@@ -7,9 +7,10 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p6.action";
+import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 
 export default function Sections1_6() {
-
+  const [open, setOpen] = useState(false); // open dialog
   const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
   const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
 
@@ -35,6 +36,7 @@ export default function Sections1_6() {
     formAction.createAllDatabase()
     const data = [diseases, date]
     dispatch(formAction.add(data))
+    setOpen(true);
   }
 
   const deletedisease = (index,value)=>{
@@ -117,13 +119,35 @@ export default function Sections1_6() {
               ย้อนกลับ
             </button>
           </Link>
-          <Link to="/mainmenu">
             <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit}>
               สำเร็จ
             </button>
-          </Link>
         </div>
       </form>
+      <Dialog
+        open={open}
+        keepMounted
+        onClose={()=>setOpen(false)}
+      >
+        <DialogTitle>บันทึกข้อมูลผู้สูงอายุรายใหม่สำเร็จ</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            ท่านต้องการทำแบบประเมินภาวะสุขภาพผู้สูงอายุต่อหรือไม่?
+          </DialogContentText>
+        </DialogContent>
+        <div className="links1p6">
+          <Link to="/volunteer">
+            <Button color="primary">
+              กลับหน้าหลัก
+          </Button>
+          </Link>
+          <Link to="/mainmenu">
+            <Button color="primary">
+              ต้องการทำต่อ
+            </Button>
+          </Link>
+        </div>
+      </Dialog>
     </div>
   );
 }
