@@ -87,7 +87,7 @@ export default function Sections1_6() {
             <div className="col-12" style={{marginTop:20}} >
               <ol>
                 {diseases.map((value, index) => {
-                  return <li key={index}> {`${index} ${value}`} 
+                  return <li key={index}> {`${value}`} 
                   <span> <button onClick={()=>deletedisease(index,value)}>ลบ</button> </span> 
                   </li>;
                 })}
