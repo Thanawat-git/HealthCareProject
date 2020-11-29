@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
+import {Button, Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Link } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux'
@@ -170,8 +170,8 @@ function MainMenu(props) {
                     การคัดกรองการกลั้นปัสสาวะ
                     </ListItem>
                 </Link>
-                
                 </CardContent>
+                <Button variant="contained" size="large" color="primary" fullWidth >ดูผลการประเมิน</Button>
             </Card>
         </React.Fragment>
     )
