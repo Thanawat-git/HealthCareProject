@@ -39,10 +39,7 @@ const useStyles = makeStyles({
 
 export default function Volunteer() {
     const classes = useStyles();
-    const searchEld = useSelector(({searchEld}) => searchEld)
-    useEffect(() => {
-        console.log('searchEld ',searchEld)
-    }, [])
+
     const [state, setState] = useState({
         left: false,
     });
@@ -112,10 +109,8 @@ export default function Volunteer() {
             </div>
             <div className="seach-eld">
             <h3>ค้นหาผู้สูงอายุ</h3>
-
                 <Search />
             </div>
-            {console.log('searchEld ',searchEld)}
             <div className="nav-bottom">
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>

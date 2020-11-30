@@ -19,7 +19,7 @@ export default function Sections1_6() {
   const [disease, setdisease] = useState(null);
   const [diseases, setdiseases] = useState(forms1p6Reducer.diseases);
   const [date, setdate] = useState(new Date());
-
+ 
   const confirm = () => {
     formAction.createDisease([peopleID, disease])
     disease && setdiseases([...diseases, disease])

@@ -1,6 +1,8 @@
 import { FOUND_ELD, SELECT_ELD } from "../constants";
 import Axios from 'axios';
 
+const urlApi = 'http://localhost:3001/elder/'
+
 export const setStateToAdd = (payload) => ({
   type: FOUND_ELD,
   payload,
@@ -21,7 +23,7 @@ export const selectedEld = (payload)=>{
   console.log('here');
  return (dispatch)=>{
     // console.log('here');
-    return Axios.get(`https://jsonplaceholder.typicode.com/users/${payload}`)
+    return Axios.get(`${urlApi}findToEdit/${payload}`)
       .then(res=>{
         dispatch(setStateToSelectEld(res.data))
       });

@@ -8,9 +8,6 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 300,
-  },
   title: {
     textAlign: 'center',
     minWidth: 350,
@@ -23,9 +20,10 @@ export default function Asynchronous() {
   const classes = useStyles();
 
   useEffect(() => {
-    Axios.get(`https://jsonplaceholder.typicode.com/users`)
+    Axios.get(`http://localhost:3001/elder/search`)
     .then(res=>{
       setOptions(res.data);
+      console.log(res.data)
       dispatch(search.add(res.data))
     })
   }, []);
@@ -35,13 +33,16 @@ export default function Asynchronous() {
 
   const searchArr = (e)=>{
     var searchvalue = e.target.value;
-    var filterNames = options.filter((v,i)=>{
-        return(v.name.includes(searchvalue));
-    })
-    setfoundSearch(filterNames)
+    console.log('searchvalue: '+options)
+    // var filterNames = options.filter((v,i)=>{
+    //     return(v.ELD_FIRSTNAME.includes(searchvalue));
+    // })
+    // setfoundSearch(filterNames)
     console.log('foundSearch: '+foundSearch.length)
   }
- 
+ useEffect(() => {
+  dispatch(search.selectedEld(selectEld.ELD_ID_NUMBER))
+ }, [selectEld])
   function handleClickOpen(value){
     setselectEld(value)
     console.log('value: ', value)
@@ -52,11 +53,11 @@ export default function Asynchronous() {
     setOpen(false);
   };
   const saveSelected = ()=>{
-    dispatch(search.selectedEld(selectEld.id))
+    dispatch(search.selectedEld(selectEld.ELD_ID_NUMBER))
   }
   return (
     <React.Fragment>
-      <div className="inner-seach1">
+      <div className="search-fill">
       <TextField
       label="กรอกชื่อหรือนามสกุล"
       id="standard-start-adornment"
@@ -68,70 +69,51 @@ export default function Asynchronous() {
       </div>
     
       <div className="inner-seach2">
-      <TableContainer component={Paper}>
-        <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Elder ID</TableCell>
-            <TableCell>Full Name</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
         {
           foundSearch.length !=0 && foundSearch.map((value,index)=>{
             return(
-              <TableRow key={value.id}>
-                <TableCell align="right">{value.phone}</TableCell>
-                <TableCell align="right">
-                <Button variant="outlined" color="primary" onClick={()=>handleClickOpen(value)}>
-                {`${value.name}`}
-                </Button>
-                </TableCell>
-              </TableRow>
-            //   <div>
-            // <Button variant="outlined" color="primary" onClick={()=>handleClickOpen(value)}>
-            // {`${value.phone} ${value.name}`}
-            // </Button>
-            // </div>
+                <div>
+                  <Paper elevation={3}>
+                    <Button onClick={()=>handleClickOpen(value)}>
+                    {`${value.ELD_ID_NUMBER}   ${value.ELD_FIRSTNAME} ${value.ELD_LASTNAME}`}
+                    </Button>
+                  <hr/>
+                  </Paper>
+                </div>
             )
           })
         }
-        </TableBody>
-        </Table>
-      </TableContainer>
+       
           <Dialog
-          // disableBackdropClick
-          // disableEscapeKeyDown
             open={open}
             keepMounted
             onClose={handleClose}
             className={classes.title} 
           >
-            <DialogTitle >หมายเลข {selectEld.phone}</DialogTitle>
+            <DialogTitle >หมายเลข {selectEld.ELD_ID_NUMBER}</DialogTitle>
             <DialogContent>
               <DialogContentText>
-              {selectEld.name}
+              {`${selectEld.ELD_FIRSTNAME} ${selectEld.ELD_LASTNAME}`}
+              </DialogContentText>
+              <DialogContentText>
+              ตรวจเยี่ยมครั้งล่าสุด {selectEld.ELD_LAST_VISIT_DATE}
+              </DialogContentText>
+              <DialogContentText>
+              ตรวจโดย {selectEld.ELD_LAST_VISIT_DATE}
               </DialogContentText>
             </DialogContent>
-            {/* <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Disagree
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                Agree
-              </Button>
-            </DialogActions> */}
+            
             <div className="bt-searchInfo">
-            {/* <Link to="/"> */}
-              <Button className="bt1">
+            <Link to="/editeld">
+              <Button className="bt1" onClick={saveSelected}>
                 แก้ไขข้อมูลพื้นฐาน
               </Button>
-            {/* </Link> */}
-            {/* <Link to="/mainmenu"> */}
+            </Link>
+            <Link to="/mainmenu">
               <Button className="bt2" onClick={saveSelected} >
                 เก็บข้อมูลสุขภาพ
               </Button>
-            {/* </Link> */}
+            </Link>
           </div>
           </Dialog>
       </div>

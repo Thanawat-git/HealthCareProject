@@ -1,0 +1,46 @@
+.editcontainer{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    /* background-color: aqua; */
+}
+
+.ettitle{
+    /* color: #fff; */
+    text-align: center;
+    margin-bottom: 20px;
+    /* background-color: rgb(196, 196, 196); */
+}
+
+.edit-fill{
+    font-size: 20px;
+    margin-bottom: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.bt-saveEdit{
+    text-align: center;
+}
+.bt-saveEdit span {
+    font-size: 20px;
+}
+.listItem{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(min-width: 390px) {
+    .editcontainer form{
+        width: 750px;
+        margin-top: 20px;
+    }
+}
+@media(max-width: 380px) {
+    .editcontainer form{
+        width: 350px;
+        margin-top: 20px;
+    }
+}
