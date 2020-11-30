@@ -16,6 +16,8 @@ import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
 import Volunteer from "./components/volunteer/Volunteer";
 
+// ELD Page
+import EditInfo from "./components/elderly/EditInfo";
 
 import mainMenu from './components/Forms/MainMenu'
 import showresult from './components/Forms/ShowResult'
@@ -41,6 +43,7 @@ export default class App extends Component {
       <Router>
         <Switch>
           <Route path='/volunteer' component={Volunteer} />
+          <Route path='/editeld' component={EditInfo} />
 
           {/* Form */}
           {/* <Route path="/form">

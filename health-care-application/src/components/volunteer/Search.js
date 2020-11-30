@@ -13,6 +13,7 @@ const useStyles = makeStyles({
   },
   title: {
     textAlign: 'center',
+    minWidth: 350,
   },
 });
 export default function Asynchronous() {
@@ -99,6 +100,8 @@ export default function Asynchronous() {
         </Table>
       </TableContainer>
           <Dialog
+          // disableBackdropClick
+          // disableEscapeKeyDown
             open={open}
             keepMounted
             onClose={handleClose}
@@ -119,11 +122,11 @@ export default function Asynchronous() {
               </Button>
             </DialogActions> */}
             <div className="bt-searchInfo">
-            <Link to="/">
+            {/* <Link to="/"> */}
               <Button className="bt1">
                 แก้ไขข้อมูลพื้นฐาน
               </Button>
-            </Link>
+            {/* </Link> */}
             {/* <Link to="/mainmenu"> */}
               <Button className="bt2" onClick={saveSelected} >
                 เก็บข้อมูลสุขภาพ
@@ -131,7 +134,6 @@ export default function Asynchronous() {
             {/* </Link> */}
           </div>
           </Dialog>
-            
       </div>
     </React.Fragment>
   );
