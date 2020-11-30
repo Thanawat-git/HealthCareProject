@@ -14,6 +14,6 @@ export const updateTAI = (payload)=>{
     TAI_GROUP: payload[4],
     TAI_CORRECT_FORM: payload[5],
   }).then(()=>{
-    alert("Alzheimer Update Success")
+    alert("Alzheimer Tai Update Success")
   })
 }

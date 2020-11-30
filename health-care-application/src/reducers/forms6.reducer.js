@@ -16,6 +16,7 @@ const initialState = {
     ans6_To:0,
     ans6_Fe:0,
     group:0,
+    groupT:0,
     collect:false,
     results:"ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
     resultsTai:"ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ"
@@ -41,9 +42,10 @@ export default (state = initialState, { type, payload }) => {
     ans6_To:payload[12],
     ans6_Fe:payload[13],
     group:payload[14],
-    collect:payload[15],
-    results:payload[16],
-    resultsTai:payload[17]
+    groupT:payload[15],
+    collect:payload[16],
+    results:payload[17],
+    resultsTai:payload[18]
 
         }
 

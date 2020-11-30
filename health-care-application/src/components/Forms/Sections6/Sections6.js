@@ -6,6 +6,7 @@ import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms6.action";
+import * as formActionT from "../../../actions/formsTAI.action";
 
 export default function Sections6() {
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
@@ -27,6 +28,7 @@ export default function Sections6() {
   const [results, setresults] = useState(forms6Reducer.results);
   const [resultsTai, setresultsTai] = useState(forms6Reducer.resultsTai);
   const [group, setgroup] = useState(forms6Reducer.group);
+  const [groupT, setgroupT] = useState(forms6Reducer.groupT);
   const [collect, setCollect] = useState(forms6Reducer.collect);
   const [count, setCount] = useState();
   const [show, setShow] = useState(false);
@@ -86,35 +88,44 @@ export default function Sections6() {
         if (ans6_Me >=4) {
           //confuse
           if (ans6_Me == 5 && ans6_To == 5 && ans6_Fe && ans6_Im == 5) {
-            setresultsTai("Group สปสช : B5 ");
+            setgroupT('Group สปสช')
+            setresultsTai(groupT + " : B5 ");
           } else if (ans6_Fe >= 4 && ans6_To >= 4) {
-            setresultsTai("Group สปสช : B4 ");
+            setgroupT('Group สปสช')
+            setresultsTai(groupT + " : B4 ");
           } else if (ans6_Fe <= 3 && ans6_To <= 3) {
-            setresultsTai("Group 1 : B3 ");
+            setgroupT('Group 1')
+            setresultsTai(groupT + " : B3 ");
           }
         } else if (ans6_Me <=3) {
           if (ans6_Fe >= 4 && ans6_To >= 4) {
-            setresultsTai("Group 2 : C4 ");
+            setgroupT('Group 2')
+            setresultsTai(groupT + " : C4 ");
           } else if (
             (ans6_Fe == 4 && ans6_To == 3) ||
             (ans6_Fe == 3 && ans6_To == 4)
           ) {
-            setresultsTai("Group 2 : C3 ");
+            setgroupT('Group 2')
+            setresultsTai(groupT + " : C3 ");
           } else if (ans6_Fe <= 3 && ans6_To <= 3) {
-            setresultsTai("Group 2 : C2 ");
+            setgroupT('Group 2')
+            setresultsTai(groupT + " : C2 ");
           }
         }
       } else if (ans6_Im <3) {
         if (ans6_Fe >= 4) {
-          setresultsTai("Group 3 : I3 ");
+          setgroupT('Group 3')
+          setresultsTai(groupT + " : I3 ");
         } else if (ans6_Fe == 3) {
-          setresultsTai("Group 4 : I2 ");
+          setgroupT('Group 4')
+          setresultsTai(groupT + " : I2 ");
         } else if (ans6_Fe <=2) {
-          setresultsTai("Group 4 : I1 ");
+          setgroupT('Group 4')
+          setresultsTai(groupT + " : I1 ");
         }
       }
     }
-  }, [resultsTai, ans6_Im, ans6_Fe, ans6_Me, ans6_To]);
+  }, [resultsTai, ans6_Im, ans6_Fe, ans6_Me, ans6_To, groupT]);
 
   useEffect(() => {
     if (
@@ -165,13 +176,17 @@ export default function Sections6() {
       ans6_To,
       ans6_Fe,
       group,
+      groupT,
       collect,
       results,
       resultsTai,
     ];
     dispatch(formAction.add(data));
   };
-
+  const saveDataToServer = () => {
+  formAction.updateAilityInLife([ans6_1,ans6_2,ans6_3,ans6_4,ans6_5,ans6_6,ans6_7,ans6_8,ans6_9,ans6_10,count,group,collect])
+  formActionT.updateTAI([ans6_Im,ans6_Me,ans6_To,ans6_Fe,groupT,collect])
+};
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -670,6 +685,7 @@ export default function Sections6() {
         title="ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ"
         result={resultsTai}
         show={show}
+         onClick={saveDataToServer}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
