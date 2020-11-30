@@ -115,6 +115,7 @@ export default function Sections1_5() {
                       size="small"
                       fullWidth
                     />
+                    <h>ถ้าหากพิมพ์ผิดสามารถกดลบได้</h>
                   </div>
                   <div className="col-4">
                     <button
@@ -186,6 +187,7 @@ export default function Sections1_5() {
                       size="small"
                       fullWidth
                     />
+                    <h>ถ้าหากพิมพ์ผิดสามารถกดลบได้</h>
                   </div>
                   <div className="col-4">
                     <button

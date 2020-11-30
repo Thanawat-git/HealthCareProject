@@ -99,7 +99,7 @@ console.log(forms2Reducer.sugarResult)
                 <h5> {forms5Reducer.results}  </h5>
               <hr></hr>
                 <h4 >ผลการประเมินสมรรถนะ/ความสามารถ ในการทำกิจวัตรประจำ</h4>
-                <h5> {forms6Reducer.results}  </h5>
+                <h5> {forms6Reducer.resultsTai}  </h5>
               <hr></hr>
                 <h4 >ผลการประเมินภาวะสมองเสื่อม</h4>
                 <h5> {forms7Reducer.results}  </h5>
