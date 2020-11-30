@@ -26,7 +26,7 @@ function MainMenu(props) {
     const collect3 = useSelector(({forms3Reducer}) => forms3Reducer.collect)
     const collect4 = useSelector(({forms4Reducer}) => forms4Reducer.collect)
     const collect5 = useSelector(({forms5Reducer}) => forms5Reducer.collect)
-    // const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect) 
+    const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect) 
     const collect7 = useSelector(({forms7Reducer}) => forms7Reducer.collect)
     const collect8 = useSelector(({forms8Reducer}) => forms8Reducer.collect)
     const collect9 = useSelector(({forms9Reducer}) => forms9Reducer)
@@ -49,7 +49,7 @@ function MainMenu(props) {
         collect3 && setI3('green')
         collect4 && setI4('green')
         collect5 && setI5('green')
-        // collect6 && setI6('green')
+        collect6 && setI6('green')
         collect7 && setI7('green')
         collect8 && setI8('green')
         if(collect9.collect1 && collect9.collect2 && collect92){
