@@ -93,6 +93,7 @@ export default function Sections1_6() {
                 })}
                 {}
               </ol>
+              <h>ถ้าหากพิมพ์ผิดสามารถกดลบได้</h>
             </div>
           </div>
 

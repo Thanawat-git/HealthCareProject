@@ -25,9 +25,10 @@ export default function Sections6() {
   const [ans6_Fe, setAns6_Fe] = useState(forms6Reducer.ans6_Fe);
   const [ans6_To, setAns6_To] = useState(forms6Reducer.ans6_To);
   const [results, setresults] = useState(forms6Reducer.results);
+  const [resultsTai, setresultsTai] = useState(forms6Reducer.resultsTai);
   const [group, setgroup] = useState(forms6Reducer.group);
   const [collect, setCollect] = useState(forms6Reducer.collect);
-  const [count, setCount] = useState()
+  const [count, setCount] = useState();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -46,23 +47,74 @@ export default function Sections6() {
         parseInt(ans6_8) +
         parseInt(ans6_9) +
         parseInt(ans6_10);
-        setCount(countNum)
+      setCount(countNum);
       if (countNum <= 4) {
-         setresults(3)
-          setgroup(3);
-          x.style.display = "block";
-         
+        setresults(3);
+        setgroup(3);
+        x.style.display = "block";
       } else if (countNum >= 5 && countNum <= 11) {
-         x.style.display = "block";
-        setresults(2)
+        x.style.display = "block";
+        setresults(2);
         setgroup(2);
-       
       } else if (countNum > 12) {
-        setresults(1)
-       setgroup(1);
+        setresults(1);
+        setgroup(1);
       }
     }
-  }, [collect,ans6_1,ans6_2,ans6_3,ans6_4,ans6_5,ans6_6,ans6_7,ans6_8,ans6_9,ans6_10,])
+  }, [
+    collect,
+    ans6_1,
+    ans6_2,
+    ans6_3,
+    ans6_4,
+    ans6_5,
+    ans6_6,
+    ans6_7,
+    ans6_8,
+    ans6_9,
+    ans6_10,
+  ]);
+
+  useEffect(() => {
+    parseInt(ans6_Im);
+    parseInt(ans6_Fe);
+    parseInt(ans6_Me);
+    parseInt(ans6_To);
+    if (group == 2 || group == 3) {
+      if (ans6_Im >=3) {
+        //mobility
+        if (ans6_Me >=4) {
+          //confuse
+          if (ans6_Me == 5 && ans6_To == 5 && ans6_Fe && ans6_Im == 5) {
+            setresultsTai("Group สปสช : B5 ");
+          } else if (ans6_Fe >= 4 && ans6_To >= 4) {
+            setresultsTai("Group สปสช : B4 ");
+          } else if (ans6_Fe <= 3 && ans6_To <= 3) {
+            setresultsTai("Group 1 : B3 ");
+          }
+        } else if (ans6_Me <=3) {
+          if (ans6_Fe >= 4 && ans6_To >= 4) {
+            setresultsTai("Group 2 : C4 ");
+          } else if (
+            (ans6_Fe == 4 && ans6_To == 3) ||
+            (ans6_Fe == 3 && ans6_To == 4)
+          ) {
+            setresultsTai("Group 2 : C3 ");
+          } else if (ans6_Fe <= 3 && ans6_To <= 3) {
+            setresultsTai("Group 2 : C2 ");
+          }
+        }
+      } else if (ans6_Im <3) {
+        if (ans6_Fe >= 4) {
+          setresultsTai("Group 3 : I3 ");
+        } else if (ans6_Fe == 3) {
+          setresultsTai("Group 4 : I2 ");
+        } else if (ans6_Fe <=2) {
+          setresultsTai("Group 4 : I1 ");
+        }
+      }
+    }
+  }, [resultsTai, ans6_Im, ans6_Fe, ans6_Me, ans6_To]);
 
   useEffect(() => {
     if (
@@ -92,6 +144,7 @@ export default function Sections6() {
     ans6_10,
     results,
     collect,
+    resultsTai,
   ]);
 
   const handleSubmit = () => {
@@ -107,16 +160,17 @@ export default function Sections6() {
       ans6_8,
       ans6_9,
       ans6_10,
-      results,
-      collect,
       ans6_Im,
       ans6_Me,
       ans6_To,
       ans6_Fe,
+      group,
+      collect,
+      results,
+      resultsTai,
     ];
     dispatch(formAction.add(data));
   };
-
 
   return (
     <div className="css-form">
@@ -404,10 +458,12 @@ export default function Sections6() {
             />
           </RadioGroup>
           <hr />
-         
-          <div id="myDIV" >
-             <h3>คะแนนของคุณจัดอยู่ในกลุ่ม {group} ต้องทำแบบประเมิน TAI Classified</h3>
-             <hr />
+
+          <div id="myDIV">
+            <h3>
+              คะแนนของคุณจัดอยู่ในกลุ่ม {group} ต้องทำแบบประเมิน TAI Classified
+            </h3>
+            <hr />
             <p>Immobilize</p>
             <RadioGroup
               className="pl-20"
@@ -421,42 +477,36 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="นอนบนเตียงตะแคงไม่ได้"
-          
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="นอนบนเตียงตะแคงไปมาได้"
-          
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="ลุกนั่งและลงมายืนข้างเตียงได้"
-          
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="เดินทางราบได้โดยไม่ต้องช่วยเหลือ"
-          
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="ขึ้นบันไดไม่ได้ แต่เดินทางราบได้โดยไม่ต้องช่วย"
-          
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="เดินขึ้นบันไดได้"
-          
               />
             </RadioGroup>
             <hr />
@@ -473,42 +523,36 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="No Response"
-            
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="มีปัญหาทั้ง Orientation อย่างรุนเเรงและปัญหาพฤติกรรม"
-            
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="มีปัญหาเฉพาะเรื่อง Orientation อย่างรุนเเรง"
-            
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="ไม่มีปัญหาเรื่อง Orientation แต่มีปัญหาพฤติกรรมจนสร้างความรำคาญ"
-            
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="มีปัญหาเรื่องการตัดสินใจและความจำ ด้านพฤติกรรม"
-            
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="ไม่มีปัญหาเรื่องความจำ / การตัดสินใจ Orientation และพฤติกรรม"
-            
               />
             </RadioGroup>
             <hr />
@@ -525,42 +569,36 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="IV"
-              
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="NG Tube"
-              
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="ต้องป้อน และกลืนลำบาก"
-              
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="ต้องป้อน แต่กลืนเองได้ปกติ"
-              
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="กินได้เอง หกเลอะเทอะ"
-              
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="กินได้เอง ไม่หกเลอะเทอะ"
-              
               />
             </RadioGroup>
             <hr />
@@ -577,42 +615,36 @@ export default function Sections6() {
                 value="0"
                 control={<Radio color="primary" />}
                 label="คาสายสวนปัสสาวะ"
-                
               />
               <FormControlLabel
                 className="radio-size"
                 value="1"
                 control={<Radio color="primary" />}
                 label="ใส่/เปลี่ยนผ้าอ้อมด้วยความยากลำบาก"
-                
               />
               <FormControlLabel
                 className="radio-size"
                 value="2"
                 control={<Radio color="primary" />}
                 label="ใส่/เปลี่ยนผ้าอ้อมไม่ลำบาก ต้องช่วยบ้าง"
-                
               />
               <FormControlLabel
                 className="radio-size"
                 value="3"
                 control={<Radio color="primary" />}
                 label="ต้องช่วยประคองไปห้องน้ำและช่วยจัดการหลังถ่ายเสร็จ"
-                
               />
               <FormControlLabel
                 className="radio-size"
                 value="4"
                 control={<Radio color="primary" />}
                 label="ไปห้องน้ำเองได้ แต่ถ่ายไม่สำเร็จเป็นบางครั้ง"
-                
               />
               <FormControlLabel
                 className="radio-size"
                 value="5"
                 control={<Radio color="primary" />}
                 label="ไปห้องน้ำเองได้ ถ่ายสำเร็จทุกครั้งใน 2 อาทิตย์ที่ผ่านมา"
-                
               />
             </RadioGroup>
           </div>
@@ -636,7 +668,7 @@ export default function Sections6() {
       </form>
       <ShowResultPopup
         title="ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ"
-        results={results}
+        result={resultsTai}
         show={show}
         onHide={() => setShow(false)}
         backdrop="static"
