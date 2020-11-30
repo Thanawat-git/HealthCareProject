@@ -32,10 +32,7 @@
 .inner-seach2{
     margin-top: 20px;
 }
-.inner-seach2 table{
-    color: aqua;
-    text-align: start;
-}
+
 @media (min-width: 770px){
     .seach-eld input{
         width: 500px;
@@ -47,4 +44,26 @@
     flex-grow: 1;
     margin-top: 20px;
     margin-bottom: 0;
+}
+
+.bt-searchInfo{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 8px;
+}
+
+.bt-searchInfo a, .bt-searchInfo a:hover{
+    text-decoration: none;
+}
+
+.bt-searchInfo a .bt1{
+    border-radius: 35px;
+    color: #DA9813;
+    background-color: #F2F2AB;
+}
+
+.bt-searchInfo a .bt2{
+    border-radius: 35px;
+    color: #fff;
+    background-color: #0099FF;
 }

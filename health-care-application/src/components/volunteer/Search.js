@@ -5,10 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as search from "../../actions/searchEld.action";
 import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, InputAdornment, makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 300,
+  },
+  title: {
+    textAlign: 'center',
   },
 });
 export default function Asynchronous() {
@@ -18,17 +22,6 @@ export default function Asynchronous() {
   const classes = useStyles();
 
   useEffect(() => {
-    // (async () => {
-    //   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    //   console.log('response ',response)
-    //   const countries = await response.json();
-    //   console.log('countries ',countries)
-    //   // setOptions(countries);
-
-    //   dispatch(search.add(countries))
-    //   console.log('options ',searchEld.found)
-      
-    // })();
     Axios.get(`https://jsonplaceholder.typicode.com/users`)
     .then(res=>{
       setOptions(res.data);
@@ -57,6 +50,9 @@ export default function Asynchronous() {
   const handleClose = () => {
     setOpen(false);
   };
+  const saveSelected = ()=>{
+    dispatch(search.selectedEld(selectEld.id))
+  }
   return (
     <React.Fragment>
       <div className="inner-seach1">
@@ -72,7 +68,7 @@ export default function Asynchronous() {
     
       <div className="inner-seach2">
       <TableContainer component={Paper}>
-        <Table stickyHeader className={classes.table}>
+        <Table className={classes.table}>
         <TableHead>
           <TableRow>
             <TableCell>Elder ID</TableCell>
@@ -106,12 +102,12 @@ export default function Asynchronous() {
             open={open}
             keepMounted
             onClose={handleClose}
+            className={classes.title} 
           >
-            <DialogTitle>{selectEld.name}</DialogTitle>
+            <DialogTitle >หมายเลข {selectEld.phone}</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                Let Google help apps determine location. This means sending anonymous location data to
-                Google, even when no apps are running.
+              {selectEld.name}
               </DialogContentText>
             </DialogContent>
             {/* <DialogActions>
@@ -122,6 +118,18 @@ export default function Asynchronous() {
                 Agree
               </Button>
             </DialogActions> */}
+            <div className="bt-searchInfo">
+            <Link to="/">
+              <Button className="bt1">
+                แก้ไขข้อมูลพื้นฐาน
+              </Button>
+            </Link>
+            {/* <Link to="/mainmenu"> */}
+              <Button className="bt2" onClick={saveSelected} >
+                เก็บข้อมูลสุขภาพ
+              </Button>
+            {/* </Link> */}
+          </div>
           </Dialog>
             
       </div>

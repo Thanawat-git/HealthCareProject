@@ -1,14 +1,19 @@
-import { FOUND_ELD } from "../constants";
+import { FOUND_ELD, SELECT_ELD } from "../constants";
 const initialState = {
-    found: null
+    found: null,
+    selectEld: null,
 }
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
     case FOUND_ELD:
-        return { found: payload }
-
+        return { ...state, found: payload }
+    case SELECT_ELD:
+        return {
+            ...state,
+            selectEld: payload //ข้อมูลของผู้สูงอายุที่เลือก
+        }
     default:
         return state
     }

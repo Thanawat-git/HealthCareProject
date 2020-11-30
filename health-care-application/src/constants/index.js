@@ -21,6 +21,7 @@ export const FETCH_DATA_FORM_SERVER = 'FETCH_DATA_FORM_SERVER';
 
 // Search elderly
 export const FOUND_ELD = 'FOUND_ELD';
+export const SELECT_ELD = 'SELECT_ELD';
 
 // // Login Page
 // export const APP_INIT = "APP_INIT";
