@@ -295,6 +295,8 @@ export default function Sections7_1() {
           title='ผลการประเมินภาวะสมองเสื่อม' 
           result={results}
           show={show}
+          onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10])}
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}

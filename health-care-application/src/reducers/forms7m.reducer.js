@@ -41,7 +41,7 @@ const initialState = {
   textAns10:null,
   textAns5:null,
   collect:false,
-  results:'none',
+  results:'ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ',
   point:0
 
 };
