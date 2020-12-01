@@ -1,7 +1,21 @@
-
+import { CREATE_NEW_FORMS7M } from "../constants";
 import Axios from 'axios';
 
+export const setStateToAdd = (payload) => ({
+    type: CREATE_NEW_FORMS7M,
+    payload
+})
 
+// export const setStateToEdit = () => ({
+//     type: FORM_EDIT,
+// })
+
+// CREATE NEW FORM
+export const add = (payload) =>{
+    return dispatch=>{
+        dispatch(setStateToAdd(payload))
+    }
+}
 export const updateMMSE = (payload)=>{
   Axios.put("http://localhost:3001/MMSE/update/1",{
       MMSE_1_1: payload[0],
