@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Button, Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Link } from 'react-router-dom';
-import { connect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import ShowResultDialog from "./ShowResultDialog";
 
 const useStyles = makeStyles({
     root: {
@@ -171,18 +172,10 @@ function MainMenu(props) {
                     </ListItem>
                 </Link>
                 </CardContent>
-                <Button variant="contained" size="large" color="primary" fullWidth >ดูผลการประเมิน</Button>
+                <ShowResultDialog />
             </Card>
         </React.Fragment>
     )
 }
-const mapStateToProps = (state) => {
-    const StateForm = state.FormReducer; // State of Form
-    const BasicInfo = state.ElderlyReducer; // State of basic elderly data
-    return {
-        StateForm: StateForm,
-        BasicInfo: BasicInfo
-    }
-}
 
-export default connect(mapStateToProps)(MainMenu);
+export default MainMenu;

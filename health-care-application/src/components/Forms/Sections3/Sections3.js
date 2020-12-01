@@ -9,6 +9,7 @@ import * as formAction from "../../../actions/forms3.action";
 
 export default function Sections3() {
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
+  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
   const forms1p6Reducer = useSelector(
     ({ forms1p6Reducer }) => forms1p6Reducer.diseases
   );
@@ -85,7 +86,9 @@ export default function Sections3() {
     dispatch(formAction.add(data));
   };
   const saveDataToServer = () => {
-    formAction.updateExa3Cardiovascular([ans3_1,
+    formAction.updateExa3Cardiovascular([
+      peopleID,
+      ans3_1,
       "บุหรี่",
       ans3_2,
       ans3_3,

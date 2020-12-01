@@ -6,9 +6,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { IconButton } from "@material-ui/core";
+import CloseIcon from '@material-ui/icons/Close';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
   root: {
     minWidth: 275,
     maxWidth: 700,
@@ -16,12 +18,12 @@ const useStyles = makeStyles({
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginTop: 20,
+    marginBottom: 20,
   },
- 
-});
+}));
 
 export default function BasicTable() {
-const dispatch = useDispatch();
 const classes = useStyles();
 
   const forms2Reducer = useSelector(
@@ -67,12 +69,13 @@ console.log(forms2Reducer.sugarResult)
   
   return (
     <div className="css-form">
-      <div className="row ">  
-                    <h1></h1>    
-        {/* <h1>สรุปผลแบบประเมินภาวะสุขภาพผู้สูงอายุ</h1> */}
+      <div className="row">  
         <TableContainer  component={Paper} className={classes.root}>
           <Table>
               <TableCell>
+              <IconButton aria-label="close" className="close-icon">
+                <CloseIcon />
+              </IconButton>
                 <h1>สรุปผลแบบประเมิน</h1>
               </TableCell>
             {rows.map((row) => (
@@ -116,7 +119,6 @@ console.log(forms2Reducer.sugarResult)
                 <h4 >ผลการประเมินการคัดกรองการกลั้นปัสสาวะ</h4>
                 <h5> {forms10Reducer.results}  </h5>
                 </TableCell>
-
               </TableRow>
             ))}
           </Table>

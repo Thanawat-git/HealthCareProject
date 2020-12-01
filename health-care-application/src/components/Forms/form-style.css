@@ -132,3 +132,24 @@
         margin: 35px 270px;
     }
 }
+
+.dialog{
+    text-align: center;
+}
+.dialog-title{
+    background-color: rgb(128, 255, 255);
+}
+.dialog-title strong{
+    color: red;
+}
+.dialog-content h4,h5{
+    text-align: start;
+}
+.dialog-content h5{
+    color: #7B7B7B;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.dialog-content h6{
+    font-size: 20px;
+}
