@@ -24,7 +24,7 @@ export const add = (payload) =>{
 // }
 
 export const updateAilityInLife = (payload)=>{
-    Axios.put("http://localhost:3001/abilityInLife/update/1",{
+    Axios.put("http://localhost:3001/abilityInLife/update/"+payload[13],{
         ABI_6_1: payload[0],
         ABI_6_2: payload[1],
         ABI_6_3: payload[2],

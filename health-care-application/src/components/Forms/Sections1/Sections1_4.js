@@ -10,6 +10,7 @@ import * as formAction from "../../../actions/forms1p4.action";
 function Sections1_4(props) {
 
   const forms1p4Reducer = useSelector(({forms1p4Reducer}) => forms1p4Reducer)
+  const peopleID = useSelector(({forms1p1Reducer})=>forms1p1Reducer.peopleID)
   const dispatch = useDispatch()
 
     const [elderlyStatus, setElderlyStatus] = useState(forms1p4Reducer.elderlyStatus) // หลัก
@@ -37,7 +38,7 @@ function Sections1_4(props) {
         treatment, hospital, otherTreatment, 
         salary, otherReligion, otherCareers
       ]
-      formAction.updateElderinfo([elderlyStatus,elderlyBeing,religion,educations,
+      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,religion,educations,
         careers,treatment,salary
       ])
 

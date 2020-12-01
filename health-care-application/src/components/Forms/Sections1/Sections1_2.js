@@ -66,9 +66,9 @@ export default function Sections1_2(props) {
     ];
 
     phoneNumber && formAction.updateElder([peopleID, phoneNumber])
-    formAction.updateElderIdCurrent([homeNumber,alley,street,subDistrict,area,]);
-    radioValue == 'no' ? formAction.updateElderCurrent([curHomeNumber,curAlley,curStreet,curSubDistrict,curArea]) 
-    : formAction.updateElderCurrent([homeNumber,alley,street,subDistrict,area,])
+    formAction.updateElderIdCurrent([peopleID,homeNumber,alley,street,subDistrict,area,]);
+    radioValue == 'no' ? formAction.updateElderCurrent([peopleID,curHomeNumber,curAlley,curStreet,curSubDistrict,curArea]) 
+    : formAction.updateElderCurrent([peopleID,homeNumber,alley,street,subDistrict,area,])
     
     
     dispatch(formAction.add(data));

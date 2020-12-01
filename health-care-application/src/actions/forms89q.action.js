@@ -23,18 +23,18 @@ export const add = (payload) =>{
 // }
 
 export const updateDepressionScreening9q = (payload)=>{
-    Axios.put("http://localhost:3001/depressionScreening/update/1",{
-      DEP_8_1: payload[0],
-      DEP_8_2: payload[1],
-      DEP_8_3: payload[2],
-      DEP_8_4: payload[3],
-      DEP_8_5: payload[4],
-      DEP_8_6: payload[5],
-      DEP_8_7: payload[6],
-      DEP_8_8: payload[7],
-      DEP_8_9: payload[8],
-      DEP_SUM_POINT: payload[9],
-      DEP_9Q_RESULT: payload[10],
+    Axios.put("http://localhost:3001/depressionScreening/update/"+payload[0],{
+      DEP_8_1: payload[1],
+      DEP_8_2: payload[2],
+      DEP_8_3: payload[3],
+      DEP_8_4: payload[4],
+      DEP_8_5: payload[5],
+      DEP_8_6: payload[6],
+      DEP_8_7: payload[7],
+      DEP_8_8: payload[8],
+      DEP_8_9: payload[9],
+      DEP_SUM_POINT: payload[10],
+      DEP_9Q_RESULT: payload[11],
     }).then(()=>{
       alert("Depression_Screening Update Success")
     })

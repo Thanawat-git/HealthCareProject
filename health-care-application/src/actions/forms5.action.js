@@ -21,9 +21,9 @@ export const add = (payload) =>{
 //     return dispatch=>{
 //         dispatch(setStateToEdit())
 //     }
-// }
+// } 
 export const updateOralHealth = (payload)=>{
-    Axios.put("http://localhost:3001/oralHealth/update/1",{
+    Axios.put("http://localhost:3001/oralHealth/update/"+payload[19],{
       ORAL_5_1: payload[0],
       ORAL_5_2: payload[1],
       ORAL_5_3: payload[2],

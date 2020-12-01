@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 function Sections8_1() {
   const forms8Reducer = useSelector(({forms8Reducer}) => forms8Reducer)
+  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
   const dispatch = useDispatch()
   const classes = useStyles();
 
@@ -47,7 +48,7 @@ function Sections8_1() {
 
   const handleSubmit = ()=>{
     setShow(true)
-    const data = [ans8_1,ans8_2,collect,results]
+    const data = [peopleID,ans8_1,ans8_2,collect,results]
     dispatch(formAction.add(data))
 
   }

@@ -24,25 +24,25 @@ export const add = (payload) =>{
 // }
 
 export const updateExa9BoneMuscle= (payload)=>{
-    Axios.put("http://localhost:3001/boneMuscle/update/1",{
-        BONE_9_1: payload[0],
-        BONE_9_2: payload[1],
-        BONE_9_3: payload[2],
-        BONE_9_4: payload[3],
-        BONE_9_5: payload[4],
-        BONE_9_6: payload[5],
-        BONE_9_7: payload[6],
-        BONE_9_8: payload[7],
-        BONE_9_9: payload[8],
-        BONE_9_10: payload[9],
-        BONE_9_11: payload[10],
-        BONE_9_12: payload[11],
-        BONE_RESULT: payload[12],
-        BONE_WALK: payload[13],
-        BONE_WALK_INFO: payload[14],
-        BONE_PHY_FIT_MINUTE: payload[15],
-        BONE_PHY_FIT_SECOND: payload[16],
-        BONE_PHY_RESULT: payload[17],
+    Axios.put("http://localhost:3001/boneMuscle/update/"+payload[0],{
+        BONE_9_1: payload[1],
+        BONE_9_2: payload[2],
+        BONE_9_3: payload[3],
+        BONE_9_4: payload[4],
+        BONE_9_5: payload[5],
+        BONE_9_6: payload[6],
+        BONE_9_7: payload[7],
+        BONE_9_8: payload[8],
+        BONE_9_9: payload[9],
+        BONE_9_10: payload[10],
+        BONE_9_11: payload[11],
+        BONE_9_12: payload[12],
+        BONE_RESULT: payload[13],
+        BONE_WALK: payload[14],
+        BONE_WALK_INFO: payload[15],
+        BONE_PHY_FIT_MINUTE: payload[16],
+        BONE_PHY_FIT_SECOND: payload[17],
+        BONE_PHY_RESULT: payload[18],
     }).then(()=>{
       alert("Bone_Muscle Update Success")
     })

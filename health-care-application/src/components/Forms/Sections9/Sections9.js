@@ -21,6 +21,7 @@ export default function Sections9() {
   const classes = useStyles();
 
   const forms9Reducer = useSelector(({forms9Reducer}) => forms9Reducer)
+  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
   const dispatch = useDispatch()
     const [state, setState] = useState({
       ans9_1: forms9Reducer.ans9_1,
@@ -83,7 +84,7 @@ export default function Sections9() {
     }
 
     const saveDataToServer = ()=>{
-      formAction.updateExa9BoneMuscle([ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])
+      formAction.updateExa9BoneMuscle([peopleID,ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])
     }
 
     return (
@@ -250,7 +251,7 @@ export default function Sections9() {
         <Modal.Footer>
          
           <Link to="/sec9-2" className={classes.root}>
-            <Button variant="primary" block onClick={()=>formAction.updateExa9BoneMuscle([ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])} >
+            <Button variant="primary" block onClick={()=>formAction.updateExa9BoneMuscle([peopleID,ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])} >
               ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
             </Button>
           </Link>

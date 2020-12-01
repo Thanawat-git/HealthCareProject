@@ -23,7 +23,7 @@ export const add = (payload) =>{
 // }
 export const updateExa9_1Osteoarthritis= (payload)=>{
    
-    Axios.put("http://localhost:3001/osteoarthritis/update/1",{
+    Axios.put("http://localhost:3001/osteoarthritis/update/"+payload[34],{
         OST_1_KNEE_PAIN: payload[0],
         OST_1_LVL_PAIN: payload[1],
         OST_1_RESULT: payload[2],

@@ -22,8 +22,8 @@ export const add = (payload) =>{
 //     }
 // }
 export const upadateExa10Urination= (payload)=>{
-    Axios.put("http://localhost:3001/urination/update/1",{
-        URI_10_1: payload,
+    Axios.put("http://localhost:3001/urination/update/"+payload[0],{
+        URI_10_1: payload[1],
     }).then(()=>{
       alert("Urination update Success")
     })

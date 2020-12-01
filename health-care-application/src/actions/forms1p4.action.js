@@ -24,14 +24,14 @@ export const add = (payload) =>{
 // }
 
 export const updateElderinfo = (payload)=>{
-    Axios.put("http://localhost:3001/elder/information/update/1103702726761",{
-      ELD_STATUS: payload[0],
-      ELD_LIVELIHOOD: payload[1],
-      ELD_RELIGION: payload[2],
-      ELD_EDUCATION: payload[3],
-      ELD_JOB: payload[4],
-      ELD_TREATMENT: payload[5],
-      ELD_INCOME: payload[6],
+    Axios.put("http://localhost:3001/elder/information/update/"+payload[0],{
+      ELD_STATUS: payload[1],
+      ELD_LIVELIHOOD: payload[2],
+      ELD_RELIGION: payload[3],
+      ELD_EDUCATION: payload[4],
+      ELD_JOB: payload[5],
+      ELD_TREATMENT: payload[6],
+      ELD_INCOME: payload[7],
     }).then(()=>{
       alert("Update Elder Info Success")
     })

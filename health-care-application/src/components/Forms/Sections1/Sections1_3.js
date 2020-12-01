@@ -30,6 +30,7 @@ export default function Sections1_3() {
   };
 
   const forms1p3Reducer = useSelector(({forms1p3Reducer}) => forms1p3Reducer)
+  const peopleID = useSelector(({forms1p1Reducer})=>forms1p1Reducer.peopleID)
   const dispatch = useDispatch()
 
   const [neighborFirstName1, setneighborFirstName1] = useState(forms1p3Reducer.neighborFirstName1)
@@ -55,6 +56,7 @@ export default function Sections1_3() {
         neighborRelative1=== null
         ){   emptyValue()   }
       else{formAction.updateElderRelative([
+        peopleID,
         neighborFirstName1,
         neighborLastName1,
         neighborGender1,
@@ -70,13 +72,15 @@ export default function Sections1_3() {
         neighbortime2=== null ||
         neighborRelative2=== null
         ){   emptyValue()   }
-      else{formAction.createElderRelative2([
+      else{
+        formAction.createElderRelative2([
         neighborFirstName2,
         neighborLastName2,
         neighborGender2,
         neighbortime2,
         neighborRelative2,
-        neighborPhoneNumber2
+        neighborPhoneNumber2,
+        peopleID
       ])}
     } 
 
@@ -95,7 +99,7 @@ export default function Sections1_3() {
       neighborPhoneNumber2
     ]
 
-    formAction.updateElderRelative([])
+    // formAction.updateElderRelative([])
 
     dispatch(formAction.add(data))
     function emptyValue(){
