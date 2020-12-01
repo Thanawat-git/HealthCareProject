@@ -39,7 +39,6 @@ const useStyles = makeStyles({
 
 export default function Volunteer() {
     const classes = useStyles();
-
     const [state, setState] = useState({
         left: false,
     });

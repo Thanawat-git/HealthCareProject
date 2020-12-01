@@ -20,28 +20,33 @@ export default function Asynchronous() {
   const classes = useStyles();
 
   useEffect(() => {
+    console.log('aaa')
     Axios.get(`http://localhost:3001/elder/search`)
     .then(res=>{
       setOptions(res.data);
-      console.log(res.data)
       dispatch(search.add(res.data))
     })
   }, []);
 
   var [foundSearch, setfoundSearch] =  React.useState([]) // เก็บ array ของผลลัพธ์ ที่ค้าหาเจอ
-  var [selectEld, setselectEld] =  React.useState({}) // เก็บค่าต่างๆของคนที่ถูกเลือก
+  var [selectEld, setselectEld] =  React.useState({
+    ELDER:{},
+    VOLUNTEER:{},
+  }) // เก็บค่าต่างๆของคนที่ถูกเลือก
 
   const searchArr = (e)=>{
     var searchvalue = e.target.value;
-    console.log('searchvalue: '+options)
-    // var filterNames = options.filter((v,i)=>{
-    //     return(v.ELD_FIRSTNAME.includes(searchvalue));
-    // })
-    // setfoundSearch(filterNames)
-    console.log('foundSearch: '+foundSearch.length)
+    // console.log('searchvalue: '+options[0].ELDER.ELD_ID_NUMBER)
+    var filterNames = options.filter((v,i)=>{
+      // console.log(v.ELDER)
+      return(v.ELDER.ELD_FIRSTNAME.includes(searchvalue));
+    })
+    setfoundSearch(filterNames)
+    // console.log(filterNames.length)
+    // console.log(filterNames)
   }
  useEffect(() => {
-  dispatch(search.selectedEld(selectEld.ELD_ID_NUMBER))
+  dispatch(search.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
  }, [selectEld])
   function handleClickOpen(value){
     setselectEld(value)
@@ -53,7 +58,7 @@ export default function Asynchronous() {
     setOpen(false);
   };
   const saveSelected = ()=>{
-    dispatch(search.selectedEld(selectEld.ELD_ID_NUMBER))
+    dispatch(search.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
   }
   return (
     <React.Fragment>
@@ -71,11 +76,13 @@ export default function Asynchronous() {
       <div className="inner-seach2">
         {
           foundSearch.length !=0 && foundSearch.map((value,index)=>{
+            console.log('v')
+            console.log(value)
             return(
                 <div>
                   <Paper elevation={3}>
                     <Button onClick={()=>handleClickOpen(value)}>
-                    {`${value.ELD_ID_NUMBER}   ${value.ELD_FIRSTNAME} ${value.ELD_LASTNAME}`}
+                    {`${value.ELDER.ELD_ID_NUMBER}   ${value.ELDER.ELD_FIRSTNAME} ${value.ELDER.ELD_LASTNAME}`}
                     </Button>
                   <hr/>
                   </Paper>
@@ -90,16 +97,16 @@ export default function Asynchronous() {
             onClose={handleClose}
             className={classes.title} 
           >
-            <DialogTitle >หมายเลข {selectEld.ELD_ID_NUMBER}</DialogTitle>
+            <DialogTitle >หมายเลข {selectEld.ELDER.ELD_ID_NUMBER}</DialogTitle>
             <DialogContent>
               <DialogContentText>
-              {`${selectEld.ELD_FIRSTNAME} ${selectEld.ELD_LASTNAME}`}
+              {`${selectEld.ELDER.ELD_FIRSTNAME} ${selectEld.ELDER.ELD_LASTNAME}`}
               </DialogContentText>
               <DialogContentText>
-              ตรวจเยี่ยมครั้งล่าสุด {selectEld.ELD_LAST_VISIT_DATE}
+              ตรวจเยี่ยมครั้งล่าสุด {selectEld.ELDER.ELD_LAST_VISIT_DATE}
               </DialogContentText>
               <DialogContentText>
-              ตรวจโดย {selectEld.ELD_LAST_VISIT_DATE}
+              ตรวจโดย {selectEld.VOLUNTEER.VOL_FIRSTNAME} {selectEld.VOLUNTEER.VOL_LASTNAME}
               </DialogContentText>
             </DialogContent>
             

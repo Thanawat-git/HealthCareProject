@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import * as actionP5 from '../../actions/forms1p5.action' // เรียกมาใช้งานในการ ลบ และ เพิ่ม อาหาร และ ยา
 import * as actionP6 from '../../actions/forms1p6.action'
+import * as actionP1 from '../../actions/forms1p1.action'
 
 const useStyles = makeStyles({
     title: {
@@ -30,41 +31,84 @@ export default function EditInfo() {
     lName: elderly.ELD_LASTNAME,
     nName: elderly.ELD_AKA,
     phone: elderly.ELD_PHONE,
-    foods: elderly.FOOD_ALLERGY,
-    drugs: elderly.DRUG_ALLERGY,
-    diseases: elderly.DISEASE
+    // foods: [],
+    // drugs: [],
+    // diseases: [],
   })
-  const {fName,lName,nName,phone,foods,drugs,diseases} = state
+  const {fName,lName,nName,phone} = state
+  const [foods, setfoods] = useState([])
+  const [drugs, setdrugs] = useState([])
+  const [diseases, setdiseases] = useState([])
   useEffect(() => {
-    // console.log("selectEld: ", searchEld.DRUG_ALLERGY[0].DRUG_NAME);
-    console.log("selectEld: ", elderly);
-    
+    console.log("selectEld: ");
+    console.log(typeof diseases);
+    console.log(foods);
+    if(elderly.FOOD_ALLERGY.length!=0){
+      for(let i=0;i<elderly.FOOD_ALLERGY.length;i++){
+        foods.push(elderly.FOOD_ALLERGY[i].FOOD_NAME)
+      }
+    }
+    if(elderly.DRUG_ALLERGY.length!=0){
+      for(let i=0;i<elderly.DRUG_ALLERGY.length;i++){
+        drugs.push(elderly.DRUG_ALLERGY[i].DRUG_NAME)
+      }
+    }
+    if(elderly.DISEASE.length!=0){
+      for(let i=0;i<elderly.DISEASE.length;i++){
+        diseases.push(elderly.DISEASE[i].DIS_NAME)
+      }
+    }
+    console.log(foods);
   }, []);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [food, setfood] = useState(null); // ชื่อโรคทีละตัว
   const [drug, setdrug] = useState(null); // ชื่อโรคทีละตัว
   const [disease, setdisease] = useState(null); // ชื่อโรคทีละตัว
-//   const [localDiseases, localDiseases] = useState([]); // โรคทั้งหมด
   const [defineDialog,setdefineDialog] = useState('')
 
   const openDialog = (iden) =>{
     setOpen(true)
-    console.log("e: ", iden);
     setdefineDialog(iden)
   }
+ 
   const addItem = ()=>{
-    defineDialog=='foods' && dispatch(actionP5.createFood([elderly.ELD_ID_NUMBER, food]))
-    defineDialog=='drugs' && dispatch(actionP5.createDrug([elderly.ELD_ID_NUMBER, drug]))
-    defineDialog=='diseases' && dispatch(actionP6.createDisease([elderly.ELD_ID_NUMBER, disease]))
+    if(defineDialog=='foods'){
+      food && setfoods([...foods, food])
+      actionP5.createFood([elderly.ELD_ID_NUMBER, food])
+    }
+    if(defineDialog=='drugs'){
+      food && setdrugs([...drugs, drug])
+      actionP5.createDrug([elderly.ELD_ID_NUMBER, drug])
+    }
+    if(defineDialog=='diseases'){
+      food && setdiseases([...diseases, disease])
+      actionP6.createDisease([elderly.ELD_ID_NUMBER, disease])
+    }
   }
-  const deleteItem =(value)=>{
-    defineDialog=='foods' && dispatch(actionP5.deleteFood([elderly.ELD_ID_NUMBER, value]))
-    defineDialog=='drugs' && dispatch(actionP5.deleteDrug([elderly.ELD_ID_NUMBER, value]))
-    defineDialog=='diseases' && dispatch(actionP6.deleteDisease([elderly.ELD_ID_NUMBER, value]))
+  const deleteItem =(value, index)=>{
+    if(defineDialog=='foods'){
+      foods.splice(index, 1);
+      setfoods([...foods])
+      actionP5.deleteFood([elderly.ELD_ID_NUMBER, value])
+    }
+    if(defineDialog=='drugs'){
+      drugs.splice(index, 1);
+      setdrugs([...drugs])
+      actionP5.deleteDrug([elderly.ELD_ID_NUMBER, value])
+    }
+    if(defineDialog=='diseases'){
+      diseases.splice(index, 1);
+      setdiseases([...diseases])
+      actionP6.deleteDisease([elderly.ELD_ID_NUMBER, value])
+    }
   }
   const onChange = (e)=>{
     setState({...state, [e.target.name]: e.target.value})
+  }
+  const saveChange=()=>{
+    console.log('aaaaa')
+    actionP1.updateElder([elderly.ELD_ID_NUMBER,fName,lName,phone,nName])
   }
 
   return (
@@ -89,56 +133,65 @@ export default function EditInfo() {
         <div className="edit-fill">
         <p>การแพ้อาหาร</p>
         {
-            foods[0].FOOD_NAME!=null? foods.map(value=>{
-                // console.log("food: ", food.lenght);
-                return(
-                    <React.Fragment>
-                    <span> {value.FOOD_NAME}, </span>
-                    <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("foods")}>
-                        แก้ไข
-                    </Button>
-                    </React.Fragment>
-                )
-            }):<Button variant="outlined" color="primary" onClick={()=>openDialog("foods")}>เพิ่ม</Button>
+
+            foods.length!=0? 
+            <div className="listItem">
+              {
+                foods.map(value=>{
+                  return(
+                      <span> {value}, </span>
+                  )
+                })
+              }
+              <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("foods")}>แก้ไข</Button>
+            </div>
+            :<Button variant="outlined" color="primary" onClick={()=>openDialog("foods")}>เพิ่ม</Button>
         }
         </div>
         <div className="edit-fill">
         <p>การแพ้ยา</p>
         {
-            drugs[0].FOOD_NAME!=null? drugs.map(value=>{
-                // console.log("food: ", food.lenght);
-                return(
-                    <React.Fragment>
-                    <span> {value.DRUG_NAME}, </span>
-                    <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("drugs")}>
-                        แก้ไข
-                    </Button>
-                    </React.Fragment>
-                )
-            }):<Button variant="outlined" color="primary" onClick={()=>openDialog("drugs")}>เพิ่ม</Button>
+              drugs.length!=0? 
+              <div className="listItem">
+                {
+                  drugs.map(value=>{
+                    return(
+                      <span> {value}, </span>
+                    )
+                  })
+                }
+                <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("drugs")}>แก้ไข</Button>
+              </div>
+              :<Button variant="outlined" color="primary" onClick={()=>openDialog("drugs")}>เพิ่ม</Button>
         }
         </div>
         <div className="edit-fill">
         <p>โรคประจำตัว</p>
         {
-            diseases[0].FOOD_NAME!=null? diseases.map(value=>{
-                // console.log("food: ", food.lenght);
-                return(
-                    <React.Fragment>
-                    <span> {value.DIS_NAME}, </span>
-                    <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("diseases")}>
-                        แก้ไข
-                    </Button>
-                    </React.Fragment>
-                )
-            }):<Button variant="outlined" color="primary" onClick={()=>openDialog("diseases")}>เพิ่ม</Button>
+              diseases.length==0? 
+              <Button variant="outlined" color="primary" onClick={()=>openDialog("diseases")}>เพิ่ม</Button>
+              :
+              <div className="listItem">
+                {
+                  diseases.map(value=>{
+                    return(
+                      <span> {value}, </span>
+                    )
+                  })
+                }
+                <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("diseases")}>แก้ไข</Button>
+              </div>
+              
         }
         </div>
 
         <div className="bt-saveEdit">
-            <Button variant="contained" size="large">บันทึก</Button>
+          <Link to="/volunteer">
+            <Button variant="contained" size="large" onClick={saveChange} >บันทึก</Button>
+          </Link>
         </div>
       </form>
+
       <Dialog
         open={open}
         keepMounted
@@ -171,29 +224,29 @@ export default function EditInfo() {
             
             {
                 defineDialog=='foods' ?
-                foods[0].FOOD_NAME!=null&& foods.map(value=>{
+                foods.length!=0&& foods.map((value,index)=>{
                     return(
                         <div className="listItem" >
-                        <span> {value.FOOD_NAME} </span>
-                        <Button variant="contained" size="small" onClick={()=>deleteItem(value)}>ลบ</Button>
+                        <span> {value} </span>
+                        <Button variant="contained" size="small" onClick={()=>deleteItem(value,index)}>ลบ</Button>
                         </div>
                     )
                 })
                 : defineDialog=='drugs' ?
-                drugs[0].FOOD_NAME!=null&& drugs.map(value=>{
+                drugs.length!=0&& drugs.map((value,index)=>{
                     return(
                         <div className="listItem" >
-                        <span> {value.DRUG_NAME} </span>
-                        <Button variant="contained" size="small" onClick={()=>deleteItem(value)}>ลบ</Button>
+                        <span> {value} </span>
+                        <Button variant="contained" size="small" onClick={()=>deleteItem(value,index)}>ลบ</Button>
                         </div>
                     )
                 })
                 :
-                diseases[0].FOOD_NAME!=null&& diseases.map(value=>{
+                diseases.length==0&& diseases.map((value,index)=>{
                     return(
                         <div className="listItem" >
-                        <span> {value.DIS_NAME} </span>
-                        <Button variant="contained" size="small" onClick={()=>deleteItem(value)}>ลบ</Button>
+                        <span> {value} </span>
+                        <Button variant="contained" size="small" onClick={()=>deleteItem(value,index)}>ลบ</Button>
                         </div>
                     )
                 })
