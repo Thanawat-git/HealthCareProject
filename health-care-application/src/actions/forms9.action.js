@@ -24,7 +24,8 @@ export const add = (payload) =>{
 // }
 
 export const updateExa9BoneMuscle= (payload)=>{
-    Axios.put("http://localhost:3001/boneMuscle/update/"+payload[0],{
+    console.log('111111111111111111111111111111111111111111111111111111111111111111111',payload)
+    Axios.put("http://localhost:3001/boneMuscle/update/" + payload[0],{
         BONE_9_1: payload[1],
         BONE_9_2: payload[2],
         BONE_9_3: payload[3],
@@ -43,6 +44,7 @@ export const updateExa9BoneMuscle= (payload)=>{
         BONE_PHY_FIT_MINUTE: payload[16],
         BONE_PHY_FIT_SECOND: payload[17],
         BONE_PHY_RESULT: payload[18],
+        BONE_CORRECT_FORM:payload[19]
     }).then(()=>{
       alert("Bone_Muscle Update Success")
     })

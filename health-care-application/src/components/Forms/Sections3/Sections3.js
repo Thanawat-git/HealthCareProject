@@ -96,8 +96,9 @@ export default function Sections3() {
       ans3_5,
       ans3_6,
       ans3_7,
-      collect,
+      count,
       results,
+      collect
     ]);
   };
 

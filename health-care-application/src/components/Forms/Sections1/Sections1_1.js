@@ -12,6 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from 'react-redux'
 import * as formAction from "../../../actions/forms1p1.action";
+import * as savePID from "../../../actions/searchEld.action";
 
 function Sections1_1(props) {
   useEffect(() => {
@@ -169,6 +170,7 @@ function Sections1_1(props) {
       PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age, yea, mon, day
     ]
     dispatch(formAction.add(data))
+    dispatch(savePID.addPidOnly(PID))
     function emptyValue(){
       e.preventDefault(); 
       alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 

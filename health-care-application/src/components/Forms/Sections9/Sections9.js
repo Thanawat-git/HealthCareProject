@@ -46,8 +46,9 @@ export default function Sections9() {
       console.log(event.target.name,' ',event.target.value)
       setState({ ...state, [event.target.name]: event.target.value });
     };
-    const [collect1, setCollect1] = useState(forms9Reducer.collect1);
-    const [collect2, setCollect2] = useState(forms9Reducer.collect2);
+    const [collect, setCollect] = useState(forms9Reducer.collect);
+    const [collect1, setCollect1] = useState(forms9Reducer.collect);
+    const [collect2, setCollect2] = useState(forms9Reducer.collect);
     const [result1, setresult1] = useState(forms9Reducer.result1);
     const [result2, setresult2] = useState(forms9Reducer.result2);
     const [show, setShow] = useState(false);
@@ -66,6 +67,12 @@ export default function Sections9() {
       }, [collect1,ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12])
 
       useEffect(() => {
+        if(collect1 && collect2){
+          setCollect(true)
+        }
+      }, [collect1,collect2])
+
+      useEffect(() => {
         walk && setCollect2(true)
         if(collect2){
           if(walk=='เดินไม่ได้'){
@@ -78,13 +85,9 @@ export default function Sections9() {
       setShow(true)
       const data = [
         ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,
-        collect1,result1,count,walk,walkInfo,minute,second,result2,collect2
+        collect,result1,count,walk,walkInfo,minute,second,result2
       ]
       dispatch(formAction.add(data))
-    }
-
-    const saveDataToServer = ()=>{
-      formAction.updateExa9BoneMuscle([peopleID,ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])
     }
 
     return (
@@ -251,7 +254,7 @@ export default function Sections9() {
         <Modal.Footer>
          
           <Link to="/sec9-2" className={classes.root}>
-            <Button variant="primary" block onClick={()=>formAction.updateExa9BoneMuscle([peopleID,ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2])} >
+            <Button variant="primary" block onClick={()=>formAction.updateExa9BoneMuscle([peopleID,ans9_1,ans9_2,ans9_3,ans9_4,ans9_5,ans9_6,ans9_7,ans9_8,ans9_9,ans9_10,ans9_11,ans9_12,result1,walk,walkInfo,minute,second,result2,collect])} >
               ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
             </Button>
           </Link>

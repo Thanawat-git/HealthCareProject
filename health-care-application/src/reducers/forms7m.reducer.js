@@ -42,7 +42,8 @@ const initialState = {
   textAns5:null,
   collect:false,
   results:'ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ',
-  point:0
+  point:0,
+  group:null
 
 };
 
@@ -91,7 +92,8 @@ export default (state = initialState, { type, payload }) => {
         textAns5:payload[38],
         collect:payload[39],
         results:payload[40],
-        point:payload[41]
+        point:payload[41],
+        group:payload[42]
       };
 
     default:

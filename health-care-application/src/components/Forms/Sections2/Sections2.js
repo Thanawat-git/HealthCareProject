@@ -132,6 +132,7 @@ export default function Sections2_1() {
     
   };
   const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  console.log('peopleID ',peopleID)
 
   const handleSubmit = () => {
     setShow(true);
@@ -153,10 +154,10 @@ export default function Sections2_1() {
   };
   
   const saveDataToServer =()=>{
-     formAction.updateExa2Waist([peopleID,waist,waistResult])
-     formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult])
-     formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult])
-     formAction.updateExa2Fbs([peopleID,sugar,sugarResult])
+     formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
+     formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
+     formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
+     formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
   }
 
   return (

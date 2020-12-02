@@ -24,7 +24,7 @@ export const add = (payload) =>{
 // }
 
 export const updateAlzheimer = (payload)=>{
-    Axios.put("http://localhost:3001/alzheimer/update/1",{
+    Axios.put("http://localhost:3001/alzheimer/update/"+payload[22],{
       ALZ_7_1_EL_AGE: payload[0],
       ALZ_7_1_RESULT_AGE: payload[1],
       ALZ_7_2_EL_TIME: payload[2],
@@ -45,6 +45,9 @@ export const updateAlzheimer = (payload)=>{
       ALZ_7_9_RESULT_KING: payload[17],
       ALZ_7_10_EL_COUNTDOWN: payload[18],
       ALZ_7_10_RESULT_COUNTDOWN: payload[19],
+      ALZ_RESULT:[20],
+      ALZ_CORRECT_FORM:payload[21],
+
     }).then(()=>{
       alert("Alzheimer Update Success")
     })

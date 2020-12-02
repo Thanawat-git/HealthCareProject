@@ -14,6 +14,16 @@ export const add = (payload) => {
   };
 };
 
+export const setPidToState = (payload) =>({
+  type: 'AddPidToState',
+  payload,
+})
+export const addPidOnly = (payload)=>{
+  return (dispatch) => {
+    dispatch(setPidToState(payload))
+  }
+}
+
 export const setStateToSelectEld = (payload) => ({
   type: SELECT_ELD,
   payload,

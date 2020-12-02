@@ -13,7 +13,7 @@ const initialState = {
   ans9_10: 0,
   ans9_11: 0,
   ans9_12: 0,
-  collect1: false,
+  collect: false,
   result1: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
   count: 0,
   walk: null,
@@ -21,7 +21,6 @@ const initialState = {
   minute: null,
   second: null,
   result2: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
-  collect2: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -48,7 +47,6 @@ export default (state = initialState, { type, payload }) => {
         minute: payload[17],
         second: payload[18],
         result2: payload[19],
-        collect2: payload[19],
       };
 
     default:

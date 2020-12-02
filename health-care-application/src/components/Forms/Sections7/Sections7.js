@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 export default function Sections7_1() {
   const forms7Reducer = useSelector(({forms7Reducer}) => forms7Reducer)
+  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
   const dispatch = useDispatch()
   const classes = useStyles();
 
@@ -321,14 +322,16 @@ export default function Sections7_1() {
           {linkTommse ?
           <Link to="/mmsi" className={classes.root}>
             <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
-            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10])}>
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10,results,collect,peopleID])}>
               ทำแบบประเมินการทดสอบสมองเบื่องต้นฉบับภาษาไทย
             </Button>
           </Link>
           :
           <Link to="/mainmenu" className={classes.root}>
-            <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
-            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10])}>
+            <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([
+            textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,
+            textAns9,ans7_9,textAns10,ans7_10,results,collect,peopleID])}>
               กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>

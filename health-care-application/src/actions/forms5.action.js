@@ -43,6 +43,7 @@ export const updateOralHealth = (payload)=>{
       ORAL_5_13: payload[16],
       ORAL_COUNT: payload[17],
       ORAL_RESULT: payload[18],
+      ORAL_CORRECT_FORM:payload[20]
     }).then(()=>{
       alert("Oral_Health Update Success")
     })
