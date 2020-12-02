@@ -219,7 +219,7 @@ export default function MMSIThai2002() {
       ans8 &&
       ans9 &&
       ans10 &&
-      ans11
+      ans11 
     ) {
       setCollect(true);
     }
