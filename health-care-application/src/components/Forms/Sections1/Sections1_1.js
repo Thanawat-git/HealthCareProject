@@ -199,14 +199,19 @@ function Sections1_1(props) {
               <TextField
                 id="PID"
                 // name='PID'
+                type="number"
                 label="รหัสบัตรประชาชน 13 หลัก"
                 variant="outlined"
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
                 // error={error}
                 defaultValue={forms1p1Reducer.peopleID}
+                onInput = {(e) =>{
+                  e.target.value = e.target.value.slice(0,13)
+              }}//fix13digit
                 // value={forms1p1Reducer.peopleID}
                 onChange={(e)=>setPID(e.target.value)}
+
               />
             </div>
           </div>
@@ -216,6 +221,7 @@ function Sections1_1(props) {
             <div className="col-12 col-xl-6 mb-15">
               <TextField
                 id=""
+                pattern="^[ก-๏\s]+$"  
                 label="*ชื่อ"
                 variant="outlined"
                 placeholder="ชื่อ"

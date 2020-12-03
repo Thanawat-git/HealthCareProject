@@ -282,6 +282,7 @@ export default function Sections1_3() {
               </p>
               <TextField
                 id=""
+                type="number"
                 label=""
                 variant="outlined"
                 placeholder="+66"
@@ -289,6 +290,10 @@ export default function Sections1_3() {
                 defaultValue={neighborPhoneNumber1}
                 onChange={(event)=>setneighborPhoneNumber1(event.target.value)}
                 fullWidth
+                onInput = {(e) =>{
+                  e.target.value = e.target.value.slice(0,10)
+              }}//fix10digit
+
               />
               <hr />
               <p>มีญาติหรือผู้ดูแลคนที่ 2 หรือไม่</p>
