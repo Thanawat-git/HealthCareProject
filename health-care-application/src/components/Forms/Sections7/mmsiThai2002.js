@@ -6,6 +6,7 @@ import {
   RadioGroup,
   Radio,
   Checkbox,
+  colors,
 } from "@material-ui/core";
 import "../form-style.css";
 import "../../genaralConfig.css";
@@ -69,6 +70,9 @@ export default function MMSIThai2002() {
   const [point, setPoint] = useState(forms7mReducer.point);
   const [group, setGroup] = useState(forms7mReducer.group);
   const [show, setShow] = useState(false);
+  const [colorS,setcolorS] =useState('')
+  const[anstf,settf]= useState();
+
 
   const forms1p4Reducer = useSelector(
     ({ forms1p4Reducer }) => forms1p4Reducer.educations
@@ -137,14 +141,46 @@ export default function MMSIThai2002() {
     think2,
     think3
   } = state;
+  
+ 
+  
   useEffect(() => {
+ var x = document.getElementById("myID4");
+ var y = document.getElementById("myID9");
+ var z = document.getElementById("myID10");
+ var c21 = document.getElementById("myID21");
+ var c22 = document.getElementById("myID22");
+ c21.style.display = "none";
+ c22.style.display = "none";
+
     forms1p4Reducer === "NE" && setGroup(1);
     forms1p4Reducer === "PE" && setGroup(2);
     forms1p4Reducer === "SE" && setGroup(3);
     forms1p4Reducer === "Diploma" && setGroup(4);
     forms1p4Reducer === "BD" && setGroup(5);
     forms1p4Reducer === "OverBD" && setGroup(6);
-  }, []);
+
+   if(forms1p4Reducer === "NE" || forms1p4Reducer === "PE" || forms1p4Reducer === "SE" ||forms1p4Reducer === "Diploma"
+   ||forms1p4Reducer === "BD" ||forms1p4Reducer === "OverBD"){
+     x.style.display = "none";
+     y.style.display = "none";
+     z.style.display = "none";
+     setcolorS('darkgray')
+   }
+    //console.log(anstf)
+    if(anstf == 0){
+      c22.style.display = "block"
+      c21.style.display = "none"
+    }else if(anstf == 1){
+      c22.style.display = "none"
+      c21.style.display = "block"
+    }
+
+  }, [anstf]); 
+  var c = colorS
+  const divStyle = {
+    color: c
+  };
   const handleChange = (event) => {
     console.log(event.target.name, " ", event.target.checked);
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -309,8 +345,8 @@ export default function MMSIThai2002() {
           </p>
           <span>
             แบบทดสอบสภาพสมองเบื่องต้นใช้คัดกรองภาวะสมองเสื่อมในผู้สูงอายุ
-            สามารถใช้ได้ในผู้สูงอายุที่ไม่ได้เรียนหรือไม่รู้หนังสือ (อ่านไม่ออก
-            เขียนไม่ได้) ด้วย โดยไม่ต้องทำข้อ 4 ข้อ 9 และข้อ 10
+            สามารถใช้ได้ในผู้สูงอายุที่ไม่ได้เรียนหรือไม่รู้หนังสือ(อ่านไม่ออก
+            เขียนไม่ได้)ด้วยโดยไม่ต้องทำข้อ 4 ข้อ 9 และข้อ 10
           </span>
           {/* content */}
 
@@ -488,6 +524,30 @@ export default function MMSIThai2002() {
               ทดสอบการรับรู้เกี่ยวกับที่อยู่ในปัจจุบัน
             </b>
           </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions"
+            name="questions"
+            value={anstf}
+            onChange={(e) => settf(e.target.value)}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="2.1 กรณีอยู่สถานพยาบาล"
+              
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ"
+            />
+          </RadioGroup>
+
+
+          <div id="myID21"> 
           <p>
             <b>2.1 กรณีอยู่สถานพยาบาล</b>
           </p>
@@ -656,6 +716,8 @@ export default function MMSIThai2002() {
             />
           </div>
           <hr />
+          </div>
+          <div id="myID22">
           <p>
             <b>2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ</b>
           </p>
@@ -823,6 +885,8 @@ export default function MMSIThai2002() {
               onChange={(e) => settextAns225(e.target.value)}
             />
           </div>
+          
+          </div>
           <hr />
           <p>
             <b>
@@ -904,18 +968,20 @@ export default function MMSIThai2002() {
             />
           </FormGroup>
           <hr />
-          <p>
+         
+          <p style={divStyle}>
             <b>
               4.Attention or Calculation : ทดสอบสมาธิโดยให้คิดเลขในใจ
               ถามผู้ถูกทดสอบว่า "คิดเลขในใจเป็นหรือไม่" ถ้าคิดเป็นให้ทำข้อ 4.1
               ถ้าคิดไม่เป็น หรือไม่ตอบให้ทำข้อ 4.2
             </b>
           </p>
+          <div id="myID4"  >
           <p>
             4.1 ข้อนี้ให้คิดเลขในใจโดยเอา 100 ตั้ง ลบออกทีละ 7 ไปเรื่อยๆ
             ได้ผลลัพธ์เท่าไหร่บอกมา
           </p>
-          <FormGroup>
+          <FormGroup >
             <FormControlLabel
               control={
                 <Checkbox
@@ -923,6 +989,7 @@ export default function MMSIThai2002() {
                   onChange={handleChange}
                   name="num1"
                   color="primary"
+                  
                 />
               }
               label="(100-7) = 93 "
@@ -1038,8 +1105,9 @@ export default function MMSIThai2002() {
               label="ม"
             />
           </FormGroup>
-
+</div>
           <hr />
+          
           <p>
             <b>
               5.Recall : ทดสอบความจำระยะสั้นของชื่อสิ่งของ 3
@@ -1254,12 +1322,14 @@ export default function MMSIThai2002() {
             />
           </RadioGroup>
           <hr />
-          <p>
+          
+          <p style={divStyle}>
             <b>
               9.Written command : ทดสอบการอ่าน การเข้าใจความหมาย สามารถทำตามได้
               ให้คุณ(ตายาย) อ่านแล้วทำตาม จะอ่านออกเสียงหรือในใจก็ได้
             </b>
           </p>
+          <div id="myID9"  >
           <RadioGroup
             className="pl-20"
             aria-label="questions3.4"
@@ -1279,14 +1349,17 @@ export default function MMSIThai2002() {
               control={<Radio color="primary" />}
               label="ทำไม่ได้"
             />
-          </RadioGroup>
+          </RadioGroup></div>
           <hr />
-          <p>
+          
+
+          <p style={divStyle}>
             <b>
               10.Written : ทดสอบการเขียนภาษาอย่างมีความหมาย ให้คุณ(ตายาย)
               เขียนข้อความอะไรก็ได้ที่อ่านแล้วรู้เรื่องหรือมีความหมาย
             </b>
           </p>
+          <div id="myID10"  >
           <RadioGroup
             className="pl-20"
             aria-label="questions3.4"
@@ -1318,7 +1391,9 @@ export default function MMSIThai2002() {
               onChange={(e) => settextAns10(e.target.value)}
             />
           </div>
+          </div>
           <hr />
+          
           <p>
             <b>
               11.Visuoconstruction : ทดสอบความสัมพันธ์ระหว่างตากับมือ
