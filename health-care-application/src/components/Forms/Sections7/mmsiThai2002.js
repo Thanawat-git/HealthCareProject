@@ -175,7 +175,6 @@ export default function MMSIThai2002() {
       c22.style.display = "none"
       c21.style.display = "block"
     }
-
   }, [anstf]); 
   var c = colorS
   const divStyle = {
@@ -953,7 +952,7 @@ export default function MMSIThai2002() {
                   color="primary"
                 />
               }
-              label="แม่น้ำ"
+              label="ทะเล"
             />
             <FormControlLabel
               control={
@@ -1172,7 +1171,7 @@ export default function MMSIThai2002() {
                   color="primary"
                 />
               }
-              label="แม่น้ำ"
+              label="ทะเล"
             />
             <FormControlLabel
               control={

@@ -92,10 +92,12 @@ function Sections8_1() {
         </div>
 
         {/* bt */}
+        <Link to="/mainmenu">
         <div className="row justify-content-between">
           <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
             <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >ถัดไป</button>
         </div>
+        </Link>
       </form>
       <Modal
         show={show}
