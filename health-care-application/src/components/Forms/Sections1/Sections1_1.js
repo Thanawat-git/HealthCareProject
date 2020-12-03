@@ -12,6 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from 'react-redux'
 import * as formAction from "../../../actions/forms1p1.action";
+import * as savePID from "../../../actions/searchEld.action";
 
 function Sections1_1(props) {
   useEffect(() => {
@@ -169,6 +170,7 @@ function Sections1_1(props) {
       PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age, yea, mon, day
     ]
     dispatch(formAction.add(data))
+    dispatch(savePID.addPidOnly(PID))
     function emptyValue(){
       e.preventDefault(); 
       alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
@@ -197,14 +199,19 @@ function Sections1_1(props) {
               <TextField
                 id="PID"
                 // name='PID'
+                type="number"
                 label="รหัสบัตรประชาชน 13 หลัก"
                 variant="outlined"
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
                 // error={error}
                 defaultValue={forms1p1Reducer.peopleID}
+                onInput = {(e) =>{
+                  e.target.value = e.target.value.slice(0,13)
+              }}//fix13digit
                 // value={forms1p1Reducer.peopleID}
                 onChange={(e)=>setPID(e.target.value)}
+
               />
             </div>
           </div>
@@ -214,6 +221,7 @@ function Sections1_1(props) {
             <div className="col-12 col-xl-6 mb-15">
               <TextField
                 id=""
+                pattern="^[ก-๏\s]+$"  
                 label="*ชื่อ"
                 variant="outlined"
                 placeholder="ชื่อ"

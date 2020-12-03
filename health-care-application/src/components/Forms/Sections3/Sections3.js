@@ -28,15 +28,32 @@ export default function Sections3() {
   const [results, setresults] = useState(forms3Reducer.results3);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(forms3Reducer.count);
+  const [dis,setdis] = useState(false);
+  const [disf,setdisf] = useState(false);
+  const [dis2,setdis2] = useState(false);
+  const [disf2,setdisf2] = useState(false);
+
 
   useEffect(() => {
+    forms2Reducer === "อ้วนลงพุง" && setAns3_5("1");
+    if(forms2Reducer === "อ้วนลงพุง"){
+       dis2 == false ? setdis2(false) : setdis2(true)
+        disf2 == true ? setdisf2(false) : setdisf2(true)
+    }
     forms1p6Reducer.map((value) => {
       value == "ความดันโลหิตสูง" && setAns3_2("1");
       value == "เบาหวาน" && setAns3_3("1");
       value == "ไขมันในเส้นเลือดสูง" && setAns3_4("1");
       value == "โรคหัวใจ" && setAns3_6("1");
+      if(value == "ความดันโลหิตสูง" || value == "เบาหวาน" || value == "ไขมันในเส้นเลือดสูง"
+      || value == "โรคหัวใจ"){
+        dis == false ? setdis(false) : setdis(true)
+        disf == true ? setdisf(false) : setdisf(true)
+      }
     });
-    forms2Reducer === "อ้วนลงพุง" && setAns3_5("1");
+    
+    //console.log("ans32 : "+ans3_2)
+
   }, []);
 
   useEffect(() => {
@@ -96,8 +113,9 @@ export default function Sections3() {
       ans3_5,
       ans3_6,
       ans3_7,
-      collect,
+      count,
       results,
+      collect
     ]);
   };
 
@@ -141,12 +159,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
+              disabled={dis}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
+              disabled={disf}
             />
           </RadioGroup>
           <hr />
@@ -163,12 +183,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
+              disabled={dis}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
+              disabled={disf}
             />
           </RadioGroup>
           <hr />
@@ -185,12 +207,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
+              disabled={dis}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
+              disabled={disf}
             />
           </RadioGroup>
           <hr />
@@ -207,12 +231,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
+              disabled={dis2}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
+              disabled={disf2}
             />
           </RadioGroup>
           <hr />
@@ -229,12 +255,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
+              disabled={dis}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
+              disabled={disf}
             />
           </RadioGroup>
           <hr />

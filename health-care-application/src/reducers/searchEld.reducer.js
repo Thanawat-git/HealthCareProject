@@ -3,7 +3,6 @@ const initialState = {
     found: null,
     selectEld: {
         ELD_ID_NUMBER:null,
-        ELD_ID_NUMBER: null,
         ELD_FIRSTNAME: null,
         ELD_LASTNAME: null,
         ELD_AKA: null,
@@ -23,6 +22,11 @@ export default (state = initialState, { type, payload }) => {
         return {
             ...state,
             selectEld: payload //ข้อมูลของผู้สูงอายุที่เลือก
+        }
+    case 'AddPidToState':
+        return {
+            ...state,
+            selectEld: {...state.selectEld, ELD_ID_NUMBER:payload}
         }
     default:
         return state

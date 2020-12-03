@@ -52,6 +52,7 @@ export const updateExa3Cardiovascular = (payload)=>{
         CARDIO_3_7: payload[8],
         CARDIO_COUNT: payload[9],
         CARDIO_COUNT_RESULT: payload[10],
+        CARDIO_CORRECT_FORM:payload[11]
     }).then(()=>{
       alert("Cardiovascular update Success")
     })

@@ -1,16 +1,24 @@
 import React, {useEffect, useState} from 'react'
-import { RadioGroup, Radio, FormControlLabel, TextField } from '@material-ui/core';
+import { RadioGroup, Radio, FormControlLabel, TextField,makeStyles } from '@material-ui/core';
 import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections7.css'
-import ShowResultPopup from '../ResuleShowsPopUp'
+import { Modal, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as formAction from "../../../actions/forms7.action";
 
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+});
+
 export default function Sections7_1() {
   const forms7Reducer = useSelector(({forms7Reducer}) => forms7Reducer)
+  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
   const dispatch = useDispatch()
+  const classes = useStyles();
 
   const [ans7_1, setAns7_1] = useState(forms7Reducer.ans7_1)
   const [ans7_2, setAns7_2] = useState(forms7Reducer.ans7_2)
@@ -36,6 +44,7 @@ export default function Sections7_1() {
   const [textAns10, settextAns10] = useState(forms7Reducer.textAns10)
 
   const [show, setShow] = useState(false);
+  const [linkTommse, setlinkTommse] = useState(false)
 
   useEffect(() => {
     if(ans7_1 && ans7_2 && ans7_3 && ans7_4 && ans7_5 && ans7_6 && ans7_7 && ans7_8 && ans7_9 && ans7_10){
@@ -43,13 +52,14 @@ export default function Sections7_1() {
     }
     if(collect){
       const count = parseInt(ans7_1) + parseInt(ans7_2) + parseInt(ans7_3) + parseInt(ans7_4) + parseInt(ans7_5) + parseInt(ans7_6) + parseInt(ans7_7) + parseInt(ans7_8) + parseInt(ans7_9) + parseInt(ans7_10)
-      count <= 7 ? setresults('การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002'):setresults('การรู้คิดปกติ')
+      count <= 7 ? setresults('การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002'+ setlinkTommse(true)) :setresults('การรู้คิดปกติ'+setlinkTommse(false)) 
+      
     }
   }, [ans7_1, ans7_2, ans7_3, ans7_4, ans7_5, ans7_6, ans7_7, ans7_8, ans7_9, ans7_10])
   useEffect(() => {
     if(collect){
       const count = parseInt(ans7_1) + parseInt(ans7_2) + parseInt(ans7_3) + parseInt(ans7_4) + parseInt(ans7_5) + parseInt(ans7_6) + parseInt(ans7_7) + parseInt(ans7_8) + parseInt(ans7_9) + parseInt(ans7_10)
-      count <= 7 ? setresults('การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002'):setresults('การรู้คิดปกติ')
+      count <= 7 ? setresults('การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002'+ setlinkTommse(true)) :setresults('การรู้คิดปกติ'+setlinkTommse(false))
     }
   }, [collect])
 
@@ -281,24 +291,63 @@ export default function Sections7_1() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
-          <button type="button" class="btn form-btn btn-back btn-lg">
-            ยกเลิก
-          </button>
-          </Link>
-          <button type="button" class="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >
-            บันทึก
-          </button>
+          <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button>
+            <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >ถัดไป</button>
         </div>
       </form>
-      <ShowResultPopup
+      <Modal
+        show={show}
+        onHide={() => setShow(false)}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>ผลการประเมินภาวะสมองเสื่อม</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <div className="row">
+            <div className="col-12 col-xl-3 title-result">
+              <p> ผลการประเมิน </p>
+            </div>
+            <div className="col-12 col-xl-9 result-result">
+              <strong>
+                <p> {results} </p>
+              </strong>
+            </div>
+          </div>
+        </Modal.Body>
+
+        <Modal.Footer>
+          {linkTommse ?
+          <Link to="/mmsi" className={classes.root}>
+            <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10,results,collect,peopleID])}>
+              ทำแบบประเมินการทดสอบสมองเบื่องต้นฉบับภาษาไทย
+            </Button>
+          </Link>
+          :
+          <Link to="/mainmenu" className={classes.root}>
+            <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([
+            textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,
+            textAns9,ans7_9,textAns10,ans7_10,results,collect,peopleID])}>
+              กลับสู่หน้าเมนูหลัก
+            </Button>
+          </Link>
+          }
+        </Modal.Footer>
+      </Modal>
+      {/* <ShowResultPopup
           title='ผลการประเมินภาวะสมองเสื่อม' 
           result={results}
           show={show}
+          onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10])}
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}
-        />
+        /> */}
     </div>
   );
 }

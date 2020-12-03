@@ -162,8 +162,12 @@ export default function Sections9_2() {
         setresults3("ยังไม่พบอาการผิดปกติ แต่ควรตรวจร่างกายเป็นประจำทุกปี");
       }
     }
+   
+    
     if (parseInt(ans1_1) == 1) {
       x.style.display = "block";
+    }else{
+      setresults2('ไม่มีอาการปวดเข่า');
     }
     if (x.style.display == "block") {
       if (ans1_2 == 0) {

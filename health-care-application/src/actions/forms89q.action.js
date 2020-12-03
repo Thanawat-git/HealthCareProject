@@ -35,6 +35,7 @@ export const updateDepressionScreening9q = (payload)=>{
       DEP_8_9: payload[9],
       DEP_SUM_POINT: payload[10],
       DEP_9Q_RESULT: payload[11],
+      DEP_CORRECT_FORM:payload[12]
     }).then(()=>{
       alert("Depression_Screening Update Success")
     })

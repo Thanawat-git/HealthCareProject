@@ -132,6 +132,7 @@ export default function Sections2_1() {
     
   };
   const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  console.log('peopleID ',peopleID)
 
   const handleSubmit = () => {
     setShow(true);
@@ -153,11 +154,14 @@ export default function Sections2_1() {
   };
   
   const saveDataToServer =()=>{
-     formAction.updateExa2Waist([peopleID,waist,waistResult])
-     formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult])
-     formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult])
-     formAction.updateExa2Fbs([peopleID,sugar,sugarResult])
+     formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
+     formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
+     formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
+     formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
   }
+
+
+
 
   return (
     <div className="css-form">
@@ -176,11 +180,12 @@ export default function Sections2_1() {
               <OutlinedInput
                 id="waist"
                 value={waist}
+                type="number"
                 onChange={(e) => {
                   setWaist(e.target.value);
                 }}
                 endAdornment={
-                  <InputAdornment position="end">ซม.</InputAdornment>
+                  <InputAdornment   position="end">ซม.</InputAdornment>
                 }
                 fullWidth
               />
@@ -202,6 +207,7 @@ export default function Sections2_1() {
               <OutlinedInput
                 id="weight"
                 value={weight}
+                type="number"
                 onChange={(event) => setWeight(event.target.value)}
                 endAdornment={
                   <InputAdornment position="end">กก.</InputAdornment>
@@ -217,6 +223,7 @@ export default function Sections2_1() {
               <OutlinedInput
                 id="high"
                 value={high}
+                type="number"
                 onChange={(event) => setHigh(event.target.value)}
                 endAdornment={
                   <InputAdornment position="end">ซม.</InputAdornment>
@@ -249,6 +256,7 @@ export default function Sections2_1() {
               <TextField
                 id="bloodPressure1"
                 variant="outlined"
+                type="number"
                 value={bloodPressure1}
                 onChange={(e) => {
                   setBloodPressure1(e.target.value);
@@ -260,6 +268,8 @@ export default function Sections2_1() {
               <OutlinedInput
                 id="bloodPressure2"
                 value={bloodPressure2}
+                type="number"
+                
                 onChange={(e) => {
                   setBloodPressure2(e.target.value);
                 }}
@@ -279,6 +289,7 @@ export default function Sections2_1() {
             <div className="col-12">
               <OutlinedInput
                 id="pulse"
+                type="number"
                 value={pulse}
                 onChange={(e) => {
                   setPulse(e.target.value);
@@ -311,6 +322,7 @@ export default function Sections2_1() {
             <div className="col-12 mb-15">
               <OutlinedInput
                 id="sugar"
+                type="number"
                 value={sugar}
                 onChange={(e) => {
                   setSugar(e.target.value);

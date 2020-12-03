@@ -44,7 +44,7 @@ export default function Sections4_1() {
     dispatch(formAction.add(data))
   }
   const saveDataToServer = () => {
-    formAction.updateExa4Eye([peopleID,ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,count,results]);
+    formAction.updateExa4Eye([peopleID,ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,count,results,collect]);
   };
 
   return (

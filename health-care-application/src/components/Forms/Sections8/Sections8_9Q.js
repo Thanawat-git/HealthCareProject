@@ -25,6 +25,7 @@ export default function Sections8_9Q() {
     const [collect, setCollect] = useState(forms89qReducer.collect);
     const [results, setresults] = useState(forms89qReducer.results);
     const [show, setShow] = useState(false);
+    const[point,setPoint] = useState()
 
     useEffect(() => {
         if(ans8_9q_1 && ans8_9q_2 && ans8_9q_3 && ans8_9q_4 && ans8_9q_5 && ans8_9q_6 && ans8_9q_7 && ans8_9q_8 && ans8_9q_9){
@@ -35,6 +36,7 @@ export default function Sections8_9Q() {
         let count = 0
         if(collect){
           count = parseInt(ans8_9q_1)+parseInt(ans8_9q_2)+parseInt(ans8_9q_3)+parseInt(ans8_9q_4)+parseInt(ans8_9q_5)+parseInt(ans8_9q_6)+parseInt(ans8_9q_7)+parseInt(ans8_9q_8)+parseInt(ans8_9q_9)
+          setPoint(count)
           count<7? setresults('ไม่มีอาการโรคซึมเศร้า หรือ มีอาการโรคซึมเศร้าน้อยมาก'):
           count<=12? setresults('มีอาการของโรคซึมเศร้า ระดับน้อย'):
           count<=18? setresults('มีอาการของโรคซึมเศร้า  ระดับปานกลาง'):
@@ -226,7 +228,7 @@ export default function Sections8_9Q() {
           show={show}
           onHide={()=>setShow(false)}
           onClick={()=>formAction.updateDepressionScreening9q([ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
-            collect,results])}
+            point,results,collect])}
           backdrop="static"
           keyboard={false}
         />

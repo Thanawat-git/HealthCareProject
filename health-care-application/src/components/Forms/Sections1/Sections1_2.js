@@ -92,6 +92,7 @@ export default function Sections1_2(props) {
             <div className="col-xl-6 col-12 mb-15">
               <TextField
                 label="เลขที่"
+                type="number"
                 variant="outlined"
                 placeholder="เลขที่"
                 defaultValue={homeNumber}
@@ -247,12 +248,16 @@ export default function Sections1_2(props) {
             </p>
             <TextField
               id=""
+              type="number"
               defaultValue={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               variant="outlined"
               placeholder="+66"
               className="TextField"
               fullWidth
+                onInput = {(e) =>{
+                  e.target.value = e.target.value.slice(0,10)
+              }}//fix10digit
             />
           </div>
           {/* </div> */}

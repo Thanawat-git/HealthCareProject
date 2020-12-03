@@ -17,6 +17,7 @@ import * as formAction from "../../../actions/formsMMSE.action";
 
 export default function MMSIThai2002() {
   const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
+  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
   const dispatch = useDispatch();
 
   const [ans1, setAns1] = useState(forms7mReducer.ans1);
@@ -36,8 +37,7 @@ export default function MMSIThai2002() {
   const [ans2_2_5, setAns2_2_5] = useState(forms7mReducer.ans2_2_5);
 
 
-  const [ans41, setAns41] = useState(forms7mReducer.ans41);
-  const [ans42, setAns42] = useState(forms7mReducer.ans42);
+
   const [ans61, setAns61] = useState(forms7mReducer.ans61);
   const [ans62, setAns62] = useState(forms7mReducer.ans62);
   const [ans7, setAns7] = useState(forms7mReducer.ans7);
@@ -67,7 +67,7 @@ export default function MMSIThai2002() {
   const [collect, setCollect] = useState(forms7mReducer.collect);
   const [results, setresults] = useState(forms7mReducer.results);
   const [point, setPoint] = useState(forms7mReducer.point);
-  const [group, setGroup] = useState();
+  const [group, setGroup] = useState(forms7mReducer.group);
   const [show, setShow] = useState(false);
 
   const forms1p4Reducer = useSelector(
@@ -100,6 +100,11 @@ export default function MMSIThai2002() {
     num3: false,
     num4: false,
     num5: false,
+//8
+    think1:false,
+    think2:false,
+    think3:false
+
   });
   const {
     ansF,
@@ -121,11 +126,16 @@ export default function MMSIThai2002() {
     spell3,
     spell4,
     spell5,
+
     num1,
     num2,
     num3,
     num4,
     num5,
+
+    think1,
+    think2,
+    think3
   } = state;
   useEffect(() => {
     forms1p4Reducer === "NE" && setGroup(1);
@@ -149,6 +159,7 @@ export default function MMSIThai2002() {
   }, [point]);
 
   useEffect(() => {
+    
     if (collect) {
       const num = 
         parseInt(ans1)+
@@ -197,31 +208,6 @@ export default function MMSIThai2002() {
       
     }
   }, [collect]);
-
-//   useEffect(() => {
-//     console.log(point);
-//     if (group == 1) {
-//       ///setresults("none");
-//       if (point <= 14) {
-//         setresults("เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-//       } else {
-//         setresults("ปกติ");
-//       }
-//     } else if (group == 2) {
-//       if (point <= 17) {
-//         setresults(" เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-//       } else {
-//         setresults("ปกติ");
-//       }
-//     } else if (group > 2) {
-//       if (point <= 22) {
-//         setresults(" เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-//       } else {
-//         setresults(point + " ปกติ");
-//       }
-//     }
-// }, [point]);
-
   useEffect(() => {
     if (
       ans1 &&
@@ -235,7 +221,7 @@ export default function MMSIThai2002() {
       ans8 &&
       ans9 &&
       ans10 &&
-      ans11
+      ans11 
     ) {
       setCollect(true);
     }
@@ -309,6 +295,7 @@ export default function MMSIThai2002() {
       collect,
       results,
       point,
+      group
     ];
     dispatch(formAction.add(data));
   };
@@ -1230,24 +1217,40 @@ export default function MMSIThai2002() {
               เสร็จแล้ววางไว้ที่(พื้น,โต๊ะ,เตียง)
             </b>
           </p>
-          <RadioGroup
-            className="pl-20"
-            aria-label="questions3.4"
-            name="questions3.4"
-            value={ans8}
-            onChange={(e) => setAns8(e.target.value)}
-          >
-            <FormControlLabel
-              className="radio-size"
-              value="1"
-              control={<Radio color="primary" />}
-              label="ถูก"
+          <p>ผู้ทดสอบส่งกระดาษเปล่าขนาดประมาณ A4 ไม่มีรอยพับ ให้ผู้ทดสอบ</p>  
+          <RadioGroup>
+          <FormControlLabel
+              control={
+                <Checkbox
+                  checked={think1}
+                  onChange={handleChange}
+                  name="think1"
+                  color="primary"
+                />
+              }
+              label="รับด้วยมือขวา"
             />
             <FormControlLabel
-              className="radio-size"
-              value="0"
-              control={<Radio color="primary" />}
-              label="ผิด"
+              control={
+                <Checkbox
+                  checked={think2}
+                  onChange={handleChange}
+                  name="think2"
+                  color="primary"
+                />
+              }
+              label="พับครึ่งด้วยมือ 2 ข้าง"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={think3}
+                  onChange={handleChange}
+                  name="think3"
+                  color="primary"
+                />
+              }
+              label="วางไว้ที่(พื้น,โต๊ะ,เตียง)"
             />
           </RadioGroup>
           <hr />
@@ -1366,6 +1369,9 @@ export default function MMSIThai2002() {
         title="ผลการประเมินการทดสอบเบื้องต้นฉบับภาษาไทย"
         result={results}
         show={show}
+        onClick={()=>formAction.updateMMSE([textAns11,ans1,textAns12,ans12,textAns13,ans13,textAns14,ans14,textAns15,ans15,
+          textAns211,ans2_1_1,textAns212,ans2_1_2,textAns213,ans2_1_3,textAns214,ans2_1_4,textAns215,ans2_1_5,ansF,ansR,ansT,
+          num1,num2,num3,num4,num5,ansF2,ansR2,ansT2,ans61,ans62,ans7,think1,think2,think3,ans9,textAns10,ans10,ans11,collect,results,peopleID])}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}

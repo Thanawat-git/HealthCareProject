@@ -48,7 +48,7 @@ function Sections8_1() {
 
   const handleSubmit = ()=>{
     setShow(true)
-    const data = [peopleID,ans8_1,ans8_2,collect,results]
+    const data = [ans8_1,ans8_2,collect,results]
     dispatch(formAction.add(data))
 
   }
@@ -123,13 +123,13 @@ function Sections8_1() {
         <Modal.Footer>
           {linkTo9Q ?
           <Link to="/sec8-9q" className={classes.root}>
-            <Button variant="primary" block onClick={()=>formAction.updateDepressionScreening([ans8_1,ans8_2,collect,results])}>
+            <Button variant="primary" block onClick={()=>formAction.updateDepressionScreening([peopleID,ans8_1,ans8_2,linkTo9Q,results,collect])}>
               ทำแบบประเมินโรคซึมเศร้า 9Q
             </Button>
           </Link>
           :
           <Link to="/mainmenu" className={classes.root}>
-            <Button variant="primary" block onClick={()=>formAction.updateDepressionScreening([ans8_1,ans8_2,collect,results])}>
+            <Button variant="primary" block onClick={()=>formAction.updateDepressionScreening([peopleID,ans8_1,ans8_2,linkTo9Q,results,collect])}>
               กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>
