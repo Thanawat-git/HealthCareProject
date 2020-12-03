@@ -20,7 +20,6 @@ import Volunteer from "./components/volunteer/Volunteer";
 import EditInfo from "./components/elderly/EditInfo";
 
 import mainMenu from './components/Forms/MainMenu'
-import showresult from './components/Forms/ShowResult'
 
 import {sec1_1, sec1_2, sec1_3, sec1_4, sec1_5, sec1_6} from './components/Forms/Sections1';
 import {sec2} from "./components/Forms/Sections2";
@@ -57,7 +56,6 @@ export default class App extends Component {
           <Route path="/sec1-page4" component={sec1_4} />
           <Route path="/sec1-page5" component={sec1_5} />
           <Route path="/sec1-page6" component={sec1_6} />
-          <Route path="/showresult" component={showresult}/>
 
           <Route path="/sec2" component={sec2} />
           <Route path="/sec3" component={sec3} />

@@ -1,0 +1,43 @@
+.add-staff{
+    display: flex;
+    position: relative;
+}
+.avatar-pic {
+    width: 150px;
+}
+/* .customized-dialog-title,.customized-dialog-content,.customized-dialog-footer{
+    border:1px solid #008B00 !important;
+}
+.customized-dialog-title,.customized-dialog-content{
+    border-bottom: none !important;
+}
+.customized-dialog-content,.customized-dialog-footer{
+    border-top: 1px solid #DCDCDC !important;
+} */
+
+.customized-dialog button{
+    font-size: 20px;
+}
+
+.image-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.inputFill{
+    margin-bottom: 20px;
+}
+.info-inputFill{
+    /* padding-left: 20px;
+    padding-right: 20px; */
+}
+.inputadd-group{
+    display: flex;
+}
+.pre-name{
+    min-width: 8rem !important;
+}
+.pre-name label{
+    background-color: #fff;
+}
