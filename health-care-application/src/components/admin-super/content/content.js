@@ -1,6 +1,5 @@
 import React from 'react'
 import MainContent from "./MainContent";
-import AddNewAdmin from "../admin/AddNewAdmin";
 import AdminContent from "../admin/AdminContent";
 import {
   Link,

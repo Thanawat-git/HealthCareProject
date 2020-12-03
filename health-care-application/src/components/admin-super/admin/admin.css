@@ -15,8 +15,9 @@
     border-top: 1px solid #DCDCDC !important;
 } */
 
-.customized-dialog button{
+.customized-dialog-footer button{
     font-size: 20px;
+    margin: 5px 30px;
 }
 
 .image-input{
@@ -29,14 +30,15 @@
     margin-bottom: 20px;
 }
 .info-inputFill{
-    /* padding-left: 20px;
-    padding-right: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .inputadd-group{
     display: flex;
 }
 .pre-name{
-    min-width: 8rem !important;
+    min-width: 7rem !important;
+    border: none !important;
 }
 .pre-name label{
     background-color: #fff;

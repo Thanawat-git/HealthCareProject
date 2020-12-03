@@ -9,33 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@material-ui/core";
-
-// Full Dialog
-// import { makeStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-// import Dialog from '@material-ui/core/Dialog';
-// import Divider from '@material-ui/core/Divider';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import IconButton from '@material-ui/core/IconButton';
-// import Typography from '@material-ui/core/Typography';
-// import CloseIcon from '@material-ui/icons/Close';
-// import Slide from '@material-ui/core/Slide';
-
-// Full Dialog
-// const useStyles = makeStyles((theme) => ({
-//     appBar: {
-//       position: 'relative',
-//     },
-//     title: {
-//       marginLeft: theme.spacing(2),
-//       textAlign: 'center',
-//       flex: 1,
-//     },
-//   }));
-// const Transition = React.forwardRef(function Transition(props, ref) {
-// return <Slide direction="up" ref={ref} {...props} />;
-// });
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const styles = (theme) => ({
   root: {
@@ -81,17 +55,112 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 export default function AddNewAdmin() {
-  // const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [yea, setYea] = useState();
+  const [mon, setMon] = useState();
+  const [day, setDay] = useState();
 
-  const handleClickOpen = () => {
-    setOpen(true);
+//   date picker
+  const [years, setYears] = useState([]);
+  const [days, setDays] = useState([]);
+  const [cy, setCY] = useState(true);
+  const [cd, setCD] = useState(true);
+  const getyear = (e) => {
+    var i = 10; //ปีเริ่มต้น ลบจากปัจจุบัน
+    var ny = new Date();
+    var y = ny.getFullYear();
+    const xxx = (s) => {
+      return y - s + 543;
+    };
+    if (cy) {
+      setCY(false);
+      while (i < 150) {
+        const r = xxx(i);
+        setYears((years) => [...years, r.toString()]);
+        i++;
+      }
+    }
+    setYea(e.target.value);
   };
+  const getday = () => {
+    if (mon != undefined) {
+      if (mon === "กุมภาพันธ์") {
+        console.log(5);
+        if (yea === undefined) {
+          loopDays(28);
+        } else {
+          var a = parseInt(yea) - 543;
+          if (
+            (a % 4 == 0 && a % 100 != 0) ||
+            (a % 4 == 0 && a % 100 == 0 && a % 400 == 0)
+          ) {
+            loopDays(29);
+          } else {
+            loopDays(28);
+          }
+        }
+      } else if (
+        mon === "เมษายน" ||
+        mon === "มิถุนายน" ||
+        mon === "กันยายน" ||
+        mon === "พฤศจิกายน"
+      ) {
+        loopDays(30);
+      } else {
+        loopDays(31);
+      }
+    }
+  };
+  const loopDays = (d) => {
+    var x = 0;
+    const countDay = (s) => {
+      return s + 1;
+    };
+    if (days.length != d || days === undefined || days.length / 2 != d) {
+      setCD(true);
+      setDays([]);
+    } else {
+      setCD(false);
+    }
 
-  const handleClose = () => {
-    setOpen(false);
+    if (cd) {
+      while (x < d) {
+        const dd = countDay(x);
+        setDays((days) => [...days, dd.toString()]);
+        x++;
+      }
+    }
   };
+  const [numMon, setNumMon] = useState(0) //เปลี่ยนเดือนเป็นตัวเลข
+  function handleInputMonthChange(event, value) {
+    setMon(value)
+    Months.map((m, index)=>{
+      if (value===m){setNumMon(index+1)}
+    })
+  }
+  function handleInputYearChange(event, value) {
+    setYea(value)
+  }
+  function handleInputDayChange(event, value) {
+    setDay(value)
+  }
+
+  const submitNewStaff = ()=>{
+    const nowDate = new Date();
+    const nowDay = nowDate.getDate();
+    const nowMonth = nowDate.getMonth()+1;
+    const nowYear = nowDate.getFullYear()+543;
+    var Age = nowYear-parseInt(yea)
+    if(numMon==nowMonth) {
+      parseInt(day)>=nowDay ? Age=Age : Age=Age-1
+    } else if(numMon>nowMonth) {
+      Age = Age-1
+    } else {
+      Age = Age
+    }
+  }
+
   return (
     <React.Fragment>
       <Button
@@ -108,6 +177,7 @@ export default function AddNewAdmin() {
         onClose={()=>setOpen(false)}
         className="customized-dialog"
         open={open}
+        maxWidth="md"
         disableBackdropClick
         disableEscapeKeyDown
       >
@@ -127,7 +197,7 @@ export default function AddNewAdmin() {
               <div className="col-12 inputFill">
                 <TextField label="เลขประจำตัวประชาชน" name="adminId" variant="outlined" fullWidth />
               </div>
-              <div className="col-12 inputFill">
+              <div className="col-6 inputFill">
                 <div className="inputadd-group">
                     <FormControl className="pre-name" variant="outlined">
                         <InputLabel>คำนำหน้า</InputLabel>
@@ -135,6 +205,7 @@ export default function AddNewAdmin() {
                         open={open2}
                         onClose={()=>setOpen2(false)}
                         onOpen={()=>setOpen2(true)}
+                        name="preName"
                         // value={age}
                         // onChange={handleChange}
                         >
@@ -147,53 +218,93 @@ export default function AddNewAdmin() {
                     <TextField label="ชื่อ" name="fname" variant="outlined" fullWidth/>
                 </div>
               </div>
-              <div className="col-12 inputFill">
+              <div className="col-6 inputFill">
                 <TextField label="นามสกุล" name="lname" variant="outlined" fullWidth/>
               </div>
-              <div className="col-6 inputFill">
+              <div className="col-12 inputFill">
                 <TextField label="เบอร์โทรศัพท์" name="phone" variant="outlined" fullWidth/>
               </div>
-              <div className="col-6 inputFill">
-                <TextField type="date" label="" name="" variant="outlined" fullWidth/>
+              <div className="col-12 inputFill">
+                <TextField label="E-mail Address" type="email" name="email" variant="outlined" fullWidth/>
               </div>
-              <div className="col-6 inputFill">
-                <TextField label="ชื่อ" name="fname" variant="outlined" fullWidth/>
-              </div>
-              <div className="col-6 inputFill">
-                <TextField label="นามสกุล" name="lname" variant="outlined" fullWidth/>
-              </div>
-              <div className="col-6 inputFill">
-                <TextField label="ชื่อ" name="fname" variant="outlined" fullWidth/>
-              </div>
-              <div className="col-6 inputFill">
-                <TextField label="นามสกุล" name="lname" variant="outlined" fullWidth/>
-              </div>
+              <div className="col-4">
+                <Autocomplete
+                id="year"
+                options={years}
+                getOptionLabel={(option) => option}
+                disableClearable={true}
+                onInputChange={handleInputYearChange}
+                defaultValue={yea}
+                renderInput={(params) => (
+                    <TextField
+                    {...params}
+                    label="ปี พ.ศ. เกิด"
+                    variant="outlined"
+                    onClick={getyear}
+                    />
+                )}
+                />
+                </div>
+              <div className="col-4">
+                    <Autocomplete
+                    id="month"
+                    options={Months}
+                    getOptionLabel={(option) => option}
+                    disableClearable={true}
+                    onInputChange={handleInputMonthChange}
+                    defaultValue={mon}
+                    renderInput={(params) => (
+                        <TextField
+                        {...params}
+                        label="เดือนเกิด"
+                        variant="outlined"
+                        />
+                    )}
+                    />
+                </div>
+              <div className="col-4">
+                    <Autocomplete
+                    id="day"
+                    options={days}
+                    getOptionLabel={(option) => option}
+                    disableClearable={true}
+                    onInputChange={handleInputDayChange}
+                    defaultValue={day}
+                    renderInput={(params) => (
+                        <TextField
+                        {...params}
+                        label="วันเกิด"
+                        variant="outlined"
+                        onClick={getday}
+                        />
+                    )}
+                    />
+                </div>
+              
             </div>
           </div>
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
-          <Button onClick={handleClose} size="large" color="primary">
+          <Button onClick={()=>setOpen(false)} size="large" variant="contained" color="primary" fullWidth>
             บันทึก
           </Button>
         </DialogActions>
       </Dialog>
-
-      {/* Full Dialog */}
-      {/* <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              เพิ่มผู้ดูแลระบบ
-            </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              บันทึก
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </Dialog> */}
     </React.Fragment>
   );
 }
+
+const Months = [
+    "มกราคม",
+    "กุมภาพันธ์",
+    "มีนาคม",
+    "เมษายน",
+    "พฤษภาคม",
+    "มิถุนายน",
+    "กรกฎาคม",
+    "สิงหาคม",
+    "กันยายน",
+    "ตุลาคม",
+    "พฤศจิกายน",
+    "ธันวาคม",
+  ];
