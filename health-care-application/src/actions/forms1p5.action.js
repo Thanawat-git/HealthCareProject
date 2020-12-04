@@ -27,6 +27,7 @@ export const createDrug = (payload) => {
     ELD_ID_NUMBER: payload[0],
     DRUG_NAME: payload[1],
     EXAM_DATE: new Date(),
+    updateBy: null
   }).then(() => {
     alert("Drug Success");
   });
@@ -37,6 +38,7 @@ export const createFood = (payload) => {
     ELD_ID_NUMBER: payload[0],
     FOOD_NAME: payload[1],
     EXAM_DATE: new Date(),
+    updateBy: null
   }).then(() => {
     alert("Food Success");
   });

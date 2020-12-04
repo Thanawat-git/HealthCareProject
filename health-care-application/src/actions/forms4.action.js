@@ -31,7 +31,8 @@ export const updateExa4Eye = (payload)=>{
         EYE_4_5: payload[5],
         EYE_COUNT: payload[6],
         EYE_RESULT: payload[7],
-        EYE_CORRECT_FORM:payload[8]
+        EYE_CORRECT_FORM:payload[8],
+        updateBy: null
     }).then(()=>{
       alert("Eye update Success")
     })

@@ -61,7 +61,7 @@ export const updateMMSE = (payload)=>{
       MMSE_11_POINT: payload[40],
       MMSE_CORRECT_FORM: payload[41],
       MMSE_RESULT:payload[42],
-
+      updateBy: null
   }).then(()=>{
     alert("MMSE Update Success")
   })

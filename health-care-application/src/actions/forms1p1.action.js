@@ -44,10 +44,12 @@ const createElder = (payload) => {
 // update elder
 export const updateElder = (payload) => {
   Axios.put(`http://localhost:3001/elder/update/${payload[0]}`, {
-    ELD_FIRSTNAME: payload[1],
-    ELD_LASTNAME: payload[2],
-    ELD_PHONE: payload[3],
-    ELD_AKA: payload[4],
+    ELD_ID_NUMBER: payload[1],
+    ELD_FIRSTNAME: payload[2],
+    ELD_LASTNAME: payload[3],
+    ELD_PHONE: payload[4],
+    ELD_AKA: payload[5],
+    updateBy: null
   }).then(() => {
     alert("Elder update Success");
   });
@@ -65,6 +67,7 @@ const createElderinfo = (payload) => {
     ELD_JOB: null,
     ELD_TREATMENT: null,
     ELD_INCOME: null,
+    updateBy: null,
     ELD_ID_NUMBER: payload[0],
     VOL_ID_NUMBER: "1200101843069",
   }).then(() => {
@@ -78,6 +81,7 @@ const createElderRelative = (payload) => {
     ELD_REL_LASTNAME: null,
     ELD_REL_RELATION: null,
     ELD_REL_PHONE: null,
+    updateBy: null,
     ELD_ID_NUMBER: payload[0],
   }).then(() => {
     alert("Elder Relative Success");
@@ -93,6 +97,7 @@ const createElderCurrent = (payload) => { //ที่อยู่ปัจจุ
     ELD_CUR_SUB_DISTRICT: null,
     ELD_CUR_DISTRICT: null,
     ELD_CUR_PROVINCE: null,
+    updateBy: null,
     ELD_ID_NUMBER: payload[0],
   }).then(() => {
     alert("Elder Currentaddress Success");
@@ -108,6 +113,7 @@ const createElderIdCurrent = (payload) => { //ที่อยู่ตามบ�
     ELD_IDN_ADDR_SUB_DISTRICT: null,
     ELD_IDN_ADDR_DISTRICT: null,
     ELD_IDN_ADDR_PROVINCE: null,
+    updateBy: null,
     ELD_ID_NUMBER: payload[0],
   }).then(() => {
     alert("Elder ID Currentaddress Success");

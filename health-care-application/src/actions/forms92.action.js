@@ -58,6 +58,7 @@ export const updateExa9_1Osteoarthritis= (payload)=>{
         OST_3_SUM_POINT: payload[31],
         OST_3_RESULT: payload[32],
         OST_CORRECT_FORM: payload[33],
+        updateBy: null
     }).then(()=>{
       alert("Osteoarthritis Update Success")
     })

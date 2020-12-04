@@ -44,7 +44,8 @@ export const updateExa9BoneMuscle= (payload)=>{
         BONE_PHY_FIT_MINUTE: payload[16],
         BONE_PHY_FIT_SECOND: payload[17],
         BONE_PHY_RESULT: payload[18],
-        BONE_CORRECT_FORM:payload[19]
+        BONE_CORRECT_FORM:payload[19],
+        updateBy: null
     }).then(()=>{
       alert("Bone_Muscle Update Success")
     })

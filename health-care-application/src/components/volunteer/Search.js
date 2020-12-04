@@ -106,7 +106,7 @@ export default function Asynchronous() {
               ตรวจเยี่ยมครั้งล่าสุด {selectEld.ELDER.ELD_LAST_VISIT_DATE}
               </DialogContentText>
               <DialogContentText>
-              ตรวจโดย {selectEld.VOLUNTEER.VOL_FIRSTNAME} {selectEld.VOLUNTEER.VOL_LASTNAME}
+              {/* ตรวจโดย {selectEld.VOLUNTEER.VOL_FIRSTNAME} {selectEld.VOLUNTEER.VOL_LASTNAME} */}
               </DialogContentText>
             </DialogContent>
             

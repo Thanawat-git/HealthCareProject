@@ -32,6 +32,7 @@ export const updateElderinfo = (payload)=>{
       ELD_JOB: payload[5],
       ELD_TREATMENT: payload[6],
       ELD_INCOME: payload[7],
+      updateBy: null
     }).then(()=>{
       alert("Update Elder Info Success")
     })

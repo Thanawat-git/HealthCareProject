@@ -8,7 +8,7 @@ const initialState = {
     neighborName: null,
     religion: null,
     otherReligion: null,
-    educations: null,
+    educations: 'SE',
     careers: null,
     treatment: null,
     hospital: null,
