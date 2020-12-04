@@ -38,7 +38,7 @@ export const updateAilityInLife = (payload)=>{
         ABI_SUM_POINT: payload[10],
         ABI_GROUP: payload[11],
         ABI_CORRECT_FORM: payload[12],
-        
+        updateBy: null
     }).then(()=>{
       alert("AilityInLife Update Success")
     })

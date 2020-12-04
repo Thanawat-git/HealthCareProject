@@ -28,6 +28,7 @@ export const updateDepressionScreening = (payload)=>{
       DEP_CHECK:payload[3],
       DEP_RESULT: payload[4],
       DEP_CORRECT_FORM:payload[5],
+      updateBy: null
     }).then(()=>{
       alert("Depression_Screening Update Success")
     })

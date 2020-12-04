@@ -29,6 +29,7 @@ export const updateElderCurrent = (payload) => {
     ELD_CUR_SUB_DISTRICT: payload[5],
     ELD_CUR_DISTRICT: "เมือง",
     ELD_CUR_PROVINCE: "ชลบุรี",
+    updateBy: null
   }).then(() => {
     alert("Update Elder Currentaddress Success");
   });
@@ -45,6 +46,7 @@ export const updateElderIdCurrent = (payload) => {
       ELD_IDN_ADDR_SUB_DISTRICT: payload[5],
       ELD_IDN_ADDR_DISTRICT: "เมือง",
       ELD_IDN_ADDR_PROVINCE: "ชลบุรี",
+      updateBy: null
     }
   ).then(() => {
     alert("Update Elder ID Currentaddress Success");

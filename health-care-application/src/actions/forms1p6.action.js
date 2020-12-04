@@ -29,7 +29,8 @@ export const createDisease = (payload)=>{
   Axios.post("http://localhost:3001/elder/disease/create",{
     ELD_ID_NUMBER: payload[0],
     DIS_NAME: payload[1],
-    EXAM_DATE: new Date()
+    EXAM_DATE: new Date(),
+    updateBy: null
   }).then(()=>{
     alert("Disease Success")
   })
@@ -46,7 +47,7 @@ const createExa2Waist = ()=>{
     WAI_WAIST: null,
     WAI_RESULT: null,
     VIS_ID: "1",
-    VIS_DATE: new Date()
+    updateBy: null
   }).then(()=>{
     alert("Waist Create Success")
   })
@@ -59,7 +60,7 @@ const createExa2Bmi = ()=>{
     BMI_BMI: null,
     BMI_RESULT: null,
     VIS_ID: "1",
-    VIS_DATE: new Date()
+    updateBy: null
   }).then(()=>{
     alert("Bmi Create Success")
   })
@@ -72,7 +73,7 @@ const createExa2Bp = ()=>{
     BP_BLO_DIA: null,
     BP_RESULT: null,
     VIS_ID: "1",
-    VIS_DATE: new Date()
+    updateBy: null
   }).then(()=>{
     alert("Bp Create Success")
   })
@@ -83,7 +84,7 @@ const createExa2Fbs = ()=>{
     FBS_FBS: null,
     FBS_RESULT: null,
     VIS_ID: "1",
-    VIS_DATE: new Date()
+    updateBy: null
   }).then(()=>{
     alert("Fbs Create Success")
   })
@@ -102,7 +103,7 @@ const createExa3Cardiovascular = ()=>{
       CARDIO_COUNT: null,
       CARDIO_COUNT_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Cardiovascular Create Success")
   })
@@ -118,7 +119,7 @@ const createExa4Eye = ()=>{
       EYE_COUNT: null,
       EYE_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Eye Create Success")
   })
@@ -146,7 +147,7 @@ const createExa5OralHealth = ()=>{
       ORAL_COUNT: null,
       ORAL_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Oral_Health Create Success")
   })
@@ -174,7 +175,7 @@ const createExa6AbilityInLife = ()=>{
       ORAL_COUNT: null,
       ORAL_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Ability_In_Life Create Success")
   })
@@ -203,7 +204,7 @@ const createExa7Alzheimer = ()=>{
       ALZ_7_10_EL_COUNTDOWN: null,
       ALZ_7_10_RESULT_COUNTDOWN: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Alzheimer Create Success")
   })
@@ -227,7 +228,7 @@ const createExa8DepressionScreening = ()=>{
       DEP_SUM_POINT: null,
       DEP_9Q_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Depression_Screening Create Success")
   })
@@ -254,7 +255,7 @@ const createExa9BoneMuscle= ()=>{
       BONE_PHY_FIT_SECOND: null,
       BONE_PHY_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Bone_Muscle Create Success")
   })
@@ -277,7 +278,7 @@ const createExa9_1Osteoarthritis= ()=>{
       OST_2_5_L: null,
       OST_2_RESULT: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Osteoarthritis Create Success")
   })
@@ -287,7 +288,7 @@ const createExa10Urination= ()=>{
   Axios.post("http://localhost:3001/urination/create",{
       URI_10_1: null,
       VIS_ID: "1",
-      VIS_DATE: new Date()
+      updateBy: null
   }).then(()=>{
     alert("Urination Create Success")
   })
