@@ -63,12 +63,11 @@ export default function Sections1_6() {
                 id="SimpleDisease"
                 options={SimpleDisease}
                 getOptionLabel={(option) => option.name}
-                // disableClearable={true}
+                inputValue={disease}
                 size="small"
                 onInputChange={(event, value)=>setdisease(value)}
                 renderInput={(params) => (
                   <TextField {...params} 
-                  defaultValue={disease}
                   variant="outlined" />
                 )}
               />
