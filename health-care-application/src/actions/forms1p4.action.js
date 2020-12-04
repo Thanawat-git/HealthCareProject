@@ -32,7 +32,9 @@ export const updateElderinfo = (payload)=>{
       ELD_JOB: payload[5],
       ELD_TREATMENT: payload[6],
       ELD_INCOME: payload[7],
-      updateBy: null
+      adderRole: "VOLUNTEER",
+      updateBy: "กรองแก้ว ก้องวัฒนะกุล",
+      ADDER_ID_NUMBER: "1200101000000",
     }).then(()=>{
       alert("Update Elder Info Success")
     })

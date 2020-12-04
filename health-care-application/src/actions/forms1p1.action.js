@@ -69,7 +69,6 @@ const createElderinfo = (payload) => {
     ELD_INCOME: null,
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
-    VOL_ID_NUMBER: "1200101843069",
   }).then(() => {
     alert("Elder Info Success");
   });
