@@ -7,7 +7,7 @@ const initialState = {
                     ans6_Fe:0,
                     groupT:0,
                     collect:false,
-                    results:'null11111111111111111111'
+                    results:'ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ'
 }
 
 export default (state = initialState, { type, payload }) => {
