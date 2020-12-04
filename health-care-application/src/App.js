@@ -26,7 +26,9 @@ import {sec2} from "./components/Forms/Sections2";
 import {sec3} from "./components/Forms/Sections3";
 import {sec4} from "./components/Forms/Sections4";
 import {sec5} from "./components/Forms/Sections5";
-import {sec6} from "./components/Forms/Sections6";
+import {sec6,tai} from "./components/Forms/Sections6";
+
+
 import {mmsi, sec7} from "./components/Forms/Sections7";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8";
 import {sec9, sec9_2} from "./components/Forms/Sections9";
@@ -62,6 +64,7 @@ export default class App extends Component {
           <Route path="/sec4" component={sec4} />
           <Route path="/sec5" component={sec5} />
           <Route path="/sec6" component={sec6} />
+          <Route path="/tai" component={tai} />
           <Route path="/sec7" component={sec7} />
           <Route path="/mmsi" component={mmsi} />
 

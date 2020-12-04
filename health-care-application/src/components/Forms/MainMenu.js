@@ -27,12 +27,12 @@ function MainMenu(props) {
     const collect3 = useSelector(({forms3Reducer}) => forms3Reducer.collect)
     const collect4 = useSelector(({forms4Reducer}) => forms4Reducer.collect)
     const collect5 = useSelector(({forms5Reducer}) => forms5Reducer.collect)
-    const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect) 
+    const collect6 = useSelector(({forms6Reducer}) => forms6Reducer.collect)
     const collect7 = useSelector(({forms7Reducer}) => forms7Reducer.collect)
     const collect8 = useSelector(({forms8Reducer}) => forms8Reducer.collect)
     const collect89q = useSelector(({forms89qReducer}) => forms89qReducer.collect)
     const results8 = useSelector(({forms8Reducer}) => forms8Reducer.results)
-    console.log('results8 ',results8)
+    //console.log('results8 ',results8)
     const collect9 = useSelector(({forms9Reducer}) => forms9Reducer.collect)
     const collect10 = useSelector(({forms10Reducer}) => forms10Reducer.collect)
     const classes = useStyles();
@@ -174,7 +174,23 @@ function MainMenu(props) {
                         </ListItemIcon>
                     การคัดกรองการกลั้นปัสสาวะ
                     </ListItem>
-                </Link>
+                </Link><hr/>
+                <Link to="/tai">
+                    <ListItem button>
+                        {/* <ListItemIcon>
+                            <CheckCircleIcon className={colorIcon.i6}/>
+                        </ListItemIcon> */}
+                    การประเมิน TAI Classified
+                    </ListItem>
+                </Link> <hr/>
+                <Link to="/mmsi">
+                    <ListItem button>
+                        {/* <ListItemIcon>
+                            <CheckCircleIcon className={colorIcon.i7}/>
+                        </ListItemIcon> */}
+                    การทดสอบสมองเบื่องต้นฉบับภาษาไทย : MMSE-Thai 2002
+                    </ListItem>
+                </Link> <hr/>
                 </CardContent>
                 <ShowResultDialog />
             </Card>

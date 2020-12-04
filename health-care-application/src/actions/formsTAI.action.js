@@ -1,10 +1,15 @@
-
+import {CREATE_NEW_FORMS6T } from "../constants";
 import Axios from 'axios';
 
-
-
-
-
+export const setStateToAdd = (payload) => ({
+  type: CREATE_NEW_FORMS6T,
+  payload
+})
+export const add = (payload) =>{
+  return dispatch=>{
+      dispatch(setStateToAdd(payload))
+  }
+}
 export const updateTAI = (payload)=>{
   Axios.put("http://localhost:3001/TAI/update/"+payload[0],{
     TAI_IMMOBILIZE: payload[1],
