@@ -44,10 +44,11 @@ const createElder = (payload) => {
 // update elder
 export const updateElder = (payload) => {
   Axios.put(`http://localhost:3001/elder/update/${payload[0]}`, {
-    ELD_FIRSTNAME: payload[1],
-    ELD_LASTNAME: payload[2],
-    ELD_PHONE: payload[3],
-    ELD_AKA: payload[4],
+    ELD_ID_NUMBER: payload[1],
+    ELD_FIRSTNAME: payload[2],
+    ELD_LASTNAME: payload[3],
+    ELD_PHONE: payload[4],
+    ELD_AKA: payload[5],
   }).then(() => {
     alert("Elder update Success");
   });

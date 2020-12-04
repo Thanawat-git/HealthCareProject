@@ -23,11 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    /* background-color: aqua; */
-    /* position: absolute; */
-    /* top: 20%; */
-    /* left: 50%; */
+    margin-top: 60px;
 }
 .inner-seach2{
     margin-top: 20px;

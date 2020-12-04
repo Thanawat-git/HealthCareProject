@@ -27,15 +27,13 @@ export default function EditInfo() {
   const classes = useStyles();
   const elderly = useSelector(({ searchEld }) => searchEld.selectEld);
   const [state, setState] = useState({
+    eid: elderly.ELD_ID_NUMBER,
     fName: elderly.ELD_FIRSTNAME,
     lName: elderly.ELD_LASTNAME,
     nName: elderly.ELD_AKA,
     phone: elderly.ELD_PHONE,
-    // foods: [],
-    // drugs: [],
-    // diseases: [],
   })
-  const {fName,lName,nName,phone} = state
+  const {eid,fName,lName,nName,phone} = state
   const [foods, setfoods] = useState([])
   const [drugs, setdrugs] = useState([])
   const [diseases, setdiseases] = useState([])
@@ -108,7 +106,7 @@ export default function EditInfo() {
   }
   const saveChange=()=>{
     console.log('aaaaa')
-    actionP1.updateElder([elderly.ELD_ID_NUMBER,fName,lName,phone,nName])
+    actionP1.updateElder([elderly.ELD_ID_NUMBER,eid,fName,lName,phone,nName])
   }
 
   return (
@@ -117,6 +115,9 @@ export default function EditInfo() {
         <div className="ettitle">
           <h3>แก้ไขข้อมูล</h3>
           <h4>{elderly.ELD_ID_NUMBER}</h4>
+        </div>
+        <div className="edit-fill">
+          <TextField name="eid" onChange={onChange} label="รหัสบัตรประชาชน" defaultValue={eid} fullWidth />
         </div>
         <div className="edit-fill">
           <TextField name="fName" onChange={onChange} label="ชื่อ" defaultValue={fName} fullWidth />

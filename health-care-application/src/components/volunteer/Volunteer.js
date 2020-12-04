@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import {AppBar, Avatar, Button, Divider, Drawer, Fab, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, OutlinedInput, TextField, Toolbar, Typography} from '@material-ui/core';
+import {AppBar, Avatar, Button, Divider, Drawer, Fab, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography} from '@material-ui/core';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -64,12 +64,6 @@ export default function Volunteer() {
           </List>
           <Divider />
           <List className="link" >
-            <Link to="/sec1-page1">
-            <ListItem button >
-              <ListItemIcon> <PersonAddIcon /> </ListItemIcon>
-              <ListItemText primary='เพิ่มผู้สูงอายุรายใหม่' />
-            </ListItem>
-            </Link>
             <ListItem button >
               <ListItemIcon> <VpnKeyIcon /> </ListItemIcon>
               <ListItemText primary='เปลี่ยนรหัสผ่าน' />
@@ -83,33 +77,34 @@ export default function Volunteer() {
           </List>
         </div>
       );
-    
+
       return (
         <div className="vtcontainer">
             <div className="nav-vtcontainer linkicon">
-                <div className={classes.root}>
-                    <AppBar position="fixed">
-                        <Toolbar>
-                            <Button onClick={toggleDrawer('left', true)} color="inherit">
-                            <MenuIcon />
-                            </Button>
-                            <Drawer anchor='left' open={state['left']} onClose={toggleDrawer('left', false)}>
-                                {list('left')}
-                            </Drawer>
-                            <Typography variant="h6" className={classes.title}>
-                                Project Name
-                            </Typography>
-                            <Link to="/login">
-                            <Button color="inherit"><ExitToAppIcon /></Button>
-                            </Link>
-                        </Toolbar>
-                    </AppBar>
-                </div>
+              <div className={classes.root}>
+                <AppBar position="fixed">
+                  <Toolbar>
+                    <Button onClick={toggleDrawer('left', true)} color="inherit">
+                    <MenuIcon />
+                    </Button>
+                    <Drawer anchor='left' open={state['left']} onClose={toggleDrawer('left', false)}>
+                        {list('left')}
+                    </Drawer>
+                    <Typography variant="h6" className={classes.title}>
+                        Project Name
+                    </Typography>
+                    <Link to="/login">
+                    <Button color="inherit"><ExitToAppIcon /></Button>
+                    </Link>
+                  </Toolbar>
+                </AppBar>
+              </div>
             </div>
             <div className="seach-eld">
             <h3>ค้นหาผู้สูงอายุ</h3>
                 <Search />
             </div>
+            <div id="piechart_3d" style={{width: 900, height: 500}}></div>
             <div className="nav-bottom">
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
@@ -118,7 +113,7 @@ export default function Volunteer() {
                     <PersonAddIcon />
                 </Fab>
                 </Link>
-                {/* <p>เพิ่มผู้สูงอายุรายใหม่</p> */}
+                <p>เพิ่มผู้สูงอายุรายใหม่</p>
                 </Toolbar>
             </AppBar>
             </div>
