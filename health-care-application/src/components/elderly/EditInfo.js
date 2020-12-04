@@ -19,7 +19,7 @@ import * as actionP1 from '../../actions/forms1p1.action'
 const useStyles = makeStyles({
     title: {
       textAlign: 'center',
-      minWidth: 350,
+      // minWidth: 350,
     },
 });
 
@@ -38,9 +38,6 @@ export default function EditInfo() {
   const [drugs, setdrugs] = useState([])
   const [diseases, setdiseases] = useState([])
   useEffect(() => {
-    console.log("selectEld: ");
-    console.log(typeof diseases);
-    console.log(foods);
     if(elderly.FOOD_ALLERGY.length!=0){
       for(let i=0;i<elderly.FOOD_ALLERGY.length;i++){
         foods.push(elderly.FOOD_ALLERGY[i].FOOD_NAME)
@@ -56,18 +53,37 @@ export default function EditInfo() {
         diseases.push(elderly.DISEASE[i].DIS_NAME)
       }
     }
-    console.log(foods);
   }, []);
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [food, setfood] = useState(null); // ชื่อโรคทีละตัว
   const [drug, setdrug] = useState(null); // ชื่อโรคทีละตัว
   const [disease, setdisease] = useState(null); // ชื่อโรคทีละตัว
   const [defineDialog,setdefineDialog] = useState('')
+  const [editFillFood, seteditFillFood] = useState(false) // ใช้เปิด fill ให้ edit food
+  const [editFillDrug, seteditFillDrug] = useState(false) // ใช้เปิด fill ให้ edit drug
+  const [editFillDisease, seteditFillDisease] = useState(false) // ใช้เปิด fill ให้ edit disease
+  const [indexFood, setIndexFood] = useState(null) // ใช้ระบุ fill ที่ต้องการแก้ไข
+  const [indexDrug, setIndexDrug] = useState(null) // ใช้ระบุ fill ที่ต้องการแก้ไข
+  const [indexDisease, setIndexDisease] = useState(null) // ใช้ระบุ fill ที่ต้องการแก้ไข
 
   const openDialog = (iden) =>{
     setOpen(true)
+    setfood('')
+    setdrug('')
+    setdisease('')
     setdefineDialog(iden)
+  }
+  const editFood =(i)=> {
+    food ? foods.splice(i,1,food) : foods.splice(i, 1)
+    seteditFillFood(false)
+  }
+  const editDrug =(i)=> {
+    drug ? drugs.splice(i,1,drug) : drugs.splice(i, 1)
+    seteditFillDrug(false)
+  }
+  const editDisease =(i)=> {
+    disease ? diseases.splice(i,1,disease) : diseases.splice(i, 1)
+    seteditFillDisease(false)
   }
  
   const addItem = ()=>{
@@ -76,31 +92,40 @@ export default function EditInfo() {
       actionP5.createFood([elderly.ELD_ID_NUMBER, food])
     }
     if(defineDialog=='drugs'){
-      food && setdrugs([...drugs, drug])
+      drug && setdrugs([...drugs, drug])
       actionP5.createDrug([elderly.ELD_ID_NUMBER, drug])
     }
     if(defineDialog=='diseases'){
-      food && setdiseases([...diseases, disease])
+      disease && setdiseases([...diseases, disease])
       actionP6.createDisease([elderly.ELD_ID_NUMBER, disease])
     }
   }
-  const deleteItem =(value, index)=>{
-    if(defineDialog=='foods'){
+  useEffect(() => {
+    setfood(null)
+    console.log('food1 ',food)
+    setdrug(null)
+    console.log('disease ',disease)
+    setdisease('')
+    setOpen(false)
+  }, [foods,drugs,diseases])
+  const deleteItem =(value, index, iden)=>{
+    if(iden=='foods'){
       foods.splice(index, 1);
       setfoods([...foods])
       actionP5.deleteFood([elderly.ELD_ID_NUMBER, value])
     }
-    if(defineDialog=='drugs'){
+    if(iden=='drugs'){
       drugs.splice(index, 1);
       setdrugs([...drugs])
       actionP5.deleteDrug([elderly.ELD_ID_NUMBER, value])
     }
-    if(defineDialog=='diseases'){
+    if(iden=='diseases'){
       diseases.splice(index, 1);
       setdiseases([...diseases])
       actionP6.deleteDisease([elderly.ELD_ID_NUMBER, value])
     }
   }
+
   const onChange = (e)=>{
     setState({...state, [e.target.name]: e.target.value})
   }
@@ -133,56 +158,107 @@ export default function EditInfo() {
         </div>
         <div className="edit-fill">
         <p>การแพ้อาหาร</p>
+        <Button variant="outlined" color="primary" onClick={()=>openDialog("foods")}>เพิ่ม</Button>
         {
-
-            foods.length!=0? 
-            <div className="listItem">
+            foods.length!=0 &&
+            <div className="">
               {
-                foods.map(value=>{
+                foods.map((value,index)=>{
                   return(
-                      <span> {value}, </span>
+                    <div>
+                    <div className="listItem">
+                      <span> {index+1}. {value} </span>
+                      <div>
+                      <Button variant="outlined" color="secondary" size="small" onClick={()=>deleteItem(value,index,'foods')}>ลบ</Button>&nbsp;
+                      <Button variant="outlined" color="primary" size="small" onClick={()=>{setIndexFood(index); seteditFillFood(true)}}>แก้ไข</Button>
+                      </div>
+                    </div>
+                    {index===indexFood &&  
+                    <Dialog fullWidth="sm" open={editFillFood} keepMounted onClose={()=>seteditFillFood(false)} className={classes.title} >
+                      <DialogTitle>แก้ไขอาหาร</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          <TextField  defaultValue={value} className={classes.title} onChange={(e)=>setfood(e.target.value)} fullWidth />
+                        </DialogContentText>
+                        <DialogContentText>
+                          <Button variant="outlined" color="primary" onClick={()=>editFood(index)}>บันทึก</Button>
+                        </DialogContentText>
+                      </DialogContent>
+                      </Dialog> }
+                  </div>
                   )
                 })
               }
-              <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("foods")}>แก้ไข</Button>
+              
             </div>
-            :<Button variant="outlined" color="primary" onClick={()=>openDialog("foods")}>เพิ่ม</Button>
         }
         </div>
         <div className="edit-fill">
         <p>การแพ้ยา</p>
+        <Button variant="outlined" color="primary" onClick={()=>openDialog("drugs")}>เพิ่ม</Button>
         {
-              drugs.length!=0? 
-              <div className="listItem">
-                {
-                  drugs.map(value=>{
-                    return(
-                      <span> {value}, </span>
-                    )
-                  })
-                }
-                <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("drugs")}>แก้ไข</Button>
-              </div>
-              :<Button variant="outlined" color="primary" onClick={()=>openDialog("drugs")}>เพิ่ม</Button>
+          drugs.length!=0 &&
+          <div className="">
+            {
+              drugs.map((value,index)=>{
+                return(
+                  <div className="listItem">
+                    <span> {index+1}. {value} </span>
+                    <div>
+                    <Button variant="outlined" color="secondary" size="small" onClick={()=>deleteItem(value,index,'drugs')}>ลบ</Button>&nbsp;
+                    <Button variant="outlined" color="primary" size="small" onClick={()=>{setIndexDrug(index); seteditFillDrug(true)}}>แก้ไข</Button>
+                    </div>
+                    {index===indexDrug && 
+                    <Dialog fullWidth="sm" open={editFillDrug} keepMounted onClose={()=>seteditFillDrug(false)} className={classes.title} >
+                      <DialogTitle>แก้ไขยา</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          <TextField  defaultValue={value} className={classes.title} onChange={(e)=>setdrug(e.target.value)} fullWidth />
+                        </DialogContentText>
+                        <DialogContentText>
+                          <Button variant="outlined" color="primary" onClick={()=>editDrug(index)}>บันทึก</Button>
+                        </DialogContentText>
+                      </DialogContent>
+                      </Dialog> }
+                  </div>
+                )
+              })
+            }
+          </div>
         }
         </div>
         <div className="edit-fill">
         <p>โรคประจำตัว</p>
+        <Button variant="outlined" color="primary" onClick={()=>openDialog("diseases")}>เพิ่ม</Button>
         {
-              diseases.length==0? 
-              <Button variant="outlined" color="primary" onClick={()=>openDialog("diseases")}>เพิ่ม</Button>
-              :
-              <div className="listItem">
-                {
-                  diseases.map(value=>{
-                    return(
-                      <span> {value}, </span>
-                    )
-                  })
-                }
-                <Button variant="outlined" color="primary" size="small" onClick={()=>openDialog("diseases")}>แก้ไข</Button>
-              </div>
-              
+          diseases.length!=0 &&
+          <div className="">
+            {
+              diseases.map((value,index)=>{
+                return(
+                  <div className="listItem">
+                    <span> {index+1}. {value} </span>
+                    <div>
+                    <Button variant="outlined" color="secondary" size="small" onClick={()=>deleteItem(value,index, 'diseases')}>ลบ</Button>&nbsp;
+                    <Button variant="outlined" color="primary" size="small" onClick={()=>{setIndexDisease(index); seteditFillDisease(true)}}>แก้ไข</Button>
+                    </div>
+                    {index===indexDisease && 
+                    <Dialog fullWidth="sm" open={editFillDisease} keepMounted onClose={()=>seteditFillDisease(false)} className={classes.title} >
+                      <DialogTitle>แก้ไข</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          <TextField  defaultValue={value} className={classes.title} onChange={(e)=>setdisease(e.target.value)} fullWidth />
+                        </DialogContentText>
+                        <DialogContentText>
+                          <Button variant="outlined" color="primary" onClick={()=>editDisease(index)}>บันทึก</Button>
+                        </DialogContentText>
+                      </DialogContent>
+                      </Dialog> }
+                  </div>
+                )
+              })
+            }
+          </div>
         }
         </div>
 
@@ -193,69 +269,38 @@ export default function EditInfo() {
         </div>
       </form>
 
+    {/* Dialog Add */}
       <Dialog
         open={open}
         keepMounted
+        fullWidth="xs"
         onClose={()=>setOpen(false)}
         className={classes.title} 
         >
         <DialogTitle >
-            {defineDialog=='foods'?'แก้ไขรายการอาหารที่แพ้':defineDialog=='drugs'?'แก้ไขรายการยาที่แพ้':'แก้ไขโรคประจำตัว'} 
+            {defineDialog=='foods'?'เพิ่มรายการอาหารที่แพ้':defineDialog=='drugs'?'เพิ่มรายการยาที่แพ้':'เพิ่มโรคประจำตัว'} 
         </DialogTitle>
         <DialogContent>
-            <DialogContentText>
-                { defineDialog=='diseases' ?
-                <Autocomplete
-                className={classes.title} 
-                options={SimpleDisease}
-                getOptionLabel={(option) => option.name}
-                size="small"
-                onInputChange={(event, value)=>setdisease(value)}
-                renderInput={(params) => (<TextField {...params} />)}
-                />
-                :defineDialog=='foods'?<TextField  className={classes.title} onChange={(e)=>setfood(e.target.value)} label="ชื่ออาหาร" fullWidth />
-                :<TextField className={classes.title} onChange={(e)=>setdrug(e.target.value)} label="ชื่อยา" fullWidth />}
-            </DialogContentText>
-            <DialogContentText>
-                <Button variant="outlined" color="primary" onClick={()=>addItem()}>เพิ่ม</Button>
-            </DialogContentText>
-            <hr/>
-            {/* show all item */}
-            <DialogContentText>
-            
-            {
-                defineDialog=='foods' ?
-                foods.length!=0&& foods.map((value,index)=>{
-                    return(
-                        <div className="listItem" >
-                        <span> {value} </span>
-                        <Button variant="contained" size="small" onClick={()=>deleteItem(value,index)}>ลบ</Button>
-                        </div>
-                    )
-                })
-                : defineDialog=='drugs' ?
-                drugs.length!=0&& drugs.map((value,index)=>{
-                    return(
-                        <div className="listItem" >
-                        <span> {value} </span>
-                        <Button variant="contained" size="small" onClick={()=>deleteItem(value,index)}>ลบ</Button>
-                        </div>
-                    )
-                })
-                :
-                diseases.length==0&& diseases.map((value,index)=>{
-                    return(
-                        <div className="listItem" >
-                        <span> {value} </span>
-                        <Button variant="contained" size="small" onClick={()=>deleteItem(value,index)}>ลบ</Button>
-                        </div>
-                    )
-                })
-            }
-            
-            </DialogContentText>
+          <DialogContentText>
+            { defineDialog=='diseases' &&
+            <Autocomplete
+            className={classes.title} 
+            options={SimpleDisease}
+            getOptionLabel={(option) => option.name}
+            size="small"
+            inputValue={disease}
+            onInputChange={(event, value)=>setdisease(value)}
+            renderInput={(params) => (<TextField {...params} />)}
+            /> }
+            {defineDialog=='foods'&&<TextField autoFocus value={food} className={classes.title} onChange={(e)=>setfood(e.target.value)} label="ชื่ออาหาร" fullWidth/>}
+            {defineDialog=='drugs'&&<TextField autoFocus value={drug} className={classes.title} onChange={(e)=>setdrug(e.target.value)} label="ชื่อยา" fullWidth />}
+          </DialogContentText>
+          <DialogContentText>
+            <Button variant="outlined" color="primary" onClick={()=>addItem()}>เพิ่ม</Button>
+          </DialogContentText>
         </DialogContent>
         </Dialog>
+
     </div>
   );
 }

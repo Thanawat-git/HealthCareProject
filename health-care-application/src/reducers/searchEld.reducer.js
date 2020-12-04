@@ -7,9 +7,9 @@ const initialState = {
         ELD_LASTNAME: null,
         ELD_AKA: null,
         ELD_PHONE: null,
-        FOOD_ALLERGY: [{FOOD_NAME:null}], //{FOOD_NAME:null}
-        DRUG_ALLERGY: [{DRUG_NAME:null}], //{DRUG_NAME:null}
-        DISEASE: [{DIS_NAME:null}] //{DIS_NAME:null}
+        FOOD_ALLERGY: [], //{FOOD_NAME:null}
+        DRUG_ALLERGY: [], //{DRUG_NAME:null}
+        DISEASE: [] //{DIS_NAME:null}
     },
 }
 
