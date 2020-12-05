@@ -72,7 +72,7 @@ class Login extends Component {
                 <i className="fas fa-lock"/>
                 <input type="password" placeholder="Password" />
               </div>
-              <Link to="/Volunteer" >
+              <Link to="/super-admin" >
               <input type="submit" value="ลงชื่อเข้าใช้" className="btn-login solid" />
               </Link>
               <Link to="/verify" >ลืมรหัสผ่าน</Link>
@@ -83,7 +83,7 @@ class Login extends Component {
         <div className="panels-nlcontainer">
           <div className="panel left-panel">
             <div className="nlcontent">
-              <h3>Hello Volunteers</h3>
+              <h3>Hello Admin</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui atque dolore minus fugiat dolores, beatae, animi doloremque molestias nam ex quisquam iusto aliquam, sed ipsa commodi quod dolor in.</p>
             </div>
             <img src={loginImg} className="login-img" alt=""/>

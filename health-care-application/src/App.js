@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Login from "./components/login/login";
-import Header from "./components/header/header";
-import HomeBody from "./components/home-body/home-body";
+import {login, loginAdmin, loginAdminMobile} from "./components/login";
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
@@ -110,14 +108,10 @@ export default class App extends Component {
           {/* Genaral Path */}
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/verify" component={VerifyIdentity}></Route>
-          <Route path="/login" component={Login}></Route>
- 
-          {/* Volunteer Page */}
-          <Route path="/volunteer-page">
-            {/* <AdminHeader/>      */}
-            <Header name="Volunteer Name"/>
-            <HomeBody />
-          </Route>
+          <Route path="/login/admin" component={loginAdmin}></Route> 
+          <Route path="/login/mobile" component={loginAdminMobile}></Route> 
+          <Route path="/login" component={login}></Route> 
+
           <Route exact={true} path="/" component={this.redirectToLogin}></Route>
           <Route exact={true} path="*" component={this.redirectToLogin}></Route> {/* Unknow path */}
         </Switch>
