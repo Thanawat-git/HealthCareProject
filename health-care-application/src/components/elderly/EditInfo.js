@@ -180,7 +180,8 @@ export default function EditInfo() {
                         <DialogContentText>
                           <TextField  defaultValue={value} className={classes.title} onChange={(e)=>setfood(e.target.value)} fullWidth />
                         </DialogContentText>
-                        <DialogContentText>
+                        <DialogContentText className="listItem">
+                          <Button variant="outlined" color="secondary" onClick={()=>seteditFillFood(false)}>ยกเลิก</Button>
                           <Button variant="outlined" color="primary" onClick={()=>editFood(index)}>บันทึก</Button>
                         </DialogContentText>
                       </DialogContent>
@@ -215,7 +216,8 @@ export default function EditInfo() {
                         <DialogContentText>
                           <TextField  defaultValue={value} className={classes.title} onChange={(e)=>setdrug(e.target.value)} fullWidth />
                         </DialogContentText>
-                        <DialogContentText>
+                        <DialogContentText className="listItem">
+                          <Button variant="outlined" color="secondary" onClick={()=>seteditFillDrug(false)}>ยกเลิก</Button>
                           <Button variant="outlined" color="primary" onClick={()=>editDrug(index)}>บันทึก</Button>
                         </DialogContentText>
                       </DialogContent>
@@ -249,7 +251,8 @@ export default function EditInfo() {
                         <DialogContentText>
                           <TextField  defaultValue={value} className={classes.title} onChange={(e)=>setdisease(e.target.value)} fullWidth />
                         </DialogContentText>
-                        <DialogContentText>
+                        <DialogContentText className="listItem">
+                          <Button variant="outlined" color="secondary" onClick={()=>seteditFillDisease(false)}>ยกเลิก</Button>
                           <Button variant="outlined" color="primary" onClick={()=>editDisease(index)}>บันทึก</Button>
                         </DialogContentText>
                       </DialogContent>
