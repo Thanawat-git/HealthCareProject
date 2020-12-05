@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import {Button, Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
+import { Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ShowResultDialog from "./ShowResultDialog";
+import SumaryReport from "./SumaryReport";
 
 const useStyles = makeStyles({
     root: {
@@ -14,6 +14,7 @@ const useStyles = makeStyles({
       display: 'block',
       marginLeft: 'auto',
       marginRight: 'auto',
+      marginBottom: 10,
     },
     a: {
         textDecoration:'none',
@@ -177,22 +178,16 @@ function MainMenu(props) {
                 </Link><hr/>
                 <Link to="/tai">
                     <ListItem button>
-                        {/* <ListItemIcon>
-                            <CheckCircleIcon className={colorIcon.i6}/>
-                        </ListItemIcon> */}
                     การประเมิน TAI Classified
                     </ListItem>
                 </Link> <hr/>
                 <Link to="/mmsi">
                     <ListItem button>
-                        {/* <ListItemIcon>
-                            <CheckCircleIcon className={colorIcon.i7}/>
-                        </ListItemIcon> */}
                     การทดสอบสมองเบื่องต้นฉบับภาษาไทย : MMSE-Thai 2002
                     </ListItem>
                 </Link> <hr/>
+                <SumaryReport/>
                 </CardContent>
-                <ShowResultDialog />
             </Card>
         </React.Fragment>
     )

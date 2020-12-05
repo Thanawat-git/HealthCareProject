@@ -5,10 +5,12 @@ import {login, loginAdmin, loginAdminMobile} from "./components/login";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
 import ResetPassword from "./components/reset-password/reset-password";
+
+// super Admin
 import AdminHeader from "./components/admin-super/header/header"
-import AdminMenu from "./components/admin-super/leftSidebar/leftSidebar"
-import AdminContent from "./components/admin-super/content/content"
 import AdminFooter from "./components/admin-super/footer/footer"
+import SuperAdminPage from "./components/admin-super";
+
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
@@ -75,12 +77,7 @@ export default class App extends Component {
           <Route path="/sec10" component={sec10} />
 
           {/* Super Admin */}
-          <Route path="/super-admin">
-            <AdminHeader name="Super Admin Name"/>
-            <AdminMenu/>
-            <AdminContent/>
-            <AdminFooter/>
-          </Route>
+          <Route path="/superadminpage" component={SuperAdminPage} />
 
           {/* Genaral Admin */}
           <Route path="/genaral-admin">

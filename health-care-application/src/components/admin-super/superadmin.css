@@ -1,0 +1,9 @@
+/* header */
+.navbar-nav{
+    cursor: pointer;
+    margin-bottom: 5px !important;
+}
+
+.brand-link {
+    border: none !important;
+}

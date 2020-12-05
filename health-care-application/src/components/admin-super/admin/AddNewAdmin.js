@@ -57,9 +57,11 @@ const DialogActions = withStyles((theme) => ({
 export default function AddNewAdmin() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [yea, setYea] = useState();
-  const [mon, setMon] = useState();
-  const [day, setDay] = useState();
+  const [open3, setOpen3] = useState(false);
+  const [yea, setYea] = useState(); //ปี
+  const [mon, setMon] = useState(); //เดือน
+  const [day, setDay] = useState(); //วัน
+  const [position, setPosition] = useState(null)
 
 //   date picker
   const [years, setYears] = useState([]);
@@ -280,7 +282,13 @@ export default function AddNewAdmin() {
                     )}
                     />
                 </div>
-              
+              <div className="col-12 input-position-fill">
+                <TextField id="select" label="ตำแหน่งงาน" variant="outlined" value={position} select fullWidth>
+                  <MenuItem value="" onClick={()=>setPosition("")} ><em>None</em></MenuItem>
+                  <MenuItem value="10" onClick={()=>setPosition("10")} >Ten</MenuItem>
+                  <MenuItem value="20" onClick={()=>setPosition("20")}>Twenty</MenuItem>
+                </TextField>
+              </div>
             </div>
           </div>
         </DialogContent>
