@@ -7,6 +7,7 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  Button,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,9 @@ import * as formAction from "../../../actions/forms1p5.action";
 
 export default function Sections1_5() {
   const forms1p5Reducer = useSelector(({ forms1p5Reducer }) => forms1p5Reducer);
-  const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
+  const peopleID = useSelector(
+    ({ forms1p1Reducer }) => forms1p1Reducer.peopleID
+  );
   const dispatch = useDispatch();
 
   const [drugAllergy, setdrugAllergy] = useState(forms1p5Reducer.drugAllergy);
@@ -26,57 +29,57 @@ export default function Sections1_5() {
   const [drugs, setdrugs] = useState(forms1p5Reducer.drugs); //array
 
   const confirmdrug = () => {
-    formAction.createDrug([peopleID, drug])
+    formAction.createDrug([peopleID, drug]);
     drug && setdrugs([...drugs, drug]);
     setdrug("");
   };
   const confirmfood = () => {
-    formAction.createFood([peopleID, food])
+    formAction.createFood([peopleID, food]);
     food && setfoods([...foods, food]);
     setfood("");
   };
 
   const handleSubmit = (e) => {
-    drugAllergy===null && emptyValue()
-    foodAllergy===null && emptyValue()
-    drugAllergy=="drugallergic" && drugs.length==0 && emptyValue()
-    foodAllergy=="foodallergic" && foods.length==0 && emptyValue()
+    drugAllergy === null && emptyValue();
+    foodAllergy === null && emptyValue();
+    drugAllergy == "drugallergic" && drugs.length == 0 && emptyValue();
+    foodAllergy == "foodallergic" && foods.length == 0 && emptyValue();
     const data = [drugAllergy, drugs, foodAllergy, foods];
     dispatch(formAction.add(data));
 
-    function emptyValue(){
-      e.preventDefault(); 
-      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+    function emptyValue() {
+      e.preventDefault();
+      alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
       // return;
     }
   };
 
-  const [disabled, setdisabled] = useState(false)
-  const [disabled2, setdisabled2] = useState(false)
+  const [disabled, setdisabled] = useState(false);
+  const [disabled2, setdisabled2] = useState(false);
 
   useEffect(() => {
-    drugs.length>0 && setdisabled(true)
-    drugs.length==0 && setdisabled(false)
+    drugs.length > 0 && setdisabled(true);
+    drugs.length == 0 && setdisabled(false);
   }, [drugs]);
 
   useEffect(() => {
-    foods.length>0 && setdisabled2(true)
-    foods.length==0 && setdisabled2(false)
+    foods.length > 0 && setdisabled2(true);
+    foods.length == 0 && setdisabled2(false);
   }, [foods]);
 
-  const deletedrug = (index,value)=>{
-    console.log('index: ',index,' drug: ',value);
-    formAction.deleteDrug([peopleID,value])
-    drugs.splice(index, 1); 
-    setdrugs([...drugs])
-  } 
+  const deletedrug = (index, value) => {
+    console.log("index: ", index, " drug: ", value);
+    formAction.deleteDrug([peopleID, value]);
+    drugs.splice(index, 1);
+    setdrugs([...drugs]);
+  };
 
-  const deletefood = (index,value)=>{
-    console.log('index: ',index,' food: ',value);
-    formAction.deleteFood([peopleID,value])
-    foods.splice(index, 1); 
-    setfoods([...foods])
-  }
+  const deletefood = (index, value) => {
+    console.log("index: ", index, " food: ", value);
+    formAction.deleteFood([peopleID, value]);
+    foods.splice(index, 1);
+    setfoods([...foods]);
+  };
 
   return (
     <div className="css-form">
@@ -146,10 +149,26 @@ export default function Sections1_5() {
             <div className="col-12">
               <ul>
                 {drugs.map((value, index) => {
-                  let i = index
-                  return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={()=>deletedrug(index,value)}>ลบ</button> </span> 
-                  </li>;
+                  return (
+                    <div>
+                      <hr />
+                      <div className="listItem">
+                        <div>
+                          <li key={index}> {`${value}`}</li>
+                        </div>
+                        <div>
+                          <Button
+                            variant="outlined"
+                            color="secondary"
+                            size="small"
+                            onClick={() => deletedrug(index, value)}
+                          >
+                            ลบ
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  );
                 })}
               </ul>
             </div>
@@ -218,11 +237,26 @@ export default function Sections1_5() {
             <div className="col-12">
               <ul>
                 {foods.map((value, index) => {
-                  return <li key={index}> {`${index} ${value}`} 
-                  <span> <button onClick={()=>deletefood(index,value)}>ลบ</button> </span> 
-                  {/* <span> <button onClick={()=>{diseases.splice(index, 1); console.log('index: ', index); setdiseases([...diseases])}}>ลบ</button> </span> */}
-                  
-                  </li>;
+                  return (
+                    <div>
+                      <hr />
+                      <div className="listItem">
+                        <div>
+                          <li key={index}> {`${value}`}</li>
+                        </div>
+                        <div>
+                          <Button
+                            variant="outlined"
+                            color="secondary"
+                            size="small"
+                            onClick={() => deletefood(index, value)}
+                          >
+                            ลบ
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  );
                 })}
               </ul>
             </div>

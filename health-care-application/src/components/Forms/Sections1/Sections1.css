@@ -46,3 +46,15 @@ strong {
 .links1p6 a, .links1p6 a:hover{
     text-decoration: none;
 }
+
+.listItem li{
+    font-size: 20px;
+}
+.listItem button{
+    margin-bottom: 5px;
+}
+
+/* Overwrite react-date-picker css class */
+.react-date-picker__wrapper{ 
+    border: none;
+}

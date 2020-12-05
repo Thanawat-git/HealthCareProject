@@ -55,10 +55,11 @@ export default function Sections1_6() {
           <div className="row">
             <div className="col-12">
               <p>
-                <strong>โรคประจำตัว</strong>
+                <strong>โรคประจำตัว</strong> 
               </p>
+              <h>ถ้าหากพิมพ์ผิดสามารถกดลบได้</h>
             </div>
-            <div className="col-10">
+            <div className="col-9">
               <Autocomplete
                 id="SimpleDisease"
                 options={SimpleDisease}
@@ -86,13 +87,27 @@ export default function Sections1_6() {
             <div className="col-12" style={{marginTop:20}} >
               <ol>
                 {diseases.map((value, index) => {
-                  return <li key={index}> {`${value}`} 
-                  <span> <button onClick={()=>deletedisease(index,value)}>ลบ</button> </span> 
-                  </li>;
+                  return (
+                    <div className="listItem">
+                      <div className="">
+                      <li key={index}> {`${value}`}</li>
+                      </div>
+                      <div className="">
+                      <Button
+                            variant="outlined"
+                            color="secondary"
+                            size="small"
+                            onClick={() => deletedisease(index, value)}
+                          >
+                            ลบ
+                          </Button>
+                      </div>
+                    </div>
+                  );
                 })}
                 {}
               </ol>
-              <h>ถ้าหากพิมพ์ผิดสามารถกดลบได้</h>
+              
             </div>
           </div>
 
