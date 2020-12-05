@@ -284,9 +284,10 @@ export default function AddNewAdmin() {
                 </div>
               <div className="col-12 input-position-fill">
                 <TextField id="select" label="ตำแหน่งงาน" variant="outlined" value={position} select fullWidth>
-                  <MenuItem value="" onClick={()=>setPosition("")} ><em>None</em></MenuItem>
-                  <MenuItem value="10" onClick={()=>setPosition("10")} >Ten</MenuItem>
-                  <MenuItem value="20" onClick={()=>setPosition("20")}>Twenty</MenuItem>
+                  <MenuItem onClick={()=>setPosition("")} ><em>ไม่มีตำแหน่ง</em></MenuItem>
+                  <MenuItem onClick={()=>setPosition("พยาบาลวิชาชีพ")} >พยาบาลวิชาชีพ</MenuItem>
+                  <MenuItem onClick={()=>setPosition("นักกายภาพบำบัด")}>นักกายภาพบำบัด</MenuItem>
+                  <MenuItem onClick={()=>setPosition("นักวิชาการสาธารสุข")}>นักวิชาการสาธารสุข</MenuItem>
                 </TextField>
               </div>
             </div>

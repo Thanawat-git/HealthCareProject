@@ -1,25 +1,32 @@
 import React from 'react'
-import MainContent from "./MainContent";
-import AdminContent from "../admin/AdminContent";
 import {
-  Link,
+  Redirect,
   Route,
   useRouteMatch,
 } from 'react-router-dom'
+import MainContent from "./MainContent";
+import AdminContent from "../admin/AdminContent";
+import VolunteerContent from "../volunteer/VolunteerContent";
 
 export default function Content() {
-  const { url, path } = useRouteMatch()
-  // console.log('url', url)
-  // console.log('path', path)
+  const { path } = useRouteMatch()
+  const redirectToMainContent = ()=>{
+    return <Redirect to={`${path}/main-content`}/>
+  }
   
   return (
     <div className="content-wrapper">
-      <Route path={`${path}/main-content`}>
-        <MainContent/>
-      </Route>
+      
       <Route path={`${path}/admin-content`}>
         <AdminContent/>
       </Route>
+      <Route path={`${path}/volunteer-content`}>
+        <VolunteerContent/>
+      </Route>
+      <Route path={`${path}/main-content`}>
+        <MainContent/>
+      </Route>
+      <Route exact={true} path={`${path}/`} component={redirectToMainContent}></Route>
     </div>
   );
 }

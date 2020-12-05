@@ -27,7 +27,7 @@ export default function LeftSideBarMenu() {
               data-accordion="false"
             >
               <li className="nav-item">
-                <Link to={`${url}/main-content`} className="nav-link">
+                <Link to={`${url}/`} className="nav-link">
                   <i className="nav-icon fas fa-home" />
                   <p>หน้าแรก</p>
                 </Link>
@@ -41,10 +41,10 @@ export default function LeftSideBarMenu() {
               </li>
 
               <li className="nav-item">
-                <a href="pages/widgets.html" className="nav-link">
+                <Link to={`${url}/volunteer-content`} className="nav-link">
                   <i className="nav-icon fas fa-user-shield" />
                   <p>จัดการอาสาสมัคร</p>
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
