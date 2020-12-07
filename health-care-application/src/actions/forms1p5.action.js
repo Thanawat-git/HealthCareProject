@@ -6,24 +6,14 @@ export const setStateToAdd = (payload) => ({
   payload,
 });
 
-// export const setStateToEdit = () => ({
-//     type: FORM_EDIT,
-// })
-
 export const add = (payload) => {
   return (dispatch) => {
     dispatch(setStateToAdd(payload));
   };
 };
 
-// export const edit = () =>{
-//     return dispatch=>{
-//         dispatch(setStateToEdit())
-//     }
-// }
-
 export const createDrug = (payload) => {
-  Axios.post("http://localhost:3001/elder/drug/create", {
+  Axios.post("http://10.80.6.136:3001/elder/drug/create", {
     ELD_ID_NUMBER: payload[0],
     DRUG_NAME: payload[1],
     EXAM_DATE: new Date(),
@@ -46,7 +36,7 @@ export const createFood = (payload) => {
 
 export const deleteDrug = (payload) => {
   Axios.delete(
-    "http://localhost:3001/elder/drug/delete/" +
+    "http://10.80.6.136:3001/elder/drug/delete/" +
       payload[0] +
       "/drugname/" +
       payload[1]
@@ -57,7 +47,7 @@ export const deleteDrug = (payload) => {
 
 export const deleteFood = (payload) => {
   Axios.delete(
-    "http://localhost:3001/elder/food/delete/" +
+    "http://10.80.6.136:3001/elder/food/delete/" +
       payload[0] +
       "/foodname/" +
       payload[1]

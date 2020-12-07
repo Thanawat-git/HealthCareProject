@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 export default function EditInfo() {
   const classes = useStyles();
-  const elderly = useSelector(({ searchEld }) => searchEld.selectEld);
+  // const elderly = useSelector(({ searchEld }) => searchEld.selectEld);
   const elderlyReducer = useSelector(({elderlyReducer}) => elderlyReducer)
   const [state, setState] = useState({
     eid: elderlyReducer.resultSelected.ELD_ID_NUMBER,
@@ -39,19 +39,19 @@ export default function EditInfo() {
   const [drugs, setdrugs] = useState([])
   const [diseases, setdiseases] = useState([])
   useEffect(() => {
-    if(elderly.FOOD_ALLERGY.length!=0){
-      for(let i=0;i<elderly.FOOD_ALLERGY.length;i++){
-        foods.push(elderly.FOOD_ALLERGY[i].FOOD_NAME)
+    if(elderlyReducer.resultSelected.FOOD.length!=0){
+      for(let i=0;i<elderlyReducer.resultSelected.FOOD.length;i++){
+        foods.push(elderlyReducer.resultSelected.FOOD[i].FOOD_NAME)
       }
     }
-    if(elderly.DRUG_ALLERGY.length!=0){
-      for(let i=0;i<elderly.DRUG_ALLERGY.length;i++){
-        drugs.push(elderly.DRUG_ALLERGY[i].DRUG_NAME)
+    if(elderlyReducer.resultSelected.DRUG.length!=0){
+      for(let i=0;i<elderlyReducer.resultSelected.DRUG.length;i++){
+        drugs.push(elderlyReducer.resultSelected.DRUG[i].DRUG_NAME)
       }
     }
-    if(elderly.DISEASE.length!=0){
-      for(let i=0;i<elderly.DISEASE.length;i++){
-        diseases.push(elderly.DISEASE[i].DIS_NAME)
+    if(elderlyReducer.resultSelected.DISEASE.length!=0){
+      for(let i=0;i<elderlyReducer.resultSelected.DISEASE.length;i++){
+        diseases.push(elderlyReducer.resultSelected.DISEASE[i].DIS_NAME)
       }
     }
   }, []);
@@ -94,11 +94,11 @@ export default function EditInfo() {
     }
     if(defineDialog=='drugs'){
       drug && setdrugs([...drugs, drug])
-      actionP5.createDrug([elderly.ELD_ID_NUMBER, drug])
+      actionP5.createDrug([eid, drug])
     }
     if(defineDialog=='diseases'){
       disease && setdiseases([...diseases, disease])
-      actionP6.createDisease([elderly.ELD_ID_NUMBER, disease])
+      actionP6.createDisease([eid, disease])
     }
   }
   useEffect(() => {
@@ -113,17 +113,17 @@ export default function EditInfo() {
     if(iden=='foods'){
       foods.splice(index, 1);
       setfoods([...foods])
-      actionP5.deleteFood([elderly.ELD_ID_NUMBER, value])
+      actionP5.deleteFood([eid, value])
     }
     if(iden=='drugs'){
       drugs.splice(index, 1);
       setdrugs([...drugs])
-      actionP5.deleteDrug([elderly.ELD_ID_NUMBER, value])
+      actionP5.deleteDrug([eid, value])
     }
     if(iden=='diseases'){
       diseases.splice(index, 1);
       setdiseases([...diseases])
-      actionP6.deleteDisease([elderly.ELD_ID_NUMBER, value])
+      actionP6.deleteDisease([eid, value])
     }
   }
 
@@ -132,7 +132,7 @@ export default function EditInfo() {
   }
   const saveChange=()=>{
     console.log('aaaaa')
-    actionP1.updateElder([elderly.ELD_ID_NUMBER,eid,fName,lName,phone,nName])
+    actionP1.updateElder([elderlyReducer.resultSelected.ELD_ID_NUMBER,eid,fName,lName,phone,nName])
   }
 
   return (
@@ -140,7 +140,7 @@ export default function EditInfo() {
       <form action="#" className="shadow p-3 mb-5 bg-white rounded">
         <div className="ettitle">
           <h3>แก้ไขข้อมูล</h3>
-          <h4>{elderly.ELD_ID_NUMBER}</h4>
+          <h4>{elderlyReducer.resultSelected.ELD_ID_NUMBER}</h4>
         </div>
         <div className="edit-fill">
           <TextField name="eid" onChange={onChange} label="รหัสบัตรประชาชน" defaultValue={eid} fullWidth />

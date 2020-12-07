@@ -5,10 +5,6 @@ export const setStateToAdd = (payload) => ({
     type: FORMS1P6_ADD_NEW,
     payload
 })
- 
-// export const setStateToEdit = () => ({
-//     type: FORM_EDIT,
-// })
 
 export const add = (payload) =>{
     return dispatch=>{
@@ -16,17 +12,8 @@ export const add = (payload) =>{
     }
 }
 
-// export const edit = () =>{
-//     return dispatch=>{
-//         dispatch(setStateToEdit())
-//     }
-// }
-
-// export const createTable = () => ({
-//     type: FORMS1P6_ADD_NEW,
-// })
 export const createDisease = (payload)=>{
-  Axios.post("http://localhost:3001/elder/disease/create",{
+  Axios.post("http://10.80.6.136:3001/elder/disease/create",{
     ELD_ID_NUMBER: payload[0],
     DIS_NAME: payload[1],
     EXAM_DATE: new Date(),
@@ -37,7 +24,7 @@ export const createDisease = (payload)=>{
 }
 
 export  const deleteDisease = (payload)=>{
-  Axios.delete("http://localhost:3001/elder/disease/delete/"+payload[0]+"/diseasename/"+payload[1]).then(()=>{
+  Axios.delete("http://10.80.6.136:3001/elder/disease/delete/"+payload[0]+"/diseasename/"+payload[1]).then(()=>{
     alert("Delete disease Success")
   })
 }
