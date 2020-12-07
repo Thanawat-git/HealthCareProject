@@ -62,9 +62,7 @@ export default function Asynchronous() {
     dispatch(search.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
   }
   const onChange = (e)=>{
-    console.log(e)
-    console.log("5555")
-    search.getEldByKeyword(e)
+    dispatch(search.getEldByKeyword(e))
   }
   return (
     <React.Fragment>

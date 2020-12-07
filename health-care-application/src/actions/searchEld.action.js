@@ -40,27 +40,25 @@ export const selectedEld = (payload)=>{
   };
 };
 
-
-
-// pid
-// first name
-// last name
-// nick name
-// phone number
-// food
-// drug
-// disease
-
 export const getEldByKeyword = event =>{
-  return dispatch => {
+  // console.log('result.data', event.target.value)
+  return (dispatch) => {
     var keyword = event.target.value;
-    // dispatch()
-    if (keyword !== null && keyword != ""){
-      Axios.get(`${urlApi}search/${keyword}`).then(result=>{
-        dispatch(setStateToSelectEld(result.data)) // เอาเฉพาะที่เจอมาแสดง
-      })
-    } else {
-      // doGetElds(dispatch) //เอาทั้งหมดที่มีมาแสดง
-    }
+    console.log('here');
+    return Axios.get(`http://10.80.6.136:3001/elder/search/${keyword}`)
+      .then(res=>{
+      console.log('result.data', res.data)
+      dispatch(setStateToAdd(res.data)) // เอาเฉพาะที่เจอมาแสดง
+    });
+    // if (keyword !== null && keyword != ""){
+    //     Axios.get(`http://localhost:3001/elder/search/${keyword}`).then(result=>{
+    //       console.log('result.data', result.data)
+    //       dispatch(setStateToSelectEld(result.data)) // เอาเฉพาะที่เจอมาแสดง
+    //     })
+    //   } else {
+    //     // doGetElds(dispatch) //เอาทั้งหมดที่มีมาแสดง
+    //   }
+    
+    
   }
 }
