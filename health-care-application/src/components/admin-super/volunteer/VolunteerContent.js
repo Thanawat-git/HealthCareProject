@@ -11,8 +11,11 @@ const MySwal = withReactContent(Swal);
 export default function VolunteerContent() {
   const dispatch = useDispatch()
   const volunteerReducer = useSelector(({volunteerReducer}) => volunteerReducer)
+  
   useEffect(() => {
-    dispatch(volAction.getAllVolunteers())
+    if(volunteerReducer.result===null){
+      dispatch(volAction.getAllVolunteers())
+    }
   },[]);
   const createRow = ()=>{
     try{
