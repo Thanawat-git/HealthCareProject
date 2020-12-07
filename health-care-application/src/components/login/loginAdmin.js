@@ -13,7 +13,7 @@ const formValid = formErrors => {
   return valid;
 }
 
-class Login extends Component {
+class LoginAdmin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +72,7 @@ class Login extends Component {
                 <i className="fas fa-lock"/>
                 <input type="password" placeholder="Password" />
               </div>
-              <Link to="/super-admin" >
+              <Link to="/superadminpage" >
               <input type="submit" value="ลงชื่อเข้าใช้" className="btn-login solid" />
               </Link>
               <Link to="/verify" >ลืมรหัสผ่าน</Link>
@@ -93,4 +93,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default LoginAdmin;

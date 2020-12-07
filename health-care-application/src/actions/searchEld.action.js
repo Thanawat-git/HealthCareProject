@@ -40,6 +40,8 @@ export const selectedEld = (payload)=>{
   };
 };
 
+
+
 // pid
 // first name
 // last name
@@ -48,3 +50,17 @@ export const selectedEld = (payload)=>{
 // food
 // drug
 // disease
+
+export const getEldByKeyword = event =>{
+  return dispatch => {
+    var keyword = event.target.value;
+    // dispatch()
+    if (keyword !== null && keyword != ""){
+      Axios.get(`${urlApi}search/${keyword}`).then(result=>{
+        dispatch(setStateToSelectEld(result.data)) // เอาเฉพาะที่เจอมาแสดง
+      })
+    } else {
+      // doGetElds(dispatch) //เอาทั้งหมดที่มีมาแสดง
+    }
+  }
+}

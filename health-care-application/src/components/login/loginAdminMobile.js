@@ -13,7 +13,7 @@ const formValid = formErrors => {
   return valid;
 }
 
-class Login extends Component {
+class LoginAdminMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,4 +93,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default LoginAdminMobile;

@@ -1,6 +1,6 @@
 import { FOUND_ELD, SELECT_ELD } from "../constants";
 const initialState = {
-    found: null,
+    found: [],
     selectEld: {
         ELD_ID_NUMBER:null,
         ELD_FIRSTNAME: null,

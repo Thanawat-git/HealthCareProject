@@ -7,9 +7,14 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import PhoneIcon from "@material-ui/icons/Phone";
+import EmailIcon from "@material-ui/icons/Email";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Typography from "@material-ui/core/Typography";
 import {
   FormControl,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
@@ -60,13 +65,12 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AddNewAdmin() {
+export default function AddNewVolunteer() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
-  const [position, setPosition] = useState(null);
 
   //   date picker
   const [years, setYears] = useState([]);
@@ -169,7 +173,6 @@ export default function AddNewAdmin() {
       Age = Age;
     }
   };
-
   return (
     <React.Fragment>
       <Button
@@ -179,7 +182,7 @@ export default function AddNewAdmin() {
         onClick={() => setOpen(true)}
         className="bt-add"
       >
-        เพิ่มผู้ดูแลระบบ
+        เพิ่มอาสาสมัคร
       </Button>
 
       <Dialog
@@ -194,7 +197,7 @@ export default function AddNewAdmin() {
           className="customized-dialog-title"
           onClose={() => setOpen(false)}
         >
-          เพิ่มผู้ดูแลระบบ
+          เพิ่มอาสาสมัคร
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
@@ -250,24 +253,80 @@ export default function AddNewAdmin() {
                   fullWidth
                 />
               </div>
-              <div className="col-12 inputFill">
+              <div className="col-6 inputFill">
                 <TextField
-                  label="เบอร์โทรศัพท์"
-                  name="phone"
+                  placeholder="เบอร์โทรศัพท์"
                   variant="outlined"
                   fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <PhoneIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="col-6 inputFill">
+                <TextField
+                  placeholder="E-mail Address"
+                  variant="outlined"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <EmailIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="col-6 inputFill">
+                <TextField
+                  placeholder="facebook"
+                  variant="outlined"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <FacebookIcon color="primary" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="col-6 inputFill">
+                <TextField
+                  placeholder="Line"
+                  variant="outlined"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <i
+                          class="fab fa-line"
+                          style={{ color: "green", fontSize: 23 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </div>
               <div className="col-12 inputFill">
                 <TextField
-                  label="E-mail Address"
-                  type="email"
-                  name="email"
+                  placeholder="บุคคลอื่นเมื่อไม่สามาติดต่อคุณได้ ใส่ชื่อแล้วตามด้วยเบอร์โทร เช่น คุณสมร 0912345678"
                   variant="outlined"
                   fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                       <AccountCircleIcon/>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </div>
-              <div className="col-4">
+              <div className="col-4 birthday-fill">
                 <Autocomplete
                   id="year"
                   options={years}
@@ -285,7 +344,7 @@ export default function AddNewAdmin() {
                   )}
                 />
               </div>
-              <div className="col-4">
+              <div className="col-4 birthday-fill">
                 <Autocomplete
                   id="month"
                   options={Months}
@@ -302,7 +361,7 @@ export default function AddNewAdmin() {
                   )}
                 />
               </div>
-              <div className="col-4">
+              <div className="col-4 birthday-fill">
                 <Autocomplete
                   id="day"
                   options={days}
@@ -321,27 +380,8 @@ export default function AddNewAdmin() {
                 />
               </div>
               <div className="col-12 input-position-fill">
-                <TextField
-                  id="select"
-                  label="ตำแหน่งงาน"
-                  variant="outlined"
-                  value={position}
-                  select
-                  fullWidth
-                >
-                  <MenuItem onClick={() => setPosition("")}>
-                    <em>ไม่มีตำแหน่ง</em>
-                  </MenuItem>
-                  <MenuItem onClick={() => setPosition("พยาบาลวิชาชีพ")}>
-                    พยาบาลวิชาชีพ
-                  </MenuItem>
-                  <MenuItem onClick={() => setPosition("นักกายภาพบำบัด")}>
-                    นักกายภาพบำบัด
-                  </MenuItem>
-                  <MenuItem onClick={() => setPosition("นักวิชาการสาธารสุข")}>
-                    นักวิชาการสาธารสุข
-                  </MenuItem>
-                </TextField>
+              <label>ที่อยู่</label>
+              <textarea className="form-control" rows="3"></textarea>
               </div>
             </div>
           </div>

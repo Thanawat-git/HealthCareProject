@@ -21,10 +21,10 @@ export default function AdminContent() {
           <div className="row">
             <div className="col-10 card-body">
               <TextField
-                label="กรอกชื่อหรือนามสกุล"
+                label="ค้นหาโดยการกรอกชื่อหรือนามสกุล"
                 id="standard-start-adornment"
                 //   onKeyUp={(e)=>searchArr(e)}
-                InputProps={{startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),}}
+                InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
                 fullWidth
               />
             </div>

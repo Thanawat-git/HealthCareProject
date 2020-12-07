@@ -8,14 +8,14 @@ export default function LeftSideBarMenu() {
     <React.Fragment>
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* Brand Logo */}
-        <a href="index3.html" className="brand-link">
+        <Link to={`${url}/`} className="brand-link">
           <img
             src={logo1}
             alt="Logo"
             className="brand-image img-circle elevation-3"
           />
           <span className="brand-text font-weight-light">Project Name</span>
-        </a>
+        </Link>
         {/* Sidebar */}
         <div className="sidebar">
           {/* Sidebar Menu */}
@@ -48,7 +48,7 @@ export default function LeftSideBarMenu() {
               </li>
 
               <li className="nav-item">
-                <a href="pages/widgets.html" className="nav-link">
+                <a href="#" className="nav-link">
                   <i className="nav-icon fas fa-star-of-life" />
                   <p>จัดการแพทย์</p>
                 </a>

@@ -1,6 +1,7 @@
 import { InputAdornment, TextField } from '@material-ui/core'
 import React from 'react'
 import SearchIcon from "@material-ui/icons/Search";
+import AddNewVolunteer from "./AddNewVolunteer";
 
 export default function VolunteerContent() {
     return (
@@ -19,22 +20,22 @@ export default function VolunteerContent() {
           <div className="row">
             <div className="col-10 card-body">
               <TextField
-                label="กรอกชื่อหรือนามสกุล"
+                label="ค้นหาโดยการกรอกชื่อหรือนามสกุล"
                 id="standard-start-adornment"
                 //   onKeyUp={(e)=>searchArr(e)}
-                InputProps={{startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),}}
+                InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
                 fullWidth
               />
             </div>
-            {/* <div onClick={() => console.log("yyyy")} className="col-2 card-body add-staff">
-                <AddNewAdmin/>
-            </div> */}
+            <div onClick={() => console.log("yyyy")} className="col-2 card-body add-staff">
+                <AddNewVolunteer/>
+            </div>
             {/* table */} 
             <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">ลำดับ</th>
-                  <th scope="col">ชื่อ - นามสกุล</th>
+                    <th scope="col">ชื่อ - นามสกุล</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
                   <th scope="col">ชื่อผู้ใช้</th>
                   <th scope="col">สถานะ</th>
