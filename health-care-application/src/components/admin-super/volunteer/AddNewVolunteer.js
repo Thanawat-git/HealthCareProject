@@ -21,6 +21,8 @@ import {
   TextField,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { useDispatch } from "react-redux";
+import * as volAction from "../../../actions/volunteer.action";
 
 const styles = (theme) => ({
   root: {
@@ -68,6 +70,15 @@ const DialogActions = withStyles((theme) => ({
 export default function AddNewVolunteer() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [state, setState] = useState({
+    volId:'',fName:'',lName:'',phone:'',facebook:'',line:''
+  })
+  const {volId,fName,lName,phone,facebook,line} = state
+  const dispatch = useDispatch()
+  const onChange = (e)=>{
+    console.log(e.target.value)
+    setState({...state, [e.target.name]:e.target.value})
+  }
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
@@ -172,6 +183,11 @@ export default function AddNewVolunteer() {
     } else {
       Age = Age;
     }
+
+    const data = [volId,fName,lName,phone,facebook,line];
+    dispatch(volAction.createVolunteer(data));
+    setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
+    setOpen(false)
   };
   return (
     <React.Fragment>
@@ -212,7 +228,9 @@ export default function AddNewVolunteer() {
               <div className="col-12 inputFill">
                 <TextField
                   label="เลขประจำตัวประชาชน"
-                  name="adminId"
+                  name="volId"
+                  value={volId}
+                  onChange={onChange}
                   variant="outlined"
                   fullWidth
                 />
@@ -239,7 +257,9 @@ export default function AddNewVolunteer() {
                   </FormControl>
                   <TextField
                     label="ชื่อ"
-                    name="fname"
+                    name="fName"
+                    value={fName}
+                  onChange={onChange}
                     variant="outlined"
                     fullWidth
                   />
@@ -248,7 +268,9 @@ export default function AddNewVolunteer() {
               <div className="col-6 inputFill">
                 <TextField
                   label="นามสกุล"
-                  name="lname"
+                  name="lName"
+                  value={lName}
+                  onChange={onChange}
                   variant="outlined"
                   fullWidth
                 />
@@ -257,6 +279,9 @@ export default function AddNewVolunteer() {
                 <TextField
                   placeholder="เบอร์โทรศัพท์"
                   variant="outlined"
+                  name="phone"
+                  value={phone}
+                  onChange={onChange}
                   fullWidth
                   InputProps={{
                     startAdornment: (
@@ -271,6 +296,9 @@ export default function AddNewVolunteer() {
                 <TextField
                   placeholder="E-mail Address"
                   variant="outlined"
+                  // name="phone"
+                  // value={phone}
+                  // onChange={onChange}
                   fullWidth
                   InputProps={{
                     startAdornment: (
@@ -284,6 +312,9 @@ export default function AddNewVolunteer() {
               <div className="col-6 inputFill">
                 <TextField
                   placeholder="facebook"
+                  name="facebook"
+                  value={facebook}
+                  onChange={onChange}
                   variant="outlined"
                   fullWidth
                   InputProps={{
@@ -299,6 +330,9 @@ export default function AddNewVolunteer() {
                 <TextField
                   placeholder="Line"
                   variant="outlined"
+                  name="line"
+                  value={line}
+                  onChange={onChange}
                   fullWidth
                   InputProps={{
                     startAdornment: (
@@ -388,7 +422,7 @@ export default function AddNewVolunteer() {
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
           <Button
-            onClick={() => setOpen(false)}
+            onClick={() => submitNewStaff()}
             size="large"
             variant="contained"
             color="primary"

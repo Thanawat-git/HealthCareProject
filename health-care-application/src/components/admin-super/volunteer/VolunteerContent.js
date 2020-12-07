@@ -1,9 +1,80 @@
 import { InputAdornment, TextField } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect } from 'react'
 import SearchIcon from "@material-ui/icons/Search";
 import AddNewVolunteer from "./AddNewVolunteer";
+import * as volAction from "../../../actions/volunteer.action";
+import Swal from "sweetalert2"; // ทำ alert
+import withReactContent from "sweetalert2-react-content"; 
+import { useDispatch, useSelector } from 'react-redux';
+const MySwal = withReactContent(Swal);
 
 export default function VolunteerContent() {
+  const dispatch = useDispatch()
+  const volunteerReducer = useSelector(({volunteerReducer}) => volunteerReducer)
+  useEffect(() => {
+    dispatch(volAction.getAllVolunteers())
+  },[]);
+  const createRow = ()=>{
+    try{
+      const {result, isFetching} = volunteerReducer
+      return (
+        !isFetching &&
+        result != null && result.map((value, index)=>{
+          return (
+          <tr key={value.VOL_ID_NUMBER} onClick={() => console.log("xxx")}>
+            <td>{index+1}</td>
+            <td>{value.VOL_FIRSTNAME} {value.VOL_LASTNAME}</td>
+            <td>{value.VOL_PHONE}</td>
+            <td>{value.VOL_FACEBOOK}</td>
+            <td>{value.VOL_LINE}</td>
+            <td style={{ textAlign: "center" }}>
+            <button
+                // onClick={() =>
+                //   this.props.history.push(`/stock-edit/${item.id}`)
+                // }
+                type="button"
+                className="btn btn-info"
+              >
+                แก้ไข
+              </button>
+              <span style={{ color: "grey" }}> | </span>
+              <button
+                onClick={() => {
+                  MySwal.fire({
+                    title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
+                    text: `คุณ${value.VOL_FIRSTNAME} ${value.VOL_LASTNAME} กำลังจะถูกลบ!`,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: " ลบ ",
+                    cancelButtonText: "ยกเลิก"
+                  }).then(result => {
+                    if (result.value) {
+                      dispatch(volAction.deleteVolunteer(value.VOL_ID_NUMBER))
+                      Swal.fire(
+                        'ลบสำเร็จ',
+                        `คุณ${value.VOL_FIRSTNAME} ${value.VOL_LASTNAME} ได้ถูกลบแล้ว`,
+                        'success'
+                      )
+                    }
+                  });
+                }}
+                type="button"
+                className="btn btn-danger"
+              >
+                ลบ
+              </button>
+            </td>
+          </tr>
+          )
+        })
+        
+      )
+    }catch(e){}
+  }
+  const onChange = (e)=>{
+    dispatch(volAction.getVolunteerByKeyword(e))
+  }
     return (
     <React.Fragment>
       <div className="content-header">
@@ -21,8 +92,7 @@ export default function VolunteerContent() {
             <div className="col-10 card-body">
               <TextField
                 label="ค้นหาโดยการกรอกชื่อหรือนามสกุล"
-                id="standard-start-adornment"
-                //   onKeyUp={(e)=>searchArr(e)}
+                onChange={onChange}
                 InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
                 fullWidth
               />
@@ -35,23 +105,19 @@ export default function VolunteerContent() {
               <thead>
                 <tr>
                   <th scope="col">ลำดับ</th>
-                    <th scope="col">ชื่อ - นามสกุล</th>
+                  <th scope="col">ชื่อ - นามสกุล</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
                   <th scope="col">ชื่อผู้ใช้</th>
                   <th scope="col">สถานะ</th>
+                  <th style={{ textAlign: "center" }}>Action</th>
                 </tr>
               </thead>
 
               <tbody>
-                  <tr onClick={() => console.log("xxx")}>
-                    <td>1</td>
-                    <td>xxxxx</td>
-                    <td>xxxxx</td>
-                    <td>xxxxxx</td>
-                    <td>xxxxxx</td>
-                  </tr>
+              {createRow()}
               </tbody>
             </table>
+            
           </div>
         </div>
       </section>

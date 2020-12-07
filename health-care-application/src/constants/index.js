@@ -28,6 +28,12 @@ export const HTTP_ELD_FETCHING = "HTTP_ELD_FETCHING";
 export const HTTP_ELD_SUCCRESS = "HTTP_ELD_SUCCRESS";
 export const HTTP_ELD_SELECTED = "HTTP_ELD_SELECTED";
 export const HTTP_ELD_FAILED = "HTTP_ELD_FAILED";
+
+// Volunteer
+export const HTTP_VOL_FETCHING = "HTTP_VOL_FETCHING";
+export const HTTP_VOL_SUCCRESS = "HTTP_VOL_SUCCRESS";
+export const HTTP_VOL_SELECTED = "HTTP_VOL_SELECTED";
+export const HTTP_VOL_FAILED = "HTTP_VOL_FAILED";
 // // Login Page
 // export const APP_INIT = "APP_INIT";
 
@@ -85,18 +91,19 @@ export const NETWORK_CONNECTION_MESSAGE = 'Cannot connect to server, Please try 
 
 export const apiBase =  "http://10.80.6.136:3001";
 export const apiEld = "http://10.80.6.136:3001/elder";
+export const apiVol = "http://10.80.6.136:3001/volunteer";
 
 export const YES = 'YES'
 export const NO = 'NO'
 export const OK = 'ok'
 export const NOK = 'nok'
 
-export const server = {    
-    LOGIN_URL : `authen/login`,    
-    REGISTER_URL : `authen/register`,  
-    PRODUCT_URL : `stock/product`,    
-    TRANSACTION_URL : `transaction`,    
-    REPORT_URL: `stock/report`,    
-    LOGIN_PASSED : `yes`,
-}
+// export const server = {    
+//     LOGIN_URL : `authen/login`,    
+//     REGISTER_URL : `authen/register`,  
+//     PRODUCT_URL : `stock/product`,    
+//     TRANSACTION_URL : `transaction`,    
+//     REPORT_URL: `stock/report`,    
+//     LOGIN_PASSED : `yes`,
+// }
 
