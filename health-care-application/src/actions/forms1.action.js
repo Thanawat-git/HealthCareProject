@@ -1,34 +1,8 @@
-import { FORMS1P1_ADD_NEW } from "../constants";
-import Axios from 'axios';
+import Axios from "axios";
+import { apiEld } from "../constants";
 
-export const setStateToAdd = (payload) => ({
-  type: FORMS1P1_ADD_NEW,
-  payload,
-});
-
-export const add = (payload) => {
-  return (dispatch) => {
-    dispatch(setStateToAdd(payload));
-  };
-};
-
-// fetchData from server to defualt state 
-export const fetchData = ()=> {
-  return (dispatch)=>{
-    return Axios.get("http://localhost:3001/elder/searchOne/9999999900000")
-    .then(response => {
-      console.log("res " + response)
-      return response.data
-    })
-    .then(data => {
-      dispatch(setStateToAdd(data));
-    })
-  }
-}
- 
-// create new elder table
 const createElder = (payload) => {
-  Axios.post("http://localhost:3001/elder/create", {
+  Axios.post(`${apiEld}/create`, {
     ELD_ID_NUMBER: payload[0],
     ELD_FIRSTNAME: payload[1],
     ELD_LASTNAME: payload[2],
@@ -42,20 +16,21 @@ const createElder = (payload) => {
 
 // update elder
 export const updateElder = (payload) => {
-  Axios.put(`http://localhost:3001/elder/update/${payload[0]}`, {
+  Axios.put(`${apiEld}/update/${payload[0]}`, {
     ELD_ID_NUMBER: payload[1],
     ELD_FIRSTNAME: payload[2],
     ELD_LASTNAME: payload[3],
     ELD_PHONE: payload[4],
     ELD_AKA: payload[5],
-    updateBy: null
+    updateBy: null,
   }).then(() => {
     alert("Elder update Success");
   });
 };
 
+// Create form1 sec1-6
 const createElderinfo = (payload) => {
-  Axios.post("http://localhost:3001/elder/information/create", {
+  Axios.post(`${apiEld}/information/create`, {
     ELD_BIRTHDATE: payload[5],
     ELD_GENDER: payload[3],
     ELD_AGE: payload[6],
@@ -74,7 +49,7 @@ const createElderinfo = (payload) => {
 };
 
 const createElderRelative = (payload) => {
-  Axios.post("http://localhost:3001/elder/relative/create", {
+  Axios.post(`${apiEld}/relative/create`, {
     ELD_REL_FIRSTNAME: null,
     ELD_REL_LASTNAME: null,
     ELD_REL_RELATION: null,
@@ -86,8 +61,9 @@ const createElderRelative = (payload) => {
   });
 };
 
-const createElderCurrent = (payload) => { //ที่อยู่ปัจจุบัน
-  Axios.post("http://localhost:3001/elder/currentaddress/create", {
+const createElderCurrent = (payload) => {
+  //ที่อยู่ปัจจุบัน
+  Axios.post(`${apiEld}/currentaddress/create`, {
     ELD_CUR_NUMBER: null,
     ELD_CUR_VILLAGE: null,
     ELD_CUR_LANE: null,
@@ -102,8 +78,9 @@ const createElderCurrent = (payload) => { //ที่อยู่ปัจจุ
   });
 };
 
-const createElderIdCurrent = (payload) => { //ที่อยู่ตามบัตรประชาชน
-  Axios.post("http://localhost:3001/elder/idnumberaddress/create", {
+const createElderIdCurrent = (payload) => {
+  //ที่อยู่ตามบัตรประชาชน
+  Axios.post(`${apiEld}/idnumberaddress/create`, {
     ELD_IDN_ADDR_NUMBER: null,
     ELD_IDN_ADDR_VILLAGE: null,
     ELD_IDN_ADDR_LANE: null,

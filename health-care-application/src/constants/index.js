@@ -24,7 +24,10 @@ export const FETCH_DATA_FORM_SERVER = 'FETCH_DATA_FORM_SERVER';
 // Search elderly
 export const FOUND_ELD = 'FOUND_ELD';
 export const SELECT_ELD = 'SELECT_ELD';
-
+export const HTTP_ELD_FETCHING = "HTTP_ELD_FETCHING";
+export const HTTP_ELD_SUCCRESS = "HTTP_ELD_SUCCRESS";
+export const HTTP_ELD_SELECTED = "HTTP_ELD_SELECTED";
+export const HTTP_ELD_FAILED = "HTTP_ELD_FAILED";
 // // Login Page
 // export const APP_INIT = "APP_INIT";
 
@@ -80,8 +83,8 @@ export const NETWORK_CONNECTION_MESSAGE = 'Cannot connect to server, Please try 
 // export const UPLOAD_PHOTO_FAIL_MESSAGE = 'An error has occurred. The photo was unable to upload.' 
 
 
-export const apiBase =  "http://localhost:3001";
-export const apiEld = "http://localhost:3001/elder";
+export const apiBase =  "http://10.80.6.136:3001";
+export const apiEld = "http://10.80.6.136:3001/elder";
 
 export const YES = 'YES'
 export const NO = 'NO'

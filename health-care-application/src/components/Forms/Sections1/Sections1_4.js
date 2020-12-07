@@ -28,6 +28,7 @@ function Sections1_4(props) {
     const [salary, setSalary] = useState(forms1p4Reducer.salary) // หลัก
     const [otherCareers, setotherCareers] = useState(forms1p4Reducer.otherCareers)
     
+    // being ตัวแปลซ้ำซ้อ ต้องเอาออก!!!!!!
     const handleSubmit = (e)=>{
       const data = [
         elderlyStatus, 

@@ -26,12 +26,13 @@ const useStyles = makeStyles({
 export default function EditInfo() {
   const classes = useStyles();
   const elderly = useSelector(({ searchEld }) => searchEld.selectEld);
+  const elderlyReducer = useSelector(({elderlyReducer}) => elderlyReducer)
   const [state, setState] = useState({
-    eid: elderly.ELD_ID_NUMBER,
-    fName: elderly.ELD_FIRSTNAME,
-    lName: elderly.ELD_LASTNAME,
-    nName: elderly.ELD_AKA,
-    phone: elderly.ELD_PHONE,
+    eid: elderlyReducer.resultSelected.ELD_ID_NUMBER,
+    fName: elderlyReducer.resultSelected.ELD_FIRSTNAME,
+    lName: elderlyReducer.resultSelected.ELD_LASTNAME,
+    nName: elderlyReducer.resultSelected.ELD_AKA,
+    phone: elderlyReducer.resultSelected.ELD_PHONE,
   })
   const {eid,fName,lName,nName,phone} = state
   const [foods, setfoods] = useState([])
@@ -89,7 +90,7 @@ export default function EditInfo() {
   const addItem = ()=>{
     if(defineDialog=='foods'){
       food && setfoods([...foods, food])
-      actionP5.createFood([elderly.ELD_ID_NUMBER, food])
+      actionP5.createFood([eid, food])
     }
     if(defineDialog=='drugs'){
       drug && setdrugs([...drugs, drug])

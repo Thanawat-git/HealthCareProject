@@ -34,7 +34,7 @@ export const createDrug = (payload) => {
 };
 
 export const createFood = (payload) => {
-  Axios.post("http://localhost:3001/elder/food/create", {
+  Axios.post("http://10.80.6.136:3001/elder/food/create", {
     ELD_ID_NUMBER: payload[0],
     FOOD_NAME: payload[1],
     EXAM_DATE: new Date(),
