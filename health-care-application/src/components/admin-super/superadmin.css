@@ -7,3 +7,18 @@
 .brand-link {
     border: none !important;
 }
+
+.add-staff-bt{
+    display: flex;
+    justify-content: center;
+}
+
+#image-upload{
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+.label-upload-image{
+    cursor: pointer;
+    margin: auto 0;
+}

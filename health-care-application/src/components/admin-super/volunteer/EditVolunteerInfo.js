@@ -78,17 +78,16 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AddNewVolunteer() {
+export default function EditVolunteerInfo({selectValue}) {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageUploaad, setImageUpload] = useState(null);
-  // useEffect(() => {
-  //   image && console.log('image', image)
-  //   image && console.log('image name', image.name)
-  // }, [image])
+  useEffect(() => {
+    console.log('select value ', selectValue)
+  }, [])
   const [state, setState] = useState({
-    volId:'',fName:'',lName:'',phone:'',facebook:'',line:''
+    volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,line:selectValue.VOL_LINE
   });
   const {volId,fName,lName,phone,facebook,line} = state
   const dispatch = useDispatch();
@@ -202,30 +201,22 @@ export default function AddNewVolunteer() {
     }
 
     const data = [volId,fName,lName,phone,facebook,line];
-    dispatch(volAction.createVolunteer(data));
-    setImagePreview(null)
-    setImageUpload(null)
-    setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
+    dispatch(volAction.updateVolunteer(data));
     setOpen(false)
   };
 
   const onClose = ()=>{
-    setImagePreview(null)
-    setImageUpload(null)
-    setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
     setOpen(false)
   }
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        size="large"
-        color="primary"
+      <button
         onClick={() => setOpen(true)}
-        className="bt-add"
-      >
-        เพิ่มอาสาสมัคร
-      </Button>
+        type="button"
+        className="btn btn-info"
+        >
+        แก้ไข
+        </button>
 
       <Dialog
         onClose={onClose}

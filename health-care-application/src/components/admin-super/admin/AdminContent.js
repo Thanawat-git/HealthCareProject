@@ -19,7 +19,7 @@ export default function AdminContent() {
       <section className="content">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-10 card-body">
+            <div className="col-8 card-body">
               <TextField
                 label="ค้นหาโดยการกรอกชื่อหรือนามสกุล"
                 id="standard-start-adornment"
@@ -28,7 +28,7 @@ export default function AdminContent() {
                 fullWidth
               />
             </div>
-            <div onClick={() => console.log("yyyy")} className="col-2 card-body add-staff">
+            <div onClick={() => console.log("yyyy")} className="col-4 card-body add-staff-bt">
                 <AddNewAdmin/>
             </div>
             {/* table */} 

@@ -2,6 +2,7 @@ import { InputAdornment, TextField } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import SearchIcon from "@material-ui/icons/Search";
 import AddNewVolunteer from "./AddNewVolunteer";
+import EditVolunteerInfo from "./EditVolunteerInfo";
 import * as volAction from "../../../actions/volunteer.action";
 import Swal from "sweetalert2"; // ทำ alert
 import withReactContent from "sweetalert2-react-content"; 
@@ -31,7 +32,7 @@ export default function VolunteerContent() {
             <td>{value.VOL_FACEBOOK}</td>
             <td>{value.VOL_LINE}</td>
             <td style={{ textAlign: "center" }}>
-            <button
+            {/* <button
                 // onClick={() =>
                 //   this.props.history.push(`/stock-edit/${item.id}`)
                 // }
@@ -39,7 +40,8 @@ export default function VolunteerContent() {
                 className="btn btn-info"
               >
                 แก้ไข
-              </button>
+              </button> */}
+              <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
               <button
                 onClick={() => {
@@ -92,7 +94,7 @@ export default function VolunteerContent() {
       <section className="content">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-10 card-body">
+            <div className="col-8 card-body">
               <TextField
                 label="ค้นหาโดยการกรอกชื่อหรือนามสกุล"
                 onChange={onChange}
@@ -100,7 +102,7 @@ export default function VolunteerContent() {
                 fullWidth
               />
             </div>
-            <div onClick={() => console.log("yyyy")} className="col-2 card-body add-staff">
+            <div onClick={() => console.log("yyyy")} className="col-4 card-body add-staff-bt">
                 <AddNewVolunteer/>
             </div>
             {/* table */} 
