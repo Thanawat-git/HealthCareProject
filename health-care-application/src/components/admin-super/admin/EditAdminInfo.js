@@ -7,9 +7,8 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import FacebookIcon from "@material-ui/icons/Facebook";
+import EmailIcon from "@material-ui/icons/Email";
 import PhoneIcon from "@material-ui/icons/Phone";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Typography from "@material-ui/core/Typography";
 import {
   Avatar,
@@ -22,8 +21,8 @@ import {
   TextField,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useDispatch } from "react-redux";
-import * as volAction from "../../../actions/volunteer.action";
+import { useDispatch, useSelector } from "react-redux";
+import * as adminAction from "../../../actions/admin.action";
 
 const SmallAvatar = withStyles((theme) => ({
   root: {
@@ -77,16 +76,21 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function EditVolunteerInfo({selectValue}) {
+export default function AddNewAdmin({selectValue}) {
+//   const adminReducer = useSelector(({adminReducer}) => adminReducer)
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [open2, setOpen2] = useState(false); //preName
+  const [open3, setOpen3] = useState(false); // position
+  const [imagePreview, setImagePreview] = useState(selectValue.ADM_PHOTO);
   const [imageUploaad, setImageUpload] = useState(null);
-  
   const [state, setState] = useState({
-    volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,line:selectValue.VOL_LINE
+    adminId:selectValue.ADM_ID_NUMBER,
+    fName:selectValue.ADM_FIRSTNAME,
+    lName:selectValue.ADM_LASTNAME,
+    phone:selectValue.ADM_PHONE,
+    email:selectValue.ADM_EMAIL,
   });
-  const {volId,fName,lName,phone,facebook,line} = state
+  const {adminId,fName,lName,phone,email} = state
   const dispatch = useDispatch();
   const onChange = (e)=>{
     console.log(e.target.value)
@@ -95,6 +99,8 @@ export default function EditVolunteerInfo({selectValue}) {
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
+  const [position, setPosition] = useState(selectValue.ADM_POSITION);
+  const [preName, setpreName] = useState(selectValue.ADM_GENDER)
 
   //   date picker
   const [years, setYears] = useState([]);
@@ -189,6 +195,7 @@ export default function EditVolunteerInfo({selectValue}) {
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
     var Age = nowYear - parseInt(yea);
+    const elderlyBirthday = `${yea}-${numMon}-${day}`
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -196,12 +203,10 @@ export default function EditVolunteerInfo({selectValue}) {
     } else {
       Age = Age;
     }
-
-    const data = [selectValue.VOL_ID_NUMBER,volId,fName,lName,phone,facebook,line];
-    dispatch(volAction.updateVolunteer(data));
-    setOpen(false)
+    const data = [selectValue.ADM_ID_NUMBER,adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
+    dispatch(adminAction.updateAdmin(data))
+    onClose()
   };
-
   const onClose = ()=>{
     setOpen(false)
   }
@@ -227,7 +232,7 @@ export default function EditVolunteerInfo({selectValue}) {
           className="customized-dialog-title"
           onClose={onClose}
         >
-          แก้ไขข้อมูลของ {fName} {lName}
+          แก้ไขข้อมูลของ {preName}{fName} {lName}
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
@@ -260,10 +265,10 @@ export default function EditVolunteerInfo({selectValue}) {
             <div className="info-inputFill row">
               <div className="col-12 inputFill">
                 <TextField
-                  label="เลขประจำตัวประชาชน"
-                  name="volId"
-                  value={volId}
+                  name="adminId"
+                  value={adminId}
                   onChange={onChange}
+                  label="เลขประจำตัวประชาชน"
                   variant="outlined"
                   fullWidth
                 />
@@ -277,8 +282,8 @@ export default function EditVolunteerInfo({selectValue}) {
                       onClose={() => setOpen2(false)}
                       onOpen={() => setOpen2(true)}
                       name="preName"
-                      // value={age}
-                      // onChange={handleChange}
+                      value={preName}
+                      onChange={e=>setpreName(e.target.value)}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -308,7 +313,41 @@ export default function EditVolunteerInfo({selectValue}) {
                   fullWidth
                 />
               </div>
-              <div className="col-4 birthday-fill inputFill">
+              <div className="col-12 inputFill">
+              <TextField
+                  placeholder="เบอร์โทรศัพท์"
+                  variant="outlined"
+                  name="phone"
+                  value={phone}
+                  onChange={onChange}
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <PhoneIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="col-12 inputFill">
+                <TextField
+                  placeholder="E-mail Address"
+                  variant="outlined"
+                  name="email"
+                  value={email}
+                  onChange={onChange}
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <EmailIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="col-4">
                 <Autocomplete
                   id="year"
                   options={years}
@@ -326,7 +365,7 @@ export default function EditVolunteerInfo({selectValue}) {
                   )}
                 />
               </div>
-              <div className="col-4 birthday-fill inputFill">
+              <div className="col-4">
                 <Autocomplete
                   id="month"
                   options={Months}
@@ -343,7 +382,7 @@ export default function EditVolunteerInfo({selectValue}) {
                   )}
                 />
               </div>
-              <div className="col-4 birthday-fill inputFill">
+              <div className="col-4">
                 <Autocomplete
                   id="day"
                   options={days}
@@ -361,107 +400,25 @@ export default function EditVolunteerInfo({selectValue}) {
                   )}
                 />
               </div>
-              <div className="col-6 inputFill">
-                <TextField
-                  placeholder="เบอร์โทรศัพท์"
-                  variant="outlined"
-                  name="phone"
-                  value={phone}
-                  onChange={onChange}
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <PhoneIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-              <div className="col-6 inputFill">
-                {/* <TextField
-                  placeholder="E-mail Address"
-                  variant="outlined"
-                  // name="phone"
-                  // value={phone}
-                  // onChange={onChange}
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <EmailIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                /> */}
-                <TextField
-                  placeholder="เบอร์บุคคลอื่น เช่น คุณสมร 0912345678"
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                       <AccountCircleIcon/>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-              <div className="col-6 inputFill">
-                <TextField
-                  placeholder="facebook"
-                  name="facebook"
-                  value={facebook}
-                  onChange={onChange}
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <FacebookIcon color="primary" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-              <div className="col-6 inputFill">
-                <TextField
-                  placeholder="Line"
-                  variant="outlined"
-                  name="line"
-                  value={line}
-                  onChange={onChange}
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <i
-                          className="fab fa-line"
-                          style={{ color: "green", fontSize: 23 }}
-                        />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-              {/* <div className="col-12 inputFill">
-                <TextField
-                  placeholder="บุคคลอื่นเมื่อไม่สามาติดต่อคุณได้ ใส่ชื่อแล้วตามด้วยเบอร์โทร เช่น คุณสมร 0912345678"
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                       <AccountCircleIcon/>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div> */}
-              
               <div className="col-12 input-position-fill">
-              <label>ที่อยู่</label>
-              <textarea className="form-control" rows="3"></textarea>
+                <FormControl variant="outlined" fullWidth >
+                    <InputLabel style={{backgroundColor: '#fff'}} >ตำแหน่งงาน</InputLabel>
+                    <Select
+                      open={open3}
+                      onClose={() => setOpen3(false)}
+                      onOpen={() => setOpen3(true)}
+                      name="position"
+                      value={position}
+                      onChange={e=>setPosition(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="พยาบาลวิชาชีพ">พยาบาลวิชาชีพ</MenuItem>
+                      <MenuItem value="นักกายภาพบำบัด">นักกายภาพบำบัด</MenuItem>
+                      <MenuItem value="นักวิชาการสาธารสุข">นักวิชาการสาธารสุข</MenuItem>
+                    </Select>
+                  </FormControl>
               </div>
             </div>
           </div>

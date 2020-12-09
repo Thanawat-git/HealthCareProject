@@ -38,6 +38,32 @@ export const createAdmin = (payload) => {
   };
 };
 
+export const updateAdmin = (payload) => {
+  return async dispatch=>{
+    await Axios.put(`${apiAdmin}/update/${payload[0]}`, {
+      ADM_ID_NUMBER: payload[1],
+      ADM_PASSWORD: payload[1],
+      ADM_FIRSTNAME: payload[2],
+      ADM_LASTNAME: payload[3],
+      ADM_PHONE: payload[4],
+      ADM_EMAIL: payload[5],
+      ADM_GENDER: payload[6],
+      ADM_BIRTHDATE: payload[7],
+      ADM_POSITION: payload[8],
+      ADM_PHOTO: payload[9],
+      ADM_STATUS: true,
+    })
+    await doGetAdmin(dispatch)
+  }
+}
+
+export const deleteAdmin = id => {
+  return async dispatch => {
+    await Axios.delete(`${apiAdmin}/delete/${id}`)
+    await doGetAdmin(dispatch)
+  }
+}
+
 export const getAdminByKeyword = (event) => {
   return (dispatch) => {
     dispatch(setAdminStateToFetching());

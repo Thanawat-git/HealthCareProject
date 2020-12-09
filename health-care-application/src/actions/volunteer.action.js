@@ -40,13 +40,13 @@ export const createVolunteer = (payload) => {
 export const updateVolunteer = (payload) => {
     return async dispatch => {
         await Axios.put(`${apiVol}/update/${payload[0]}`,{
-            VOL_ID_NUMBER: payload[0],
-            VOL_PASSWORD: payload[0],
-            VOL_FIRSTNAME: payload[1],
-            VOL_LASTNAME: payload[2],
-            VOL_PHONE: payload[3],
-            VOL_LINE: payload[4],
-            VOL_FACEBOOK: payload[5],
+            VOL_ID_NUMBER: payload[1],
+            VOL_PASSWORD: payload[1],
+            VOL_FIRSTNAME: payload[2],
+            VOL_LASTNAME: payload[3],
+            VOL_PHONE: payload[4],
+            VOL_LINE: payload[5],
+            VOL_FACEBOOK: payload[6],
         })
         await doGetVolunteer(dispatch);
     }

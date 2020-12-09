@@ -2,7 +2,8 @@ import { InputAdornment, TextField } from "@material-ui/core";
 import React, { useEffect } from "react";
 import './admin.css'
 import SearchIcon from "@material-ui/icons/Search";
-import AddNewAdmin from "../admin/AddNewAdmin";
+import AddNewAdmin from "./AddNewAdmin";
+import EditAdminInfo from "./EditAdminInfo";
 import * as adminAction from "../../../actions/admin.action";
 import Swal from "sweetalert2"; // ทำ alert
 import withReactContent from "sweetalert2-react-content"; 
@@ -31,16 +32,7 @@ export default function AdminContent() {
               <td>{value.ADM_EMAIL}</td>
               <td>xxxxx</td>
               <td style={{ textAlign: "center" }}>
-              <button
-                // onClick={() =>
-                //   this.props.history.push(`/stock-edit/${item.id}`)
-                // }
-                type="button"
-                className="btn btn-info"
-              >
-                แก้ไข
-              </button>
-              {/* <EditVolunteerInfo selectValue={value} /> */}
+              <EditAdminInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
               <button
                 onClick={() => {
@@ -54,7 +46,7 @@ export default function AdminContent() {
                     cancelButtonText: "ยกเลิก"
                   }).then(result => {
                     if (result.value) {
-                      // dispatch(adminAction.deleteVolunteer(value.ADM_ID_NUMBER))
+                      dispatch(adminAction.deleteAdmin(value.ADM_ID_NUMBER))
                       Swal.fire(
                         'ลบสำเร็จ',
                         `คุณ${value.ADM_FIRSTNAME} ${value.ADM_LASTNAME} ได้ถูกลบแล้ว`,
@@ -113,7 +105,7 @@ export default function AdminContent() {
                   <th scope="col">ชื่อ - นามสกุล</th>
                   <th scope="col">ตำแหน่ง</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
-                  <th scope="col">ชื่อผู้ใช้</th>
+                  <th style={{ textAlign: "center" }}>ชื่อผู้ใช้</th>
                   <th scope="col">สถานะ</th>
                   <th style={{ textAlign: "center" }}>Action</th>
                 </tr>

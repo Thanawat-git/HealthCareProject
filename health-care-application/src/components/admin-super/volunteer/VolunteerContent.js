@@ -32,15 +32,6 @@ export default function VolunteerContent() {
             <td>{value.VOL_ID_NUMBER}</td>
             <td>{value.VOL_LINE}</td>
             <td style={{ textAlign: "center" }}>
-            {/* <button
-                // onClick={() =>
-                //   this.props.history.push(`/stock-edit/${item.id}`)
-                // }
-                type="button"
-                className="btn btn-info"
-              >
-                แก้ไข
-              </button> */}
               <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
               <button
