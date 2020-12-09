@@ -9,7 +9,6 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import PhoneIcon from "@material-ui/icons/Phone";
-import EmailIcon from "@material-ui/icons/Email";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Typography from "@material-ui/core/Typography";
 import {
@@ -24,7 +23,7 @@ import {
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch } from "react-redux";
-import * as volAction from "../../../actions/volunteer.action";
+import * as volAction from "../../../../actions/volunteer.action";
 
 const SmallAvatar = withStyles((theme) => ({
   root: {
@@ -78,18 +77,14 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AddNewVolunteer() {
+export default function EditVolunteerInfo({selectValue}) {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageUploaad, setImageUpload] = useState(null);
-  // useEffect(() => {
-  //   image && console.log('image', image)
-  //   image && console.log('image name', image.name)
-  // }, [image])
-  const [preName, setpreName] = useState(null)
+  
   const [state, setState] = useState({
-    volId:'',fName:'',lName:'',phone:'',facebook:'',line:''
+    volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,line:selectValue.VOL_LINE
   });
   const {volId,fName,lName,phone,facebook,line} = state
   const dispatch = useDispatch();
@@ -194,7 +189,6 @@ export default function AddNewVolunteer() {
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
     var Age = nowYear - parseInt(yea);
-    const elderlyBirthday = `${yea}-${numMon}-${day}`
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -203,36 +197,23 @@ export default function AddNewVolunteer() {
       Age = Age;
     }
 
-    const data = [volId,fName,lName,phone,facebook,line];
-    dispatch(volAction.createVolunteer(data));
-    onClose()
-    // setImagePreview(null)
-    // setImageUpload(null)
-    // setpreName(null)
-    // setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
-    // setOpen(false)
+    const data = [selectValue.VOL_ID_NUMBER,volId,fName,lName,phone,facebook,line];
+    dispatch(volAction.updateVolunteer(data));
+    setOpen(false)
   };
 
   const onClose = ()=>{
-    setImagePreview(null)
-    setImageUpload(null)
-    setYea('')
-    setMon('')
-    setDay('')
-    setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
     setOpen(false)
   }
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        size="large"
-        color="primary"
+      <button
         onClick={() => setOpen(true)}
-        className="bt-add"
-      >
-        เพิ่มอาสาสมัคร
-      </Button>
+        type="button"
+        className="btn btn-info"
+        >
+        แก้ไข
+        </button>
 
       <Dialog
         onClose={onClose}
@@ -246,7 +227,7 @@ export default function AddNewVolunteer() {
           className="customized-dialog-title"
           onClose={onClose}
         >
-          เพิ่มอาสาสมัคร
+          แก้ไขข้อมูลของ {fName} {lName}
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
@@ -296,8 +277,8 @@ export default function AddNewVolunteer() {
                       onClose={() => setOpen2(false)}
                       onOpen={() => setOpen2(true)}
                       name="preName"
-                      value={preName}
-                      onChange={e=>setpreName(e.target.value)}
+                      // value={age}
+                      // onChange={handleChange}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -463,6 +444,21 @@ export default function AddNewVolunteer() {
                   }}
                 />
               </div>
+              {/* <div className="col-12 inputFill">
+                <TextField
+                  placeholder="บุคคลอื่นเมื่อไม่สามาติดต่อคุณได้ ใส่ชื่อแล้วตามด้วยเบอร์โทร เช่น คุณสมร 0912345678"
+                  variant="outlined"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                       <AccountCircleIcon/>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div> */}
+              
               <div className="col-12 input-position-fill">
               <label>ที่อยู่</label>
               <textarea className="form-control" rows="3"></textarea>

@@ -1,15 +1,14 @@
 import React from "react";
-import './superadmin.css'
-import Header from "./HeaderSA";
+import Header from "../admin-super/HeaderSA";
 import LeftSideBarMenu from "./LeftSideBarMenu";
-import Content from "./content/content";
-import Footer from "./Footer";
+import Content from "../admin-super/content/content";
+import Footer from "../admin-super/Footer";
 
 export default function SuperAdminPage() {
   return( 
   <React.Fragment>
     <div className="wrapper">
-      <Header name="Super Admin Name" />
+      <Header name="Genaral Admin Name" />
       <LeftSideBarMenu/>
       <Content/>
       <Footer/>

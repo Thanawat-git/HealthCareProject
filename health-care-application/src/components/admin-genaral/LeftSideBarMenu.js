@@ -32,14 +32,6 @@ export default function LeftSideBarMenu() {
                   <p>หน้าแรก</p>
                 </Link>
               </li>
-
-              <li className="nav-item">
-                <Link to={`${url}/admin-content`} className="nav-link">
-                  <i className="nav-icon fas fa-users-cog" />
-                  <p>จัดการผู้ดูแลระบบ</p>
-                </Link>
-              </li>
-
               <li className="nav-item">
                 <Link to={`${url}/volunteer-content`} className="nav-link">
                   <i className="nav-icon fas fa-user-shield" />

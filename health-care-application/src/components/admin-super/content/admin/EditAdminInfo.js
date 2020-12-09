@@ -21,8 +21,8 @@ import {
   TextField,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { useDispatch } from "react-redux";
-import * as adminAction from "../../../actions/admin.action";
+import { useDispatch, useSelector } from "react-redux";
+import * as adminAction from "../../../../actions/admin.action";
 
 const SmallAvatar = withStyles((theme) => ({
   root: {
@@ -76,14 +76,19 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AddNewAdmin() {
+export default function AddNewAdmin({selectValue}) {
+//   const adminReducer = useSelector(({adminReducer}) => adminReducer)
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false); //preName
   const [open3, setOpen3] = useState(false); // position
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState(selectValue.ADM_PHOTO);
   const [imageUploaad, setImageUpload] = useState(null);
   const [state, setState] = useState({
-    adminId:'',fName:'',lName:'',phone:'',email:''
+    adminId:selectValue.ADM_ID_NUMBER,
+    fName:selectValue.ADM_FIRSTNAME,
+    lName:selectValue.ADM_LASTNAME,
+    phone:selectValue.ADM_PHONE,
+    email:selectValue.ADM_EMAIL,
   });
   const {adminId,fName,lName,phone,email} = state
   const dispatch = useDispatch();
@@ -94,8 +99,8 @@ export default function AddNewAdmin() {
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
-  const [position, setPosition] = useState(null);
-  const [preName, setpreName] = useState(null)
+  const [position, setPosition] = useState(selectValue.ADM_POSITION);
+  const [preName, setpreName] = useState(selectValue.ADM_GENDER)
 
   //   date picker
   const [years, setYears] = useState([]);
@@ -198,32 +203,22 @@ export default function AddNewAdmin() {
     } else {
       Age = Age;
     }
-    const data = [adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
-    dispatch(adminAction.createAdmin(data))
+    const data = [selectValue.ADM_ID_NUMBER,adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
+    dispatch(adminAction.updateAdmin(data))
     onClose()
   };
   const onClose = ()=>{
-    setImagePreview(null)
-    setImageUpload(null)
-    setpreName(null)
-    setPosition(null)
-    setYea('')
-    setMon('')
-    setDay('')
-    setState({adminId:'',fName:'',lName:'',phone:'',email:''})
     setOpen(false)
   }
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        size="large"
-        color="primary"
+      <button
         onClick={() => setOpen(true)}
-        className="bt-add"
-      >
-        เพิ่มผู้ดูแลระบบ
-      </Button>
+        type="button"
+        className="btn btn-info"
+        >
+        แก้ไข
+        </button>
 
       <Dialog
         onClose={onClose}
@@ -237,7 +232,7 @@ export default function AddNewAdmin() {
           className="customized-dialog-title"
           onClose={onClose}
         >
-          เพิ่มผู้ดูแลระบบ
+          แก้ไขข้อมูลของ {preName}{fName} {lName}
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">

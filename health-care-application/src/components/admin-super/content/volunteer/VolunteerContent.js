@@ -1,44 +1,44 @@
-import { InputAdornment, TextField } from "@material-ui/core";
-import React, { useEffect } from "react";
-import './admin.css'
+import { InputAdornment, TextField } from '@material-ui/core'
+import React, { useEffect } from 'react'
 import SearchIcon from "@material-ui/icons/Search";
-import AddNewAdmin from "./AddNewAdmin";
-import EditAdminInfo from "./EditAdminInfo";
-import * as adminAction from "../../../actions/admin.action";
+import AddNewVolunteer from "./AddNewVolunteer";
+import EditVolunteerInfo from "./EditVolunteerInfo";
+import * as volAction from "../../../../actions/volunteer.action";
 import Swal from "sweetalert2"; // ทำ alert
 import withReactContent from "sweetalert2-react-content"; 
 import { useDispatch, useSelector } from 'react-redux';
 const MySwal = withReactContent(Swal);
 
-export default function AdminContent() {
+export default function VolunteerContent() {
   const dispatch = useDispatch()
-  const adminReducer = useSelector(({adminReducer}) => adminReducer)
+  const volunteerReducer = useSelector(({volunteerReducer}) => volunteerReducer)
+  
   useEffect(() => {
-    adminReducer.result===null && dispatch(adminAction.getAllAdmin())
-  }, [])
-
-  const createRow = () => {
+    if(volunteerReducer.result===null){
+      dispatch(volAction.getAllVolunteers())
+    }
+  },[]);
+  const createRow = ()=>{
     try{
-      const {result, isFetching} = adminReducer
+      const {result, isFetching} = volunteerReducer
       return (
         !isFetching &&
         result != null && result.map((value, index)=>{
           return (
-            <tr onClick={() => console.log("xxx")}>
-              <td>{index+1}</td>
-              <td>{value.ADM_GENDER}{value.ADM_FIRSTNAME} {value.ADM_LASTNAME}</td>
-              <td>{value.ADM_POSITION}</td>
-              <td>{value.ADM_PHONE}</td>
-              <td>{value.ADM_EMAIL}</td>
-              <td>xxxxx</td>
-              <td style={{ textAlign: "center" }}>
-              <EditAdminInfo selectValue={value} />
+          <tr key={value.VOL_ID_NUMBER} onClick={() => console.log("xxx")}>
+            <td>{index+1}</td>
+            <td>{value.VOL_FIRSTNAME} {value.VOL_LASTNAME}</td>
+            <td>{value.VOL_PHONE}</td>
+            <td>{value.VOL_ID_NUMBER}</td>
+            <td>{value.VOL_LINE}</td>
+            <td style={{ textAlign: "center" }}>
+              <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
               <button
                 onClick={() => {
                   MySwal.fire({
                     title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
-                    text: `คุณ${value.ADM_FIRSTNAME} ${value.ADM_LASTNAME} กำลังจะถูกลบ!`,
+                    text: `คุณ${value.VOL_FIRSTNAME} ${value.VOL_LASTNAME} กำลังจะถูกลบ!`,
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -46,10 +46,10 @@ export default function AdminContent() {
                     cancelButtonText: "ยกเลิก"
                   }).then(result => {
                     if (result.value) {
-                      dispatch(adminAction.deleteAdmin(value.ADM_ID_NUMBER))
+                      dispatch(volAction.deleteVolunteer(value.VOL_ID_NUMBER))
                       Swal.fire(
                         'ลบสำเร็จ',
-                        `คุณ${value.ADM_FIRSTNAME} ${value.ADM_LASTNAME} ได้ถูกลบแล้ว`,
+                        `คุณ${value.VOL_FIRSTNAME} ${value.VOL_LASTNAME} ได้ถูกลบแล้ว`,
                         'success'
                       )
                     }
@@ -60,24 +60,24 @@ export default function AdminContent() {
               >
                 ลบ
               </button>
-              </td>
-            </tr>
+            </td>
+          </tr>
           )
         })
+        
       )
     }catch(e){}
   }
-
-  const onChange = e =>{
-    dispatch(adminAction.getAdminByKeyword(e))
+  const onChange = (e)=>{
+    dispatch(volAction.getVolunteerByKeyword(e))
   }
-  return (
+    return (
     <React.Fragment>
       <div className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <h1 className="m-0 text-dark">จัดการผู้ดูแลระบบ</h1>
+              <h1 className="m-0 text-dark">จัดการอาสาสมัคร</h1>
             </div>
           </div>
         </div>
@@ -88,14 +88,13 @@ export default function AdminContent() {
             <div className="col-8 card-body">
               <TextField
                 label="ค้นหาโดยการกรอกชื่อ-นามสกุล หรือรหัสประจำตัว"
-                id="standard-start-adornment"
                 onChange={onChange}
                 InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
                 fullWidth
               />
             </div>
             <div onClick={() => console.log("yyyy")} className="col-4 card-body add-staff-bt">
-                <AddNewAdmin/>
+                <AddNewVolunteer/>
             </div>
             {/* table */} 
             <table className="table table-hover">
@@ -103,9 +102,8 @@ export default function AdminContent() {
                 <tr>
                   <th scope="col">ลำดับ</th>
                   <th scope="col">ชื่อ - นามสกุล</th>
-                  <th scope="col">ตำแหน่ง</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
-                  <th style={{ textAlign: "center" }}>ชื่อผู้ใช้</th>
+                  <th scope="col">ชื่อผู้ใช้</th>
                   <th scope="col">สถานะ</th>
                   <th style={{ textAlign: "center" }}>Action</th>
                 </tr>
@@ -115,9 +113,10 @@ export default function AdminContent() {
               {createRow()}
               </tbody>
             </table>
+            
           </div>
         </div>
       </section>
     </React.Fragment>
-  );
+    )
 }

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HeaderSA() {
+export default function HeaderSA({name}) {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -44,7 +44,7 @@ export default function HeaderSA() {
                 <Avatar className={classes.orange}>S</Avatar>
                 <i className="info">
                   <a className="d-block">
-                    Super Admin Name
+                    {name}
                   </a>
                 </i>
               </i>

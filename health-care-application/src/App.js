@@ -10,6 +10,7 @@ import ResetPassword from "./components/reset-password/reset-password";
 import AdminHeader from "./components/admin-super/header/header"
 import AdminFooter from "./components/admin-super/footer/footer"
 import SuperAdminPage from "./components/admin-super";
+import GenaralAdminPage from "./components/admin-genaral";
 
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
@@ -77,6 +78,7 @@ export default function App(){
 
               {/* Super Admin */}
               <Route path="/superadminpage" component={SuperAdminPage} />
+              <Route path="/genaraladminpage" component={GenaralAdminPage} />
 
               {/* Genaral Admin */}
               <Route path="/genaral-admin">
