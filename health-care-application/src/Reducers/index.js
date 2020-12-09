@@ -21,6 +21,9 @@ import forms9Reducer from './forms9.reducer'
 import forms92Reducer from './forms92.reducer'
 import elderlyReducer from "./elderly.reducer";
 import volunteerReducer from "./volunteer.reducer";
+import adminReducer from "./admin.reducer";
+import authReducer from "./auth.ruducer";
+import messageReducer from "./message.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -44,4 +47,7 @@ export default combineReducers({
     forms92Reducer,
     elderlyReducer,
     volunteerReducer,
+    adminReducer,
+    authReducer,
+    messageReducer,
 })

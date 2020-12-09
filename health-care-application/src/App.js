@@ -28,91 +28,91 @@ import {sec4} from "./components/Forms/Sections4";
 import {sec5} from "./components/Forms/Sections5";
 import {sec6,tai} from "./components/Forms/Sections6";
 
-
 import {mmsi, sec7} from "./components/Forms/Sections7";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8";
 import {sec9, sec9_2} from "./components/Forms/Sections9";
 import {sec10} from "./components/Forms/Sections10";
-import mmsiThai2002 from "./components/Forms/Sections7/mmsiThai2002";
+import { useSelector } from "react-redux";
 
-export default class App extends Component {
-  redirectToLogin = ()=>{
+// 1200101000000
+export default function App(){
+
+  const {isLoggedIn} = useSelector(state => state.authReducer)
+  const redirectToLogin = ()=>{
     return <Redirect to="/login"/>
   }
-  render() {
     return (
       <Router>
         <Switch>
-          <Route path='/volunteer' component={Volunteer} />
-          <Route path='/editeld' component={EditInfo} />
+          {/* {isLoggedIn ?( */}
+            {/* <Switch> */}
+              <Route path='/volunteer' component={Volunteer} />
+              <Route path='/editeld' component={EditInfo} />
 
-          {/* Form */}
-          {/* <Route path="/form">
-              <Sec1Page1/>
-          </Route> */}
-          {/* Dev Path */}
-          <Route path='/mainmenu' component={mainMenu} />
-          <Route path="/sec1-page1" component={sec1_1} />
-          <Route path="/sec1-page2" component={sec1_2} />
-          <Route path="/sec1-page3" component={sec1_3} />
-          <Route path="/sec1-page4" component={sec1_4} />
-          <Route path="/sec1-page5" component={sec1_5} />
-          <Route path="/sec1-page6" component={sec1_6} />
+              {/* Dev Path */}
+              <Route path='/mainmenu' component={mainMenu} />
+              <Route path="/sec1-page1" component={sec1_1} />
+              <Route path="/sec1-page2" component={sec1_2} />
+              <Route path="/sec1-page3" component={sec1_3} />
+              <Route path="/sec1-page4" component={sec1_4} />
+              <Route path="/sec1-page5" component={sec1_5} />
+              <Route path="/sec1-page6" component={sec1_6} />
 
-          <Route path="/sec2" component={sec2} />
-          <Route path="/sec3" component={sec3} />
-          <Route path="/sec4" component={sec4} />
-          <Route path="/sec5" component={sec5} />
-          <Route path="/sec6" component={sec6} />
-          <Route path="/tai" component={tai} />
-          <Route path="/sec7" component={sec7} />
-          <Route path="/mmsi" component={mmsi} />
+              <Route path="/sec2" component={sec2} />
+              <Route path="/sec3" component={sec3} />
+              <Route path="/sec4" component={sec4} />
+              <Route path="/sec5" component={sec5} />
+              <Route path="/sec6" component={sec6} />
+              <Route path="/tai" component={tai} />
+              <Route path="/sec7" component={sec7} />
+              <Route path="/mmsi" component={mmsi} />
 
-          <Route path="/sec8" component={sec8_1} />
-          <Route path="/sec8-9q" component={sec8_9q} />
+              <Route path="/sec8" component={sec8_1} />
+              <Route path="/sec8-9q" component={sec8_9q} />
 
-          <Route path="/sec9" component={sec9} />
-          <Route path="/sec9-2" component={sec9_2} />
-         
-          <Route path="/sec10" component={sec10} />
+              <Route path="/sec9" component={sec9} />
+              <Route path="/sec9-2" component={sec9_2} />
+            
+              <Route path="/sec10" component={sec10} />
 
-          {/* Super Admin */}
-          <Route path="/superadminpage" component={SuperAdminPage} />
+              {/* Super Admin */}
+              <Route path="/superadminpage" component={SuperAdminPage} />
 
-          {/* Genaral Admin */}
-          <Route path="/genaral-admin">
+              {/* Genaral Admin */}
+              <Route path="/genaral-admin">
 
-          </Route>
+              </Route>
 
-          {/* Medical Staff */}
-          <Route path="/medical-staff">
-            <AdminHeader name="Medical Admin Name"/>
-            <MedicSidebar/>
-            {/* <Route path="/medical-staff/maim-content" component={MedicContent} /> */}
-            <MedicContent/>
-            {/* <Route path="/medical-staff/follow-up" component={FollowUp} /> */}
-            <AdminFooter/>
-          </Route>
-          
-          {/* Follow Up */}
-          <Route path="/follow-up">
-            <AdminHeader name="Medical Admin Name"/>
-            <MedicSidebar/>
-            <FollowUp/>
-            <AdminFooter/>
-          </Route>
+              {/* Medical Staff */}
+              <Route path="/medical-staff">
+                <AdminHeader name="Medical Admin Name"/>
+                <MedicSidebar/>
+                <MedicContent/>
+                <AdminFooter/>
+              </Route>
+              
+              {/* Follow Up */}
+              <Route path="/follow-up">
+                <AdminHeader name="Medical Admin Name"/>
+                <MedicSidebar/>
+                <FollowUp/>
+                <AdminFooter/>
+              </Route>
+            {/* </Switch> */}
+          {/* ):( */}
+            {/* <Switch> */}
+            {/* Genaral Path */}
+            <Route path="/reset-password" component={ResetPassword} />
+            <Route path="/verify" component={VerifyIdentity}></Route>
+            <Route path="/login/admin" component={loginAdmin}></Route> 
+            <Route path="/login/mobile" component={loginAdminMobile}></Route> 
+            <Route path="/login" component={login}></Route> 
 
-          {/* Genaral Path */}
-          <Route path="/reset-password" component={ResetPassword} />
-          <Route path="/verify" component={VerifyIdentity}></Route>
-          <Route path="/login/admin" component={loginAdmin}></Route> 
-          <Route path="/login/mobile" component={loginAdminMobile}></Route> 
-          <Route path="/login" component={login}></Route> 
-
-          <Route exact={true} path="/" component={this.redirectToLogin}></Route>
-          <Route exact={true} path="*" component={this.redirectToLogin}></Route> {/* Unknow path */}
-        </Switch>
+            <Route exact={true} path="/" component={redirectToLogin}></Route>
+            <Route exact={true} path="*" component={redirectToLogin}></Route> {/* Unknow path */}
+            {/* </Switch> */}
+          {/* )} */}
+          </Switch>
       </Router>
     );
   }
-}

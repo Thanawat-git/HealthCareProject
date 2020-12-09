@@ -83,9 +83,7 @@ export default function EditVolunteerInfo({selectValue}) {
   const [open2, setOpen2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageUploaad, setImageUpload] = useState(null);
-  useEffect(() => {
-    console.log('select value ', selectValue)
-  }, [])
+  
   const [state, setState] = useState({
     volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,line:selectValue.VOL_LINE
   });
@@ -230,7 +228,7 @@ export default function EditVolunteerInfo({selectValue}) {
           className="customized-dialog-title"
           onClose={onClose}
         >
-          เพิ่มอาสาสมัคร
+          แก้ไขข้อมูลของ {fName} {lName}
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">

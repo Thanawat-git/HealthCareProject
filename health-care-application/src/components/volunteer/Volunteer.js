@@ -8,8 +8,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import './volunteer.css'
 import Search from './Search'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from "../../actions/auth.action";
 
 const useStyles = makeStyles({
     root: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles({
 });
 
 export default function Volunteer() {
+    const dispatch = useDispatch()
     const classes = useStyles();
     const [state, setState] = useState({
         left: false,
@@ -68,7 +70,7 @@ export default function Volunteer() {
               <ListItemIcon> <VpnKeyIcon /> </ListItemIcon>
               <ListItemText primary='เปลี่ยนรหัสผ่าน' />
             </ListItem>
-            <Link to="/login">
+            <Link to="/login" onClick={()=>dispatch(logout())} >
             <ListItem button>
               <ListItemIcon><ExitToAppIcon /></ListItemIcon>
               <ListItemText primary='ออกจากระบบ' />
@@ -94,7 +96,7 @@ export default function Volunteer() {
                         Project Name
                     </Typography>
                     <Link to="/login">
-                    <Button color="inherit"><ExitToAppIcon /></Button>
+                    <Button color="inherit" onClick={()=>dispatch(logout())}><ExitToAppIcon /></Button>
                     </Link>
                   </Toolbar>
                 </AppBar>

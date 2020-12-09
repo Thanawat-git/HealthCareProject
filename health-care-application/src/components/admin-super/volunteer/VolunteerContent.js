@@ -29,7 +29,7 @@ export default function VolunteerContent() {
             <td>{index+1}</td>
             <td>{value.VOL_FIRSTNAME} {value.VOL_LASTNAME}</td>
             <td>{value.VOL_PHONE}</td>
-            <td>{value.VOL_FACEBOOK}</td>
+            <td>{value.VOL_ID_NUMBER}</td>
             <td>{value.VOL_LINE}</td>
             <td style={{ textAlign: "center" }}>
             {/* <button
@@ -96,7 +96,7 @@ export default function VolunteerContent() {
           <div className="row">
             <div className="col-8 card-body">
               <TextField
-                label="ค้นหาโดยการกรอกชื่อหรือนามสกุล"
+                label="ค้นหาโดยการกรอกชื่อ-นามสกุล หรือรหัสประจำตัว"
                 onChange={onChange}
                 InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
                 fullWidth

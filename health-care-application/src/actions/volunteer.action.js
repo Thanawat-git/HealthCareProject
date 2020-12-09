@@ -2,7 +2,7 @@ import Axios from "axios";
 import {
   HTTP_VOL_FAILED,
   HTTP_VOL_FETCHING,
-  HTTP_VOL_SUCCRESS,
+  HTTP_VOL_SUCCESS,
   apiVol,
 } from "../constants";
 
@@ -11,7 +11,7 @@ export const setVolunteerStateToFetching = () => ({
 });
 
 export const setVolunteerStateToSuccress = (payload) => ({
-  type: HTTP_VOL_SUCCRESS,
+  type: HTTP_VOL_SUCCESS,
   payload,
 });
 
