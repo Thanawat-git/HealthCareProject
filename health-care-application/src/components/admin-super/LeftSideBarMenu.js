@@ -67,7 +67,7 @@ export default function LeftSideBarMenu() {
 
               {/* Report */}
               <li className="nav-item">
-                <Link to={`${url}/report`} className="nav-link">
+                <Link to={`${url}/reports`} className="nav-link">
                   <i className="nav-icon fas fa-file-alt" />
                   <p>Report</p>
                 </Link>

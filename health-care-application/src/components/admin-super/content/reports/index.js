@@ -1,7 +1,9 @@
 import React from "react";
-import { Redirect, Route, useParams, useRouteMatch } from "react-router";
+import { Redirect, Route, useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
-import Report3 from "./report3";
+import './report.css'
+import ReportMenuBox from "./ReportMenuBox";
+import textreport from "./textreport";
 
 export default function Index() {
   const { path } = useRouteMatch();
@@ -10,9 +12,22 @@ export default function Index() {
   };
   return (
     <div>
-      <Route path={`${path}/report3`} component={Report3} />
+      <Route path={`${path}/textreport`} component={textreport} />
+
       <Route path={`${path}/report-menu`}>
         {/* Create Menu Here! */}
+        <div className="report-box">
+          <Link to={`${path}/textreport`}>
+            <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+          </Link>
+          <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+          <ReportMenuBox title="แปลผลความเสี่ยงต่อโรคหัวใจและหลอดเลือด" eachImg="reportpage" />
+          <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+          <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+          <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+          <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+          <ReportMenuBox title="แปลผลเส้นรอบเอว" eachImg="reportpage" />
+        </div>
         <Link to={`${path}/report3`}>To report3</Link>
       </Route>
       <Route

@@ -27,7 +27,7 @@ export default function Content() {
       <Route path={`${path}/volunteer-content`}>
         <VolunteerContent/>
       </Route>
-      <Route path={`${path}/report`}>
+      <Route path={`${path}/reports`}>
         <Reports/>
       </Route>
       <Route path={`${path}/main-content`}>
