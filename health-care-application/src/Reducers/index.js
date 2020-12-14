@@ -24,6 +24,7 @@ import volunteerReducer from "./volunteer.reducer";
 import adminReducer from "./admin.reducer";
 import authReducer from "./auth.ruducer";
 import messageReducer from "./message.reducer";
+import editaccountReducer from "./editaccount.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -50,4 +51,6 @@ export default combineReducers({
     adminReducer,
     authReducer,
     messageReducer,
+    editaccountReducer,
+
 })

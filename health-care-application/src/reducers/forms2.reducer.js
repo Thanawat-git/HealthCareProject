@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS2 } from "../constants";
+import { CREATE_NEW_FORMS2,HTTP_SECTIONS2_FETCHING } from "../constants";
 
 const initialState = {
   waist: null,
@@ -13,9 +13,24 @@ const initialState = {
   bloodPressureResult: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
   sugarResult: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
   collect: false,
+  result:null,
+  isFetching:false
 };
+// const initialState = {
+// res:HTTP_SECTIONS2_FETCHING
+// };
 
+// export default (state = initialState, { type, payload }) => {
+//   switch (type) {
+//     case CREATE_NEW_FORMS2:
+//       return {
+//       res:payload
+//       };
 
+//     default:
+//       return state;
+//   }
+// };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

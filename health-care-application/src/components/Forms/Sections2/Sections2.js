@@ -158,6 +158,8 @@ export default function Sections2_1() {
      formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
      formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
      formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
+
+
   }
 
 
@@ -341,7 +343,10 @@ export default function Sections2_1() {
 
         <div className="row justify-content-between">
           <Link to="/mainmenu">
-            <button type="button" className="btn form-btn btn-back btn-lg">
+            <button type="button" 
+            className="btn form-btn btn-back btn-lg"
+            //onClick={handleSubmit}
+            >
               ยกเลิก
             </button>
           </Link>
