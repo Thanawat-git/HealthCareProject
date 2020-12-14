@@ -1,71 +1,184 @@
 .vtcontainer {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background-color: #fff;
-    /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  /* overflow: hidden; */
 }
-.vtcontainer h3{
-    margin-top: 20px;
+.vtcontainer h3 {
+  text-align: center;
+  margin: 40px;
+}
+.vtcontainer h2 {
+  margin: 40px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.vtcontainer b {
+    text-align: center;
+    
+  }
+  .vtcontainer  th{
+    border: 1px solid rgba(0, 0, 0, 1);
+  }
+  .vtcontainer td{
+    border: 1px solid rgba(0, 0, 0, 1);
+  }
+
+.linkicon a,
+.linkicon a:hover {
+  color: #fff;
+}
+
+.link a,
+.link a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.seach-eld {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.inner-seach2 {
+  margin-top: 20px;
+}
+
+@media (min-width: 770px) {
+  .seach-eld input {
+    width: 500px;
+  }
+
+}
+
+  .table-layout {
+  display: flex;
+  justify-content: center;
+
+  
+  
+}
+
+.nav-bottom p {
+  color: black;
+  text-align: center;
+  flex-grow: 1;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.bt-searchInfo {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8px;
+}
+
+.bt-searchInfo a,
+.bt-searchInfo a:hover {
+  text-decoration: none;
+}
+
+
+.bt-searchInfo a .bt1 {
+  border-radius: 35px;
+  color: #da9813;
+  background-color: #f2f2ab;
+}
+  .bt-history a .bt3 {
+    border-radius: 30px;
+    color:black;
+    background-color: #DCDCDC;
+  } 
+  .bt-searchInfo a .bt3 {
+    border-radius: 15px;
+    color:black;
+    background-color:  #DCDCDC;
+  }
+  .bt-searchInfo a .bt4 {
+    color:black;
+    background-color:  #DCDCDC;
+  }
+  .bt-history a .bt2 {
+    border-radius: 30px;
+    color: #fff;
+    background-color: #0099ff;
+  }
+  
+  .bt-history{
+    display: flex;
+    justify-content:space-evenly;
+ 
+    
+  }
+.bt-searchInfo a .bt2 {
+  border-radius: 35px;
+  color: #fff;
+  background-color: #0099ff;
+}
+.bt-searchInfo a .bt4 {
+    color: #fff;
+    background-color: #00b300;
+  }
+
+.bt-edit{
     text-align: center;
 }
-.linkicon a,.linkicon a:hover{
-    color: #fff;
+.bt-edit .bt-save :hover{
+    background-color: #00b300;
+}
+.vtcontainer .bt-save :hover {
+    background-color: #00b300;
+}
+.vtcontainer .bt-save {
+    background-color: #00b300;
+    color: white; 
 }
 
-.link a, .link a:hover{
-    color: black;
-    text-decoration: none;
+
+.paper-show {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
-.seach-eld{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-}
-.inner-seach2{
-    margin-top: 20px;
-}
-
-@media (min-width: 770px){
-    .seach-eld input{
-        width: 500px;
-    } 
-}
-.nav-bottom p{
-    color: black;
-    text-align: center;
-    flex-grow: 1;
-    margin-top: 20px;
-    margin-bottom: 0;
+.cell {
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-right: 1px solid  rgba(0, 0, 0, 1);
+    
+  }
+  .setIcon{
+      text-align: right;
+  }
+  .TextField {
+    display: grid !important;
+    background-color: white;
+    margin: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.bt-searchInfo{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 8px;
+.TextField label {
+    background-color: white;
+    color: #5a5858;
+    padding-right: 10px;
+    font-size: 20px;
+    margin:5px;
+    /* color: black; */
 }
-
-.bt-searchInfo a, .bt-searchInfo a:hover{
-    text-decoration: none;
+.TextField1 label {
+    background-color: white;
+    color: #5a5858;
+    font-size: 20px;
+    
+    /* color: black; */
 }
-
-.bt-searchInfo a .bt1{
-    border-radius: 35px;
-    color: #DA9813;
-    background-color: #F2F2AB;
-}
-
-.bt-searchInfo a .bt2{
-    border-radius: 35px;
-    color: #fff;
-    background-color: #0099FF;
-}
-
-.paper-show{
-    cursor: pointer;
-    padding: 10px;
-    margin-bottom: 15px;
+.TextField1{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom:2%;
 }

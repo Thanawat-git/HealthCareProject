@@ -14,7 +14,12 @@ import SuperAdminPage from "./components/admin-super";
 import MedicSidebar from "./components/admin-medical/leftSidebar/leftSidebar";
 import MedicContent from "./components/admin-medical/mainContent/mainContent";
 import FollowUp from "./components/admin-medical/followUp/followUp";
-import Volunteer from "./components/volunteer/Volunteer";
+
+//volunteer
+import MainVolunteer from "./components/volunteer";
+
+
+
 
 // ELD Page
 import EditInfo from "./components/elderly/EditInfo";
@@ -28,12 +33,12 @@ import {sec4} from "./components/Forms/Sections4";
 import {sec5} from "./components/Forms/Sections5";
 import {sec6,tai} from "./components/Forms/Sections6";
 
-
 import {mmsi, sec7} from "./components/Forms/Sections7";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8";
 import {sec9, sec9_2} from "./components/Forms/Sections9";
 import {sec10} from "./components/Forms/Sections10";
 import mmsiThai2002 from "./components/Forms/Sections7/mmsiThai2002";
+import MainContent from "./components/admin-super/content/MainContent";
 
 export default class App extends Component {
   redirectToLogin = ()=>{
@@ -43,8 +48,15 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path='/volunteer' component={Volunteer} />
+          {/* Volunteer */}
+          {/* <Route path='/volunteer' component={Volunteer} /> */}
+          <Route path='/volunteerpage'component={MainVolunteer} />
+          {/* <Route path='/history' component={History} />
           <Route path='/editeld' component={EditInfo} />
+          <Route path='/editaccount' component={Editaccount} />
+          <Route path='/editpass' component={Editpassword
+          } /> */}
+
 
           {/* Form */}
           {/* <Route path="/form">
