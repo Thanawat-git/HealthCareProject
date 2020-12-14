@@ -5,8 +5,12 @@ import {
   useRouteMatch,
 } from 'react-router-dom'
 import MainContent from "./MainContent";
-import AdminContent from "../admin/AdminContent";
-import VolunteerContent from "../volunteer/VolunteerContent";
+// import AdminContent from "./admin/AdminContent";
+// import VolunteerContent from "./volunteer/VolunteerContent";
+
+import AdminContent from "./admin/AdminContent";
+import VolunteerContent from "./volunteer/VolunteerContent"
+import Reports from "./reports";
 
 export default function Content() {
   const { path } = useRouteMatch()
@@ -22,6 +26,9 @@ export default function Content() {
       </Route>
       <Route path={`${path}/volunteer-content`}>
         <VolunteerContent/>
+      </Route>
+      <Route path={`${path}/reports`}>
+        <Reports/>
       </Route>
       <Route path={`${path}/main-content`}>
         <MainContent/>

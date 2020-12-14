@@ -2,7 +2,7 @@ import {
   HTTP_ELD_FAILED,
   HTTP_ELD_FETCHING,
   HTTP_ELD_SELECTED,
-  HTTP_ELD_SUCCRESS,
+  HTTP_ELD_SUCCESS,
 } from "../constants";
 
 const initialState = {
@@ -16,7 +16,7 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case HTTP_ELD_FETCHING:
       return { ...state, result: [], isFetching: true, inError: false };
-    case HTTP_ELD_SUCCRESS:
+    case HTTP_ELD_SUCCESS:
       return { ...state, result: payload, isFetching: false, inError: false };
     case HTTP_ELD_FAILED:
       return { ...state, result: [], isFetching: false, inError: true };

@@ -49,18 +49,23 @@
   margin-top: 20px;
 }
 
+
 @media (min-width: 770px) {
   .seach-eld input {
     width: 500px;
   }
 
 }
-
-  .table-layout {
+.seach-eld{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 60px; */
+}
+.table-layout {
   display: flex;
   justify-content: center;
-
-  
   
 }
 

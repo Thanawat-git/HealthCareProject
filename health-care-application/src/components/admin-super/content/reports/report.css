@@ -1,0 +1,43 @@
+.report-box{
+    padding: 20px;
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.report-box a:hover{
+    text-decoration: none;
+}
+
+.report-box-content{
+    padding-top: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.report-box-content h4{
+    font-size: 20px;
+}
+
+.report-box-content img{
+    margin-top: 10px;
+    width: 40%;
+    height: auto;
+}
+
+.report-box-content-bt {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+.report-box-content button{
+    background-color: #3D59F1;
+    color: #fff;
+    width: 80%;
+}
+
+.report-box-content button:hover{
+    background-color: #3D59F1 !important;
+    color: #fff !important;
+}

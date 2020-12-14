@@ -1,7 +1,7 @@
 import {
   HTTP_ELD_FAILED,
   HTTP_ELD_FETCHING,
-  HTTP_ELD_SUCCRESS,
+  HTTP_ELD_SUCCESS,
   HTTP_ELD_SELECTED,
   apiBase,
   apiEld,
@@ -13,7 +13,7 @@ export const setElderlyStateToFetching = () => ({
 });
 
 export const setElderlyStateToSuccress = (payload) => ({
-  type: HTTP_ELD_SUCCRESS,
+  type: HTTP_ELD_SUCCESS,
   payload,
 });
 

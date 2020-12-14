@@ -23,55 +23,34 @@ export const CREATE_NEW_EDITACCOUNT= 'CREATE_NEW_EDITACCOUNT';
 export const FETCH_DATA_FORM_SERVER = 'FETCH_DATA_FORM_SERVER';
 
 // Search elderly
-export const FOUND_ELD = 'FOUND_ELD';
-export const SELECT_ELD = 'SELECT_ELD';
 export const HTTP_ELD_FETCHING = "HTTP_ELD_FETCHING";
-export const HTTP_ELD_SUCCRESS = "HTTP_ELD_SUCCRESS";
+export const HTTP_ELD_SUCCESS = "HTTP_ELD_SUCCESS";
 export const HTTP_ELD_SELECTED = "HTTP_ELD_SELECTED";
 export const HTTP_ELD_FAILED = "HTTP_ELD_FAILED";
 
 // Volunteer
 export const HTTP_VOL_FETCHING = "HTTP_VOL_FETCHING";
-export const HTTP_VOL_SUCCRESS = "HTTP_VOL_SUCCRESS";
-export const HTTP_VOL_SELECTED = "HTTP_VOL_SELECTED";
+export const HTTP_VOL_SUCCESS = "HTTP_VOL_SUCCESS";
 export const HTTP_VOL_FAILED = "HTTP_VOL_FAILED";
+
+// Admin
+export const HTTP_ADMIN_FETCHING = "HTTP_ADMIN_FETCHING";
+export const HTTP_ADMIN_SUCCESS = "HTTP_ADMIN_SUCCESS";
+export const HTTP_ADMIN_FAILED = "HTTP_ADMIN_FAILED";
+
 // // Login Page
 // export const APP_INIT = "APP_INIT";
 
 
 // // Login Page
-// export const HTTP_LOGIN_FETCHING = "HTTP_LOGIN_FETCHING";
-// export const HTTP_LOGIN_SUCCESS = "HTTP_LOGIN_SUCCESS";
-// export const HTTP_LOGIN_FAILED = "HTTP_LOGIN_FAILED";
-
-// // Register Page
-// export const HTTP_REGISTER_FETCHING = "HTTP_REGISTER_FETCHING";
-// export const HTTP_REGISTER_SUCCESS = "HTTP_REGISTER_SUCCESS";
-// export const HTTP_REGISTER_FAILED = "HTTP_REGISTER_FAILED";
-
-// // Stock Page
-// export const HTTP_STOCK_FETCHING = "HTTP_STOCK_FETCHING";
-// export const HTTP_STOCK_SUCCESS = "HTTP_STOCK_SUCCESS";
-// export const HTTP_STOCK_FAILED = "HTTP_STOCK_FAILED";
-
-// // Stock Edit Page
-// export const HTTP_STOCK_EDIT_FETCHING = "HTTP_STOCK_EDIT_FETCHING";
-// export const HTTP_STOCK_EDIT_SUCCESS = "HTTP_STOCK_EDIT_SUCCESS";
-// export const HTTP_STOCK_EDIT_FAILED = "HTTP_STOCK_EDIT_FAILED";
-// export const HTTP_STOCK_EDIT_INITIALED = "HTTP_STOCK_EDIT_INITIALED";
-
-// // Transaction Edit Page
-// export const HTTP_TRANSACTION_FETCHING = "HTTP_TRANSACTION_FETCHING";
-// export const HTTP_TRANSACTION_SUCCESS = "HTTP_TRANSACTION_SUCCESS";
-// export const HTTP_TRANSACTION_FAILED = "HTTP_TRANSACTION_FAILED";
-
-// // Shop Page
-// export const HTTP_SHOP_FETCHING = "HTTP_SHOP_FETCHING";
-// export const HTTP_SHOP_SUCCESS = "HTTP_SHOP_SUCCESS";
-// export const HTTP_SHOP_FAILED = "HTTP_SHOP_FAILED";
-
-// export const SHOP_UPDATE_ORDER = "SHOP_UPDATE_ORDER";
-// export const SHOP_UPDATE_PAYMENT = "SHOP_UPDATE_PAYMENT";
+export const HTTP_LOGIN_FETCHING = "HTTP_LOGIN_FETCHING";
+export const HTTP_LOGIN_SUCCESS = "HTTP_LOGIN_SUCCESS";
+export const HTTP_LOGIN_FAILED = "HTTP_LOGIN_FAILED";
+// Logout
+export const LOGOUT = "LOGOUT";
+// Message
+export const SET_MESSAGE = "SET_MESSAGE";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 // // Error Code
 // export const E_PICKER_CANCELLED = 'E_PICKER_CANCELLED'
@@ -93,18 +72,20 @@ export const NETWORK_CONNECTION_MESSAGE = 'Cannot connect to server, Please try 
 export const apiBase =  "http://10.80.6.136:3001";
 export const apiEld = "http://10.80.6.136:3001/elder";
 export const apiVol = "http://10.80.6.136:3001/volunteer";
+export const apiAdmin = "http://10.80.6.136:3001/admin";
 
 export const YES = 'YES'
 export const NO = 'NO'
 export const OK = 'ok'
 export const NOK = 'nok'
+export const USER = 'user'
 
-// export const server = {    
-//     LOGIN_URL : `authen/login`,    
-//     REGISTER_URL : `authen/register`,  
-//     PRODUCT_URL : `stock/product`,    
-//     TRANSACTION_URL : `transaction`,    
-//     REPORT_URL: `stock/report`,    
-//     LOGIN_PASSED : `yes`,
-// }
+export const server = {    
+    // LOGIN_URL : `authen/login`,    
+    // REGISTER_URL : `authen/register`,  
+    // PRODUCT_URL : `stock/product`,    
+    // TRANSACTION_URL : `transaction`,    
+    // REPORT_URL: `stock/report`,    
+    LOGIN_PASSED : `yes`,
+}
 

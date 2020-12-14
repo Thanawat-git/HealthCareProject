@@ -2,6 +2,7 @@ import React from "react";
 import { Avatar } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { deepOrange } from '@material-ui/core/colors';
+import { server } from "../../constants";
 
 const useStyles = makeStyles((theme) => ({
   orange: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HeaderSA() {
+export default function HeaderSA({name}) {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -43,7 +44,7 @@ export default function HeaderSA() {
                 <Avatar className={classes.orange}>S</Avatar>
                 <i className="info">
                   <a className="d-block">
-                    Super Admin Name
+                    {name}
                   </a>
                 </i>
               </i>
@@ -59,7 +60,9 @@ export default function HeaderSA() {
               เปลี่ยนรหัสผ่าน
             </a>
 
-            <div className="dropdown-divider" />
+            <div className="dropdown-divider" onClick={()=> {
+              localStorage.removeItem(server.LOGIN_PASSED)
+            }} />
             <a href="/login" className="dropdown-item">
               <i class="fas fa-sign-out-alt" style={{ paddingRight: 10 }}></i>
               ออกจากระบบ

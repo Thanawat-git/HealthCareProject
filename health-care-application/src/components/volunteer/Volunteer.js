@@ -10,9 +10,8 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import './volunteer.css'
 import Search from './Search'
 import { Link,useRouteMatch } from 'react-router-dom';
-
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../actions/auth.action";
 
 const useStyles = makeStyles({
   root: {
@@ -96,26 +95,7 @@ export default function Volunteer() {
 
   return (
     <div className="vtcontainer">
-      {/* <div className="nav-vtcontainer linkicon">
-        <div className={classes.root}>
-          <AppBar position="fixed">
-            <Toolbar>
-              <Button onClick={toggleDrawer('left', true)} color="inherit">
-                <MenuIcon />
-              </Button>
-              <Drawer anchor='left' open={state['left']} onClose={toggleDrawer('left', false)}>
-                {list('left')}
-              </Drawer>
-              <Typography variant="h6" className={classes.title}>
-                Project Name
-                    </Typography>
-              <Link to="/login">
-                <Button color="inherit"><ExitToAppIcon /></Button>
-              </Link>
-            </Toolbar>
-          </AppBar>
-        </div>
-      </div> */}
+ 
       <div className="seach-eld">
         <h3>ค้นหาผู้สูงอายุ</h3>
         <Search />

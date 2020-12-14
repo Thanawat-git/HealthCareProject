@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -13,6 +13,8 @@ import EmailIcon from "@material-ui/icons/Email";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Typography from "@material-ui/core/Typography";
 import {
+  Avatar,
+  Badge,
   FormControl,
   InputAdornment,
   InputLabel,
@@ -22,7 +24,16 @@ import {
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch } from "react-redux";
-import * as volAction from "../../../actions/volunteer.action";
+import * as volAction from "../../../../actions/volunteer.action";
+
+const SmallAvatar = withStyles((theme) => ({
+  root: {
+    width: 44,
+    height: 44,
+    border: `2px solid ${theme.palette.background.paper}`,
+    backgroundColor: '#2196f3',
+  },
+}))(Avatar);
 
 const styles = (theme) => ({
   root: {
@@ -70,11 +81,18 @@ const DialogActions = withStyles((theme) => ({
 export default function AddNewVolunteer() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageUploaad, setImageUpload] = useState(null);
+  // useEffect(() => {
+  //   image && console.log('image', image)
+  //   image && console.log('image name', image.name)
+  // }, [image])
+  const [preName, setpreName] = useState(null)
   const [state, setState] = useState({
     volId:'',fName:'',lName:'',phone:'',facebook:'',line:''
-  })
+  });
   const {volId,fName,lName,phone,facebook,line} = state
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const onChange = (e)=>{
     console.log(e.target.value)
     setState({...state, [e.target.name]:e.target.value})
@@ -176,6 +194,7 @@ export default function AddNewVolunteer() {
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
     var Age = nowYear - parseInt(yea);
+    const elderlyBirthday = `${yea}-${numMon}-${day}`
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -186,9 +205,23 @@ export default function AddNewVolunteer() {
 
     const data = [volId,fName,lName,phone,facebook,line];
     dispatch(volAction.createVolunteer(data));
+    onClose()
+    // setImagePreview(null)
+    // setImageUpload(null)
+    // setpreName(null)
+    // setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
+    // setOpen(false)
+  };
+
+  const onClose = ()=>{
+    setImagePreview(null)
+    setImageUpload(null)
+    setYea('')
+    setMon('')
+    setDay('')
     setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
     setOpen(false)
-  };
+  }
   return (
     <React.Fragment>
       <Button
@@ -202,7 +235,7 @@ export default function AddNewVolunteer() {
       </Button>
 
       <Dialog
-        onClose={() => setOpen(false)}
+        onClose={onClose}
         className="customized-dialog"
         open={open}
         maxWidth="md"
@@ -211,18 +244,37 @@ export default function AddNewVolunteer() {
       >
         <DialogTitle
           className="customized-dialog-title"
-          onClose={() => setOpen(false)}
+          onClose={onClose}
         >
           เพิ่มอาสาสมัคร
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
             <div className="image-input">
-              <img
-                src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                className="avatar-pic"
-              />
-              <input type="file" />
+            <Badge
+              overlap="circle"
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              badgeContent={<SmallAvatar>
+                <input type="file" id="image-upload" 
+                onChange={event=>{
+                  setImagePreview(null)
+                  setImageUpload(null)
+                  event.preventDefault()
+                  setImageUpload(event.target.files[0])
+                  setImagePreview(URL.createObjectURL(event.target.files[0]))
+                }} 
+                />
+                <label for="image-upload" className="label-upload-image" >
+                  <i className="fas fa-camera"></i>
+                </label>
+                </SmallAvatar>}
+            >
+              {/* Preview Image */}
+              <Avatar src={imagePreview} style={{width:100, height:100}} /> 
+            </Badge>
             </div>
             <div className="info-inputFill row">
               <div className="col-12 inputFill">
@@ -244,8 +296,8 @@ export default function AddNewVolunteer() {
                       onClose={() => setOpen2(false)}
                       onOpen={() => setOpen2(true)}
                       name="preName"
-                      // value={age}
-                      // onChange={handleChange}
+                      value={preName}
+                      onChange={e=>setpreName(e.target.value)}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -259,7 +311,7 @@ export default function AddNewVolunteer() {
                     label="ชื่อ"
                     name="fName"
                     value={fName}
-                  onChange={onChange}
+                    onChange={onChange}
                     variant="outlined"
                     fullWidth
                   />
@@ -273,6 +325,59 @@ export default function AddNewVolunteer() {
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
+                />
+              </div>
+              <div className="col-4 birthday-fill inputFill">
+                <Autocomplete
+                  id="year"
+                  options={years}
+                  getOptionLabel={(option) => option}
+                  disableClearable={true}
+                  onInputChange={handleInputYearChange}
+                  defaultValue={yea}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="ปี พ.ศ. เกิด"
+                      variant="outlined"
+                      onClick={getyear}
+                    />
+                  )}
+                />
+              </div>
+              <div className="col-4 birthday-fill inputFill">
+                <Autocomplete
+                  id="month"
+                  options={Months}
+                  getOptionLabel={(option) => option}
+                  disableClearable={true}
+                  onInputChange={handleInputMonthChange}
+                  defaultValue={mon}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="เดือนเกิด"
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </div>
+              <div className="col-4 birthday-fill inputFill">
+                <Autocomplete
+                  id="day"
+                  options={days}
+                  getOptionLabel={(option) => option}
+                  disableClearable={true}
+                  onInputChange={handleInputDayChange}
+                  defaultValue={day}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="วันเกิด"
+                      variant="outlined"
+                      onClick={getday}
+                    />
+                  )}
                 />
               </div>
               <div className="col-6 inputFill">
@@ -293,7 +398,7 @@ export default function AddNewVolunteer() {
                 />
               </div>
               <div className="col-6 inputFill">
-                <TextField
+                {/* <TextField
                   placeholder="E-mail Address"
                   variant="outlined"
                   // name="phone"
@@ -304,6 +409,18 @@ export default function AddNewVolunteer() {
                     startAdornment: (
                       <InputAdornment position="start">
                         <EmailIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                /> */}
+                <TextField
+                  placeholder="เบอร์บุคคลอื่น เช่น คุณสมร 0912345678"
+                  variant="outlined"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                       <AccountCircleIcon/>
                       </InputAdornment>
                     ),
                   }}
@@ -338,79 +455,12 @@ export default function AddNewVolunteer() {
                     startAdornment: (
                       <InputAdornment position="start">
                         <i
-                          class="fab fa-line"
+                          className="fab fa-line"
                           style={{ color: "green", fontSize: 23 }}
                         />
                       </InputAdornment>
                     ),
                   }}
-                />
-              </div>
-              <div className="col-12 inputFill">
-                <TextField
-                  placeholder="บุคคลอื่นเมื่อไม่สามาติดต่อคุณได้ ใส่ชื่อแล้วตามด้วยเบอร์โทร เช่น คุณสมร 0912345678"
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                       <AccountCircleIcon/>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
-              <div className="col-4 birthday-fill">
-                <Autocomplete
-                  id="year"
-                  options={years}
-                  getOptionLabel={(option) => option}
-                  disableClearable={true}
-                  onInputChange={handleInputYearChange}
-                  defaultValue={yea}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="ปี พ.ศ. เกิด"
-                      variant="outlined"
-                      onClick={getyear}
-                    />
-                  )}
-                />
-              </div>
-              <div className="col-4 birthday-fill">
-                <Autocomplete
-                  id="month"
-                  options={Months}
-                  getOptionLabel={(option) => option}
-                  disableClearable={true}
-                  onInputChange={handleInputMonthChange}
-                  defaultValue={mon}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="เดือนเกิด"
-                      variant="outlined"
-                    />
-                  )}
-                />
-              </div>
-              <div className="col-4 birthday-fill">
-                <Autocomplete
-                  id="day"
-                  options={days}
-                  getOptionLabel={(option) => option}
-                  disableClearable={true}
-                  onInputChange={handleInputDayChange}
-                  defaultValue={day}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="วันเกิด"
-                      variant="outlined"
-                      onClick={getday}
-                    />
-                  )}
                 />
               </div>
               <div className="col-12 input-position-fill">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,15 +7,31 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import EmailIcon from "@material-ui/icons/Email";
+import PhoneIcon from "@material-ui/icons/Phone";
 import Typography from "@material-ui/core/Typography";
 import {
+  Avatar,
+  Badge,
   FormControl,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { useDispatch, useSelector } from "react-redux";
+import * as adminAction from "../../../../actions/admin.action";
+
+const SmallAvatar = withStyles((theme) => ({
+  root: {
+    width: 44,
+    height: 44,
+    border: `2px solid ${theme.palette.background.paper}`,
+    backgroundColor: '#2196f3',
+  },
+}))(Avatar);
 
 const styles = (theme) => ({
   root: {
@@ -60,13 +76,31 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AddNewAdmin() {
+export default function AddNewAdmin({selectValue}) {
+//   const adminReducer = useSelector(({adminReducer}) => adminReducer)
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
+  const [open2, setOpen2] = useState(false); //preName
+  const [open3, setOpen3] = useState(false); // position
+  const [imagePreview, setImagePreview] = useState(selectValue.ADM_PHOTO);
+  const [imageUploaad, setImageUpload] = useState(null);
+  const [state, setState] = useState({
+    adminId:selectValue.ADM_ID_NUMBER,
+    fName:selectValue.ADM_FIRSTNAME,
+    lName:selectValue.ADM_LASTNAME,
+    phone:selectValue.ADM_PHONE,
+    email:selectValue.ADM_EMAIL,
+  });
+  const {adminId,fName,lName,phone,email} = state
+  const dispatch = useDispatch();
+  const onChange = (e)=>{
+    console.log(e.target.value)
+    setState({...state, [e.target.name]:e.target.value})
+  }
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
-  const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState(selectValue.ADM_POSITION);
+  const [preName, setpreName] = useState(selectValue.ADM_GENDER)
 
   //   date picker
   const [years, setYears] = useState([]);
@@ -161,6 +195,7 @@ export default function AddNewAdmin() {
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
     var Age = nowYear - parseInt(yea);
+    const elderlyBirthday = `${yea}-${numMon}-${day}`
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -168,22 +203,25 @@ export default function AddNewAdmin() {
     } else {
       Age = Age;
     }
+    const data = [selectValue.ADM_ID_NUMBER,adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
+    dispatch(adminAction.updateAdmin(data))
+    onClose()
   };
-
+  const onClose = ()=>{
+    setOpen(false)
+  }
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        size="large"
-        color="primary"
+      <button
         onClick={() => setOpen(true)}
-        className="bt-add"
-      >
-        เพิ่มผู้ดูแลระบบ
-      </Button>
+        type="button"
+        className="btn btn-info"
+        >
+        แก้ไข
+        </button>
 
       <Dialog
-        onClose={() => setOpen(false)}
+        onClose={onClose}
         className="customized-dialog"
         open={open}
         maxWidth="md"
@@ -192,24 +230,45 @@ export default function AddNewAdmin() {
       >
         <DialogTitle
           className="customized-dialog-title"
-          onClose={() => setOpen(false)}
+          onClose={onClose}
         >
-          เพิ่มผู้ดูแลระบบ
+          แก้ไขข้อมูลของ {preName}{fName} {lName}
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
             <div className="image-input">
-              <img
-                src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                className="avatar-pic"
-              />
-              <input type="file" />
+            <Badge
+              overlap="circle"
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              badgeContent={<SmallAvatar>
+                <input type="file" id="image-upload" 
+                onChange={event=>{
+                  setImagePreview(null)
+                  setImageUpload(null)
+                  event.preventDefault()
+                  setImageUpload(event.target.files[0])
+                  setImagePreview(URL.createObjectURL(event.target.files[0]))
+                }} 
+                />
+                <label for="image-upload" className="label-upload-image" >
+                  <i className="fas fa-camera"></i>
+                </label>
+                </SmallAvatar>}
+            >
+              {/* Preview Image */}
+              <Avatar src={imagePreview} style={{width:100, height:100}} /> 
+            </Badge>
             </div>
             <div className="info-inputFill row">
               <div className="col-12 inputFill">
                 <TextField
-                  label="เลขประจำตัวประชาชน"
                   name="adminId"
+                  value={adminId}
+                  onChange={onChange}
+                  label="เลขประจำตัวประชาชน"
                   variant="outlined"
                   fullWidth
                 />
@@ -223,8 +282,8 @@ export default function AddNewAdmin() {
                       onClose={() => setOpen2(false)}
                       onOpen={() => setOpen2(true)}
                       name="preName"
-                      // value={age}
-                      // onChange={handleChange}
+                      value={preName}
+                      onChange={e=>setpreName(e.target.value)}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -236,7 +295,9 @@ export default function AddNewAdmin() {
                   </FormControl>
                   <TextField
                     label="ชื่อ"
-                    name="fname"
+                    name="fName"
+                    value={fName}
+                    onChange={onChange}
                     variant="outlined"
                     fullWidth
                   />
@@ -245,26 +306,45 @@ export default function AddNewAdmin() {
               <div className="col-6 inputFill">
                 <TextField
                   label="นามสกุล"
-                  name="lname"
+                  name="lName"
+                  value={lName}
+                  onChange={onChange}
                   variant="outlined"
                   fullWidth
                 />
               </div>
               <div className="col-12 inputFill">
-                <TextField
-                  label="เบอร์โทรศัพท์"
+              <TextField
+                  placeholder="เบอร์โทรศัพท์"
+                  variant="outlined"
                   name="phone"
-                  variant="outlined"
+                  value={phone}
+                  onChange={onChange}
                   fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <PhoneIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </div>
               <div className="col-12 inputFill">
                 <TextField
-                  label="E-mail Address"
-                  type="email"
-                  name="email"
+                  placeholder="E-mail Address"
                   variant="outlined"
+                  name="email"
+                  value={email}
+                  onChange={onChange}
                   fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <EmailIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </div>
               <div className="col-4">
@@ -321,34 +401,31 @@ export default function AddNewAdmin() {
                 />
               </div>
               <div className="col-12 input-position-fill">
-                <TextField
-                  id="select"
-                  label="ตำแหน่งงาน"
-                  variant="outlined"
-                  value={position}
-                  select
-                  fullWidth
-                >
-                  <MenuItem onClick={() => setPosition("")}>
-                    <em>ไม่มีตำแหน่ง</em>
-                  </MenuItem>
-                  <MenuItem onClick={() => setPosition("พยาบาลวิชาชีพ")}>
-                    พยาบาลวิชาชีพ
-                  </MenuItem>
-                  <MenuItem onClick={() => setPosition("นักกายภาพบำบัด")}>
-                    นักกายภาพบำบัด
-                  </MenuItem>
-                  <MenuItem onClick={() => setPosition("นักวิชาการสาธารสุข")}>
-                    นักวิชาการสาธารสุข
-                  </MenuItem>
-                </TextField>
+                <FormControl variant="outlined" fullWidth >
+                    <InputLabel style={{backgroundColor: '#fff'}} >ตำแหน่งงาน</InputLabel>
+                    <Select
+                      open={open3}
+                      onClose={() => setOpen3(false)}
+                      onOpen={() => setOpen3(true)}
+                      name="position"
+                      value={position}
+                      onChange={e=>setPosition(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="พยาบาลวิชาชีพ">พยาบาลวิชาชีพ</MenuItem>
+                      <MenuItem value="นักกายภาพบำบัด">นักกายภาพบำบัด</MenuItem>
+                      <MenuItem value="นักวิชาการสาธารสุข">นักวิชาการสาธารสุข</MenuItem>
+                    </Select>
+                  </FormControl>
               </div>
             </div>
           </div>
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
           <Button
-            onClick={() => setOpen(false)}
+            onClick={() => submitNewStaff()}
             size="large"
             variant="contained"
             color="primary"
