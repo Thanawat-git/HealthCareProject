@@ -1,10 +1,31 @@
-import { CREATE_NEW_FORMS2 } from "../constants";
+import { CREATE_NEW_FORMS2,HTTP_SECTIONS2_FETCHING,HTTP_SECTIONS2_SUCCESS,HTTP_SECTIONS2_FAILED,OK,YES,NO } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
     type: CREATE_NEW_FORMS2,
     payload
 })
+// export const setSections2ToFetching = () => ({
+//   type: HTTP_SECTIONS2_FETCHING
+// })
+// export const setSections2ToSuccess = (payload) => ({
+//   payload
+// })
+// export const setSections2ToFailed = () => ({
+//   type: HTTP_SECTIONS2_FAILED
+// })
+
+// export const sections2=(c)=>{
+// return dispatch=>{
+//   dispatch(setSections2ToFetching())
+//   setTimeout(()=>{
+//     dispatch(setSections2ToSuccess({result:"ok"}))
+//     //dispatch(setSections2ToSuccess(setStateToAdd()))
+//   },3000)
+//   //dispatch(setSections2ToFailed())
+// }
+// }
+
 
 // export const setStateToEdit = () => ({
 //     type: FORM_EDIT,
@@ -32,6 +53,7 @@ export const updateExa2Waist = (payload)=>{
     }).then(()=>{
       alert("Waist update Success")
     })
+
   }
   
   export  const updateExa2Bmi = (payload)=>{
