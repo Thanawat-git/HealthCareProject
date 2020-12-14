@@ -45,9 +45,7 @@ export default function Volunteer() {
   const [state, setState] = useState({
     left: false,
   });
-  const handlingButtonClick = () => {
-    //doing redirect here.
-  };
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;

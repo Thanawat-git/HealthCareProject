@@ -162,7 +162,7 @@
   .TextField {
     display: grid !important;
     background-color: white;
-    margin: 30px;
+    margin: 10px;
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -170,20 +170,20 @@
 .TextField label {
     background-color: white;
     color: #5a5858;
-    padding-right: 10px;
     font-size: 20px;
-    margin:5px;
     /* color: black; */
 }
 .TextField1 label {
+ 
     background-color: white;
     color: #5a5858;
     font-size: 20px;
     
     /* color: black; */
 }
-.TextField1{
-    margin-left: 20%;
-    margin-right: 20%;
+.TextField1{ 
+  display: grid !important;
+    margin-left: 17%;
+    margin-right: 17%;
     margin-bottom:2%;
 }

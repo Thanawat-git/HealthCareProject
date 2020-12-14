@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./volunteer.css";
 //import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
+import { Button, Link } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -12,8 +12,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import EmojiEmotionsTwoToneIcon from "@material-ui/icons/EmojiEmotionsTwoTone";
-import {yellow, blue, grey } from "@material-ui/core/colors";
-
+import { yellow, blue, grey } from "@material-ui/core/colors";
+import { useRouteMatch } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     hover: false,
@@ -44,6 +44,7 @@ const DialogTitle = withStyles(useStyles)((props) => {
 
 export default function Editpassword() {
   const classes = useStyles();
+  const { url } = useRouteMatch();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -58,10 +59,10 @@ export default function Editpassword() {
       <div className="nav-vtcontainer linkicon">
         <AppBar position="static">
           <Toolbar>
-            <KeyboardBackspaceIcon
+            {/* <KeyboardBackspaceIcon
               fontSize="large"
               className={classes.icon}
-            ></KeyboardBackspaceIcon>
+            ></KeyboardBackspaceIcon> */}
           </Toolbar>
         </AppBar>
         <h3>
@@ -139,8 +140,7 @@ export default function Editpassword() {
                   }}
                   onClick={handleClose}
                 >
-                  {" "}
-                  บันทึก
+                  ยืนยัน
                 </Button>
               </div>
             </div>

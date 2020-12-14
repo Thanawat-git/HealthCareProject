@@ -72,10 +72,7 @@ export default function Editpassword() {
       <div className="nav-vtcontainer linkicon">
         <AppBar position="static">
           <Toolbar>
-            <KeyboardBackspaceIcon
-              fontSize="large"
-              className={classes.icon}
-            ></KeyboardBackspaceIcon>
+        
           </Toolbar>
         </AppBar>
         <h3>
@@ -96,10 +93,10 @@ export default function Editpassword() {
               color="primary"
               aria-label="upload picture"
               component="span"
-              style={{ width: 100, height: 100 }}
+              style={{ width: 90, height: 90 }}
              
             >
-              <PhotoCamera style={{ fontSize: 50 }} onClick={() => imageUploader.current.click()} />
+              <PhotoCamera style={{ fontSize: 40 }} onClick={() => imageUploader.current.click()} />
               <img
                 ref={uploadedImage}
                 style={{
@@ -123,7 +120,7 @@ export default function Editpassword() {
             label="ชื่อผู้ใช้งาน"
             variant="outlined"
             fullWidth
-            style={{ marginBottom: 30 }}
+            style={{ marginBottom: 20 }}
           />
 
           <TextField

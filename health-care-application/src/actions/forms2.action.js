@@ -9,6 +9,7 @@ export const setStateToAdd = (payload) => ({
 //   type: HTTP_SECTIONS2_FETCHING
 // })
 // export const setSections2ToSuccess = (payload) => ({
+//   type: HTTP_SECTIONS2_SUCCESS,
 //   payload
 // })
 // export const setSections2ToFailed = () => ({
