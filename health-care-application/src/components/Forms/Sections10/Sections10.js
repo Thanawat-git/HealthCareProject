@@ -9,7 +9,7 @@ import * as formAction from "../../../actions/forms10.action";
 
 export default function Sections10() {
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch();
 
   const [ans10, setAns10] = useState(forms10Reducer.ans10);

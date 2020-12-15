@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 export default function Sections7_1() {
   const forms7Reducer = useSelector(({forms7Reducer}) => forms7Reducer)
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch()
   const classes = useStyles();
 

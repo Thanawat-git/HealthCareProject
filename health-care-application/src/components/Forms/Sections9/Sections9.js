@@ -21,7 +21,7 @@ export default function Sections9() {
   const classes = useStyles();
 
   const forms9Reducer = useSelector(({forms9Reducer}) => forms9Reducer)
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch()
     const [state, setState] = useState({
       ans9_1: forms9Reducer.ans9_1,

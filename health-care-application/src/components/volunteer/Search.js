@@ -16,6 +16,8 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { mdiCloseThick } from '@mdi/js';
+import Header from "./Header";
+import { createAllDatabase } from "../../actions/forms1p6.action";
 
 const useStyles = makeStyles({
   title: {
@@ -35,14 +37,18 @@ export default function Asynchronous() {
     setOpen(true);
   }
 
-  // const saveSelected = ()=>{
-  //   dispatch(elderly.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
-  // }
+  const createNewForm = ()=>{
+    // dispatch(elderly.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
+    const visId = new Date()
+    // console.log(visId)
+    dispatch(createAllDatabase(visId))
+  }
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
   };
   return (
     <React.Fragment>
+      {/* <Header/> */}
       <div className="search-fill">
         <TextField
           label="กรอกชื่อหรือนามสกุล"
@@ -59,13 +65,12 @@ export default function Asynchronous() {
       </div>
 
       <div className="inner-seach2">
-        {elderlyReducer.result.length !== 0 &&
+        {/* {elderlyReducer.result.length !== 0 &&
           elderlyReducer.result.map((value, index) => {
             console.log("v");
             console.log(value);
             return (
               <div>
-                {/* <Paper elevation={3} onClick={()=>handleClickOpen(value.ELD_ID_NUMBER)}> */}
                 <Paper
                   className="paper-show"
                   onClick={() => handleClickOpen(value)}
@@ -74,11 +79,11 @@ export default function Asynchronous() {
                 </Paper>
               </div>
             );
-          })}
+          })} */}
 
-        {elderlyReducer.resultSelected !== null && (
+        {/* {elderlyReducer.resultSelected !== null && ( */}
           <Dialog
-            open={open}
+            open={true}
             keepMounted
             onClose={() => setOpen(false)}
             className={classes.title}
@@ -87,15 +92,15 @@ export default function Asynchronous() {
             <Icon path={mdiCloseThick}  size={1} color="red"   />
             </div>
             <DialogTitle>
-              หมายเลข {elderlyReducer.resultSelected.ELD_ID_NUMBER}
+              {/* หมายเลข {elderlyReducer.resultSelected.ELD_ID_NUMBER} */}
             </DialogTitle>
             <DialogContent>
               <DialogContentText>
-                {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
+                {/* {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} */}
               </DialogContentText>
               <DialogContentText>
                 ตรวจเยี่ยมครั้งล่าสุด{" "}
-                {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE}
+                {/* {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE} */}
               </DialogContentText>
               {/* <DialogContentText>
          ตรวจโดย {elderlyReducer.resultSelected.updateBy}
@@ -115,11 +120,11 @@ export default function Asynchronous() {
               </Link>
               <Link to="/mainmenu">
                 {/* <Button className="bt2" onClick={saveSelected} > */}
-                <Button className="bt2">เก็บข้อมูลสุขภาพ</Button>
+                <Button className="bt2" onClick={createNewForm}>เก็บข้อมูลสุขภาพ</Button>
               </Link>
             </div>
           </Dialog>
-        )}
+        {/* )} */}
       </div>
     </React.Fragment>
   );

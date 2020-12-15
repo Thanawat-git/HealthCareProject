@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms2.action";
 import { Modal, Button } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
+import {RedirectToVolunteerPage} from "../protectForm";
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +19,12 @@ const useStyles = makeStyles({
 export default function Sections2_1() {
   const classes = useStyles();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
+  const peopleID = true
+  // useEffect(() => {
+  //   if(peopleID){
+  //    return RedirectToVolunteerPage()
+  //   }
+  // }, [])
   const elderlyGender = useSelector(
     ({ forms1p1Reducer }) => forms1p1Reducer.elderlyGender
   ); // check gender
@@ -131,8 +138,6 @@ export default function Sections2_1() {
     }
     
   };
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
-  console.log('peopleID ',peopleID)
 
   const handleSubmit = () => {
     setShow(true);
@@ -154,10 +159,10 @@ export default function Sections2_1() {
   };
   
   const saveDataToServer =()=>{
-     formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
-     formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
-     formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
-     formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
+    //  formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
+    //  formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
+    //  formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
+    //  formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
 
 
   }

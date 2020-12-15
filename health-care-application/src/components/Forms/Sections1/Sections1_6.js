@@ -33,7 +33,8 @@ export default function Sections1_6() {
   }, [disease])
 
   const handleSubmit = ()=>{
-    formAction.createAllDatabase()
+    const visId = new Date()
+    formAction.createAllDatabase(visId)
     const data = [diseases, date]
     dispatch(formAction.add(data))
     setOpen(true);

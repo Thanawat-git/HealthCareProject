@@ -9,7 +9,7 @@ import * as formAction from "../../../actions/forms3.action";
 
 export default function Sections3() {
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const forms1p6Reducer = useSelector(
     ({ forms1p6Reducer }) => forms1p6Reducer.diseases
   );

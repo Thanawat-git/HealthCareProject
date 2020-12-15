@@ -19,9 +19,6 @@ import FollowUp from "./components/admin-medical/followUp/followUp";
 //volunteer
 import MainVolunteer from "./components/volunteer";
 
-
-
-
 // ELD Page
 import EditInfo from "./components/elderly/EditInfo";
 
@@ -38,8 +35,6 @@ import {mmsi, sec7} from "./components/Forms/Sections7";
 import {sec8_1, sec8_9q} from "./components/Forms/Sections8";
 import {sec9, sec9_2} from "./components/Forms/Sections9";
 import {sec10} from "./components/Forms/Sections10";
-import MainContent from "./components/admin-super/content/MainContent";
-import mmsiThai2002 from "./components/Forms/Sections7/mmsiThai2002";
 
 import { useSelector } from "react-redux";
 
@@ -96,11 +91,8 @@ export default function App(){
 
           {/* Super Admin */}
           <Route path="/superadminpage" component={SuperAdminPage} />
-
           {/* Genaral Admin */}
-          <Route path="/genaral-admin">
-
-          </Route>
+          <Route path="/genaraladminpage" component={GenaralAdminPage} />
 
           {/* Medical Staff */}
           <Route path="/medical-staff">

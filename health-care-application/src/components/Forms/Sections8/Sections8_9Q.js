@@ -10,7 +10,7 @@ import * as formAction from "../../../actions/forms89q.action";
 
 export default function Sections8_9Q() {
     const forms89qReducer = useSelector(({forms89qReducer}) => forms89qReducer)
-    const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+    const peopleID = true
     const dispatch = useDispatch()
 
     const [ans8_9q_1, setAns8_9q_1] = useState(forms89qReducer.ans8_9q_1)

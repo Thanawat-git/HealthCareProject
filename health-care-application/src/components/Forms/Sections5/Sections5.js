@@ -9,7 +9,7 @@ import ShowResultPopup from '../ResuleShowsPopUp'
 
 export default function Sections5_1() {
   const forms5Reducer = useSelector(({forms5Reducer}) => forms5Reducer)
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch()
   const [ans5_1, setAns5_1] = useState(forms5Reducer.ans5_1);
   const [moreInfoAns5_1, setmoreInfoAns5_1] = useState(forms5Reducer.moreInfoAns5_1);

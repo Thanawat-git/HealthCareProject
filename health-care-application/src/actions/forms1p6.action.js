@@ -29,55 +29,55 @@ export  const deleteDisease = (payload)=>{
   })
 }
 // create null table form 2-10
-const createExa2Waist = ()=>{
+const createExa2Waist = (visId)=>{
   Axios.post("http://localhost:3001/waist/create",{
     WAI_WAIST: null,
     WAI_RESULT: null,
-    VIS_ID: "1",
+    VIS_ID: visId,
     updateBy: null
   }).then(()=>{
     alert("Waist Create Success")
   })
 }
 
-const createExa2Bmi = ()=>{
+const createExa2Bmi = (visId)=>{
   Axios.post("http://localhost:3001/bmi/create",{
     BMI_WEIGHT: null,
     BMI_HEIGHT: null,
     BMI_BMI: null,
     BMI_RESULT: null,
-    VIS_ID: "1",
+    VIS_ID: visId,
     updateBy: null
   }).then(()=>{
     alert("Bmi Create Success")
   })
 }
 
-const createExa2Bp = ()=>{
+const createExa2Bp = (visId)=>{
   Axios.post("http://localhost:3001/bp/create",{
     BP_PULSE: null,
     BP_BLO_SYS: null,
     BP_BLO_DIA: null,
     BP_RESULT: null,
-    VIS_ID: "1",
+    VIS_ID: visId,
     updateBy: null
   }).then(()=>{
     alert("Bp Create Success")
   })
 }
 
-const createExa2Fbs = ()=>{
+const createExa2Fbs = (visId)=>{
   Axios.post("http://localhost:3001/fbs/create",{
     FBS_FBS: null,
     FBS_RESULT: null,
-    VIS_ID: "1",
+    VIS_ID: visId,
     updateBy: null
   }).then(()=>{
     alert("Fbs Create Success")
   })
 }
 
-const createExa3Cardiovascular = ()=>{
+const createExa3Cardiovascular = (visId)=>{
   Axios.post("http://localhost:3001/cardiovascular/create",{
       CARDIO_3_1: null,
       CARDIO_3_1_COUNT: null,
@@ -89,14 +89,14 @@ const createExa3Cardiovascular = ()=>{
       CARDIO_3_7: null,
       CARDIO_COUNT: null,
       CARDIO_COUNT_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Cardiovascular Create Success")
   })
 }
 
-const createExa4Eye = ()=>{
+const createExa4Eye = (visId)=>{
   Axios.post("http://localhost:3001/eye/create",{
       EYE_4_1: null,
       EYE_4_2: null,
@@ -105,14 +105,14 @@ const createExa4Eye = ()=>{
       EYE_4_5: null,
       EYE_COUNT: null,
       EYE_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Eye Create Success")
   })
 }
 
-const createExa5OralHealth = ()=>{
+const createExa5OralHealth = (visId)=>{
   Axios.post("http://localhost:3001/oralHealth/create",{
       ORAL_5_1: null,
       ORAL_5_2: null,
@@ -133,14 +133,14 @@ const createExa5OralHealth = ()=>{
       ORAL_5_13: null,
       ORAL_COUNT: null,
       ORAL_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Oral_Health Create Success")
   })
 }
 
-const createExa6AbilityInLife = ()=>{
+const createExa6AbilityInLife = (visId)=>{
   Axios.post("http://localhost:3001/abilityInLife/create",{
       ABI_6_1: null,
       ABI_6_2: null,
@@ -161,14 +161,14 @@ const createExa6AbilityInLife = ()=>{
       ABI_TAI_GROUP: null,
       ORAL_COUNT: null,
       ORAL_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Ability_In_Life Create Success")
   })
 }
 
-const createExa7Alzheimer = ()=>{
+const createExa7Alzheimer = (visId)=>{
   Axios.post("http://localhost:3001/alzheimer/create",{
       ALZ_7_1_EL_AGE: null,
       ALZ_7_1_RESULT_AGE: null,
@@ -190,14 +190,14 @@ const createExa7Alzheimer = ()=>{
       ALZ_7_9_RESULT_KING: null,
       ALZ_7_10_EL_COUNTDOWN: null,
       ALZ_7_10_RESULT_COUNTDOWN: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Alzheimer Create Success")
   })
 }
 
-const createExa8DepressionScreening = ()=>{
+const createExa8DepressionScreening = (visId)=>{
   Axios.post("http://localhost:3001/depressionScreening/create",{
       DEP_DEPRESSED: null,
       DEP_NOT_ENJOYING: null,
@@ -214,14 +214,14 @@ const createExa8DepressionScreening = ()=>{
       DEP_8_9: null,
       DEP_SUM_POINT: null,
       DEP_9Q_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Depression_Screening Create Success")
   })
 }
 
-const createExa9BoneMuscle= ()=>{
+const createExa9BoneMuscle= (visId)=>{
   Axios.post("http://localhost:3001/boneMuscle/create",{
       BONE_9_1: null,
       BONE_9_2: null,
@@ -241,14 +241,14 @@ const createExa9BoneMuscle= ()=>{
       BONE_PHY_FIT_MINUTE: null,
       BONE_PHY_FIT_SECOND: null,
       BONE_PHY_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Bone_Muscle Create Success")
   })
 }
 
-const createExa9_1Osteoarthritis= ()=>{
+const createExa9_1Osteoarthritis= (visId)=>{
   Axios.post("http://localhost:3001/osteoarthritis/create",{
       OST_1_KNEE_PAIN: null,
       OST_1_LVL_PAIN: null,
@@ -264,35 +264,35 @@ const createExa9_1Osteoarthritis= ()=>{
       OST_2_5_R: null,
       OST_2_5_L: null,
       OST_2_RESULT: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Osteoarthritis Create Success")
   })
 }
 
-const createExa10Urination= ()=>{
+const createExa10Urination= (visId)=>{
   Axios.post("http://localhost:3001/urination/create",{
       URI_10_1: null,
-      VIS_ID: "1",
+      VIS_ID: visId,
       updateBy: null
   }).then(()=>{
     alert("Urination Create Success")
   })
 }
 
-export const createAllDatabase = ()=>{
-  createExa2Waist()
-  createExa2Bmi()
-  createExa2Bp()
-  createExa2Fbs()
-  createExa3Cardiovascular()
-  createExa4Eye()
-  createExa5OralHealth()
-  createExa6AbilityInLife()
-  createExa7Alzheimer()
-  createExa8DepressionScreening()
-  createExa9BoneMuscle()
-  createExa9_1Osteoarthritis()
-  createExa10Urination()
+export const createAllDatabase = (visId)=>{
+  createExa2Waist(visId)
+  createExa2Bmi(visId)
+  createExa2Bp(visId)
+  createExa2Fbs(visId)
+  createExa3Cardiovascular(visId)
+  createExa4Eye(visId)
+  createExa5OralHealth(visId)
+  createExa6AbilityInLife(visId)
+  createExa7Alzheimer(visId)
+  createExa8DepressionScreening(visId)
+  createExa9BoneMuscle(visId)
+  createExa9_1Osteoarthritis(visId)
+  createExa10Urination(visId)
 }

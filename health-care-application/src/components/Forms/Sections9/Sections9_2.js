@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 export default function Sections9_2() {
   const forms92Reducer = useSelector(({ forms92Reducer }) => forms92Reducer);
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch();
   const classes = useStyles();
   const [stateCheck, setstateCheck] = useState({

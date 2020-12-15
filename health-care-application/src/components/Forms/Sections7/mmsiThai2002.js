@@ -18,7 +18,7 @@ import * as formAction from "../../../actions/formsMMSE.action";
 
 export default function MMSIThai2002() {
   const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch();
 
   const [ans1, setAns1] = useState(forms7mReducer.ans1);

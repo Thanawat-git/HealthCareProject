@@ -9,7 +9,7 @@ import * as formAction from "../../../actions/forms6.action";
 
 export default function Sections6() {
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
-  const peopleID = useSelector(({searchEld})=>searchEld.selectEld.ELD_ID_NUMBER)
+  const peopleID = true
   const dispatch = useDispatch();
   const [ans6_1, setAns6_1] = useState(forms6Reducer.ans6_1);
   const [ans6_2, setAns6_2] = useState(forms6Reducer.ans6_2);
