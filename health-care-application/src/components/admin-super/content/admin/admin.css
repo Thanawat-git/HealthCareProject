@@ -1,6 +1,8 @@
 .add-staff{
-    display: flex;
     position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
 }
 .avatar-pic {
     width: 150px;
@@ -10,7 +12,12 @@
     font-size: 20px;
     margin: 5px 30px;
 }
-
+.add-staff h2 {
+    text-align: center;
+    margin: auto;
+    margin-top: 90px;
+    margin-bottom: 20px;
+  }
 .image-input{
     display: flex;
     flex-direction: column;
@@ -37,4 +44,24 @@
 
 .input-position-fill{
     margin-top: 20px;
+}
+.TextField label {
+    background-color: white;
+    color: #5a5858;
+    font-size: 20px;
+    /* color: black; */
+}
+
+.TextField1 label {
+    background-color: white;
+    color: #5a5858;
+    font-size: 20px;
+    
+    /* color: black; */
+}
+.TextField1{ 
+  display: grid !important;
+    margin-left: 17%;
+    margin-right: 17%;
+    margin-bottom:2%;
 }

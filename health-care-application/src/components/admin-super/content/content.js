@@ -11,6 +11,8 @@ import MainContent from "./MainContent";
 import AdminContent from "./admin/AdminContent";
 import VolunteerContent from "./volunteer/VolunteerContent"
 import Reports from "./reports";
+import Profileadmin from "./admin/Profileadmin"
+import Editpassadmin from './admin/Editpassadmin';
 
 export default function Content() {
   const { path } = useRouteMatch()
@@ -32,6 +34,12 @@ export default function Content() {
       </Route>
       <Route path={`${path}/main-content`}>
         <MainContent/>
+      </Route>
+      <Route path={`${path}/profile`}>
+        <Profileadmin/>
+      </Route>
+      <Route path={`${path}/editpassadmin`}>
+        <Editpassadmin/>
       </Route>
       <Route exact={true} path={`${path}/`} component={redirectToMainContent}></Route>
     </div>

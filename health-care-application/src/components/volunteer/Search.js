@@ -15,14 +15,14 @@ import {
   Paper,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { mdiCloseThick } from '@mdi/js';
+import { mdiCloseThick } from "@mdi/js";
 import Header from "./Header";
 import { createAllDatabase } from "../../actions/forms1p6.action";
 
 const useStyles = makeStyles({
   title: {
     textAlign: "center",
-    minWidth: 350,
+    minWidth:350
   },
 });
 export default function Asynchronous() {
@@ -37,12 +37,12 @@ export default function Asynchronous() {
     setOpen(true);
   }
 
-  const createNewForm = ()=>{
+  const createNewForm = () => {
     // dispatch(elderly.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
-    const visId = new Date()
+    const visId = new Date();
     // console.log(visId)
-    dispatch(createAllDatabase(visId))
-  }
+    dispatch(createAllDatabase(visId));
+  };
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
   };
@@ -82,50 +82,86 @@ export default function Asynchronous() {
           })} */}
 
         {/* {elderlyReducer.resultSelected !== null && ( */}
-          <Dialog
-            open={true}
-            keepMounted
-            onClose={() => setOpen(false)}
-            className={classes.title}
-          >
-           <div className="setIcon" type="button" onClick={() => setOpen(false)}>
-            <Icon path={mdiCloseThick}  size={1} color="red"   />
-            </div>
-            <DialogTitle>
-              {/* หมายเลข {elderlyReducer.resultSelected.ELD_ID_NUMBER} */}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                {/* {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} */}
-              </DialogContentText>
-              <DialogContentText>
-                ตรวจเยี่ยมครั้งล่าสุด{" "}
-                {/* {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE} */}
-              </DialogContentText>
-              {/* <DialogContentText>
+
+        <Dialog
+          open={true}
+          keepMounted
+          onClose={() => setOpen(false)}
+          className={classes.title}
+        >
+          <div className="setIcon">
+            {/* <Icon path={mdiCloseThick} size={1} /> */}
+            <Icon
+              path={mdiCloseThick}
+              size={1}
+              onClick={() => setOpen(false)}
+            />
+          </div>
+
+          <DialogTitle>
+            <b>หมายเลข</b>
+          </DialogTitle>
+
+          <DialogContent>
+            <DialogContentText>
+              1111111111111
+              {/*  {elderlyReducer.resultSelected.ELD_ID_NUMBER} */}
+            </DialogContentText>
+
+            <DialogContentText>
+              นายบิ๊ก บ้านโป่ง
+              {/* {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} */}
+            </DialogContentText>
+            <DialogContentText>
+              ตรวจเยี่ยมครั้งล่าสุด{" "}
+              {/* {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE} */}
+            </DialogContentText>
+            {/* <DialogContentText>
          ตรวจโดย {elderlyReducer.resultSelected.updateBy}
          </DialogContentText> */}
-              <div className="bt-searchInfo">
-                <Link to="/history">
-                  {/* <Button className="bt1" onClick={saveSelected}> */}
-                  <Button className="bt3">ประวัติการตรวจเยี่ยม</Button>
-                </Link>
-              </div>
-            </DialogContent>
+          </DialogContent>
 
-            <div className="bt-searchInfo">
-              <Link to="/editeld">
-                {/* <Button className="bt1" onClick={saveSelected}> */}
-                <Button className="bt1">แก้ไขข้อมูลพื้นฐาน</Button>
-              </Link>
-              <Link to="/mainmenu">
-                {/* <Button className="bt2" onClick={saveSelected} > */}
-                <Button className="bt2" onClick={createNewForm}>เก็บข้อมูลสุขภาพ</Button>
-              </Link>
-            </div>
-          </Dialog>
-        {/* )} */}
+          <div className="bt-searchInfo">
+            <Link to="/history" className="bt-searchInfo-link">
+              {/* <Button className="bt1" onClick={saveSelected}> */}
+              <Button
+                className="bt1"
+                variant="contained"
+                fullWidth
+              >
+                ประวัติการตรวจเยี่ยม
+              </Button>
+            </Link>
+          </div>
+          <div className="bt-searchInfo">
+            <Link to="/editeld" className="bt-searchInfo-link">
+              {/* <Button className="bt1" onClick={saveSelected}> */}
+              <Button
+                className="bt3"
+                variant="contained"
+                fullWidth
+              >
+                แก้ไขข้อมูลพื้นฐาน
+              </Button>
+            </Link>
+          </div>
+          <div className="bt-searchInfo">
+            <Link to="/mainmenu" className="bt-searchInfo-link">
+              {/* <Button className="bt2" onClick={saveSelected} > */}
+              <Button
+                className="bt2"
+                variant="contained"
+                color="primary"
+                onClick={createNewForm}
+                fullWidth
+              >
+                เก็บข้อมูลสุขภาพ
+              </Button>
+            </Link>
+          </div>
+        </Dialog>
       </div>
+      {/* )} */}
     </React.Fragment>
   );
 }

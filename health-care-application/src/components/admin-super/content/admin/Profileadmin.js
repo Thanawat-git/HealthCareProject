@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
+import './admin.css'
 import { makeStyles } from "@material-ui/core/styles";
-import "./volunteer.css";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import { Avatar } from "@material-ui/core";
 import { useDispatch, useSelector } from 'react-redux';
-import * as formAction from "../../../src/actions/editaccount.action"
+
 import {
   blue,
   grey,
 } from "@material-ui/core/colors";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: 410,
+      minWidth:200
     },
   },
   input: {
@@ -33,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 350,
   },
 }));
-
-export default function Editpassword() {
+export default function Profileadmin() {
   const classes = useStyles();
   const dispatch = useDispatch()
   //const editaccountReducer = useSelector(({editaccountReducer}) => editaccountReducer)
@@ -69,16 +67,9 @@ export default function Editpassword() {
   // }
   return (
     <div className="add-staff">
-      <div className="nav-vtcontainer linkicon">
-        <AppBar position="static">
-          <Toolbar>
-        
-          </Toolbar>
-        </AppBar>
-        <h3>
-          <b> แก้ไขข้อมูลส่วนตัว </b>
-        </h3>
-        <div style={{ textAlign: "center" }}>
+      <h2>ข้อมูลส่วนตัว</h2>
+<div className="content"> 
+      <div style={{ textAlign: "center" }}>
           <input
             accept="image/*"
             className={classes.input}
@@ -110,24 +101,20 @@ export default function Editpassword() {
         </div>
         <div className="TextField" style={{ textAlign: "center" }}>
           <div className={classes.root}>
-            <TextField id="outlined-basic" label="ชื่อ" variant="outlined" />
-            <TextField id="outlined-basic" label="นามสกุล" variant="outlined" />
+            <TextField id="outlined-basic" type="text" label="ชื่อ" variant="outlined" />
+            <TextField id="outlined-basic" type="text" label="นามสกุล" variant="outlined" />
           </div>
         </div>
         <div className="TextField1" style={{ textAlign: "center" }}>
           <TextField
             id="outlined-basic"
-            label="ชื่อผู้ใช้งาน"
-            variant="outlined"
-            fullWidth
-            style={{ marginBottom: 20 }}
-          />
-
-          <TextField
-            id="outlined-basic"
             label="เบอร์โทรศัพท์"
             variant="outlined"
+            type="number"
             fullWidth
+            onInput = {(e) =>{
+              e.target.value = e.target.value.slice(0,10)
+          }}//fix13digit
           />
         </div>
 
@@ -145,8 +132,10 @@ export default function Editpassword() {
             บันทึก
           </Button>
         </div>
-        <div></div>
+      
+  
+      
       </div>
-    </div>
+      </div>
   );
 }

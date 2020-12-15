@@ -7,6 +7,7 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import Box from '@material-ui/core/Box';
 import { useSelector } from "react-redux";
 
 const styles = (theme) => ({
@@ -61,7 +62,7 @@ const forms92Reducer = useSelector(({ forms92Reducer }) => forms92Reducer);
 const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
 
   return (
-    <div>
+    <div >
       <Button
         variant="outlined"
         color="primary"
@@ -79,54 +80,54 @@ const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
           className="customized-dialog-title"
           onClose={() => setOpen(false)}
         >
-          สรุปผล
+          <h3 style={{ textAlign: "center" }}>สรุปผล</h3>
         </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent dividers className="customized-dialog-content">
           {/* sec2 */}
-          <h4>ผลการประเมินสภาวะสุขภาพ</h4>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}> <h4>ผลการประเมินสภาวะสุขภาพ</h4></Box>
           <h5> แปลผลเส้นรอบเอว </h5>
-          <h6>{forms2Reducer.waistResult}</h6>
-          <h5> แปลผลค่า BMI </h5>
-          <h6>{forms2Reducer.bmiResult}</h6>
+          <h5 style={{ marginLeft:20}}>{forms2Reducer.waistResult}</h5>
+          <h5 > แปลผลค่า BMI </h5>
+          <h5 style={{ marginLeft:20}}>{forms2Reducer.bmiResult}</h5>
           <h5> แปลผลความดันโลหิต </h5>
-          <h6>{forms2Reducer.bloodPressureResult}</h6>
+          <h5 style={{ marginLeft:20}}>{forms2Reducer.bloodPressureResult}</h5>
           <h5> แปลผลการตรวจระดับน้ำตาล </h5>
-          <h6>{forms2Reducer.sugarResult}</h6>
+          <h5 style={{ marginLeft:20}}>{forms2Reducer.sugarResult}</h5>
           <hr />
           {/* sec3 */}
-          <h4>ผลการประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h4>
-          <h6>{forms3Reducer.results}</h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h4></Box>
+          <h5>{forms3Reducer.results}</h5>
           <hr />
           {/* sec4 */}
-          <h4>ผลการประเมินสุขภาพตา</h4>
-          <h6> {forms4Reducer.results} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินสุขภาพตา</h4></Box>
+          <h5> {forms4Reducer.results} </h5>
           <hr />
           {/* sec5 */}
-          <h4>ผลการประเมินสุขภาพช่องปาก</h4>
-          <h6> {forms5Reducer.results} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินสุขภาพช่องปาก</h4></Box>
+          <h5> {forms5Reducer.results} </h5>
           <hr />
           {/* sec6 */}
-          <h4>ผลการประเมินความสามารถในการทำกิจวัตรประจำ</h4>
-          <h6> {forms6Reducer.resultsTai} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินความสามารถในการทำกิจวัตรประจำ</h4></Box>
+          <h5> {forms6Reducer.resultsTai} </h5>
           <hr />
           {/* sec7 */}
-          <h4>ผลการประเมินภาวะสมองเสื่อม</h4>
-          <h6> {forms7Reducer.results} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินภาวะสมองเสื่อม</h4></Box>
+          <h5> {forms7Reducer.results} </h5>
           <hr />
           {/* sec8 */}
-          <h4>ผลการประเมินการคัดกรองโรคซึมเศร้า</h4>
-          <h6> {forms8Reducer.results} </h6>
-          <h6> {forms89qReducer.results} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินการคัดกรองโรคซึมเศร้า</h4></Box>
+          <h5> {forms8Reducer.results} </h5>
+          <h5> {forms89qReducer.results} </h5>
           <hr />
           {/* sec9 */}
-          <h4>ผลการประเมินสุขภาพกระดูกและกล้ามเนื้อ</h4>
-          <h6> {forms9Reducer.result1} </h6>
-          <h6> {forms9Reducer.result2} </h6>
-          <h6> {forms92Reducer.results} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินสุขภาพกระดูกและกล้ามเนื้อ</h4></Box>
+          <h5> {forms9Reducer.result1} </h5>
+          <h5> {forms9Reducer.result2} </h5>
+          <h5> {forms92Reducer.results} </h5>
           <hr />
           {/* sec10 */}
-          <h4>ผลการประเมินการคัดกรองการกลั้นปัสสาวะ</h4>
-          <h6> {forms10Reducer.results} </h6>
+          <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินการคัดกรองการกลั้นปัสสาวะ</h4></Box>
+          <h5> {forms10Reducer.results} </h5>
         </DialogContent>
       </Dialog>
     </div>
