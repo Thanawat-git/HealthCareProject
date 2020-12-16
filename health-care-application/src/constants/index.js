@@ -1,3 +1,5 @@
+require('dotenv').config();
+const api = process.env.API;
 // Action type
 export const FORMS1P1_ADD_NEW = 'FORMS1P1_ADD_NEW';
 export const FORMS1P2_ADD_NEW = 'FORMS1P2_ADD_NEW';
@@ -70,10 +72,10 @@ export const NETWORK_CONNECTION_MESSAGE = 'Cannot connect to server, Please try 
 // export const UPLOAD_PHOTO_FAIL_MESSAGE = 'An error has occurred. The photo was unable to upload.' 
 
 
-export const apiBase =  "http://10.80.6.136:3001";
-export const apiEld = "http://10.80.6.136:3001/elder";
-export const apiVol = "http://10.80.6.136:3001/volunteer";
-export const apiAdmin = "http://10.80.6.136:3001/admin";
+export const apiBase =  api;
+export const apiEld = api + "/elder";
+export const apiVol = api + "/volunteer";
+export const apiAdmin = api + "/admin";
 
 export const YES = 'YES'
 export const NO = 'NO'
