@@ -1,1 +1,1 @@
-API = "http://xx.xx.x.xxx"
+REACT_APP_API_BACKEND = http://xx.xx.x.xxx
