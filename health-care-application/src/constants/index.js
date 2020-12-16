@@ -1,5 +1,5 @@
-require('dotenv').config();
-const api = process.env.API;
+require('dotenv').config()
+const api = process.env.REACT_APP_API_BACKEND;
 // Action type
 export const FORMS1P1_ADD_NEW = 'FORMS1P1_ADD_NEW';
 export const FORMS1P2_ADD_NEW = 'FORMS1P2_ADD_NEW';
@@ -73,9 +73,9 @@ export const NETWORK_CONNECTION_MESSAGE = 'Cannot connect to server, Please try 
 
 
 export const apiBase =  api;
-export const apiEld = api + "/elder";
-export const apiVol = api + "/volunteer";
-export const apiAdmin = api + "/admin";
+export const apiEld = apiBase + "/elder";
+export const apiVol = apiBase + "/volunteer";
+export const apiAdmin = apiBase + "/admin";
 
 export const YES = 'YES'
 export const NO = 'NO'

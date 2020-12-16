@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import {login, loginAdmin, loginAdminMobile} from "./components/login";
 
+
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
 import ResetPassword from "./components/reset-password/reset-password";
