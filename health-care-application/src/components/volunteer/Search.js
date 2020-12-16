@@ -84,7 +84,7 @@ export default function Asynchronous() {
         {/* {elderlyReducer.resultSelected !== null && ( */}
 
         <Dialog
-          open={true}
+          open={open}
           keepMounted
           onClose={() => setOpen(false)}
           className={classes.title}

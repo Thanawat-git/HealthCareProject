@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import EmojiEmotionsTwoToneIcon from "@material-ui/icons/EmojiEmotionsTwoTone";
 import { yellow, blue, grey } from "@material-ui/core/colors";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, Redirect } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     hover: false,
@@ -52,6 +52,7 @@ export default function Editpassword() {
   };
   const handleClose = () => {
     setOpen(false);
+    //  return <Redirect to={`${url}/search`}/>
   };
 
   return (
@@ -69,7 +70,6 @@ export default function Editpassword() {
           <b> แก้ไขรหัสผ่าน </b>
         </h3>
         <div className="TextField">
-          {/* <InputLabel htmlFor="">รหัสผ่านปัจจุบัน</InputLabel> */}
           <TextField
             id="outlined-basic"
             label="รหัสผ่านปัจจุบัน"
@@ -77,7 +77,6 @@ export default function Editpassword() {
             variant="outlined"
           />
           <br></br>
-          {/* <InputLabel htmlFor="">รหัสผ่านใหม่</InputLabel> */}
           <TextField
             id="outlined-basic"
             label="รหัสผ่านใหม่"
@@ -85,7 +84,6 @@ export default function Editpassword() {
             variant="outlined"
           />
           <br></br>
-          {/* <InputLabel htmlFor="">ยืนยันรหัสผ่านใหม่</InputLabel> */}
           <TextField
             id="outlined-basic"
             label="ยืนยันรหัสผ่านใหม่"
@@ -107,12 +105,12 @@ export default function Editpassword() {
             บันทึก
           </Button>
         </div>
-        <div>
+        
           <Dialog
+            className={classes.title}
+            open={open}
             onClose={handleClose}
             aria-labelledby="customized-dialog-title"
-            open={open}
-            className={classes.title}
           >
             <div style={{ width: 300, height: 300 }}>
               <DialogTitle
@@ -147,6 +145,5 @@ export default function Editpassword() {
           </Dialog>
         </div>
       </div>
-    </div>
   );
 }

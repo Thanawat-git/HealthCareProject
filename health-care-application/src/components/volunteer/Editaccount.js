@@ -68,7 +68,7 @@ export default function Editpassword() {
   //   dispatch(formAction.add(data))
   // }
   return (
-    <div className="add-staff">
+    <div className="vtcontainer">
       <div className="nav-vtcontainer linkicon">
         <AppBar position="static">
           <Toolbar>
