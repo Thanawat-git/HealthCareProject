@@ -38,7 +38,7 @@ export default function Asynchronous() {
   }
 
   const createNewForm = () => {
-    // dispatch(elderly.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
+  //dispatch(elderly.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
     const visId = new Date();
     // console.log(visId)
     dispatch(createAllDatabase(visId));
@@ -65,7 +65,7 @@ export default function Asynchronous() {
       </div>
 
       <div className="inner-seach2">
-        {/* {elderlyReducer.result.length !== 0 &&
+    {elderlyReducer.result.length !== 0 &&
           elderlyReducer.result.map((value, index) => {
             console.log("v");
             console.log(value);
@@ -79,9 +79,9 @@ export default function Asynchronous() {
                 </Paper>
               </div>
             );
-          })} */}
+          })} 
 
-        {/* {elderlyReducer.resultSelected !== null && ( */}
+       {elderlyReducer.resultSelected !== null && ( 
 
         <Dialog
           open={open}
@@ -105,20 +105,20 @@ export default function Asynchronous() {
           <DialogContent>
             <DialogContentText>
               1111111111111
-              {/*  {elderlyReducer.resultSelected.ELD_ID_NUMBER} */}
+              {elderlyReducer.resultSelected.ELD_ID_NUMBER} 
             </DialogContentText>
 
             <DialogContentText>
               นายบิ๊ก บ้านโป่ง
-              {/* {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} */}
+              {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} 
             </DialogContentText>
             <DialogContentText>
               ตรวจเยี่ยมครั้งล่าสุด{" "}
-              {/* {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE} */}
+           {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE} 
             </DialogContentText>
-            {/* <DialogContentText>
+            <DialogContentText>
          ตรวจโดย {elderlyReducer.resultSelected.updateBy}
-         </DialogContentText> */}
+         </DialogContentText>
           </DialogContent>
 
           <div className="bt-searchInfo">
@@ -160,6 +160,7 @@ export default function Asynchronous() {
             </Link>
           </div>
         </Dialog>
+       )}
       </div>
       {/* )} */}
     </React.Fragment>
