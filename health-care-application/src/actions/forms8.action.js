@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS8 } from "../constants";
+import { CREATE_NEW_FORMS8 ,apiSection8} from "../constants";
 import Axios from 'axios';
 export const setStateToAdd = (payload) => ({
     type: CREATE_NEW_FORMS8,
@@ -22,7 +22,7 @@ export const add = (payload) =>{
 //     }
 // }
 export const updateDepressionScreening = (payload)=>{
-    Axios.put("http://localhost:3001/depressionScreening/update/"+ payload[0],{
+    Axios.put(`${apiSection8}/update/${payload[0]}`, {
       DEP_DEPRESSED: payload[1],
       DEP_NOT_ENJOYING: payload[2],
       DEP_CHECK:payload[3],

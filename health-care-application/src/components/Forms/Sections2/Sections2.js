@@ -159,10 +159,10 @@ export default function Sections2_1() {
   };
   
   const saveDataToServer =()=>{
-     formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
-     formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
-     formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
-     formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
+    //  formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
+    //  formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
+    //  formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
+    //  formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
 
 
   }

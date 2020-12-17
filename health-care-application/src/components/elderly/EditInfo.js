@@ -133,6 +133,8 @@ export default function EditInfo() {
   const saveChange=()=>{
     console.log('aaaaa')
     actionP1.updateElder([elderlyReducer.resultSelected.ELD_ID_NUMBER,eid,fName,lName,phone,nName])
+  //
+  
   }
 
   return (

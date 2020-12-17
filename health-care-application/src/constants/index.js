@@ -77,25 +77,31 @@ export const apiEld = apiBase + "/elder";
 export const apiVol = apiBase + "/volunteer";
 export const apiAdmin = apiBase + "/admin";
 
+export const apiMmse = apiBase + "/mmse"
 //Sec2
 export const apiSection2 = apiBase + "/sec2"
-
 //Sec3
 export const apiSection3 = apiBase + "/sec3"
-
 //Sec4
 export const apiSection4 =apiBase + "/sec4"
-
 //Sec5
 export const apiSection5 =apiBase + "/sec5"
-
 //Sec6
 export const apiSection6 =apiBase + "/sec6"
-
 //Sec7
 export const apiSection7 =apiBase + "/sec7"
-
-
+//Sec8
+export const apiSection8 =apiBase + "/sec8"
+//Sec9
+export const apiSection9 =apiBase + "/sec9"
+//Sec10
+export const apiSection10 =apiBase + "/sec10"
+//Sec89
+export const apiSection89 =apiBase + "/sec89"
+//Sec92
+export const apiSection92 =apiBase + "/sec92"
+//SecTai
+export const apiSectionTai =apiBase + "/sectai"
 
 
 

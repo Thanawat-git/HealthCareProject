@@ -1,4 +1,5 @@
-import { FORMS1P6_ADD_NEW , apiEld , apiBase} from "../constants";
+import { FORMS1P6_ADD_NEW , apiEld , apiBase,apiSection2,apiSection3,
+apiSection4,apiSection5,apiSection6,apiSection7,apiSection8,apiSection9,apiSection10, apiSection92} from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -30,7 +31,7 @@ export  const deleteDisease = (payload)=>{
 }
 // create null table form 2-10
 const createExa2Waist = (visId)=>{
-  Axios.post(`${apiBase}/waist/create`,{
+  Axios.post(`${apiSection2}/waist/create`,{
     WAI_WAIST: null,
     WAI_RESULT: null,
     VIS_ID: visId,
@@ -41,7 +42,7 @@ const createExa2Waist = (visId)=>{
 }
 
 const createExa2Bmi = (visId)=>{
-  Axios.post(`${apiBase}/bmi/create`,{
+  Axios.post(`${apiSection2}/bmi/create`,{
     BMI_WEIGHT: null,
     BMI_HEIGHT: null,
     BMI_BMI: null,
@@ -54,7 +55,7 @@ const createExa2Bmi = (visId)=>{
 }
 
 const createExa2Bp = (visId)=>{
-  Axios.post(`${apiBase}/bp/create`,{
+  Axios.post(`${apiSection2}/bp/create`,{
     BP_PULSE: null,
     BP_BLO_SYS: null,
     BP_BLO_DIA: null,
@@ -67,7 +68,7 @@ const createExa2Bp = (visId)=>{
 }
 
 const createExa2Fbs = (visId)=>{
-  Axios.post(`${apiBase}/fbs/create`,{
+  Axios.post(`${apiSection2}/fbs/create`,{
     FBS_FBS: null,
     FBS_RESULT: null,
     VIS_ID: visId,
@@ -78,7 +79,7 @@ const createExa2Fbs = (visId)=>{
 }
 
 const createExa3Cardiovascular = (visId)=>{
-  Axios.post(`${apiBase}/cardiovascular/create`,{
+  Axios.post(`${apiSection3}/cardiovascular/create`,{
       CARDIO_3_1: null,
       CARDIO_3_1_COUNT: null,
       CARDIO_3_2: null,
@@ -97,7 +98,7 @@ const createExa3Cardiovascular = (visId)=>{
 }
 
 const createExa4Eye = (visId)=>{
-  Axios.post(`${apiBase}/eye/create`,{
+  Axios.post(`${apiSection4}/eye/create`,{
       EYE_4_1: null,
       EYE_4_2: null,
       EYE_4_3: null,
@@ -113,7 +114,7 @@ const createExa4Eye = (visId)=>{
 }
 
 const createExa5OralHealth = (visId)=>{
-  Axios.post(`${apiBase}/oralHealth/create`,{
+  Axios.post(`${apiSection5}/oralHealth/create`,{
       ORAL_5_1: null,
       ORAL_5_2: null,
       ORAL_5_3: null,
@@ -141,7 +142,7 @@ const createExa5OralHealth = (visId)=>{
 }
 
 const createExa6AbilityInLife = (visId)=>{
-  Axios.post(`${apiBase}/abilityInLife/create`,{
+  Axios.post(`${apiSection6}/abilityInLife/create`,{
       ABI_6_1: null,
       ABI_6_2: null,
       ABI_6_3: null,
@@ -169,7 +170,7 @@ const createExa6AbilityInLife = (visId)=>{
 }
 
 const createExa7Alzheimer = (visId)=>{
-  Axios.post(`${apiBase}/alzheimer/create`,{
+  Axios.post(`${apiSection7}/alzheimer/create`,{
       ALZ_7_1_EL_AGE: null,
       ALZ_7_1_RESULT_AGE: null,
       ALZ_7_2_EL_TIME: null,
@@ -198,7 +199,7 @@ const createExa7Alzheimer = (visId)=>{
 }
 
 const createExa8DepressionScreening = (visId)=>{
-  Axios.post(`${apiBase}/depressionScreening/create`,{
+  Axios.post(`${apiSection8}/depressionScreening/create`,{
       DEP_DEPRESSED: null,
       DEP_NOT_ENJOYING: null,
       DEP_CHECK: null,
@@ -222,7 +223,7 @@ const createExa8DepressionScreening = (visId)=>{
 }
 
 const createExa9BoneMuscle= (visId)=>{
-  Axios.post(`${apiBase}/boneMuscle/create`,{
+  Axios.post(`${apiSection9}/boneMuscle/create`,{
       BONE_9_1: null,
       BONE_9_2: null,
       BONE_9_3: null,
@@ -249,7 +250,7 @@ const createExa9BoneMuscle= (visId)=>{
 }
 
 const createExa9_1Osteoarthritis= (visId)=>{
-  Axios.post(`${apiBase}/osteoarthritis/create`,{
+  Axios.post(`${apiSection92}/osteoarthritis/create`,{
       OST_1_KNEE_PAIN: null,
       OST_1_LVL_PAIN: null,
       OST_1_RESULT: null,
@@ -272,7 +273,7 @@ const createExa9_1Osteoarthritis= (visId)=>{
 }
 
 const createExa10Urination= (visId)=>{
-  Axios.post(`${apiBase}/urination/create`,{
+  Axios.post(`${apiSection10}/urination/create`,{
       URI_10_1: null,
       VIS_ID: visId,
       updateBy: null

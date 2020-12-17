@@ -24,7 +24,6 @@ export const add = (payload) =>{
 // }
 
 export const updateAlzheimer = (payload)=>{
-  console.log("///////////////////////////")
     Axios.put(`${apiSection7}/update/${payload[22]}`, {
       ALZ_7_1_EL_AGE: payload[0],
       ALZ_7_1_RESULT_AGE: payload[1],

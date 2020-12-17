@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7M } from "../constants";
+import { CREATE_NEW_FORMS7M ,apiMmse} from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -17,7 +17,7 @@ export const add = (payload) =>{
     }
 }
 export const updateMMSE = (payload)=>{
-  Axios.put("http://localhost:3001/MMSE/update/"+payload[43],{
+  Axios.put(`${apiMmse}/update/${payload[43]}`, {
       MMSE_1_1: payload[0],
       MMSE_1_1_POINT: payload[1],
       MMSE_1_2: payload[2],

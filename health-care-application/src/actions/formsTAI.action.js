@@ -1,4 +1,4 @@
-import {CREATE_NEW_FORMS6T } from "../constants";
+import {CREATE_NEW_FORMS6T,apiSectionTai } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -11,7 +11,7 @@ export const add = (payload) =>{
   }
 }
 export const updateTAI = (payload)=>{
-  Axios.put("http://localhost:3001/TAI/update/"+payload[0],{
+  Axios.put(`${apiSectionTai}/update/${payload[0]}`, {
     TAI_IMMOBILIZE: payload[1],
     TAI_MENTAL: payload[2],
     TAI_FEED: payload[3],
