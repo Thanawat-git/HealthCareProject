@@ -302,6 +302,11 @@ export const createVisitTable = (payload) => {
   } 
 };
 
+export const searchVisit = async (payload)=>{
+  const res = await Axios.get(`${apiEld}/visit/search/${payload[1]}/data/${payload[0]}`)
+  return res
+}
+
 export const createAllDatabase = (visId) => {
   createExa2Waist(visId);
   createExa2Bmi(visId);
