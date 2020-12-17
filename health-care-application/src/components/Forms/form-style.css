@@ -24,6 +24,7 @@
     margin-top: 10px;
     margin-left: 15%;
     padding: 5px;
+    margin-left: 10px;
 }
 .css-form h{
     margin-top: 20px;
@@ -38,6 +39,7 @@
     margin-top: 5px;
     margin-left: 23%;
     padding: 5px;
+   
 }
 
 .css-form p {
@@ -153,4 +155,7 @@
 }
 .dialog-content h6{
     font-size: 20px;
+}
+.customized-dialog-content h5{
+margin-left: 10px;
 }

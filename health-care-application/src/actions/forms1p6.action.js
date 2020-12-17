@@ -13,7 +13,7 @@ export const add = (payload) =>{
 }
 
 export const createDisease = (payload)=>{
-  Axios.post("http://10.80.6.136:3001/elder/disease/create",{
+  Axios.post("http://10.80.6.136/elder/disease/create",{
     ELD_ID_NUMBER: payload[0],
     DIS_NAME: payload[1],
     EXAM_DATE: new Date(),
@@ -24,13 +24,13 @@ export const createDisease = (payload)=>{
 }
 
 export  const deleteDisease = (payload)=>{
-  Axios.delete("http://10.80.6.136:3001/elder/disease/delete/"+payload[0]+"/diseasename/"+payload[1]).then(()=>{
+  Axios.delete("http://10.80.6.136/elder/disease/delete/"+payload[0]+"/diseasename/"+payload[1]).then(()=>{
     alert("Delete disease Success")
   })
 }
 // create null table form 2-10
 const createExa2Waist = (visId)=>{
-  Axios.post("http://localhost:3001/waist/create",{
+  Axios.post("http://localhost/waist/create",{
     WAI_WAIST: null,
     WAI_RESULT: null,
     VIS_ID: visId,
@@ -41,7 +41,7 @@ const createExa2Waist = (visId)=>{
 }
 
 const createExa2Bmi = (visId)=>{
-  Axios.post("http://localhost:3001/bmi/create",{
+  Axios.post("http://localhost/bmi/create",{
     BMI_WEIGHT: null,
     BMI_HEIGHT: null,
     BMI_BMI: null,
@@ -54,7 +54,7 @@ const createExa2Bmi = (visId)=>{
 }
 
 const createExa2Bp = (visId)=>{
-  Axios.post("http://localhost:3001/bp/create",{
+  Axios.post("http://localhost/bp/create",{
     BP_PULSE: null,
     BP_BLO_SYS: null,
     BP_BLO_DIA: null,
@@ -67,7 +67,7 @@ const createExa2Bp = (visId)=>{
 }
 
 const createExa2Fbs = (visId)=>{
-  Axios.post("http://localhost:3001/fbs/create",{
+  Axios.post("http://localhost/fbs/create",{
     FBS_FBS: null,
     FBS_RESULT: null,
     VIS_ID: visId,
@@ -78,7 +78,7 @@ const createExa2Fbs = (visId)=>{
 }
 
 const createExa3Cardiovascular = (visId)=>{
-  Axios.post("http://localhost:3001/cardiovascular/create",{
+  Axios.post("http://localhost/cardiovascular/create",{
       CARDIO_3_1: null,
       CARDIO_3_1_COUNT: null,
       CARDIO_3_2: null,
@@ -97,7 +97,7 @@ const createExa3Cardiovascular = (visId)=>{
 }
 
 const createExa4Eye = (visId)=>{
-  Axios.post("http://localhost:3001/eye/create",{
+  Axios.post("http://localhost/eye/create",{
       EYE_4_1: null,
       EYE_4_2: null,
       EYE_4_3: null,
@@ -113,7 +113,7 @@ const createExa4Eye = (visId)=>{
 }
 
 const createExa5OralHealth = (visId)=>{
-  Axios.post("http://localhost:3001/oralHealth/create",{
+  Axios.post("http://localhost/oralHealth/create",{
       ORAL_5_1: null,
       ORAL_5_2: null,
       ORAL_5_3: null,
@@ -141,7 +141,7 @@ const createExa5OralHealth = (visId)=>{
 }
 
 const createExa6AbilityInLife = (visId)=>{
-  Axios.post("http://localhost:3001/abilityInLife/create",{
+  Axios.post("http://localhost/abilityInLife/create",{
       ABI_6_1: null,
       ABI_6_2: null,
       ABI_6_3: null,
@@ -169,7 +169,7 @@ const createExa6AbilityInLife = (visId)=>{
 }
 
 const createExa7Alzheimer = (visId)=>{
-  Axios.post("http://localhost:3001/alzheimer/create",{
+  Axios.post("http://localhost/alzheimer/create",{
       ALZ_7_1_EL_AGE: null,
       ALZ_7_1_RESULT_AGE: null,
       ALZ_7_2_EL_TIME: null,
@@ -198,7 +198,7 @@ const createExa7Alzheimer = (visId)=>{
 }
 
 const createExa8DepressionScreening = (visId)=>{
-  Axios.post("http://localhost:3001/depressionScreening/create",{
+  Axios.post("http://localhost/depressionScreening/create",{
       DEP_DEPRESSED: null,
       DEP_NOT_ENJOYING: null,
       DEP_CHECK: null,
@@ -222,7 +222,7 @@ const createExa8DepressionScreening = (visId)=>{
 }
 
 const createExa9BoneMuscle= (visId)=>{
-  Axios.post("http://localhost:3001/boneMuscle/create",{
+  Axios.post("http://localhost/boneMuscle/create",{
       BONE_9_1: null,
       BONE_9_2: null,
       BONE_9_3: null,
@@ -249,7 +249,7 @@ const createExa9BoneMuscle= (visId)=>{
 }
 
 const createExa9_1Osteoarthritis= (visId)=>{
-  Axios.post("http://localhost:3001/osteoarthritis/create",{
+  Axios.post("http://localhost/osteoarthritis/create",{
       OST_1_KNEE_PAIN: null,
       OST_1_LVL_PAIN: null,
       OST_1_RESULT: null,
@@ -272,7 +272,7 @@ const createExa9_1Osteoarthritis= (visId)=>{
 }
 
 const createExa10Urination= (visId)=>{
-  Axios.post("http://localhost:3001/urination/create",{
+  Axios.post("http://localhost/urination/create",{
       URI_10_1: null,
       VIS_ID: visId,
       updateBy: null

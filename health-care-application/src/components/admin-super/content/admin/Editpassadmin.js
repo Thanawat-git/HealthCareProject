@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import "./volunteer.css";
+import "./admin.css";
 //import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 import { Button, Link } from "@material-ui/core";
@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import EmojiEmotionsTwoToneIcon from "@material-ui/icons/EmojiEmotionsTwoTone";
 import { yellow, blue, grey } from "@material-ui/core/colors";
-import { useRouteMatch, Redirect } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     hover: false,
@@ -42,7 +42,7 @@ const DialogTitle = withStyles(useStyles)((props) => {
   );
 });
 
-export default function Editpassword() {
+export default function Editpassadmin() {
   const classes = useStyles();
   const { url } = useRouteMatch();
   const [open, setOpen] = useState(false);
@@ -52,23 +52,14 @@ export default function Editpassword() {
   };
   const handleClose = () => {
     setOpen(false);
-    //  return <Redirect to={`${url}/search`}/>
   };
 
   return (
-    <div className="vtcontainer">
-      <div className="nav-vtcontainer linkicon">
-        <AppBar position="static">
-          <Toolbar>
-            {/* <KeyboardBackspaceIcon
-              fontSize="large"
-              className={classes.icon}
-            ></KeyboardBackspaceIcon> */}
-          </Toolbar>
-        </AppBar>
-        <h3>
-          <b> แก้ไขรหัสผ่าน </b>
-        </h3>
+    <div className="add-staff">
+        <h2>
+           แก้ไขรหัสผ่าน 
+        </h2>
+        <div className="content"> 
         <div className="TextField">
           <TextField
             id="outlined-basic"
@@ -105,12 +96,12 @@ export default function Editpassword() {
             บันทึก
           </Button>
         </div>
-        
+        <div>
           <Dialog
-            className={classes.title}
-            open={open}
             onClose={handleClose}
             aria-labelledby="customized-dialog-title"
+            open={open}
+            className={classes.title}
           >
             <div style={{ width: 300, height: 300 }}>
               <DialogTitle
@@ -144,6 +135,7 @@ export default function Editpassword() {
             </div>
           </Dialog>
         </div>
+      </div>
       </div>
   );
 }

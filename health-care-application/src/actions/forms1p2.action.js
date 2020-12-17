@@ -1,4 +1,4 @@
-import { FORMS1P2_ADD_NEW } from "../constants";
+import { FORMS1P2_ADD_NEW, apiEld } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -13,7 +13,7 @@ export const add = (payload) => {
 };
 
 export const updateElder = (payload) => {
-  Axios.put("http://localhost:3001/elder/update/" + payload[0], {
+  Axios.put(`${apiEld}/elder/update/${payload[0]}`, {
     ELD_PHONE: payload[1],
   }).then(() => {
     alert("Update Elder Success");
@@ -21,7 +21,7 @@ export const updateElder = (payload) => {
 };
 
 export const updateElderCurrent = (payload) => {
-  Axios.put("http://localhost:3001/elder/currentaddress/update/"+ payload[0], {
+  Axios.put("http://localhost/elder/currentaddress/update/"+ payload[0], {
     ELD_CUR_NUMBER: payload[1],
     ELD_CUR_VILLAGE: payload[2],
     ELD_CUR_LANE: payload[3],
@@ -37,7 +37,7 @@ export const updateElderCurrent = (payload) => {
 
 export const updateElderIdCurrent = (payload) => {
   Axios.put(
-    "http://localhost:3001/elder/idnumberaddress/update/"+ payload[0],
+    "http://localhost/elder/idnumberaddress/update/"+ payload[0],
     {
       ELD_IDN_ADDR_NUMBER: payload[1],
       ELD_IDN_ADDR_VILLAGE: payload[2],

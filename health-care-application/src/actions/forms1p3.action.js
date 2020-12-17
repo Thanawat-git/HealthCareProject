@@ -24,7 +24,7 @@ export const add = (payload) =>{
 // }
 
 export function updateElderRelative(payload) {
-    Axios.put("http://localhost:3001/elder/relative/update/"+payload[0],{
+    Axios.put("http://localhost/elder/relative/update/"+payload[0],{
       ELD_REL_FIRSTNAME: payload[1],
       ELD_REL_LASTNAME: payload[2],
       ELD_REL_RELATION: payload[5],
@@ -36,7 +36,7 @@ export function updateElderRelative(payload) {
   }
   
 export function createElderRelative2(payload) {
-    Axios.post("http://localhost:3001/elder/relative/create",{
+    Axios.post("http://localhost/elder/relative/create",{
       ELD_REL_FIRSTNAME: payload[0],
       ELD_REL_LASTNAME: payload[1],
       ELD_REL_RELATION: payload[4],

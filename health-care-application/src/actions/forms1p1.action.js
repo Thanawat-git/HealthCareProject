@@ -21,6 +21,7 @@ const createElder = (payload) => {
     ELD_PHONE: null,
     ELD_LAST_VISIT_DATE: null,
     ELD_AKA: payload[4],
+    updateBy: null
   }).then(() => {
     alert("Elder Success");
   });

@@ -47,7 +47,12 @@
 }
 .inner-seach2 {
   margin-top: 20px;
+  
+/* background-color: white; */
+ 
 }
+
+
 
 
 @media (min-width: 770px) {
@@ -81,6 +86,7 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 8px;
+  /* width: fit-content; */
 }
 
 .bt-searchInfo a,
@@ -89,23 +95,29 @@
 }
 
 
-.bt-searchInfo a .bt1 {
-  border-radius: 35px;
-  color: #da9813;
-  background-color: #f2f2ab;
-}
+
   .bt-history a .bt3 {
     border-radius: 30px;
     color:black;
     background-color: #DCDCDC;
-  } 
+  }
+  .bt-searchInfo a .bt1 {
+  /* border-radius: 35px; */
+  color:white;
+  background-color:#16A5A5;
+ 
+} 
+.bt-searchInfo a .bt2 {
+  color: #fff;
+  background-color: #0099ff;
+}
   .bt-searchInfo a .bt3 {
-    border-radius: 15px;
-    color:black;
-    background-color:  #DCDCDC;
+    /* border-radius: 15px; */
+    color:white;
+    background-color:#AB47BC;
   }
   .bt-searchInfo a .bt4 {
-    color:black;
+    color:white;
     background-color:  #DCDCDC;
   }
   .bt-history a .bt2 {
@@ -120,11 +132,7 @@
  
     
   }
-.bt-searchInfo a .bt2 {
-  border-radius: 35px;
-  color: #fff;
-  background-color: #0099ff;
-}
+
 .bt-searchInfo a .bt4 {
     color: #fff;
     background-color: #00b300;
@@ -187,3 +195,16 @@
     margin-right: 17%;
     margin-bottom:2%;
 }
+
+.bt-searchInfo-link{
+  margin: 0 20px;
+  width: 100%;
+}
+/* .MuiPaper-roo {
+  /* color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #fff;
+  text-align: center; 
+  width: 75%;
+} */
+
