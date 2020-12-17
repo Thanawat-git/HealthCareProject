@@ -19,12 +19,8 @@ const useStyles = makeStyles({
 export default function Sections2_1() {
   const classes = useStyles();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
-  const peopleID = true
-  // useEffect(() => {
-  //   if(peopleID){
-  //    return RedirectToVolunteerPage()
-  //   }
-  // }, [])
+  const visId = useSelector(({ visitID }) => visitID.visiId);
+
   const elderlyGender = useSelector(
     ({ forms1p1Reducer }) => forms1p1Reducer.elderlyGender
   ); // check gender
@@ -159,10 +155,10 @@ export default function Sections2_1() {
   };
   
   const saveDataToServer =()=>{
-    //  formAction.updateExa2Waist([peopleID,waist,waistResult,collect])
-    //  formAction.updateExa2Bmi([peopleID,weight,high,bmi,bmiResult,collect])
-    //  formAction.updateExa2Bp([peopleID,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
-    //  formAction.updateExa2Fbs([peopleID,sugar,sugarResult,collect])
+     formAction.updateExa2Waist([visId,waist,waistResult,collect])
+     formAction.updateExa2Bmi([visId,weight,high,bmi,bmiResult,collect])
+     formAction.updateExa2Bp([visId,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
+     formAction.updateExa2Fbs([visId,sugar,sugarResult,collect])
 
 
   }

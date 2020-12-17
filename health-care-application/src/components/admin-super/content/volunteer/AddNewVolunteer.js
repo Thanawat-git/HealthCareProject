@@ -9,7 +9,6 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import PhoneIcon from "@material-ui/icons/Phone";
-import EmailIcon from "@material-ui/icons/Email";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Typography from "@material-ui/core/Typography";
 import {
@@ -82,7 +81,7 @@ export default function AddNewVolunteer() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
-  const [imageUploaad, setImageUpload] = useState(null);
+  const [imageUpload, setImageUpload] = useState(null);
   // useEffect(() => {
   //   image && console.log('image', image)
   //   image && console.log('image name', image.name)

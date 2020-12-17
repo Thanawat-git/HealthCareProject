@@ -17,7 +17,7 @@ import {
 import { Link } from "react-router-dom";
 import { mdiCloseThick } from "@mdi/js";
 import Header from "./Header";
-import { createAllDatabase } from "../../actions/forms1p6.action";
+import * as formAction from "../../actions/forms1p6.action";
 
 const useStyles = makeStyles({
   title: {
@@ -41,11 +41,12 @@ export default function Asynchronous() {
     setOpen(true);
   }
 
-  const createNewForm = () => {
-  //dispatch(elderly.selectedEld(selectEld.ELDER.ELD_ID_NUMBER))
-    const visId = new Date();
-    // console.log(visId)
-    dispatch(createAllDatabase(visId));
+  const createNewForm = (eldId) => {
+    console.log('eldId ',eldId)
+    const d = new Date();
+    const visId = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
+    const data = [visId,eldId]
+    dispatch(formAction.createVisitTable(data));
   };
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
@@ -157,7 +158,10 @@ export default function Asynchronous() {
                 className="bt2"
                 variant="contained"
                 color="primary"
-                onClick={createNewForm}
+                onClick={()=>{
+                  const eldId = elderlyReducer.resultSelected.ELD_ID_NUMBER
+                  createNewForm(eldId)
+                }}
                 fullWidth
               >
                 เก็บข้อมูลสุขภาพ

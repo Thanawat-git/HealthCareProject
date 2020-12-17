@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS3,apiSection3 } from "../constants";
+import { CREATE_NEW_FORMS3, apiBase } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -41,7 +41,7 @@ export const add = (payload) =>{
 //   }
 
 export const updateExa3Cardiovascular = (payload)=>{
-    Axios.put(`${apiSection3}/update/${payload[0]}`, {
+    Axios.put(`${apiBase}/cardiovascular/update/${payload[0]}`, {
         CARDIO_3_1: payload[1],
         CARDIO_3_1_COUNT: payload[2],
         CARDIO_3_2: payload[3],
