@@ -81,12 +81,14 @@ export default function EditVolunteerInfo({selectValue}) {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
-  const [imageUploaad, setImageUpload] = useState(null);
-  
+  const [imageUpload, setImageUpload] = useState(null);
+  const [preName, setpreName] = useState(null)
   const [state, setState] = useState({
-    volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,line:selectValue.VOL_LINE
+    volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,
+    phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,
+    line:selectValue.VOL_LINE,refPhone:''
   });
-  const {volId,fName,lName,phone,facebook,line} = state
+  const {volId,fName,lName,phone,facebook,line,refPhone} = state
   const [homeNumber, setHomeNummber] = useState(''); //บ้านเลขที่
   const [alley, setAlley] = useState(''); //ตรอก ซอย
   const [street, setStreet] = useState(''); //ถนน
@@ -282,8 +284,8 @@ export default function EditVolunteerInfo({selectValue}) {
                       onClose={() => setOpen2(false)}
                       onOpen={() => setOpen2(true)}
                       name="preName"
-                      // value={age}
-                      // onChange={handleChange}
+                      value={preName}
+                      onChange={e=>setpreName(e.target.value)}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -384,24 +386,12 @@ export default function EditVolunteerInfo({selectValue}) {
                 />
               </div>
               <div className="col-6 inputFill">
-                {/* <TextField
-                  placeholder="E-mail Address"
-                  variant="outlined"
-                  // name="phone"
-                  // value={phone}
-                  // onChange={onChange}
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <EmailIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                /> */}
                 <TextField
                   placeholder="เบอร์บุคคลอื่น เช่น คุณสมร 0912345678"
                   variant="outlined"
+                  name="refPhone"
+                  value={refPhone}
+                  onChange={onChange}
                   fullWidth
                   InputProps={{
                     startAdornment: (
@@ -449,20 +439,6 @@ export default function EditVolunteerInfo({selectValue}) {
                   }}
                 />
               </div>
-              {/* <div className="col-12 inputFill">
-                <TextField
-                  placeholder="บุคคลอื่นเมื่อไม่สามาติดต่อคุณได้ ใส่ชื่อแล้วตามด้วยเบอร์โทร เช่น คุณสมร 0912345678"
-                  variant="outlined"
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                       <AccountCircleIcon/>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div> */}
               
               <div className="col-12 input-position-fill">
               <label>ที่อยู่</label>
