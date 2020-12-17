@@ -221,6 +221,11 @@ export default function AddNewVolunteer() {
     setMon('')
     setDay('')
     setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
+    setHomeNummber('')
+    setAlley('')
+    setStreet('')
+    setSubDistrict('')
+    setArea('')
     setOpen(false)
   }
   return (
