@@ -89,9 +89,9 @@ export default function AddNewVolunteer() {
   // }, [image])
   const [preName, setpreName] = useState(null)
   const [state, setState] = useState({
-    volId:'',fName:'',lName:'',phone:'',facebook:'',line:''
+    volId:'',fName:'',lName:'',phone:'',facebook:'',line:'',reference:'' 
   });
-  const {volId,fName,lName,phone,facebook,line} = state
+  const {volId,fName,lName,phone,facebook,line,reference} = state
   const [homeNumber, setHomeNummber] = useState(''); //บ้านเลขที่
   const [alley, setAlley] = useState(''); //ตรอก ซอย
   const [street, setStreet] = useState(''); //ถนน
@@ -209,7 +209,8 @@ export default function AddNewVolunteer() {
       Age = Age;
     }
 
-    const data = [volId,fName,lName,phone,facebook,line];
+    // const data = [volId,fName,lName,phone,facebook,line];
+    const data = [volId,fName,lName,phone,facebook,line,reference];
     dispatch(volAction.createVolunteer(data));
     onClose()
   };
@@ -220,7 +221,7 @@ export default function AddNewVolunteer() {
     setYea('')
     setMon('')
     setDay('')
-    setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
+    setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:'',reference:''})
     setHomeNummber('')
     setAlley('')
     setStreet('')
@@ -287,10 +288,14 @@ export default function AddNewVolunteer() {
                 <TextField
                   label="เลขประจำตัวประชาชน"
                   name="volId"
+                  type="number"
                   value={volId}
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
+                  onInput = {(e) =>{
+                    e.target.value = e.target.value.slice(0,13)
+                }}//fix13digit
                 />
               </div>
               <div className="col-6 inputFill">
@@ -391,6 +396,9 @@ export default function AddNewVolunteer() {
                   value={phone}
                   onChange={onChange}
                   fullWidth
+                  onInput = {(e) =>{
+                    e.target.value = e.target.value.slice(0,10)
+                }}//fix10digit
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -404,6 +412,9 @@ export default function AddNewVolunteer() {
                 <TextField
                   placeholder="เบอร์บุคคลอื่น เช่น คุณสมร 0912345678"
                   variant="outlined"
+                  name="reference"
+                  value={reference}
+                  onChange={onChange}
                   fullWidth
                   InputProps={{
                     startAdornment: (

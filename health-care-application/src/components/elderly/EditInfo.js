@@ -269,7 +269,7 @@ export default function EditInfo() {
         </div>
 
         <div className="bt-saveEdit">
-          <Link to="/volunteer">
+          <Link to="/volunteerpage">
             <Button variant="contained" size="large" onClick={saveChange} >บันทึก</Button>
           </Link>
         </div>

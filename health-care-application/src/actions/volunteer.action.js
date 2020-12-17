@@ -29,6 +29,7 @@ export const createVolunteer = (payload) => {
       VOL_PHONE: payload[3],
       VOL_LINE: payload[4],
       VOL_FACEBOOK: payload[5],
+      VOL_REFERENCE:payload[6],
       VOL_PHOTO: "-",
       VOL_STATUS: true,
       updateBy: "1000000000001",
@@ -47,6 +48,8 @@ export const updateVolunteer = (payload) => {
             VOL_PHONE: payload[4],
             VOL_LINE: payload[5],
             VOL_FACEBOOK: payload[6],
+            VOL_REFERENCE:payload[7]
+
         })
         await doGetVolunteer(dispatch);
     }
@@ -98,3 +101,5 @@ const doGetVolunteer = (dispatch) => {
       dispatch(setVolunteerStateToFailed());
     });
 };
+
+
