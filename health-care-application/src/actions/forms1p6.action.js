@@ -302,16 +302,6 @@ export const createVisitTable = (payload) => {
   } 
 };
 
-// export const getVisit = (payload) => {
-//   return Axios.get(
-//     `${apiEld}/visit/search/${payload[1]}/date/${payload[0]}`
-//   ).then((result) => {
-//     // console.log('result ',result.data)
-//     console.log("result ", result.data[0].VIS_ID);
-//     createAllDatabase(result.data[0].VIS_ID)
-//   });
-// };
-
 export const createAllDatabase = (visId) => {
   createExa2Waist(visId);
   createExa2Bmi(visId);
