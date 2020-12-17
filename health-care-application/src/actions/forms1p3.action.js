@@ -1,4 +1,4 @@
-import { FORMS1P3_ADD_NEW } from "../constants";
+import { FORMS1P3_ADD_NEW , apiEld } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -24,9 +24,11 @@ export const add = (payload) =>{
 // }
 
 export function updateElderRelative(payload) {
-    Axios.put("http://localhost/elder/relative/update/"+payload[0],{
+    Axios.put(`${apiEld}/relative/update/${payload[0]}`,{
       ELD_REL_FIRSTNAME: payload[1],
       ELD_REL_LASTNAME: payload[2],
+      ELD_REL_GENDER: payload[3],
+      ELD_REL_TIME: payload[4],
       ELD_REL_RELATION: payload[5],
       ELD_REL_PHONE: payload[6],
       updateBy: null
@@ -36,13 +38,15 @@ export function updateElderRelative(payload) {
   }
   
 export function createElderRelative2(payload) {
-    Axios.post("http://localhost/elder/relative/create",{
+    Axios.post(`${apiEld}/relative/create`,{
       ELD_REL_FIRSTNAME: payload[0],
       ELD_REL_LASTNAME: payload[1],
+      ELD_REL_GENDER: payload[2],
+      ELD_REL_TIME: payload[3],
       ELD_REL_RELATION: payload[4],
       ELD_REL_PHONE: payload[5],
-      updateBy: null,
-      ELD_ID_NUMBER: payload[6]
+      ELD_ID_NUMBER: payload[6],
+      updateBy: null
     }).then(()=>{
       alert("Elder Relative Success")
     })

@@ -1,4 +1,4 @@
-import { FORMS1P4_ADD_NEW } from "../constants";
+import { FORMS1P4_ADD_NEW , apiEld } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -24,7 +24,7 @@ export const add = (payload) =>{
 // }
 
 export const updateElderinfo = (payload)=>{
-    Axios.put("http://localhost/elder/information/update/"+payload[0],{
+    Axios.put(`${apiEld}/information/update/${payload[0]}`,{
       ELD_STATUS: payload[1],
       ELD_LIVELIHOOD: payload[2],
       ELD_RELIGION: payload[3],
