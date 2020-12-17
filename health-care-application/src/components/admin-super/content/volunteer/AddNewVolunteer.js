@@ -92,6 +92,12 @@ export default function AddNewVolunteer() {
     volId:'',fName:'',lName:'',phone:'',facebook:'',line:''
   });
   const {volId,fName,lName,phone,facebook,line} = state
+  const [homeNumber, setHomeNummber] = useState(''); //บ้านเลขที่
+  const [alley, setAlley] = useState(''); //ตรอก ซอย
+  const [street, setStreet] = useState(''); //ถนน
+  const [subDistrict, setSubDistrict] = useState(''); // ตำบล
+  const [area, setArea] = useState(''); // ชุมชน
+
   const dispatch = useDispatch();
   const onChange = (e)=>{
     console.log(e.target.value)
@@ -206,11 +212,6 @@ export default function AddNewVolunteer() {
     const data = [volId,fName,lName,phone,facebook,line];
     dispatch(volAction.createVolunteer(data));
     onClose()
-    // setImagePreview(null)
-    // setImageUpload(null)
-    // setpreName(null)
-    // setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:''})
-    // setOpen(false)
   };
 
   const onClose = ()=>{
@@ -299,9 +300,6 @@ export default function AddNewVolunteer() {
                       value={preName}
                       onChange={e=>setpreName(e.target.value)}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
                       <MenuItem value="นาย">นาย</MenuItem>
                       <MenuItem value="นาง">นาง</MenuItem>
                       <MenuItem value="นางสาว">นางสาว</MenuItem>
@@ -398,21 +396,6 @@ export default function AddNewVolunteer() {
                 />
               </div>
               <div className="col-6 inputFill">
-                {/* <TextField
-                  placeholder="E-mail Address"
-                  variant="outlined"
-                  // name="phone"
-                  // value={phone}
-                  // onChange={onChange}
-                  fullWidth
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <EmailIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                /> */}
                 <TextField
                   placeholder="เบอร์บุคคลอื่น เช่น คุณสมร 0912345678"
                   variant="outlined"
@@ -465,7 +448,64 @@ export default function AddNewVolunteer() {
               </div>
               <div className="col-12 input-position-fill">
               <label>ที่อยู่</label>
-              <textarea className="form-control" rows="3"></textarea>
+              <div className="row align-items-end">
+            <div className="col-xl-6 col-12 mb-15">
+              <TextField
+                label="เลขที่"
+                type="number"
+                variant="outlined"
+                placeholder="เลขที่"
+                defaultValue={homeNumber}
+                onChange={(e) => setHomeNummber(e.target.value)}
+                className="TextField"
+              />
+            </div>
+            <div className="col-xl-6 col-12 mb-15">
+              <TextField
+                label="ตรอก/ซอย"
+                variant="outlined"
+                placeholder="ตรอก/ซอย"
+                defaultValue={alley}
+                onChange={(e) => setAlley(e.target.value)}
+                className="TextField"
+              />
+            </div>
+            <div className="col-xl-6 col-12 mb-15">
+              <TextField
+                label="ถนน"
+                variant="outlined"
+                placeholder="ถนน"
+                defaultValue={street}
+                onChange={(e) => setStreet(e.target.value)}
+                className="TextField"
+              />
+            </div>
+            <div className="col-xl-6 col-12 mb-15">
+              <TextField
+                label="ตำบล"
+                variant="outlined"
+                placeholder="ตำบล"
+                defaultValue={subDistrict}
+                onChange={(e) => setSubDistrict(e.target.value)}
+                className="TextField"
+              />
+            </div>
+            <div className="col-xl-6 col-12 mb-15">
+              <Autocomplete
+                options={Areas}
+                getOptionLabel={(option) => option}
+                disableClearable={true}
+                // size="small"
+                defaultValue={area}
+                onInputChange={(event, value) => setArea(value)}
+                renderInput={(params) => (
+                  <TextField {...params} label="ชุมชน" variant="outlined" />
+                )}
+              />
+            </div>
+            <div className="col-xl-6 col-12 mb-15"><p>อำเภอเมือง ชลบุรี</p></div>
+            
+          </div>
               </div>
             </div>
           </div>
@@ -499,4 +539,32 @@ const Months = [
   "ตุลาคม",
   "พฤศจิกายน",
   "ธันวาคม",
+];
+
+const Areas = [
+  "ชุมชนมณีแก้ว",
+  "ชุมชนดอนบน",
+  "ชุมชนบางแสนทาวเวอร์",
+  "ชุมชนตาลล้อม 1",
+  "ชุมชนตาลล้อม 2",
+  "ชุมชนบ้านเหมือง",
+  "ชุมชนพัฒนา 2",
+  "ชุมชนดอนนารา",
+  "ชุมชนวัดกลางดอน",
+  "ชุมชนแสนสุข",
+  "ชุมชนมาบมะยม",
+  "ชุมชนท้ายตลาด",
+  "ชุมชนร่วมใจพัฒนา",
+  "ชุมชนบางแสนบน",
+  "ชุมชนหาดวอนนภา",
+  "ชุมชนบางเป้ง",
+  "ชุมชนหน้ามอ",
+  "ชุมชนโชคดี",
+  "ชุมชนสมใจนึก",
+  "ชุมชนหน้าเทศบาล",
+  "ชุมชนวัดแสนสุข",
+  "ชุมชนมุขแสนเจริญ 1",
+  "ชุมชนมุขแสนเจริญ 2",
+  "ชุมชนเขาสามมุข",
+  "ชุมชนบ้านแหลมแท่น",
 ];

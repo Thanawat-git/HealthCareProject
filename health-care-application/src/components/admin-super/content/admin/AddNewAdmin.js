@@ -290,9 +290,6 @@ export default function AddNewAdmin() {
                       value={preName}
                       onChange={e=>setpreName(e.target.value)}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
                       <MenuItem value="นาย">นาย</MenuItem>
                       <MenuItem value="นาง">นาง</MenuItem>
                       <MenuItem value="นางสาว">นางสาว</MenuItem>
