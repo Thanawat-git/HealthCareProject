@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS2,HTTP_SECTIONS2_FETCHING,HTTP_SECTIONS2_SUCCESS,HTTP_SECTIONS2_FAILED,OK,YES,NO } from "../constants";
+import { CREATE_NEW_FORMS2,apiSection2 } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -46,7 +46,7 @@ export const add = (payload) =>{
 // }
 
 export const updateExa2Waist = (payload)=>{
-    Axios.put("http://localhost:3001/waist/update/"+payload[0],{
+    Axios.put(`${apiSection2}/update/${payload[0]}`, {
       WAI_WAIST: payload[1],
       WAI_RESULT: payload[2],
       WAI_CORRECT_FORM:payload[3],
@@ -58,7 +58,7 @@ export const updateExa2Waist = (payload)=>{
   }
   
   export  const updateExa2Bmi = (payload)=>{
-    Axios.put("http://localhost:3001/bmi/update/"+payload[0],{
+    Axios.put(`${apiSection2}/update/${payload[0]}`, {
       BMI_WEIGHT: payload[1],
       BMI_HEIGHT: payload[2],
       BMI_BMI: payload[3],
@@ -71,7 +71,7 @@ export const updateExa2Waist = (payload)=>{
   }
   
   export  const updateExa2Bp = (payload)=>{
-    Axios.put("http://localhost:3001/bp/update/"+payload[0],{
+    Axios.put(`${apiSection2}/update/${payload[0]}`, {
       BP_PULSE: payload[1],
       BP_BLO_SYS: payload[2],
       BP_BLO_DIA: payload[3],
@@ -84,7 +84,7 @@ export const updateExa2Waist = (payload)=>{
   }
   
   export  const updateExa2Fbs = (payload)=>{
-    Axios.put("http://localhost:3001/fbs/update/"+payload[0],{
+    Axios.put(`${apiSection2}/update/${payload[0]}`, {
       FBS_FBS: payload[1],
       FBS_RESULT: payload[2],
       FBS_CORRECT_FORM:payload[3],

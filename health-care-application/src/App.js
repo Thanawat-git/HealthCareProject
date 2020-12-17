@@ -53,9 +53,9 @@ export default function App(){
           {/* Volunteer */}
           {/* <Route path='/volunteer' component={Volunteer} /> */}
           <Route path='/volunteerpage'component={MainVolunteer} />
-          {/* <Route path='/history' component={History} />
+          {/* <Route path='/history' component={History} /> */}
           <Route path='/editeld' component={EditInfo} />
-          <Route path='/editaccount' component={Editaccount} />
+          {/* <Route path='/editaccount' component={Editaccount} />
           <Route path='/editpass' component={Editpassword
           } /> */}
 

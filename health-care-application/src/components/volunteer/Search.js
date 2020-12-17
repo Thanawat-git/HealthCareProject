@@ -22,8 +22,12 @@ import { createAllDatabase } from "../../actions/forms1p6.action";
 const useStyles = makeStyles({
   title: {
     textAlign: "center",
-    minWidth:350
+     //minWidth:350
   },
+  dialogPaper: {
+    minHeight: '80vh',
+    maxHeight: '80vh',
+},
 });
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
@@ -88,6 +92,7 @@ export default function Asynchronous() {
           keepMounted
           onClose={() => setOpen(false)}
           className={classes.title}
+          contentStyle={{width: "100%", maxWidth: "none"}}
         >
           <div className="setIcon">
             {/* <Icon path={mdiCloseThick} size={1} /> */}
@@ -104,12 +109,12 @@ export default function Asynchronous() {
 
           <DialogContent>
             <DialogContentText>
-              1111111111111
+              {/* 1111111111111 */}
               {elderlyReducer.resultSelected.ELD_ID_NUMBER} 
             </DialogContentText>
 
             <DialogContentText>
-              นายบิ๊ก บ้านโป่ง
+              {/* นายบิ๊ก บ้านโป่ง */}
               {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} 
             </DialogContentText>
             <DialogContentText>
@@ -117,7 +122,7 @@ export default function Asynchronous() {
            {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE} 
             </DialogContentText>
             <DialogContentText>
-         ตรวจโดย {elderlyReducer.resultSelected.updateBy}
+         {/* ตรวจโดย {elderlyReducer.resultSelected.updateBy} */}
          </DialogContentText>
           </DialogContent>
 

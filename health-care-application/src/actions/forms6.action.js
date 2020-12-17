@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS6 } from "../constants";
+import { CREATE_NEW_FORMS6,apiSection6 } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -24,7 +24,7 @@ export const add = (payload) =>{
 // }
 
 export const updateAilityInLife = (payload)=>{
-    Axios.put("http://localhost:3001/abilityInLife/update/"+payload[13],{
+    Axios.put(`${apiSection6}/update/${payload[13]}`, {
         ABI_6_1: payload[0],
         ABI_6_2: payload[1],
         ABI_6_3: payload[2],
