@@ -175,7 +175,7 @@ export default function MMSIThai2002() {
       c22.style.display = "none"
       c21.style.display = "block"
     }
-  }, [anstf]); 
+  }, [anstf,group]); 
   var c = colorS
   const divStyle = {
     color: c
@@ -189,9 +189,9 @@ export default function MMSIThai2002() {
   const cal = (v) => {
     setPoint(point + v);
   };
-  useEffect(() => {
-    console.log(point);
-  }, [point]);
+  // useEffect(() => {
+  //   console.log(point);
+  // }, [point]);
 
   useEffect(() => {
     
@@ -220,6 +220,7 @@ export default function MMSIThai2002() {
         parseInt(ans10)+
         parseInt(ans11)+point;
         setPoint(num);
+       
         if (group == 1) {
           ///setresults("none");
           if (num <= 14) {
@@ -240,21 +241,15 @@ export default function MMSIThai2002() {
             setresults(" ปกติ");
           }
         }
-      
+     
     }
-  }, [collect]);
+  }
+  
+  , [collect]);
+ 
   useEffect(() => {
     if (
-      ans1 &&
-      ans12 &&
-      ans13 &&
-      ans14 &&
-      ans15 &&
-      ans61 &&
-      ans62 &&
-      ans7 &&
-      ans8 &&
-      ans11 
+      ans1 
     ) {
       setCollect(true);
     }
@@ -285,6 +280,7 @@ export default function MMSIThai2002() {
 
   const handleSubmit = () => {
     setShow(true);
+    // setCollect(true)
     const data = [
       ans1,
       ans12,
@@ -332,6 +328,15 @@ export default function MMSIThai2002() {
     ];
     dispatch(formAction.add(data));
   };
+  // console.log("+id" + visId)
+  const saveDataToServer = () => {
+    // console.log("+id" + visId)
+    formAction.updateMMSE([textAns11,ans1,textAns12,ans12,textAns13,ans13,textAns14,ans14,textAns15,ans15,textAns211,ans2_1_1,textAns212,ans2_1_2,textAns213,ans2_1_3,textAns214,ans2_1_4,textAns215,ans2_1_5,ansF,ansR,ansT,
+      num1,num2,num3,num4,num5,ansF2,ansR2,ansT2,ans61,ans62,ans7,think1,think2,think3,ans9,textAns10,ans10,ans11,collect,results,visId])
+  }
+  // function saveDataToServer(){
+
+  // }
   return (
     <div className="css-form">
       <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -928,7 +933,7 @@ export default function MMSIThai2002() {
               label="รถไฟ"
             />
 
-            <p>ในกรณีที่ทำแบบทดสอบซ้ำภายใน 2 เดือน ให้ใช้คำว่า</p>
+            {/* <p>ในกรณีที่ทำแบบทดสอบซ้ำภายใน 2 เดือน ให้ใช้คำว่า</p>
 
             <FormControlLabel
               control={
@@ -962,7 +967,7 @@ export default function MMSIThai2002() {
                 />
               }
               label="รถยนต์"
-            />
+            /> */}
           </FormGroup>
           <hr />
          
@@ -1147,7 +1152,7 @@ export default function MMSIThai2002() {
               label="รถไฟ"
             />
 
-            <p>ในกรณีที่ทำแบบทดสอบซ้ำภายใน 2 เดือน ให้ใช้คำว่า</p>
+            {/* <p>ในกรณีที่ทำแบบทดสอบซ้ำภายใน 2 เดือน ให้ใช้คำว่า</p>
 
             <FormControlLabel
               control={
@@ -1181,7 +1186,7 @@ export default function MMSIThai2002() {
                 />
               }
               label="รถยนต์"
-            />
+            /> */}
           </FormGroup>
           <div className="col-12">
             <p>คำตอบของผู้สูงอายุ</p>
@@ -1441,9 +1446,7 @@ export default function MMSIThai2002() {
         title="ผลการประเมินการทดสอบเบื้องต้นฉบับภาษาไทย"
         result={results}
         show={show}
-        onClick={()=>formAction.updateMMSE([textAns11,ans1,textAns12,ans12,textAns13,ans13,textAns14,ans14,textAns15,ans15,
-          textAns211,ans2_1_1,textAns212,ans2_1_2,textAns213,ans2_1_3,textAns214,ans2_1_4,textAns215,ans2_1_5,ansF,ansR,ansT,
-          num1,num2,num3,num4,num5,ansF2,ansR2,ansT2,ans61,ans62,ans7,think1,think2,think3,ans9,textAns10,ans10,ans11,collect,results,visId])}
+        onClick={saveDataToServer}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}

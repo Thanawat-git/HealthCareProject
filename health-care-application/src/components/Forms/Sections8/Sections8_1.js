@@ -32,6 +32,7 @@ function Sections8_1() {
   const [show, setShow] = useState(false);
   const [linkTo9Q, setlinkTo9Q] = useState(false);
 
+
   useEffect(() => {
     if (ans8_1 && ans8_2) {
       setCollect(true);
@@ -58,7 +59,7 @@ function Sections8_1() {
     const data = [ans8_1, ans8_2, collect, results];
     dispatch(formAction.add(data));
   };
-
+  console.log(visId+"manaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   return (
     <div className="css-form">
       <h1>ข้อมูลของผู้สูงอายุ</h1>
@@ -176,7 +177,7 @@ function Sections8_1() {
         </Modal.Body>
 
         <Modal.Footer>
-          {console.log("mainaaaaaaaaaaaaaaaaaaaaaaaaaa" + linkTo9Q)}
+          
           {linkTo9Q ? (
             <Link to="/sec8-9q" className={classes.root}>
               <Button

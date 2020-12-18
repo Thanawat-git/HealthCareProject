@@ -14,10 +14,13 @@ export const setStateToAdd = (payload) => ({
 export const add = (payload) =>{
     return dispatch=>{
         dispatch(setStateToAdd(payload))
+        // updatemmse()
     }
 }
+
 export const updateMMSE = (payload)=>{
-  Axios.put(`${apiBase}/MMSE/update/${payload[43]}`, {
+  //console.log("in"+payload)
+  Axios.put("http://localhost:3001/MMSE/update/8", {
       MMSE_1_1: payload[0],
       MMSE_1_1_POINT: payload[1],
       MMSE_1_2: payload[2],
@@ -62,7 +65,18 @@ export const updateMMSE = (payload)=>{
       MMSE_CORRECT_FORM: payload[41],
       MMSE_RESULT:payload[42],
       updateBy: null
-  }).then(()=>{
-    alert("MMSE Update Success")
+  }).then(res=>{
+    // alert("MMSE Update Success")
+    console.log('res ', res.data)
   })
 }
+
+// export const updatemmse = () =>{
+//   console.log('updatemmse ')
+//   Axios.put("http://localhost:3001/MMSE/update/8", {
+//     MMSE_1_1_POINT: '0',
+//   }).then(()=>{
+//     alert("MMSE Update Success")
+//     // console.log('res ', res.data)
+//   })
+// }

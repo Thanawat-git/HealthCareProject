@@ -36,7 +36,6 @@ export default function Sections10() {
   }, [ans10,results]);
 
   const handleSubmit = () => {
-    
     setShow(true);
     const data = [ans10,collect,results]
     dispatch(formAction.add(data))
@@ -90,7 +89,7 @@ export default function Sections10() {
         title='ผลการคัดกรองการกลั้นปัสสาวะ'
         result={results}
         show={show}
-        onClick={()=>formAction.upadateExa10Urination([visId,ans10])}
+        onClick={()=>formAction.upadateExa10Urination([visId,ans10,results,collect])}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}

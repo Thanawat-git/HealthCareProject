@@ -39,9 +39,10 @@ const createExa2Waist = (visId) => {
     WAI_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Waist Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Waist Create Success");
+  // });
 };
 
 const createExa2Bmi = (visId) => {
@@ -52,9 +53,10 @@ const createExa2Bmi = (visId) => {
     BMI_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Bmi Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Bmi Create Success");
+  // });
 };
 
 const createExa2Bp = (visId) => {
@@ -65,9 +67,10 @@ const createExa2Bp = (visId) => {
     BP_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Bp Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Bp Create Success");
+  // });
 };
 
 const createExa2Fbs = (visId) => {
@@ -76,9 +79,10 @@ const createExa2Fbs = (visId) => {
     FBS_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Fbs Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Fbs Create Success");
+  // });
 };
 
 const createExa3Cardiovascular = (visId) => {
@@ -95,9 +99,10 @@ const createExa3Cardiovascular = (visId) => {
     CARDIO_COUNT_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Cardiovascular Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Cardiovascular Create Success");
+  // });
 };
 
 const createExa4Eye = (visId) => {
@@ -111,9 +116,10 @@ const createExa4Eye = (visId) => {
     EYE_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Eye Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Eye Create Success");
+  // });
 };
 
 const createExa5OralHealth = (visId) => {
@@ -139,9 +145,10 @@ const createExa5OralHealth = (visId) => {
     ORAL_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Oral_Health Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Oral_Health Create Success");
+  // });
 };
 
 const createExa6AbilityInLife = (visId) => {
@@ -167,9 +174,10 @@ const createExa6AbilityInLife = (visId) => {
     ORAL_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Ability_In_Life Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Ability_In_Life Create Success");
+  // });
 };
 
 const createExa7Alzheimer = (visId) => {
@@ -196,9 +204,10 @@ const createExa7Alzheimer = (visId) => {
     ALZ_7_10_RESULT_COUNTDOWN: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Alzheimer Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Alzheimer Create Success");
+  // });
 };
 
 const createExa8DepressionScreening = (visId) => {
@@ -220,9 +229,10 @@ const createExa8DepressionScreening = (visId) => {
     DEP_9Q_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Depression_Screening Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Depression_Screening Create Success");
+  // });
 };
 
 const createExa9BoneMuscle = (visId) => {
@@ -247,9 +257,10 @@ const createExa9BoneMuscle = (visId) => {
     BONE_PHY_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Bone_Muscle Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Bone_Muscle Create Success");
+  // });
 };
 
 const createExa9_1Osteoarthritis = (visId) => {
@@ -270,9 +281,10 @@ const createExa9_1Osteoarthritis = (visId) => {
     OST_2_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Osteoarthritis Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Osteoarthritis Create Success");
+  // });
 };
 
 const createExa10Urination = (visId) => {
@@ -280,9 +292,10 @@ const createExa10Urination = (visId) => {
     URI_10_1: null,
     VIS_ID: visId,
     updateBy: null,
-  }).then(() => {
-    alert("Urination Create Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Urination Create Success");
+  // });
 };
 
 export const createVisitTable = (payload) => {
@@ -294,7 +307,7 @@ export const createVisitTable = (payload) => {
       ELD_ID_NUMBER: payload[1],
       updateBy: "Name", //fix
     }).then((res) => {
-      alert("Visit Create Success");
+      // alert("Visit Create Success");
       createAllDatabase(res.data.VIS_ID)
       dispatch({
         type: "VIS_ID",

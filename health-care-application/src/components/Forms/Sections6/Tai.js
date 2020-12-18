@@ -91,8 +91,8 @@ export default function Sections6_Tai() {
       visId,
       ans6_Im,
       ans6_Me,
+       ans6_Fe,
       ans6_To,
-      ans6_Fe,
       groupT,
       collect,
     ]);

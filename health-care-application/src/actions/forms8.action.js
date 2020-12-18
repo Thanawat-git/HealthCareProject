@@ -22,6 +22,7 @@ export const add = (payload) =>{
 //     }
 // }
 export const updateDepressionScreening = (payload)=>{
+  console.log("mainaaaaaaaaaaaaaaaaaaaaaaaaaa" +payload)
     Axios.put(`${apiBase}/depressionScreening/update/${payload[0]}`, {
       DEP_DEPRESSED: payload[1],
       DEP_NOT_ENJOYING: payload[2],
