@@ -18,9 +18,10 @@ export const createDrug = (payload) => {
     DRUG_NAME: payload[1],
     EXAM_DATE: new Date(),
     updateBy: null
-  }).then(() => {
-    alert("Drug Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Drug Success");
+  // });
 };
 
 export const createFood = (payload) => {
@@ -29,23 +30,26 @@ export const createFood = (payload) => {
     FOOD_NAME: payload[1],
     EXAM_DATE: new Date(),
     updateBy: null
-  }).then(() => {
-    alert("Food Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Food Success");
+  // });
 };
 
 export const deleteDrug = (payload) => {
   Axios.delete(
     `${apiEld}/drug/delete/${payload[0]}/drugname/${payload[1]}`
-  ).then(() => {
-    alert("Delete Drug Success");
-  });
+  )
+  // .then(() => {
+  //   alert("Delete Drug Success");
+  // });
 };
 
 export const deleteFood = (payload) => {
   Axios.delete(
     `${apiEld}/food/delete/${payload[0]}/foodname/${payload[1]}`
-  ).then(() => {
-    alert("Delete Food Success");
-  });
+  )
+  // .then(() => {
+  //   alert("Delete Food Success");
+  // });
 };

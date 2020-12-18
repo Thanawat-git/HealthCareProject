@@ -22,9 +22,10 @@ const createElder = (payload) => {
     ELD_LAST_VISIT_DATE: null,
     ELD_AKA: payload[4],
     updateBy: null,
-  }).then(() => {
-    alert("Elder Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Elder Success");
+  // });
 };
 
 // update elder
@@ -36,9 +37,10 @@ export const updateElder = (payload) => {
     ELD_PHONE: payload[4],
     ELD_AKA: payload[5],
     updateBy: null,
-  }).then(() => {
-    alert("Elder update Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Elder update Success");
+  // });
 };
 
 // Create form1 sec1-6
@@ -59,11 +61,12 @@ const createElderinfo = (payload) => {
     ELD_INCOME: null,
     ELD_ID_NUMBER: payload[0],
     adderRole: "VOLUNTEER",
-    updateBy: "โกปิโก้",
+    updateBy: "นี่โอ๊ตนะ",
     ADDER_ID_NUMBER: "1200101000000",
-  }).then(() => {
-    alert("Elder Info Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Elder Info Success");
+  // });
 };
 
 const createElderRelative = (payload) => {
@@ -74,9 +77,10 @@ const createElderRelative = (payload) => {
     ELD_REL_PHONE: null,
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
-  }).then(() => {
-    alert("Elder Relative Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Elder Relative Success");
+  // });
 };
 
 const createElderCurrent = (payload) => {
@@ -91,9 +95,10 @@ const createElderCurrent = (payload) => {
     ELD_CUR_PROVINCE: null,
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
-  }).then(() => {
-    alert("Elder Currentaddress Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Elder Currentaddress Success");
+  // });
 };
 
 const createElderIdCurrent = (payload) => {
@@ -108,9 +113,10 @@ const createElderIdCurrent = (payload) => {
     ELD_IDN_ADDR_PROVINCE: null,
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
-  }).then(() => {
-    alert("Elder ID Currentaddress Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Elder ID Currentaddress Success");
+  // });
 };
 
 export const createAllElder = (payload) => {

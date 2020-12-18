@@ -37,7 +37,8 @@ export const updateElderinfo = (payload)=>{
       adderRole: "VOLUNTEER",
       updateBy: "กรองแก้ว ก้องวัฒนะกุล",
       ADDER_ID_NUMBER: "1200101000000",
-    }).then(()=>{
-      alert("Update Elder Info Success")
     })
+    // .then(()=>{
+    //   alert("Update Elder Info Success")
+    // })
   }

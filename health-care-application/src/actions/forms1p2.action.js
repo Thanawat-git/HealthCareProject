@@ -15,9 +15,10 @@ export const add = (payload) => {
 export const updateElder = (payload) => {
   Axios.put(`${apiEld}/update/${payload[0]}`, {
     ELD_PHONE: payload[1],
-  }).then(() => {
-    alert("Update Elder Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Update Elder Success");
+  // });
 };
 
 export const updateElderCurrent = (payload) => {
@@ -28,9 +29,10 @@ export const updateElderCurrent = (payload) => {
     ELD_CUR_SUB_DISTRICT: payload[4],
     ELD_CUR_AREA: payload[5],
     updateBy: null
-  }).then(() => {
-    alert("Update Elder Current Address Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Update Elder Current Address Success");
+  // });
 };
 
 export const updateElderIdCurrent = (payload) => {
@@ -44,7 +46,8 @@ export const updateElderIdCurrent = (payload) => {
       ELD_IDN_ADDR_AREA: payload[5],
       updateBy: null
     }
-  ).then(() => {
-    alert("Update Elder ID Currentaddress Success");
-  });
+  )
+  // .then(() => {
+  //   alert("Update Elder ID Currentaddress Success");
+  // });
 };

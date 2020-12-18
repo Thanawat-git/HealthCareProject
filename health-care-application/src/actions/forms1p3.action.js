@@ -32,9 +32,10 @@ export function updateElderRelative(payload) {
       ELD_REL_RELATION: payload[5],
       ELD_REL_PHONE: payload[6],
       updateBy: null
-    }).then(()=>{
-      alert("Update Elder Relative Success")
     })
+    // .then(()=>{
+    //   alert("Update Elder Relative Success")
+    // })
   }
   
 export function createElderRelative2(payload) {
@@ -47,7 +48,8 @@ export function createElderRelative2(payload) {
       ELD_REL_PHONE: payload[5],
       ELD_ID_NUMBER: payload[6],
       updateBy: null
-    }).then(()=>{
-      alert("Elder Relative Success")
     })
+    // .then(()=>{
+    //   alert("Elder Relative Success")
+    // })
   }

@@ -18,17 +18,19 @@ export const createDisease = (payload) => {
     DIS_NAME: payload[1],
     EXAM_DATE: new Date(),
     updateBy: null,
-  }).then(() => {
-    alert("Disease Success");
-  });
+  })
+  // .then(() => {
+  //   alert("Disease Success");
+  // });
 };
 
 export const deleteDisease = (payload) => {
   Axios.delete(
     `${apiEld}/disease/delete/${payload[0]}/diseasename/${payload[1]}`
-  ).then(() => {
-    alert("Delete disease Success");
-  });
+  )
+  // .then(() => {
+  //   alert("Delete disease Success");
+  // });
 };
 // create null table form 2-10
 const createExa2Waist = (visId) => {
