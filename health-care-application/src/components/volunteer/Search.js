@@ -15,11 +15,14 @@ import {
   Paper,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { mdiCloseThick } from "@mdi/js";
 import Header from "./Header";
 import * as formAction from "../../actions/forms1p6.action";
 import Axios from "axios";
 import { apiEld } from "../../constants/index";
+import { mdiAccount } from "@mdi/js";
+import mdi from "@mdi/js"
+
+
 
 const useStyles = makeStyles({
   title: {
@@ -108,11 +111,11 @@ export default function Asynchronous() {
           >
             <div className="setIcon">
               {/* <Icon path={mdiCloseThick} size={1} /> */}
-              <Icon
+              {/* <Icon
                 path={mdiCloseThick}
                 size={1}
                 onClick={() => setOpen(false)}
-              />
+              /> */}
             </div>
 
             <DialogTitle>

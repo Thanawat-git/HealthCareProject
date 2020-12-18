@@ -1,5 +1,5 @@
 import { FORMS1P1_ADD_NEW, apiEld } from "../constants";
-import Axios from 'axios';
+import Axios from "axios";
 
 export const setStateToAdd = (payload) => ({
   type: FORMS1P1_ADD_NEW,
@@ -21,7 +21,7 @@ const createElder = (payload) => {
     ELD_PHONE: null,
     ELD_LAST_VISIT_DATE: null,
     ELD_AKA: payload[4],
-    updateBy: null
+    updateBy: null,
   }).then(() => {
     alert("Elder Success");
   });
@@ -35,7 +35,7 @@ export const updateElder = (payload) => {
     ELD_LASTNAME: payload[3],
     ELD_PHONE: payload[4],
     ELD_AKA: payload[5],
-    updateBy: null
+    updateBy: null,
   }).then(() => {
     alert("Elder update Success");
   });
@@ -49,13 +49,18 @@ const createElderinfo = (payload) => {
     ELD_AGE: payload[6],
     ELD_STATUS: null,
     ELD_LIVELIHOOD: null,
+    ELD_LIVELIHOOD_DETAIL: null,
+    ELD_LIVELIHOOD_NEIGHBOR_NAME: null,
     ELD_RELIGION: null,
     ELD_EDUCATION: null,
     ELD_JOB: null,
     ELD_TREATMENT: null,
+    ELD_TREATMENT_HOSPITAL: null,
     ELD_INCOME: null,
-    updateBy: null,
     ELD_ID_NUMBER: payload[0],
+    adderRole: "VOLUNTEER",
+    updateBy: "โกปิโก้",
+    ADDER_ID_NUMBER: "1200101000000",
   }).then(() => {
     alert("Elder Info Success");
   });
@@ -74,7 +79,8 @@ const createElderRelative = (payload) => {
   });
 };
 
-const createElderCurrent = (payload) => { //ที่อยู่ปัจจุบัน
+const createElderCurrent = (payload) => {
+  //ที่อยู่ปัจจุบัน
   Axios.post(`${apiEld}/currentaddress/create`, {
     ELD_CUR_NUMBER: null,
     ELD_CUR_VILLAGE: null,
@@ -90,7 +96,8 @@ const createElderCurrent = (payload) => { //ที่อยู่ปัจจุ
   });
 };
 
-const createElderIdCurrent = (payload) => { //ที่อยู่ตามบัตรประชาชน
+const createElderIdCurrent = (payload) => {
+  //ที่อยู่ตามบัตรประชาชน
   Axios.post(`${apiEld}/idnumberaddress/create`, {
     ELD_IDN_ADDR_NUMBER: null,
     ELD_IDN_ADDR_VILLAGE: null,

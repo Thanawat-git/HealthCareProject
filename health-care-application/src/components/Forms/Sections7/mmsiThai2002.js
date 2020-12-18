@@ -18,7 +18,7 @@ import * as formAction from "../../../actions/formsMMSE.action";
 
 export default function MMSIThai2002() {
   const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
-  const peopleID = true
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const dispatch = useDispatch();
 
   const [ans1, setAns1] = useState(forms7mReducer.ans1);
@@ -1445,7 +1445,7 @@ export default function MMSIThai2002() {
         show={show}
         onClick={()=>formAction.updateMMSE([textAns11,ans1,textAns12,ans12,textAns13,ans13,textAns14,ans14,textAns15,ans15,
           textAns211,ans2_1_1,textAns212,ans2_1_2,textAns213,ans2_1_3,textAns214,ans2_1_4,textAns215,ans2_1_5,ansF,ansR,ansT,
-          num1,num2,num3,num4,num5,ansF2,ansR2,ansT2,ans61,ans62,ans7,think1,think2,think3,ans9,textAns10,ans10,ans11,collect,results,peopleID])}
+          num1,num2,num3,num4,num5,ansF2,ansR2,ansT2,ans61,ans62,ans7,think1,think2,think3,ans9,textAns10,ans10,ans11,collect,results,visId])}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}

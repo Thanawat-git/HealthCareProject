@@ -10,7 +10,7 @@ import * as formAction from "../../../actions/forms3.action";
 export default function Sections3() {
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
-  const peopleID = elderlyReducer.resultSelected.ELD_ID_NUMBER
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const forms1p6Reducer = useSelector(
     ({ forms1p6Reducer }) => forms1p6Reducer.diseases
   );
@@ -105,7 +105,7 @@ export default function Sections3() {
   };
   const saveDataToServer = () => {
     formAction.updateExa3Cardiovascular([
-      peopleID,
+      visId,
       ans3_1,
       "บุหรี่",
       ans3_2,

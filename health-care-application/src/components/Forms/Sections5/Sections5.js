@@ -9,7 +9,7 @@ import ShowResultPopup from '../ResuleShowsPopUp'
 
 export default function Sections5_1() {
   const forms5Reducer = useSelector(({forms5Reducer}) => forms5Reducer)
-  const peopleID = true
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const dispatch = useDispatch()
   const [ans5_1, setAns5_1] = useState(forms5Reducer.ans5_1);
   const [moreInfoAns5_1, setmoreInfoAns5_1] = useState(forms5Reducer.moreInfoAns5_1);
@@ -62,7 +62,7 @@ export default function Sections5_1() {
     formAction.updateOralHealth([
       ans5_1,ans5_2, ans5_3, ans5_4, ans5_5,ans5_6, ans5_7, ans5_8, ans5_9, 
       ans5_10, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,
-      count,results,peopleID,collect]);
+      count,results,visId ,collect]);
   }
   return (
     <div className="css-form">

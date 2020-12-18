@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS92,apiSection92 } from "../constants";
+import { CREATE_NEW_FORMS92,apiBase } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -23,7 +23,7 @@ export const add = (payload) =>{
 // }
 export const updateExa9_1Osteoarthritis= (payload)=>{
 //    console.log('2222222222222222222222222222222222222222222222222222222222222',payload)
-    Axios.put(`${apiSection92}/update/${payload[34]}`, {
+    Axios.put(`${apiBase}/osteoarthritis/update/${payload[34]}`, {
         OST_1_KNEE_PAIN: payload[0],
         OST_1_LVL_PAIN: payload[1],
         OST_1_RESULT: payload[2],

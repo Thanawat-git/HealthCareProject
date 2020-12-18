@@ -10,7 +10,7 @@ import * as formAction from "../../../actions/forms89q.action";
 
 export default function Sections8_9Q() {
     const forms89qReducer = useSelector(({forms89qReducer}) => forms89qReducer)
-    const peopleID = true
+    const visId = useSelector(({ visitID }) => visitID.visiId);
     const dispatch = useDispatch()
 
     const [ans8_9q_1, setAns8_9q_1] = useState(forms89qReducer.ans8_9q_1)
@@ -52,7 +52,7 @@ export default function Sections8_9Q() {
         }
         setShow(true)
         const data = [
-            peopleID,ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
+            visId,ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
             results,collect
         ]
         dispatch(formAction.add(data))

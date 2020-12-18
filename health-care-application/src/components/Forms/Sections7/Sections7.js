@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 export default function Sections7_1() {
   const forms7Reducer = useSelector(({forms7Reducer}) => forms7Reducer)
-  const peopleID = true
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const dispatch = useDispatch()
   const classes = useStyles();
 
@@ -324,7 +324,7 @@ export default function Sections7_1() {
           {linkTommse ?
           <Link to="/mmsi" className={classes.root}>
             <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
-            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10,results,collect,peopleID])}>
+            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10,results,collect,visId])}>
               ทำแบบประเมินการทดสอบสมองเบื่องต้นฉบับภาษาไทย
             </Button>
           </Link>
@@ -333,7 +333,7 @@ export default function Sections7_1() {
             <Button variant="primary" block onClick={()=>formAction.updateAlzheimer([
             textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
             textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,
-            textAns9,ans7_9,textAns10,ans7_10,results,collect,peopleID])}>
+            textAns9,ans7_9,textAns10,ans7_10,results,collect,visId])}>
               กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>
