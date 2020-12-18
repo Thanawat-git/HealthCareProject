@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms2.action";
 import { Modal, Button } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
-import {RedirectToVolunteerPage} from "../protectForm";
 
 const useStyles = makeStyles({
   root: {
@@ -150,6 +149,7 @@ export default function Sections2_1() {
       bloodPressureResult,
       sugarResult,
       collect,
+      noFood,
     ];
     dispatch(formAction.add(data));
   };
@@ -158,7 +158,7 @@ export default function Sections2_1() {
      formAction.updateExa2Waist([visId,waist,waistResult,collect])
      formAction.updateExa2Bmi([visId,weight,high,bmi,bmiResult,collect])
      formAction.updateExa2Bp([visId,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
-     formAction.updateExa2Fbs([visId,sugar,sugarResult,collect])
+     formAction.updateExa2Fbs([visId,noFood,sugar,sugarResult,collect])
 
 
   }

@@ -2,7 +2,6 @@ import React from "react";
 import { Avatar} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
-import { server } from "../../constants";
 import { Link,useRouteMatch } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +66,7 @@ export default function HeaderSA({ name }) {
               <div
                 className="dropdown-divider"
                 onClick={() => {
-                  localStorage.removeItem(server.LOGIN_PASSED);
+                  // localStorage.removeItem(server.LOGIN_PASSED);
                 }}
               />
               <a href="/login" className="dropdown-item">

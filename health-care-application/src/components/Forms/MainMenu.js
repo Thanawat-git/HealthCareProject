@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, ListItem, ListItemIcon} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import SumaryReport from "./SumaryReport";
+import * as getAction from "../../actions/getAllFormToReucer.action";
 
 const useStyles = makeStyles({
     root: {
@@ -94,17 +95,32 @@ function MainMenu(props) {
         },
     });
     const colorIcon = useStyles2();
+    let history = useHistory();
+    const dispatch = useDispatch()
+    const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
+    const getData = (sec)=>{
+        switch (sec) {
+            case 'sec2':
+                dispatch(getAction.getDataSec2(8));
+                if(!forms2Reducer.isFetching){
+                    setTimeout(() => {
+                        history.push("/sec2");
+                    }, 200);
+                }
+                break;
+        
+            default:
+                break;
+        }
+        
+        
+    }
 
     return (
         <React.Fragment>
-            <div className="row ">
-                <div className="col-12 txt-center">
-                    <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-                </div>
-            </div>
             <Card className={classes.root}>
                 <CardContent>
-                <Link to="/sec2">
+                <Link onClick={()=>{getData('sec2')}} >
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i2}/>
@@ -112,7 +128,7 @@ function MainMenu(props) {
                     แบบคัดกรองสภาวะสุขภาพ
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec3">
+                <Link to="/sec3" onClick={()=>{getData('sec3')}} >
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i3}/>
