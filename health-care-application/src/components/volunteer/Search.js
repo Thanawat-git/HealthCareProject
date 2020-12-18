@@ -14,14 +14,14 @@ import {
   makeStyles,
   Paper,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header from "./Header";
 import * as formAction from "../../actions/forms1p6.action";
 import Axios from "axios";
 import { apiEld } from "../../constants/index";
 import { mdiAccount } from "@mdi/js";
 import mdi from "@mdi/js"
-
+import * as getAction from "../../actions/getAllFormToReucer.action";
 
 
 const useStyles = makeStyles({
@@ -40,13 +40,18 @@ export default function Asynchronous() {
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const [isVisId, setisVisId] = useState(true);
+  const [visData, setvisData] = useState(null)
+  let history = useHistory();
+  const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
 
   function handleClickOpen(value) {
     const d = new Date();
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
+      // Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`).then(res=>{
       // console.log('res ', res.data)
       setisVisId(true)
+      setvisData(res.data)
     }).catch(error=>{
       // console.log('error ', error)
       setisVisId(false)
@@ -143,9 +148,27 @@ export default function Asynchronous() {
 
             {isVisId ? (
               <div className="bt-searchInfo">
-                <Link to="/history" className="bt-searchInfo-link">
+                <Link className="bt-searchInfo-link">
                   {/* <Button className="bt1" onClick={saveSelected}> */}
-                  <Button className="bt1" variant="contained" fullWidth>
+                  <Button 
+                  className="bt1" 
+                  variant="contained" 
+                  onClick={()=>{
+                    // console.log(visData[0].VIS_ID)
+                    dispatch({
+                      type: "VIS_ID",
+                      payload: visData[0].VIS_ID,
+                    })
+                    dispatch(getAction.getCollect(8));
+                    if(!forms2Reducer.isFetching){
+                      setTimeout(() => {
+                          history.push("/mainmenu");
+                      }, 200);
+                  }
+                    
+                  }}
+                  fullWidth
+                  >
                     แก้ไขการตรวจครั้งล่าสุด
                   </Button>
                 </Link>

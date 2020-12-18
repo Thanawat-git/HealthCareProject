@@ -22,7 +22,16 @@ export const CREATE_NEW_FORMS92 = 'CREATE_NEW_FORMS92';
 export const CREATE_NEW_FORMS10 = 'CREATE_NEW_FORMS10';
 export const CREATE_NEW_EDITACCOUNT= 'CREATE_NEW_EDITACCOUNT';
 
-export const FETCH_DATA_FORM_SERVER = 'FETCH_DATA_FORM_SERVER';
+//get collect only
+export const GET_COLLECT_S2 = 'GET_COLLECT_S2';
+export const GET_COLLECT_S3 = 'GET_COLLECT_S3';
+export const GET_COLLECT_S4 = 'GET_COLLECT_S4';
+export const GET_COLLECT_S5 = 'GET_COLLECT_S5';
+export const GET_COLLECT_S6 = 'GET_COLLECT_S6';
+export const GET_COLLECT_S7 = 'GET_COLLECT_S7';
+export const GET_COLLECT_S8 = 'GET_COLLECT_S8';
+export const GET_COLLECT_S9 = 'GET_COLLECT_S9';
+export const GET_COLLECT_S10 = 'GET_COLLECT_S10';
 
 // Search elderly
 export const HTTP_ELD_FETCHING = "HTTP_ELD_FETCHING";
@@ -80,21 +89,14 @@ export const apiAdmin = apiBase + "/admin";
 
 
 
-
-
-
-export const YES = 'YES'
-export const NO = 'NO'
-export const OK = 'ok'
-export const NOK = 'nok'
 export const USER = 'user'
 
-export const server = {    
-    // LOGIN_URL : `authen/login`,    
-    // REGISTER_URL : `authen/register`,  
-    // PRODUCT_URL : `stock/product`,    
-    // TRANSACTION_URL : `transaction`,    
-    // REPORT_URL: `stock/report`,    
-    LOGIN_PASSED : `yes`,
-}
+// export const server = {    
+//     // LOGIN_URL : `authen/login`,    
+//     // REGISTER_URL : `authen/register`,  
+//     // PRODUCT_URL : `stock/product`,    
+//     // TRANSACTION_URL : `transaction`,    
+//     // REPORT_URL: `stock/report`,    
+//     // LOGIN_PASSED : `yes`,
+// }
 

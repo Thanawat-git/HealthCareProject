@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS4 } from "../constants";
+import { CREATE_NEW_FORMS4, GET_COLLECT_S3 } from "../constants";
 
 const initialState = {
   ans4_1: 0,
@@ -7,11 +7,10 @@ const initialState = {
   ans4_4: 0,
   ans4_5: 0,
   count: 0,
-  results: 'ยังไม่สามารถแปลผลได้เนื่องจากข้อมูลยังไม่ครบ',
+  results: "ยังไม่สามารถแปลผลได้เนื่องจากข้อมูลยังไม่ครบ",
   collect: false,
+  isFetching: null,
 };
-
-
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -24,9 +23,13 @@ export default (state = initialState, { type, payload }) => {
         ans4_5: payload[4],
         results: payload[5],
         collect: payload[6],
-        count: payload[7]
+        count: payload[7],
+        isFetching: false,
       };
-
+    case "FETCHING4":
+      return { ...state, isFetching: true };
+    case GET_COLLECT_S3:
+      return { ...state, collect: payload };
     default:
       return state;
   }

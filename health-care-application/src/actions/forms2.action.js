@@ -5,32 +5,6 @@ export const setStateToAdd = (payload) => ({
     type: CREATE_NEW_FORMS2,
     payload
 })
-// export const setSections2ToFetching = () => ({
-//   type: HTTP_SECTIONS2_FETCHING
-// })
-// export const setSections2ToSuccess = (payload) => ({
-//   type: HTTP_SECTIONS2_SUCCESS,
-//   payload
-// })
-// export const setSections2ToFailed = () => ({
-//   type: HTTP_SECTIONS2_FAILED
-// })
-
-// export const sections2=(c)=>{
-// return dispatch=>{
-//   dispatch(setSections2ToFetching())
-//   setTimeout(()=>{
-//     dispatch(setSections2ToSuccess({result:"ok"}))
-//     //dispatch(setSections2ToSuccess(setStateToAdd()))
-//   },3000)
-//   //dispatch(setSections2ToFailed())
-// }
-// }
-
-
-// export const setStateToEdit = () => ({
-//     type: FORM_EDIT,
-// })
 
 // CREATE NEW FORM
 export const add = (payload) =>{
@@ -38,12 +12,6 @@ export const add = (payload) =>{
         dispatch(setStateToAdd(payload))
     }
 }
-
-// export const edit = () =>{
-//     return dispatch=>{
-//         dispatch(setStateToEdit())
-//     }
-// }
 
 export const updateExa2Waist = (payload)=>{
     Axios.put(`${apiBase}/waist/update/${payload[0]}`, {
@@ -85,9 +53,10 @@ export const updateExa2Waist = (payload)=>{
   
   export  const updateExa2Fbs = (payload)=>{
     Axios.put(`${apiBase}/fbs/update/${payload[0]}`, {
-      FBS_FBS: payload[1],
-      FBS_RESULT: payload[2],
-      FBS_CORRECT_FORM:payload[3],
+      FAST:payload[1],
+      FBS_FBS: payload[2],
+      FBS_RESULT: payload[3],
+      FBS_CORRECT_FORM:payload[4],
       updateBy: null
     }).then(()=>{
       alert("Fbs update Success")
