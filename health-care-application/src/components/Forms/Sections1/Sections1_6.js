@@ -13,10 +13,7 @@ export default function Sections1_6() {
   const [open, setOpen] = useState(false); // open dialog
   const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
   const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
-  const visId = useSelector(({ visitID }) => visitID.visiId);
-
   const dispatch = useDispatch()
-
   const [disease, setdisease] = useState(null);
   const [diseases, setdiseases] = useState(forms1p6Reducer.diseases);
   const [date, setdate] = useState(new Date());
@@ -158,7 +155,11 @@ export default function Sections1_6() {
           </Button>
           </Link>
           <Link to="/mainmenu">
-            <Button color="primary" onClick={()=>formAction.createVisitTable(visId,peopleID)}>
+            <Button color="primary" onClick={()=>{
+              const d = new Date();
+              const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+              formAction.createVisitTable([visDate,peopleID])
+            }}>
               ต้องการทำต่อ
             </Button>
           </Link>
@@ -167,7 +168,7 @@ export default function Sections1_6() {
     </div>
   );
 }
-
+ 
 const SimpleDisease = [
   {name: "ความดันโลหิตสูง"},
   {name: "เบาหวาน"},
