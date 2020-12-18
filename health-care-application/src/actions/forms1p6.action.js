@@ -302,10 +302,20 @@ export const createVisitTable = (payload) => {
   } 
 };
 
-export const searchVisit = async (payload)=>{
-  const res = await Axios.get(`${apiEld}/visit/search/${payload[1]}/data/${payload[0]}`)
-  return res
-}
+// export const searchVisit = (payload)=>{
+//   // const res = await Axios.get(`${apiEld}/visit/search/${payload[1]}/data/${payload[0]}`)
+//   // const res = await Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`)
+//   // return res
+//   return Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`).then(res=>{
+//     // console.log('res ', res.data)
+//     let data = res.data
+//     return data
+//   }).catch(error=>{
+//     // console.log('error ', error)
+//     return error
+//   })
+  
+// }
 
 export const createAllDatabase = (visId) => {
   createExa2Waist(visId);

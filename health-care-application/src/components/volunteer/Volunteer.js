@@ -98,7 +98,6 @@ export default function Volunteer() {
         <h3>ค้นหาผู้สูงอายุ</h3>
         <Search />
       </div>
-      <div id="piechart_3d" style={{ width: 900, height: 500 }}></div>
       <div className="nav-bottom">
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
