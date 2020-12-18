@@ -17,6 +17,8 @@ import {
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import * as formAction from "../../actions/forms1p6.action";
+import Axios from "axios";
+import { apiEld } from "../../constants/index";
 import { mdiAccount } from "@mdi/js";
 import mdi from "@mdi/js"
 
@@ -40,20 +42,20 @@ export default function Asynchronous() {
   const [isVisId, setisVisId] = useState(true);
 
   function handleClickOpen(value) {
-    // const d = new Date();
-    // const visId = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-    // const data = [visId, value.ELD_ID_NUMBER];
-    // const isVis = formAction.searchVisit(data);
-    // isVis !== null && setisVisId("1");
-    // console.log("isVit ", isVis);
+    const d = new Date();
+    const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
+      // console.log('res ', res.data)
+      setisVisId(true)
+    }).catch(error=>{
+      // console.log('error ', error)
+      setisVisId(false)
+    })
     dispatch(elderly.setElderlySelectedToState(value));
     console.log("value: ", value);
     setOpen(true);
   }
 
-  // useEffect(() => {
-  //   console.log("isVisId ", isVisId);
-  // }, [isVisId]);
   const createNewForm = (eldId) => {
     console.log("eldId ", eldId);
     const d = new Date();

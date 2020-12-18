@@ -45,7 +45,7 @@ export const updateAlzheimer = (payload)=>{
       ALZ_7_9_RESULT_KING: payload[17],
       ALZ_7_10_EL_COUNTDOWN: payload[18],
       ALZ_7_10_RESULT_COUNTDOWN: payload[19],
-      ALZ_RESULT:[20],
+      ALZ_RESULT:payload[20],
       ALZ_CORRECT_FORM:payload[21],
       updateBy: null
     }).then(()=>{
