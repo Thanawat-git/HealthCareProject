@@ -13,6 +13,7 @@ export default function Sections1_6() {
   const [open, setOpen] = useState(false); // open dialog
   const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
   const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
+  const visId = useSelector(({ visitID }) => visitID.visiId);
 
   const dispatch = useDispatch()
 
@@ -33,8 +34,6 @@ export default function Sections1_6() {
   }, [disease])
 
   const handleSubmit = ()=>{
-    const visId = new Date()
-    formAction.createAllDatabase(visId)
     const data = [diseases, date]
     dispatch(formAction.add(data))
     setOpen(true);
@@ -46,6 +45,7 @@ export default function Sections1_6() {
     diseases.splice(index, 1); 
     setdiseases([...diseases])
   }
+
 
   return (
     <div className="css-form">
@@ -158,7 +158,7 @@ export default function Sections1_6() {
           </Button>
           </Link>
           <Link to="/mainmenu">
-            <Button color="primary">
+            <Button color="primary" onClick={()=>formAction.createVisitTable(visId,peopleID)}>
               ต้องการทำต่อ
             </Button>
           </Link>

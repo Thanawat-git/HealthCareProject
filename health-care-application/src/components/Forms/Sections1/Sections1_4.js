@@ -39,49 +39,49 @@ function Sections1_4(props) {
         treatment, hospital, otherTreatment, 
         salary, otherReligion, otherCareers
       ]
-      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,religion,educations,
+      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,religion,educations,
         careers,treatment,salary
       ])
 
-      // elderlyStatus===null && emptyValue()
+      elderlyStatus===null && emptyValue()
 
-      // if(elderlyBeing!==null){
-      //   if(elderlyBeing=="alone"){
-      //     if(elderlyBeingDetail!==null){
-      //       if(elderlyBeingDetail!= "D/N"){
-      //         if(neighborName===null)emptyValue()
-      //       }
-      //     }else {emptyValue()}
-      //   } else {
-      //     if(neighborName===null)emptyValue()
-      //   }
-      // } else {emptyValue()}
+      if(elderlyBeing!==null){
+        if(elderlyBeing=="alone"){
+          if(elderlyBeingDetail!==null){
+            if(elderlyBeingDetail!= "D/N"){
+              if(neighborName===null)emptyValue()
+            }
+          }else {emptyValue()}
+        } else {
+          if(neighborName===null)emptyValue()
+        }
+      } else {emptyValue()}
 
-      // if(religion!==null){
-      //   if(religion=="otherReligion"){
-      //     if(otherReligion===null)emptyValue()
-      //   }
-      // } else {emptyValue()}
+      if(religion!==null){
+        if(religion=="otherReligion"){
+          if(otherReligion===null)emptyValue()
+        }
+      } else {emptyValue()}
 
-      // educations===null && emptyValue()
+      educations===null && emptyValue()
 
-      // if(careers!==null){
-      //   if(careers=="otherCareers"){
-      //     if(otherCareers===null)emptyValue()
-      //   }
-      // }else {emptyValue()}
+      if(careers!==null){
+        if(careers=="otherCareers"){
+          if(otherCareers===null)emptyValue()
+        }
+      }else {emptyValue()}
 
-      // if(treatment!==null){
-      //   if(treatment!="withdrawMoney" && treatment!="payMyself") {
-      //     if(treatment=="otherTreatment"){
-      //       if(otherTreatment===null){emptyValue()}
-      //     } else {
-      //       if(hospital===null){emptyValue()}
-      //     }
-      //   }
-      // }else {emptyValue()}
+      if(treatment!==null){
+        if(treatment!="withdrawMoney" && treatment!="payMyself") {
+          if(treatment=="otherTreatment"){
+            if(otherTreatment===null){emptyValue()}
+          } else {
+            if(hospital===null){emptyValue()}
+          }
+        }
+      }else {emptyValue()}
 
-      // salary===null && emptyValue()
+      salary===null && emptyValue()
 
       dispatch(formAction.add(data))
       function emptyValue(){
