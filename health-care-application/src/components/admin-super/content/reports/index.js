@@ -12,6 +12,15 @@ export default function Index() {
   };
   return (
     <div>
+      <div className="content-header">
+        <div className="container-fluid">
+          <div className="row mb-2">
+            <div className="col-sm-6">
+              <h1 className="m-0 text-dark">รายงาน</h1>
+            </div>
+          </div>
+        </div>
+      </div>
       <Route path={`${path}/textreport`} component={textreport} />
 
       <Route path={`${path}/report-menu`}>

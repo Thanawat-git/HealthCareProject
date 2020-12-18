@@ -13,6 +13,7 @@ import VolunteerContent from "./volunteer/VolunteerContent"
 import Reports from "./reports";
 import Profileadmin from "./admin/Profileadmin"
 import Editpassadmin from './admin/Editpassadmin';
+import MedicalHistory from "./medical-history";
 
 export default function Content() {
   const { path } = useRouteMatch()
@@ -22,7 +23,9 @@ export default function Content() {
   
   return (
     <div className="content-wrapper">
-      
+      <Route path={`${path}/medicalhistory`}>
+        <MedicalHistory/>
+      </Route>
       <Route path={`${path}/admin-content`}>
         <AdminContent/>
       </Route>
