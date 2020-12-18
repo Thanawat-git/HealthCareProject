@@ -9,7 +9,7 @@ import * as formAction from "../../../actions/forms6.action";
 
 export default function Sections6() {
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
-  const peopleID = true
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const dispatch = useDispatch();
   const [ans6_1, setAns6_1] = useState(forms6Reducer.ans6_1);
   const [ans6_2, setAns6_2] = useState(forms6Reducer.ans6_2);
@@ -121,7 +121,7 @@ export default function Sections6() {
     dispatch(formAction.add(data));
   };
   const saveDataToServer = () => {
-  formAction.updateAilityInLife([ans6_1,ans6_2,ans6_3,ans6_4,ans6_5,ans6_6,ans6_7,ans6_8,ans6_9,ans6_10,count,group,collect,peopleID])
+  formAction.updateAilityInLife([ans6_1,ans6_2,ans6_3,ans6_4,ans6_5,ans6_6,ans6_7,ans6_8,ans6_9,ans6_10,count,group,collect,visId])
 };
   return (
     <div className="css-form">

@@ -10,9 +10,7 @@ import * as formAction from "../../../actions/formsTAI.action";
 export default function Sections6_Tai() {
   const formsTaiReducer = useSelector(({ formsTaiReducer }) => formsTaiReducer);
   const dispatch = useDispatch();
-  const peopleID = useSelector(
-    ({ searchEld }) => searchEld.selectEld.ELD_ID_NUMBER
-  );
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
 
   const [ans6_Im, setAns6_Im] = useState(formsTaiReducer.ans6_Im);
@@ -90,7 +88,7 @@ export default function Sections6_Tai() {
 
   const saveDataToServer = () => {
     formAction.updateTAI([
-      peopleID,
+      visId,
       ans6_Im,
       ans6_Me,
       ans6_To,

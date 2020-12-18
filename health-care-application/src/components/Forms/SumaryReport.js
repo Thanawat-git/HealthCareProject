@@ -96,7 +96,7 @@ const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
           <hr />
           {/* sec3 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด</h4></Box>
-          <h5>{forms3Reducer.results}</h5>
+          <h5>{forms3Reducer.results3}</h5>
           <hr />
           {/* sec4 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินสุขภาพตา</h4></Box>

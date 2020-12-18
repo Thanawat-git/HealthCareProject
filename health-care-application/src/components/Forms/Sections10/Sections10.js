@@ -9,7 +9,7 @@ import * as formAction from "../../../actions/forms10.action";
 
 export default function Sections10() {
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
-  const peopleID = true
+  const visId = useSelector(({ visitID }) => visitID.visiId);
   const dispatch = useDispatch();
 
   const [ans10, setAns10] = useState(forms10Reducer.ans10);
@@ -88,9 +88,9 @@ export default function Sections10() {
       </form>
       <ShowResultPopup
         title='ผลการคัดกรองการกลั้นปัสสาวะ'
-        results={results}
+        result={results}
         show={show}
-        onClick={()=>formAction.upadateExa10Urination([peopleID,ans10])}
+        onClick={()=>formAction.upadateExa10Urination([visId,ans10])}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}

@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS4,apiSection4 } from "../constants";
+import { CREATE_NEW_FORMS4,apiBase } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -23,7 +23,7 @@ export const add = (payload) =>{
 //     }
 // }
 export const updateExa4Eye = (payload)=>{
-    Axios.put(`${apiSection4}/update/${payload[0]}`, {
+    Axios.put(`${apiBase}/eye/update/${payload[0]}`, {
         EYE_4_1: payload[1],
         EYE_4_2: payload[2],
         EYE_4_3: payload[3],

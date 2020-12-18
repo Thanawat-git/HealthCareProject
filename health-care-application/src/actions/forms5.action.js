@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS5 ,apiSection5} from "../constants";
+import { CREATE_NEW_FORMS5 ,apiBase} from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -23,7 +23,7 @@ export const add = (payload) =>{
 //     }
 // } 
 export const updateOralHealth = (payload)=>{
-    Axios.put(`${apiSection5}/update/${payload[19]}`, {
+    Axios.put(`${apiBase}/oralHealth/update/${payload[19]}`, {
       ORAL_5_1: payload[0],
       ORAL_5_2: payload[1],
       ORAL_5_3: payload[2],
