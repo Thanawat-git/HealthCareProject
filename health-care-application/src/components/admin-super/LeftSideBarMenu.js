@@ -56,13 +56,13 @@ export default function LeftSideBarMenu() {
 
               <li className="nav-header">อื่นๆ</li>
               <li className="nav-item">
-                <a href="pages/calendar.html" className="nav-link">
+                <Link to={`${url}/followup`} className="nav-link">
                   <i className="nav-icon fas fa-calendar-alt" />
                   <p>
-                    ตารางนัดหมาย
-                    <span className="badge badge-info right">2</span>
+                    ติดตามผล
+                    {/* <span className="badge badge-info right">2</span> */}
                   </p>
-                </a>
+                </Link>
               </li>
 
               {/* Report */}

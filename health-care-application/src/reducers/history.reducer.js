@@ -1,9 +1,4 @@
-import {
-  HTTP_ELD_FAILED,
-  HTTP_ELD_FETCHING,
-  HTTP_ELD_SELECTED,
-  HTTP_ELD_SUCCESS,
-} from "../constants";
+import { HTTP_HISTORY_FAILED, HTTP_HISTORY_FETCHING, HTTP_HISTORY_SELECTED, HTTP_HISTORY_SUCCESS } from "../constants";
 
 const initialState = {
   result: [],
@@ -14,20 +9,19 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case HTTP_ELD_FETCHING:
+    case HTTP_HISTORY_FETCHING:
       return { ...state, result: [], isFetching: true, inError: false };
-    case HTTP_ELD_SUCCESS:
+    case HTTP_HISTORY_SUCCESS:
       return { ...state, result: payload, isFetching: false, inError: false };
-    case HTTP_ELD_FAILED:
+    case HTTP_HISTORY_FAILED:
       return { ...state, result: [], isFetching: false, inError: true };
-    case HTTP_ELD_SELECTED:
+    case HTTP_HISTORY_SELECTED:
       return {
         ...state,
         resultSelected: payload,
         isFetching: false,
         inError: false,
       };
-
     default:
       return state;
   }

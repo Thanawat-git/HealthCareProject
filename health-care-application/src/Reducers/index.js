@@ -26,6 +26,7 @@ import authReducer from "./auth.ruducer";
 import messageReducer from "./message.reducer";
 import editaccountReducer from "./editaccount.reducer";
 import visitID from "./visitID.reducer";
+import historyReducer from "./history.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -54,4 +55,5 @@ export default combineReducers({
     messageReducer,
     editaccountReducer,
     visitID,
+    historyReducer,
 })
