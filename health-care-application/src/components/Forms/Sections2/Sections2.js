@@ -55,7 +55,8 @@ export default function Sections2_1() {
   const [topicsuga, setTopicsuga] = useState();
   const [dateblood, setdateblood] = useState();
   const [datesuga, setdatesuga] = useState();
-  const [checktosend, setchecktosend] = useState();
+  const [checktosend1, setchecktosend1] = useState();
+  const [checktosend2, setchecktosend2] = useState();
   useEffect(() => {
     if (
       waist &&
@@ -123,7 +124,7 @@ export default function Sections2_1() {
   const calbloodPressure = () => {
     if (bloodPressure1 < 140 && bloodPressure2 < 90) {
       setbloodPressureResult("ปรับพฤติกรรม");
-      setchecktosend(false);
+      setchecktosend1(false);
     } else if (bloodPressure1 < 180 && bloodPressure2 < 110) {
       setbloodPressureResult(
         "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
@@ -131,10 +132,10 @@ export default function Sections2_1() {
       setTopicblood("ความดันโลหิต");
       calDate(2);
       setdateblood(toDay);
-      setchecktosend(true);
+      setchecktosend1(true);
     } else {
       setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
-      setchecktosend(false);
+      setchecktosend1(false);
     }
   };
   const calsugar = () => {
@@ -144,22 +145,22 @@ export default function Sections2_1() {
         calDate(2);
         setTopicsuga("ระดับน้ำตาล");
         setdatesuga(toDay);
-        setchecktosend(true);
+        setchecktosend2(true);
       } else if (sugar <= 125 || sugar >= 100) {
         setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน");
         calDate(4);
         setTopicsuga("ระดับน้ำตาล");
         setdatesuga(toDay);
-        setchecktosend(true);
+        setchecktosend2(true);
       } else if (sugar < 100) {
         setsugarResult("ปกติ");
-        setchecktosend(false);
+        setchecktosend2(false);
       }
     } else {
       sugar >= 200
         ? setsugarResult("มีความเสี่ยงเป็นเบาหวาน")
         : setsugarResult("ไม่เสี่ยง");
-      setchecktosend(false);
+      setchecktosend2(false);
     }
   };
   const handleSubmit = () => {
@@ -197,14 +198,16 @@ export default function Sections2_1() {
     ]);
     formAction.updateExa2Fbs([visId, noFood, sugar, sugarResult, collect]);
   };
- 
-  const sendValueTofollow = () => {
-    // if (checktosend == true) {
-      appointAction.createAppointment([dateblood, topicblood, peopleId]);
-      appointAction.createAppointment([datesuga, topicsuga, peopleId]);
 
-      console.log(topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga)
-    //}
+  const sendValueTofollow = () => {
+    if (checktosend1 == true) {
+      appointAction.createAppointment([dateblood, topicblood, peopleId]);
+    } else if (checktosend2 == true) {
+      appointAction.createAppointment([datesuga, topicsuga, peopleId]);
+    }
+    console.log(
+      topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
+    );
   };
 
   function calDate(week) {
@@ -225,7 +228,7 @@ export default function Sections2_1() {
   function dateToYMD(date) {
     var d = date.getDate();
     var m = date.getMonth() + 1; //Month from 0 to 11
-    var y = date.getFullYear();
+    var y = date.getFullYear() + 543;
     setToday(
       "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
     );

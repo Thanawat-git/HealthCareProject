@@ -27,7 +27,7 @@ export default (state = initialState, { type, payload }) => {
         ans3_5: payload[4],
         ans3_6: payload[5],
         ans3_7: payload[6],
-        results3: payload[7],
+        results: payload[7],
         collect: payload[8],
         count: payload[9],
         isFetching: false,
