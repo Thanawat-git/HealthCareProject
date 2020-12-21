@@ -14,7 +14,7 @@ export default (state = initialState, { type, payload }) => {
     case HTTP_HISTORY_SUCCESS:
       return { ...state, result: payload, isFetching: false, inError: false };
     case HTTP_HISTORY_FAILED:
-      return { ...state, result: [], isFetching: false, inError: true };
+      return { ...state, result: payload, isFetching: false, inError: true };
     case HTTP_HISTORY_SELECTED:
       return {
         ...state,

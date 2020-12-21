@@ -26,7 +26,7 @@ export const getEldByKeyword = (event) => {
     dispatch(setElderlyStateToFetching());
     try {
       var keyword = event.target.value;
-      console.log("keyword", keyword);
+      // console.log("keyword", keyword);
       return Axios.get(`${apiEld}/findByKeyword/${keyword}`).then((res) => {
         // console.log("result.data", res.data);
         dispatch(setElderlyStateToSuccress(res.data)); // เอาเฉพาะที่เจอมาแสดง
