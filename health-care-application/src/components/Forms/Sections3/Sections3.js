@@ -6,11 +6,13 @@ import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms3.action";
+import * as appointAction from "../../../actions/appointment.action";
 
 export default function Sections3() {
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const peopleId = useSelector(({ visitID }) => visitID.peopleId);
   const forms1p6Reducer = useSelector(
     ({ forms1p6Reducer }) => forms1p6Reducer.diseases
   );
@@ -34,6 +36,7 @@ export default function Sections3() {
   const [dis2,setdis2] = useState(false);
   const [disf2,setdisf2] = useState(false);
   const [datesec3, setdateSec3] = useState();
+  const[topicsec3,settopicsec3]= useState();
 
 
   useEffect(() => {
@@ -75,9 +78,11 @@ export default function Sections3() {
       } else if (countNum >= 1 && countNum <= 2) {
         setresults("มีความเสี่ยง");
         calDate(1)
+        settopicsec3('โรคหัวใจและหลอดเลือด')
       } else if (countNum >= 3 && countNum <= 4) {
         setresults("มีความเสี่ยงสูง");
         calDate(2)
+        settopicsec3('โรคหัวใจและหลอดเลือด')
       } else if (countNum >= 5) {
         setresults("มีความเสี่ยงสูงมาก");
         calDate(3)
@@ -106,9 +111,10 @@ export default function Sections3() {
       count,
     ];
     dispatch(formAction.add(data));
-    sendValueTofollow()
+   
   };
   const saveDataToServer = () => {
+     sendValueTofollow()
     formAction.updateExa3Cardiovascular([
       visId,
       ans3_1,
@@ -125,7 +131,7 @@ export default function Sections3() {
     ]);
   };
   const sendValueTofollow = () => {
-
+    appointAction.createAppointment([datesec3,topicsec3,peopleId]);
     console.log("date" + datesec3)
      
     };  
@@ -152,7 +158,7 @@ export default function Sections3() {
     function dateToYMD(date) {
       var d = date.getDate();
       var m = date.getMonth() + 1; //Month from 0 to 11
-      var y = date.getFullYear();
+      var y = date.getFullYear()+ 543;
       setdateSec3('' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d))
       return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
      
