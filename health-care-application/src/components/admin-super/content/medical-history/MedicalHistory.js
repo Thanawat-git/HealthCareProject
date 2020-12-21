@@ -10,11 +10,34 @@ const useStyles = makeStyles((theme) => ({
       minWidth: 120,
     },
   }));
-
+const testArr = []
 export default function MedicalHistory() {
     const classes = useStyles();
     const dispatch = useDispatch()
     const historyReducer = useSelector(({historyReducer}) => historyReducer)
+    const [isFetching, setisFetching] = useState(true)
+    
+    useEffect(() => {
+      dispatch(historyAction.getAllAssessmentForms())
+      setTimeout(() => {
+        setisFetching(historyReducer.isFetching)
+        // console.log('isFetching ',isFetching)
+      }, 500);
+    }, [])
+    useEffect(() => {
+      // console.log('isFetching ',isFetching)
+      if(!testArr.length){
+        // console.log('Arr is Emtry')
+        if(!historyReducer.inError && !historyReducer.isFetching){
+          historyReducer.result.map(v=>{
+            testArr.push({VIS_ID:v.VIS_ID, VIS_DATE:v.VIS_DATE,ELD_ID_NUMBER:v.ELD_ID_NUMBER,
+              ELD_NAME:`${v.ELDER.ELD_FIRSTNAME} ${v.ELDER.ELD_LASTNAME}`
+            })
+          })
+          // console.log('testArr ',testArr)
+        }
+      }
+    }, [isFetching])
     const [state, setState] = useState({
         y1:'',y2:'',m1:'',m2:'',keyword:'',
     })
@@ -26,17 +49,14 @@ export default function MedicalHistory() {
     const [open3, setOpen3] = useState(false);
     const [open4, setOpen4] = useState(false);
     const handleChange = (event) => {setState({...state,[event.target.name]:event.target.value})};
-
-    useEffect(() => {
-      dispatch(historyAction.getAllAssessmentForms())
-    }, [])
+   
   //---------------------------------Years List------------------------------------------//
   const [years, setYears] = useState([])
   useEffect(() => {
     let tmp = []
     const d = new Date();
     const y = d.getFullYear();
-    console.log('year ', y)
+    // console.log('year ', y)
     for(let i=y+543; i>=2550; i--){
       tmp.push(i)
     }
@@ -49,7 +69,7 @@ export default function MedicalHistory() {
         if(y1!=='' && y2!==''){ //both year have
           let tempArr = []
           for(let i=0; i<testArr.length; i++){
-            let c = testArr[i].date.split("-",2) // c[0]=year, c[1]=month
+            let c = testArr[i].VIS_DATE.split("-",2) // c[0]=year, c[1]=month
             y1<=y2 
             ?(parseInt(y1)<=parseInt(c[0]) && parseInt(c[0])<=parseInt(y2)) && tempArr.push(testArr[i]) // between y1 to y2 case y1 over y2
             :(parseInt(y1)>=parseInt(c[0]) && parseInt(c[0])>=parseInt(y2)) && tempArr.push(testArr[i]) // between y1 to y2 case y2 over y1
@@ -59,7 +79,7 @@ export default function MedicalHistory() {
             let tempArr3 = []
             let tempArr4 = []
             for(let i=0; i<tempArr.length; i++){
-              let c = tempArr[i].date.split("-",2)
+              let c = tempArr[i].VIS_DATE.split("-",2)
               if(y1===y2){ // same year
                 // console.log('ปีตรงกัน')
                 if(m1===m2){
@@ -98,11 +118,11 @@ export default function MedicalHistory() {
           }
         }
         
-    }, [y1,y2,m1,m2,keyword])
+    }, [y1,y2,m1,m2,keyword,isFetching])
     const setShowArr = (y, m)=> {
       let tempArr = []
       for(let i=0; i<testArr.length; i++){
-        let c = testArr[i].date.split("-",2) // c[0]=year, c[1]=month
+        let c = testArr[i].VIS_DATE.split("-",2) // c[0]=year, c[1]=month
         y=='' && c[1]==m && tempArr.push(testArr[i]) // only month1 have
         m=='' && c[0]==y && tempArr.push(testArr[i]) // only year1 have
         y!=='' && m!=='' && c[0]==y && c[1]==m && tempArr.push(testArr[i]) // both feild have
@@ -114,9 +134,8 @@ export default function MedicalHistory() {
 
 //-----------------------------------Filter By Keyword-----------------------------------------------//
     const searchByKeyword = (x)=>{
-      let r = x.filter(value=>value.name.includes(keyword))
+      let r = x.filter(value=>value.ELD_NAME.includes(keyword))
       setreArr([...(new Set(r.map(v=>v)))]) // set ค่าเมื่อวน loop ครบ และใช้ set คัดตัวซ้ำออก
-      console.log('historyReducer ',historyReducer.result)
     }
 //-----------------------------------Filter By Keyword-----------------------------------------------//
 
@@ -227,8 +246,8 @@ export default function MedicalHistory() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">id</th>
-              <th style={{ textAlign: "center" }}>ชื่อ - นามสกุล</th>
+              <th scope="col">รหัสผู้สูงอายุ</th>
+              <th scope="col">ชื่อ - นามสกุล</th>
               <th scope="col">วันที่</th>
             </tr>
           </thead>
@@ -236,11 +255,11 @@ export default function MedicalHistory() {
           <tbody>
             {reArr.map((value, index) => {
               return (
-                <tr>
+                <tr style={{ cursor: "pointer" }} >
                   <td> {index + 1} </td> 
-                  <td> {value.id} </td>
-                  <td style={{ textAlign: "center" }}> {value.name} </td>
-                  <td> {value.date} </td>
+                  <td> {value.ELD_ID_NUMBER} </td>
+                  <td> {value.ELD_NAME} </td>
+                  <td> {value.VIS_DATE} </td>
                 </tr>
                 );
             })}
@@ -252,98 +271,98 @@ export default function MedicalHistory() {
   );
 }
 
-const testArr = [
-  {
-    id: 1,
-    name: "AA",
-    date: "2563-01-01",
-  },
-  {
-    id: 2,
-    name: "B",
-    date: "2563-01-01",
-  },
-  {
-    id: 3,
-    name: "CA",
-    date: "2563-01-01",
-  },
-  {
-    id: 4,
-    name: "DA",
-    date: "2562-01-01",
-  },
-  {
-    id: 5,
-    name: "E",
-    date: "2562-01-01",
-  },
-  {
-    id: 6,
-    name: "F",
-    date: "2563-02-01",
-  },
-  {
-    id: 7,
-    name: "G",
-    date: "2563-02-01",
-  },
-  {
-    id: 8,
-    name: "H",
-    date: "2562-02-01",
-  },
-  {
-    id: 9,
-    name: "I",
-    date: "2562-03-01",
-  },
-  {
-    id: 10,
-    name: "J",
-    date: "2562-04-01",
-  },
-  {
-    id: 16,
-    name: "J",
-    date: "2561-04-01",
-  },
-  {
-    id: 17,
-    name: "J",
-    date: "2561-04-01",
-  },
-  {
-    id: 18,
-    name: "J",
-    date: "2561-04-01",
-  },
-  {
-    id: 11,
-    name: "K",
-    date: "2560-01-01",
-  },
-  {
-    id: 12,
-    name: "P",
-    date: "2560-01-01",
-  },
-  {
-    id: 13,
-    name: "PS",
-    date: "2560-12-01",
-  },
-  {
-    id: 14,
-    name: "SP",
-    date: "2560-10-01",
-  },
-  {
-    id: 15,
-    name: "V",
-    date: "2560-10-01",
-  },
-];
+// const testArr = [
+//   {
+//     id: 1,
+//     name: "AA",
+//     date: "2563-01-01",
+//   },
+//   {
+//     id: 2,
+//     name: "B",
+//     date: "2563-01-01",
+//   },
+//   {
+//     id: 3,
+//     name: "CA",
+//     date: "2563-01-01",
+//   },
+//   {
+//     id: 4,
+//     name: "DA",
+//     date: "2562-01-01",
+//   },
+//   {
+//     id: 5,
+//     name: "E",
+//     date: "2562-01-01",
+//   },
+//   {
+//     id: 6,
+//     name: "F",
+//     date: "2563-02-01",
+//   },
+//   {
+//     id: 7,
+//     name: "G",
+//     date: "2563-02-01",
+//   },
+//   {
+//     id: 8,
+//     name: "H",
+//     date: "2562-02-01",
+//   },
+//   {
+//     id: 9,
+//     name: "I",
+//     date: "2562-03-01",
+//   },
+//   {
+//     id: 10,
+//     name: "J",
+//     date: "2562-04-01",
+//   },
+//   {
+//     id: 16,
+//     name: "J",
+//     date: "2561-04-01",
+//   },
+//   {
+//     id: 17,
+//     name: "J",
+//     date: "2561-04-01",
+//   },
+//   {
+//     id: 18,
+//     name: "J",
+//     date: "2561-04-01",
+//   },
+//   {
+//     id: 11,
+//     name: "K",
+//     date: "2560-01-01",
+//   },
+//   {
+//     id: 12,
+//     name: "P",
+//     date: "2560-01-01",
+//   },
+//   {
+//     id: 13,
+//     name: "PS",
+//     date: "2560-12-01",
+//   },
+//   {
+//     id: 14,
+//     name: "SP",
+//     date: "2560-10-01",
+//   },
+//   {
+//     id: 15,
+//     name: "V",
+//     date: "2560-10-01",
+//   },
+// ];
 
 const Months = [
     "มกราคม",
