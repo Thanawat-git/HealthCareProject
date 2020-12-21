@@ -17,8 +17,8 @@ export const setHistoryToFailed=(payload)=>({
 export const getAllAssessmentForms = ()=>{
     return dispatch => {
         dispatch(setHistoryToFetching())
-        // return Axios.get(`${apiBase}/elder/visit/findAllVisitsForHistory`).then(res=>{
-            return Axios.get("http://localhost:3001/elder/visit/findAllVisitsForHistory").then(res=>{
+        return Axios.get(`${apiBase}/elder/visit/findAllVisitsForHistory`).then(res=>{
+            // return Axios.get("http://localhost:3001/elder/visit/findAllVisitsForHistory").then(res=>{
             dispatch(setHistoryToSuccress(res.data))
         }).catch(error=>{
             dispatch(setHistoryToFailed(error))
