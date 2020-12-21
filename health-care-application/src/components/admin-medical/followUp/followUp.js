@@ -116,7 +116,7 @@ export default function FollowUp() {
         <button type="button" class="btn btn-secondary" value="canceldue" onClick={filterTable} >ยกเลิกนัด</button>
       </div>
  
-      <div className="content2" id="table">
+      <div className="content2">
         
       <table className="table table-hover">
         <thead>
