@@ -23,6 +23,7 @@ const initialState = {
   textAns8: null,
   textAns9: null,
   textAns10: null,
+  isFetching:null
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -51,6 +52,7 @@ export default (state = initialState, { type, payload }) => {
         textAns8: payload[19],
         textAns9: payload[20],
         textAns10: payload[21],
+        isFetching: false
       };
 
     default:

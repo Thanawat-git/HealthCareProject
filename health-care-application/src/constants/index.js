@@ -70,6 +70,11 @@ export const LOGOUT = "LOGOUT";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
+//
+export const APPOINTMENT = "APPOINTMENT";
+
+
+
 // // Error Code
 // export const E_PICKER_CANCELLED = 'E_PICKER_CANCELLED'
 // export const E_PICKER_CANNOT_RUN_CAMERA_ON_SIMULATOR = 'E_PICKER_CANNOT_RUN_CAMERA_ON_SIMULATOR'

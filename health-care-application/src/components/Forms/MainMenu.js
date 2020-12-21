@@ -99,6 +99,14 @@ function MainMenu(props) {
     let history = useHistory();
     const dispatch = useDispatch()
     const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
+    const forms3Reducer = useSelector(({forms3Reducer}) => forms3Reducer)
+    const forms4Reducer = useSelector(({forms4Reducer}) => forms4Reducer)
+    const forms5Reducer = useSelector(({forms5Reducer}) => forms5Reducer)
+    const forms6Reducer = useSelector(({forms6Reducer}) => forms6Reducer)
+    const forms7Reducer = useSelector(({forms7Reducer}) => forms7Reducer)
+    const forms8Reducer = useSelector(({forms8Reducer}) => forms8Reducer)
+    const forms9Reducer = useSelector(({forms9Reducer}) => forms9Reducer)
+    const forms10Reducer = useSelector(({forms10Reducer}) => forms10Reducer)
     const getData = (sec)=>{
         switch (sec) {
             case 'sec2':
@@ -109,7 +117,71 @@ function MainMenu(props) {
                     }, 200);
                 }
                 break;
-        
+            case 'sec3':
+                dispatch(getAction.getDataSec3((8)));
+                if(!forms3Reducer.isFetching){
+                    setTimeout(() => {
+                        history.push("/sec3");
+                    }, 200);
+                }
+                break;
+                case 'sec4':
+                dispatch(getAction.getDataSec4((8)));
+                if(!forms4Reducer.isFetching){
+                    setTimeout(() => {
+                        history.push("/sec4");
+                    }, 200);
+                }
+                break;
+                case 'sec5':
+                    dispatch(getAction.getDataSec5((8)));
+                    if(!forms5Reducer.isFetching){
+                        setTimeout(() => {
+                            history.push("/sec5");
+                        }, 200);
+                    }
+                    break;
+                    case 'sec6':
+                        dispatch(getAction.getDataSec6((8)));
+                        if(!forms6Reducer.isFetching){
+                            setTimeout(() => {
+                                history.push("/sec6");
+                            }, 200);
+                        }
+                        break;
+                        case 'sec7':
+                            dispatch(getAction.getDataSec7((8)));
+                            if(!forms7Reducer.isFetching){
+                                setTimeout(() => {
+                                    history.push("/sec7");
+                                }, 200);
+                            }
+                            break;
+                            case 'sec8':
+                                dispatch(getAction.getDataSec8((8)));
+                                if(!forms8Reducer.isFetching){
+                                    setTimeout(() => {
+                                        history.push("/sec8");
+                                    }, 200);
+                                }
+                                break;
+                                case 'sec9':
+                                    dispatch(getAction.getDataSec9((8)));
+                                    if(!forms9Reducer.isFetching){
+                                        setTimeout(() => {
+                                            history.push("/sec9");
+                                        }, 200);
+                                    }
+                                    break;
+                                    case 'sec10':
+                                        dispatch(getAction.getDataSec10((8)));
+                                        if(!forms10Reducer.isFetching){
+                                            setTimeout(() => {
+                                                history.push("/sec10");
+                                            }, 200);
+                                        }
+                                        break;
+
             default:
                 break;
         }
@@ -129,7 +201,7 @@ function MainMenu(props) {
                     แบบคัดกรองสภาวะสุขภาพ
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec3" onClick={()=>{getData('sec3')}} >
+                <Link onClick={()=>{getData('sec3')}} >
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i3}/>
@@ -137,7 +209,7 @@ function MainMenu(props) {
                     ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec4">
+                <Link onClick={()=>{getData('sec4')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i4}/>
@@ -145,7 +217,7 @@ function MainMenu(props) {
                     แบบคัดกรองสุขภาพตา
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec5">
+                <Link onClick={()=>{getData('sec5')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i5}/>
@@ -153,7 +225,7 @@ function MainMenu(props) {
                     การประเมินสุขภาพช่องปาก
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec6">
+                <Link onClick={()=>{getData('sec6')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i6}/>
@@ -161,7 +233,7 @@ function MainMenu(props) {
                     การประเมินความสามารถในการทำกิจวัตรประจำ
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec7">
+                <Link onClick={()=>{getData('sec7')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i7}/>
@@ -169,7 +241,7 @@ function MainMenu(props) {
                     การประเมินภาวะสมองเสื่อม
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec8">
+                <Link onClick={()=>{getData('sec8')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i8}/>
@@ -177,7 +249,7 @@ function MainMenu(props) {
                     การคัดกรองโรคซึมเศร้า
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec9">
+                <Link onClick={()=>{getData('sec9')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i9}/>
@@ -185,7 +257,7 @@ function MainMenu(props) {
                     สุขภาพกระดูกและกล้ามเนื้อ
                     </ListItem>
                 </Link> <hr/>
-                <Link to="/sec10">
+                <Link onClick={()=>{getData('sec10')}}>
                     <ListItem button>
                         <ListItemIcon>
                             <CheckCircleIcon className={colorIcon.i10}/>

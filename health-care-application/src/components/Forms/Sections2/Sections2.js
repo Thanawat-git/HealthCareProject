@@ -2,10 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./Sections2.css";
 import "../form-style.css";
 import "../../genaralConfig.css";
-import { OutlinedInput, InputAdornment, TextField, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
+import {
+  OutlinedInput,
+  InputAdornment,
+  TextField,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms2.action";
+import * as appointAction from "../../../actions/appointment.action";
 import { Modal, Button } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -40,8 +48,13 @@ export default function Sections2_1() {
 
   const [show, setShow] = useState(false);
   const [collect, setCollect] = useState(forms2Reducer.collect);
-  const [noFood, setnoFood] = useState(null)
-
+  const [noFood, setnoFood] = useState(null);
+  const [toDay, setToday] = useState();
+  const [topicblood, setTopicblood] = useState();
+  const [topicsuga, setTopicsuga] = useState();
+  const [dateblood, setdateblood] = useState();
+  const [datesuga, setdatesuga] = useState();
+  const [checktosend, setchecktosend] = useState();
   useEffect(() => {
     if (
       waist &&
@@ -109,31 +122,45 @@ export default function Sections2_1() {
   const calbloodPressure = () => {
     if (bloodPressure1 < 140 && bloodPressure2 < 90) {
       setbloodPressureResult("ปรับพฤติกรรม");
+      setchecktosend(false);
     } else if (bloodPressure1 < 180 && bloodPressure2 < 110) {
       setbloodPressureResult(
         "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
       );
+      setTopicblood("ความดันโลหิต");
+      calDate(2);
+      setdateblood(toDay);
+      setchecktosend(true);
     } else {
       setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
+      setchecktosend(false);
     }
   };
   const calsugar = () => {
-    if(noFood == true){
-      sugar < 100
-      ? setsugarResult("ปกติ")
-      : sugar < 126
-      ? setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน")
-      : setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
+    if (noFood == true) {
+      if (sugar >= 126) {
+        setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
+        calDate(2);
+        setTopicsuga("ระดับน้ำตาล");
+        setdatesuga(toDay);
+        setchecktosend(true);
+      } else if (sugar <= 125 || sugar >= 100) {
+        setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน");
+        calDate(4);
+        setTopicsuga("ระดับน้ำตาล");
+        setdatesuga(toDay);
+        setchecktosend(true);
+      } else if (sugar < 100) {
+        setsugarResult("ปกติ");
+        setchecktosend(false);
+      }
     } else {
-      sugar < 100
-      ? setsugarResult("ยังไม่มีแปลผลสำหรับ case นี้")
-      : sugar < 126
-      ? setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน")
-      : setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
+      sugar >= 200
+        ? setsugarResult("มีความเสี่ยงเป็นเบาหวาน")
+        : setsugarResult("ไม่เสี่ยง");
+      setchecktosend(false);
     }
-    
   };
-
   const handleSubmit = () => {
     setShow(true);
     const data = [
@@ -152,20 +179,57 @@ export default function Sections2_1() {
       noFood,
     ];
     dispatch(formAction.add(data));
+    sendValueTofollow();
   };
-  
-  const saveDataToServer =()=>{
-     formAction.updateExa2Waist([visId,waist,waistResult,collect])
-     formAction.updateExa2Bmi([visId,weight,high,bmi,bmiResult,collect])
-     formAction.updateExa2Bp([visId,pulse, bloodPressure1,bloodPressure2, bloodPressureResult,collect])
-     formAction.updateExa2Fbs([visId,noFood,sugar,sugarResult,collect])
 
+  const saveDataToServer = () => {
+    // console.log("nofood" + noFood)
+    formAction.updateExa2Waist([visId, waist, waistResult, collect]);
+    formAction.updateExa2Bmi([visId, weight, high, bmi, bmiResult, collect]);
+    formAction.updateExa2Bp([
+      visId,
+      pulse,
+      bloodPressure1,
+      bloodPressure2,
+      bloodPressureResult,
+      collect,
+    ]);
+    formAction.updateExa2Fbs([visId, noFood, sugar, sugarResult, collect]);
+  };
 
+  const sendValueTofollow = () => {
+    // if (checktosend == true) {
+      appointAction.createAppointment([dateblood, topicblood, visId]);
+      appointAction.createAppointment([datesuga, topicsuga, visId]);
+
+      console.log(topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga)
+    //}
+  };
+
+  function calDate(week) {
+    const calw = parseInt(week);
+    console.log("week = " + calw);
+    if (calw == 2) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 14); // วันถัดไป 2week
+      dateToYMD(d);
+      //console.log(topicblood + toDay)
+    } else if (calw == 4) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
+      dateToYMD(d);
+      //console.log(topicsuga + toDay)
+    }
   }
-
-
-
-
+  function dateToYMD(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1; //Month from 0 to 11
+    var y = date.getFullYear();
+    setToday(
+      "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
+    );
+    return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+  }
   return (
     <div className="css-form">
       {/* <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1> */}
@@ -188,7 +252,7 @@ export default function Sections2_1() {
                   setWaist(e.target.value);
                 }}
                 endAdornment={
-                  <InputAdornment   position="end">ซม.</InputAdornment>
+                  <InputAdornment position="end">ซม.</InputAdornment>
                 }
                 fullWidth
               />
@@ -272,7 +336,6 @@ export default function Sections2_1() {
                 id="bloodPressure2"
                 value={bloodPressure2}
                 type="number"
-                
                 onChange={(e) => {
                   setBloodPressure2(e.target.value);
                 }}
@@ -316,27 +379,43 @@ export default function Sections2_1() {
             </div>
             <div className="col-12">
               <p>ผู้สูงอายุมีการงดอาหารก่อนมาตรวจอย่างน้อย 8 ชั่วโมงหรือไม่</p>
-              <RadioGroup className="pl-20" aria-label='nofood' name='nofood' value={noFood} onChange={(e)=>setnoFood(!noFood)}>
-                <FormControlLabel className="radio-size" value={true}  control={<Radio color="primary" />} label="ใช่" />
-                <FormControlLabel className="radio-size" value={false} control={<Radio color="primary" />} label="ไม่ใช่" />
+              <RadioGroup
+                className="pl-20"
+                aria-label="nofood"
+                name="nofood"
+                value={noFood}
+                onChange={(e) => setnoFood(!noFood)}
+              >
+                <FormControlLabel
+                  className="radio-size"
+                  value={true}
+                  control={<Radio color="primary" />}
+                  label="ใช่"
+                />
+                <FormControlLabel
+                  className="radio-size"
+                  value={false}
+                  control={<Radio color="primary" />}
+                  label="ไม่ใช่"
+                />
               </RadioGroup>
             </div>
-            {noFood !== null && 
-            <div className="col-12 mb-15">
-              <OutlinedInput
-                id="sugar"
-                type="number"
-                value={sugar}
-                onChange={(e) => {
-                  setSugar(e.target.value);
-                }}
-                endAdornment={
-                  <InputAdornment position="end">มก./ดล.</InputAdornment>
-                }
-                fullWidth
-              />
-            </div>
-            }
+            {noFood !== null && (
+              <div className="col-12 mb-15">
+                <OutlinedInput
+                  id="sugar"
+                  type="number"
+                  value={sugar}
+                  onChange={(e) => {
+                    setSugar(e.target.value);
+                  }}
+                  endAdornment={
+                    <InputAdornment position="end">มก./ดล.</InputAdornment>
+                  }
+                  fullWidth
+                />
+              </div>
+            )}
           </div>
           {/* row-4 */}
           {/* content */}
@@ -344,9 +423,10 @@ export default function Sections2_1() {
 
         <div className="row justify-content-between">
           <Link to="/mainmenu">
-            <button type="button" 
-            className="btn form-btn btn-back btn-lg"
-            //onClick={handleSubmit}
+            <button
+              type="button"
+              className="btn form-btn btn-back btn-lg"
+              //onClick={handleSubmit}
             >
               ยกเลิก
             </button>
@@ -380,7 +460,7 @@ export default function Sections2_1() {
                 <p> {forms2Reducer.waistResult} </p>
               </strong>
             </div>
-            <hr/>
+            <hr />
             <div className="col-12 col-xl-6 title-result">
               <p> แปลผลค่า BMI </p>
             </div>
@@ -410,7 +490,7 @@ export default function Sections2_1() {
 
         <Modal.Footer>
           <Link to="/mainmenu" className={classes.root}>
-            <Button variant="primary" block onClick={saveDataToServer} >
+            <Button variant="primary" block onClick={saveDataToServer}>
               กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>
@@ -419,4 +499,3 @@ export default function Sections2_1() {
     </div>
   );
 }
-

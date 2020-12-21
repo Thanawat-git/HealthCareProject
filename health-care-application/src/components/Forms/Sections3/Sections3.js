@@ -33,6 +33,7 @@ export default function Sections3() {
   const [disf,setdisf] = useState(false);
   const [dis2,setdis2] = useState(false);
   const [disf2,setdisf2] = useState(false);
+  const [datesec3, setdateSec3] = useState();
 
 
   useEffect(() => {
@@ -73,10 +74,13 @@ export default function Sections3() {
         setresults("ไม่มีความเสี่ยง");
       } else if (countNum >= 1 && countNum <= 2) {
         setresults("มีความเสี่ยง");
+        calDate(1)
       } else if (countNum >= 3 && countNum <= 4) {
         setresults("มีความเสี่ยงสูง");
+        calDate(2)
       } else if (countNum >= 5) {
         setresults("มีความเสี่ยงสูงมาก");
+        calDate(3)
       }
     }
   }, [collect, ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7]);
@@ -102,6 +106,7 @@ export default function Sections3() {
       count,
     ];
     dispatch(formAction.add(data));
+    sendValueTofollow()
   };
   const saveDataToServer = () => {
     formAction.updateExa3Cardiovascular([
@@ -119,7 +124,39 @@ export default function Sections3() {
       collect
     ]);
   };
+  const sendValueTofollow = () => {
 
+    console.log("date" + datesec3)
+     
+    };  
+  
+    function calDate(y) {
+      console.log("week = " + y);
+        if (y==1) {
+          var d = new Date(); // วันนี้
+          d.setDate(d.getDate() + 365); //  1year
+          dateToYMD(d)
+          //console.log(topicblood + toDay)
+        } else if (y == 2) {
+          var d = new Date(); // วันนี้
+          d.setDate(d.getDate() + 182.5 ); //  6month
+          dateToYMD(d)
+          //console.log(topicsuga + toDay)
+        }else if (y == 3) {
+          var d = new Date(); // วันนี้
+          d.setDate(d.getDate() + 91.25 ); // 3month
+          dateToYMD(d)
+          //console.log(topicsuga + toDay)
+        }
+    }
+    function dateToYMD(date) {
+      var d = date.getDate();
+      var m = date.getMonth() + 1; //Month from 0 to 11
+      var y = date.getFullYear();
+      setdateSec3('' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d))
+      return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
+     
+  }
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
