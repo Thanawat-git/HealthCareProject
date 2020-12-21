@@ -97,12 +97,3 @@ export const apiAdmin = apiBase + "/admin";
 
 export const USER = 'user'
 
-// export const server = {    
-//     // LOGIN_URL : `authen/login`,    
-//     // REGISTER_URL : `authen/register`,  
-//     // PRODUCT_URL : `stock/product`,    
-//     // TRANSACTION_URL : `transaction`,    
-//     // REPORT_URL: `stock/report`,    
-//     // LOGIN_PASSED : `yes`,
-// }
-

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { FormControl, InputAdornment, InputLabel, makeStyles, MenuItem, Select, TextField } from "@material-ui/core";
+import * as historyAction from "../../../../actions/history.action";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -11,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MedicalHistory() {
     const classes = useStyles();
+    const dispatch = useDispatch()
+    const historyReducer = useSelector(({historyReducer}) => historyReducer)
     const [state, setState] = useState({
         y1:'',y2:'',m1:'',m2:'',keyword:'',
     })
@@ -21,9 +25,11 @@ export default function MedicalHistory() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [open4, setOpen4] = useState(false);
+    const handleChange = (event) => {setState({...state,[event.target.name]:event.target.value})};
 
-  const handleChange = (event) => {setState({...state,[event.target.name]:event.target.value})};
-
+    useEffect(() => {
+      dispatch(historyAction.getAllAssessmentForms())
+    }, [])
   //---------------------------------Years List------------------------------------------//
   const [years, setYears] = useState([])
   useEffect(() => {
@@ -110,6 +116,7 @@ export default function MedicalHistory() {
     const searchByKeyword = (x)=>{
       let r = x.filter(value=>value.name.includes(keyword))
       setreArr([...(new Set(r.map(v=>v)))]) // set ค่าเมื่อวน loop ครบ และใช้ set คัดตัวซ้ำออก
+      console.log('historyReducer ',historyReducer.result)
     }
 //-----------------------------------Filter By Keyword-----------------------------------------------//
 
