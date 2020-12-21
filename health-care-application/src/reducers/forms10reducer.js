@@ -4,6 +4,7 @@ const initialState = {
   ans10: null,
   collect: false,
   results: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+  isFetching:null
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -12,7 +13,8 @@ export default (state = initialState, { type, payload }) => {
       return {
         ans10: payload[0],
         collect:payload[1],
-        results:payload[2]
+        results:payload[2],
+        isFetching: false
       };
 
     default:

@@ -21,6 +21,7 @@ const initialState = {
   minute: null,
   second: null,
   result2: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+  isFetching:null
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -47,6 +48,7 @@ export default (state = initialState, { type, payload }) => {
         minute: payload[17],
         second: payload[18],
         result2: payload[19],
+        isFetching: false
       };
 
     default:
