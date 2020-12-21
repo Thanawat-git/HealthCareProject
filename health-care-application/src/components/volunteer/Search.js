@@ -64,8 +64,8 @@ export default function Asynchronous() {
   const createNewForm = (eldId) => {
     console.log("eldId ", eldId);
     const d = new Date();
-    const visId = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-    const data = [visId, eldId];
+    const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    const data = [visDate, eldId];
     dispatch(formAction.createVisitTable(data));
   };
   const onChange = (e) => {
@@ -155,9 +155,10 @@ export default function Asynchronous() {
                   variant="contained" 
                   onClick={()=>{
                     // console.log(visData[0].VIS_ID)
+                    const data = [visData[0].VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
                     dispatch({
                       type: "VIS_ID",
-                      payload: visData[0].VIS_ID,
+                      payload: data,
                     })
                     dispatch(getAction.getCollect(8));
                     if(!forms2Reducer.isFetching){

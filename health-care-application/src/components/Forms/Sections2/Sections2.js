@@ -27,6 +27,7 @@ export default function Sections2_1() {
   const classes = useStyles();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const peopleId = useSelector(({ visitID }) => visitID.peopleId);
 
   const elderlyGender = useSelector(
     ({ forms1p1Reducer }) => forms1p1Reducer.elderlyGender
@@ -196,11 +197,11 @@ export default function Sections2_1() {
     ]);
     formAction.updateExa2Fbs([visId, noFood, sugar, sugarResult, collect]);
   };
-
+ 
   const sendValueTofollow = () => {
     // if (checktosend == true) {
-      appointAction.createAppointment([dateblood, topicblood, visId]);
-      appointAction.createAppointment([datesuga, topicsuga, visId]);
+      appointAction.createAppointment([dateblood, topicblood, peopleId]);
+      appointAction.createAppointment([datesuga, topicsuga, peopleId]);
 
       console.log(topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga)
     //}
