@@ -73,10 +73,18 @@ export default function LeftSideBarMenu() {
                 </Link>
               </li>
 
+              {/* Report */}
+              <li className="nav-item">
+                <Link to={`${url}/medicalhistory`} className="nav-link">
+                  <i className="nav-icon fas fa-copy" />
+                  <p>ประวัติการตรวจ</p>
+                </Link>
+              </li>
+
               {/* up date form */}
               <li className="nav-item">
                 <a href="#" className="nav-link">
-                  <i className="nav-icon fas fa-align-left" />
+                  <i className="nav-icon fas fa-paste" />
                   <p>
                     Form
                     <i className="right fas fa-angle-left" />

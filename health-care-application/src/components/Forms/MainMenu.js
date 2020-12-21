@@ -95,6 +95,7 @@ function MainMenu(props) {
         },
     });
     const colorIcon = useStyles2();
+    const visitID = useSelector(({visitID}) => visitID.visiId)
     let history = useHistory();
     const dispatch = useDispatch()
     const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
