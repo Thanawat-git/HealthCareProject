@@ -327,6 +327,7 @@ export default function MMSIThai2002() {
       group
     ];
     dispatch(formAction.add(data));
+    console.log(results)
   };
   // console.log("+id" + visId)
   const saveDataToServer = () => {

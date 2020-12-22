@@ -148,17 +148,25 @@ const createExa6AbilityInLife = async (visId) => {
     ABI_6_10: null,
     ABI_SUM_POINT: null,
     ABI_GROUP: null,
-    ABI_TAI_IMMOBILIZE: null,
-    ABI_TAI_MENTAL: null,
-    ABI_TAI_FEED: null,
-    ABI_TAI_TOILET: null,
-    ABI_TAI_GROUP: null,
-    ORAL_COUNT: null,
-    ORAL_RESULT: null,
+    ABI_CORRECT_FORM: null,
     VIS_ID: visId,
     updateBy: null,
   })
     alert("Ability_In_Life Create Success");
+};
+
+const createExa6TAI = async (visId) => {
+  await  Axios.post(`${apiBase}/TAI/create`, {
+    TAI_IMMOBILIZE: null,
+    TAI_MENTAL: null,
+    TAI_FEED: null,
+    TAI_TOILET: null,
+    TAI_GROUP: null,
+    TAI_CORRECT_FORM: null,
+    updateBy: null,
+    VIS_ID: visId
+  })
+    alert("TAI Create Success");
 };
 
 const createExa7Alzheimer = async (visId) => {
@@ -183,10 +191,63 @@ const createExa7Alzheimer = async (visId) => {
     ALZ_7_9_RESULT_KING: null,
     ALZ_7_10_EL_COUNTDOWN: null,
     ALZ_7_10_RESULT_COUNTDOWN: null,
+    ALZ_RESULT : null,
+    ALZ_CORRECT_FORM : null,
     VIS_ID: visId,
     updateBy: null,
   })
     alert("Alzheimer Create Success");
+};
+
+const createExa7MMSE = async (visId) => {
+  await   Axios.post(`${apiBase}/MMSE/create`, {
+    MMSE_1_1: null,
+    MMSE_1_1_POINT: null,
+    MMSE_1_2: null,
+    MMSE_1_2_POINT: null,
+    MMSE_1_3: null,
+    MMSE_1_3_POINT: null,
+    MMSE_1_4: null,
+    MMSE_1_4_POINT: null,
+    MMSE_1_5: null,
+    MMSE_1_5_POINT: null,
+    MMSE_2_1: null,
+    MMSE_2_1_POINT: null,
+    MMSE_2_2: null,
+    MMSE_2_2_POINT: null,
+    MMSE_2_3: null,
+    MMSE_2_3_POINT: null,
+    MMSE_2_4: null,
+    MMSE_2_4_POINT: null,
+    MMSE_2_5: null,
+    MMSE_2_5_POINT: null,
+    MMSE_3_1_POINT: null,
+    MMSE_3_2_POINT: null,
+    MMSE_3_3_POINT: null,
+    MMSE_4_1_POINT: null,
+    MMSE_4_2_POINT: null,
+    MMSE_4_3_POINT: null,
+    MMSE_4_4_POINT: null,
+    MMSE_4_5_POINT: null,
+    MMSE_5_1_POINT: null,
+    MMSE_5_2_POINT: null,
+    MMSE_5_3_POINT: null,
+    MMSE_6_1_POINT: null,
+    MMSE_6_2_POINT: null,
+    MMSE_7_POINT: null,
+    MMSE_8_1_POINT: null,
+    MMSE_8_2_POINT: null,
+    MMSE_8_3_POINT: null,
+    MMSE_9_POINT: null,
+    MMSE_10: null,
+    MMSE_10_POINT: null,
+    MMSE_11_POINT: null,
+    MMSE_CORRECT_FORM: null,
+    MMSE_RESULT: null,
+    updateBy: null,
+    VIS_ID: visId
+  })
+    alert("MMSE Create Success");
 };
 
 const createExa8DepressionScreening = async (visId) => {
@@ -312,7 +373,9 @@ export const createAllDatabase = async (visId) => {
  await  createExa4Eye(visId);
  await  createExa5OralHealth(visId);
  await  createExa6AbilityInLife(visId);
+ await  createExa6TAI(visId);
  await  createExa7Alzheimer(visId);
+ await  createExa7MMSE(visId);
  await  createExa8DepressionScreening(visId);
  await  createExa9BoneMuscle(visId);
  await  createExa9_1Osteoarthritis(visId);
