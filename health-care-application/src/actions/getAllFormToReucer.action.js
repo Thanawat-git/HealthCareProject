@@ -28,7 +28,7 @@ export const getCollect = visId =>{
 export const getDataSec2 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`).then(res=>{
-            // console.log('res.data.bmi_bmi ',res.data)
+             console.log('res.data.bmi_bmi ',res.data)
             const data =[
                 res.data.waist_waist,
                 res.data.bmi_weight,

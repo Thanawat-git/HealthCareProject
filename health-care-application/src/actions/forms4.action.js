@@ -22,8 +22,8 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
-export const updateExa4Eye = (payload)=>{
-    Axios.put(`${apiBase}/eye/update/${payload[0]}`, {
+export const updateExa4Eye = async (payload)=>{
+await   Axios.put(`${apiBase}/eye/update/${payload[0]}`, {
         EYE_4_1: payload[1],
         EYE_4_2: payload[2],
         EYE_4_3: payload[3],
@@ -33,7 +33,6 @@ export const updateExa4Eye = (payload)=>{
         EYE_RESULT: payload[7],
         EYE_CORRECT_FORM:payload[8],
         updateBy: null
-    }).then(()=>{
-      alert("Eye update Success")
     })
+      alert("Eye update Success")
   }

@@ -12,41 +12,35 @@ export const add = (payload) => {
   };
 };
 
-export const createDisease = (payload) => {
-  Axios.post(`${apiEld}/disease/create`, {
+export const createDisease = async (payload) => {
+  await  Axios.post(`${apiEld}/disease/create`, {
     ELD_ID_NUMBER: payload[0],
     DIS_NAME: payload[1],
     EXAM_DATE: new Date(),
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Disease Success");
-  // });
+    alert("Disease Success");
 };
 
-export const deleteDisease = (payload) => {
-  Axios.delete(
+export const deleteDisease = async (payload) => {
+  await Axios.delete(
     `${apiEld}/disease/delete/${payload[0]}/diseasename/${payload[1]}`
   )
-  // .then(() => {
-  //   alert("Delete disease Success");
-  // });
+    alert("Delete disease Success");
 };
 // create null table form 2-10
-const createExa2Waist = (visId) => {
-  Axios.post(`${apiBase}/waist/create`, {
+const createExa2Waist = async (visId) => {
+  await  Axios.post(`${apiBase}/waist/create`, {
     WAI_WAIST: null,
     WAI_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Waist Create Success");
-  // });
+    alert("Waist Create Success");
 };
 
-const createExa2Bmi = (visId) => {
-  Axios.post(`${apiBase}/bmi/create`, {
+const createExa2Bmi = async (visId) => {
+  await  Axios.post(`${apiBase}/bmi/create`, {
     BMI_WEIGHT: null,
     BMI_HEIGHT: null,
     BMI_BMI: null,
@@ -54,13 +48,11 @@ const createExa2Bmi = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Bmi Create Success");
-  // });
+    alert("Bmi Create Success");
 };
 
-const createExa2Bp = (visId) => {
-  Axios.post(`${apiBase}/bp/create`, {
+const createExa2Bp = async (visId) => {
+  await  Axios.post(`${apiBase}/bp/create`, {
     BP_PULSE: null,
     BP_BLO_SYS: null,
     BP_BLO_DIA: null,
@@ -68,25 +60,22 @@ const createExa2Bp = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Bp Create Success");
-  // });
+    alert("Bp Create Success");
 };
 
-const createExa2Fbs = (visId) => {
-  Axios.post(`${apiBase}/fbs/create`, {
+const createExa2Fbs = async (visId) => {
+  await  Axios.post(`${apiBase}/fbs/create`, {
+    FBS_FAST: null,
     FBS_FBS: null,
     FBS_RESULT: null,
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Fbs Create Success");
-  // });
+    alert("Fbs Create Success");
 };
 
-const createExa3Cardiovascular = (visId) => {
-  Axios.post(`${apiBase}/cardiovascular/create`, {
+const createExa3Cardiovascular = async (visId) => {
+  await  Axios.post(`${apiBase}/cardiovascular/create`, {
     CARDIO_3_1: null,
     CARDIO_3_1_COUNT: null,
     CARDIO_3_2: null,
@@ -100,13 +89,11 @@ const createExa3Cardiovascular = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Cardiovascular Create Success");
-  // });
+    alert("Cardiovascular Create Success");
 };
 
-const createExa4Eye = (visId) => {
-  Axios.post(`${apiBase}/eye/create`, {
+const createExa4Eye = async (visId) => {
+  await  Axios.post(`${apiBase}/eye/create`, {
     EYE_4_1: null,
     EYE_4_2: null,
     EYE_4_3: null,
@@ -117,13 +104,11 @@ const createExa4Eye = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Eye Create Success");
-  // });
+    alert("Eye Create Success");
 };
 
-const createExa5OralHealth = (visId) => {
-  Axios.post(`${apiBase}/oralHealth/create`, {
+const createExa5OralHealth = async  (visId) => {
+  await  Axios.post(`${apiBase}/oralHealth/create`, {
     ORAL_5_1: null,
     ORAL_5_2: null,
     ORAL_5_3: null,
@@ -146,13 +131,11 @@ const createExa5OralHealth = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Oral_Health Create Success");
-  // });
+    alert("Oral_Health Create Success");
 };
 
-const createExa6AbilityInLife = (visId) => {
-  Axios.post(`${apiBase}/abilityInLife/create`, {
+const createExa6AbilityInLife = async (visId) => {
+  await  Axios.post(`${apiBase}/abilityInLife/create`, {
     ABI_6_1: null,
     ABI_6_2: null,
     ABI_6_3: null,
@@ -175,13 +158,11 @@ const createExa6AbilityInLife = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Ability_In_Life Create Success");
-  // });
+    alert("Ability_In_Life Create Success");
 };
 
-const createExa7Alzheimer = (visId) => {
-  Axios.post(`${apiBase}/alzheimer/create`, {
+const createExa7Alzheimer = async (visId) => {
+  await   Axios.post(`${apiBase}/alzheimer/create`, {
     ALZ_7_1_EL_AGE: null,
     ALZ_7_1_RESULT_AGE: null,
     ALZ_7_2_EL_TIME: null,
@@ -205,13 +186,11 @@ const createExa7Alzheimer = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Alzheimer Create Success");
-  // });
+    alert("Alzheimer Create Success");
 };
 
-const createExa8DepressionScreening = (visId) => {
-  Axios.post(`${apiBase}/depressionScreening/create`, {
+const createExa8DepressionScreening = async (visId) => {
+  await   Axios.post(`${apiBase}/depressionScreening/create`, {
     DEP_DEPRESSED: null,
     DEP_NOT_ENJOYING: null,
     DEP_CHECK: null,
@@ -230,13 +209,11 @@ const createExa8DepressionScreening = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Depression_Screening Create Success");
-  // });
+    alert("Depression_Screening Create Success");
 };
 
-const createExa9BoneMuscle = (visId) => {
-  Axios.post(`${apiBase}/boneMuscle/create`, {
+const createExa9BoneMuscle = async (visId) => {
+  await  Axios.post(`${apiBase}/boneMuscle/create`, {
     BONE_9_1: null,
     BONE_9_2: null,
     BONE_9_3: null,
@@ -258,13 +235,11 @@ const createExa9BoneMuscle = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Bone_Muscle Create Success");
-  // });
+    alert("Bone_Muscle Create Success");
 };
 
-const createExa9_1Osteoarthritis = (visId) => {
-  Axios.post(`${apiBase}/osteoarthritis/create`, {
+const createExa9_1Osteoarthritis = async (visId) => {
+  await  Axios.post(`${apiBase}/osteoarthritis/create`, {
     OST_1_KNEE_PAIN: null,
     OST_1_LVL_PAIN: null,
     OST_1_RESULT: null,
@@ -282,20 +257,16 @@ const createExa9_1Osteoarthritis = (visId) => {
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Osteoarthritis Create Success");
-  // });
+    alert("Osteoarthritis Create Success");
 };
 
-const createExa10Urination = (visId) => {
-  Axios.post(`${apiBase}/urination/create`, {
+export const createExa10Urination = async (visId) => {
+  await   Axios.post(`${apiBase}/urination/create`, {
     URI_10_1: null,
     VIS_ID: visId,
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Urination Create Success");
-  // });
+    alert("Urination Create Success");
 };
 
 export const createVisitTable = (payload) => {
@@ -307,11 +278,11 @@ export const createVisitTable = (payload) => {
       ELD_ID_NUMBER: payload[1],
       updateBy: "Name", //fix
     }).then((res) => {
-      // alert("Visit Create Success");
+      alert("Visit Create Success");
       createAllDatabase(res.data.VIS_ID)
       dispatch({
         type: "VIS_ID",
-        payload: res.data.VIS_ID,
+        payload: [res.data.VIS_ID,null],
       })
     });
   } 
@@ -332,18 +303,18 @@ export const createVisitTable = (payload) => {
   
 // }
 
-export const createAllDatabase = (visId) => {
-  createExa2Waist(visId);
-  createExa2Bmi(visId);
-  createExa2Bp(visId);
-  createExa2Fbs(visId);
-  createExa3Cardiovascular(visId);
-  createExa4Eye(visId);
-  createExa5OralHealth(visId);
-  createExa6AbilityInLife(visId);
-  createExa7Alzheimer(visId);
-  createExa8DepressionScreening(visId);
-  createExa9BoneMuscle(visId);
-  createExa9_1Osteoarthritis(visId);
-  createExa10Urination(visId);
+export const createAllDatabase = async (visId) => {
+ await  createExa2Waist(visId);
+ await  createExa2Bmi(visId);
+ await  createExa2Bp(visId);
+ await  createExa2Fbs(visId);
+ await  createExa3Cardiovascular(visId);
+ await  createExa4Eye(visId);
+ await  createExa5OralHealth(visId);
+ await  createExa6AbilityInLife(visId);
+ await  createExa7Alzheimer(visId);
+ await  createExa8DepressionScreening(visId);
+ await  createExa9BoneMuscle(visId);
+ await  createExa9_1Osteoarthritis(visId);
+ await  createExa10Urination(visId);
 };

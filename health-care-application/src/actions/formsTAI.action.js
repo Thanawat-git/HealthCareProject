@@ -10,8 +10,8 @@ export const add = (payload) =>{
       dispatch(setStateToAdd(payload))
   }
 }
-export const updateTAI = (payload)=>{
-  Axios.put(`${apiBase}/TAI/update/${payload[0]}`, {
+export const updateTAI = async (payload)=>{
+await  Axios.put(`${apiBase}/TAI/update/${payload[0]}`, {
     TAI_IMMOBILIZE: payload[1],
     TAI_MENTAL: payload[2],
     TAI_FEED: payload[3],
@@ -19,7 +19,6 @@ export const updateTAI = (payload)=>{
     TAI_GROUP: payload[5],
     TAI_CORRECT_FORM: payload[6],
     updateBy: null
-  }).then(()=>{
-    alert("Alzheimer Tai Update Success")
   })
+    alert("Alzheimer Tai Update Success")
 }

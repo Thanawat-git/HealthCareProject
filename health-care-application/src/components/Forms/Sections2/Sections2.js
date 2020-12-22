@@ -50,6 +50,7 @@ export default function Sections2_1() {
   const [show, setShow] = useState(false);
   const [collect, setCollect] = useState(forms2Reducer.collect);
   const [noFood, setnoFood] = useState(null);
+  const[ansfood,setAnsfood] = useState(0);
   const [toDay, setToday] = useState();
   const [topicblood, setTopicblood] = useState();
   const [topicsuga, setTopicsuga] = useState();
@@ -91,6 +92,9 @@ export default function Sections2_1() {
   useEffect(() => {
     sugar !== null && calsugar();
   }, [sugar]);
+  useEffect(() =>{
+    noFood == true ? setAnsfood(1) : setAnsfood(0)
+  },[noFood,ansfood] );
   useEffect(() => {
     if (bmi !== null) {
       if (bmi < 18.5) {
@@ -178,15 +182,16 @@ export default function Sections2_1() {
       bloodPressureResult,
       sugarResult,
       collect,
-      noFood,
+    noFood,
     ];
     dispatch(formAction.add(data));
     
   };
-
+console.log(visId) 
+//console.log("nofood " + noFood+ " ansfood " + ansfood)
   const saveDataToServer = () => {
-    sendValueTofollow();
-    // console.log("nofood" + noFood)
+   // sendValueTofollow();
+  
     formAction.updateExa2Waist([visId, waist, waistResult, collect]);
     formAction.updateExa2Bmi([visId, weight, high, bmi, bmiResult, collect]);
     formAction.updateExa2Bp([
@@ -197,7 +202,7 @@ export default function Sections2_1() {
       bloodPressureResult,
       collect,
     ]);
-    formAction.updateExa2Fbs([visId, noFood, sugar, sugarResult, collect]);
+    formAction.updateExa2Fbs([visId, ansfood, sugar, sugarResult, collect]);
   };
 
   const sendValueTofollow = () => {

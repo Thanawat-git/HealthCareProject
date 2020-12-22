@@ -181,12 +181,12 @@ export default function Sections1_3() {
                 >
                   <FormControlLabel
                     className="radio-space"
-                    value="male1"
+                    value="ชาย"
                     control={<Radio color="primary" />}
                     label="ชาย"
                   />
                   <FormControlLabel
-                    value="famale1"
+                    value="หญิง"
                     control={<Radio color="primary" />}
                     label="หญิง"
                   />
@@ -359,12 +359,12 @@ export default function Sections1_3() {
                 >
                   <FormControlLabel
                     className="radio-space"
-                    value="male1"
+                    value="ชาย"
                     control={<Radio color="primary" />}
                     label="ชาย"
                   />
                   <FormControlLabel
-                    value="famale1"
+                    value="หญิง"
                     control={<Radio color="primary" />}
                     label="หญิง"
                   />
@@ -467,6 +467,9 @@ export default function Sections1_3() {
                 defaultValue={neighborPhoneNumber2}
                 onChange={(event)=>setneighborPhoneNumber2(event.target.value)}
                 fullWidth
+                onInput = {(e) =>{
+                  e.target.value = e.target.value.slice(0,10)
+              }}//fix10digit
               />
               </React.Fragment>
               : ""}

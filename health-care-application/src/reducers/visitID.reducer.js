@@ -1,6 +1,6 @@
 const initialState = {
-    visiId: 8,
-    peopleId: 9999999000000,
+    visiId: null,
+    peopleId: null,
 }
 
 export default (state = initialState, { type, payload }) => {

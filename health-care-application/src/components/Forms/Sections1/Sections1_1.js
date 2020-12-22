@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import "../form-style.css";
 import "./Sections1.css";
 import {
-  TextField, 
+  TextField,
   InputLabel,
   FormControlLabel,
   Radio,
@@ -10,24 +10,27 @@ import {
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p1.action";
 
 function Sections1_1(props) {
-
-  const forms1p1Reducer = useSelector(({forms1p1Reducer}) => forms1p1Reducer)
+  const forms1p1Reducer = useSelector(({ forms1p1Reducer }) => forms1p1Reducer);
   const dispatch = useDispatch();
-  const [PID, setPID] = useState(forms1p1Reducer.peopleID)
-  const [firstname, setFirstname] = useState(forms1p1Reducer.firstname)
-  const [lastanme, setLastname] = useState(forms1p1Reducer.lastname)
-  const [elderlyGender, setElderlyGender] = useState(forms1p1Reducer.elderlyGender)
-  const [nickname, setNickname] = useState(forms1p1Reducer.nickname)
+  const [PID, setPID] = useState(forms1p1Reducer.peopleID);
+  const [firstname, setFirstname] = useState(forms1p1Reducer.firstname);
+  const [lastanme, setLastname] = useState(forms1p1Reducer.lastname);
+  const [elderlyGender, setElderlyGender] = useState(
+    forms1p1Reducer.elderlyGender
+  );
+  const [nickname, setNickname] = useState(forms1p1Reducer.nickname);
   const [yea, setYea] = useState(forms1p1Reducer.year);
   const [mon, setMon] = useState(forms1p1Reducer.month);
   const [day, setDay] = useState(forms1p1Reducer.day);
 
-  const handleChange = (event) => {setElderlyGender(event.target.value)};
-// DatePicker
+  const handleChange = (event) => {
+    setElderlyGender(event.target.value);
+  };
+  // DatePicker
   const [years, setYears] = useState([]);
   const [days, setDays] = useState([]);
   const [cy, setCY] = useState(true);
@@ -123,62 +126,89 @@ function Sections1_1(props) {
     }
   };
 
-  const [numMon, setNumMon] = useState(0)
+  const [numMon, setNumMon] = useState(0);
   function handleInputMonthChange(event, value) {
-    setMon(value)
-    Months.map((m, index)=>{
-      if (value===m){setNumMon(index+1)}
-    })
+    setMon(value);
+    Months.map((m, index) => {
+      if (value === m) {
+        setNumMon(index + 1);
+      }
+    });
     // console.log(`numMon = ${numMon}`)
   }
   function handleInputYearChange(event, value) {
-    setYea(value)
+    setYea(value);
   }
   function handleInputDayChange(event, value) {
-    setDay(value)
+    setDay(value);
   }
 
-// Redux Hooks
-  const handleSubmit = (e)=>{
+  // Redux Hooks
+  const handleSubmit = (e) => {
     // e.preventDefault()
 
-    if(PID===null || firstname===null || lastanme===null || elderlyGender===null || yea===null || mon===null || day===null){
-      emptyValue()
+    if (
+      PID === null ||
+      firstname === null ||
+      lastanme === null ||
+      elderlyGender === null ||
+      yea === null ||
+      mon === null ||
+      day === null
+    ) {
+      emptyValue();
     }
 
-    const elderlyBirthday = `${yea}-${numMon}-${day}`
+    const elderlyBirthday = `${yea}-${numMon}-${day}`;
     // cal Age
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
-    const nowMonth = nowDate.getMonth()+1;
-    const nowYear = nowDate.getFullYear()+543;
+    const nowMonth = nowDate.getMonth() + 1;
+    const nowYear = nowDate.getFullYear() + 543;
 
-    var Age = nowYear-parseInt(yea)
-    
-    if(numMon==nowMonth) {
-      parseInt(day)>=nowDay ? Age=Age : Age=Age-1
-    } else if(numMon>nowMonth) {
-      Age = Age-1
+    var Age = nowYear - parseInt(yea);
+
+    if (numMon == nowMonth) {
+      parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
+    } else if (numMon > nowMonth) {
+      Age = Age - 1;
     } else {
-      Age = Age
+      Age = Age;
     }
     const data = [
-      PID, firstname, lastanme, elderlyGender, nickname, elderlyBirthday, Age, yea, mon, day
-    ]
-    dispatch(formAction.add(data))
+      PID,
+      firstname,
+      lastanme,
+      elderlyGender,
+      nickname,
+      elderlyBirthday,
+      Age,
+      yea,
+      mon,
+      day,
+    ];
+    dispatch(formAction.add(data));
     // dispatch(savePID.addPidOnly(PID))
-    function emptyValue(){
-      e.preventDefault(); 
-      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+    function emptyValue() {
+      e.preventDefault();
+      alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
       return;
     }
-    formAction.createAllElder(data)
-  }
+    formAction.createAllElder(data);
+    // const data2 = [null, PID]
+    // dispatch({
+    //   type: "VIS_ID",
+    //   payload: data2
+    // })
+  };
 
   return (
     <div className="css-form">
       <h1>แบบประเมินภาวะสุขภาพผู้สูงอายุ</h1>
-      <form onSubmit={handleSubmit} className="shadow p-3 mb-5 bg-white rounded">
+      <form
+        onSubmit={handleSubmit}
+        className="shadow p-3 mb-5 bg-white rounded"
+      >
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน {forms1p1Reducer.elderlyAge} </h2>
         <div className="question">
           {/* content */}
@@ -202,12 +232,11 @@ function Sections1_1(props) {
                 className="TextField"
                 // error={error}
                 defaultValue={forms1p1Reducer.peopleID}
-                onInput = {(e) =>{
-                  e.target.value = e.target.value.slice(0,13)
-              }}//fix13digit
+                onInput={(e) => {
+                  e.target.value = e.target.value.slice(0, 13);
+                }} //fix13digit
                 // value={forms1p1Reducer.peopleID}
-                onChange={(e)=>setPID(e.target.value)}
-
+                onChange={(e) => setPID(e.target.value)}
               />
             </div>
           </div>
@@ -217,13 +246,13 @@ function Sections1_1(props) {
             <div className="col-12 col-xl-6 mb-15">
               <TextField
                 id=""
-                pattern="^[ก-๏\s]+$"  
+                pattern="^[ก-๏\s]+$"
                 label="*ชื่อ"
                 variant="outlined"
                 placeholder="ชื่อ"
                 className="TextField"
                 value={forms1p1Reducer.firstname}
-                onChange={(e)=>setFirstname(e.target.value)}
+                onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
             <div className="col-12 col-xl-6">
@@ -234,7 +263,7 @@ function Sections1_1(props) {
                 placeholder="นามสกุล"
                 className="TextField"
                 value={forms1p1Reducer.lastname}
-                onChange={(e)=>setLastname(e.target.value)}
+                onChange={(e) => setLastname(e.target.value)}
               />
             </div>
           </div>
@@ -256,12 +285,12 @@ function Sections1_1(props) {
             >
               <FormControlLabel
                 className="radio-space"
-                value="male"
+                value="ชาย"
                 control={<Radio color="primary" />}
                 label="ชาย"
               />
               <FormControlLabel
-                value="famale"
+                value="หญิง"
                 control={<Radio color="primary" />}
                 label="หญิง"
               />
@@ -278,7 +307,7 @@ function Sections1_1(props) {
                 placeholder="ชื่อในชุมชน"
                 className="TextField"
                 value={forms1p1Reducer.nickname}
-                onChange={(e)=>setNickname(e.target.value)}
+                onChange={(e) => setNickname(e.target.value)}
               />
             </div>
           </div>
@@ -291,7 +320,7 @@ function Sections1_1(props) {
                 <strong>วันเดือนปีเกิด</strong>
                 <small>
                   {" "}
-                  หากไม่ทราบ เดือน หรือวัน ให้เลือกเป็น "วันที่ 1 เดือน มกราคม" 
+                  หากไม่ทราบ เดือน หรือวัน ให้เลือกเป็น "วันที่ 1 เดือน มกราคม"
                   {/* {props.elderlyInfos.map((elderlyInfo)=> elderlyInfo.Age )} */}
                 </small>
               </InputLabel>
@@ -299,66 +328,66 @@ function Sections1_1(props) {
             <div className="col-12">
               {/* <MyDatePicker xxx="years" value={bd} onChange={ (e)=> setbd(e.target.value)} /> */}
               <div className="row">
-      <div className="col-12 col-xl-4 mb-15">
-        <Autocomplete
-          id="year"
-          options={years}
-          getOptionLabel={(option) => option}
-          disableClearable={true}
-          //   style={{ width: 300 }}
-          onInputChange={handleInputYearChange}
-          defaultValue={forms1p1Reducer.year}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="ปี พ.ศ."
-              variant="outlined"
-              // value={yea}
-              onClick={getyear}
-            />
-          )}
-        />
-      </div>
-      <div className="col-12 col-xl-4 mb-15">
-        <Autocomplete
-          id="month"
-          options={Months}
-          getOptionLabel={(option) => option}
-          disableClearable={true}
-          //   style={{ width: 300 }}
-        //   value={mon}
-          onInputChange={handleInputMonthChange}
-          defaultValue={forms1p1Reducer.month}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="เดือน"
-              variant="outlined"
-            //   onClick={(e) => setMon(e.target.value)}
-            />
-          )}
-        />
-      </div>
-      <div className="col-12 col-xl-4">
-        <Autocomplete
-          id="day"
-          options={days}
-          getOptionLabel={(option) => option}
-          disableClearable={true}
-          //   style={{ width: 300 }}
-          onInputChange={handleInputDayChange}
-          defaultValue={forms1p1Reducer.day}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="วัน"
-              variant="outlined"
-              onClick={getday}
-            />
-          )}
-        />
-      </div>
-    </div>
+                <div className="col-12 col-xl-4 mb-15">
+                  <Autocomplete
+                    id="year"
+                    options={years}
+                    getOptionLabel={(option) => option}
+                    disableClearable={true}
+                    //   style={{ width: 300 }}
+                    onInputChange={handleInputYearChange}
+                    defaultValue={forms1p1Reducer.year}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="ปี พ.ศ."
+                        variant="outlined"
+                        // value={yea}
+                        onClick={getyear}
+                      />
+                    )}
+                  />
+                </div>
+                <div className="col-12 col-xl-4 mb-15">
+                  <Autocomplete
+                    id="month"
+                    options={Months}
+                    getOptionLabel={(option) => option}
+                    disableClearable={true}
+                    //   style={{ width: 300 }}
+                    //   value={mon}
+                    onInputChange={handleInputMonthChange}
+                    defaultValue={forms1p1Reducer.month}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="เดือน"
+                        variant="outlined"
+                        //   onClick={(e) => setMon(e.target.value)}
+                      />
+                    )}
+                  />
+                </div>
+                <div className="col-12 col-xl-4">
+                  <Autocomplete
+                    id="day"
+                    options={days}
+                    getOptionLabel={(option) => option}
+                    disableClearable={true}
+                    //   style={{ width: 300 }}
+                    onInputChange={handleInputDayChange}
+                    defaultValue={forms1p1Reducer.day}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="วัน"
+                        variant="outlined"
+                        onClick={getday}
+                      />
+                    )}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -381,15 +410,13 @@ function Sections1_1(props) {
       </form>
     </div>
   );
-
-  
 }
 
 const mapStateToProps = (state) => {
   return {
-      elderlyInfos: state
-  }
-}
+    elderlyInfos: state,
+  };
+};
 export default connect(mapStateToProps)(Sections1_1);
 
 const Months = [

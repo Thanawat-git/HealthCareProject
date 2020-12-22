@@ -42,7 +42,13 @@ export default function Sections1_6() {
     diseases.splice(index, 1); 
     setdiseases([...diseases])
   }
-
+  const createNewForm = (eldId) => {
+    console.log("eldId ", eldId);
+    const d = new Date();
+    const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    const data = [visDate, eldId];
+    dispatch(formAction.createVisitTable(data));
+  };
 
   return (
     <div className="css-form">
@@ -149,16 +155,16 @@ export default function Sections1_6() {
           </DialogContentText>
         </DialogContent>
         <div className="links1p6">
-          <Link to="/volunteer">
+          <Link to="/volunteerpage">
             <Button color="primary">
               กลับหน้าหลัก
           </Button>
           </Link>
           <Link to="/mainmenu">
-            <Button color="primary" onClick={()=>{
-              const d = new Date();
-              const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-              formAction.createVisitTable([visDate,peopleID])
+            <Button color="primary" onClick={() => {
+                      
+                      createNewForm(peopleID);
+                  
             }}>
               ต้องการทำต่อ
             </Button>

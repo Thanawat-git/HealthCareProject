@@ -21,16 +21,14 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
-export const updateDepressionScreening = (payload)=>{
-  console.log("mainaaaaaaaaaaaaaaaaaaaaaaaaaa" +payload)
-    Axios.put(`${apiBase}/depressionScreening/update/${payload[0]}`, {
+export const updateDepressionScreening = async (payload)=>{
+  await    Axios.put(`${apiBase}/depressionScreening/update/${payload[0]}`, {
       DEP_DEPRESSED: payload[1],
       DEP_NOT_ENJOYING: payload[2],
       DEP_CHECK:payload[3],
       DEP_RESULT: payload[4],
       DEP_CORRECT_FORM:payload[5],
       updateBy: null
-    }).then(()=>{
-      alert("Depression_Screening Update Success")
     })
+      alert("Depression_Screening Update Success")
   }

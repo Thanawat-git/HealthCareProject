@@ -21,9 +21,8 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
-export const updateExa9_1Osteoarthritis= (payload)=>{
-//    console.log('2222222222222222222222222222222222222222222222222222222222222',payload)
-    Axios.put(`${apiBase}/osteoarthritis/update/${payload[34]}`, {
+export const updateExa9_1Osteoarthritis = async (payload)=>{
+ await   Axios.put(`${apiBase}/osteoarthritis/update/${payload[34]}`, {
         OST_1_KNEE_PAIN: payload[0],
         OST_1_LVL_PAIN: payload[1],
         OST_1_RESULT: payload[2],
@@ -59,7 +58,6 @@ export const updateExa9_1Osteoarthritis= (payload)=>{
         OST_3_RESULT: payload[32],
         OST_CORRECT_FORM: payload[33],
         updateBy: null
-    }).then(()=>{
-      alert("Osteoarthritis Update Success")
     })
+      alert("Osteoarthritis Update Success")
   }

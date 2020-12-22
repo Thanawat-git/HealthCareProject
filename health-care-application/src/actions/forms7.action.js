@@ -23,8 +23,8 @@ export const add = (payload) =>{
 //     }
 // }
 
-export const updateAlzheimer = (payload)=>{
-    Axios.put(`${apiBase}/alzheimer/update/${payload[22]}`, {
+export const updateAlzheimer = async (payload)=>{
+  await   Axios.put(`${apiBase}/alzheimer/update/${payload[22]}`, {
       ALZ_7_1_EL_AGE: payload[0],
       ALZ_7_1_RESULT_AGE: payload[1],
       ALZ_7_2_EL_TIME: payload[2],
@@ -48,7 +48,6 @@ export const updateAlzheimer = (payload)=>{
       ALZ_RESULT:payload[20],
       ALZ_CORRECT_FORM:payload[21],
       updateBy: null
-    }).then(()=>{
-      alert("Alzheimer Update Success")
     })
+      alert("Alzheimer Update Success")
   }

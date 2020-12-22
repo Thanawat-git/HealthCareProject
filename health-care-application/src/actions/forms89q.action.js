@@ -22,8 +22,9 @@ export const add = (payload) =>{
 //     }
 // }
 
-export const updateDepressionScreening9q = (payload)=>{
-    Axios.put(`${apiBase}/depressionScreening/update/${payload[0]}`, {
+export const updateDepressionScreening9q = async (payload)=>{
+    console.log("............"+ payload)
+await Axios.put(`${apiBase}/depressionScreening/update/${payload[0]}`, {
       DEP_8_1: payload[1],
       DEP_8_2: payload[2],
       DEP_8_3: payload[3],
@@ -37,7 +38,6 @@ export const updateDepressionScreening9q = (payload)=>{
       DEP_9Q_RESULT: payload[11],
       DEP_CORRECT_FORM:payload[12],
       updateBy: null
-    }).then(()=>{
-      alert("Depression_Screening Update Success")
     })
+      alert("Depression_Screening Update Success")
   }
