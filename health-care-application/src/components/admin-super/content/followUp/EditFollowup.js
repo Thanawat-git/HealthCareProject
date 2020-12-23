@@ -1,15 +1,16 @@
 import moment from "moment";
 import React, { useEffect,useState } from "react";
-// import DatePicker from 'react-date-picker';
+import DatePicker from 'react-date-picker';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField } from "@material-ui/core";
 import 'moment/locale/th';
 
 moment.locale("th");
 
-export default function EditFollowup({ selectValue }) {
-    let d = selectValue.APPOINT_DATE.split("-")
+export default function EditFollowup({ value }) {
+    let d = value.APPOINT_DATE.split("-")
     const [open, setOpen] = useState(false);
-    const [dateValue, setDate] = useState(`${parseInt(d[0])-543}-${d[1]}-${d[2]}`);
+    // const [dateValue, setDate] = useState(`${parseInt(d[0])-543}-${d[1]}-${d[2]}`);
+    const [dateValue, setDate] = useState(new Date());
     // const setDa = da => {
     //     let d = da.split("-")
     //     let dd = new Date(new Date(`${parseInt(d[0])-543}-${d[1]}-${d[2]}`).toISOString())
@@ -17,7 +18,7 @@ export default function EditFollowup({ selectValue }) {
     //     onChange(dd)
     // }
     // useEffect(() => {
-    //     let d = selectValue.APPOINT_DATE.split("-")
+    //     let d = value.APPOINT_DATE.split("-")
     //     let dd = new Date(new Date(`${parseInt(d[0])-543}-${d[1]}-${d[2]}`).toISOString())
     //     // console.log(dd)
     //     setDate(dd)
@@ -39,28 +40,27 @@ export default function EditFollowup({ selectValue }) {
         open={open}
         onClose={onClose}
       >
-        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle>{"แก้ไขการนัดหมายของ"} คุณ{value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</DialogTitle>
         <DialogContent >
           <DialogContentText id="alert-dialog-description">
+            {value.ELDER.FIRSTNAME}
               <Grid container justify="space-around">
               <TextField
                 id="datetime-local"
                 label="Next appointment"
                 type="date"
-                format="dd/mm/yyyy"
-                // value={dateValue}
-                onChange={date=>setDate(date)}
-                // defaultValue="2017-05-24T10:30"
-                defaultValue={dateValue}
+                
                 InputLabelProps={{
                   shrink: true,
                 }}
               />
+              <DatePicker onChange={setDate} value={dateValue} id="updateDate" format="yyyy-MM-dd"/>
               </Grid>
-          {/* {moment("20010704T120854").format("MMMM Do YYYY")}{" "} */}
-          {moment(selectValue.APPOINT_DATE).format("MM/DD/YYYY")}
-          {moment("2020-05-24").add(543, 'year').format("DD MM YYYY")}
-          {moment(dateValue).format("LLLL")}
+          {moment(value.APPOINT_DATE).format("DD/MM/YYYY")}
+          <br/>
+          {/* {moment("2020-05-24").add(543, 'year').format("DD MM YYYY")} */}
+          {moment(value.APPOINT_DATE).format("LLLL")}
+          
             {/* <div className="datepicker">
               <DatePicker onChange={setDate} value={dateValue} format="yyyy-MM-dd" className="input-datepicker" />
             </div>
@@ -69,10 +69,10 @@ export default function EditFollowup({ selectValue }) {
         </DialogContent>
         <DialogActions>
           <Button color="primary">
-            Disagree
+            ยกเลิก
           </Button>
           <Button color="primary">
-            Agree
+            บันทึก
           </Button>
         </DialogActions>
       </Dialog>

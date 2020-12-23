@@ -106,21 +106,23 @@ export default function FollowUp() {
       </div>
       <section className="content">
         <div className="container-fluid">
-          <div className="row">
-            <div className="filter-btnav">
-            <button type="button" class="btn btn-warning" value="searchl30" onClick={(e)=>clickFilter(e)} >น้อยกว่า 30 วัน</button>
-            <button type="button" class="btn btn-primary" value="searchl60" onClick={(e)=>clickFilter(e)} >31 - 60 วัน</button>
-            <button type="button" class="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >เกินกำหนด</button>
-            <button type="button" class="btn btn-secondary" value="canceldue" onClick={(e)=>clickFilter(e)} >ยกเลิกนัด</button>
-            <TextField
-            // style={{ marginTop: 11}}
-            label="ค้นหาโดยการกรอกชื่อ-นามสกุล"
-            onChange={e=>searchByKeyword(e)}
-            name="keyword"
-            // value={keyword}
-            InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
-            fullWidth
-            />
+          <div className="row align-items-end row-filter">
+            <div className=" col-6 filter-btn">
+              <button type="button" class="btn btn-warning" value="searchl30" onClick={(e)=>clickFilter(e)} >น้อยกว่า 30 วัน</button>
+              <button type="button" class="btn btn-primary" value="searchl60" onClick={(e)=>clickFilter(e)} >31 - 60 วัน</button>
+              <button type="button" class="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >เกินกำหนด</button>
+              <button type="button" class="btn btn-secondary" value="canceldue" onClick={(e)=>clickFilter(e)} >ยกเลิกนัด</button>
+            </div>
+            <div className="col-6">
+              <TextField
+              // style={{ marginTop: 11}}
+              label="ค้นหาโดยการกรอกชื่อ-นามสกุล"
+              onChange={e=>searchByKeyword(e)}
+              name="keyword"
+              // value={keyword}
+              InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
+              fullWidth
+              />
             </div>
           </div>
         </div>
@@ -157,34 +159,34 @@ export default function FollowUp() {
                   :<td> {value.VOLUNTEER_ADDER.FIRSTNAME} {value.VOLUNTEER_ADDER.LASTNAME}</td>
                   }
                   <td style={{ textAlign: "center" }}>
-                  <EditFollowup selectValue={value}/>
-                  <span style={{ color: "grey" }}> | </span>
-                  <button
-                    onClick={() => {
-                      MySwal.fire({
-                        title: "ต้องการลบการนัดหมายนี้ใช่หรือไม่",
-                        text: `ลบการนัดหมายของ คุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME}!`,
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        confirmButtonText: " ลบ ",
-                        cancelButtonText: "ยกเลิก"
-                      }).then(result => {
-                        if (result.value) {
-                          deleteFollowUp(value.APP_ID)
-                          Swal.fire(
-                            'ลบสำเร็จ',
-                            `การนัดหมายของคุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME} ได้ถูกลบแล้ว`,
-                            'success'
-                          )
-                        }
-                      });
-                    }}
-                    type="button"
-                    className="btn btn-danger"
-                  >
-                    ลบ
-                  </button>
+                    <EditFollowup value={value}/>
+                    <span style={{ color: "grey" }}> | </span>
+                    <button
+                      onClick={() => {
+                        MySwal.fire({
+                          title: "ต้องการลบการนัดหมายนี้ใช่หรือไม่",
+                          text: `ลบการนัดหมายของ คุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME}!`,
+                          type: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: '#d33',
+                          confirmButtonText: " ลบ ",
+                          cancelButtonText: "ยกเลิก"
+                        }).then(result => {
+                          if (result.value) {
+                            deleteFollowUp(value.APP_ID)
+                            Swal.fire(
+                              'ลบสำเร็จ',
+                              `การนัดหมายของคุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME} ได้ถูกลบแล้ว`,
+                              'success'
+                            )
+                          }
+                        });
+                      }}
+                      type="button"
+                      className="btn btn-danger"
+                    >
+                      ลบ
+                    </button>
                   </td>
                 </tr>
                 );

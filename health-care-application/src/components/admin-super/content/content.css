@@ -1,12 +1,9 @@
 .table-content{
     margin: 0 20px;
 }
-
-.filter-btnav {
-    margin: 10px 20px 0 20px;
+.row-filter{
+    margin-bottom: 15px;
 }
-
-.datepicker .input-datepicker{
-    cursor: pointer;
-    opacity: 0.1;
+.filter-btn button{
+    margin-right: 10px;
 }
