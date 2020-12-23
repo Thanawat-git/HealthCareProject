@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
-import { FormControl, InputAdornment, InputLabel, makeStyles, MenuItem, Select, TextField } from "@material-ui/core";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, InputAdornment, InputLabel, makeStyles, MenuItem, Select, TextField } from "@material-ui/core";
 import * as historyAction from "../../../../actions/history.action";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,7 +16,7 @@ export default function MedicalHistory() {
     const dispatch = useDispatch()
     const historyReducer = useSelector(({historyReducer}) => historyReducer)
     const [isFetching, setisFetching] = useState(true)
-    
+
     useEffect(() => {
       dispatch(historyAction.getAllAssessmentForms())
       setTimeout(() => {
@@ -36,6 +36,10 @@ export default function MedicalHistory() {
           })
           // console.log('testArr ',testArr)
         }
+      }
+      historyReducer.resultSelected!==null && console.log('historyReducer.resultSelected not null')
+      return () => {
+        setisFetching(true)
       }
     }, [isFetching])
     const [state, setState] = useState({
@@ -138,7 +142,15 @@ export default function MedicalHistory() {
       setreArr([...(new Set(r.map(v=>v)))]) // set ค่าเมื่อวน loop ครบ และใช้ set คัดตัวซ้ำออก
     }
 //-----------------------------------Filter By Keyword-----------------------------------------------//
-
+    const [open, setOpen] = React.useState(false);
+    const selectHistory = id =>{
+      dispatch(historyAction.getHistorySelected("13"))
+      setTimeout(() => {
+        setisFetching(historyReducer.isFetching)
+        setOpen(true)
+      }, 200);
+    }
+    const handleClose = () => {setOpen(false);};
   return (
     <React.Fragment>
       <div className="content-header">
@@ -153,7 +165,19 @@ export default function MedicalHistory() {
       <section className="content">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-6">
+          {/* <div className="col-6" style={{ paddingRight: 20}}> */}
+                {/* search by name lastname or id */}
+            {/* <TextField
+            style={{ marginTop: 11}}
+            label="ค้นหาโดยการกรอกชื่อ-นามสกุล"
+            onChange={handleChange}
+            name="keyword"
+            value={keyword}
+            InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
+            fullWidth
+            />
+          </div> */}
+            <div className="col-12">
               {/* Filter */}
               <h6>ช่วงเวลา</h6>
               <FormControl className={classes.formControl}>
@@ -225,20 +249,17 @@ export default function MedicalHistory() {
                 })}
                 </Select>
             </FormControl>
+            <TextField
+            style={{ marginTop: 9, minWidth: '36%'}}
+            label="ค้นหาโดยการกรอกชื่อ-นามสกุล"
+            onChange={handleChange}
+            name="keyword"
+            value={keyword}
+            InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
+            // fullWidth
+            />
             </div>
-            <div className="col-6" style={{ paddingRight: 20}}>
-                {/* search by name lastname or id */}
-                <br/>
-                <TextField
-                style={{ marginTop: 11}}
-                label="ค้นหาโดยการกรอกชื่อ-นามสกุล"
-                onChange={handleChange}
-                name="keyword"
-                value={keyword}
-                InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
-                fullWidth
-              />
-            </div>
+            
           </div>
         </div>
         <div className="table-content">
@@ -255,12 +276,43 @@ export default function MedicalHistory() {
           <tbody>
             {reArr.map((value, index) => {
               return (
-                <tr style={{ cursor: "pointer" }} >
+                <React.Fragment>
+                <tr style={{ cursor: "pointer" }} onClick={()=>selectHistory(value.VIS_ID)} >
                   <td> {index + 1} </td> 
                   <td> {value.ELD_ID_NUMBER} </td>
                   <td> {value.ELD_NAME} </td>
                   <td> {value.VIS_DATE} </td>
                 </tr>
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    scroll='paper'
+                    aria-labelledby="scroll-dialog-title"
+                    aria-describedby="scroll-dialog-description"
+                  >
+                    <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+                    <DialogContent dividers='paper'>
+                      <DialogContentText>
+                        {[...new Array(50)]
+                          .map(
+                            () => `Cras mattis consectetur purus sit amet fermentum.
+                          Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                          Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+                          )
+                          .join('\n')}
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose} color="primary">
+                        Cancel
+                      </Button>
+                      <Button onClick={handleClose} color="primary">
+                        Subscribe
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </React.Fragment>
                 );
             })}
           </tbody>

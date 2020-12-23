@@ -104,9 +104,9 @@ export default function FollowUp() {
         </div>
         {/* /.container-fluid */}
       </div>
-      {/* <div className="top-input">
+      <div className="top-input">
           <input type="text" className="form-control" placeholder={SimpleData[1].name} />
-      </div> */}
+      </div>
 
       <div className="filter-btnav">
         <button type="button" class="btn btn-warning" value="less30" onClick={filterTable} >น้อยกว่า 30 วัน</button>

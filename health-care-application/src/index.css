@@ -23,3 +23,25 @@ button:focus{
   border:1px solid #008B00 !important;
   color: #008B00 !important;
 }
+
+/* table {
+  width: 85vw;
+}
+
+th,
+td {
+  width: 85vw;
+}
+
+thead > tr {
+  position: relative;
+  display: block;
+  width: 85vw;
+}
+
+tbody {
+  display: block;
+  height: 50vh;
+  width: 85vw;
+  overflow: auto;
+} */
