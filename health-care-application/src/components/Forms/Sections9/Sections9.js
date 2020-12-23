@@ -116,9 +116,15 @@ export default function Sections9() {
         parseInt(ans9_11) +
         parseInt(ans9_12);
       setCount(c);
-      c >= 4
-        ? setresult1("เสี่ยงต่อการพลัดตกหกล้ม")
-        : setresult1("ไม่มีความเสี่ยงต่อการพลัดตกหกล้ม");
+      if (c >= 4) {
+        setresult1("เสี่ยงต่อการพลัดตกหกล้ม");
+      } else {
+        if (ans9_1 == 1 || ans9_3 == 1 || ans9_6 == 1) {
+          setresult1("เสี่ยงต่อการพลัดตกหกล้ม");
+        } else {
+          setresult1("ไม่มีความเสี่ยงต่อการพลัดตกหกล้ม");
+        }
+      }
     }
   }, [
     collect1,
@@ -149,6 +155,14 @@ export default function Sections9() {
         setresult2(
           "ผู้สูงอายุไม่สามารถเดินได้ ไม่มีความเสี่ยงต่อการพลัดตกหกล้ม"
         );
+      } else {
+        if (second < 10) {
+          setresult2("ปกติ");
+        } else if (second >= 10 && second <= 29) {
+          setresult2("เสี่ยงต่อการพลัดตกหกล้มปานกลาง");
+        } else if (second >= 30) {
+          setresult2("เสี่ยงต่อการพลัดตกหกล้มสูง");
+        }
       }
     }
   }, [collect2, walk, walkInfo, minute, second]);
@@ -184,9 +198,11 @@ export default function Sections9() {
     <div className="css-form">
       <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded">
         <h2>ส่วนที่ 9 สุขภาพกระดูกและกล้ามเนื้อ</h2>
-        <h4>การคัดกรองความเสี่ยงต่อการพลัดตกหกล้ม</h4>
+        <h4 style={{ marginLeft: 10, marginTop: 10 }}>
+          การคัดกรองความเสี่ยงต่อการพลัดตกหกล้ม
+        </h4>
         <div className="question">
-          <p>9.1 เคยพลัดตกหกล้มในช่วง 1 ปีที่ผ่านมา</p>
+          <p>เคยพลัดตกหกล้มในช่วง 1 ปีที่ผ่านมา</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_1"
@@ -208,7 +224,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.2 ใช้ไม้เท้าหรืออุปกรณ์ช่วยเดิน</p>
+          <p>ใช้ไม้เท้าหรืออุปกรณ์ช่วยเดิน</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_2"
@@ -230,7 +246,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.3 บางครั้งมีความรู้สึกว่าเดินไม่ค่อยมั่นคง</p>
+          <p>บางครั้งมีความรู้สึกว่าเดินไม่ค่อยมั่นคง</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_3"
@@ -252,7 +268,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.4 ต้องจับเฟอร์นิเจอร์เพื่อประคองตนเองขณะเดินในบ้าน</p>
+          <p>ต้องจับเฟอร์นิเจอร์เพื่อประคองตนเองขณะเดินในบ้าน</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_4"
@@ -274,7 +290,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.5 ต้องใช้มือดันตัวเองขึ้นเวลาลุกจากเก้าอี้</p>
+          <p>ต้องใช้มือดันตัวเองขึ้นเวลาลุกจากเก้าอี้</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_5"
@@ -296,7 +312,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.6 มีความกังวลว่าตนเองจะหกล้ม</p>
+          <p>มีความกังวลว่าตนเองจะหกล้ม</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_6"
@@ -318,7 +334,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.7 มีปัญหาเวลาก้าวขึ้นขอบฟุตบาท</p>
+          <p>มีปัญหาเวลาก้าวขึ้นขอบฟุตบาท</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_7"
@@ -340,7 +356,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.8 ต้องรีบเร่งเข้าห้องน้ำเมื่อปวดปัสสาวะหรืออุจจาระ</p>
+          <p>ต้องรีบเร่งเข้าห้องน้ำเมื่อปวดปัสสาวะหรืออุจจาระ</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_8"
@@ -362,7 +378,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.9 มีอาการชาที่ฝ่าเท้า</p>
+          <p>มีอาการชาที่ฝ่าเท้า</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_9"
@@ -384,7 +400,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.10 กินยาที่ทำให้เวียนหัวหรือเหนื่อยง่ายกว่าปกติ</p>
+          <p>กินยาที่ทำให้เวียนหัวหรือเหนื่อยง่ายกว่าปกติ</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_10"
@@ -406,7 +422,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.11 กินยานอนหลับหรือยาแก้เครียด</p>
+          <p>กินยานอนหลับหรือยาแก้เครียด</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_11"
@@ -428,7 +444,7 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <p>9.12 รู้สึกเศร้าหรือหดหู่</p>
+          <p>รู้สึกเศร้าหรือหดหู่</p>
           <RadioGroup
             className="pl-10"
             aria-label="ans9_12"
@@ -450,8 +466,10 @@ export default function Sections9() {
             />
           </RadioGroup>
           <hr />
-          <h4>ประเมินสมรรถภาพทางกาย</h4>
-          <p>การเดิน</p>
+          <h4>
+            <b>ประเมินสมรรถภาพทางกาย</b>
+          </h4>
+          <h4 style={{ marginLeft: 10 }}>การเดิน</h4>
           <RadioGroup
             className="pl-10"
             aria-label="walk"
