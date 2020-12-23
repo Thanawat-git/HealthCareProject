@@ -15,6 +15,7 @@
     "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
     "mdi-react": "^7.4.0",
+    "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-bootstrap": "^1.4.0",
     "react-date-picker": "^8.0.5",
