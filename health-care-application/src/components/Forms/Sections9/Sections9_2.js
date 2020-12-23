@@ -130,8 +130,8 @@ export default function Sections9_2() {
       ans5N && counter--;
       setCount(counter);
       counter > 3
-        ? setresults("ใช่มากกว่า 3 ข้อ")
-        : setresults("ใช่น้อยกว่า 3 ข้อ");
+        ? setresults("ปกติ")//ใช่มากกว่า 3 ข้อ :
+        : setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง");//ใช่น้อยกว่า 3 ข้อ :
       const sum =
         parseInt(ans3_1) +
         parseInt(ans3_2) +

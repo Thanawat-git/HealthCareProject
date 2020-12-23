@@ -119,9 +119,13 @@ export default function Header() {
             >
               {list("left")}
             </Drawer>
+          
             <Typography variant="h6" className={classes.title}>
+                <Link to="/volunteerpage/search">
               Project Name
+               </Link>
             </Typography>
+           
             <Link to="/login">
               <Button color="inherit">
                 <ExitToAppIcon />

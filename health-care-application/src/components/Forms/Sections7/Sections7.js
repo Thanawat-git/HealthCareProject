@@ -79,12 +79,19 @@ export default function Sections7_1() {
         parseInt(ans7_8) +
         parseInt(ans7_9) +
         parseInt(ans7_10);
-      count <= 7
-        ? setresults(
-            "การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002" +
-              setlinkTommse(true)
-          )
-        : setresults("การรู้คิดปกติ" + setlinkTommse(false));
+      // count <= 7
+      //   ? setresults(
+      //       "การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002" +
+      //         setlinkTommse(true)
+      //     )
+      //   : setresults("การรู้คิดปกติ") && setlinkTommse(false);
+        if(count <= 7){
+          setresults("การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002")
+          setlinkTommse(true)
+        }else{
+          setresults("การรู้คิดปกติ")
+          setlinkTommse(false);
+        }
     }
   }, [
     ans7_1,
@@ -111,12 +118,19 @@ export default function Sections7_1() {
         parseInt(ans7_8) +
         parseInt(ans7_9) +
         parseInt(ans7_10);
-      count <= 7
-        ? setresults(
-            "การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002" +
-              setlinkTommse(true)
-          )
-        : setresults("การรู้คิดปกติ" + setlinkTommse(false));
+      // count <= 7
+      //   ? setresults(
+      //       "การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002" +
+      //         setlinkTommse(true)
+      //     )
+      //   : setresults("การรู้คิดปกติ") && setlinkTommse(false);
+        if(count <= 7){
+          setresults("การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002")
+          setlinkTommse(true)
+        }else{
+          setresults("การรู้คิดปกติ")
+          setlinkTommse(false);
+        }
     }
   }, [collect]);
 

@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SumaryReport from "./SumaryReport";
 import * as getAction from "../../actions/getAllFormToReucer.action";
+import Header from "../volunteer/Header";
 
 const useStyles = makeStyles({
     root: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles({
       marginLeft: 'auto',
       marginRight: 'auto',
       marginBottom: 10,
+      marginTop:50
     },
     a: {
         textDecoration:'none',
@@ -190,7 +192,9 @@ function MainMenu(props) {
     }
 
     return (
+       
         <React.Fragment>
+             <Header></Header>
             <Card className={classes.root}>
                 <CardContent>
                 <Link onClick={()=>{getData('sec2')}} >

@@ -353,7 +353,7 @@ export default function Sections3() {
         </div>
       </form>
       <ShowResultPopup
-        title="ผลส่วนที่ 3 ความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
+        title="ผลการประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
         result={results}
         show={show}
         onClick={saveDataToServer}
