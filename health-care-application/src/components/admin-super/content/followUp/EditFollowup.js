@@ -25,25 +25,31 @@ export default function EditFollowup({ value }) {
     //     // console.log(dd)
     //     setDate(dd)
     // }, [])
+    const handleClose = () => {
+      setOpen(false)
+      handleDateChange(null)
+    };
   return (
     <React.Fragment>
         <button
         type="button"
         className="btn btn-info"
-        onClick={() => setOpen(true)}
+        onClick={()=>setOpen(true)}
         >
         แก้ไข
         </button>
       
       <Dialog
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={handleClose}
+        maxWidth="xs"
+        fullWidth
       >
-        <DialogTitle>{"แก้ไขการนัดหมายของ"} คุณ{value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</DialogTitle>
+        <DialogTitle style={{ textAlign: "center" }}>{"แก้ไขการนัดหมายของ"} คุณ{value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</DialogTitle>
         <DialogContent >
           <DialogContentText id="alert-dialog-description">
-            <Grid container justify="space-around">วันนัดหมายเดิม: {moment(value.APPOINT_DATE).format("LL")}</Grid>
-            <Grid container justify="space-around">การนัดหมาย: ติดตามผล{value.APP_NAME}</Grid>
+            <Grid container justify="center"><strong>วันนัดหมายเดิม: </strong>วัน{moment(value.APPOINT_DATE).format("dddd")} ที่ {moment(value.APPOINT_DATE).format("LL")}</Grid>
+            <Grid container justify="center"> <strong>การนัดหมาย: </strong> ติดตามผล{value.APP_NAME}</Grid>
             
               <Grid container justify="space-around">
               <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} locale="th">
@@ -68,7 +74,7 @@ export default function EditFollowup({ value }) {
         </DialogContent>
         <DialogActions>
         <Grid container justify="space-around">
-          <Button color="secondary" onClick={() => setOpen(false)}>
+          <Button color="secondary" onClick={handleClose}>
             ยกเลิก
           </Button>
           <Button color="primary">
