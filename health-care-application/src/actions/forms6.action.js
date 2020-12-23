@@ -23,8 +23,8 @@ export const add = (payload) =>{
 //     }
 // }
 
-export const updateAilityInLife = (payload)=>{
-    Axios.put(`${apiBase}/abilityInLife/update/${payload[13]}`, {
+export const updateAilityInLife = async (payload)=>{
+await   Axios.put(`${apiBase}/abilityInLife/update/${payload[13]}`, {
         ABI_6_1: payload[0],
         ABI_6_2: payload[1],
         ABI_6_3: payload[2],
@@ -39,7 +39,6 @@ export const updateAilityInLife = (payload)=>{
         ABI_GROUP: payload[11],
         ABI_CORRECT_FORM: payload[12],
         updateBy: null
-    }).then(()=>{
-      alert("AilityInLife Update Success")
     })
+      alert("AilityInLife Update Success")
   }

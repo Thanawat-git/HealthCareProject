@@ -23,8 +23,8 @@ export const add = (payload) =>{
 //     }
 // }
 
-export function updateElderRelative(payload) {
-    Axios.put(`${apiEld}/relative/update/${payload[0]}`,{
+export const  updateElderRelative = async (payload) =>{
+  await    Axios.put(`${apiEld}/relative/update/${payload[0]}`,{
       ELD_REL_FIRSTNAME: payload[1],
       ELD_REL_LASTNAME: payload[2],
       ELD_REL_GENDER: payload[3],
@@ -33,13 +33,11 @@ export function updateElderRelative(payload) {
       ELD_REL_PHONE: payload[6],
       updateBy: null
     })
-    // .then(()=>{
-    //   alert("Update Elder Relative Success")
-    // })
+      alert("Update Elder Relative Success")
   }
   
-export function createElderRelative2(payload) {
-    Axios.post(`${apiEld}/relative/create`,{
+export const createElderRelative2 = async (payload) => {
+  await   Axios.post(`${apiEld}/relative/create`,{
       ELD_REL_FIRSTNAME: payload[0],
       ELD_REL_LASTNAME: payload[1],
       ELD_REL_GENDER: payload[2],
@@ -49,7 +47,5 @@ export function createElderRelative2(payload) {
       ELD_ID_NUMBER: payload[6],
       updateBy: null
     })
-    // .then(()=>{
-    //   alert("Elder Relative Success")
-    // })
+      alert("Elder Relative Success")
   }

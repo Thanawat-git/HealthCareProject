@@ -22,8 +22,8 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // } 
-export const updateOralHealth = (payload)=>{
-    Axios.put(`${apiBase}/oralHealth/update/${payload[19]}`, {
+export const updateOralHealth = async (payload)=>{
+  await   Axios.put(`${apiBase}/oralHealth/update/${payload[19]}`, {
       ORAL_5_1: payload[0],
       ORAL_5_2: payload[1],
       ORAL_5_3: payload[2],
@@ -45,8 +45,7 @@ export const updateOralHealth = (payload)=>{
       ORAL_RESULT: payload[18],
       ORAL_CORRECT_FORM:payload[20],
       updateBy: null
-    }).then(()=>{
-      alert("Oral_Health Update Success")
     })
+      alert("Oral_Health Update Success")
   }
   

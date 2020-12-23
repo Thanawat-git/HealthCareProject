@@ -40,7 +40,7 @@ function Sections1_4(props) {
         salary, otherReligion, otherCareers
       ]
       formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,religion,educations,
-        careers,treatment,salary
+      careers,treatment,hospital,salary
       ])
 
       elderlyStatus===null && emptyValue()
@@ -79,14 +79,15 @@ function Sections1_4(props) {
             if(hospital===null){emptyValue()}
           }
         }
-      }else {emptyValue()}
+      }
+      else {emptyValue()}
 
       salary===null && emptyValue()
 
       dispatch(formAction.add(data))
       function emptyValue(){
         e.preventDefault(); 
-        alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+        //alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
         // return;
       }
     }

@@ -12,17 +12,17 @@ export const add = (payload) => {
   };
 };
 
-export const updateElder = (payload) => {
-  Axios.put(`${apiEld}/update/${payload[0]}`, {
+export const updateElder = async (payload) => {
+  await Axios.put(`${apiEld}/update/${payload[0]}`, {
     ELD_PHONE: payload[1],
   })
-  // .then(() => {
-  //   alert("Update Elder Success");
-  // });
+
+    alert("Update Elder Success");
+
 };
 
-export const updateElderCurrent = (payload) => {
-  Axios.put(`${apiEld}/currentaddress/update/${payload[0]}`, {
+export const updateElderCurrent = async (payload) => {
+  await Axios.put(`${apiEld}/currentaddress/update/${payload[0]}`, {
     ELD_CUR_NUMBER: payload[1],
     ELD_CUR_ALLEY: payload[2],
     ELD_CUR_STREET: payload[3],
@@ -30,13 +30,11 @@ export const updateElderCurrent = (payload) => {
     ELD_CUR_AREA: payload[5],
     updateBy: null
   })
-  // .then(() => {
-  //   alert("Update Elder Current Address Success");
-  // });
+  alert("Update ElderCurrent Success");
 };
 
-export const updateElderIdCurrent = (payload) => {
-  Axios.put(
+export const updateElderIdCurrent = async (payload) => {
+  await Axios.put(
     `${apiEld}/idnumberaddress/update/${payload[0]}`,
     {
       ELD_IDN_ADDR_NUMBER: payload[1],
@@ -47,7 +45,5 @@ export const updateElderIdCurrent = (payload) => {
       updateBy: null
     }
   )
-  // .then(() => {
-  //   alert("Update Elder ID Currentaddress Success");
-  // });
+    alert("Update Elder ID Currentaddress Success");
 };

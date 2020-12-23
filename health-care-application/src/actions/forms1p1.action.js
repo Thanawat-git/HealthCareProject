@@ -13,8 +13,8 @@ export const add = (payload) => {
 };
 
 // create new elder table
-const createElder = (payload) => {
-  Axios.post(`${apiEld}/create`, {
+const createElder = async (payload) => {
+  await Axios.post(`${apiEld}/create`, {
     ELD_ID_NUMBER: payload[0],
     ELD_FIRSTNAME: payload[1],
     ELD_LASTNAME: payload[2],
@@ -23,14 +23,12 @@ const createElder = (payload) => {
     ELD_AKA: payload[4],
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Elder Success");
-  // });
+  alert("Elder Success");
 };
 
 // update elder
-export const updateElder = (payload) => {
-  Axios.put(`${apiEld}/update/${payload[0]}`, {
+export const updateElder = async (payload) => {
+  await Axios.put(`${apiEld}/update/${payload[0]}`, {
     ELD_ID_NUMBER: payload[1],
     ELD_FIRSTNAME: payload[2],
     ELD_LASTNAME: payload[3],
@@ -38,14 +36,12 @@ export const updateElder = (payload) => {
     ELD_AKA: payload[5],
     updateBy: null,
   })
-  // .then(() => {
-  //   alert("Elder update Success");
-  // });
+    alert("Elder update Success");
 };
 
 // Create form1 sec1-6
-const createElderinfo = (payload) => {
-  Axios.post(`${apiEld}/information/create`, {
+const createElderinfo = async (payload) => {
+  await  Axios.post(`${apiEld}/information/create`, {
     ELD_BIRTHDATE: payload[5],
     ELD_GENDER: payload[3],
     ELD_AGE: payload[6],
@@ -64,13 +60,12 @@ const createElderinfo = (payload) => {
     updateBy: "นี่โอ๊ตนะ",
     ADDER_ID_NUMBER: "1200101000000",
   })
-  // .then(() => {
-  //   alert("Elder Info Success");
-  // });
+    alert("Elder Info Success");
+
 };
 
-const createElderRelative = (payload) => {
-  Axios.post(`${apiEld}/relative/create`, {
+const createElderRelative = async (payload) => {
+  await  Axios.post(`${apiEld}/relative/create`, {
     ELD_REL_FIRSTNAME: null,
     ELD_REL_LASTNAME: null,
     ELD_REL_RELATION: null,
@@ -78,14 +73,12 @@ const createElderRelative = (payload) => {
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
   })
-  // .then(() => {
-  //   alert("Elder Relative Success");
-  // });
+    alert("Elder Relative Success");
 };
 
-const createElderCurrent = (payload) => {
+const createElderCurrent = async (payload) => {
   //ที่อยู่ปัจจุบัน
-  Axios.post(`${apiEld}/currentaddress/create`, {
+  await  Axios.post(`${apiEld}/currentaddress/create`, {
     ELD_CUR_NUMBER: null,
     ELD_CUR_VILLAGE: null,
     ELD_CUR_LANE: null,
@@ -96,14 +89,12 @@ const createElderCurrent = (payload) => {
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
   })
-  // .then(() => {
-  //   alert("Elder Currentaddress Success");
-  // });
+    alert("Elder Currentaddress Success");
 };
 
-const createElderIdCurrent = (payload) => {
+const createElderIdCurrent = async (payload) => {
   //ที่อยู่ตามบัตรประชาชน
-  Axios.post(`${apiEld}/idnumberaddress/create`, {
+  await  Axios.post(`${apiEld}/idnumberaddress/create`, {
     ELD_IDN_ADDR_NUMBER: null,
     ELD_IDN_ADDR_VILLAGE: null,
     ELD_IDN_ADDR_LANE: null,
@@ -114,15 +105,13 @@ const createElderIdCurrent = (payload) => {
     updateBy: null,
     ELD_ID_NUMBER: payload[0],
   })
-  // .then(() => {
-  //   alert("Elder ID Currentaddress Success");
-  // });
+    alert("Elder ID Currentaddress Success");
 };
 
-export const createAllElder = (payload) => {
-  createElder(payload);
-  createElderinfo(payload);
-  createElderRelative(payload);
-  createElderCurrent(payload);
-  createElderIdCurrent(payload);
+export const createAllElder = async (payload) => {
+  await createElder(payload);
+  await createElderinfo(payload);
+  await createElderRelative(payload);
+  await createElderCurrent(payload);
+  await createElderIdCurrent(payload);
 };

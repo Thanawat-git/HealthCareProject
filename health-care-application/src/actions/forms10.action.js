@@ -21,13 +21,12 @@ export const add = (payload) =>{
 //         dispatch(setStateToEdit())
 //     }
 // }
-export const upadateExa10Urination= (payload)=>{
-    Axios.put(`${apiBase}/urination/update/${payload[0]}`, {
+export const upadateExa10Urination = async (payload)=>{
+    await   Axios.put(`${apiBase}/urination/update/${payload[0]}`, {
         URI_10_1: payload[1],
         URI_RESULT:payload[2],
         URI_CORRECT_FORM:payload[3],
         updateBy: null
-    }).then(()=>{
-      alert("Urination update Success")
     })
+      alert("Urination update Success")
   }

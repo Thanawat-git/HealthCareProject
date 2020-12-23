@@ -40,8 +40,8 @@ export const add = (payload) =>{
 //     })
 //   }
 
-export const updateExa3Cardiovascular = (payload)=>{
-    Axios.put(`${apiBase}/cardiovascular/update/${payload[0]}`, {
+export const updateExa3Cardiovascular = async (payload)=>{
+    await   Axios.put(`${apiBase}/cardiovascular/update/${payload[0]}`, {
         CARDIO_3_1: payload[1],
         CARDIO_3_1_COUNT: payload[2],
         CARDIO_3_2: payload[3],
@@ -54,7 +54,6 @@ export const updateExa3Cardiovascular = (payload)=>{
         CARDIO_COUNT_RESULT: payload[10],
         CARDIO_CORRECT_FORM:payload[11],
         updateBy: null
-    }).then(()=>{
-      alert("Cardiovascular update Success")
     })
+      alert("Cardiovascular update Success")
   }

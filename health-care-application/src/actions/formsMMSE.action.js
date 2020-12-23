@@ -18,9 +18,8 @@ export const add = (payload) =>{
     }
 }
 
-export const updateMMSE = (payload)=>{
-  //console.log("in"+payload)
-  Axios.put("http://localhost:3001/MMSE/update/8", {
+export const updateMMSE = async (payload)=>{
+await  Axios.put(`${apiBase}/MMSE/update/${payload[43]}`, {
       MMSE_1_1: payload[0],
       MMSE_1_1_POINT: payload[1],
       MMSE_1_2: payload[2],
@@ -65,10 +64,8 @@ export const updateMMSE = (payload)=>{
       MMSE_CORRECT_FORM: payload[41],
       MMSE_RESULT:payload[42],
       updateBy: null
-  }).then(res=>{
-    // alert("MMSE Update Success")
-    console.log('res ', res.data)
   })
+     alert("MMSE Update Success")
 }
 
 // export const updatemmse = () =>{
