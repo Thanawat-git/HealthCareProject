@@ -1,6 +1,8 @@
 import moment from "moment";
+import MomentUtils from "@date-io/moment";
 import React, { useEffect,useState } from "react";
-import DatePicker from 'react-date-picker';
+// import DatePicker from 'react-date-picker';
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField } from "@material-ui/core";
 import 'moment/locale/th';
 
@@ -10,7 +12,7 @@ export default function EditFollowup({ value }) {
     let d = value.APPOINT_DATE.split("-")
     const [open, setOpen] = useState(false);
     // const [dateValue, setDate] = useState(`${parseInt(d[0])-543}-${d[1]}-${d[2]}`);
-    const [dateValue, setDate] = useState(new Date());
+    const [selectedDate, handleDateChange] = useState(null);
     // const setDa = da => {
     //     let d = da.split("-")
     //     let dd = new Date(new Date(`${parseInt(d[0])-543}-${d[1]}-${d[2]}`).toISOString())
@@ -23,9 +25,6 @@ export default function EditFollowup({ value }) {
     //     // console.log(dd)
     //     setDate(dd)
     // }, [])
-    const onClose = ()=>{
-        setOpen(false)
-    }
   return (
     <React.Fragment>
         <button
@@ -38,42 +37,44 @@ export default function EditFollowup({ value }) {
       
       <Dialog
         open={open}
-        onClose={onClose}
+        onClose={() => setOpen(false)}
       >
         <DialogTitle>{"แก้ไขการนัดหมายของ"} คุณ{value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</DialogTitle>
         <DialogContent >
           <DialogContentText id="alert-dialog-description">
-            {value.ELDER.FIRSTNAME}
+            <Grid container justify="space-around">วันนัดหมายเดิม: {moment(value.APPOINT_DATE).format("LL")}</Grid>
+            <Grid container justify="space-around">การนัดหมาย: ติดตามผล{value.APP_NAME}</Grid>
+            
               <Grid container justify="space-around">
-              <TextField
-                id="datetime-local"
-                label="Next appointment"
-                type="date"
-                
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <DatePicker onChange={setDate} value={dateValue} id="updateDate" format="yyyy-MM-dd"/>
+              <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} locale="th">
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="date-picker-dialog"
+                  label="วันนัดหมายใหม่"
+                  format="DD/MM/yyyy"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+              </MuiPickersUtilsProvider>
               </Grid>
-          {moment(value.APPOINT_DATE).format("DD/MM/YYYY")}
-          <br/>
+          {/* {moment(value.APPOINT_DATE).format("DD/MM/YYYY")} */}
           {/* {moment("2020-05-24").add(543, 'year').format("DD MM YYYY")} */}
-          {moment(value.APPOINT_DATE).format("LLLL")}
-          
-            {/* <div className="datepicker">
-              <DatePicker onChange={setDate} value={dateValue} format="yyyy-MM-dd" className="input-datepicker" />
-            </div>
-              <DatePicker onChange={setDate} value={dateValue} id="updateDate" format="yyyy-MM-dd"/> */}
+          {/* {moment(value.APPOINT_DATE).format("LL")} */}
+         
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button color="primary">
+        <Grid container justify="space-around">
+          <Button color="secondary" onClick={() => setOpen(false)}>
             ยกเลิก
           </Button>
           <Button color="primary">
             บันทึก
           </Button>
+          </Grid>
         </DialogActions>
       </Dialog>
     </React.Fragment>
