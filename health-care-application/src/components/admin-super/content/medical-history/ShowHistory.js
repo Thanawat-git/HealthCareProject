@@ -40,7 +40,11 @@ export default function ShowHistory({ value }) {
   }
   
   useEffect(() => {
-    
+    setopenState({
+      open1:openAll,open2:openAll,open3:openAll,
+      open4:openAll,open5:openAll,open6:openAll,
+      open7:openAll,open8:openAll,open9:openAll
+    })
   }, [openAll])
   const selectHistory = (id) => {
     dispatch(historyAction.getHistorySelected(id))
