@@ -31,7 +31,7 @@ export const getAllAssessmentForms = ()=>{
 
 export const getHistorySelected = (id)=>{
     return dispatch => {
-        dispatch(setHistoryToFetching())
+        // dispatch(setHistoryToFetching())
         return Axios.get(`${apiBase}/elder/examsummary/forhistory/${id}`).then(res=>{
             dispatch(setHistorySelected(res.data))
         }).catch(error=>{

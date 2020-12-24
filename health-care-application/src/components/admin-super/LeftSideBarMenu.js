@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import logo1 from "../images/logo-saensukcity.png";
 import { Link, useRouteMatch } from "react-router-dom";
+import Axios from "axios";
+import { apiBase } from "../../constants";
 
 export default function LeftSideBarMenu() {
   const { url } = useRouteMatch();
+  const [countFollowUp, setcountFollowUp] = useState(null)
+  // --------------------Get Count of Number To Show on Left Menu---------------//
+  // useEffect(() => {
+  //   // จำนวนทั้งหมดของ follow up
+  //   Axios.get(`${apiBase}/appointment/search`).then(res=>{
+  //     setcountFollowUp(res.data.length)
+  //   }).catch(err=>{
+  //     setcountFollowUp(null)
+  //   })
+  // }, [])
+  // --------------------Get Count of Number To Show on Left Menu---------------//
+
   return (
     <React.Fragment>
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -60,7 +74,7 @@ export default function LeftSideBarMenu() {
                   <i className="nav-icon fas fa-calendar-alt" />
                   <p>
                     ติดตามผล
-                    {/* <span className="badge badge-info right">2</span> */}
+                    <span className="badge badge-info right">{countFollowUp}</span>
                   </p>
                 </Link>
               </li>
