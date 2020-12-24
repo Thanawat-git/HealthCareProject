@@ -37,7 +37,8 @@ export default (state = initialState, { type, payload }) => {
             otherReligion: payload[12],
             otherCareers: payload[13]
         }
-
+        case "SET_EDUCATION":
+            return {...state, educations: payload,}
     default:
         return state
     }

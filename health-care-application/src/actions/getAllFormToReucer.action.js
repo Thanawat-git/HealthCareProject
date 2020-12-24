@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { apiBase, apiEld, CREATE_NEW_FORMS10, CREATE_NEW_FORMS2,CREATE_NEW_FORMS3, CREATE_NEW_FORMS4, CREATE_NEW_FORMS5, CREATE_NEW_FORMS6, CREATE_NEW_FORMS7, CREATE_NEW_FORMS8, CREATE_NEW_FORMS9, GET_COLLECT_S10, GET_COLLECT_S2, GET_COLLECT_S3, GET_COLLECT_S4, GET_COLLECT_S5, GET_COLLECT_S6, GET_COLLECT_S7, GET_COLLECT_S8, GET_COLLECT_S9 } from '../constants';
+import { apiBase, apiEld, CREATE_NEW_FORMS10, CREATE_NEW_FORMS2,CREATE_NEW_FORMS3, CREATE_NEW_FORMS4, CREATE_NEW_FORMS5, CREATE_NEW_FORMS6, CREATE_NEW_FORMS6T, CREATE_NEW_FORMS7, CREATE_NEW_FORMS7M, CREATE_NEW_FORMS8, CREATE_NEW_FORMS9, FORMS1P4_ADD_NEW, GET_COLLECT_S10, GET_COLLECT_S2, GET_COLLECT_S3, GET_COLLECT_S4, GET_COLLECT_S5, GET_COLLECT_S6, GET_COLLECT_S7, GET_COLLECT_S8, GET_COLLECT_S9 } from '../constants';
 
 export const getCollect = visId =>{
     return dispatch => {
@@ -303,6 +303,111 @@ export const getDataSec10 = visId =>{
             })
             dispatch({
                 type: CREATE_NEW_FORMS10,
+                payload: data
+            })
+        }).catch(error=>{
+            console.log('err ',error)
+        })
+    }
+}
+//http://localhost:3001/elder/information/searchOneEdu/1103702726761
+export const getEducate = peopleId =>{
+    //console.log("---------------------------get-----------")
+    return dispatch =>{
+        return Axios.get(`${apiBase}/elder/information/searchOneEdu/${peopleId}`).then(res=>{
+            dispatch({
+                type:"SET_EDUCATION",
+                payload:res.data.ELD_EDU
+            })
+            console.log(res.data.ELD_EDU)
+        }).catch(error=>{
+            console.log('err ',error)
+        })
+    }
+}
+
+export const mmse = visId =>{
+   
+    return dispatch => {
+        return Axios.get(`${apiBase}/MMSE/findOne/${visId}`).then(res=>{
+            
+            const data =[
+                res.data.textAns11,
+                res.data.ans1,
+                res.data.textAns12,
+                res.data.ans12,
+                res.data.textAns13,
+                res.data.ans13,
+                res.data.textAns14,
+                res.data.ans14,
+                res.data.textAns15,
+                res.data.ans15,
+                res.data.textAns211,
+                res.data.ans2_1_1,
+                res.data.textAns212,
+                res.data.ans2_1_2,
+                res.data.textAns213,
+                res.data.ans2_1_3,
+                res.data.textAns214,
+                res.data.ans2_1_4,
+                res.data.textAns215,
+                res.data.ans2_1_5,
+                res.data.ansF,
+                res.data.ansR,
+                res.data.ansT,
+                res.data.num1,
+                res.data.num2,
+                res.data.num3,
+                res.data.num4,
+                res.data.num5,
+                res.data.ansF2,
+                res.data.ansR2,
+                res.data.ansT2,
+                res.data.ans61,
+                res.data.ans62,
+                res.data.ans7,
+                res.data.thank1,
+                res.data.thank2,
+                res.data.thank3,
+                res.data.ans9,
+                res.data.textAns10,
+                res.data.ans10,
+                res.data.ans11,
+                res.data.collect,
+                res.data.results,
+            ] 
+            //console.log(data,"---------------------------data------------------")
+            dispatch({
+                type: 'FETCHINGMMSE',
+                payload: data
+            })
+            dispatch({
+                type: CREATE_NEW_FORMS7M,
+                payload: data
+            })
+        }).catch(error=>{
+            console.log('err ',error)
+        })
+    }
+}
+export const getDataTai = visId =>{
+    return dispatch => {
+        return Axios.get(`${apiBase}/TAI/update/${visId}`).then(res=>{
+            const data =[
+                res.data.ans6_Im,
+                res.data.ans6_Me,
+                res.data.ans6_To,
+                res.data.ans6_Fe,
+                res.data.groupT,
+                res.data.collect,
+                res.data.results,
+            ]
+            dispatch({
+                type: 'FETCHINGTAI',
+                payload: data
+            })
+            dispatch({
+                type: CREATE_NEW_FORMS6T,
                 payload: data
             })
         }).catch(error=>{

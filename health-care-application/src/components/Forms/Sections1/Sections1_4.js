@@ -164,12 +164,12 @@ function Sections1_4(props) {
               <p><span className="text-danger" >*</span ><strong>ระดับการศึกษา</strong></p>
             </div>
             <RadioGroup className="pl-5" aria-label="educations" name="educations" defaultValue={educations} onChange={(e)=>setEducations(e.target.value)}>
-              <FormControlLabel value="NE" control={<Radio color='primary' />} label="ไม่ได้เรียนหนังสือ"  />
-              <FormControlLabel value="PE" control={<Radio color='primary' />} label="ประถมศึกษา" />
-              <FormControlLabel value="SE" control={<Radio color='primary' />} label="มัธยมศึกษา"  />
-              <FormControlLabel value="Diploma" control={<Radio color='primary' />} label="อนุปริญญา/ ปวช./ ปวส." />
-              <FormControlLabel value="BD" control={<Radio color='primary' />} label="ปริญญาตรี" />
-              <FormControlLabel value="OverBD" control={<Radio color='primary' />} label="สูงกว่าปริญญาตรี"  />
+              <FormControlLabel value="ไม่ได้เรียนหนังสือ" control={<Radio color='primary' />} label="ไม่ได้เรียนหนังสือ"  />
+              <FormControlLabel value="ประถมศึกษา" control={<Radio color='primary' />} label="ประถมศึกษา" />
+              <FormControlLabel value="มัธยมศึกษา" control={<Radio color='primary' />} label="มัธยมศึกษา"  />
+              <FormControlLabel value="อนุปริญญา/ปวช./ปวส." control={<Radio color='primary' />} label="อนุปริญญา/ ปวช./ ปวส." />
+              <FormControlLabel value="ปริญญาตรี" control={<Radio color='primary' />} label="ปริญญาตรี" />
+              <FormControlLabel value="สูงกว่าปริญญาตรี" control={<Radio color='primary' />} label="สูงกว่าปริญญาตรี"/>
             </RadioGroup>
           </div>
           {/* row-4 */}
