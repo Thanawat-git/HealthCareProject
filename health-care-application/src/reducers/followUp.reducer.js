@@ -1,7 +1,7 @@
 import { HTTP_FOLLOWUP_FAILED, HTTP_FOLLOWUP_FETCHING, HTTP_FOLLOWUP_SELECTED, HTTP_FOLLOWUP_SUCCESS } from "../constants";
 
 const initialState = {
-  result: [],
+  result: null,
   resultSelected: null,
   isFetching: false,
   inError: false,
@@ -10,7 +10,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case HTTP_FOLLOWUP_FETCHING:
-      return { ...state, result: [], isFetching: true, inError: false };
+      return { ...state, result: null, isFetching: true, inError: false };
     case HTTP_FOLLOWUP_SUCCESS:
       return { ...state, result: payload, isFetching: false, inError: false };
     case HTTP_FOLLOWUP_FAILED:
