@@ -81,7 +81,7 @@ export default function FollowUp() {
               <button type="button" class="btn btn-primary" value="searchl60" onClick={(e)=>clickFilter(e)} >31 - 60 วัน</button>
               <button type="button" class="btn btn-success" value="searchm60" onClick={(e)=>clickFilter(e)} >มากกว่า 60 วัน</button>
               <button type="button" class="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >เกินกำหนด</button>
-              <button type="button" class="btn btn-secondary" value="canceldue" onClick={(e)=>clickFilter(e)} >ยกเลิกนัด</button>
+              {/* <button type="button" class="btn btn-secondary" value="canceldue" onClick={(e)=>clickFilter(e)} >ยกเลิกนัด</button> */}
             </div>
             <div className="col-4">
               <TextField

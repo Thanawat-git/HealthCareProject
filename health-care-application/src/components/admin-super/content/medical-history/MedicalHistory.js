@@ -158,18 +158,6 @@ export default function MedicalHistory() {
       <section className="content">
         <div className="container-fluid">
           <div className="row">
-          {/* <div className="col-6" style={{ paddingRight: 20}}> */}
-                {/* search by name lastname or id */}
-            {/* <TextField
-            style={{ marginTop: 11}}
-            label="ค้นหาโดยการกรอกชื่อ-นามสกุล"
-            onChange={handleChange}
-            name="keyword"
-            value={keyword}
-            InputProps={{endAdornment: (<InputAdornment position="end"><SearchIcon /></InputAdornment>),}}
-            fullWidth
-            />
-          </div> */}
             <div className="col-12">
               {/* Filter */}
               <h6>ช่วงเวลา</h6>
@@ -183,7 +171,7 @@ export default function MedicalHistory() {
                 value={y1}
                 onChange={handleChange}
                 >
-                <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value=""><em>All</em></MenuItem>
                 {years.map(v=>{return (<MenuItem value={`${v}`}>{v}</MenuItem>)})}
                 </Select>
             </FormControl>
@@ -197,7 +185,7 @@ export default function MedicalHistory() {
                 value={m1}
                 onChange={handleChange}
                 >
-                <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value=""><em>All</em></MenuItem>
                 {Months.map((value,index)=>{
                   if(index+1<=9){
                     return <MenuItem value={`0${index+1}`}>{value}</MenuItem>
@@ -218,7 +206,7 @@ export default function MedicalHistory() {
                 value={y2}
                 onChange={handleChange}
                 >
-                <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value=""><em>All</em></MenuItem>
                 {years.map(v=>{return (<MenuItem value={`${v}`}>{v}</MenuItem>)})}
                 </Select>
             </FormControl>
@@ -232,7 +220,7 @@ export default function MedicalHistory() {
                 value={m2}
                 onChange={handleChange}
                 >
-                <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value=""><em>All</em></MenuItem>
                 {Months.map((value,index)=>{
                   if(index+1<=9){
                     return <MenuItem value={`0${index+1}`}>{value}</MenuItem>
@@ -288,99 +276,6 @@ export default function MedicalHistory() {
     </React.Fragment>
   );
 }
-
-// const testArr = [
-//   {
-//     id: 1,
-//     name: "AA",
-//     date: "2563-01-01",
-//   },
-//   {
-//     id: 2,
-//     name: "B",
-//     date: "2563-01-01",
-//   },
-//   {
-//     id: 3,
-//     name: "CA",
-//     date: "2563-01-01",
-//   },
-//   {
-//     id: 4,
-//     name: "DA",
-//     date: "2562-01-01",
-//   },
-//   {
-//     id: 5,
-//     name: "E",
-//     date: "2562-01-01",
-//   },
-//   {
-//     id: 6,
-//     name: "F",
-//     date: "2563-02-01",
-//   },
-//   {
-//     id: 7,
-//     name: "G",
-//     date: "2563-02-01",
-//   },
-//   {
-//     id: 8,
-//     name: "H",
-//     date: "2562-02-01",
-//   },
-//   {
-//     id: 9,
-//     name: "I",
-//     date: "2562-03-01",
-//   },
-//   {
-//     id: 10,
-//     name: "J",
-//     date: "2562-04-01",
-//   },
-//   {
-//     id: 16,
-//     name: "J",
-//     date: "2561-04-01",
-//   },
-//   {
-//     id: 17,
-//     name: "J",
-//     date: "2561-04-01",
-//   },
-//   {
-//     id: 18,
-//     name: "J",
-//     date: "2561-04-01",
-//   },
-//   {
-//     id: 11,
-//     name: "K",
-//     date: "2560-01-01",
-//   },
-//   {
-//     id: 12,
-//     name: "P",
-//     date: "2560-01-01",
-//   },
-//   {
-//     id: 13,
-//     name: "PS",
-//     date: "2560-12-01",
-//   },
-//   {
-//     id: 14,
-//     name: "SP",
-//     date: "2560-10-01",
-//   },
-//   {
-//     id: 15,
-//     name: "V",
-//     date: "2560-10-01",
-//   },
-// ];
 
 const Months = [
     "มกราคม",

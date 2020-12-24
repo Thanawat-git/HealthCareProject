@@ -13,6 +13,9 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
+  FormControlLabel,
+  Switch,
+  Grid,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "moment/locale/th";
@@ -25,7 +28,20 @@ export default function ShowHistory({ value }) {
   const dispatch = useDispatch();
   const historyReducer = useSelector(({ historyReducer }) => historyReducer);
   const [open, setOpen] = useState(false);
+  const [openAll, setopenAll] = useState(false)
+  const [openState, setopenState] = useState({
+    open1:false,open2:false,open3:false,open4:false,open5:false,open6:false,open7:false,open8:false,open9:false,
+  })
+  const {open1,open2,open3,open4,open5,open6,open7,open8,open9} = openState
+
+  const handleClick = (name,value) => {
+    // console.log('event.target.value ',value)
+    setopenState({ ...openState, [name]: !value })
+  }
   
+  useEffect(() => {
+    
+  }, [openAll])
   const selectHistory = (id) => {
     dispatch(historyAction.getHistorySelected(id))
     // setTimeout(() => {
@@ -70,7 +86,7 @@ export default function ShowHistory({ value }) {
     if(historyReducer.isError===false) {
       return (
         <React.Fragment>
-        <Accordion>
+        <Accordion expanded={open1} onClick={()=>handleClick("open1",open1)}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
           >
@@ -152,7 +168,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด */}
-        <Accordion> 
+        <Accordion expanded={open2} onClick={()=>handleClick("open2",open2)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
           >
@@ -166,7 +182,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบคัดกรองสุขภาพตา */}
-        <Accordion> 
+        <Accordion expanded={open3} onClick={()=>handleClick("open3",open3)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -183,7 +199,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบประเมินสุขภาพช่องปาก */}
-        <Accordion> 
+        <Accordion expanded={open4} onClick={()=>handleClick("open4",open4)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -200,7 +216,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบประเมินสมรรถนะ, abi_group, TAI */}
-        <Accordion> 
+        <Accordion expanded={open5} onClick={()=>handleClick("open5",open5)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -224,7 +240,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบประเมินภาวะสมองเสื่อม, mmse_result */}
-        <Accordion> 
+        <Accordion expanded={open6} onClick={()=>handleClick("open6",open6)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -248,7 +264,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบคัดกรองโรคซึมเศร้า, dep_result, 9q */}
-        <Accordion> 
+        <Accordion expanded={open7} onClick={()=>handleClick("open7",open7)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -270,7 +286,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบประเมินสุขภาพกระดูกและกล้ามเนื้อ ข้อเข่าเสื่อม */}
-        <Accordion> 
+        <Accordion expanded={open8} onClick={()=>handleClick("open8",open8)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -314,7 +330,7 @@ export default function ShowHistory({ value }) {
         </Accordion>
 
         {/* แบบคัดกรองการกลั้นปัสสาวะ */}
-        <Accordion> 
+        <Accordion expanded={open9} onClick={()=>handleClick("open9",open9)}> 
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-label="Expand"
@@ -361,6 +377,19 @@ export default function ShowHistory({ value }) {
           วัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
         </DialogTitle>
         <DialogContent dividers="paper">
+          <Grid container justify="flex-end">
+            <FormControlLabel
+                control={
+                  <Switch
+                    checked={openAll}
+                    onChange={(event)=>setopenAll(event.target.checked)}
+                    name="checkedB"
+                    color="primary"
+                  />
+                }
+                label="ดูทั้งหมด"
+              />
+          </Grid>
           <DialogContentText>
             {/* Accordion */}
             {historyShow()}
