@@ -267,6 +267,8 @@ export default function AddNewAdmin({selectValue}) {
                 <TextField
                   name="adminId"
                   value={adminId}
+                  type="number"
+                  maxlength="13"
                   onChange={onChange}
                   label="เลขประจำตัวประชาชน"
                   variant="outlined"
@@ -411,9 +413,7 @@ export default function AddNewAdmin({selectValue}) {
                       value={position}
                       onChange={e=>setPosition(e.target.value)}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
+                      <MenuItem value=""><em>ไม่มี</em></MenuItem>
                       <MenuItem value="พยาบาลวิชาชีพ">พยาบาลวิชาชีพ</MenuItem>
                       <MenuItem value="นักกายภาพบำบัด">นักกายภาพบำบัด</MenuItem>
                       <MenuItem value="นักวิชาการสาธารสุข">นักวิชาการสาธารสุข</MenuItem>

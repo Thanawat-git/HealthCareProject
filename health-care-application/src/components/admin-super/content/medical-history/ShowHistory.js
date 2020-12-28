@@ -48,9 +48,7 @@ export default function ShowHistory({ value }) {
   }, [openAll])
   const selectHistory = (id) => {
     dispatch(historyAction.getHistorySelected(id))
-    // setTimeout(() => {
       setOpen(true);
-    // }, 200);
   };
   const handleClose = () => {
     setOpen(false);

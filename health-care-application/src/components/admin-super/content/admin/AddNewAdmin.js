@@ -91,6 +91,18 @@ export default function AddNewAdmin() {
     console.log(e.target.value)
     setState({...state, [e.target.name]:e.target.value})
   }
+  //----------------- Error State ----------------------//
+  const [error1, setError1] = useState(false)
+  const [errorText1, setErrorText1] = useState(false)
+  const [error2, setError2] = useState(false)
+  const [error3, setError3] = useState(false)
+  const [error4, setError4] = useState(false)
+  const [error5, setError5] = useState(false)
+  const [error6, setError6] = useState(false)
+  const [error7, setError7] = useState(false)
+  const [error8, setError8] = useState(false)
+  //----------------- Error State ----------------------//
+  
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
@@ -184,6 +196,47 @@ export default function AddNewAdmin() {
     setDay(value);
   }
 
+  const checkValue = ()=>{
+    let count = 0
+    if(`${adminId}`.length!=13){
+      setError1(true)
+      setErrorText1("กรอกเลขประจำตัวประชาชน 13 หลัก")
+      count+=1
+    } else {
+      setError1(false)
+      setErrorText1("")
+    }
+    if(preName=="" || preName==null){
+      setError2(true)
+      count+=1
+    } else {setError2(false)}
+    if(fName=="" || fName==null){
+      setError3(true)
+      count+=1
+    } else {setError3(false)}
+    if(lName=="" || lName==null){
+      setError4(true)
+      count+=1
+    } else {setError4(false)}
+    if(phone=="" || phone==null){
+      setError5(true)
+      count+=1
+    } else {setError5(false)}
+    if(yea=="" || yea==null){
+      setError6(true)
+      count+=1
+    } else {setError6(false)}
+    if(mon=="" || mon==null){
+      setError7(true)
+      count+=1
+    } else {setError7(false)}
+    if(day=="" || day==null){
+      setError8(true)
+      count+=1
+    } else {setError8(false)}
+    count==0 && submitNewStaff()
+  }
+
   const submitNewStaff = () => {
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
@@ -211,6 +264,15 @@ export default function AddNewAdmin() {
     setMon('')
     setDay('')
     setState({adminId:'',fName:'',lName:'',phone:'',email:''})
+    setError1(false)
+    setErrorText1("")
+    setError2(false)
+    setError3(false)
+    setError4(false)
+    setError5(false)
+    setError6(false)
+    setError7(false)
+    setError8(false)
     setOpen(false)
   }
   return (
@@ -272,15 +334,20 @@ export default function AddNewAdmin() {
                 <TextField
                   name="adminId"
                   value={adminId}
+                  type="number"
                   onChange={onChange}
+                  onInput={(e) => {e.target.value = e.target.value.slice(0, 13)}}
+                  helperText={errorText1}
                   label="เลขประจำตัวประชาชน"
                   variant="outlined"
                   fullWidth
+                  error={error1}
+                  required
                 />
               </div>
               <div className="col-6 inputFill">
                 <div className="inputadd-group">
-                  <FormControl className="pre-name" variant="outlined">
+                  <FormControl className="pre-name" variant="outlined" error={error2}>
                     <InputLabel>คำนำหน้า</InputLabel>
                     <Select
                       open={open2}
@@ -302,6 +369,8 @@ export default function AddNewAdmin() {
                     onChange={onChange}
                     variant="outlined"
                     fullWidth
+                    error={error3}
+                    required
                   />
                 </div>
               </div>
@@ -313,6 +382,8 @@ export default function AddNewAdmin() {
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
+                  error={error4}
+                  required
                 />
               </div>
               <div className="col-12 inputFill">
@@ -321,8 +392,12 @@ export default function AddNewAdmin() {
                   variant="outlined"
                   name="phone"
                   value={phone}
+                  type="number"
+                  onInput={(e) => {e.target.value = e.target.value.slice(0, 10)}}
                   onChange={onChange}
                   fullWidth
+                  error={error5}
+                  required
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -338,6 +413,7 @@ export default function AddNewAdmin() {
                   variant="outlined"
                   name="email"
                   value={email}
+                  type="email"
                   onChange={onChange}
                   fullWidth
                   InputProps={{
@@ -363,6 +439,7 @@ export default function AddNewAdmin() {
                       label="ปี พ.ศ. เกิด"
                       variant="outlined"
                       onClick={getyear}
+                      error={error6}
                     />
                   )}
                 />
@@ -380,6 +457,7 @@ export default function AddNewAdmin() {
                       {...params}
                       label="เดือนเกิด"
                       variant="outlined"
+                      error={error7}
                     />
                   )}
                 />
@@ -398,6 +476,7 @@ export default function AddNewAdmin() {
                       label="วันเกิด"
                       variant="outlined"
                       onClick={getday}
+                      error={error8}
                     />
                   )}
                 />
@@ -406,6 +485,7 @@ export default function AddNewAdmin() {
                 <FormControl variant="outlined" fullWidth >
                     <InputLabel style={{backgroundColor: '#fff'}} >ตำแหน่งงาน</InputLabel>
                     <Select
+                      id="s0"
                       open={open3}
                       onClose={() => setOpen3(false)}
                       onOpen={() => setOpen3(true)}
@@ -413,12 +493,10 @@ export default function AddNewAdmin() {
                       value={position}
                       onChange={e=>setPosition(e.target.value)}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value="พยาบาลวิชาชีพ">พยาบาลวิชาชีพ</MenuItem>
-                      <MenuItem value="นักกายภาพบำบัด">นักกายภาพบำบัด</MenuItem>
-                      <MenuItem value="นักวิชาการสาธารสุข">นักวิชาการสาธารสุข</MenuItem>
+                      <MenuItem value="" id="s1" ><em>ไม่มี</em></MenuItem>
+                      <MenuItem value="พยาบาลวิชาชีพ" id="s2">พยาบาลวิชาชีพ</MenuItem>
+                      <MenuItem value="นักกายภาพบำบัด" id="s3">นักกายภาพบำบัด</MenuItem>
+                      <MenuItem value="นักวิชาการสาธารสุข" id="s4">นักวิชาการสาธารสุข</MenuItem>
                     </Select>
                   </FormControl>
               </div>
@@ -427,7 +505,7 @@ export default function AddNewAdmin() {
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
           <Button
-            onClick={() => submitNewStaff()}
+            onClick={() => checkValue()}
             size="large"
             variant="contained"
             color="primary"
