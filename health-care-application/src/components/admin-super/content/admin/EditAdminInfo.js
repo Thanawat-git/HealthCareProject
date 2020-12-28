@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -23,6 +24,8 @@ import {
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch, useSelector } from "react-redux";
 import * as adminAction from "../../../../actions/admin.action";
+import 'moment/locale/th';
+moment.locale("th");
 
 const SmallAvatar = withStyles((theme) => ({
   root: {
@@ -96,9 +99,18 @@ export default function AddNewAdmin({selectValue}) {
     console.log(e.target.value)
     setState({...state, [e.target.name]:e.target.value})
   }
-  const [yea, setYea] = useState(); //ปี
-  const [mon, setMon] = useState(); //เดือน
-  const [day, setDay] = useState(); //วัน
+  //----------------- Error State ----------------------//
+  const [error1, setError1] = useState(false)
+  const [errorText1, setErrorText1] = useState(false)
+  const [error2, setError2] = useState(false)
+  const [error3, setError3] = useState(false)
+  const [error4, setError4] = useState(false)
+  const [error5, setError5] = useState(false)
+  //----------------- Error State ----------------------//
+
+  const [yea, setYea] = useState(moment(selectValue.ADM_BIRTHDATE).format("yy")); //ปี
+  const [mon, setMon] = useState(moment(selectValue.ADM_BIRTHDATE).format("MMMM")); //เดือน
+  const [day, setDay] = useState(moment(selectValue.ADM_BIRTHDATE).format("d")); //วัน
   const [position, setPosition] = useState(selectValue.ADM_POSITION);
   const [preName, setpreName] = useState(selectValue.ADM_GENDER)
 
@@ -188,7 +200,34 @@ export default function AddNewAdmin({selectValue}) {
   function handleInputDayChange(event, value) {
     setDay(value);
   }
-
+  const checkValue = ()=>{
+    let count = 0
+    if(`${adminId}`.length!=13){
+      setError1(true)
+      setErrorText1("กรอกเลขประจำตัวประชาชน 13 หลัก")
+      count+=1
+    } else {
+      setError1(false)
+      setErrorText1("")
+    }
+    if(preName=="" || preName==null){
+      setError2(true)
+      count+=1
+    } else {setError2(false)}
+    if(fName=="" || fName==null){
+      setError3(true)
+      count+=1
+    } else {setError3(false)}
+    if(lName=="" || lName==null){
+      setError4(true)
+      count+=1
+    } else {setError4(false)}
+    if(phone=="" || phone==null){
+      setError5(true)
+      count+=1
+    } else {setError5(false)}
+    count==0 && submitNewStaff()
+  }
   const submitNewStaff = () => {
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
@@ -209,6 +248,12 @@ export default function AddNewAdmin({selectValue}) {
   };
   const onClose = ()=>{
     setOpen(false)
+  }
+  const openSelect =()=>{
+    setOpen2(true)
+  }
+  const colseSelect =()=>{
+    setOpen2(false)
   }
   return (
     <React.Fragment>
@@ -268,7 +313,6 @@ export default function AddNewAdmin({selectValue}) {
                   name="adminId"
                   value={adminId}
                   type="number"
-                  maxlength="13"
                   onChange={onChange}
                   label="เลขประจำตัวประชาชน"
                   variant="outlined"
@@ -281,15 +325,12 @@ export default function AddNewAdmin({selectValue}) {
                     <InputLabel>คำนำหน้า</InputLabel>
                     <Select
                       open={open2}
-                      onClose={() => setOpen2(false)}
-                      onOpen={() => setOpen2(true)}
+                      onClose={colseSelect}
+                      onOpen={openSelect}
                       name="preName"
                       value={preName}
                       onChange={e=>setpreName(e.target.value)}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
                       <MenuItem value="นาย">นาย</MenuItem>
                       <MenuItem value="นาง">นาง</MenuItem>
                       <MenuItem value="นางสาว">นางสาว</MenuItem>
