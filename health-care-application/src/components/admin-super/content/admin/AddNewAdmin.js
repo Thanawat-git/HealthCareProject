@@ -275,6 +275,12 @@ export default function AddNewAdmin() {
     setError8(false)
     setOpen(false)
   }
+  const openSelect =()=>{
+    setOpen2(true)
+  }
+  const colseSelect =()=>{
+    setOpen2(false)
+  }
   return (
     <React.Fragment>
       <Button
@@ -351,8 +357,8 @@ export default function AddNewAdmin() {
                     <InputLabel>คำนำหน้า</InputLabel>
                     <Select
                       open={open2}
-                      onClose={() => setOpen2(false)}
-                      onOpen={() => setOpen2(true)}
+                      onClose={colseSelect}
+                      onOpen={openSelect}
                       name="preName"
                       value={preName}
                       onChange={e=>setpreName(e.target.value)}
