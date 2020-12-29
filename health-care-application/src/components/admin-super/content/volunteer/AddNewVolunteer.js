@@ -536,7 +536,6 @@ export default function AddNewVolunteer() {
             <div className="col-xl-6 col-12 mb-15">
               <TextField
                 label="เลขที่"
-                type="number"
                 variant="outlined"
                 placeholder="เลขที่"
                 defaultValue={homeNumber}

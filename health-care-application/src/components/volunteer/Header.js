@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import './volunteer.css'
 import { Link,useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../actions/auth.action";
 
 const useStyles = makeStyles({
   root: {
@@ -37,14 +38,17 @@ const useStyles = makeStyles({
 });
 export default function Header() {
   const classes = useStyles();
-
-  
   const { url } = useRouteMatch();
   const [state, setState] = useState({
     left: false,
   });
-  const handlingButtonClick = () => {
-    //doing redirect here.
+  const { user } = useSelector((state) => state.authReducer);
+  useEffect(() => {
+    console.log('user ',user)
+  }, [])
+  const dispatch = useDispatch()
+  const logOut = () => {
+    dispatch(logout())
   };
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -67,9 +71,9 @@ export default function Header() {
           <ListItem button>
             <ListItemIcon>
               {" "}
-              <Avatar>U</Avatar>{" "}
+              <Avatar>{user.Fullname.substring(0,1)}</Avatar>{" "}
             </ListItemIcon>
-            <ListItemText primary="Volunteer User Name" />
+            <ListItemText primary={user.Fullname} />
           </ListItem>
         </Link>
       </List>
@@ -93,7 +97,7 @@ export default function Header() {
             <ListItemText primary="เปลี่ยนรหัสผ่าน" />
           </ListItem>
         </Link>
-        <Link to="/login">
+        <Link to="/login" onClick={logOut}>
           <ListItem button>
             <ListItemIcon>
               <ExitToAppIcon />
@@ -126,7 +130,7 @@ export default function Header() {
                </Link>
             </Typography>
            
-            <Link to="/login">
+            <Link to="/login" onClick={logOut} >
               <Button color="inherit">
                 <ExitToAppIcon />
               </Button>

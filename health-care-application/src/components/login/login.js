@@ -49,7 +49,6 @@ class Login extends Component {
                   className="btn-login solid"
                   onClick={e=>{
                     e.preventDefault()
-                    console.log('555')
                     this.props.loginVolunteer(this.props.history, this.state) //dispatch เรียกใช้งาน loginVolunteer ใน action
                   }}
                 />

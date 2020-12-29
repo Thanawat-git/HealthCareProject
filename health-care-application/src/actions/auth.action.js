@@ -28,7 +28,7 @@ export const loginVolunteer = (history, credential) => {
           type: HTTP_LOGIN_SUCCESS,
           payload: { user: data },
         });
-        history.push("/volunteer");
+        history.push("/volunteerpage");
         return Promise.resolve();
       },
       (error) => {
