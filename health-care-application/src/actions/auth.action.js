@@ -52,6 +52,41 @@ export const loginVolunteer = (history, credential) => {
   };
 };
 
+export const loginAdmin = (history, credential) => {
+  return (dispatch) => {
+    return AuthService.loginAdmin(
+      credential.username,
+      credential.password
+    ).then(
+      (data) => {
+        dispatch({
+          type: HTTP_LOGIN_SUCCESS,
+          payload: { user: data },
+        });
+        history.push("/genaraladminpage");
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        dispatch({ type: HTTP_LOGIN_FAILED });
+
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
+
+        return Promise.reject();
+      }
+    );
+  };
+};
+
 export const logout = () => (dispatch) => {
   AuthService.logout();
   dispatch({

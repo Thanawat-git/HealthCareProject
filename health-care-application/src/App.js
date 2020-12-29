@@ -51,9 +51,15 @@ export default function App() {
     return <Redirect to="/login" />;
   };
 
+  const redirectToMainPageVolunteer = ()=>{
+    return <Redirect to="/volunteerpage" />;
+  }
+
   return (
     <Router>
-      {/* <Switch> */}
+      {/* {
+        isLoggedIn && user.Role == "ADMIN" && 
+      } */}
         {
           isLoggedIn ? 
           <Switch>
@@ -80,8 +86,9 @@ export default function App() {
             <Route path="/sec9" component={sec9} />
             <Route path="/sec9-2" component={sec9_2} />
             <Route path="/sec10" component={sec10} />
-            {user.Role == "ADMIN" && <Route path="/superadminpage" component={SuperAdminPage} />}
-            {user.Role == "ADMIN" &&<Route path="/genaraladminpage" component={GenaralAdminPage} />}
+            <Route path="/superadminpage" component={SuperAdminPage} />
+
+            <Route path="/genaraladminpage" component={GenaralAdminPage} />
             
           </Switch>
           :
@@ -96,43 +103,6 @@ export default function App() {
             <Route exact={true} path="*" component={redirectToLogin}/>
           </Switch>
         }
-        {/* <Route path="/volunteerpage" component={MainVolunteer} />
-        <Route path="/editeld" component={EditInfo} />
-        
-        <Route path="/mainmenu" component={mainMenu} />
-        <Route path="/sec1-page1" component={sec1_1} />
-        <Route path="/sec1-page2" component={sec1_2} />
-        <Route path="/sec1-page3" component={sec1_3} />
-        <Route path="/sec1-page4" component={sec1_4} />
-        <Route path="/sec1-page5" component={sec1_5} />
-        <Route path="/sec1-page6" component={sec1_6} />
-        <Route path="/sec2" component={sec2} />
-        <Route path="/sec3" component={sec3} />
-        <Route path="/sec4" component={sec4} />
-        <Route path="/sec5" component={sec5} />
-        <Route path="/sec6" component={sec6} />
-        <Route path="/tai" component={tai} />
-        <Route path="/sec7" component={sec7} />
-        <Route path="/mmsi" component={mmsi} />
-        <Route path="/sec8" component={sec8_1} />
-        <Route path="/sec8-9q" component={sec8_9q} />
-        <Route path="/sec9" component={sec9} />
-        <Route path="/sec9-2" component={sec9_2} />
-        <Route path="/sec10" component={sec10} />
-
-        <Route path="/superadminpage" component={SuperAdminPage} />
-        <Route path="/genaraladminpage" component={GenaralAdminPage} /> */}
-
-        {/* <Route path="/reset-password" component={ResetPassword} />
-        <Route path="/verify" component={VerifyIdentity} /> */}
-
-        {/* <Route path="/login/admin" component={loginAdmin}/>
-        <Route path="/login/mobile" component={loginAdminMobile}/>
-        <Route path="/login" component={login}/>
-
-        <Route exact={true} path="/" component={redirectToLogin}/>
-        <Route exact={true} path="*" component={redirectToLogin}/> */}
-      {/* </Switch> */}
     </Router>
   );
 }

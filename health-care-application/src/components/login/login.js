@@ -42,7 +42,7 @@ class Login extends Component {
               {this.props.messageReducer.isError && <div class="alert alert-danger" role="alert">
                 username or password wrong!!!
               </div>}
-              <Link to="/Volunteer">
+              <Link>
                 <input
                   type="submit"
                   value="ลงชื่อเข้าใช้"
