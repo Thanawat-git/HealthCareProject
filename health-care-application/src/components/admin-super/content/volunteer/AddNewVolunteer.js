@@ -102,6 +102,17 @@ export default function AddNewVolunteer() {
     console.log(e.target.value)
     setState({...state, [e.target.name]:e.target.value})
   }
+  //----------------- Error State ----------------------//
+  const [error1, setError1] = useState(false)
+  const [errorText1, setErrorText1] = useState(false)
+  const [error2, setError2] = useState(false)
+  const [error3, setError3] = useState(false)
+  const [error4, setError4] = useState(false)
+  const [error5, setError5] = useState(false)
+  const [error6, setError6] = useState(false)
+  const [error7, setError7] = useState(false)
+  const [error8, setError8] = useState(false)
+  //----------------- Error State ----------------------//
   const [yea, setYea] = useState(); //ปี
   const [mon, setMon] = useState(); //เดือน
   const [day, setDay] = useState(); //วัน
@@ -192,14 +203,53 @@ export default function AddNewVolunteer() {
   function handleInputDayChange(event, value) {
     setDay(value);
   }
-
+  const checkValue = ()=>{
+    let count = 0
+    if(`${volId}`.length!=13){
+      setError1(true)
+      setErrorText1("กรอกเลขประจำตัวประชาชน 13 หลัก")
+      count+=1
+    } else {
+      setError1(false)
+      setErrorText1("")
+    }
+    if(preName=="" || preName==null){
+      setError2(true)
+      count+=1
+    } else {setError2(false)}
+    if(fName=="" || fName==null){
+      setError3(true)
+      count+=1
+    } else {setError3(false)}
+    if(lName=="" || lName==null){
+      setError4(true)
+      count+=1
+    } else {setError4(false)}
+    if(phone=="" || phone==null){
+      setError5(true)
+      count+=1
+    } else {setError5(false)}
+    if(yea=="" || yea==null){
+      setError6(true)
+      count+=1
+    } else {setError6(false)}
+    if(mon=="" || mon==null){
+      setError7(true)
+      count+=1
+    } else {setError7(false)}
+    if(day=="" || day==null){
+      setError8(true)
+      count+=1
+    } else {setError8(false)}
+    count==0 && submitNewStaff()
+  }
   const submitNewStaff = () => {
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
     var Age = nowYear - parseInt(yea);
-    const elderlyBirthday = `${yea}-${numMon}-${day}`
+    const volBirthday = `${yea}-${numMon}-${day}`
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -208,8 +258,8 @@ export default function AddNewVolunteer() {
       Age = Age;
     }
 
-    // const data = [volId,fName,lName,phone,facebook,line];
-    const data = [volId,fName,lName,phone,facebook,line,reference];
+    const data = [volId,fName,lName,phone,facebook,line,reference, preName, Age, volBirthday, 
+                  homeNumber,alley,street,subDistrict,area];
     dispatch(volAction.createVolunteer(data));
     onClose()
   };
@@ -221,6 +271,15 @@ export default function AddNewVolunteer() {
     setMon('')
     setDay('')
     setState({volId:'',fName:'',lName:'',phone:'',facebook:'',line:'',reference:''})
+    setError1(false)
+    setErrorText1("")
+    setError2(false)
+    setError3(false)
+    setError4(false)
+    setError5(false)
+    setError6(false)
+    setError7(false)
+    setError8(false)
     setHomeNummber('')
     setAlley('')
     setStreet('')
@@ -290,16 +349,17 @@ export default function AddNewVolunteer() {
                   type="number"
                   value={volId}
                   onChange={onChange}
+                  onInput={(e) => {e.target.value = e.target.value.slice(0, 13)}}
+                  helperText={errorText1}
                   variant="outlined"
                   fullWidth
-                  onInput = {(e) =>{
-                    e.target.value = e.target.value.slice(0,13)
-                }}//fix13digit
+                  error={error1}
+                  required
                 />
               </div>
               <div className="col-6 inputFill">
                 <div className="inputadd-group">
-                  <FormControl className="pre-name" variant="outlined">
+                  <FormControl className="pre-name" variant="outlined" error={error2}>
                     <InputLabel>คำนำหน้า</InputLabel>
                     <Select
                       open={open2}
@@ -321,6 +381,8 @@ export default function AddNewVolunteer() {
                     onChange={onChange}
                     variant="outlined"
                     fullWidth
+                    error={error3}
+                    required
                   />
                 </div>
               </div>
@@ -332,6 +394,8 @@ export default function AddNewVolunteer() {
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
+                  error={error4}
+                  required
                 />
               </div>
               <div className="col-4 birthday-fill inputFill">
@@ -348,6 +412,7 @@ export default function AddNewVolunteer() {
                       label="ปี พ.ศ. เกิด"
                       variant="outlined"
                       onClick={getyear}
+                      error={error6}
                     />
                   )}
                 />
@@ -365,6 +430,7 @@ export default function AddNewVolunteer() {
                       {...params}
                       label="เดือนเกิด"
                       variant="outlined"
+                      error={error7}
                     />
                   )}
                 />
@@ -383,6 +449,7 @@ export default function AddNewVolunteer() {
                       label="วันเกิด"
                       variant="outlined"
                       onClick={getday}
+                      error={error8}
                     />
                   )}
                 />
@@ -397,7 +464,9 @@ export default function AddNewVolunteer() {
                   fullWidth
                   onInput = {(e) =>{
                     e.target.value = e.target.value.slice(0,10)
-                }}//fix10digit
+                  }}//fix10digit
+                  error={error5}
+                  required
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -527,7 +596,7 @@ export default function AddNewVolunteer() {
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
           <Button
-            onClick={() => submitNewStaff()}
+            onClick={() => checkValue()}
             size="large"
             variant="contained"
             color="primary"

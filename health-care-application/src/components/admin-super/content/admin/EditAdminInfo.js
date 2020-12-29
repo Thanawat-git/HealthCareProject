@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -110,7 +110,7 @@ export default function AddNewAdmin({selectValue}) {
 
   const [yea, setYea] = useState(moment(selectValue.ADM_BIRTHDATE).format("yy")); //ปี
   const [mon, setMon] = useState(moment(selectValue.ADM_BIRTHDATE).format("MMMM")); //เดือน
-  const [day, setDay] = useState(moment(selectValue.ADM_BIRTHDATE).format("d")); //วัน
+  const [day, setDay] = useState(moment(selectValue.ADM_BIRTHDATE).format("D")); //วัน
   const [position, setPosition] = useState(selectValue.ADM_POSITION);
   const [preName, setpreName] = useState(selectValue.ADM_GENDER)
 
@@ -242,7 +242,7 @@ export default function AddNewAdmin({selectValue}) {
     } else {
       Age = Age;
     }
-    const data = [selectValue.ADM_ID_NUMBER,adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
+    const data = [selectValue.ADM_ID_NUMBER,adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad,selectValue.ADM_PASSWORD]
     dispatch(adminAction.updateAdmin(data))
     onClose()
   };
@@ -314,14 +314,18 @@ export default function AddNewAdmin({selectValue}) {
                   value={adminId}
                   type="number"
                   onChange={onChange}
+                  onInput={(e) => {e.target.value = e.target.value.slice(0, 13)}}
+                  helperText={errorText1}
                   label="เลขประจำตัวประชาชน"
                   variant="outlined"
                   fullWidth
+                  error={error1}
+                  required
                 />
               </div>
               <div className="col-6 inputFill">
                 <div className="inputadd-group">
-                  <FormControl className="pre-name" variant="outlined">
+                  <FormControl className="pre-name" variant="outlined" error={error2} >
                     <InputLabel>คำนำหน้า</InputLabel>
                     <Select
                       open={open2}
@@ -343,6 +347,8 @@ export default function AddNewAdmin({selectValue}) {
                     onChange={onChange}
                     variant="outlined"
                     fullWidth
+                    error={error3}
+                    required
                   />
                 </div>
               </div>
@@ -354,6 +360,8 @@ export default function AddNewAdmin({selectValue}) {
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
+                  error={error4}
+                  required
                 />
               </div>
               <div className="col-12 inputFill">
@@ -362,8 +370,10 @@ export default function AddNewAdmin({selectValue}) {
                   variant="outlined"
                   name="phone"
                   value={phone}
+                  onInput={(e) => {e.target.value = e.target.value.slice(0, 10)}}
                   onChange={onChange}
                   fullWidth
+                  error={error5}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -466,7 +476,7 @@ export default function AddNewAdmin({selectValue}) {
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
           <Button
-            onClick={() => submitNewStaff()}
+            onClick={() => checkValue()}
             size="large"
             variant="contained"
             color="primary"

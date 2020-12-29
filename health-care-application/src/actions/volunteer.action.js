@@ -34,22 +34,44 @@ export const createVolunteer = (payload) => {
       VOL_STATUS: true,
       updateBy: "1000000000001",
     });
+    await Axios.post(`${apiVol}/information/create`,{
+      VOL_ID_NUMBER: payload[0],
+      VOL_GENDER: payload[7],
+      VOL_AGE: payload[8],
+      VOL_BIRTHDATE: payload[9],
+      VOL_ADDR_NUMBER: payload[10],
+      VOL_ADDR_ALLEY: payload[11],
+      VOL_ADDR_STREET: payload[12],
+      VOL_ADDR_SUB_DISTRICT: payload[13],
+      VOL_ADDR_AREA: payload[14],
+      updateBy: "1000000000001",
+    })
     await doGetVolunteer(dispatch);
   };
 };
-
+  
 export const updateVolunteer = (payload) => {
     return async dispatch => {
         await Axios.put(`${apiVol}/update/${payload[0]}`,{
-            VOL_ID_NUMBER: payload[1],
-            VOL_PASSWORD: payload[1],
-            VOL_FIRSTNAME: payload[2],
-            VOL_LASTNAME: payload[3],
-            VOL_PHONE: payload[4],
-            VOL_LINE: payload[5],
-            VOL_FACEBOOK: payload[6],
-            VOL_REFERENCE:payload[7]
-
+          VOL_ID_NUMBER: payload[1],
+          VOL_PASSWORD: payload[2],
+          VOL_FIRSTNAME: payload[3],
+          VOL_LASTNAME: payload[4],
+          VOL_PHONE: payload[5],
+          VOL_LINE: payload[6],
+          VOL_FACEBOOK: payload[7],
+          VOL_REFERENCE:payload[8]
+        })
+        await Axios.put(`${apiVol}/information/update/${payload[0]}`, {
+          VOL_ID_NUMBER: payload[1],
+          VOL_GENDER: payload[9],
+          VOL_AGE: payload[10],
+          VOL_BIRTHDATE: payload[11],
+          VOL_ADDR_NUMBER: payload[12],
+          VOL_ADDR_ALLEY: payload[13],
+          VOL_ADDR_STREET: payload[14],
+          VOL_ADDR_SUB_DISTRICT: payload[15],
+          VOL_ADDR_AREA: payload[16],
         })
         await doGetVolunteer(dispatch);
     }

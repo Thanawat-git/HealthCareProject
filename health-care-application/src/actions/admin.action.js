@@ -42,7 +42,7 @@ export const updateAdmin = (payload) => {
   return async dispatch=>{
     await Axios.put(`${apiAdmin}/update/${payload[0]}`, {
       ADM_ID_NUMBER: payload[1],
-      ADM_PASSWORD: payload[1],
+      ADM_PASSWORD: payload[10],
       ADM_FIRSTNAME: payload[2],
       ADM_LASTNAME: payload[3],
       ADM_PHONE: payload[4],

@@ -27,10 +27,10 @@ export default function VolunteerContent() {
           return (
           <tr key={value.VOL_ID_NUMBER} onClick={() => console.log("xxx")}>
             <td>{index+1}</td>
-            <td>{value.VOL_FIRSTNAME} {value.VOL_LASTNAME}</td>
-            <td>{value.VOL_PHONE}</td>
-            <td>{value.VOL_ID_NUMBER}</td>
-            <td>{value.VOL_LINE}</td>
+            <td>{value.VOLUNTEER.VOL_FIRSTNAME} {value.VOLUNTEER.VOL_LASTNAME}</td>
+            <td>{value.VOLUNTEER.VOL_PHONE}</td>
+            <td>{value.VOLUNTEER.VOL_ID_NUMBER}</td>
+            <td>{value.VOLUNTEER.VOL_LINE}</td>
             <td style={{ textAlign: "center" }}>
               <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>

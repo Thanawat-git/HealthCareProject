@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -24,6 +25,8 @@ import {
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch } from "react-redux";
 import * as volAction from "../../../../actions/volunteer.action";
+import 'moment/locale/th';
+moment.locale("th");
 
 const SmallAvatar = withStyles((theme) => ({
   root: {
@@ -82,24 +85,37 @@ export default function EditVolunteerInfo({selectValue}) {
   const [open2, setOpen2] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageUpload, setImageUpload] = useState(null);
-  const [preName, setpreName] = useState(null)
+  const [preName, setpreName] = useState(selectValue.VOL_GENDER)
   const [state, setState] = useState({
-    volId:selectValue.VOL_ID_NUMBER,fName:selectValue.VOL_FIRSTNAME,lName:selectValue.VOL_LASTNAME,phone:selectValue.VOL_PHONE,facebook:selectValue.VOL_FACEBOOK,line:selectValue.VOL_LINE,reference:selectValue.VOL_REFERENCE});
+    volId:selectValue.VOL_ID_NUMBER,
+    fName:selectValue.VOLUNTEER.VOL_FIRSTNAME,
+    lName:selectValue.VOLUNTEER.VOL_LASTNAME,
+    phone:selectValue.VOLUNTEER.VOL_PHONE,
+    facebook:selectValue.VOLUNTEER.VOL_FACEBOOK,
+    line:selectValue.VOLUNTEER.VOL_LINE,
+    reference:selectValue.VOLUNTEER.VOL_REFERENCE});
   const {volId,fName,lName,phone,facebook,line,reference} = state
-  const [homeNumber, setHomeNummber] = useState(''); //บ้านเลขที่
-  const [alley, setAlley] = useState(''); //ตรอก ซอย
-  const [street, setStreet] = useState(''); //ถนน
-  const [subDistrict, setSubDistrict] = useState(''); // ตำบล
-  const [area, setArea] = useState(''); // ชุมชน
+  const [homeNumber, setHomeNummber] = useState(selectValue.VOL_ADDR_NUMBER); //บ้านเลขที่
+  const [alley, setAlley] = useState(selectValue.VOL_ADDR_ALLEY); //ตรอก ซอย
+  const [street, setStreet] = useState(selectValue.VOL_ADDR_STREET); //ถนน
+  const [subDistrict, setSubDistrict] = useState(selectValue.VOL_ADDR_SUB_DISTRICT); // ตำบล
+  const [area, setArea] = useState(selectValue.VOL_ADDR_AREA); // ชุมชน
   const dispatch = useDispatch();
   const onChange = (e)=>{
     console.log(e.target.value)
     setState({...state, [e.target.name]:e.target.value})
   }
-  const [yea, setYea] = useState(); //ปี
-  const [mon, setMon] = useState(); //เดือน
-  const [day, setDay] = useState(); //วัน
-
+  //----------------- Error State ----------------------//
+  const [error1, setError1] = useState(false)
+  const [errorText1, setErrorText1] = useState(false)
+  const [error2, setError2] = useState(false)
+  const [error3, setError3] = useState(false)
+  const [error4, setError4] = useState(false)
+  const [error5, setError5] = useState(false)
+  //----------------- Error State ----------------------//
+  const [yea, setYea] = useState(moment(selectValue.VOL_BIRTHDATE).format("yy")); //ปี
+  const [mon, setMon] = useState(moment(selectValue.VOL_BIRTHDATE).format("MMMM")); //เดือน
+  const [day, setDay] = useState(moment(selectValue.VOL_BIRTHDATE).format("D")); //วัน
   //   date picker
   const [years, setYears] = useState([]);
   const [days, setDays] = useState([]);
@@ -186,13 +202,41 @@ export default function EditVolunteerInfo({selectValue}) {
   function handleInputDayChange(event, value) {
     setDay(value);
   }
-
+  const checkValue = ()=>{
+    let count = 0
+    if(`${volId}`.length!=13){
+      setError1(true)
+      setErrorText1("กรอกเลขประจำตัวประชาชน 13 หลัก")
+      count+=1
+    } else {
+      setError1(false)
+      setErrorText1("")
+    }
+    if(preName=="" || preName==null){
+      setError2(true)
+      count+=1
+    } else {setError2(false)}
+    if(fName=="" || fName==null){
+      setError3(true)
+      count+=1
+    } else {setError3(false)}
+    if(lName=="" || lName==null){
+      setError4(true)
+      count+=1
+    } else {setError4(false)}
+    if(phone=="" || phone==null){
+      setError5(true)
+      count+=1
+    } else {setError5(false)}
+    count==0 && submitNewStaff()
+  }
   const submitNewStaff = () => {
     const nowDate = new Date();
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
     var Age = nowYear - parseInt(yea);
+    const volBirthday = `${yea}-${numMon}-${day}`
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -201,7 +245,12 @@ export default function EditVolunteerInfo({selectValue}) {
       Age = Age;
     }
 
-    const data = [selectValue.VOL_ID_NUMBER,volId,fName,lName,phone,line,facebook,reference];
+    const data = [
+      selectValue.VOL_ID_NUMBER,volId,
+      selectValue.VOLUNTEER.VOL_PASSWORD,
+      fName,lName,phone,line,facebook,reference,
+      preName,Age,volBirthday,homeNumber,alley,street,subDistrict,area
+    ];
     dispatch(volAction.updateVolunteer(data));
     setOpen(false)
   };
@@ -271,14 +320,15 @@ export default function EditVolunteerInfo({selectValue}) {
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
-                  onInput = {(e) =>{
-                    e.target.value = e.target.value.slice(0,13)
-                }}//fix13digit
+                  onInput={(e) => {e.target.value = e.target.value.slice(0, 13)}}
+                  helperText={errorText1}
+                  error={error1}
+                  required
                 />
               </div>
               <div className="col-6 inputFill">
                 <div className="inputadd-group">
-                  <FormControl className="pre-name" variant="outlined">
+                  <FormControl className="pre-name" variant="outlined" error={error2}>
                     <InputLabel>คำนำหน้า</InputLabel>
                     <Select
                       open={open2}
@@ -303,6 +353,8 @@ export default function EditVolunteerInfo({selectValue}) {
                     onChange={onChange}
                     variant="outlined"
                     fullWidth
+                    error={error3}
+                    required
                   />
                 </div>
               </div>
@@ -314,6 +366,8 @@ export default function EditVolunteerInfo({selectValue}) {
                   onChange={onChange}
                   variant="outlined"
                   fullWidth
+                  error={error4}
+                  required
                 />
               </div>
               <div className="col-4 birthday-fill inputFill">
@@ -379,7 +433,9 @@ export default function EditVolunteerInfo({selectValue}) {
                   fullWidth
                   onInput = {(e) =>{
                     e.target.value = e.target.value.slice(0,10)
-                }}//fix10digit
+                  }}//fix10digit
+                  error={error5}
+                  required
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -510,7 +566,7 @@ export default function EditVolunteerInfo({selectValue}) {
         </DialogContent>
         <DialogActions className="customized-dialog-footer">
           <Button
-            onClick={() => submitNewStaff()}
+            onClick={() => checkValue()}
             size="large"
             variant="contained"
             color="primary"
