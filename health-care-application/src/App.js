@@ -36,7 +36,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { autoLogin } from "./actions/auth.action";
 
 function PrivateRoute({ children, ...rest }) {
-  const { isLoggedIn, user } = useSelector((state) => state.authReducer)
+  const { isLoggedIn } = useSelector((state) => state.authReducer)
   return (
     <Route {...rest} render={({ location }) => {
       console.log('location pathname ',location.pathname)
@@ -67,6 +67,9 @@ function GAminRoute({ children, ...rest }) {
 
 export default function App() {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer);
+  useEffect(() => {
+    console.log('isLoggedIn ',isLoggedIn)
+  }, [])
   const redirectToLogin = () => {
     return <Redirect to="/login" />;
   };
