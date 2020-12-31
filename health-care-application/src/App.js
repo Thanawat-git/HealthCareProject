@@ -7,7 +7,6 @@ import {
   Switch,
   Route,
   Redirect,
-  useRouteMatch,
 } from "react-router-dom";
 import VerifyIdentity from "./components/verify-identity/verify-identity";
 import ResetPassword from "./components/reset-password/reset-password";
@@ -36,7 +35,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { autoLogin } from "./actions/auth.action";
 
-function VolunteerRoute({ children, ...rest }) {
+function PrivateRoute({ children, ...rest }) {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer)
   return (
     <Route {...rest} render={({ location }) => {
@@ -44,7 +43,7 @@ function VolunteerRoute({ children, ...rest }) {
       return isLoggedIn ?
         children
         : <Redirect to={{
-            pathname: '/volunteerpage',
+            pathname: '/login',
             state: { from: location } 
           }} />
     }} />
@@ -55,6 +54,7 @@ function GAminRoute({ children, ...rest }) {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer)
   return (
     <Route {...rest} render={({ location }) => {
+      console.log('user.Role ',user.Role)
       return isLoggedIn && user.Role =="ADMIN" ?
         children
         : <Redirect to={{
@@ -71,24 +71,23 @@ export default function App() {
     return <Redirect to="/login" />;
   };
   return (
-    <React.Fragment>
+    // <React.Fragment>
     <Router>
       <Switch>
-        <VolunteerRoute path='/volunteerpage' component={MainVolunteer} />
-
         <GAminRoute path='/genaraladminpage' component={GenaralAdminPage} />
 
-        <Route path="/editeld" component={EditInfo} />
-        <Route path="/mainmenu" component={mainMenu} />
-        <Route path="/sec1-page1" component={sec1_1} />
-        <Route path="/sec1-page2" component={sec1_2} />
-        <Route path="/sec1-page3" component={sec1_3} />
-        <Route path="/sec1-page4" component={sec1_4} />
-        <Route path="/sec1-page5" component={sec1_5} />
-        <Route path="/sec1-page6" component={sec1_6} />
+        <PrivateRoute path='/volunteerpage' component={MainVolunteer} />
+        <PrivateRoute path="/editeld" component={EditInfo} />
+        <PrivateRoute path="/mainmenu" component={mainMenu} />
+        <PrivateRoute path="/sec1-page1" component={sec1_1} />
+        <PrivateRoute path="/sec1-page2" component={sec1_2} />
+        <PrivateRoute path="/sec1-page3" component={sec1_3} />
+        <PrivateRoute path="/sec1-page4" component={sec1_4} />
+        <PrivateRoute path="/sec1-page5" component={sec1_5} />
+        <PrivateRoute path="/sec1-page6" component={sec1_6} />
         
-        <Route path="/superadminpage" component={SuperAdminPage} />
-
+        <PrivateRoute path="/superadminpage" component={SuperAdminPage} />
+        
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/verify" component={VerifyIdentity} />
         <Route path="/login/admin" component={loginAdmin}/>
@@ -99,6 +98,6 @@ export default function App() {
         <Route exact={true} path="*" component={redirectToLogin}/>
       </Switch>
     </Router>
-    </React.Fragment>
+    // </React.Fragment>
   );
 }
