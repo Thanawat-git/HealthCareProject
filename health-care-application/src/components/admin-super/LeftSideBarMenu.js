@@ -1,22 +1,12 @@
 import React, { useEffect,useState } from "react";
 import logo1 from "../images/logo-saensukcity.png";
 import { Link, useRouteMatch } from "react-router-dom";
-import Axios from "axios";
-import { apiBase } from "../../constants";
+import { useSelector } from "react-redux";
 
 export default function LeftSideBarMenu() {
   const { url } = useRouteMatch();
   const [countFollowUp, setcountFollowUp] = useState(null)
-  // --------------------Get Count of Number To Show on Left Menu---------------//
-  // useEffect(() => {
-  //   // จำนวนทั้งหมดของ follow up
-  //   Axios.get(`${apiBase}/appointment/search`).then(res=>{
-  //     setcountFollowUp(res.data.length)
-  //   }).catch(err=>{
-  //     setcountFollowUp(null)
-  //   })
-  // }, [])
-  // --------------------Get Count of Number To Show on Left Menu---------------//
+  const user = useSelector(({authReducer}) => authReducer.user);
 
   return (
     <React.Fragment>
@@ -47,12 +37,14 @@ export default function LeftSideBarMenu() {
                 </Link>
               </li>
 
-              <li className="nav-item">
+              {user.Role!=="ADMIN" && user.Role!=="VOLUNTEER" && 
+                <li className="nav-item">
                 <Link to={`${url}/admin-content`} className="nav-link">
                   <i className="nav-icon fas fa-users-cog" />
                   <p>จัดการผู้ดูแลระบบ</p>
                 </Link>
-              </li>
+                </li>
+              }
 
               <li className="nav-item">
                 <Link to={`${url}/volunteer-content`} className="nav-link">

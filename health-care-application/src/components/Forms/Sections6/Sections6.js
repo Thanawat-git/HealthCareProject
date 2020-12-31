@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
+import { RadioGroup, Radio, FormControlLabel, makeStyles, } from "@material-ui/core";
+import { Modal, Button } from "react-bootstrap";
 import "../form-style.css";
 import "../../genaralConfig.css";
-import ShowResultPopup from "../ResuleShowsPopUp";
+// import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms6.action";
 
+const useStyles = makeStyles({
+  root: {
+    width: "100%",
+  },
+});
+
 export default function Sections6() {
+  const classes = useStyles();
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const { user } = useSelector((state) => state.authReducer);
+
   const dispatch = useDispatch();
   const [ans6_1, setAns6_1] = useState(forms6Reducer.ans6_1);
   const [ans6_2, setAns6_2] = useState(forms6Reducer.ans6_2);
@@ -427,7 +437,7 @@ export default function Sections6() {
           </button>
         </div>
       </form>
-      <ShowResultPopup
+      {/* <ShowResultPopup
         title="ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ"
         result={resultsTai}
         show={show}
@@ -435,7 +445,68 @@ export default function Sections6() {
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
-      />
+      /> */}
+
+      <Modal
+        show={show}
+        onHide={() => setShow(false)}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <div className="row">
+            <div className="col-12 col-xl-3 title-result">
+              <p> ผลการประเมิน </p>
+            </div>
+            <div className="col-12 col-xl-9 result-result">
+              <strong>
+                <p> {resultsTai} </p>
+              </strong>
+            </div>
+          </div>
+        </Modal.Body>
+
+        <Modal.Footer>
+          {group !=1 ? (
+            <React.Fragment>
+              {
+                user.Role !== 'VOLUNTEER' ? (
+                <Link to="/mainmenu/tai" className={classes.root}>
+                <Button
+                  variant="primary"
+                  block
+                  onClick={saveDataToServer}
+                >
+                  ทำแบบประเมิน TAI Classified
+                </Button>
+                </Link>
+                ) : (
+                <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={saveDataToServer}>
+                  ทำแบบประเมิน TAI Classified ติดต่อเจ้าหน้าที่
+                </Button>
+                </Link>
+                )
+              }
+            
+            </React.Fragment>
+          ) : (
+            <Link to="/mainmenu" className={classes.root}>
+              <Button
+                variant="primary"
+                block
+                onClick={saveDataToServer}
+              >
+                กลับสู่หน้าเมนูหลัก
+              </Button>
+            </Link>
+          )}
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

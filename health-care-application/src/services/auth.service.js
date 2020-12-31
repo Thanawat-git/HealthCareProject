@@ -18,11 +18,11 @@ const loginAdmin = (username, password) => {
     return Axios.post(`${apiBase}/admin/auth`, {
         ADM_ID_NUMBER: username,
         ADM_PASSWORD: password,
-    }).then(res=>{
-        if(res.data){
-            localStorage.setItem(USER, JSON.stringify(res.data))
+    }).then((response)=>{
+        if(response.data) {
+            localStorage.setItem(USER, JSON.stringify(response.data))
         }
-        return res.data
+        return response.data
     })
 }
 
@@ -32,5 +32,6 @@ const logout = () =>{
 
 export default {
     loginVolunteer,
+    loginAdmin,
     logout,
 }

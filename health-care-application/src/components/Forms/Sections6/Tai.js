@@ -11,8 +11,7 @@ export default function Sections6_Tai() {
   const formsTaiReducer = useSelector(({ formsTaiReducer }) => formsTaiReducer);
   const dispatch = useDispatch();
   const visId = useSelector(({ visitID }) => visitID.visiId);
-  const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
-
+  
   const [ans6_Im, setAns6_Im] = useState(formsTaiReducer.ans6_Im);
   const [ans6_Me, setAns6_Me] = useState(formsTaiReducer.ans6_Me);
   const [ans6_Fe, setAns6_Fe] = useState(formsTaiReducer.ans6_Fe);

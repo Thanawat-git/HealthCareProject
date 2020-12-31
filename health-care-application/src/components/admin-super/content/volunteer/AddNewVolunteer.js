@@ -258,7 +258,7 @@ export default function AddNewVolunteer() {
       Age = Age;
     }
 
-    const data = [volId,fName,lName,phone,facebook,line,reference, preName, Age, volBirthday, 
+    const data = [volId,fName,lName,phone,line,facebook,reference, preName, Age, volBirthday, 
                   homeNumber,alley,street,subDistrict,area];
     dispatch(volAction.createVolunteer(data));
     onClose()

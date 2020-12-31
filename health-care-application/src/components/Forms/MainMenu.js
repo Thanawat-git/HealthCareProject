@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, ListItem, ListItemIcon } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useRouteMatch, Route,} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SumaryReport from "./SumaryReport";
 import * as getAction from "../../actions/getAllFormToReucer.action";
 import Header from "../volunteer/Header";
-
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +27,10 @@ const useStyles = makeStyles({
 });
 
 function MainMenu(props) {
+  const { url, path } = useRouteMatch();
+  useEffect(() => {
+    console.log('url in mainmenu ', url, 'path ',path)
+  }, [])
   const collect2 = useSelector(({ forms2Reducer }) => forms2Reducer.collect);
   const collect3 = useSelector(({ forms3Reducer }) => forms3Reducer.collect);
   const collect4 = useSelector(({ forms4Reducer }) => forms4Reducer.collect);
@@ -102,6 +105,7 @@ function MainMenu(props) {
   const colorIcon = useStyles2();
   const visitID = useSelector(({ visitID }) => visitID.visiId);
   const peopleID = useSelector(({ visitID }) => visitID.peopleId);
+  const { user } = useSelector((state) => state.authReducer);
   let history = useHistory();
   const dispatch = useDispatch();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
@@ -121,7 +125,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec2(8));
         if (!forms2Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec2");
+            history.push(`${url}/sec2`);
           }, 200);
         }
         break;
@@ -129,7 +133,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec3(8));
         if (!forms3Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec3");
+            history.push(`${url}/sec3`);
           }, 200);
         }
         break;
@@ -137,7 +141,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec4(8));
         if (!forms4Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec4");
+            history.push(`${url}/sec4`);
           }, 200);
         }
         break;
@@ -145,7 +149,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec5(8));
         if (!forms5Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec5");
+            history.push(`${url}/sec5`);
           }, 200);
         }
         break;
@@ -153,7 +157,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec6(8));
         if (!forms6Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec6");
+            history.push(`${url}/sec6`);
           }, 200);
         }
         break;
@@ -161,7 +165,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec7(8));
         if (!forms7Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec7");
+            history.push(`${url}/sec7`);
           }, 200);
         }
         break;
@@ -169,7 +173,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec8(8));
         if (!forms8Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec8");
+            history.push(`${url}/sec8`);
           }, 200);
         }
         break;
@@ -177,7 +181,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec9(8));
         if (!forms9Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec9");
+            history.push(`${url}/sec9`);
           }, 200);
         }
         break;
@@ -185,7 +189,7 @@ function MainMenu(props) {
         dispatch(getAction.getDataSec10(8));
         if (!forms10Reducer.isFetching) {
           setTimeout(() => {
-            history.push("/sec10");
+            history.push(`${url}/sec10`);
           }, 200);
         }
         break;
@@ -195,7 +199,7 @@ function MainMenu(props) {
             dispatch(getAction.mmse(visitID));
             if (!forms7mReducer.isFetching) {
               setTimeout(() => {
-                history.push("/mmsi");
+                history.push(`${url}/mmsi`);
               }, 200);
             }
             break;
@@ -203,7 +207,7 @@ function MainMenu(props) {
             dispatch(getAction.getDataTai(8));
             if(!formsTaiReducer.isFetching){
                 setTimeout(() => {
-                    history.push("/tai");
+                    history.push(`${url}/tai`);
                   }, 200);
             }
 
@@ -214,143 +218,148 @@ function MainMenu(props) {
 
   return (
     <React.Fragment>
-      <Header></Header>
-      <Card className={classes.root}>
-        <CardContent>
-          <Link
-            onClick={() => {
-              getData("sec2");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i2} />
-              </ListItemIcon>
-              แบบคัดกรองสภาวะสุขภาพ
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec3");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i3} />
-              </ListItemIcon>
-              ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec4");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i4} />
-              </ListItemIcon>
-              แบบคัดกรองสุขภาพตา
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec5");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i5} />
-              </ListItemIcon>
-              การประเมินสุขภาพช่องปาก
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec6");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i6} />
-              </ListItemIcon>
-              การประเมินความสามารถในการทำกิจวัตรประจำ
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec7");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i7} />
-              </ListItemIcon>
-              การประเมินภาวะสมองเสื่อม
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec8");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i8} />
-              </ListItemIcon>
-              การคัดกรองโรคซึมเศร้า
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec9");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i9} />
-              </ListItemIcon>
-              สุขภาพกระดูกและกล้ามเนื้อ
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-              getData("sec10");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i10} />
-              </ListItemIcon>
-              การคัดกรองการกลั้นปัสสาวะ
-            </ListItem>
-          </Link>
-          <hr />
-          <Link onClick={() => {
-              getData("tai");
-            }}>
-            <ListItem button>การประเมิน TAI Classified</ListItem>
-          </Link>{" "}
-          <hr />
-          <Link onClick={() => {
-              getData("mmsi");
-            }}>
-            <ListItem button>
-              การทดสอบสมองเบื่องต้นฉบับภาษาไทย : MMSE-Thai 2002
-            </ListItem>
-          </Link>{" "}
-          <hr />
-          <SumaryReport />
-        </CardContent>
-      </Card>
+        <Header/> <br/>
+        <Card className={classes.root}>
+          <CardContent>
+            <Link
+              onClick={() => {
+                getData("sec2");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i2} />
+                </ListItemIcon>
+                แบบคัดกรองสภาวะสุขภาพ
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec3");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i3} />
+                </ListItemIcon>
+                ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec4");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i4} />
+                </ListItemIcon>
+                แบบคัดกรองสุขภาพตา
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec5");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i5} />
+                </ListItemIcon>
+                การประเมินสุขภาพช่องปาก
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec6");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i6} />
+                </ListItemIcon>
+                การประเมินความสามารถในการทำกิจวัตรประจำ
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec7");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i7} />
+                </ListItemIcon>
+                การประเมินภาวะสมองเสื่อม
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec8");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i8} />
+                </ListItemIcon>
+                การคัดกรองโรคซึมเศร้า
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec9");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i9} />
+                </ListItemIcon>
+                สุขภาพกระดูกและกล้ามเนื้อ
+              </ListItem>
+            </Link>{" "}
+            <hr />
+            <Link
+              onClick={() => {
+                getData("sec10");
+              }}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <CheckCircleIcon className={colorIcon.i10} />
+                </ListItemIcon>
+                การคัดกรองการกลั้นปัสสาวะ
+              </ListItem>
+            </Link>
+            <hr />
+            {
+              user.Role !== 'VOLUNTEER' &&
+              <React.Fragment>
+                <Link onClick={() => {
+                    getData("tai");
+                  }}>
+                  <ListItem button>การประเมิน TAI Classified</ListItem>
+                </Link>{" "}
+                <hr />
+                <Link onClick={() => {
+                    getData("mmsi");
+                  }}>
+                  <ListItem button>
+                    การทดสอบสมองเบื่องต้นฉบับภาษาไทย : MMSE-Thai 2002
+                  </ListItem>
+                </Link>{" "}
+                <hr />
+              </React.Fragment>
+            }
+            <SumaryReport />
+          </CardContent>
+        </Card>
     </React.Fragment>
   );
 }

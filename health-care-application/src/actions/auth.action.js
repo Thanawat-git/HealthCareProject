@@ -4,18 +4,33 @@ import {
   HTTP_LOGIN_SUCCESS,
   LOGOUT,
   SET_MESSAGE,
+  USER,
 } from "../constants";
 import AuthService from "../services/auth.service";
 
-// message from server
-// export const setMessage = (message) => ({
-//   type: SET_MESSAGE,
-//   payload: message,
-// });
-// export const clearMessage = () => ({
-//   type: CLEAR_MESSAGE,
-// });
-// message from server
+export const autoLogin = (history) =>{
+  return ()=>{
+    if(localStorage.getItem(USER)!==null){
+      let data = JSON.parse(localStorage.getItem(USER))
+      console.log("have user login ",data.Role)
+      setTimeout(() => {
+        switch (data.Role) {
+          case "VOLUNTEER":
+            history.push("/volunteerpage");
+            break;
+          case "ADMIN":
+            history.push("/genaraladminpage");
+            break;
+          default:
+            // history.push("/login");
+            break;
+        }
+      }, 100);
+    } else {
+      console.log("no login ")
+    }
+  }
+}
 
 export const loginVolunteer = (history, credential) => {
   return (dispatch) => {

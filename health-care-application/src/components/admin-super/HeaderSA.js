@@ -3,6 +3,8 @@ import { Avatar} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
 import { Link,useRouteMatch } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/auth.action";
 
 const useStyles = makeStyles((theme) => ({
   orange: {
@@ -14,7 +16,11 @@ const useStyles = makeStyles((theme) => ({
 export default function HeaderSA({ name }) {
   const classes = useStyles();
   const { url } = useRouteMatch();
-
+  const { user } = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch()
+  const logOut = () => {
+    dispatch(logout())
+  };
   return (
     <React.Fragment>
       <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -43,7 +49,7 @@ export default function HeaderSA({ name }) {
           <li className="nav-item dropdown">
             <a className="nav-link" data-toggle="dropdown">
               <i className="user-panel d-flex">
-                <Avatar className={classes.orange}>S</Avatar>
+                <Avatar className={classes.orange}>{name.substring(0,1)}</Avatar>
                 <i className="info">
                   <a className="d-block">{name}</a>
                 </i>
@@ -65,12 +71,10 @@ export default function HeaderSA({ name }) {
             </Link>
               <div
                 className="dropdown-divider"
-                onClick={() => {
-                  // localStorage.removeItem(server.LOGIN_PASSED);
-                }}
+                onClick={logOut}
               />
-              <a href="/login" className="dropdown-item">
-                <i class="fas fa-sign-out-alt" style={{ paddingRight: 10 }}></i>
+              <a href="/login" className="dropdown-item" onClick={logOut}>
+                <i class="fas fa-sign-out-alt" style={{ paddingRight: 10 }} onClick={logOut}></i>
                 ออกจากระบบ
               </a>
             </div>

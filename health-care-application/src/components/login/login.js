@@ -3,7 +3,7 @@ import "./login.css";
 import logo1 from "../images/logo-saensukcity.png";
 import loginImg from "../images/undraw_surfer_m6jb.svg";
 import { Link } from "react-router-dom";
-import { loginVolunteer } from "../../actions/auth.action";
+import { loginVolunteer,autoLogin } from "../../actions/auth.action";
 import { connect } from "react-redux";
 
 
@@ -14,6 +14,10 @@ class Login extends Component {
       username: "",
       password: "",
     };
+  }
+  componentDidMount(){
+    console.log("in componentDidMount")
+    this.props.autoLogin(this.props.history);
   }
 
   render() {
@@ -79,6 +83,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = ({ authReducer,messageReducer }) => ({ authReducer,messageReducer }); //state
-const mapDispatchToProps = {loginVolunteer};
+const mapDispatchToProps = {
+  loginVolunteer,
+  autoLogin
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

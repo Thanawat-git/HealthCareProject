@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Axios from "axios";
 import "./login.css";
 import logo1 from "../images/logo-saensukcity.png";
 import loginImg from '../images/undraw_surfer_m6jb.svg'
 import { Link } from "react-router-dom";
-import { loginAdmin } from "../../actions/auth.action";
+import { loginAdmin,autoLogin } from "../../actions/auth.action";
 import { connect } from "react-redux";
 
 class LoginAdmin extends Component {
@@ -16,8 +15,12 @@ class LoginAdmin extends Component {
     };
   }
 
+  componentDidMount(){
+    console.log("in componentDidMount")
+    this.props.autoLogin(this.props.history);
+  }
+
   render() {
-    const {formErrors} = this.state;
     return (
       <div className="nlcontainer" >
         <div className="form-nlcontainer">
@@ -47,7 +50,7 @@ class LoginAdmin extends Component {
               className="btn-login solid" 
               onClick={e=>{
                 e.preventDefault()
-                // this.props.loginAdmin(this.props.history, this.state) //dispatch เรียกใช้งาน loginVolunteer ใน action
+                this.props.loginAdmin(this.props.history, this.state) //dispatch เรียกใช้งาน loginVolunteer ใน action
               }}
               />
               </Link>
@@ -71,6 +74,6 @@ class LoginAdmin extends Component {
 }
 
 const mapStateToProps = ({ authReducer,messageReducer }) => ({ authReducer,messageReducer }); //state
-const mapDispatchToProps = {loginAdmin};
+const mapDispatchToProps = {loginAdmin,autoLogin};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginAdmin);

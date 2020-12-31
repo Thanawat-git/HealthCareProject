@@ -38,7 +38,7 @@ export default function VolunteerContent() {
                 onClick={() => {
                   MySwal.fire({
                     title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
-                    text: `คุณ${value.VOL_FIRSTNAME} ${value.VOL_LASTNAME} กำลังจะถูกลบ!`,
+                    text: `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} กำลังจะถูกลบ!`,
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -49,7 +49,7 @@ export default function VolunteerContent() {
                       dispatch(volAction.deleteVolunteer(value.VOL_ID_NUMBER))
                       Swal.fire(
                         'ลบสำเร็จ',
-                        `คุณ${value.VOL_FIRSTNAME} ${value.VOL_LASTNAME} ได้ถูกลบแล้ว`,
+                        `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} ได้ถูกลบแล้ว`,
                         'success'
                       )
                     }

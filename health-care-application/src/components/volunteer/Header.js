@@ -43,9 +43,6 @@ export default function Header() {
     left: false,
   });
   const { user } = useSelector((state) => state.authReducer);
-  useEffect(() => {
-    console.log('user ',user)
-  }, [])
   const dispatch = useDispatch()
   const logOut = () => {
     dispatch(logout())

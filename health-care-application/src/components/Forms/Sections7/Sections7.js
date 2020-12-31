@@ -23,6 +23,7 @@ const useStyles = makeStyles({
 export default function Sections7_1() {
   const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const { user } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -648,10 +649,47 @@ export default function Sections7_1() {
 
         <Modal.Footer>
           {linkTommse ? (
-            <Link to="/mmsi" className={classes.root}>
-              <Button
-                variant="primary"
-                block
+            <React.Fragment>
+              {
+                user.Role !== 'VOLUNTEER' ? (
+                <Link to="/mainmenu/mmsi" className={classes.root}>
+                <Button
+                  variant="primary"
+                  block
+                  onClick={() =>
+                    formAction.updateAlzheimer([
+                      textAns1,
+                      ans7_1,
+                      textAns2,
+                      ans7_2,
+                      textAns3,
+                      ans7_3,
+                      textAns4,
+                      ans7_4,
+                      textAns5,
+                      ans7_5,
+                      textAns6,
+                      ans7_6,
+                      textAns7,
+                      ans7_7,
+                      textAns8,
+                      ans7_8,
+                      textAns9,
+                      ans7_9,
+                      textAns10,
+                      ans7_10,
+                      results,
+                      collect,
+                      visId,
+                    ])
+                  }
+                >
+                  ทำแบบประเมินการทดสอบสมองเบื่องต้นฉบับภาษาไทย
+                </Button>
+                </Link>
+                ) : (
+                <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block
                 onClick={() =>
                   formAction.updateAlzheimer([
                     textAns1,
@@ -679,10 +717,14 @@ export default function Sections7_1() {
                     visId,
                   ])
                 }
-              >
-                ทำแบบประเมินการทดสอบสมองเบื่องต้นฉบับภาษาไทย
-              </Button>
-            </Link>
+                >
+                  ทำแบบประเมินการ MMSE-Thai 2002 ติดต่อเจ้าหน้าที่
+                </Button>
+                </Link>
+                )
+              }
+            
+            </React.Fragment>
           ) : (
             <Link to="/mainmenu" className={classes.root}>
               <Button
@@ -722,16 +764,6 @@ export default function Sections7_1() {
           )}
         </Modal.Footer>
       </Modal>
-      {/* <ShowResultPopup
-          title='ผลการประเมินภาวะสมองเสื่อม' 
-          result={results}
-          show={show}
-          onClick={()=>formAction.updateAlzheimer([textAns1,ans7_1,textAns2,ans7_2,textAns3,ans7_3,textAns4,ans7_4,
-            textAns5,ans7_5,textAns6,ans7_6,textAns7,ans7_7,textAns8,ans7_8,textAns9,ans7_9,textAns10,ans7_10])}
-          onHide={()=>setShow(false)}
-          backdrop="static"
-          keyboard={false}
-        /> */}
     </div>
   );
 }
