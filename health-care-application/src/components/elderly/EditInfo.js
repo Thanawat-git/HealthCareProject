@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./elderly.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect, } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import * as actionP5 from '../../actions/forms1p5.action' // เรียกมาใช้งานในการ ลบ และ เพิ่ม อาหาร และ ยา
@@ -25,8 +25,8 @@ const useStyles = makeStyles({
 
 export default function EditInfo() {
   const classes = useStyles();
-  // const elderly = useSelector(({ searchEld }) => searchEld.selectEld);
   const elderlyReducer = useSelector(({elderlyReducer}) => elderlyReducer)
+  
   const [state, setState] = useState({
     eid: elderlyReducer.resultSelected.ELD_ID_NUMBER,
     fName: elderlyReducer.resultSelected.ELD_FIRSTNAME,

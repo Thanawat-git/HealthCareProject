@@ -110,7 +110,7 @@ export default function ShowHistory({ value }) {
                 น้ำหนัก: 
                 {bmi_weight?
                 <React.Fragment>
-                  <strong> {bmi_weight} </strong>ซม.
+                  <strong> {bmi_weight} </strong>กก.
                 </React.Fragment>
                 :<strong> {noData} </strong>}
               </p>
@@ -126,8 +126,8 @@ export default function ShowHistory({ value }) {
                 ดัชนีมวลการ(BMI): 
                 {bmi_bmi?
                 <React.Fragment>
-                  <strong> {bmi_bmi} </strong>ซม.
-                  ผลการประเมิน <strong> {bmi_bmi} </strong>
+                  <strong> {bmi_bmi} </strong>
+                  ผลการประเมิน <strong> {bmi_result} </strong>
                 </React.Fragment>
                 :<strong> {noData} </strong>}
               </p>

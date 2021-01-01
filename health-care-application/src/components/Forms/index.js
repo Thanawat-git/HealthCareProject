@@ -30,9 +30,9 @@ export default function Index() {
         <Route path={`${path}/sec7`} component={sec7} />
         <Route path={`${path}/mmsi`} component={mmsi} />
         <Route path={`${path}/sec8_1`} component={sec8_1} />
-        <Route path={`${path}/sec8_9q`} component={sec8_9q} />
+        <Route path={`${path}/sec8-9q`} component={sec8_9q} />
         <Route path={`${path}/sec9`} component={sec9} />
-        <Route path={`${path}/sec9_2`} component={sec9_2} />
+        <Route path={`${path}/sec9-2`} component={sec9_2} />
         <Route path={`${path}/sec10`} component={sec10} />
         <Route path={`${path}/`} component={Mainmenu} />
         <Route exact={true} path={`${path}/`} component={redirectToMainmenu} />

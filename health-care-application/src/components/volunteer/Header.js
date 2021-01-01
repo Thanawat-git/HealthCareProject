@@ -42,7 +42,7 @@ export default function Header() {
   const [state, setState] = useState({
     left: false,
   });
-  const { user } = useSelector((state) => state.authReducer);
+  const { isLoggedIn, user } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch()
   const logOut = () => {
     dispatch(logout())

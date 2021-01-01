@@ -607,7 +607,7 @@ export default function Sections9() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Link to="/sec9-2" className={classes.root}>
+          <Link to="/mainmenu/sec9-2" className={classes.root}>
             <Button
               variant="primary"
               block

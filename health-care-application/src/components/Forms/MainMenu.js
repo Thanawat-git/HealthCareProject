@@ -122,7 +122,7 @@ function MainMenu(props) {
   const getData = (sec) => {
     switch (sec) {
       case "sec2":
-        dispatch(getAction.getDataSec2(8));
+        dispatch(getAction.getDataSec2(visitID));
         if (!forms2Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec2`);
@@ -130,7 +130,7 @@ function MainMenu(props) {
         }
         break;
       case "sec3":
-        dispatch(getAction.getDataSec3(8));
+        dispatch(getAction.getDataSec3(visitID));
         if (!forms3Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec3`);
@@ -138,7 +138,7 @@ function MainMenu(props) {
         }
         break;
       case "sec4":
-        dispatch(getAction.getDataSec4(8));
+        dispatch(getAction.getDataSec4(visitID));
         if (!forms4Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec4`);
@@ -146,7 +146,7 @@ function MainMenu(props) {
         }
         break;
       case "sec5":
-        dispatch(getAction.getDataSec5(8));
+        dispatch(getAction.getDataSec5(visitID));
         if (!forms5Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec5`);
@@ -154,7 +154,7 @@ function MainMenu(props) {
         }
         break;
       case "sec6":
-        dispatch(getAction.getDataSec6(8));
+        dispatch(getAction.getDataSec6(visitID));
         if (!forms6Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec6`);
@@ -162,7 +162,7 @@ function MainMenu(props) {
         }
         break;
       case "sec7":
-        dispatch(getAction.getDataSec7(8));
+        dispatch(getAction.getDataSec7(visitID));
         if (!forms7Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec7`);
@@ -170,15 +170,15 @@ function MainMenu(props) {
         }
         break;
       case "sec8":
-        dispatch(getAction.getDataSec8(8));
+        dispatch(getAction.getDataSec8(visitID));
         if (!forms8Reducer.isFetching) {
           setTimeout(() => {
-            history.push(`${url}/sec8`);
+            history.push(`${url}/sec8_1`);
           }, 200);
         }
         break;
       case "sec9":
-        dispatch(getAction.getDataSec9(8));
+        dispatch(getAction.getDataSec9(visitID));
         if (!forms9Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec9`);
@@ -186,7 +186,7 @@ function MainMenu(props) {
         }
         break;
       case "sec10":
-        dispatch(getAction.getDataSec10(8));
+        dispatch(getAction.getDataSec10(visitID));
         if (!forms10Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec10`);

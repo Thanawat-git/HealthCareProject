@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { login, loginAdmin, loginAdminMobile } from "./components/login";
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,55 +20,72 @@ import MainVolunteer from "./components/volunteer";
 // ELD Page
 import EditInfo from "./components/elderly/EditInfo";
 
-import mainMenu from "./components/Forms";
+import MainMenu from "./components/Forms";
 
 import {
-  sec1_1,
-  sec1_2,
-  sec1_3,
-  sec1_4,
-  sec1_5,
-  sec1_6,
+  Sec1_1,
+  Sec1_2,
+  Sec1_3,
+  Sec1_4,
+  Sec1_5,
+  Sec1_6,
 } from "./components/Forms/Sections1";
 
 import { useDispatch, useSelector } from "react-redux";
-import { autoLogin } from "./actions/auth.action";
 
 function PrivateRoute({ children, ...rest }) {
   const { isLoggedIn } = useSelector((state) => state.authReducer)
   return (
     <Route {...rest} render={({ location }) => {
       console.log('location pathname ',location.pathname)
-      return isLoggedIn ?
+      return (
+        isLoggedIn ?
         children
         : <Redirect to={{
             pathname: '/login',
+            state: { from: location } 
+          }} />
+      )
+    }} />
+  )
+}
+
+function GAdminRoute({ children, ...rest }) {
+  const { isLoggedIn, user } = useSelector((state) => state.authReducer)
+  return (
+    <Route {...rest} render={({ location }) => {
+      return isLoggedIn && user.Role =="ADMIN" ?
+        children
+        : <Redirect to={{
+            pathname: '/volunteerpage',
             state: { from: location } 
           }} />
     }} />
   )
 }
 
-function GAminRoute({ children, ...rest }) {
+// เข้าถึงได้เมื่อมี ข้อมูลของผู้สูงอายุที่เลือก เท่านั้น
+function ProtectRoute({ children, ...rest }) {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer)
+  const { resultSelected } = useSelector((state) => state.elderlyReducer)
   return (
     <Route {...rest} render={({ location }) => {
-      console.log('user.Role ',user.Role)
-      return isLoggedIn && user.Role =="ADMIN" ?
+      return isLoggedIn && resultSelected!==null ?
         children
         : <Redirect to={{
-            pathname: '/login',
+            pathname: '/volunteerpage',
             state: { from: location } 
           }} />
-    }} />
-  )
-}
+        }} />
+      )
+    }
 
 export default function App() {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer);
   useEffect(() => {
     console.log('isLoggedIn ',isLoggedIn)
   }, [])
+  
   const redirectToLogin = () => {
     return <Redirect to="/login" />;
   };
@@ -77,19 +93,23 @@ export default function App() {
     // <React.Fragment>
     <Router>
       <Switch>
-        <GAminRoute path='/genaraladminpage' component={GenaralAdminPage} />
+        <PrivateRoute path="/superadminpage"><SuperAdminPage/></PrivateRoute>
+        <GAdminRoute path='/genaraladminpage'>
+          <GenaralAdminPage/>
+        </GAdminRoute>
+        <PrivateRoute path='/volunteerpage'>
+          <MainVolunteer/>
+        </PrivateRoute>
 
-        <PrivateRoute path='/volunteerpage' component={MainVolunteer} />
-        <PrivateRoute path="/editeld" component={EditInfo} />
-        <PrivateRoute path="/mainmenu" component={mainMenu} />
-        <PrivateRoute path="/sec1-page1" component={sec1_1} />
-        <PrivateRoute path="/sec1-page2" component={sec1_2} />
-        <PrivateRoute path="/sec1-page3" component={sec1_3} />
-        <PrivateRoute path="/sec1-page4" component={sec1_4} />
-        <PrivateRoute path="/sec1-page5" component={sec1_5} />
-        <PrivateRoute path="/sec1-page6" component={sec1_6} />
-        
-        <PrivateRoute path="/superadminpage" component={SuperAdminPage} />
+        <ProtectRoute path="/editeld"><EditInfo/></ProtectRoute>
+        <ProtectRoute path="/mainmenu"><MainMenu/></ProtectRoute>
+
+        <PrivateRoute path="/sec1-page1"><Sec1_1/></PrivateRoute>
+        <PrivateRoute path="/sec1-page2"><Sec1_2/></PrivateRoute>
+        <PrivateRoute path="/sec1-page3"><Sec1_3/></PrivateRoute>
+        <PrivateRoute path="/sec1-page4"><Sec1_4/></PrivateRoute>
+        <PrivateRoute path="/sec1-page5"><Sec1_5/></PrivateRoute>
+        <PrivateRoute path="/sec1-page6"><Sec1_6/></PrivateRoute>
         
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/verify" component={VerifyIdentity} />

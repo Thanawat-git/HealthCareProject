@@ -179,7 +179,7 @@ function Sections8_1() {
         <Modal.Footer>
           
           {linkTo9Q ? (
-            <Link to="/sec8-9q" className={classes.root}>
+            <Link to="/mainmenu/sec8-9q" className={classes.root}>
               <Button
                 variant="primary"
                 block
