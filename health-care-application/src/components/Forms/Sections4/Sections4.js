@@ -40,8 +40,9 @@ export default function Sections4_1() {
 
   const handleSubmit = ()=>{
     setShow(true)
-    const data = [ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,results,collect,count]
+    const data = [ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,count,results,collect]
     dispatch(formAction.add(data))
+    console.log('data4',data)
   }
   const saveDataToServer = () => {
     formAction.updateExa4Eye([visId,ans4_1,ans4_2,ans4_3,ans4_4,ans4_5,count,results,collect]);

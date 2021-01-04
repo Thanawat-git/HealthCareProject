@@ -117,6 +117,7 @@ function MainMenu(props) {
   const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
   const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
   const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
+  const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
   const getData = (sec) => {
@@ -176,7 +177,23 @@ function MainMenu(props) {
             history.push(`${url}/sec8_1`);
           }, 200);
         }
+        if(forms8Reducer.linkTo9Q==true){
+          dispatch(getAction.getDataSec89q(visitID));
+          if (!forms89qReducer.isFetching) {
+          setTimeout(() => {
+            history.push(`${url}/sec8-9q`);
+          }, 200);
+      }
         break;
+    }
+        // case "sec8-9q":
+        //   dispatch(getAction.getDataSec89q(visitID));
+        //   if (!forms8Reducer.isFetching) {
+        //     setTimeout(() => {
+        //       history.push(`${url}/sec8-9q`);
+        //     }, 200);
+        //   }
+        //   break;
       case "sec9":
         dispatch(getAction.getDataSec9(visitID));
         if (!forms9Reducer.isFetching) {

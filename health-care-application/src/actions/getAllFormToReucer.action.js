@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { apiBase, apiEld, CREATE_NEW_FORMS10, CREATE_NEW_FORMS2,CREATE_NEW_FORMS3, CREATE_NEW_FORMS4, CREATE_NEW_FORMS5, CREATE_NEW_FORMS6, CREATE_NEW_FORMS6T, CREATE_NEW_FORMS7, CREATE_NEW_FORMS7M, CREATE_NEW_FORMS8, CREATE_NEW_FORMS9, FORMS1P4_ADD_NEW, GET_COLLECT_S10, GET_COLLECT_S2, GET_COLLECT_S3, GET_COLLECT_S4, GET_COLLECT_S5, GET_COLLECT_S6, GET_COLLECT_S7, GET_COLLECT_S8, GET_COLLECT_S9 } from '../constants';
+import { apiBase, apiEld,CREATE_NEW_FORMS89Q, CREATE_NEW_FORMS10, CREATE_NEW_FORMS2,CREATE_NEW_FORMS3, CREATE_NEW_FORMS4, CREATE_NEW_FORMS5, CREATE_NEW_FORMS6, CREATE_NEW_FORMS6T, CREATE_NEW_FORMS7, CREATE_NEW_FORMS7M, CREATE_NEW_FORMS8, CREATE_NEW_FORMS9, FORMS1P4_ADD_NEW, GET_COLLECT_S10, GET_COLLECT_S2, GET_COLLECT_S3, GET_COLLECT_S4, GET_COLLECT_S5, GET_COLLECT_S6, GET_COLLECT_S7, GET_COLLECT_S8, GET_COLLECT_S9 } from '../constants';
 
 export const getCollect = visId =>{
     return dispatch => {
@@ -63,18 +63,18 @@ export const getDataSec2 = visId =>{
 export const getDataSec3 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/cardiovascular/findOne/${visId}`).then(res=>{
+            console.log('res.data3 ',res.data)
             const data =[
-                res.data.cardio_3_1,
-                res.data.cardio_3_1_count,
-                res.data.cardio_3_2,
-                res.data.cardio_3_3,
-                res.data.cardio_3_4,
-                res.data.cardio_3_5,
-                res.data.cardio_3_6,
-                res.data.cardio_3_7,
-                res.data.cardio_count,
-                res.data.cardio_count_result,
-                res.data.cardio_correct,
+                res.data.CARDIO_3_1,
+                res.data.CARDIO_3_2,
+                res.data.CARDIO_3_3,
+                res.data.CARDIO_3_4,
+                res.data.CARDIO_3_5,
+                res.data.CARDIO_3_6,
+                res.data.CARDIO_3_7,
+                res.data.CARDIO_COUNT_RESULT,
+                res.data.CARDIO_CORRECT_FORM,
+                res.data.CARDIO_COUNT               
             ]
             dispatch({
                 type: 'FETCHING3',
@@ -94,15 +94,15 @@ export const getDataSec4 = visId =>{
         return Axios.get(`${apiBase}/eye/findOne/${visId}`).then(res=>{
             console.log('res.data 4 ',res.data)
             const data =[
-                res.data.eye_4_1,
-                res.data.eye_4_2,
-                res.data.eye_4_3,
-                res.data.eye_4_4,
-                res.data.eye_4_5,
-                res.data.eye_count,
-                res.data.eye_result,
-                res.data.eye_correct,
-
+                res.data.EYE_4_1,
+                res.data.EYE_4_2,
+                res.data.EYE_4_3,
+                res.data.EYE_4_4,
+                res.data.EYE_4_5,
+                res.data.EYE_COUNT,
+                res.data.EYE_RESULT,
+                res.data.EYE_CORRECT_FORM,
+                
             ]
             dispatch({
                 type: 'FETCHING4',
@@ -120,28 +120,28 @@ export const getDataSec4 = visId =>{
 export const getDataSec5 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/oralHealth/findOne/${visId}`).then(res=>{
+            console.log('res.data 5 ',res.data)
             const data =[
-                res.data.oral_5_1,
-                res.data.oral_5_2,
-                res.data.oral_5_3,
-                res.data.oral_5_4_1,
-                res.data.oral_5_4_2,
-                res.data.oral_5_4_3,
-                res.data.oral_5_4_4,
-                res.data.oral_5_4_5,
-                res.data.oral_5_5,
-                res.data.oral_5_6,
-                res.data.oral_5_7,
-                res.data.oral_5_8,
-                res.data.oral_5_9,
-                res.data.oral_5_10,
-                res.data.oral_5_11,
-                res.data.oral_5_12,
-                res.data.oral_5_13,
-                res.data.oral_count,
-                res.data.oral_result,
-                res.data.oral_correct,
-
+                res.data.ORAL_5_1,
+                res.data.ORAL_5_2,
+                res.data.ORAL_5_3,
+                res.data.ORAL_5_4_1,
+                res.data.ORAL_5_4_2,
+                res.data.ORAL_5_4_3,
+                res.data.ORAL_5_4_4,
+                res.data.ORAL_5_4_5,
+                res.data.ORAL_5_5,
+                res.data.ORAL_5_6,
+                res.data.ORAL_5_7,
+                res.data.ORAL_5_8,
+                res.data.ORAL_5_9,
+                res.data.ORAL_5_10,
+                res.data.ORAL_5_11,
+                res.data.ORAL_5_12,
+                res.data.ORAL_5_13,
+                res.data.ORAL_COUNT,
+                res.data.ORAL_RESULT,
+                res.data.ORAL_CORRECT_FORM,
             ]
             dispatch({
                 type: 'FETCHING5',
@@ -159,20 +159,21 @@ export const getDataSec5 = visId =>{
 export const getDataSec6 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/abilityInLife/findOne/${visId}`).then(res=>{
+            console.log('res.data 6 ',res.data)
             const data =[
-                res.data.abi_6_1,
-                res.data.abi_6_2,
-                res.data.abi_6_3,
-                res.data.abi_6_4,
-                res.data.abi_6_5,
-                res.data.abi_6_6,
-                res.data.abi_6_7,
-                res.data.abi_6_8,
-                res.data.abi_6_9,
-                res.data.abi_6_10,
-                res.data.abi_sum_point,
-                res.data.abi_group,
-                res.data.abi_correct_form,
+                res.data.ABI_6_1,
+                res.data.ABI_6_2,
+                res.data.ABI_6_3,
+                res.data.ABI_6_4,
+                res.data.ABI_6_5,
+                res.data.ABI_6_6,
+                res.data.ABI_6_7,
+                res.data.ABI_6_8,
+                res.data.ABI_6_9,
+                res.data.ABI_6_10,
+                res.data.ABI_SUM_POINT,
+                res.data.ABI_GROUP,
+                res.data.ABI_CORRECT_FORM,
 
             ]
             dispatch({
@@ -191,29 +192,30 @@ export const getDataSec6 = visId =>{
 export const getDataSec7 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/alzheimer/findOne/${visId}`).then(res=>{
+            console.log('res.data 7 ',res.data)
             const data =[
-                res.data.alz_7_1_el_age,
-                res.data.alz_7_1_result_age,
-                res.data.alz_7_2_el_time,
-                res.data.alz_7_2_result_time,
-                res.data.alz_7_3_el_addr,
-                res.data.alz_7_3_result_addr,
-                res.data.alz_7_4_el_year,
-                res.data.alz_7_4_result_year,
-                res.data.alz_7_5_el_place,
-                res.data.alz_7_5_result_place,
-                res.data.alz_7_6_el_whom,
-                res.data.alz_7_6_result_whom,
-                res.data.alz_7_7_el_birthdate,
-                res.data.alz_7_7_result_birthdate,
-                res.data.alz_7_8_el_oct14,
-                res.data.alz_7_8_result_oct14,
-                res.data.alz_7_9_el_king,
-                res.data.alz_7_9_result_king,
-                res.data.alz_7_10_el_countdown,
-                res.data.alz_7_10_result_countdown,
-                res.data.alz_result,
-                res.data.alz_correct_form,
+                res.data.ALZ_7_1_EL_AGE,
+                res.data.ALZ_7_1_RESULT_AGE,
+                res.data.ALZ_7_2_EL_TIME,
+                res.data.ALZ_7_2_RESULT_TIME,
+                res.data.ALZ_7_3_EL_ADDR,
+                res.data.ALZ_7_3_RESULT_ADDR,
+                res.data.ALZ_7_4_EL_YEAR,
+                res.data.ALZ_7_4_RESULT_YEAR,
+                res.data.ALZ_7_5_EL_PLACE,
+                res.data.ALZ_7_5_RESULT_PLACE,
+                res.data.ALZ_7_6_EL_WHOM,
+                res.data.ALZ_7_6_RESULT_WHOM,
+                res.data.ALZ_7_7_EL_BIRTHDATE,
+                res.data.ALZ_7_7_RESULT_BIRTHDATE,
+                res.data.ALZ_7_8_EL_OCT14,
+                res.data.ALZ_7_8_RESULT_OCT14,
+                res.data.ALZ_7_9_EL_KING,
+                res.data.ALZ_7_9_RESULT_KING,
+                res.data.ALZ_7_10_EL_COUNTDOWN,
+                res.data.ALZ_7_10_RESULT_COUNTDOWN,
+                res.data.ALZ_RESULT,
+                res.data.ALZ_CORRECT_FORM,
 
             ]
             dispatch({
@@ -232,13 +234,12 @@ export const getDataSec7 = visId =>{
 export const getDataSec8 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/depressionScreening/findOne/${visId}`).then(res=>{
+            console.log('res.data 8 ',res.data)
             const data =[
-                res.data.dep_depressed,
-                res.data.dep_not_enjoying,
-                res.data.dep_check,
-                res.data.dep_result,
-                res.data.dep_correct_form,
-
+                res.data.DEP_DEPRESSED,
+                res.data.DEP_NOT_ENJOYING,
+                res.data.DEP_CORRECT_FORM,
+                res.data.DEP_RESULT,
             ]
             dispatch({
                 type: 'FETCHING8',
@@ -253,29 +254,62 @@ export const getDataSec8 = visId =>{
         })
     }
 }
+export const getDataSec89q = visId =>{
+    return dispatch => {
+        return Axios.get(`${apiBase}/depressionScreening/findOne/${visId}`).then(res=>{
+            console.log('res.data 89q ',res.data)
+            const data =[
+                res.data.DEP_8_1,
+                res.data.DEP_8_2,
+                res.data.DEP_8_3,
+                res.data.DEP_8_4,
+                res.data.DEP_8_5,
+                res.data.DEP_8_6,
+                res.data.DEP_8_7,
+                res.data.DEP_8_8,
+                res.data.DEP_8_9,
+                res.data.DEP_9Q_RESULT,
+                res.data.DEP_CORRECT_FORM,
+
+            ]
+            dispatch({
+                type: 'FETCHING89Q',
+                payload: data
+            })
+            dispatch({
+                type: CREATE_NEW_FORMS89Q,
+                payload: data
+            })
+        }).catch(error=>{
+            console.log('err ',error)
+        })
+    }
+}
+
 export const getDataSec9 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/boneMuscle/findOne/${visId}`).then(res=>{
+            console.log('res.data 9 ',res.data)
             const data =[
-                res.data.bone_9_1,
-                res.data.bone_9_2,
-                res.data.bone_9_3,
-                res.data.bone_9_4,
-                res.data.bone_9_5,
-                res.data.bone_9_6,
-                res.data.bone_9_7,
-                res.data.bone_9_8,
-                res.data.bone_9_9,
-                res.data.bone_9_10,
-                res.data.bone_9_11,
-                res.data.bone_9_12,
-                res.data.bone_result,
-                res.data.bone_walk,
-                res.data.bone_walk_info,
-                res.data.bone_phy_fit_minute,
-                res.data.bone_phy_fit_second,
-                res.data.bone_phy_result,
-                res.data.bone_correct_form,
+                res.data.BONE_9_1,
+                res.data.BONE_9_2,
+                res.data.BONE_9_3,
+                res.data.BONE_9_4,
+                res.data.BONE_9_5,
+                res.data.BONE_9_6,
+                res.data.BONE_9_7,
+                res.data.BONE_9_8,
+                res.data.BONE_9_9,
+                res.data.BONE_9_10,
+                res.data.BONE_9_11,
+                res.data.BONE_9_12,
+                res.data.BONE_RESULT,
+                res.data.BONE_WALK,
+                res.data.BONE_WALK_INFO,
+                res.data.BONE_PHY_FIT_MINUTE,
+                res.data.BONE_PHY_FIT_SECOND,
+                res.data.BONE_PHY_RESULT,
+                res.data.BONE_CORRECT_FORM,
 
             ]
             dispatch({
@@ -294,11 +328,11 @@ export const getDataSec9 = visId =>{
 export const getDataSec10 = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/urination/findOne/${visId}`).then(res=>{
+            console.log('res.data 10',res.data)
             const data =[
-                res.data.uri_10_1,
-                res.data.uri_result,
-                res.data.uri_correct_form,
-
+                res.data.URI_10_1,
+                res.data.URI_RESULT,
+                res.data.URI_CORRECT_FORM,
             ]
             dispatch({
                 type: 'FETCHING10',
@@ -335,49 +369,49 @@ export const mmse = visId =>{
         return Axios.get(`${apiBase}/MMSE/findOne/${visId}`).then(res=>{
             
             const data =[
-                res.data.textAns11,
-                res.data.ans1,
-                res.data.textAns12,
-                res.data.ans12,
-                res.data.textAns13,
-                res.data.ans13,
-                res.data.textAns14,
-                res.data.ans14,
-                res.data.textAns15,
-                res.data.ans15,
-                res.data.textAns211,
-                res.data.ans2_1_1,
-                res.data.textAns212,
-                res.data.ans2_1_2,
-                res.data.textAns213,
-                res.data.ans2_1_3,
-                res.data.textAns214,
-                res.data.ans2_1_4,
-                res.data.textAns215,
-                res.data.ans2_1_5,
-                res.data.ansF,
-                res.data.ansR,
-                res.data.ansT,
-                res.data.num1,
-                res.data.num2,
-                res.data.num3,
-                res.data.num4,
-                res.data.num5,
-                res.data.ansF2,
-                res.data.ansR2,
-                res.data.ansT2,
-                res.data.ans61,
-                res.data.ans62,
-                res.data.ans7,
-                res.data.thank1,
-                res.data.thank2,
-                res.data.thank3,
-                res.data.ans9,
-                res.data.textAns10,
-                res.data.ans10,
-                res.data.ans11,
-                res.data.collect,
-                res.data.results,
+                res.data.MMSE_1_1,
+                res.data.MMSE_1_1_POINT,
+                res.data.MMSE_1_2,
+                res.data.MMSE_1_2_POINT,
+                res.data.MMSE_1_3,
+                res.data.MMSE_1_3_POINT,
+                res.data.MMSE_1_4,
+                res.data.MMSE_1_4_POINT,
+                res.data.MMSE_1_5,
+                res.data.MMSE_1_5_POINT,
+                res.data.MMSE_2_1,
+                res.data.MMSE_2_1_POINT,
+                res.data.MMSE_2_2,
+                res.data.MMSE_2_2_POINT,
+                res.data.MMSE_2_3,
+                res.data.MMSE_2_3_POINT,
+                res.data.MMSE_2_4,
+                res.data.MMSE_2_4_POINT,
+                res.data.MMSE_2_5,
+                res.data.MMSE_2_5_POINT,
+                res.data.MMSE_3_1_POINT,
+                res.data.MMSE_3_2_POINT,
+                res.data.MMSE_3_3_POINT,
+                res.data.MMSE_4_1_POINT,
+                res.data.MMSE_4_2_POINT,
+                res.data.MMSE_4_3_POINT,
+                res.data.MMSE_4_4_POINT,
+                res.data.MMSE_4_5_POINT,
+                res.data.MMSE_5_1_POINT,
+                res.data.MMSE_5_2_POINT,
+                res.data.MMSE_5_3_POINT,
+                res.data.MMSE_6_1_POINT,
+                res.data.MMSE_6_2_POINT,
+                res.data.MMSE_7_POINT,
+                res.data.MMSE_8_1_POINT,
+                res.data.MMSE_8_2_POINT,
+                res.data.MMSE_8_3_POINT,
+                res.data.MMSE_9_POINT,
+                res.data.MMSE_10,
+                res.data.MMSE_10_POINT,
+                res.data.MMSE_11_POINT,
+                res.data.MMSE_CORRECT_FORM,
+                res.data.MMSE_RESULT,
             ] 
             //console.log(data,"---------------------------data------------------")
             dispatch({
@@ -397,12 +431,12 @@ export const getDataTai = visId =>{
     return dispatch => {
         return Axios.get(`${apiBase}/TAI/update/${visId}`).then(res=>{
             const data =[
-                res.data.ans6_Im,
-                res.data.ans6_Me,
-                res.data.ans6_To,
-                res.data.ans6_Fe,
-                res.data.groupT,
-                res.data.collect,
+                res.data.TAI_IMMOBILIZE,
+                res.data.TAI_MENTAL,
+                res.data.TAI_TOILET,
+                res.data.TAI_FEED,
+                res.data.TAI_GROUP,
+                res.data.TAI_CORRECT_FORM,
                 res.data.results,
             ]
             dispatch({

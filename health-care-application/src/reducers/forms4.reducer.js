@@ -21,9 +21,9 @@ export default (state = initialState, { type, payload }) => {
         ans4_3: payload[2],
         ans4_4: payload[3],
         ans4_5: payload[4],
-        results: payload[5],
-        collect: payload[6],
-        count: payload[7],
+        count: payload[5],
+        results: payload[6],
+        collect: payload[7],
         isFetching: false,
       };
     case "FETCHING4":
