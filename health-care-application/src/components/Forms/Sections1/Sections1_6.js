@@ -48,6 +48,7 @@ export default function Sections1_6() {
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     const data = [visDate, eldId];
     dispatch(formAction.createVisitTable(data));
+    formAction.updateLastVisDate(data);
   };
 
   return (
@@ -162,9 +163,7 @@ export default function Sections1_6() {
           </Link>
           <Link to="/mainmenu">
             <Button color="primary" onClick={() => {
-                      
-                      createNewForm(peopleID);
-                  
+              createNewForm(peopleID);
             }}>
               ต้องการทำต่อ
             </Button>

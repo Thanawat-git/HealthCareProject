@@ -22,7 +22,7 @@ import { apiEld } from "../../constants/index";
 import { mdiAccount } from "@mdi/js";
 import mdi from "@mdi/js"
 import * as getAction from "../../actions/getAllFormToReucer.action";
-
+import { updateLastVisDate } from "../../actions/forms1p6.action";
 
 const useStyles = makeStyles({
   title: {
@@ -36,6 +36,7 @@ const useStyles = makeStyles({
 });
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
+  
   const dispatch = useDispatch();
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
@@ -52,6 +53,7 @@ export default function Asynchronous() {
       setisVisId(true)
       setvisData(res.data)
       setvisitID(res.data[0].VIS_ID)
+      console.log('res.data ',res.data)
     }).catch(error=>{
       setisVisId(false)
     })
@@ -66,6 +68,7 @@ export default function Asynchronous() {
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     const data = [visDate, eldId];
     dispatch(formAction.createVisitTable(data));
+    updateLastVisDate(data)
   };
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
@@ -87,7 +90,6 @@ export default function Asynchronous() {
           }}
         />
       </div>
-
       <div className="inner-seach2">
         {elderlyReducer.result.length !== 0 &&
           elderlyReducer.result.map((value, index) => {

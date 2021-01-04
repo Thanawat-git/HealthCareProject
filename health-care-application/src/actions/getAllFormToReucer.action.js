@@ -62,7 +62,7 @@ export const getDataSec2 = visId =>{
 }
 export const getDataSec3 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/cardiovascular/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/cardiovascular/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.cardio_3_1,
                 res.data.cardio_3_1_count,
@@ -75,7 +75,6 @@ export const getDataSec3 = visId =>{
                 res.data.cardio_count,
                 res.data.cardio_count_result,
                 res.data.cardio_correct,
-
             ]
             dispatch({
                 type: 'FETCHING3',
@@ -92,7 +91,8 @@ export const getDataSec3 = visId =>{
 }
 export const getDataSec4 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/eye/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/eye/findOne/${visId}`).then(res=>{
+            console.log('res.data 4 ',res.data)
             const data =[
                 res.data.eye_4_1,
                 res.data.eye_4_2,
@@ -119,7 +119,7 @@ export const getDataSec4 = visId =>{
 }
 export const getDataSec5 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/oralHealth/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/oralHealth/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.oral_5_1,
                 res.data.oral_5_2,
@@ -158,7 +158,7 @@ export const getDataSec5 = visId =>{
 }
 export const getDataSec6 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/abilityInLife/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/abilityInLife/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.abi_6_1,
                 res.data.abi_6_2,
@@ -190,7 +190,7 @@ export const getDataSec6 = visId =>{
 }
 export const getDataSec7 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/alzheimer/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/alzheimer/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.alz_7_1_el_age,
                 res.data.alz_7_1_result_age,
@@ -231,7 +231,7 @@ export const getDataSec7 = visId =>{
 }
 export const getDataSec8 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/depressionScreening/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/depressionScreening/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.dep_depressed,
                 res.data.dep_not_enjoying,
@@ -255,7 +255,7 @@ export const getDataSec8 = visId =>{
 }
 export const getDataSec9 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/boneMuscle/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/boneMuscle/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.bone_9_1,
                 res.data.bone_9_2,
@@ -293,7 +293,7 @@ export const getDataSec9 = visId =>{
 }
 export const getDataSec10 = visId =>{
     return dispatch => {
-        return Axios.get(`${apiBase}/urination/update/${visId}`).then(res=>{
+        return Axios.get(`${apiBase}/urination/findOne/${visId}`).then(res=>{
             const data =[
                 res.data.uri_10_1,
                 res.data.uri_result,

@@ -346,23 +346,15 @@ export const createVisitTable = (payload) => {
         payload: [res.data.VIS_ID,null],
       })
     });
-  } 
+  }
 };
 
-// export const searchVisit = (payload)=>{
-//   // const res = await Axios.get(`${apiEld}/visit/search/${payload[1]}/data/${payload[0]}`)
-//   // const res = await Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`)
-//   // return res
-//   return Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`).then(res=>{
-//     // console.log('res ', res.data)
-//     let data = res.data
-//     return data
-//   }).catch(error=>{
-//     // console.log('error ', error)
-//     return error
-//   })
-  
-// }
+export const updateLastVisDate = payload => {
+  console.log('eld id ',payload[1], 'vis date ',payload[0])
+  Axios.put(`${apiEld}/update/${payload[1]}`,{
+    ELD_LAST_VISIT_DATE: payload[0],
+  })
+}
 
 export const createAllDatabase = async (visId) => {
  await  createExa2Waist(visId);
