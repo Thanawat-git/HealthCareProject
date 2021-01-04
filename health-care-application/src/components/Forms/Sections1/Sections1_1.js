@@ -11,6 +11,7 @@ import {
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
+import FormHelperText from '@material-ui/core/FormHelperText';
 import * as formAction from "../../../actions/forms1p1.action";
 
 function Sections1_1(props) {
@@ -30,6 +31,12 @@ function Sections1_1(props) {
   const handleChange = (event) => {
     setElderlyGender(event.target.value);
   };
+
+const[err,seterr]= useState(false);
+
+
+
+
   // DatePicker
   const [years, setYears] = useState([]);
   const [days, setDays] = useState([]);
@@ -191,8 +198,10 @@ function Sections1_1(props) {
     // dispatch(savePID.addPidOnly(PID))
     function emptyValue() {
       e.preventDefault();
-      alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
+      //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
+      seterr(true)
       return;
+    
     }
     formAction.createAllElder(data);
     // const data2 = [null, PID]
@@ -230,7 +239,8 @@ function Sections1_1(props) {
                 variant="outlined"
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
-                // error={error}
+                error={err}
+                helperText={err ? "กรุณากรอกรหัสบัตรประชาชน" : ""}
                 defaultValue={forms1p1Reducer.peopleID}
                 onInput={(e) => {
                   e.target.value = e.target.value.slice(0, 13);
@@ -252,6 +262,8 @@ function Sections1_1(props) {
                 placeholder="ชื่อ"
                 className="TextField"
                 value={forms1p1Reducer.firstname}
+                error={err}
+                helperText={err ? "กรุณากรอกชื่อ" : ""}
                 onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
@@ -263,6 +275,8 @@ function Sections1_1(props) {
                 placeholder="นามสกุล"
                 className="TextField"
                 value={forms1p1Reducer.lastname}
+                error={err}
+                helperText={err ? "กรุณากรอกนามสกุล" : ""}
                 onChange={(e) => setLastname(e.target.value)}
               />
             </div>
@@ -281,6 +295,7 @@ function Sections1_1(props) {
               aria-label="gender"
               name="gender1"
               value={elderlyGender}
+              error={err}
               onChange={handleChange}
             >
               <FormControlLabel
@@ -296,6 +311,7 @@ function Sections1_1(props) {
               />
             </RadioGroup>
           </div>
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุเพศ" : ""}</FormHelperText>
           <br />
           {/* row-4 */}
           <div className="row">
@@ -343,6 +359,8 @@ function Sections1_1(props) {
                         label="ปี พ.ศ."
                         variant="outlined"
                         // value={yea}
+                        error={err}
+                helperText={err ? "กรุณากรอกปี พ.ศ" : ""}
                         onClick={getyear}
                       />
                     )}
@@ -363,6 +381,8 @@ function Sections1_1(props) {
                         {...params}
                         label="เดือน"
                         variant="outlined"
+                        error={err}
+                helperText={err ? "กรุณากรอกเดือน" : ""}
                         //   onClick={(e) => setMon(e.target.value)}
                       />
                     )}
@@ -382,6 +402,8 @@ function Sections1_1(props) {
                         {...params}
                         label="วัน"
                         variant="outlined"
+                        error={err}
+                helperText={err ? "กรุณากรอกวัน" : ""}
                         onClick={getday}
                       />
                     )}

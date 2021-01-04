@@ -11,11 +11,13 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import FormHelperText from '@material-ui/core/FormHelperText';
 import * as formAction from "../../../actions/forms1p3.action";
 
 export default function Sections1_3() {
   const [firstNeighbor, setFirstNeighbor] = useState("no1");
   const [secondNeighbor, setSecondNeighbor] = useState("no2");
+  const[err,seterr]= useState(false);
 
   const handleChange = (event) => {
     switch (event.target.value) {
@@ -104,7 +106,8 @@ export default function Sections1_3() {
     dispatch(formAction.add(data))
     function emptyValue(){
       e.preventDefault(); 
-      alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+      //alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
+      seterr(true)
       // return;
     }
   }
@@ -149,6 +152,8 @@ export default function Sections1_3() {
                     label="*ชื่อ"
                     variant="outlined"
                     defaultValue={neighborFirstName1}
+                    error={err}
+                    helperText={err ? "กรุณากรอกชื่อ" : ""}
                     onChange={(event)=>setneighborFirstName1(event.target.value)}
                     fullWidth
                   />
@@ -159,6 +164,8 @@ export default function Sections1_3() {
                     label="*นามสกุล"
                     variant="outlined"
                     defaultValue={neighborLastName1}
+                    error={err}
+                    helperText={err ? "กรุณากรอกนามสกุล" : ""}
                     onChange={(event)=>setneighborLastName1(event.target.value)}
                     fullWidth
                   />
@@ -192,6 +199,7 @@ export default function Sections1_3() {
                   />
                 </RadioGroup>
               </div>
+              <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุเพศ" : ""}</FormHelperText>
               <br />
               <div className="row">
                 <div className="col-12">
@@ -224,6 +232,7 @@ export default function Sections1_3() {
                   />
                 </RadioGroup>
               </div>
+              <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกเวลาที่อยู่กับผู้สูงอายุ" : ""}</FormHelperText>
               <br />
               <div className="row">
                 <div className="col-12">
@@ -276,6 +285,7 @@ export default function Sections1_3() {
                   />
                 </RadioGroup>
               </div>
+              <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุความสัมพันธ์กับผู้สูงอายุ" : ""}</FormHelperText>
               <br />
               <p>
                 เบอร์โทรศัพท์ <small>(ถ้ามี)</small>
@@ -327,6 +337,8 @@ export default function Sections1_3() {
                     label="*ชื่อ"
                     variant="outlined"
                     defaultValue={neighborFirstName2}
+                    error={err}
+                helperText={err ? "กรุณากรอกชื่อ" : ""}
                     onChange={(event)=>setneighborFirstName2(event.target.value)}
                     fullWidth
                   />
@@ -337,6 +349,8 @@ export default function Sections1_3() {
                     label="*นามสกุล"
                     variant="outlined"
                     defaultValue={neighborLastName2}
+                    error={err}
+                helperText={err ? "กรุณากรอกนามสกุล" : ""}
                     onChange={(event)=>setneighborLastName2(event.target.value)}
                     fullWidth
                   />
@@ -370,6 +384,7 @@ export default function Sections1_3() {
                   />
                 </RadioGroup>
               </div>
+              <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุเพศ" : ""}</FormHelperText>
               <br />
               <div className="row">
                 <div className="col-12">
@@ -402,6 +417,7 @@ export default function Sections1_3() {
                   />
                 </RadioGroup>
               </div>
+              <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกเวลาที่อยู่กับผู้สูงอายุ" : ""}</FormHelperText>
               <br />
               <div className="row">
                 <div className="col-12">
@@ -454,6 +470,7 @@ export default function Sections1_3() {
                   />
                 </RadioGroup>
               </div>
+              <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุความสัมพันธ์กับผู้สูงอายุ" : ""}</FormHelperText>
               <br />
               <p>
                 เบอร์โทรศัพท์ <small>(ถ้ามี)</small>

@@ -11,6 +11,8 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 import * as formAction from "../../../actions/forms1p5.action";
 
 export default function Sections1_5() {
@@ -19,7 +21,7 @@ export default function Sections1_5() {
     ({ forms1p1Reducer }) => forms1p1Reducer.peopleID
   );
   const dispatch = useDispatch();
-
+  const[err,seterr]= useState(false);
   const [drugAllergy, setdrugAllergy] = useState(forms1p5Reducer.drugAllergy);
   const [foodAllergy, setfoodAllergy] = useState(forms1p5Reducer.foodAllergy);
 
@@ -49,7 +51,8 @@ export default function Sections1_5() {
 
     function emptyValue() {
       e.preventDefault();
-      alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
+      //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
+      seterr(true)
       // return;
     }
   };
@@ -173,6 +176,7 @@ export default function Sections1_5() {
               </ul>
             </div>
           </div>
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกประวัติการแพ้ยา" : ""}</FormHelperText>
           {/* row-1 */}
           <hr />
           <div className="row">
@@ -260,11 +264,13 @@ export default function Sections1_5() {
                 })}
               </ul>
             </div>
+            
           </div>
           {/* row-2 */}
           {/* content */}
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกประวัติการแพ้อาหาร" : ""}</FormHelperText>
         </div>
-
+        
         {/* bt */}
         <div className="row justify-content-between">
           <Link to="/sec1-page4">
