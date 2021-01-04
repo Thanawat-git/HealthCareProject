@@ -1,4 +1,4 @@
-import { FORMS1P6_ADD_NEW, apiEld, apiBase } from "../constants";
+import { FORMS1P6_ADD_NEW, apiEld, apiBase, USERLOGIN } from "../constants";
 import Axios from "axios";
 
 export const setStateToAdd = (payload) => ({
@@ -17,7 +17,7 @@ export const createDisease = async (payload) => {
     ELD_ID_NUMBER: payload[0],
     DIS_NAME: payload[1],
     EXAM_DATE: new Date(),
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Disease Success");
 };
@@ -34,7 +34,7 @@ const createExa2Waist = async (visId) => {
     WAI_WAIST: null,
     WAI_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Waist Create Success");
 };
@@ -46,7 +46,7 @@ const createExa2Bmi = async (visId) => {
     BMI_BMI: null,
     BMI_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Bmi Create Success");
 };
@@ -58,7 +58,7 @@ const createExa2Bp = async (visId) => {
     BP_BLO_DIA: null,
     BP_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Bp Create Success");
 };
@@ -69,7 +69,7 @@ const createExa2Fbs = async (visId) => {
     FBS_FBS: null,
     FBS_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Fbs Create Success");
 };
@@ -87,7 +87,7 @@ const createExa3Cardiovascular = async (visId) => {
     CARDIO_COUNT: null,
     CARDIO_COUNT_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Cardiovascular Create Success");
 };
@@ -102,7 +102,7 @@ const createExa4Eye = async (visId) => {
     EYE_COUNT: null,
     EYE_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Eye Create Success");
 };
@@ -129,7 +129,7 @@ const createExa5OralHealth = async  (visId) => {
     ORAL_COUNT: null,
     ORAL_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Oral_Health Create Success");
 };
@@ -150,7 +150,7 @@ const createExa6AbilityInLife = async (visId) => {
     ABI_GROUP: null,
     ABI_CORRECT_FORM: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Ability_In_Life Create Success");
 };
@@ -163,7 +163,7 @@ const createExa6TAI = async (visId) => {
     TAI_TOILET: null,
     TAI_GROUP: null,
     TAI_CORRECT_FORM: null,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
     VIS_ID: visId
   })
     alert("TAI Create Success");
@@ -194,7 +194,7 @@ const createExa7Alzheimer = async (visId) => {
     ALZ_RESULT : null,
     ALZ_CORRECT_FORM : null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Alzheimer Create Success");
 };
@@ -244,7 +244,7 @@ const createExa7MMSE = async (visId) => {
     MMSE_11_POINT: null,
     MMSE_CORRECT_FORM: null,
     MMSE_RESULT: null,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
     VIS_ID: visId
   })
     alert("MMSE Create Success");
@@ -268,7 +268,7 @@ const createExa8DepressionScreening = async (visId) => {
     DEP_SUM_POINT: null,
     DEP_9Q_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Depression_Screening Create Success");
 };
@@ -294,7 +294,7 @@ const createExa9BoneMuscle = async (visId) => {
     BONE_PHY_FIT_SECOND: null,
     BONE_PHY_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Bone_Muscle Create Success");
 };
@@ -316,7 +316,7 @@ const createExa9_1Osteoarthritis = async (visId) => {
     OST_2_5_L: null,
     OST_2_RESULT: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Osteoarthritis Create Success");
 };
@@ -325,7 +325,7 @@ export const createExa10Urination = async (visId) => {
   await   Axios.post(`${apiBase}/urination/create`, {
     URI_10_1: null,
     VIS_ID: visId,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Urination Create Success");
 };
@@ -334,10 +334,10 @@ export const createVisitTable = (payload) => {
   return dispatch => {
     Axios.post(`${apiEld}/visit/create`, {
       VIS_DATE: payload[0],
-      visiterRole: "VOLUNTEER", //fix
-      VISITER_ID_NUMBER: "1200101000000", //fix
+      visiterRole: USERLOGIN.Role, //fix
+      VISITER_ID_NUMBER: USERLOGIN.Id, //fix
       ELD_ID_NUMBER: payload[1],
-      updateBy: "Name", //fix
+      updateBy: USERLOGIN.Fullname, //fix
     }).then((res) => {
       alert("Visit Create Success");
       createAllDatabase(res.data.VIS_ID)

@@ -37,6 +37,10 @@ const useStyles = makeStyles({
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
   
+  useEffect(() => {
+    let local = JSON.parse(localStorage.getItem('user'))
+    console.log('local ',local)
+  }, [])
   const dispatch = useDispatch();
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
@@ -132,7 +136,7 @@ export default function Asynchronous() {
                 {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE}
               </DialogContentText>
               <DialogContentText>
-                {/* ตรวจโดย {elderlyReducer.resultSelected.updateBy} */}
+                ตรวจโดย {elderlyReducer.resultSelected.updateBy}
               </DialogContentText>
             </DialogContent>
 

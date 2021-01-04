@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 import FormHelperText from '@material-ui/core/FormHelperText';
 import * as formAction from "../../../actions/forms1p1.action";
+import { USER } from "../../../constants";
 
 function Sections1_1(props) {
   const forms1p1Reducer = useSelector(({ forms1p1Reducer }) => forms1p1Reducer);
@@ -152,8 +153,6 @@ const[err,seterr]= useState(false);
 
   // Redux Hooks
   const handleSubmit = (e) => {
-    // e.preventDefault()
-
     if (
       PID === null ||
       firstname === null ||
@@ -172,9 +171,7 @@ const[err,seterr]= useState(false);
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
-
     var Age = nowYear - parseInt(yea);
-
     if (numMon == nowMonth) {
       parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
     } else if (numMon > nowMonth) {
@@ -190,9 +187,6 @@ const[err,seterr]= useState(false);
       nickname,
       elderlyBirthday,
       Age,
-      yea,
-      mon,
-      day,
     ];
     dispatch(formAction.add(data));
     // dispatch(savePID.addPidOnly(PID))
@@ -201,14 +195,8 @@ const[err,seterr]= useState(false);
       //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
       seterr(true)
       return;
-    
     }
     formAction.createAllElder(data);
-    // const data2 = [null, PID]
-    // dispatch({
-    //   type: "VIS_ID",
-    //   payload: data2
-    // })
   };
 
   return (

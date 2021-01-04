@@ -28,7 +28,7 @@ export const updateElderCurrent = async (payload) => {
     ELD_CUR_STREET: payload[3],
     ELD_CUR_SUB_DISTRICT: payload[4],
     ELD_CUR_AREA: payload[5],
-    updateBy: null
+    // updateBy: null
   })
   alert("Update ElderCurrent Success");
 };
@@ -42,7 +42,7 @@ export const updateElderIdCurrent = async (payload) => {
       ELD_IDN_ADDR_STREET: payload[3],
       ELD_IDN_ADDR_SUB_DISTRICT: payload[4],
       ELD_IDN_ADDR_AREA: payload[5],
-      updateBy: null
+      // updateBy: null
     }
   )
     alert("Update Elder ID Currentaddress Success");

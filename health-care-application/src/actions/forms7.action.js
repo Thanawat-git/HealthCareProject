@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7,apiBase } from "../constants";
+import { CREATE_NEW_FORMS7,apiBase,USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -47,7 +47,7 @@ export const updateAlzheimer = async (payload)=>{
       ALZ_7_10_RESULT_COUNTDOWN: payload[19],
       ALZ_RESULT:payload[20],
       ALZ_CORRECT_FORM:payload[21],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname
     })
       alert("Alzheimer Update Success")
   }

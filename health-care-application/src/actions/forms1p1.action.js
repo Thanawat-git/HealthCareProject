@@ -1,4 +1,4 @@
-import { FORMS1P1_ADD_NEW, apiEld } from "../constants";
+import { FORMS1P1_ADD_NEW, apiEld, USERLOGIN } from "../constants";
 import Axios from "axios";
 
 export const setStateToAdd = (payload) => ({
@@ -21,7 +21,7 @@ const createElder = async (payload) => {
     ELD_PHONE: null,
     ELD_LAST_VISIT_DATE: null,
     ELD_AKA: payload[4],
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
   alert("Elder Success");
 };
@@ -34,7 +34,7 @@ export const updateElder = async (payload) => {
     ELD_LASTNAME: payload[3],
     ELD_PHONE: payload[4],
     ELD_AKA: payload[5],
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
   })
     alert("Elder update Success");
 };
@@ -56,9 +56,9 @@ const createElderinfo = async (payload) => {
     ELD_TREATMENT_HOSPITAL: null,
     ELD_INCOME: null,
     ELD_ID_NUMBER: payload[0],
-    adderRole: "VOLUNTEER",
-    updateBy: "นี่โอ๊ตนะ",
-    ADDER_ID_NUMBER: "1200101000000",
+    adderRole: USERLOGIN.Role,
+    updateBy: USERLOGIN.Fullname,
+    ADDER_ID_NUMBER: USERLOGIN.Id,
   })
     alert("Elder Info Success");
 
@@ -70,7 +70,7 @@ const createElderRelative = async (payload) => {
     ELD_REL_LASTNAME: null,
     ELD_REL_RELATION: null,
     ELD_REL_PHONE: null,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
     ELD_ID_NUMBER: payload[0],
   })
     alert("Elder Relative Success");
@@ -86,7 +86,7 @@ const createElderCurrent = async (payload) => {
     ELD_CUR_SUB_DISTRICT: null,
     ELD_CUR_DISTRICT: null,
     ELD_CUR_PROVINCE: null,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
     ELD_ID_NUMBER: payload[0],
   })
     alert("Elder Currentaddress Success");
@@ -102,7 +102,7 @@ const createElderIdCurrent = async (payload) => {
     ELD_IDN_ADDR_SUB_DISTRICT: null,
     ELD_IDN_ADDR_DISTRICT: null,
     ELD_IDN_ADDR_PROVINCE: null,
-    updateBy: null,
+    updateBy: USERLOGIN.Fullname,
     ELD_ID_NUMBER: payload[0],
   })
     alert("Elder ID Currentaddress Success");

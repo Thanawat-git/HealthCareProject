@@ -1,4 +1,4 @@
-import {CREATE_NEW_FORMS6T,apiBase } from "../constants";
+import {CREATE_NEW_FORMS6T,apiBase, USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -18,7 +18,7 @@ await  Axios.put(`${apiBase}/TAI/update/${payload[0]}`, {
     TAI_TOILET: payload[4],
     TAI_GROUP: payload[5],
     TAI_CORRECT_FORM: payload[6],
-    updateBy: null
+    updateBy: USERLOGIN.Fullname
   })
     alert("Alzheimer Tai Update Success")
 }

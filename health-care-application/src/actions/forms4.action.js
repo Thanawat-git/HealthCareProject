@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS4,apiBase } from "../constants";
+import { CREATE_NEW_FORMS4,apiBase,USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -32,7 +32,7 @@ await   Axios.put(`${apiBase}/eye/update/${payload[0]}`, {
         EYE_COUNT: payload[6],
         EYE_RESULT: payload[7],
         EYE_CORRECT_FORM:payload[8],
-        updateBy: null
+        updateBy: USERLOGIN.Fullname
     })
       alert("Eye update Success")
   }

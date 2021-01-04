@@ -1,4 +1,4 @@
-import { FORMS1P5_ADD_NEW , apiEld } from "../constants";
+import { FORMS1P5_ADD_NEW , apiEld, USERLOGIN, } from "../constants";
 import Axios from "axios";
 
 export const setStateToAdd = (payload) => ({
@@ -17,7 +17,7 @@ export const createDrug = async (payload) => {
     ELD_ID_NUMBER: payload[0],
     DRUG_NAME: payload[1],
     EXAM_DATE: new Date(),
-    updateBy: null
+    updateBy: USERLOGIN.Fullname
   })
   alert("drug Success");
 };
@@ -27,7 +27,7 @@ export const createFood = async (payload) => {
     ELD_ID_NUMBER: payload[0],
     FOOD_NAME: payload[1],
     EXAM_DATE: new Date(),
-    updateBy: null
+    updateBy: USERLOGIN.Fullname
   })
   .then(() => {
     alert("Food Success");
