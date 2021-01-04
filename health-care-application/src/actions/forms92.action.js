@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS92,apiBase } from "../constants";
+import { CREATE_NEW_FORMS92,apiBase,USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -57,7 +57,7 @@ export const updateExa9_1Osteoarthritis = async (payload)=>{
         OST_3_SUM_POINT: payload[31],
         OST_3_RESULT: payload[32],
         OST_CORRECT_FORM: payload[33],
-        updateBy: null
+        updateBy: USERLOGIN.Fullname
     })
       alert("Osteoarthritis Update Success")
   }

@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS6,apiBase } from "../constants";
+import { CREATE_NEW_FORMS6,apiBase,USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -38,7 +38,7 @@ await   Axios.put(`${apiBase}/abilityInLife/update/${payload[13]}`, {
         ABI_SUM_POINT: payload[10],
         ABI_GROUP: payload[11],
         ABI_CORRECT_FORM: payload[12],
-        updateBy: null
+        updateBy: USERLOGIN.Fullname
     })
       alert("AilityInLife Update Success")
   }

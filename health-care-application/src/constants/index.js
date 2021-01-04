@@ -96,15 +96,11 @@ export const NOT_CONNECT_NETWORK = 'NOT_CONNECT_NETWORK'
 export const NETWORK_CONNECTION_MESSAGE = 'Cannot connect to server, Please try again.' 
 // export const NETWORK_TIMEOUT_MESSAGE = 'A network timeout has occurred, Please try again.'  
 // export const UPLOAD_PHOTO_FAIL_MESSAGE = 'An error has occurred. The photo was unable to upload.' 
-
-
+export const USER = 'user'
+export const USERLOGIN = JSON.parse(localStorage.getItem(USER))
 export const apiBase =  api;
 export const apiEld = apiBase + "/elder";
 export const apiVol = apiBase + "/volunteer";
 export const apiAdmin = apiBase + "/admin";
 
-
-
-
-export const USER = 'user'
-
+console.log('USERLOGIN ',USERLOGIN)

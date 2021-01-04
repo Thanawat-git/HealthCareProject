@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS2, apiBase } from "../constants";
+import { CREATE_NEW_FORMS2, apiBase, USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -18,7 +18,7 @@ export const updateExa2Waist = async (payload)=>{
       WAI_WAIST: payload[1], //payload[1]
       WAI_RESULT: payload[2],
       WAI_CORRECT_FORM:payload[3],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname,
     })
       alert("Waist update Success")
   }
@@ -30,7 +30,7 @@ export const updateExa2Waist = async (payload)=>{
       BMI_BMI: payload[3],
       BMI_RESULT: payload[4],
       BMI_CORRECT_FORM:payload[5],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname,
     })
       alert("Bmi update Success")
   }
@@ -42,7 +42,7 @@ export const updateExa2Waist = async (payload)=>{
       BP_BLO_DIA: payload[3],
       BP_RESULT: payload[4],
       BP_CORRECT_FORM:payload[5],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname,
     })
       alert("Bp update Success")
   }
@@ -54,7 +54,7 @@ export const updateExa2Waist = async (payload)=>{
       FBS_FBS: payload[2],
       FBS_RESULT: payload[3],
       FBS_CORRECT_FORM:payload[4],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname,
     })
       alert("Fbs update Success")
   }

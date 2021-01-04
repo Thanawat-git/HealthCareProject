@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS8 ,apiBase} from "../constants";
+import { CREATE_NEW_FORMS8 ,apiBase, USERLOGIN} from "../constants";
 import Axios from 'axios';
 export const setStateToAdd = (payload) => ({
     type: CREATE_NEW_FORMS8,
@@ -28,7 +28,7 @@ export const updateDepressionScreening = async (payload)=>{
       DEP_CHECK:payload[3],
       DEP_RESULT: payload[4],
       DEP_CORRECT_FORM:payload[5],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname
     })
       alert("Depression_Screening Update Success")
   }

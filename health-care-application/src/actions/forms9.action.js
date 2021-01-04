@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS9,apiBase } from "../constants";
+import { CREATE_NEW_FORMS9,apiBase, USERLOGIN } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -44,7 +44,7 @@ export const updateExa9BoneMuscle = async (payload)=>{
         BONE_PHY_FIT_SECOND: payload[17],
         BONE_PHY_RESULT: payload[18],
         BONE_CORRECT_FORM:payload[19],
-        updateBy: null
+        updateBy: USERLOGIN.Fullname
     })
       alert("Bone_Muscle Update Success")
   }

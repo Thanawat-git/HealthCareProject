@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7M ,apiBase} from "../constants";
+import { CREATE_NEW_FORMS7M ,apiBase ,USERLOGIN} from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -63,7 +63,7 @@ await  Axios.put(`${apiBase}/MMSE/update/${payload[43]}`, {
       MMSE_11_POINT: payload[40],
       MMSE_CORRECT_FORM: payload[41],
       MMSE_RESULT:payload[42],
-      updateBy: null
+      updateBy: USERLOGIN.Fullname
   })
      alert("MMSE Update Success")
 }

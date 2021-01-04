@@ -34,9 +34,9 @@ export const updateElderinfo = async (payload) =>{
     ELD_TREATMENT:payload[8],
     ELD_TREATMENT_HOSPITAL:payload[9],
     ELD_INCOME: payload[10],
-    adderRole: "VOLUNTEER",
-    updateBy: "กรองแก้ว ก้องวัฒนะกุล",
-    ADDER_ID_NUMBER: "1200101000000",
+    // adderRole: "VOLUNTEER",
+    // updateBy: "กรองแก้ว ก้องวัฒนะกุล",
+    // ADDER_ID_NUMBER: "1200101000000",
   })
     alert("Update Elder Info Success");
   }

@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS10 ,apiBase} from "../constants";
+import { CREATE_NEW_FORMS10 ,apiBase, USERLOGIN} from "../constants";
 import Axios from 'axios';
 export const setStateToAdd = (payload) => ({
     type: CREATE_NEW_FORMS10,
@@ -26,7 +26,7 @@ export const upadateExa10Urination = async (payload)=>{
         URI_10_1: payload[1],
         URI_RESULT:payload[2],
         URI_CORRECT_FORM:payload[3],
-        updateBy: null
+        updateBy: USERLOGIN.Fullname
     })
       alert("Urination update Success")
   }
