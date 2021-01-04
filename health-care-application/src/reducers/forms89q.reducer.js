@@ -11,7 +11,8 @@ const initialState = {
     ans8_9q_8: 0,
     ans8_9q_9: 0,
     results: 'ไม่สามารถประเมินได้ กรุณากรอกข้อมูลให้ครบถ้วน',
-    collect: false
+    collect: false,
+    isFetching:null
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -29,7 +30,8 @@ export default (state = initialState, { type, payload }) => {
             ans8_9q_8: payload[7],
             ans8_9q_9: payload[8],
             results: payload[9],
-            collect: payload[10]
+            collect: payload[10],
+            isFetching:false
         }
 
     default:
