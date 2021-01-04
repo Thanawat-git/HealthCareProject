@@ -56,14 +56,14 @@ export default function Sections4_1() {
         
           <p>4.1 นับนิ้วในระยะ 3 เมตรผิด 2 ครั้งขึ้นไปจาก 4 ครั้ง</p>
           <RadioGroup className="pl-20" aria-label='questions4.1' name='questions4.1' value={ans4_1} onChange={(e)=>setAns4_1(e.target.value)}>
-            <FormControlLabel className="radio-size" value='1'  control={<Radio color="primary" />} label="ใช่" />
-            <FormControlLabel className="radio-size" value='0' control={<Radio color="primary" />} label="ไม่ใช่" />
+            <FormControlLabel className="radio-size" value="1"  control={<Radio color="primary" />} label="ใช่" />
+            <FormControlLabel className="radio-size" value="0" control={<Radio color="primary" />} label="ไม่ใช่" />
           </RadioGroup>
           <hr/>
           <p>4.2 อ่านหนังสือพิมพ์ในระยะ 1 ฟุต ไม่ได้</p>
           <RadioGroup className="pl-20" aria-label='questions4.2' name='questions4.2' value={ans4_2} onChange={(e)=>setAns4_2(e.target.value)}>
-            <FormControlLabel className="radio-size" value='1'  control={<Radio color="primary" />} label="ใช่" />
-            <FormControlLabel className="radio-size" value='0' control={<Radio color="primary" />} label="ไม่ใช่" />
+            <FormControlLabel className="radio-size" value="1"  control={<Radio color="primary" />} label="ใช่" />
+            <FormControlLabel className="radio-size" value="0" control={<Radio color="primary" />} label="ไม่ใช่" />
           </RadioGroup>
           <hr/>
           <p>4.3 ตามัวคล้ายมีหมอกบัง</p>

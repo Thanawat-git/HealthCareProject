@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { RadioGroup, Radio, FormControlLabel, TextField, OutlinedInput, InputAdornment, FormControl, InputLabel } from "@material-ui/core";
+import {
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+  TextField,
+  OutlinedInput,
+  InputAdornment,
+  FormControl,
+  InputLabel,
+} from "@material-ui/core";
 import "../form-style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms5.action";
-import ShowResultPopup from '../ResuleShowsPopUp'
-
+import ShowResultPopup from "../ResuleShowsPopUp";
 
 export default function Sections5_1() {
-  const forms5Reducer = useSelector(({forms5Reducer}) => forms5Reducer)
+  const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [ans5_1, setAns5_1] = useState(forms5Reducer.ans5_1);
-  const [moreInfoAns5_1, setmoreInfoAns5_1] = useState(forms5Reducer.moreInfoAns5_1);
+  const [moreInfoAns5_1, setmoreInfoAns5_1] = useState(
+    forms5Reducer.moreInfoAns5_1
+  );
   const [ans5_2, setAns5_2] = useState(forms5Reducer.ans5_2);
   const [ans5_3, setAns5_3] = useState(forms5Reducer.ans5_3);
   const [ans5_4, setAns5_4] = useState(forms5Reducer.ans5_4); //ฟันแท้
@@ -35,35 +46,116 @@ export default function Sections5_1() {
   const [count, setCount] = useState(forms5Reducer.count);
 
   useEffect(() => {
-    if(ans5_1 && ans5_2 && ans5_3 && ans5_4 && ans5_5 && ans5_6 && ans5_7 && ans5_8 && ans5_9 && ans5_10 && ans5_11 && ans5_12 && ans5_13 && ans5_14 && ans5_15 && ans5_16 && ans5_17){
-      setCollect(true)
+    if (
+      ans5_1 &&
+      ans5_2 &&
+      ans5_3 &&
+      ans5_4 &&
+      ans5_5 &&
+      ans5_6 &&
+      ans5_7 &&
+      ans5_8 &&
+      ans5_9 &&
+      ans5_10 &&
+      ans5_11 &&
+      ans5_12 &&
+      ans5_13 &&
+      ans5_14 &&
+      ans5_15 &&
+      ans5_16 &&
+      ans5_17
+    ) {
+      setCollect(true);
     }
-  }, [ans5_1, ans5_2, ans5_3, ans5_4, ans5_5, ans5_6, ans5_7, ans5_8, ans5_9, ans5_10, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15, ans5_16, ans5_17])
+  }, [
+    ans5_1,
+    ans5_2,
+    ans5_3,
+    ans5_4,
+    ans5_5,
+    ans5_6,
+    ans5_7,
+    ans5_8,
+    ans5_9,
+    ans5_10,
+    ans5_11,
+    ans5_12,
+    ans5_13,
+    ans5_14,
+    ans5_15,
+    ans5_16,
+    ans5_17,
+  ]);
 
   useEffect(() => {
-    let c = 0
-    if(collect){
-      c = parseInt(ans5_11)+parseInt(ans5_12)+parseInt(ans5_13)+parseInt(ans5_14)+parseInt(ans5_15)
-      c == 5 ? setresults('ส่งต่อเพื่อดูแลรักษาช่องปาก'): setresults('ไม่ต้องส่งต่อ')
-      setCount(c)
+    let c = 0;
+    if (collect) {
+      c =
+        parseInt(ans5_11) +
+        parseInt(ans5_12) +
+        parseInt(ans5_13) +
+        parseInt(ans5_14) +
+        parseInt(ans5_15);
+      c == 5
+        ? setresults("ส่งต่อเพื่อดูแลรักษาช่องปาก")
+        : setresults("ไม่ต้องส่งต่อ");
+      setCount(c);
     }
-  }, [collect,ans5_11, ans5_12, ans5_13, ans5_14, ans5_15])
+  }, [collect, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15]);
 
-  const handleSubmit = ()=>{
-    console.log('c',count)
-    setShow(true)
+  const handleSubmit = () => {
+    console.log("c", count);
+    setShow(true);
     const data = [
-      ans5_1, moreInfoAns5_1, ans5_2, ans5_3, ans5_4, ans5_5, 
-      ans5_6, ans5_7, ans5_8, ans5_9, ans5_10, ans5_11, ans5_12, 
-      ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,results,collect,count]
-    dispatch(formAction.add(data))
-  }
+      ans5_1,
+      moreInfoAns5_1,
+      ans5_2,
+      ans5_3,
+      ans5_4,
+      ans5_5,
+      ans5_6,
+      ans5_7,
+      ans5_8,
+      ans5_9,
+      ans5_10,
+      ans5_11,
+      ans5_12,
+      ans5_13,
+      ans5_14,
+      ans5_15,
+      ans5_16,
+      ans5_17,
+      results,
+      collect,
+      count,
+    ];
+    dispatch(formAction.add(data));
+  };
   const saveDataToServer = () => {
     formAction.updateOralHealth([
-      ans5_1,ans5_2, ans5_3, ans5_4, ans5_5,ans5_6, ans5_7, ans5_8, ans5_9, 
-      ans5_10, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15, ans5_16, ans5_17,
-      count,results,visId ,collect]);
-  }
+      ans5_1,
+      ans5_2,
+      ans5_3,
+      ans5_4,
+      ans5_5,
+      ans5_6,
+      ans5_7,
+      ans5_8,
+      ans5_9,
+      ans5_10,
+      ans5_11,
+      ans5_12,
+      ans5_13,
+      ans5_14,
+      ans5_15,
+      ans5_16,
+      ans5_17,
+      count,
+      results,
+      visId,
+      collect,
+    ]);
+  };
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -88,7 +180,7 @@ export default function Sections5_1() {
               value="withouttoothbrush"
               control={<Radio color="primary" />}
               label="แปรงแต่ไม่ได้ใช้แปรงสีฟัน"
-            /> 
+            />
             <FormControlLabel
               className="radio-size"
               value="atimeforday"
@@ -107,14 +199,36 @@ export default function Sections5_1() {
               control={<Radio color="primary" />}
               label="แปรงมากกว่า 2 ครั้งต่อวัน ระบุ"
             />
-            {ans5_1 === 'overtwotimeforday'? <TextField id="outlined-basic" defaultValue={moreInfoAns5_1} onChange={(e)=>setmoreInfoAns5_1(e.target.value)} label="" variant="outlined" size="small" /> :''}
+            {ans5_1 === "overtwotimeforday" ? (
+              <TextField
+                id="outlined-basic"
+                defaultValue={moreInfoAns5_1}
+                onChange={(e) => setmoreInfoAns5_1(e.target.value)}
+                label=""
+                variant="outlined"
+                size="small"
+              />
+            ) : (
+              ""
+            )}
             <FormControlLabel
               className="radio-size"
               value="other"
               control={<Radio color="primary" />}
               label="อื่นๆ ระบุ"
             />
-            {ans5_1 === 'other'? <TextField id="outlined-basic" defaultValue={moreInfoAns5_1} onChange={(e)=>setmoreInfoAns5_1(e.target.value)} label="" variant="outlined" size="small" /> :''}
+            {ans5_1 === "other" ? (
+              <TextField
+                id="outlined-basic"
+                defaultValue={moreInfoAns5_1}
+                onChange={(e) => setmoreInfoAns5_1(e.target.value)}
+                label=""
+                variant="outlined"
+                size="small"
+              />
+            ) : (
+              ""
+            )}
           </RadioGroup>
           <hr />
           <p>การใช้ยาสีฟันผสมฟลูโอไรด์ทุกวัน</p>
@@ -165,62 +279,87 @@ export default function Sections5_1() {
           {/* จำนวนฟัน */}
           <p>จำนวนฟัน</p>
           <FormControl variant="outlined" fullWidth className="TextField">
-            <InputLabel htmlFor="outlined-adornment-password">จำนวนฟันแท้</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              จำนวนฟันแท้
+            </InputLabel>
             <OutlinedInput
               type="number"
               value={ans5_4}
-              onChange={(e)=>setAns5_4(e.target.value)}
+              onChange={(e) => setAns5_4(e.target.value)}
               endAdornment={<InputAdornment position="end">ซี่</InputAdornment>}
               labelWidth={70}
             />
           </FormControl>
-          <br/>
+          <FormHelperText style={{ fontSize : 15}}>
+            กรุณาระบุจำนวน ถ้าไม่มีให้ใส่ 0
+          </FormHelperText>
+          <br />
           <FormControl variant="outlined" fullWidth className="TextField">
-            <InputLabel htmlFor="outlined-adornment-password">จำนวนฟันผุ</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              จำนวนฟันผุ
+            </InputLabel>
             <OutlinedInput
               type="number"
               value={ans5_5}
-              onChange={(e)=>setAns5_5(e.target.value)}
+              onChange={(e) => setAns5_5(e.target.value)}
               endAdornment={<InputAdornment position="end">ซี่</InputAdornment>}
               labelWidth={70}
             />
           </FormControl>
-<br/>
+          <FormHelperText style={{ fontSize : 15}}>
+            กรุณาระบุจำนวน ถ้าไม่มีให้ใส่ 0
+          </FormHelperText>
+          <br />
           <p>จำนวนคู่สบฟันหลัง</p>
 
           <FormControl variant="outlined" fullWidth className="TextField">
-            <InputLabel htmlFor="outlined-adornment-password">ฟันแท้ กับ ฟันแท้</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              ฟันแท้ กับ ฟันแท้
+            </InputLabel>
             <OutlinedInput
               type="number"
               value={ans5_6}
-              onChange={(e)=>setAns5_6(e.target.value)}
+              onChange={(e) => setAns5_6(e.target.value)}
               endAdornment={<InputAdornment position="end">คู่</InputAdornment>}
               labelWidth={70}
             />
           </FormControl>
-          <br/>
+          <FormHelperText style={{ fontSize : 15}}>
+            กรุณาระบุจำนวน ถ้าไม่มีให้ใส่ 0
+          </FormHelperText>
+          <br />
           <FormControl variant="outlined" fullWidth className="TextField">
-            <InputLabel htmlFor="outlined-adornment-password">ฟันแท้ กับ ฟันเทียม</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              ฟันแท้ กับ ฟันเทียม
+            </InputLabel>
             <OutlinedInput
               type="number"
               value={ans5_7}
-              onChange={(e)=>setAns5_7(e.target.value)}
+              onChange={(e) => setAns5_7(e.target.value)}
               endAdornment={<InputAdornment position="end">คู่</InputAdornment>}
               labelWidth={70}
             />
           </FormControl>
-          <br/>
+          <FormHelperText style={{ fontSize : 15}}>
+            กรุณาระบุจำนวน ถ้าไม่มีให้ใส่ 0
+          </FormHelperText>
+          <br />
           <FormControl variant="outlined" fullWidth className="TextField">
-            <InputLabel htmlFor="outlined-adornment-password">ฟันเทียม กับ ฟันเทียม</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              ฟันเทียม กับ ฟันเทียม
+            </InputLabel>
             <OutlinedInput
               type="number"
               value={ans5_8}
-              onChange={(e)=>setAns5_8(e.target.value)}
+              onChange={(e) => setAns5_8(e.target.value)}
               endAdornment={<InputAdornment position="end">คู่</InputAdornment>}
               labelWidth={70}
             />
           </FormControl>
-          <br/>
+          <FormHelperText style={{ fontSize : 15}}>
+            กรุณาระบุจำนวน ถ้าไม่มีให้ใส่ 0
+          </FormHelperText>
+          <br />
           <hr />
           <p> สูบบุหรี่มากกว่า 10 มวนต่อวัน</p>
           <RadioGroup
@@ -411,24 +550,28 @@ export default function Sections5_1() {
         {/* bt */}
         <div className="row justify-content-between">
           <Link to="/mainmenu">
-          <button type="button" className="btn form-btn btn-back btn-lg">
-            ยกเลิก
-          </button>
+            <button type="button" className="btn form-btn btn-back btn-lg">
+              ยกเลิก
+            </button>
           </Link>
-          <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >
+          <button
+            type="button"
+            className="btn form-btn btn-primary btn-lg"
+            onClick={handleSubmit}
+          >
             บันทึก
           </button>
         </div>
       </form>
       <ShowResultPopup
-          title='ผลการประเมินสุขภาพช่องปาก' 
-          result={results}
-          show={show}
-          onClick={saveDataToServer}
-          onHide={()=>setShow(false)}
-          backdrop="static"
-          keyboard={false}
-        />
+        title="ผลการประเมินสุขภาพช่องปาก"
+        result={results}
+        show={show}
+        onClick={saveDataToServer}
+        onHide={() => setShow(false)}
+        backdrop="static"
+        keyboard={false}
+      />
     </div>
   );
 }
