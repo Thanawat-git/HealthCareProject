@@ -39,6 +39,7 @@ export default function Asynchronous() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  const visitID = useSelector(({ visitID }) => visitID.visiId);
   const [isVisId, setisVisId] = useState(true);
   const [visData, setvisData] = useState(null)
   let history = useHistory();
@@ -48,8 +49,6 @@ export default function Asynchronous() {
     const d = new Date();
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
-      // Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`).then(res=>{
-      // console.log('res ', res.data)
       setisVisId(true)
       setvisData(res.data)
     }).catch(error=>{
@@ -160,7 +159,7 @@ export default function Asynchronous() {
                       type: "VIS_ID",
                       payload: data,
                     })
-                    dispatch(getAction.getCollect(8));
+                    dispatch(getAction.getCollect(visitID));
                     if(!forms2Reducer.isFetching){
                       setTimeout(() => {
                           history.push("/mainmenu");

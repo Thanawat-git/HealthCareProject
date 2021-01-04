@@ -24,10 +24,10 @@ function ResuleShowsPopUp(props) {
           <Modal.Body>
             <React.Fragment>
               <div className="row">
-                <div className="col-12 title-result">
+                <div className="col-12 col-xl-6 title-result">
                 <p> ผลการประเมิน </p>
                 </div>
-                <div className="col-12 result-result">
+                <div className="col-12 col-xl-6 result-result">
                 <p> {props.result} </p>
                 </div>
               </div>
