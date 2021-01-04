@@ -5,6 +5,8 @@ import './Sections1.css'
 import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 import * as formAction from "../../../actions/forms1p4.action";
 
 function Sections1_4(props) {
@@ -12,6 +14,7 @@ function Sections1_4(props) {
   const forms1p4Reducer = useSelector(({forms1p4Reducer}) => forms1p4Reducer)
   const peopleID = useSelector(({forms1p1Reducer})=>forms1p1Reducer.peopleID)
   const dispatch = useDispatch()
+  const[err,seterr]= useState(false);
 
     const [elderlyStatus, setElderlyStatus] = useState(forms1p4Reducer.elderlyStatus) // หลัก
     const [elderlyBeing, setElderlyBeing] = useState(forms1p4Reducer.elderlyBeing) // หลัก
@@ -87,6 +90,7 @@ function Sections1_4(props) {
       dispatch(formAction.add(data))
       function emptyValue(){
         e.preventDefault(); 
+        seterr(true)
         //alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
         // return;
       }
@@ -112,8 +116,9 @@ function Sections1_4(props) {
                   <FormControlLabel value="divorced" control={<Radio color='primary' />} label="หย่าร้าง" />
                   <FormControlLabel value="broken" control={<Radio color='primary' />} label="แยกกันอยู่" />
                 </RadioGroup>
-                
+
             </div>
+            <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกสถานภาพ" : ""}</FormHelperText>
 {/* <br/> */}
 <hr/>
             {/* row-2 */}
@@ -141,7 +146,9 @@ function Sections1_4(props) {
             <TextField id="outlined-basic" label="ใส่ชื่อญาติหรือคนที่อยู่ด้วย" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} variant="outlined" size="small" fullWidth className="TextField"/>
             : ''}
             {/* row-2 */}
+            <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกความเป็นอยู่" : ""}</FormHelperText>
 {/* <br/> */}
+
 <hr/>
             {/* row-3 */}
             <div className="row">
@@ -158,6 +165,7 @@ function Sections1_4(props) {
                 </RadioGroup>
             </div>
             {/* row-3 */}
+            <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกศสนา" : ""}</FormHelperText>
 <hr/>
           <div className="row">
             <div className="col-12">
@@ -173,6 +181,7 @@ function Sections1_4(props) {
             </RadioGroup>
           </div>
           {/* row-4 */}
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกระดับการศึกษา" : ""}</FormHelperText>
 <hr/>
           <div className="row">
             <div className="col-12">
@@ -189,6 +198,7 @@ function Sections1_4(props) {
             </RadioGroup>
           </div>
           {/* row-5 */}
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกอาชีพ" : ""}</FormHelperText>
 <hr/>
           <div className="row">
             <div className="col-12">
@@ -208,7 +218,7 @@ function Sections1_4(props) {
             </RadioGroup>
           </div>
           {/* row-6 */}
-
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกสิทธิรักษา" : ""}</FormHelperText>
 <hr/>
           <div className="row">
             <div className="col-12">
@@ -227,7 +237,7 @@ function Sections1_4(props) {
             </RadioGroup>
           </div>
           {/* row-7 */}
-
+          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกรายได้ต่อเดือน" : ""}</FormHelperText>
           {/* content */}
            </div>
 

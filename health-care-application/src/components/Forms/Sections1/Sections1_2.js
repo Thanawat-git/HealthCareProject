@@ -20,8 +20,10 @@ export default function Sections1_2(props) {
 
   // Redux hook
   const forms1p2Reducer = useSelector(({ forms1p2Reducer }) => forms1p2Reducer);
-  const peopleID = useSelector(({forms1p1Reducer})=>forms1p1Reducer.peopleID)
-  const dispatch = useDispatch()
+  const peopleID = useSelector(
+    ({ forms1p1Reducer }) => forms1p1Reducer.peopleID
+  );
+  const dispatch = useDispatch();
   // Redux hook
 
   const [homeNumber, setHomeNummber] = useState(forms1p2Reducer.homeNumber); //บ้านเลขที่
@@ -40,7 +42,7 @@ export default function Sections1_2(props) {
   ); // ตำบล
   const [curArea, setCurArea] = useState(forms1p2Reducer.curArea); // ชุมชน
   const [phoneNumber, setPhoneNumber] = useState(forms1p2Reducer.phoneNumber);
-
+  const [err, seterr] = useState(false);
   const handleSubmit = (e) => {
     if (
       homeNumber === null &&
@@ -65,17 +67,40 @@ export default function Sections1_2(props) {
       phoneNumber,
     ];
 
-    phoneNumber && formAction.updateElder([peopleID, phoneNumber])
-    formAction.updateElderIdCurrent([peopleID,homeNumber,alley,street,subDistrict,area,]);
-    radioValue == 'no' ? formAction.updateElderCurrent([peopleID,curHomeNumber,curAlley,curStreet,curSubDistrict,curArea]) 
-    : formAction.updateElderCurrent([peopleID,homeNumber,alley,street,subDistrict,area,])
-    
-    
+    phoneNumber && formAction.updateElder([peopleID, phoneNumber]);
+    formAction.updateElderIdCurrent([
+      peopleID,
+      homeNumber,
+      alley,
+      street,
+      subDistrict,
+      area,
+    ]);
+    radioValue == "no"
+      ? formAction.updateElderCurrent([
+          peopleID,
+          curHomeNumber,
+          curAlley,
+          curStreet,
+          curSubDistrict,
+          curArea,
+        ])
+      : formAction.updateElderCurrent([
+          peopleID,
+          homeNumber,
+          alley,
+          street,
+          subDistrict,
+          area,
+        ]);
+
     dispatch(formAction.add(data));
     function emptyValue() {
       e.preventDefault();
-      alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
+      //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
       // return;
+
+      seterr(true);
     }
   };
   return (
@@ -92,10 +117,11 @@ export default function Sections1_2(props) {
             <div className="col-xl-6 col-12 mb-15">
               <TextField
                 label="เลขที่"
-              
                 variant="outlined"
                 placeholder="เลขที่"
                 defaultValue={homeNumber}
+                error={err}
+                helperText={err ? "กรุณากรอกเลขที่" : ""}
                 onChange={(e) => setHomeNummber(e.target.value)}
                 className="TextField"
               />
@@ -106,6 +132,8 @@ export default function Sections1_2(props) {
                 variant="outlined"
                 placeholder="ตรอก/ซอย"
                 defaultValue={alley}
+                error={err}
+                helperText={err ? "กรุณากรอกตรอก/ซอย" : ""}
                 onChange={(e) => setAlley(e.target.value)}
                 className="TextField"
               />
@@ -116,6 +144,8 @@ export default function Sections1_2(props) {
                 variant="outlined"
                 placeholder="ถนน"
                 defaultValue={street}
+                error={err}
+                helperText={err ? "กรุณากรอกถนน" : ""}
                 onChange={(e) => setStreet(e.target.value)}
                 className="TextField"
               />
@@ -126,6 +156,8 @@ export default function Sections1_2(props) {
                 variant="outlined"
                 placeholder="ตำบล"
                 defaultValue={subDistrict}
+                error={err}
+                helperText={err ? "กรุณากรอกตำบล" : ""}
                 onChange={(e) => setSubDistrict(e.target.value)}
                 className="TextField"
               />
@@ -139,7 +171,13 @@ export default function Sections1_2(props) {
                 defaultValue={area}
                 onInputChange={(event, value) => setArea(value)}
                 renderInput={(params) => (
-                  <TextField {...params} label="ชุมชน" variant="outlined" />
+                  <TextField
+                    error={err}
+                    helperText={err ? "กรุณาเลือกชุมชน" : ""}
+                    {...params}
+                    label="ชุมชน"
+                    variant="outlined"
+                  />
                 )}
               />
             </div>
@@ -187,6 +225,8 @@ export default function Sections1_2(props) {
                     variant="outlined"
                     placeholder="เลขที่"
                     defaultValue={curHomeNumber}
+                    error={err}
+                    helperText={err ? "กรุณากรอกเลขที่" : ""}
                     onChange={(e) => setCurHomeNummber(e.target.value)}
                     className="TextField"
                   />
@@ -197,6 +237,8 @@ export default function Sections1_2(props) {
                     variant="outlined"
                     placeholder="ตรอก/ซอย"
                     defaultValue={curAlley}
+                    error={err}
+                    helperText={err ? "กรุณากรอกตรอก/ซอย" : ""}
                     onChange={(e) => setCurAlley(e.target.value)}
                     className="TextField"
                   />
@@ -207,6 +249,8 @@ export default function Sections1_2(props) {
                     variant="outlined"
                     placeholder="ถนน"
                     defaultValue={curStreet}
+                    error={err}
+                    helperText={err ? "กรุณากรอกถนน" : ""}
                     onChange={(e) => setCurStreet(e.target.value)}
                     className="TextField"
                   />
@@ -217,6 +261,8 @@ export default function Sections1_2(props) {
                     variant="outlined"
                     placeholder="ตำบล"
                     defaultValue={curSubDistrict}
+                    error={err}
+                    helperText={err ? "กรุณากรอกตำบล" : ""}
                     onChange={(e) => setCurSubDistrict(e.target.value)}
                     className="TextField"
                   />
@@ -230,7 +276,13 @@ export default function Sections1_2(props) {
                     defaultValue={curArea}
                     onInputChange={(event, value) => setCurArea(value)}
                     renderInput={(params) => (
-                      <TextField {...params} label="ชุมชน" variant="outlined" />
+                      <TextField
+                        error={err}
+                        helperText={err ? "กรุณาเลือกชุมชน" : ""}
+                        {...params}
+                        label="ชุมชน"
+                        variant="outlined"
+                      />
                     )}
                   />
                 </div>
@@ -240,7 +292,6 @@ export default function Sections1_2(props) {
           ) : (
             ""
           )}
-
           {/* <div className="row"> */}
           <div className="input-group">
             <p>
@@ -255,9 +306,9 @@ export default function Sections1_2(props) {
               placeholder="+66"
               className="TextField"
               fullWidth
-                onInput = {(e) =>{
-                  e.target.value = e.target.value.slice(0,10)
-              }}//fix10digit
+              onInput={(e) => {
+                e.target.value = e.target.value.slice(0, 10);
+              }} //fix10digit
             />
           </div>
           {/* </div> */}
