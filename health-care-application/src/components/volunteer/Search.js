@@ -39,9 +39,9 @@ export default function Asynchronous() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
-  const visitID = useSelector(({ visitID }) => visitID.visiId);
   const [isVisId, setisVisId] = useState(true);
-  const [visData, setvisData] = useState(null)
+  const [visData, setvisData] = useState(null);
+  const [visitID, setvisitID] = useState(null)
   let history = useHistory();
   const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
 
@@ -51,8 +51,8 @@ export default function Asynchronous() {
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
       setisVisId(true)
       setvisData(res.data)
+      setvisitID(res.data[0].VIS_ID)
     }).catch(error=>{
-      // console.log('error ', error)
       setisVisId(false)
     })
     dispatch(elderly.setElderlySelectedToState(value));
@@ -113,27 +113,16 @@ export default function Asynchronous() {
             className={classes.title}
             contentStyle={{ width: "100%", maxWidth: "none" }}
           >
-            <div className="setIcon">
-              {/* <Icon path={mdiCloseThick} size={1} /> */}
-              {/* <Icon
-                path={mdiCloseThick}
-                size={1}
-                onClick={() => setOpen(false)}
-              /> */}
-            </div>
-
             <DialogTitle>
               <b>หมายเลข</b>
             </DialogTitle>
 
             <DialogContent>
               <DialogContentText>
-                {/* 1111111111111 */}
                 {elderlyReducer.resultSelected.ELD_ID_NUMBER}
               </DialogContentText>
 
               <DialogContentText>
-                {/* นายบิ๊ก บ้านโป่ง */}
                 {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
               </DialogContentText>
               <DialogContentText>
@@ -153,7 +142,6 @@ export default function Asynchronous() {
                   className="bt1" 
                   variant="contained" 
                   onClick={()=>{
-                    // console.log(visData[0].VIS_ID)
                     const data = [visData[0].VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
                     dispatch({
                       type: "VIS_ID",
