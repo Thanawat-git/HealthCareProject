@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import moment from "moment";
 import {
   RadioGroup,
   Radio,
@@ -9,10 +11,14 @@ import {
 import "../form-style.css";
 import "../../genaralConfig.css";
 import "./Sections7.css";
+import { apiBase } from "../../../constants";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms7.action";
+import 'moment/locale/th';
+
+moment.locale("th");
 
 const useStyles = makeStyles({
   root: {
@@ -24,8 +30,23 @@ export default function Sections7_1() {
   const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
   const { user } = useSelector((state) => state.authReducer);
+  const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
+
+  const [age, setAge] = useState(null);
+  const [eldBirthday, seteldBirthday] = useState(null);
+  useEffect(() => {
+    Axios.get(`${apiBase}/alzheimer/findOneElderForAge/${elderlyReducer.resultSelected.ELD_ID_NUMBER}`)
+    .then(res=>{
+      console.log(res.data)
+      setAge(res.data.ELD_AGE)
+      seteldBirthday(res.data.ELD_BIRTHDATE)
+    }).catch(error=>{
+      console.log('error in sec7 ',error)
+    })
+    
+  }, [])
 
   const [ans7_1, setAns7_1] = useState(forms7Reducer.ans7_1);
   const [ans7_2, setAns7_2] = useState(forms7Reducer.ans7_2);
@@ -198,7 +219,7 @@ export default function Sections7_1() {
               </RadioGroup>
             </div>
             <div className="col-6">
-              <p>เฉลย: </p>
+              <p>เฉลย: <strong className="text-success" > {age} </strong> </p>
             </div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
@@ -456,8 +477,8 @@ export default function Sections7_1() {
                 />
               </RadioGroup>
             </div>
-            <div className="col-6">
-              <p>เฉลย: </p>
+            <div className="col-12">
+              <p>เฉลย: <strong className="text-success" > วัน{moment(eldBirthday).format("dddd")} ที่ {moment(eldBirthday).format("LL")} </strong> </p>
             </div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>

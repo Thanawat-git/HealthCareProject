@@ -97,8 +97,8 @@ export default function Asynchronous() {
       <div className="inner-seach2">
         {elderlyReducer.result.length !== 0 &&
           elderlyReducer.result.map((value, index) => {
-            console.log("v");
-            console.log(value);
+            // console.log("v");
+            // console.log(value);
             return (
               <div>
                 <Paper
