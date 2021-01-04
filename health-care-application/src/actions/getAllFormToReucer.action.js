@@ -3,7 +3,8 @@ import { apiBase, apiEld, CREATE_NEW_FORMS10, CREATE_NEW_FORMS2,CREATE_NEW_FORMS
 
 export const getCollect = visId =>{
     return dispatch => {
-        return Axios.get(`${apiEld}/examsummary/correct/${visId}`)
+        return Axios.get(`http://localhost:3001/elder/examsummary/correct/${visId}`)
+        // return Axios.get(`${apiEld}/examsummary/correct/${visId}`)
         .then(res=>{
             if(res.data.waist_correct && res.data.bmi_correct && res.data.bp_correct && res.data.fbs_correct) {
                 dispatch({
@@ -11,6 +12,7 @@ export const getCollect = visId =>{
                     payload: true
                 })
             }
+            console.log('visId in api ', visId)
             dispatch({type: GET_COLLECT_S3,payload: res.data.cardio_correct})
             dispatch({type: GET_COLLECT_S4,payload: res.data.eye_correct})
             dispatch({type: GET_COLLECT_S5,payload: res.data.oral_correct})
@@ -20,6 +22,7 @@ export const getCollect = visId =>{
             dispatch({type: GET_COLLECT_S9,payload: res.data.bone_correct})
             dispatch({type: GET_COLLECT_S10,payload: res.data.uri_correct})
         }).catch(error=>{
+            console.log('visId in error ', visId)
             console.log('err ',error)
         })
     }

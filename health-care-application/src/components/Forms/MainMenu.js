@@ -42,7 +42,6 @@ function MainMenu(props) {
     ({ forms89qReducer }) => forms89qReducer.collect
   );
   const results8 = useSelector(({ forms8Reducer }) => forms8Reducer.results);
-  //console.log('results8 ',results8)
   const collect9 = useSelector(({ forms9Reducer }) => forms9Reducer.collect);
   const collect10 = useSelector(({ forms10Reducer }) => forms10Reducer.collect);
   const classes = useStyles();
@@ -104,6 +103,7 @@ function MainMenu(props) {
   });
   const colorIcon = useStyles2();
   const visitID = useSelector(({ visitID }) => visitID.visiId);
+  // console.log('visitID ',visitID)
   const peopleID = useSelector(({ visitID }) => visitID.peopleId);
   const { user } = useSelector((state) => state.authReducer);
   let history = useHistory();

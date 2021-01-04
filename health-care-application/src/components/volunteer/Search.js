@@ -40,7 +40,8 @@ export default function Asynchronous() {
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const [isVisId, setisVisId] = useState(true);
-  const [visData, setvisData] = useState(null)
+  const [visData, setvisData] = useState(null);
+  const [visitID, setvisitID] = useState(null)
   let history = useHistory();
   const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
 
@@ -48,12 +49,10 @@ export default function Asynchronous() {
     const d = new Date();
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
-      // Axios.get(`${apiEld}/visit/search/9999999000000/date/2563-01-01`).then(res=>{
-      // console.log('res ', res.data)
       setisVisId(true)
       setvisData(res.data)
+      setvisitID(res.data[0].VIS_ID)
     }).catch(error=>{
-      // console.log('error ', error)
       setisVisId(false)
     })
     dispatch(elderly.setElderlySelectedToState(value));
@@ -114,27 +113,16 @@ export default function Asynchronous() {
             className={classes.title}
             contentStyle={{ width: "100%", maxWidth: "none" }}
           >
-            <div className="setIcon">
-              {/* <Icon path={mdiCloseThick} size={1} /> */}
-              {/* <Icon
-                path={mdiCloseThick}
-                size={1}
-                onClick={() => setOpen(false)}
-              /> */}
-            </div>
-
             <DialogTitle>
               <b>หมายเลข</b>
             </DialogTitle>
 
             <DialogContent>
               <DialogContentText>
-                {/* 1111111111111 */}
                 {elderlyReducer.resultSelected.ELD_ID_NUMBER}
               </DialogContentText>
 
               <DialogContentText>
-                {/* นายบิ๊ก บ้านโป่ง */}
                 {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
               </DialogContentText>
               <DialogContentText>
@@ -154,13 +142,12 @@ export default function Asynchronous() {
                   className="bt1" 
                   variant="contained" 
                   onClick={()=>{
-                    // console.log(visData[0].VIS_ID)
                     const data = [visData[0].VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
                     dispatch({
                       type: "VIS_ID",
                       payload: data,
                     })
-                    dispatch(getAction.getCollect(8));
+                    dispatch(getAction.getCollect(visitID));
                     if(!forms2Reducer.isFetching){
                       setTimeout(() => {
                           history.push("/mainmenu");
