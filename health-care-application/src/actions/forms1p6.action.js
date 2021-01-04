@@ -331,13 +331,17 @@ export const createExa10Urination = async (visId) => {
 };
 
 export const createVisitTable = (payload) => {
+  console.log('in createVisitTable USERLOGIN.Fullname: ',USERLOGIN.Fullname)
+  console.log('in createVisitTable USERLOGIN.Role: ',USERLOGIN.Role)
+  console.log('in createVisitTable USERLOGIN.Id: ',USERLOGIN.Id)
+  // console.log('in createVisitTable payload[0]: ',payload[0])
   return dispatch => {
     Axios.post(`${apiEld}/visit/create`, {
       VIS_DATE: payload[0],
       visiterRole: USERLOGIN.Role, //fix
       VISITER_ID_NUMBER: USERLOGIN.Id, //fix
       ELD_ID_NUMBER: payload[1],
-      updateBy: USERLOGIN.Fullname, //fix
+      // updateBy: USERLOGIN.Fullname, //fix
     }).then((res) => {
       alert("Visit Create Success");
       createAllDatabase(res.data.VIS_ID)
@@ -345,7 +349,9 @@ export const createVisitTable = (payload) => {
         type: "VIS_ID",
         payload: [res.data.VIS_ID,null],
       })
-    });
+    }).catch(error=>{
+      console.log('error in createVisitTable: ',error)
+    })
   }
 };
 
