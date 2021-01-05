@@ -183,6 +183,7 @@ export default function MMSIThai2002() {
   const cal = (v) => {
     setPoint(point + v);
   };
+
   useEffect(() => {
     if (collect) {
       var ansNo1_1 = parseInt(ans1);
