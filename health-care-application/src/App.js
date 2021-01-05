@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { login, loginAdmin, loginAdminMobile } from "./components/login";
+import { login, loginAdmin, loginAdminMobile, loginSuperAdmin } from "./components/login";
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,20 +31,33 @@ import {
   Sec1_6,
 } from "./components/Forms/Sections1";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function PrivateRoute({ children, ...rest }) {
-  const { isLoggedIn } = useSelector((state) => state.authReducer)
+  const { isLoggedIn, user } = useSelector((state) => state.authReducer)
   return (
     <Route {...rest} render={({ location }) => {
       console.log('location pathname ',location.pathname)
       return (
-        isLoggedIn ?
+        isLoggedIn ? (
+        user.Role =="VOLUNTEER" ?
         children
+        : user.Role =="ADMIN" ? 
+        children
+        // <Redirect to={{
+        //     pathname: '/genaraladminpage',
+        //     state: { from: location } 
+        //   }} />
         : <Redirect to={{
-            pathname: '/login',
+            pathname: '/superadminpage',
             state: { from: location } 
           }} />
+        ) : (
+        <Redirect to={{
+          pathname: '/login',
+          state: { from: location } 
+        }} />
+        )
       )
     }} />
   )
@@ -54,12 +67,52 @@ function GAdminRoute({ children, ...rest }) {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer)
   return (
     <Route {...rest} render={({ location }) => {
-      return isLoggedIn && user.Role =="ADMIN" ?
+      return isLoggedIn ? (
+        user.Role =="ADMIN" ?
         children
-        : <Redirect to={{
-            pathname: '/volunteerpage',
+      : user.Role =="SUPERADMIN" ?
+        <Redirect to={{
+          pathname: '/superadminpage',
+          state: { from: location } 
+        }} />
+      : <Redirect to={{
+          pathname: '/volunteerpage',
+          state: { from: location } 
+        }} />
+      ) : (
+        <Redirect to={{
+          pathname: '/login',
+          state: { from: location } 
+        }} />
+      )
+      
+    }} />
+  )
+}
+
+function SAdminRoute({ children, ...rest }) {
+  const { isLoggedIn, user } = useSelector((state) => state.authReducer)
+  return (
+    <Route {...rest} render={({ location }) => {
+      return isLoggedIn ? (
+        user.Role =="SUPERADMIN" ?
+        children
+        : user.Role =="ADMIN" ? 
+          <Redirect to={{
+            pathname: '/genaraladminpage',
             state: { from: location } 
           }} />
+        : <Redirect to={{
+          pathname: '/volunteerpage',
+          state: { from: location } 
+        }} />
+      ) : (
+        <Redirect to={{
+          pathname: '/login',
+          state: { from: location } 
+        }} />
+      )
+      
     }} />
   )
 }
@@ -93,14 +146,13 @@ export default function App() {
     // <React.Fragment>
     <Router>
       <Switch>
-        <PrivateRoute path="/superadminpage"><SuperAdminPage/></PrivateRoute>
+        <SAdminRoute path="/superadminpage"><SuperAdminPage/></SAdminRoute>
         <GAdminRoute path='/genaraladminpage'>
           <GenaralAdminPage/>
         </GAdminRoute>
         <PrivateRoute path='/volunteerpage'>
           <MainVolunteer/>
         </PrivateRoute>
-
         <ProtectRoute path="/editeld"><EditInfo/></ProtectRoute>
         <ProtectRoute path="/mainmenu"><MainMenu/></ProtectRoute>
 
@@ -115,6 +167,7 @@ export default function App() {
         <Route path="/verify" component={VerifyIdentity} />
         <Route path="/login/admin" component={loginAdmin}/>
         <Route path="/login/mobile" component={loginAdminMobile}/>
+        <Route path="/login/supad" component={loginSuperAdmin}/>
         <Route path="/login" component={login}/>
 
         <Route exact={true} path="/" component={redirectToLogin}/>

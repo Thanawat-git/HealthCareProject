@@ -26,6 +26,18 @@ const loginAdmin = (username, password) => {
     })
 }
 
+const loginSuperAdmin = (username, password) => {
+    return Axios.post(`${apiBase}/superadmin/auth`, {
+        SAD_ID: username,
+        SAD_PASSWORD: password,
+    }).then((response)=>{
+        if(response.data) {
+            localStorage.setItem(USER, JSON.stringify(response.data))
+        }
+        return response.data
+    })
+}
+
 const logout = () =>{
     localStorage.removeItem(USER)
 }
@@ -34,4 +46,5 @@ export default {
     loginVolunteer,
     loginAdmin,
     logout,
+    loginSuperAdmin,
 }

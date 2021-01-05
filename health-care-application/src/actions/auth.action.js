@@ -22,7 +22,7 @@ export const autoLogin = (history) =>{
             history.push("/genaraladminpage");
             break;
           default:
-            // history.push("/login");
+            history.push("/superadminpage");
             break;
         }
       }, 100);
@@ -58,6 +58,41 @@ export const loginVolunteer = (history, credential) => {
           payload: { user: data },
         });
         history.push("/volunteerpage");
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        dispatch({ type: HTTP_LOGIN_FAILED });
+
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
+
+        return Promise.reject();
+      }
+    );
+  };
+};
+
+export const loginSuperAdmin = (history, credential) => {
+  return (dispatch) => {
+    return AuthService.loginSuperAdmin(
+      credential.username,
+      credential.password
+    ).then(
+      (data) => {
+        dispatch({
+          type: HTTP_LOGIN_SUCCESS,
+          payload: { user: data },
+        });
+        history.push("/superadminpage");
         return Promise.resolve();
       },
       (error) => {
