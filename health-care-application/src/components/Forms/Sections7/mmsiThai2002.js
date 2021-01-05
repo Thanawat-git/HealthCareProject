@@ -68,8 +68,7 @@ export default function MMSIThai2002() {
   const [group, setGroup] = useState(forms7mReducer.group);
   const [show, setShow] = useState(false);
   const [colorS, setcolorS] = useState("");
-  const [anstf, settf] = useState();
-  const [countSum, setCountsum] = useState();
+  const [anstf, settf] = useState(null);
 
   const forms1p4Reducer = useSelector(
     ({ forms1p4Reducer }) => forms1p4Reducer.educations
@@ -229,34 +228,33 @@ export default function MMSIThai2002() {
         ansNo9 +
         ansNo10 +
         ansNo11+point;
-        setPoint(sum)
+        // setPoint(sum)
         console.log(' sum in coll ' , sum)
     
       console.log("point in collect ture ", point);
-      console.log("sum in collect ture ", typeof countSum);
       if (group == 1) {
-        if (point <= 14) {
+        if (sum <= 14) {
           setresults("เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-          setPoint(countSum);
+          // setPoint(countSum);
         } else {
           setresults("ปกติ");
-          setPoint(countSum);
+          // setPoint(countSum);
         }
       } else if (group == 2) {
-        if (point <= 17) {
+        if (sum <= 17) {
           setresults(" เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-          setPoint(countSum);
+          // setPoint(countSum);
         } else {
           setresults("ปกติ");
-          setPoint(countSum);
+          // setPoint(countSum);
         }
       } else if (group > 2) {
-        if (point <= 22) {
+        if (sum <= 22) {
           setresults(" เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-          setPoint(countSum);
+          // setPoint(countSum);
         } else {
           setresults(" ปกติ");
-          setPoint(countSum);
+          // setPoint(countSum);
         }
       }
     } else {
@@ -287,7 +285,6 @@ export default function MMSIThai2002() {
     ans11,
     point,
     group,
-    countSum,
   ]);
 
   useEffect(() => {
