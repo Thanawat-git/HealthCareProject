@@ -73,13 +73,13 @@ export const getDataSec2 = (visId) => {
           res.data.bp_pulse,
           res.data.bp_bio_sys,
           res.data.bp_bio_dia,
-          res.data.fast,
           res.data.fbs_fbs,
           res.data.waist_result,
           res.data.bmi_result,
           res.data.bp_result,
-          res.data.fbs_result,
+          res.data.fbs_result,  
           res.data.fbs_correct,
+          res.data.fbs_fast,
         ];
         dispatch({
           type: "FETCHING2",
@@ -162,6 +162,7 @@ export const getDataSec5 = (visId) => {
         console.log("res.data 5 ", res.data);
         const data = [
           res.data.ORAL_5_1,
+          res.data.O5_1_more,
           res.data.ORAL_5_2,
           res.data.ORAL_5_3,
           res.data.ORAL_5_4_1,
