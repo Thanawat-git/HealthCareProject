@@ -29,15 +29,17 @@ const useStyles = makeStyles({
 export default function Sections7_1() {
   const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const peopleId = useSelector(({ visitID }) => visitID.peopleId);
   const { user } = useSelector((state) => state.authReducer);
-  const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
 
   const [age, setAge] = useState(null);
   const [eldBirthday, seteldBirthday] = useState(null);
   useEffect(() => {
-    Axios.get(`${apiBase}/alzheimer/findOneElderForAge/${elderlyReducer.resultSelected.ELD_ID_NUMBER}`)
+    // Axios.get(`${apiBase}/alzheimer/findOneElderForAge/${elderlyReducer.resultSelected.ELD_ID_NUMBER}`)
+    Axios.get(`${apiBase}/alzheimer/findOneElderForAge/${peopleId}`)
     .then(res=>{
       console.log(res.data)
       setAge(res.data.ELD_AGE)

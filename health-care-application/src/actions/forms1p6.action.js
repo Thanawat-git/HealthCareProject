@@ -347,7 +347,7 @@ export const createVisitTable = (payload) => {
       createAllDatabase(res.data.VIS_ID)
       dispatch({
         type: "VIS_ID",
-        payload: [res.data.VIS_ID,null],
+        payload: [res.data.VIS_ID,payload[1]],
       })
     }).catch(error=>{
       console.log('error in createVisitTable: ',error)
@@ -355,7 +355,7 @@ export const createVisitTable = (payload) => {
     updateLastVisDate(payload)
     dispatch({
       type: HTTP_ELD_SELECTED,
-      payload: "not null"
+      payload: "not null" //ทำให้ elder selected ไม่ null  เพื่อให้สามารถเข้า mainmanu ได้
     })
   }
 };
