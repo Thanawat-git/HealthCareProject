@@ -1,4 +1,4 @@
-import { FORMS1P6_ADD_NEW, apiEld, apiBase, USERLOGIN } from "../constants";
+import { FORMS1P6_ADD_NEW, apiEld, apiBase, USERLOGIN, HTTP_ELD_SELECTED } from "../constants";
 import Axios from "axios";
 
 export const setStateToAdd = (payload) => ({
@@ -353,6 +353,10 @@ export const createVisitTable = (payload) => {
       console.log('error in createVisitTable: ',error)
     })
     updateLastVisDate(payload)
+    dispatch({
+      type: HTTP_ELD_SELECTED,
+      payload: "not null"
+    })
   }
 };
 
