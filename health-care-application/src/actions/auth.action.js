@@ -32,6 +32,20 @@ export const autoLogin = (history) =>{
   }
 }
 
+export const autoLoginAdminMobile = (history) =>{
+  return ()=>{
+    if(localStorage.getItem(USER)!==null){
+      let data = JSON.parse(localStorage.getItem(USER))
+      console.log("have user login ",data.Role)
+      setTimeout(() => {
+        history.push("/volunteerpage");
+      }, 100);
+    } else {
+      console.log("no login ")
+    }
+  }
+}
+
 export const loginVolunteer = (history, credential) => {
   return (dispatch) => {
     return AuthService.loginVolunteer(
@@ -79,6 +93,41 @@ export const loginAdmin = (history, credential) => {
           payload: { user: data },
         });
         history.push("/genaraladminpage");
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        dispatch({ type: HTTP_LOGIN_FAILED });
+
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
+
+        return Promise.reject();
+      }
+    );
+  };
+};
+
+export const loginAdminMobile = (history, credential) => {
+  return (dispatch) => {
+    return AuthService.loginAdmin(
+      credential.username,
+      credential.password
+    ).then(
+      (data) => {
+        dispatch({
+          type: HTTP_LOGIN_SUCCESS,
+          payload: { user: data },
+        });
+        history.push("/volunteerpage");
         return Promise.resolve();
       },
       (error) => {

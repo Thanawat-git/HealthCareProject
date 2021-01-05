@@ -4,6 +4,7 @@ import {
   HTTP_VOL_FETCHING,
   HTTP_VOL_SUCCESS,
   apiVol,
+  USERLOGIN,
 } from "../constants";
 
 export const setVolunteerStateToFetching = () => ({
@@ -32,7 +33,7 @@ export const createVolunteer = (payload) => {
       VOL_REFERENCE:payload[6],
       VOL_PHOTO: "-",
       VOL_STATUS: true,
-      updateBy: "1000000000001",
+      updateBy: USERLOGIN.Fullname,
     });
     await Axios.post(`${apiVol}/information/create`,{
       VOL_ID_NUMBER: payload[0],
@@ -44,7 +45,7 @@ export const createVolunteer = (payload) => {
       VOL_ADDR_STREET: payload[12],
       VOL_ADDR_SUB_DISTRICT: payload[13],
       VOL_ADDR_AREA: payload[14],
-      updateBy: "1000000000001",
+      updateBy: USERLOGIN.Fullname,
     })
     await doGetVolunteer(dispatch);
   };

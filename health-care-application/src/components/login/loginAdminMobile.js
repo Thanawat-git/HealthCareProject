@@ -1,63 +1,26 @@
 import React, { Component } from "react";
-import Axios from "axios";
 import "./login.css";
 import logo1 from "../images/logo-saensukcity.png";
 import loginImg from '../images/undraw_surfer_m6jb.svg'
 import { Link } from "react-router-dom";
-
-const formValid = formErrors => {
-  let valid = true;
-  Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false);
-  });
-  return valid;
-}
+import { loginAdminMobile,autoLoginAdminMobile } from "../../actions/auth.action";
+import { connect } from "react-redux";
 
 class LoginAdminMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
-      formErrors: {
-        username: "",//กรุณากรอกเลขบัตรประชาชน 13 หลัก
-        password: ""//กรุณากรอกรหัสผ่าน
-      }
+      username: "",
+      password: "",
     };
-    // this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleSubmit = e => {
-    e.preventDefault();
-    if (formValid(this.state.formErrors)) {
-      console.log(`
-      --Submitting--
-      username: ${this.state.username}
-      password: ${this.state.password}`);
-    } else {
-      console.error("Error");
-    }
   }
 
-  handleChange = e => {
-    e.preventDefault();
-    const { name,value } = e.target;
-    let formErrors = this.state.formErrors;
-
-    switch(name){
-      case 'username': 
-        formErrors.username = value.length===13 ? '':'กรุณากรอกเลขบัตรประชาชน 13 หลัก';
-        break;
-      case 'password':
-        formErrors.password = value.length>7 && value.length<25 ? '':'กรุณากรอกรหัสผ่าน 8-25 หลัก';
-        break;
-      default:
-          break;
-    }
-    this.setState({formErrors,[name]:value},()=>console.log(this.state.formErrors));
+  componentDidMount(){
+    console.log("in componentDidMount")
+    this.props.autoLoginAdminMobile(this.props.history);
   }
-
+  
   render() {
-    const {formErrors} = this.state;
     return (
       <div className="nlcontainer" >
         <div className="form-nlcontainer">
@@ -66,14 +29,30 @@ class LoginAdminMobile extends Component {
               <img src={logo1} className="company-logo" />
               <div className="input-field">
                 <i className="fas fa-user"/>
-                <input type="text" placeholder="Username" />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  onChange={(e) => this.setState({ username: e.target.value })}
+                />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock"/>
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => this.setState({ password: e.target.value })}
+                />
               </div>
               <Link to="/Volunteer" >
-              <input type="submit" value="ลงชื่อเข้าใช้" className="btn-login solid" />
+              <input 
+              type="submit" 
+              value="ลงชื่อเข้าใช้" 
+              className="btn-login solid"
+              onClick={e=>{
+                e.preventDefault()
+                this.props.loginAdminMobile(this.props.history, this.state) //dispatch เรียกใช้งาน loginVolunteer ใน action
+              }}
+              />
               </Link>
               <Link to="/verify" >ลืมรหัสผ่าน</Link>
             </form>
@@ -93,4 +72,7 @@ class LoginAdminMobile extends Component {
     );
   }
 }
-export default LoginAdminMobile;
+const mapStateToProps = ({ authReducer,messageReducer }) => ({ authReducer,messageReducer }); //state
+const mapDispatchToProps = {loginAdminMobile,autoLoginAdminMobile};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginAdminMobile);
