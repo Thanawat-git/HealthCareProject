@@ -77,6 +77,15 @@ export const updateVolunteer = (payload) => {
     }
 }
 
+export const updateVolStatus = payload => {
+  return async dispatch => {
+    await Axios.put(`${apiVol}/update/${payload[0]}`, {
+      VOL_STATUS: payload[1]
+    })
+    await doGetVolunteer(dispatch);
+  }
+}
+
 export const deleteVolunteer = (id) => {
   return async (dispatch) => {
     dispatch(setVolunteerStateToFetching());
