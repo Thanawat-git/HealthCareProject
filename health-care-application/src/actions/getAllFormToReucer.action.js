@@ -29,7 +29,7 @@ import {
 export const getCollect = (visId) => {
   return (dispatch) => {
     return (
-      Axios.get(`http://localhost:3001/elder/examsummary/correct/${visId}`)
+      Axios.get(`${apiEld}/examsummary/correct/${visId}`)
         // return Axios.get(`${apiEld}/examsummary/correct/${visId}`)
         .then((res) => {
           if (

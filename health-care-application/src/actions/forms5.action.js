@@ -23,7 +23,7 @@ export const add = (payload) =>{
 //     }
 // } 
 export const updateOralHealth = async (payload)=>{
-  await   Axios.put(`${apiBase}/oralHealth/update/${payload[19]}`, {
+  await   Axios.put(`${apiBase}/oralHealth/update/${payload[20]}`, {
       ORAL_5_1: payload[0],
       ORAL_5_1_1: payload[1],
       ORAL_5_2: payload[2],
@@ -44,7 +44,7 @@ export const updateOralHealth = async (payload)=>{
       ORAL_5_13: payload[17],
       ORAL_COUNT: payload[18],
       ORAL_RESULT: payload[19],
-      ORAL_CORRECT_FORM:payload[20],
+      ORAL_CORRECT_FORM:payload[21],
       updateBy: USERLOGIN.Fullname
     })
       alert("Oral_Health Update Success")
