@@ -12,12 +12,16 @@ const MySwal = withReactContent(Swal);
 export default function VolunteerContent() {
   const dispatch = useDispatch()
   const volunteerReducer = useSelector(({volunteerReducer}) => volunteerReducer)
-  
   useEffect(() => {
     if(volunteerReducer.result===null){
       dispatch(volAction.getAllVolunteers())
     }
   },[]);
+
+  const updateStatus = (value)=>{
+    dispatch(volAction.updateVolStatus([value.VOL_ID_NUMBER, !value.VOLUNTEER.VOL_STATUS]))
+  }
+  
   const createRow = ()=>{
     try{
       const {result, isFetching} = volunteerReducer
@@ -34,32 +38,44 @@ export default function VolunteerContent() {
             <td style={{ textAlign: "center" }}>
               <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
-              <button
-                onClick={() => {
-                  MySwal.fire({
-                    title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
-                    text: `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} กำลังจะถูกลบ!`,
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: " ลบ ",
-                    cancelButtonText: "ยกเลิก"
-                  }).then(result => {
-                    if (result.value) {
-                      dispatch(volAction.deleteVolunteer(value.VOL_ID_NUMBER))
-                      Swal.fire(
-                        'ลบสำเร็จ',
-                        `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} ได้ถูกลบแล้ว`,
-                        'success'
-                      )
-                    }
-                  });
-                }}
+              {
+                value.VOLUNTEER.VOL_STATUS ?
+                <button
+                // onClick={() => {
+                //   MySwal.fire({
+                //     title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
+                //     text: `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} กำลังจะถูกลบ!`,
+                //     type: "warning",
+                //     showCancelButton: true,
+                //     confirmButtonColor: '#d33',
+                //     confirmButtonText: " ลบ ",
+                //     cancelButtonText: "ยกเลิก"
+                //   }).then(result => {
+                //     if (result.value) {
+                //       dispatch(volAction.deleteVolunteer(value.VOL_ID_NUMBER))
+                //       Swal.fire(
+                //         'ลบสำเร็จ',
+                //         `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} ได้ถูกลบแล้ว`,
+                //         'success'
+                //       )
+                //     }
+                //   });
+                // }}
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-warning"
+                onClick={()=>updateStatus(value)}
               >
-                ลบ
+                ปิด
               </button>
+              :
+              <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={()=>updateStatus(value)}
+              > เปิด
+              </button>
+              }
+              
             </td>
           </tr>
           )
