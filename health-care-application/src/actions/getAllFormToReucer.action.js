@@ -162,7 +162,7 @@ export const getDataSec5 = (visId) => {
         console.log("res.data 5 ", res.data);
         const data = [
           res.data.ORAL_5_1,
-          res.data.O5_1_more,
+          res.data.ORAL_5_1_1,
           res.data.ORAL_5_2,
           res.data.ORAL_5_3,
           res.data.ORAL_5_4_1,
@@ -299,38 +299,6 @@ export const getDataSec8 = (visId) => {
       });
   };
 };
-export const getDataSec89q = (visId) => {
-  return (dispatch) => {
-    return Axios.get(`${apiBase}/depressionScreening/findOne/${visId}`)
-      .then((res) => {
-        console.log("res.data 89q ", res.data);
-        const data = [
-          res.data.DEP_8_1,
-          res.data.DEP_8_2,
-          res.data.DEP_8_3,
-          res.data.DEP_8_4,
-          res.data.DEP_8_5,
-          res.data.DEP_8_6,
-          res.data.DEP_8_7,
-          res.data.DEP_8_8,
-          res.data.DEP_8_9,
-          res.data.DEP_9Q_RESULT,
-          res.data.DEP_CORRECT_FORM,
-        ];
-        dispatch({
-          type: "FETCHING89Q",
-          payload: data,
-        });
-        dispatch({
-          type: CREATE_NEW_FORMS89Q,
-          payload: data,
-        });
-      })
-      .catch((error) => {
-        console.log("err ", error);
-      });
-  };
-};
 
 export const getDataSec9 = (visId) => {
   return (dispatch) => {
@@ -414,94 +382,3 @@ export const getEducate = (peopleId) => {
   };
 };
 
-export const mmse = (visId) => {
-  return (dispatch) => {
-    return Axios.get(`${apiBase}/MMSE/findOne/${visId}`)
-      .then((res) => {
-        const data = [
-          res.data.MMSE_1_1,
-          res.data.MMSE_1_1_POINT,
-          res.data.MMSE_1_2,
-          res.data.MMSE_1_2_POINT,
-          res.data.MMSE_1_3,
-          res.data.MMSE_1_3_POINT,
-          res.data.MMSE_1_4,
-          res.data.MMSE_1_4_POINT,
-          res.data.MMSE_1_5,
-          res.data.MMSE_1_5_POINT,
-          res.data.MMSE_2_1,
-          res.data.MMSE_2_1_POINT,
-          res.data.MMSE_2_2,
-          res.data.MMSE_2_2_POINT,
-          res.data.MMSE_2_3,
-          res.data.MMSE_2_3_POINT,
-          res.data.MMSE_2_4,
-          res.data.MMSE_2_4_POINT,
-          res.data.MMSE_2_5,
-          res.data.MMSE_2_5_POINT,
-          res.data.MMSE_3_1_POINT,
-          res.data.MMSE_3_2_POINT,
-          res.data.MMSE_3_3_POINT,
-          res.data.MMSE_4_1_POINT,
-          res.data.MMSE_4_2_POINT,
-          res.data.MMSE_4_3_POINT,
-          res.data.MMSE_4_4_POINT,
-          res.data.MMSE_4_5_POINT,
-          res.data.MMSE_5_1_POINT,
-          res.data.MMSE_5_2_POINT,
-          res.data.MMSE_5_3_POINT,
-          res.data.MMSE_6_1_POINT,
-          res.data.MMSE_6_2_POINT,
-          res.data.MMSE_7_POINT,
-          res.data.MMSE_8_1_POINT,
-          res.data.MMSE_8_2_POINT,
-          res.data.MMSE_8_3_POINT,
-          res.data.MMSE_9_POINT,
-          res.data.MMSE_10,
-          res.data.MMSE_10_POINT,
-          res.data.MMSE_11_POINT,
-          res.data.MMSE_CORRECT_FORM,
-          res.data.MMSE_RESULT,
-        ];
-        //console.log(data,"---------------------------data------------------")
-        dispatch({
-          type: "FETCHINGMMSE",
-          payload: data,
-        });
-        dispatch({
-          type: CREATE_NEW_FORMS7M,
-          payload: data,
-        });
-      })
-      .catch((error) => {
-        console.log("err ", error);
-      });
-  };
-};
-export const getDataTai = (visId) => {
-  return (dispatch) => {
-    return Axios.get(`${apiBase}/TAI/update/${visId}`)
-      .then((res) => {
-        const data = [
-          res.data.TAI_IMMOBILIZE,
-          res.data.TAI_MENTAL,
-          res.data.TAI_TOILET,
-          res.data.TAI_FEED,
-          res.data.TAI_GROUP,
-          res.data.TAI_CORRECT_FORM,
-          res.data.results,
-        ];
-        dispatch({
-          type: "FETCHINGTAI",
-          payload: data,
-        });
-        dispatch({
-          type: CREATE_NEW_FORMS6T,
-          payload: data,
-        });
-      })
-      .catch((error) => {
-        console.log("err ", error);
-      });
-  };
-};

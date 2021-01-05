@@ -164,6 +164,7 @@ function MainMenu(props) {
         break;
       case "sec7":
         dispatch(getAction.getDataSec7(visitID));
+        dispatch(getAction.getEducate(peopleID))
         if (!forms7Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec7`);
@@ -194,24 +195,7 @@ function MainMenu(props) {
           }, 200);
         }
         break;
-        case "mmsi":
-            console.log(visitID,peopleID)
-            dispatch(getAction.getEducate(peopleID))
-            dispatch(getAction.mmse(visitID));
-            if (!forms7mReducer.isFetching) {
-              setTimeout(() => {
-                history.push(`${url}/mmsi`);
-              }, 200);
-            }
-            break;
-        case "tai":
-            dispatch(getAction.getDataTai(8));
-            if(!formsTaiReducer.isFetching){
-                setTimeout(() => {
-                    history.push(`${url}/tai`);
-                  }, 200);
-            }
-
+        
       default:
         break;
     }
@@ -339,25 +323,7 @@ function MainMenu(props) {
               </ListItem>
             </Link>
             <hr />
-            {
-              user.Role !== 'VOLUNTEER' &&
-              <React.Fragment>
-                <Link onClick={() => {
-                    getData("tai");
-                  }}>
-                  <ListItem button>การประเมิน TAI Classified</ListItem>
-                </Link>{" "}
-                <hr />
-                <Link onClick={() => {
-                    getData("mmsi");
-                  }}>
-                  <ListItem button>
-                    การทดสอบสมองเบื่องต้นฉบับภาษาไทย : MMSE-Thai 2002
-                  </ListItem>
-                </Link>{" "}
-                <hr />
-              </React.Fragment>
-            }
+           
             <SumaryReport />
           </CardContent>
         </Card>

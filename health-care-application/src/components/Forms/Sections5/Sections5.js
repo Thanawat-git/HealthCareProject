@@ -134,6 +134,7 @@ export default function Sections5_1() {
   const saveDataToServer = () => {
     formAction.updateOralHealth([
       ans5_1,
+      moreInfoAns5_1,
       ans5_2,
       ans5_3,
       ans5_4,

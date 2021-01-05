@@ -60,7 +60,7 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CREATE_NEW_FORMS7M:
       return {
-        ...state,
+        //...state,
         textAns11: payload[0],
         ans1: payload[1],
         textAns12: payload[2],
@@ -94,16 +94,16 @@ export default (state = initialState, { type, payload }) => {
         ansT2: payload[30],
         ans61: payload[31],
         ans62: payload[32],
-        ans7: payload[28],
-        thank1:payload[30],
-        thank2:payload[31],
-        thank3:payload[32],
-        ans9: payload[33],
-        textAns10: payload[34],
-        ans10: payload[35],
-        ans11: payload[36],
-        collect: payload[37],
-        results: payload[38],
+        ans7: payload[33],
+        thank1:payload[34],
+        thank2:payload[35],
+        thank3:payload[36],
+        ans9: payload[37],
+        textAns10: payload[38],
+        ans10: payload[39],
+        ans11: payload[40],
+        collect: payload[41],
+        results: payload[42],
         isFetching: false,
       };
     default:

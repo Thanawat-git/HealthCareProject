@@ -40,7 +40,6 @@ export default function MMSIThai2002() {
   const [ans61, setAns61] = useState(forms7mReducer.ans61);
   const [ans62, setAns62] = useState(forms7mReducer.ans62);
   const [ans7, setAns7] = useState(forms7mReducer.ans7);
-  const [ans8, setAns8] = useState(forms7mReducer.ans8);
   const [ans9, setAns9] = useState(forms7mReducer.ans9);
   const [ans10, setAns10] = useState(forms7mReducer.ans10);
   const [ans11, setAns11] = useState(forms7mReducer.ans11);
@@ -70,7 +69,7 @@ export default function MMSIThai2002() {
   const [show, setShow] = useState(false);
   const [colorS, setcolorS] = useState("");
   const [anstf, settf] = useState();
-  const [countSum,setCountsum]= useState();
+  const [countSum, setCountsum] = useState();
 
   const forms1p4Reducer = useSelector(
     ({ forms1p4Reducer }) => forms1p4Reducer.educations
@@ -131,6 +130,8 @@ export default function MMSIThai2002() {
     think2,
     think3,
   } = state;
+  console.log("การศึกษา", forms1p4Reducer);
+  console.log("group", group);
 
   useEffect(() => {
     var x = document.getElementById("myID4");
@@ -154,7 +155,7 @@ export default function MMSIThai2002() {
       z.style.display = "none";
       setcolorS("darkgray");
     }
-    //console.log(anstf)
+    console.log("anstf", anstf);
     if (anstf == 0) {
       c22.style.display = "block";
       c21.style.display = "none";
@@ -183,66 +184,86 @@ export default function MMSIThai2002() {
     setPoint(point + v);
   };
   useEffect(() => {
-    console.log('point in After cal ',point)
-  }, [point]);
-
-  useEffect(() => {
     if (collect) {
+      var ansNo1_1 = parseInt(ans1);
+      var ansNo1_2 = parseInt(ans12);
+      var ansNo1_3 = parseInt(ans13);
+      var ansNo1_4 = parseInt(ans14);
+      var ansNo1_5 = parseInt(ans15);
+      var ansNo2_1 = parseInt(ans2_1_1);
+      var ansNo2_2 = parseInt(ans2_1_2);
+      var ansNo2_3 = parseInt(ans2_1_3);
+      var ansNo2_4 = parseInt(ans2_1_4);
+      var ansNo2_5 = parseInt(ans2_1_5);
+      var ansNo2_2_1 = parseInt(ans2_2_1);
+      var ansNo2_2_2 = parseInt(ans2_2_2);
+      var ansNo2_2_3 = parseInt(ans2_2_3);
+      var ansNo2_2_4 = parseInt(ans2_2_4);
+      var ansNo2_2_5 = parseInt(ans2_2_5);
+      var ansNo6_1 = parseInt(ans61);
+      var ansNo6_2 = parseInt(ans62);
+      var ansNo7 = parseInt(ans7);
+      var ansNo9 = parseInt(ans9);
+      var ansNo10 = parseInt(ans10);
+      var ansNo11 = parseInt(ans11);
       const sum =
-      parseInt(ans1)+
-       parseInt(ans12)+
-       parseInt(ans13)+
-       parseInt(ans14)+
-       parseInt(ans15)+
-       parseInt(ans2_1_1)+
-       parseInt(ans2_1_2)+
-       parseInt(ans2_1_3)+
-       parseInt(ans2_1_4)+
-       parseInt(ans2_1_5)+
-       parseInt(ans2_2_1)+
-       parseInt(ans2_2_2)+
-       parseInt(ans2_2_3)+
-       parseInt(ans2_2_4)+
-       parseInt(ans2_2_5)+
-       parseInt(ans61)+
-       parseInt(ans62)+
-       parseInt(ans7)+
-       parseInt(ans9)+
-       parseInt(ans10)+
-       parseInt(ans11)+parseInt(point);
-      setCountsum(sum);
-      //setGroup(1);
-      console.log('point in collect ture ',point)
-      console.log('sum in collect ture ',typeof sum)
-      if (group == 1) { 
-        if (sum <= 14) {
+        ansNo1_1 +
+        ansNo1_2 +
+        ansNo1_3 +
+        ansNo1_4 +
+        ansNo1_5 +
+        ansNo2_1 +
+        ansNo2_2 +
+        ansNo2_3 +
+        ansNo2_4 +
+        ansNo2_5 +
+        ansNo2_2_1 +
+        ansNo2_2_2 +
+        ansNo2_2_3 +
+        ansNo2_2_4 +
+        ansNo2_2_5 +
+        ansNo6_1 +
+        ansNo6_2 +
+        ansNo7 +
+        ansNo9 +
+        ansNo10 +
+        ansNo11+point;
+        setPoint(sum)
+        console.log(' sum in coll ' , sum)
+    
+      console.log("point in collect ture ", point);
+      console.log("sum in collect ture ", typeof countSum);
+      if (group == 1) {
+        if (point <= 14) {
           setresults("เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-          setPoint(countSum)
+          setPoint(countSum);
         } else {
           setresults("ปกติ");
-          setPoint(countSum)
+          setPoint(countSum);
         }
       } else if (group == 2) {
-        if (sum <= 17) {
+        if (point <= 17) {
           setresults(" เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-          setPoint(countSum)
+          setPoint(countSum);
         } else {
           setresults("ปกติ");
-          setPoint(countSum)
+          setPoint(countSum);
         }
       } else if (group > 2) {
-        if (sum <= 22) {
+        if (point <= 22) {
           setresults(" เป็นผู้สงสัยว่ามีภาวะสมองเสื่อม(Cognitive impairment)");
-          setPoint(countSum)
+          setPoint(countSum);
         } else {
           setresults(" ปกติ");
-          setPoint(countSum)
+          setPoint(countSum);
         }
       }
-    }else{
-      console.log('point in collect false ',point)
+    } else {
+      console.log("point in collect false ", point);
     }
-  }, [collect,ans1,
+  }, [
+    collect,
+    ans1,
     ans12,
     ans13,
     ans14,
@@ -262,10 +283,24 @@ export default function MMSIThai2002() {
     ans7,
     ans9,
     ans10,
-    ans11,point,group,countSum]);
+    ans11,
+    point,
+    group,
+    countSum,
+  ]);
 
   useEffect(() => {
-    if (ans1 && ans12 && ans13 && ans14 && ans15 && ans61 && ans62 && ans7 && ans11) {
+    if (
+      ans1 &&
+      ans12 &&
+      ans13 &&
+      ans14 &&
+      ans15 &&
+      ans61 &&
+      ans62 &&
+      ans7 &&
+      ans11
+    ) {
       setCollect(true);
     }
   }, [
@@ -295,21 +330,26 @@ export default function MMSIThai2002() {
   const handleSubmit = () => {
     setShow(true);
     const data = [
+      textAns11,
       ans1,
+      textAns12,
       ans12,
+      textAns13,
       ans13,
+      textAns14,
       ans14,
+      textAns15,
       ans15,
+      textAns211,
       ans2_1_1,
+      textAns212,
       ans2_1_2,
+      textAns213,
       ans2_1_3,
+      textAns214,
       ans2_1_4,
+      textAns215,
       ans2_1_5,
-      ans2_2_1,
-      ans2_2_2,
-      ans2_2_3,
-      ans2_2_4,
-      ans2_2_5,
       ansF,
       ansR,
       ansT,
@@ -324,30 +364,15 @@ export default function MMSIThai2002() {
       ans61,
       ans62,
       ans7,
+      think1,
+      think2,
+      think3,
       ans9,
+      textAns10,
       ans10,
       ans11,
-      textAns11,
-      textAns12,
-      textAns13,
-      textAns14,
-      textAns15,
-      textAns211,
-      textAns212,
-      textAns213,
-      textAns214,
-      textAns215,
-      textAns221,
-      textAns222,
-      textAns223,
-      textAns224,
-      textAns225,
-      textAns10,
-      textAns5,
       collect,
       results,
-      point,
-      group,
     ];
     dispatch(formAction.add(data));
     //console.log();
@@ -1492,13 +1517,13 @@ export default function MMSIThai2002() {
         {/* bt */}
         <div className="row justify-content-between">
           <Link to="/mainmenu">
-            <button type="button" class="btn form-btn btn-back btn-lg">
+            <button type="button" className="btn form-btn btn-back btn-lg">
               ยกเลิก
             </button>
           </Link>
           <button
             type="button"
-            class="btn form-btn btn-primary btn-lg"
+            className="btn form-btn btn-primary btn-lg"
             onClick={handleSubmit}
           >
             บันทึก
