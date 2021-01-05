@@ -59,7 +59,7 @@ export default function Sections6() {
       } else if (countNum >= 5 && countNum <= 11) {
         setgroup(2);
         setresultsTai("คะแนนของคุณจัดอยู่ในกลุ่ม "+ group +" ต้องทำแบบประเมิน TAI Classified")
-      } else if (countNum > 12) {
+      } else if (countNum >= 12) {
         setgroup(1);
         setresultsTai("คะแนนของคุณจัดอยู่ในกลุ่ม "+ group +" ไม่ต้องทำแบบประเมิน TAI Classified")
       }

@@ -177,23 +177,7 @@ function MainMenu(props) {
             history.push(`${url}/sec8_1`);
           }, 200);
         }
-        if(forms8Reducer.linkTo9Q==true){
-          dispatch(getAction.getDataSec89q(visitID));
-          if (!forms89qReducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec8-9q`);
-          }, 200);
-      }
         break;
-    }
-        // case "sec8-9q":
-        //   dispatch(getAction.getDataSec89q(visitID));
-        //   if (!forms8Reducer.isFetching) {
-        //     setTimeout(() => {
-        //       history.push(`${url}/sec8-9q`);
-        //     }, 200);
-        //   }
-        //   break;
       case "sec9":
         dispatch(getAction.getDataSec9(visitID));
         if (!forms9Reducer.isFetching) {
