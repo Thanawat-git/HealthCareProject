@@ -3,10 +3,10 @@ import "./login.css";
 import logo1 from "../images/logo-saensukcity.png";
 import loginImg from '../images/undraw_surfer_m6jb.svg'
 import { Link } from "react-router-dom";
-import { loginAdminMobile,autoLoginAdminMobile } from "../../actions/auth.action";
+import { loginSuperAdmin,autoLogin } from "../../actions/auth.action";
 import { connect } from "react-redux";
 
-class LoginAdminMobile extends Component {
+class LoginSuperAdmin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,9 +17,9 @@ class LoginAdminMobile extends Component {
 
   componentDidMount(){
     console.log("in componentDidMount")
-    this.props.autoLoginAdminMobile(this.props.history);
+    this.props.autoLogin(this.props.history);
   }
-  
+
   render() {
     return (
       <div className="nlcontainer" >
@@ -43,14 +43,14 @@ class LoginAdminMobile extends Component {
                   onChange={(e) => this.setState({ password: e.target.value })}
                 />
               </div>
-              <Link to="/Volunteer" >
+              <Link>
               <input 
               type="submit" 
               value="ลงชื่อเข้าใช้" 
-              className="btn-login solid"
+              className="btn-login solid" 
               onClick={e=>{
                 e.preventDefault()
-                this.props.loginAdminMobile(this.props.history, this.state) //dispatch เรียกใช้งาน loginVolunteer ใน action
+                this.props.loginSuperAdmin(this.props.history, this.state) //dispatch เรียกใช้งาน loginVolunteer ใน action
               }}
               />
               </Link>
@@ -62,7 +62,7 @@ class LoginAdminMobile extends Component {
         <div className="panels-nlcontainer">
           <div className="panel left-panel">
             <div className="nlcontent">
-              <h3>Hello Admin On Mobile</h3>
+              <h3>Hello Super Admin</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui atque dolore minus fugiat dolores, beatae, animi doloremque molestias nam ex quisquam iusto aliquam, sed ipsa commodi quod dolor in.</p>
             </div>
             <img src={loginImg} className="login-img" alt=""/>
@@ -72,7 +72,8 @@ class LoginAdminMobile extends Component {
     );
   }
 }
-const mapStateToProps = ({ authReducer,messageReducer }) => ({ authReducer,messageReducer }); //state
-const mapDispatchToProps = {loginAdminMobile,autoLoginAdminMobile};
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginAdminMobile);
+const mapStateToProps = ({ authReducer,messageReducer }) => ({ authReducer,messageReducer }); //state
+const mapDispatchToProps = {loginSuperAdmin,autoLogin};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginSuperAdmin);

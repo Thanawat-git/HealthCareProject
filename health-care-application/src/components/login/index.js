@@ -1,4 +1,5 @@
 import login from './login'
 import loginAdmin from './loginAdmin'
 import loginAdminMobile from './loginAdminMobile'
-export { login, loginAdmin, loginAdminMobile }
+import loginSuperAdmin from "./loginSuperAdmin";
+export { login, loginAdmin, loginAdminMobile, loginSuperAdmin }
