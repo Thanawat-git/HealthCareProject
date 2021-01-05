@@ -179,9 +179,11 @@ export const getDataSec5 = (visId) => {
           res.data.ORAL_5_11,
           res.data.ORAL_5_12,
           res.data.ORAL_5_13,
-          res.data.ORAL_COUNT,
           res.data.ORAL_RESULT,
           res.data.ORAL_CORRECT_FORM,
+          res.data.ORAL_COUNT,
+          
+          
         ];
         dispatch({
           type: "FETCHING5",
@@ -318,13 +320,14 @@ export const getDataSec9 = (visId) => {
           res.data.BONE_9_10,
           res.data.BONE_9_11,
           res.data.BONE_9_12,
+          res.data.BONE_CORRECT_FORM,
           res.data.BONE_RESULT,
           res.data.BONE_WALK,
           res.data.BONE_WALK_INFO,
           res.data.BONE_PHY_FIT_MINUTE,
           res.data.BONE_PHY_FIT_SECOND,
           res.data.BONE_PHY_RESULT,
-          res.data.BONE_CORRECT_FORM,
+          
         ];
         dispatch({
           type: "FETCHING9",
