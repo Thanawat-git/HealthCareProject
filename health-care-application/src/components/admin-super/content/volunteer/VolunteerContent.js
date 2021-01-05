@@ -4,10 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddNewVolunteer from "./AddNewVolunteer";
 import EditVolunteerInfo from "./EditVolunteerInfo";
 import * as volAction from "../../../../actions/volunteer.action";
-import Swal from "sweetalert2"; // ทำ alert
-import withReactContent from "sweetalert2-react-content"; 
 import { useDispatch, useSelector } from 'react-redux';
-const MySwal = withReactContent(Swal);
 
 export default function VolunteerContent() {
   const dispatch = useDispatch()
@@ -34,33 +31,13 @@ export default function VolunteerContent() {
             <td>{value.VOLUNTEER.VOL_FIRSTNAME} {value.VOLUNTEER.VOL_LASTNAME}</td>
             <td>{value.VOLUNTEER.VOL_PHONE}</td>
             <td>{value.VOLUNTEER.VOL_ID_NUMBER}</td>
-            <td>{value.VOLUNTEER.VOL_LINE}</td>
+            {/* <td>{value.VOLUNTEER.VOL_LINE}</td> */}
             <td style={{ textAlign: "center" }}>
               <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
               {
                 value.VOLUNTEER.VOL_STATUS ?
                 <button
-                // onClick={() => {
-                //   MySwal.fire({
-                //     title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
-                //     text: `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} กำลังจะถูกลบ!`,
-                //     type: "warning",
-                //     showCancelButton: true,
-                //     confirmButtonColor: '#d33',
-                //     confirmButtonText: " ลบ ",
-                //     cancelButtonText: "ยกเลิก"
-                //   }).then(result => {
-                //     if (result.value) {
-                //       dispatch(volAction.deleteVolunteer(value.VOL_ID_NUMBER))
-                //       Swal.fire(
-                //         'ลบสำเร็จ',
-                //         `คุณ${value.VOLUNTEER.VOL_FIRSTNAME} ${value.VOLUNTEER.VOL_LASTNAME} ได้ถูกลบแล้ว`,
-                //         'success'
-                //       )
-                //     }
-                //   });
-                // }}
                 type="button"
                 className="btn btn-warning"
                 onClick={()=>updateStatus(value)}
@@ -120,7 +97,7 @@ export default function VolunteerContent() {
                   <th scope="col">ชื่อ - นามสกุล</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
                   <th scope="col">ชื่อผู้ใช้</th>
-                  <th scope="col">สถานะ</th>
+                  {/* <th scope="col">สถานะ</th> */}
                   <th style={{ textAlign: "center" }}>Action</th>
                 </tr>
               </thead>
