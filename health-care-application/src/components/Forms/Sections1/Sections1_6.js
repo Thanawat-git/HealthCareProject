@@ -48,7 +48,7 @@ export default function Sections1_6() {
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     const data = [visDate, eldId];
     dispatch(formAction.createVisitTable(data));
-    formAction.updateLastVisDate(data);
+    // formAction.updateLastVisDate(data);
   };
 
   return (

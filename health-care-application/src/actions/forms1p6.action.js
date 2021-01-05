@@ -352,6 +352,7 @@ export const createVisitTable = (payload) => {
     }).catch(error=>{
       console.log('error in createVisitTable: ',error)
     })
+    updateLastVisDate(payload)
   }
 };
 
