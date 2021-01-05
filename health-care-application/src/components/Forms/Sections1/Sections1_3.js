@@ -234,6 +234,7 @@ export default function Sections1_3() {
               </div>
               <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกเวลาที่อยู่กับผู้สูงอายุ" : ""}</FormHelperText>
               <br />
+              <hr />
               <div className="row">
                 <div className="col-12">
                   <InputLabel htmlFor="relative1">
