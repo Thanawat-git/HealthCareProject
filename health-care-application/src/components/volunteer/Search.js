@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
 import * as elderly from "../../actions/elderly.action";
-import Icon from "@mdi/react";
+// import Icon from "@mdi/react";
 import {
   Button,
   Dialog,
@@ -15,12 +15,12 @@ import {
   Paper,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-import Header from "./Header";
+// import Header from "./Header";
 import * as formAction from "../../actions/forms1p6.action";
 import Axios from "axios";
 import { apiEld } from "../../constants/index";
-import { mdiAccount } from "@mdi/js";
-import mdi from "@mdi/js"
+// import { mdiAccount } from "@mdi/js";
+// import mdi from "@mdi/js"
 import * as getAction from "../../actions/getAllFormToReucer.action";
 import { updateLastVisDate } from "../../actions/forms1p6.action";
 
@@ -46,7 +46,6 @@ export default function Asynchronous() {
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const [isVisId, setisVisId] = useState(true);
   const [visData, setvisData] = useState(null);
-  const [visitID, setvisitID] = useState(null)
   let history = useHistory();
   const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
 
@@ -56,7 +55,7 @@ export default function Asynchronous() {
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
       setisVisId(true)
       setvisData(res.data)
-      setvisitID(res.data[0].VIS_ID)
+      dispatch(getAction.getCollect(res.data[0].VIS_ID));
       console.log('res.data ',res.data)
     }).catch(error=>{
       setisVisId(false)
@@ -153,7 +152,6 @@ export default function Asynchronous() {
                       type: "VIS_ID",
                       payload: data,
                     })
-                    dispatch(getAction.getCollect(visitID));
                     if(!forms2Reducer.isFetching){
                       setTimeout(() => {
                           history.push("/mainmenu");

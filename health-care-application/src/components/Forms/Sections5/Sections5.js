@@ -172,35 +172,35 @@ export default function Sections5_1() {
           >
             <FormControlLabel
               className="radio-size"
-              value="notooth"
+              value="ไม่ได้แปรงฟัน"
               control={<Radio color="primary" />}
               label="ไม่ได้แปรงฟัน"
             />
             <FormControlLabel
               className="radio-size"
-              value="withouttoothbrush"
+              value="แปรงแต่ไม่ได้ใช้แปรงสีฟัน"
               control={<Radio color="primary" />}
               label="แปรงแต่ไม่ได้ใช้แปรงสีฟัน"
             />
             <FormControlLabel
               className="radio-size"
-              value="atimeforday"
+              value="แปรงวันละ 1 ครั้ง เช้าหรือก่อนนอน"
               control={<Radio color="primary" />}
               label="แปรงวันละ 1 ครั้ง เช้าหรือก่อนนอน"
             />
             <FormControlLabel
               className="radio-size"
-              value="twotimeforday"
+              value="แปรงวันละ 2 ครั้ง เช้าและก่อนนอน"
               control={<Radio color="primary" />}
-              label=" แปรงวันละ 2 ครั้ง เช้าและก่อนนอน"
+              label="แปรงวันละ 2 ครั้ง เช้าและก่อนนอน"
             />
             <FormControlLabel
               className="radio-size"
-              value="overtwotimeforday"
+              value="แปรงมากกว่า 2 ครั้งต่อวัน ระบุ"
               control={<Radio color="primary" />}
               label="แปรงมากกว่า 2 ครั้งต่อวัน ระบุ"
             />
-            {ans5_1 === "overtwotimeforday" ? (
+            {ans5_1 === "แปรงมากกว่า 2 ครั้งต่อวัน ระบุ" ? (
               <TextField
                 id="outlined-basic"
                 defaultValue={moreInfoAns5_1}
@@ -214,11 +214,11 @@ export default function Sections5_1() {
             )}
             <FormControlLabel
               className="radio-size"
-              value="other"
+              value="อื่นๆ ระบุ"
               control={<Radio color="primary" />}
               label="อื่นๆ ระบุ"
             />
-            {ans5_1 === "other" ? (
+            {ans5_1 === "อื่นๆ ระบุ" ? (
               <TextField
                 id="outlined-basic"
                 defaultValue={moreInfoAns5_1}

@@ -105,7 +105,7 @@ function MainMenu(props) {
   const visitID = useSelector(({ visitID }) => visitID.visiId);
   // console.log('visitID ',visitID)
   const peopleID = useSelector(({ visitID }) => visitID.peopleId);
-  const { user } = useSelector((state) => state.authReducer);
+  // const { user } = useSelector((state) => state.authReducer);
   let history = useHistory();
   const dispatch = useDispatch();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
@@ -113,11 +113,11 @@ function MainMenu(props) {
   const forms4Reducer = useSelector(({ forms4Reducer }) => forms4Reducer);
   const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
-  const formsTaiReducer = useSelector(({ formsTaiReducer }) => formsTaiReducer);
+  // const formsTaiReducer = useSelector(({ formsTaiReducer }) => formsTaiReducer);
   const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
-  const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
+  // const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
   const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
-  const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
+  // const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
   const getData = (sec) => {
