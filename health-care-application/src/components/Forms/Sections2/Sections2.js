@@ -49,7 +49,7 @@ export default function Sections2_1() {
 
   const [show, setShow] = useState(false);
   const [collect, setCollect] = useState(forms2Reducer.collect);
-  const [noFood, setnoFood] = useState(null);
+  const [noFood, setnoFood] = useState(forms2Reducer.noFood);
   const[ansfood,setAnsfood] = useState(0);
   const [toDay, setToday] = useState();
   const [topicblood, setTopicblood] = useState();
@@ -58,6 +58,22 @@ export default function Sections2_1() {
   const [datesuga, setdatesuga] = useState();
   const [checktosend1, setchecktosend1] = useState();
   const [checktosend2, setchecktosend2] = useState();
+
+  useEffect(() => {
+  if(noFood == true){
+    setnoFood(true)
+  }else if(noFood == false){
+    setnoFood(false)
+  }else{
+    setnoFood(null)
+  }
+
+
+  }, [noFood])
+
+
+
+
   useEffect(() => {
     if (
       waist &&
@@ -143,7 +159,8 @@ export default function Sections2_1() {
     }
   };
   const calsugar = () => {
-    if (noFood == true) {
+
+    if (noFood == true) {//noFood == true
       if (sugar >= 126) {
         setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
         calDate(2);
@@ -394,6 +411,7 @@ console.log(visId)
                 aria-label="nofood"
                 name="nofood"
                 value={noFood}
+                checked={noFood}
                 onChange={(e) => setnoFood(!noFood)}
               >
                 <FormControlLabel
