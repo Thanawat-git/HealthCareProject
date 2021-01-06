@@ -496,6 +496,7 @@ export default function Sections9() {
                   name="walkInfo"
                   id="useEquipment"
                   onChange={handleChange}
+                  value={walkInfo}
                 >
                   {/* <MenuItem value="">ไม่เลือก</MenuItem> */}
                   <MenuItem value="ไม้เท้า">ไม้เท้า</MenuItem>

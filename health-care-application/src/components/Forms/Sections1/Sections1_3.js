@@ -101,21 +101,20 @@ export default function Sections1_3() {
       neighborPhoneNumber2
     ]
 
-    // formAction.updateElderRelative([])
-
     dispatch(formAction.add(data))
-    function emptyValue(){
-      e.preventDefault(); 
-      //alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
-      seterr(true)
-      // return;
-    }
+    // function emptyValue(){
+    //   e.preventDefault(); 
+    //   seterr(true)
+    // }
+  }
+  const emptyValue = ()=>{
+    seterr(true)
   }
 
-  useEffect(() => {
-    neighborFirstName1 !== null && setFirstNeighbor("yes1");
-    neighborFirstName2 !== null && setSecondNeighbor("yes2");
-  }, [neighborFirstName1, neighborFirstName2])
+  // useEffect(() => {
+  //   neighborFirstName1 !== null && setFirstNeighbor("yes1");
+  //   neighborFirstName2 !== null && setSecondNeighbor("yes2");
+  // }, [neighborFirstName1, neighborFirstName2])
 
 
   return (
