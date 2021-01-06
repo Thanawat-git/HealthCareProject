@@ -5,10 +5,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddNewAdmin from "./AddNewAdmin";
 import EditAdminInfo from "./EditAdminInfo";
 import * as adminAction from "../../../../actions/admin.action";
-import Swal from "sweetalert2"; // ทำ alert
-import withReactContent from "sweetalert2-react-content"; 
+// import Swal from "sweetalert2"; // ทำ alert
+// import withReactContent from "sweetalert2-react-content"; 
 import { useDispatch, useSelector } from 'react-redux';
-const MySwal = withReactContent(Swal);
+// const MySwal = withReactContent(Swal);
 
 export default function AdminContent() {
   const dispatch = useDispatch()
@@ -17,6 +17,9 @@ export default function AdminContent() {
     adminReducer.result===null && dispatch(adminAction.getAllAdmin())
   }, [])
 
+  const updateStatus = (value)=>{
+    dispatch(adminAction.updateAdminStatus([value.ADM_ID_NUMBER, !value.ADM_STATUS]))
+  }
   const createRow = () => {
     try{
       const {result, isFetching} = adminReducer
@@ -30,11 +33,34 @@ export default function AdminContent() {
               <td>{value.ADM_POSITION}</td>
               <td>{value.ADM_PHONE}</td>
               <td>{value.ADM_EMAIL}</td>
-              <td>xxxxx</td>
+              <td>
+              {
+                value.ADM_STATUS ?
+                <span className="text-success" >ปฏิบัติงานอยู่</span>
+                : <span className="text-secondary" >พักงาน</span>
+              }
+              </td>
               <td style={{ textAlign: "center" }}>
               <EditAdminInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
-              <button
+              {
+                value.ADM_STATUS ?
+                <button
+                type="button"
+                className="btn btn-warning"
+                onClick={()=>updateStatus(value)}
+                >
+                  ปิด
+                </button>
+                :
+                <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={()=>updateStatus(value)}
+                > เปิด
+                </button>
+              }
+              {/* <button
                 onClick={() => {
                   MySwal.fire({
                     title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
@@ -59,7 +85,7 @@ export default function AdminContent() {
                 className="btn btn-danger"
               >
                 ลบ
-              </button>
+              </button> */}
               </td>
             </tr>
           )
@@ -105,7 +131,7 @@ export default function AdminContent() {
                   <th scope="col">ชื่อ - นามสกุล</th>
                   <th scope="col">ตำแหน่ง</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
-                  <th style={{ textAlign: "center" }}>ชื่อผู้ใช้</th>
+                  <th style={{ textAlign: "center" }}>E-mail</th>
                   <th scope="col">สถานะ</th>
                   <th style={{ textAlign: "center" }}>Action</th>
                 </tr>

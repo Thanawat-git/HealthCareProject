@@ -57,6 +57,15 @@ export const updateAdmin = (payload) => {
   }
 }
 
+export const updateAdminStatus = payload => {
+  return async dispatch => {
+    await Axios.put(`${apiAdmin}/update/${payload[0]}`, {
+      ADM_STATUS: payload[1],
+    })
+    await doGetAdmin(dispatch)
+  }
+}
+
 export const deleteAdmin = id => {
   return async dispatch => {
     await Axios.delete(`${apiAdmin}/delete/${id}`)
