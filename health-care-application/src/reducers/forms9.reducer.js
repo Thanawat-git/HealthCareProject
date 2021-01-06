@@ -42,12 +42,11 @@ export default (state = initialState, { type, payload }) => {
         ans9_12: payload[11],
         collect: payload[12],
         results: payload[13],
-        count: payload[14],
-        walk: payload[15],
-        walkInfo: payload[16],
-        minute: payload[17],
-        second: payload[18],
-        result2: payload[19],
+        walk: payload[14],
+        walkInfo: payload[15],
+        minute: payload[16],
+        second: payload[17],
+        result2: payload[18],
         isFetching: false
       };
     
