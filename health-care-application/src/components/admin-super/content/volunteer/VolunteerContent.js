@@ -31,7 +31,13 @@ export default function VolunteerContent() {
             <td>{value.VOLUNTEER.VOL_FIRSTNAME} {value.VOLUNTEER.VOL_LASTNAME}</td>
             <td>{value.VOLUNTEER.VOL_PHONE}</td>
             <td>{value.VOLUNTEER.VOL_ID_NUMBER}</td>
-            {/* <td>{value.VOLUNTEER.VOL_LINE}</td> */}
+            <td>
+            {
+              value.VOLUNTEER.VOL_STATUS ? 
+              <span className="text-success" >ปฏิบัติงานอยู่</span>
+              : <span className="text-secondary" >พักงาน</span>
+            }
+            </td>
             <td style={{ textAlign: "center" }}>
               <EditVolunteerInfo selectValue={value} />
               <span style={{ color: "grey" }}> | </span>
@@ -97,7 +103,7 @@ export default function VolunteerContent() {
                   <th scope="col">ชื่อ - นามสกุล</th>
                   <th scope="col">เบอร์โทรศัพท์</th>
                   <th scope="col">ชื่อผู้ใช้</th>
-                  {/* <th scope="col">สถานะ</th> */}
+                  <th scope="col">สถานะ</th>
                   <th style={{ textAlign: "center" }}>Action</th>
                 </tr>
               </thead>

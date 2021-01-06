@@ -4,8 +4,8 @@ import {
   Route,
   useRouteMatch,
 } from 'react-router-dom'
-import Editaccount from "./Editaccount";
-import Editpassword from "./Editpassword";
+// import Editaccount from "./Editaccount";
+// import Editpassword from "./Editpassword";
 import Volunteer from "./Volunteer";
 
 export default function Content() {
@@ -16,12 +16,12 @@ export default function Content() {
   
   return (
     <div >
-      <Route path={`/editaccount`}>
+      {/* <Route path={`/editaccount`}>
         <Editaccount />
       </Route>
       <Route path={`${path}/editpassword`}>
         <Editpassword/>
-      </Route>
+      </Route> */}
       <Route path={`${path}/search`}>
         <Volunteer/>
       </Route>
