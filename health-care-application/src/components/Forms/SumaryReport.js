@@ -112,7 +112,7 @@ const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินความสามารถในการทำกิจวัตรประจำ</h4></Box>
           <h5> คะแนนของคุณจัดอยู่ในกลุ่ม {forms6Reducer.group} </h5>
           {
-            forms6Reducer.group !== 0 &&
+            forms6Reducer.group !== "1" &&
             <h5> ผลการประเมิน TAI {formsTaiReducer.results} </h5>
           }
           

@@ -80,33 +80,33 @@ export const getAllResult = visId => {
       Axios.get(`${apiEld}/examsummary/${visId}`).then(res=>{
         console.log('res.data result in getAllresult ',res.data)
         let resultsec2 = [
-          res.data.waist_result,
-          res.data.bmi_result,
-          res.data.bp_result,
-          res.data.fbs_result,
+          res.data.WAI_RESULT,
+          res.data.BMI_RESULT,
+          res.data.BP_RESULT,
+          res.data.FBS_RESULT,
         ]
         let resultsec9 = [
-          res.data.bone_result,
-          res.data.bone_result,
+          res.data.BONE_RESULT,
+          res.data.BONE_PHY_RESULT,
         ]
         let resultsec92 = [
-          res.data.bone_result,
-          res.data.bone_result,
-          res.data.bone_result
+          res.data.OST_1_RESULT,
+          res.data.OST_2_RESULT,
+          res.data.OST_3_RESULT
         ]
         dispatch({ type: GET_RESULT_S2, payload: resultsec2 }) 
-        dispatch({ type: GET_RESULT_S3, payload: res.data.cardio_result }) //หัวใจและหลอดเลือด
-        dispatch({ type: GET_RESULT_S4, payload: res.data.eye_result }) //สุขภาพตา
-        dispatch({ type: GET_RESULT_S5, payload: res.data.oral_result }) //ช่องปาก
-        dispatch({ type: GET_RESULT_S6, payload: res.data.abi_group }) //การทำกิจวัตร => ชื่อ group
-        dispatch({ type: GET_RESULT_TAI, payload: res.data.abi_group }) //TAI
-        dispatch({ type: GET_RESULT_S7, payload: res.data.alz_result }) //สมองเสื่อม
-        dispatch({ type: GET_RESULT_S7M, payload: res.data.alz_result }) //MMSE
-        dispatch({ type: GET_RESULT_S8, payload: res.data.dep_result }) //ซึ่มเศร้า 
-        dispatch({ type: GET_RESULT_S89Q, payload: res.data.dep_result }) //89q
+        dispatch({ type: GET_RESULT_S3, payload: res.data.CARDIO_COUNT_RESULT }) //หัวใจและหลอดเลือด
+        dispatch({ type: GET_RESULT_S4, payload: res.data.EYE_RESULT }) //สุขภาพตา
+        dispatch({ type: GET_RESULT_S5, payload: res.data.ORAL_RESULT }) //ช่องปาก
+        dispatch({ type: GET_RESULT_S6, payload: res.data.ABI_GROUP }) //การทำกิจวัตร => ชื่อ group
+        dispatch({ type: GET_RESULT_TAI, payload: res.data.TAI_GROUP }) //TAI
+        dispatch({ type: GET_RESULT_S7, payload: res.data.ALZ_RESULT }) //สมองเสื่อม
+        dispatch({ type: GET_RESULT_S7M, payload: res.data.MMSE_RESULT }) //MMSE
+        dispatch({ type: GET_RESULT_S8, payload: res.data.DEP_RESULT }) //ซึ่มเศร้า 
+        dispatch({ type: GET_RESULT_S89Q, payload: res.data.DEP_9Q_RESULT }) //89q
         dispatch({ type: GET_RESULT_S9, payload: resultsec9 }) //กระดูก 2 result => 9r1[0], 9r2[1] 
         dispatch({ type: GET_RESULT_S92, payload: resultsec92 }) //กระดูก 92 3 result
-        dispatch({ type: GET_RESULT_S10, payload: res.data.ost_2_result }) //ปัสสาวะ 
+        dispatch({ type: GET_RESULT_S10, payload: res.data.URI_RESULT }) //ปัสสาวะ 
       }).catch(error=>{
         console.log('Err in get all result ', error)
       })
