@@ -117,7 +117,7 @@ export default function Sections1_6() {
           </div>
 
           <br />
-          <div className="row justify-content-center">
+          {/* <div className="row justify-content-center">
             <div className="col-4">
               <strong>วันที่สำรวจ</strong>
             </div>
@@ -128,7 +128,7 @@ export default function Sections1_6() {
                 value={date}
               />
             </div>
-          </div>
+          </div> */}
           {/* content */}
         </div>
 

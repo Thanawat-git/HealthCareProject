@@ -30,7 +30,6 @@ import {
   Sec1_5,
   Sec1_6,
 } from "./components/Forms/Sections1";
-
 import { useSelector } from "react-redux";
 
 function PrivateRoute({ children, ...rest }) {
