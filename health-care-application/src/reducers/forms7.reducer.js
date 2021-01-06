@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7, GET_COLLECT_S7 } from "../constants";
+import { CREATE_NEW_FORMS7, GET_COLLECT_S7, GET_RESULT_S7 } from "../constants";
 
 const initialState = {
   ans7_1: 0,
@@ -56,6 +56,8 @@ export default (state = initialState, { type, payload }) => {
       };
     case GET_COLLECT_S7:
       return { ...state, collect: payload };
+    case GET_RESULT_S7:
+      return { ...state, results: payload };
     default:
       return state;
   }

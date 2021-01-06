@@ -2,19 +2,19 @@ import Axios from "axios";
 import {
   apiBase,
   apiEld,
-  CREATE_NEW_FORMS89Q,
+  // CREATE_NEW_FORMS89Q,
   CREATE_NEW_FORMS10,
   CREATE_NEW_FORMS2,
   CREATE_NEW_FORMS3,
   CREATE_NEW_FORMS4,
   CREATE_NEW_FORMS5,
   CREATE_NEW_FORMS6,
-  CREATE_NEW_FORMS6T,
+  // CREATE_NEW_FORMS6T,
   CREATE_NEW_FORMS7,
-  CREATE_NEW_FORMS7M,
+  // CREATE_NEW_FORMS7M,
   CREATE_NEW_FORMS8,
   CREATE_NEW_FORMS9,
-  FORMS1P4_ADD_NEW,
+  // FORMS1P4_ADD_NEW,
   GET_COLLECT_S10,
   GET_COLLECT_S2,
   GET_COLLECT_S3,
@@ -24,6 +24,19 @@ import {
   GET_COLLECT_S7,
   GET_COLLECT_S8,
   GET_COLLECT_S9,
+  GET_RESULT_S10,
+  GET_RESULT_S2,
+  GET_RESULT_S3,
+  GET_RESULT_S4,
+  GET_RESULT_S5,
+  GET_RESULT_S6,
+  GET_RESULT_S7,
+  GET_RESULT_S7M,
+  GET_RESULT_S8,
+  GET_RESULT_S89Q,
+  GET_RESULT_S9,
+  GET_RESULT_S92,
+  GET_RESULT_TAI,
 } from "../constants";
 
 export const getCollect = (visId) => {
@@ -60,6 +73,46 @@ export const getCollect = (visId) => {
     );
   };
 };
+
+export const getAllResult = visId => {
+  return dispatch => {
+    return (
+      Axios.get(`${apiEld}/examsummary/${visId}`).then(res=>{
+        console.log('res.data result in getAllresult ',res.data)
+        let resultsec2 = [
+          res.data.waist_result,
+          res.data.bmi_result,
+          res.data.bp_result,
+          res.data.fbs_result,
+        ]
+        let resultsec9 = [
+          res.data.bone_result,
+          res.data.bone_result,
+        ]
+        let resultsec92 = [
+          res.data.bone_result,
+          res.data.bone_result,
+          res.data.bone_result
+        ]
+        dispatch({ type: GET_RESULT_S2, payload: resultsec2 }) 
+        dispatch({ type: GET_RESULT_S3, payload: res.data.cardio_result }) //หัวใจและหลอดเลือด
+        dispatch({ type: GET_RESULT_S4, payload: res.data.eye_result }) //สุขภาพตา
+        dispatch({ type: GET_RESULT_S5, payload: res.data.oral_result }) //ช่องปาก
+        dispatch({ type: GET_RESULT_S6, payload: res.data.abi_group }) //การทำกิจวัตร => ชื่อ group
+        dispatch({ type: GET_RESULT_TAI, payload: res.data.abi_group }) //TAI
+        dispatch({ type: GET_RESULT_S7, payload: res.data.alz_result }) //สมองเสื่อม
+        dispatch({ type: GET_RESULT_S7M, payload: res.data.alz_result }) //MMSE
+        dispatch({ type: GET_RESULT_S8, payload: res.data.dep_result }) //ซึ่มเศร้า 
+        dispatch({ type: GET_RESULT_S89Q, payload: res.data.dep_result }) //89q
+        dispatch({ type: GET_RESULT_S9, payload: resultsec9 }) //กระดูก 2 result => 9r1[0], 9r2[1] 
+        dispatch({ type: GET_RESULT_S92, payload: resultsec92 }) //กระดูก 92 3 result
+        dispatch({ type: GET_RESULT_S10, payload: res.data.ost_2_result }) //ปัสสาวะ 
+      }).catch(error=>{
+        console.log('Err in get all result ', error)
+      })
+    )
+  }
+}
 
 export const getDataSec2 = (visId) => {
   return (dispatch) => {

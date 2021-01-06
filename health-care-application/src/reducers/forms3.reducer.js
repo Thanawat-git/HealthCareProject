@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS3, GET_COLLECT_S3 } from "../constants";
+import { CREATE_NEW_FORMS3, GET_COLLECT_S3, GET_RESULT_S3 } from "../constants";
 
 const initialState = {
   ans3_1: 0,
@@ -34,6 +34,8 @@ export default (state = initialState, { type, payload }) => {
       };
     case GET_COLLECT_S3:
       return { ...state, collect: payload };
+    case GET_RESULT_S3:
+      return { ...state, results: payload };
     default:
       return state;
   }

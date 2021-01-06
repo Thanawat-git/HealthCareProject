@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS2,GET_COLLECT_S2,HTTP_SECTIONS2_FETCHING } from "../constants";
+import { CREATE_NEW_FORMS2,GET_COLLECT_S2,HTTP_SECTIONS2_FETCHING, GET_RESULT_S2 } from "../constants";
 
 const initialState = {
   waist: null,
@@ -41,6 +41,14 @@ export default (state = initialState, { type, payload }) => {
       };
     case GET_COLLECT_S2:
       return { ...state, collect: payload }
+    case GET_RESULT_S2:
+      return { 
+        ...state,
+        waistResult: payload[0],
+        bmiResult: payload[1],
+        bloodPressureResult: payload[2],
+        sugarResult: payload[3],
+      }
     default:
       return state;
   }

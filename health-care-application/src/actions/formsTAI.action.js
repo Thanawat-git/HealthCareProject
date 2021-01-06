@@ -16,7 +16,7 @@ await  Axios.put(`${apiBase}/TAI/update/${payload[0]}`, {
     TAI_MENTAL: payload[2],
     TAI_FEED: payload[3],
     TAI_TOILET: payload[4],
-    TAI_GROUP: payload[5],
+    TAI_GROUP: payload[5], // result ที่ชื่อ group ไม่ต้อง งง 
     TAI_CORRECT_FORM: payload[6],
     updateBy: USERLOGIN.Fullname
   })

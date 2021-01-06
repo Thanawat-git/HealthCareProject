@@ -17,7 +17,7 @@ export default function Content() {
   
   return (
     <div >
-      <Route path={`${path}/editaccount`}>
+      <Route path={`/editaccount`}>
         <Editaccount />
       </Route>
       <Route path={`${path}/editpassword`}>

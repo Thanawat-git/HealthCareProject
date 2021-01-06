@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS9, GET_COLLECT_S9 } from "../constants";
+import { CREATE_NEW_FORMS9, GET_COLLECT_S9, GET_RESULT_S9 } from "../constants";
 
 const initialState = {
   ans9_1: 0,
@@ -41,7 +41,7 @@ export default (state = initialState, { type, payload }) => {
         ans9_11: payload[10],
         ans9_12: payload[11],
         collect: payload[12],
-        results: payload[13],
+        result1: payload[13],
         walk: payload[14],
         walkInfo: payload[15],
         minute: payload[16],
@@ -52,6 +52,8 @@ export default (state = initialState, { type, payload }) => {
     
     case GET_COLLECT_S9:
       return { ...state, collect: payload};
+    case GET_RESULT_S9:
+      return { ...state, result1: payload[0], result2: payload[1]}
     default:
       return state;
   }

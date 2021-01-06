@@ -258,7 +258,7 @@ export default function ShowHistory({ value }) {
               alz_result!="ผิดปกติ" && <React.Fragment>
                 {mmse_result!==null? <p>
                     ผลการประเมิน MMSE-Thai 2002: <strong>{mmse_result}</strong>
-                </p>:noResult}
+                </p>:""}
               </React.Fragment>
               }
             </Typography>

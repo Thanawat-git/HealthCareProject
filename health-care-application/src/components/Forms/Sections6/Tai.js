@@ -90,9 +90,9 @@ export default function Sections6_Tai() {
       visId,
       ans6_Im,
       ans6_Me,
-       ans6_Fe,
+      ans6_Fe,
       ans6_To,
-      groupT,
+      results,
       collect,
     ]);
   };

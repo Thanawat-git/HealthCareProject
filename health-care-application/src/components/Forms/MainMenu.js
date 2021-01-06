@@ -102,6 +102,7 @@ function MainMenu(props) {
   // const { user } = useSelector((state) => state.authReducer);
   let history = useHistory();
   const dispatch = useDispatch();
+  const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
   const forms4Reducer = useSelector(({ forms4Reducer }) => forms4Reducer);
@@ -199,6 +200,9 @@ function MainMenu(props) {
     <React.Fragment>
         <Header/> <br/>
         <Card className={classes.root}>
+        {/* <h3> ชื่อ นามสกุล </h3> */}
+        <h4 style={{ textAlign: "center" }}> คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME} {elderlyReducer.resultSelected.ELD_LASTNAME}</h4>
+        {/* <h5> ชื่อ นามสกุล </h5> */}
           <CardContent>
             <Link
               onClick={() => {

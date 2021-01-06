@@ -54,7 +54,9 @@ const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
 const forms4Reducer = useSelector(({ forms4Reducer }) => forms4Reducer);
 const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
 const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
+const formsTaiReducer = useSelector(({ formsTaiReducer }) => formsTaiReducer);
 const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
+const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
 const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
 const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
 const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
@@ -108,22 +110,40 @@ const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
           <hr />
           {/* sec6 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินความสามารถในการทำกิจวัตรประจำ</h4></Box>
-          <h5> {forms6Reducer.resultsTai} </h5>
+          <h5> คะแนนของคุณจัดอยู่ในกลุ่ม {forms6Reducer.group} </h5>
+          {
+            forms6Reducer.group !== 0 &&
+            <h5> ผลการประเมิน TAI {formsTaiReducer.results} </h5>
+          }
+          
           <hr />
           {/* sec7 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินภาวะสมองเสื่อม</h4></Box>
           <h5> {forms7Reducer.results} </h5>
+          {
+            forms7Reducer.results !== 'การรู้คิดปกติ' &&
+            <h5> ผลการประเมิน MMSE-Thai 2002 {forms7mReducer.results} </h5>
+          }
           <hr />
           {/* sec8 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินการคัดกรองโรคซึมเศร้า</h4></Box>
           <h5> {forms8Reducer.results} </h5>
-          <h5> {forms89qReducer.results} </h5>
+          {
+            forms8Reducer.results !== 'ปกติ' &&
+            <h5> {forms89qReducer.results} </h5>
+          }
+          
           <hr />
           {/* sec9 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินสุขภาพกระดูกและกล้ามเนื้อ</h4></Box>
-          <h5> {forms9Reducer.result1} </h5>
-          <h5> {forms9Reducer.result2} </h5>
-          <h5> {forms92Reducer.results} </h5>
+          {/* เสี่ยงต่อการพัดตกหกล้ม */}
+          <h5> ความเสี่ยงต่อการพัดตกหกล้ม: {forms9Reducer.result1} </h5>
+           {/* ประเมินผลการเดิน */}
+          <h5> ประเมินผลการเดิน: {forms9Reducer.result2} </h5>
+
+          <h5> ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อมเบื่องต้น: {forms92Reducer.results} </h5>
+          <h5> ตอนที่ 2 คัดกรองข้อเข่าเสื่อมทางคลินิค: {forms92Reducer.results2} </h5>
+          <h5> ตอนที่ 3 แบบประเมินระดับความรุนแรงของโรคข้อเข่าเสื่อม (Oxford Knee Score): {forms92Reducer.results3} </h5>
           <hr />
           {/* sec10 */}
           <Box bgcolor="info.main" color="info.contrastText" p={1}><h4>ผลการประเมินการคัดกรองการกลั้นปัสสาวะ</h4></Box>

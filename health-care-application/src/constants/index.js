@@ -33,6 +33,21 @@ export const GET_COLLECT_S8 = 'GET_COLLECT_S8';
 export const GET_COLLECT_S9 = 'GET_COLLECT_S9';
 export const GET_COLLECT_S10 = 'GET_COLLECT_S10';
 
+//get result only
+export const GET_RESULT_S2 = 'GET_RESULT_S2';
+export const GET_RESULT_S3 = 'GET_RESULT_S3';
+export const GET_RESULT_S4 = 'GET_RESULT_S4';
+export const GET_RESULT_S5 = 'GET_RESULT_S5';
+export const GET_RESULT_S6 = 'GET_RESULT_S6';
+export const GET_RESULT_TAI = 'GET_RESULT_TAI';
+export const GET_RESULT_S7 = 'GET_RESULT_S7';
+export const GET_RESULT_S7M = 'GET_RESULT_S7M';
+export const GET_RESULT_S8 = 'GET_RESULT_S8';
+export const GET_RESULT_S89Q = 'GET_RESULT_S89Q';
+export const GET_RESULT_S9 = 'GET_RESULT_S9';
+export const GET_RESULT_S92 = 'GET_RESULT_S92';
+export const GET_RESULT_S10 = 'GET_RESULT_S10';
+
 // Search elderly
 export const HTTP_ELD_FETCHING = "HTTP_ELD_FETCHING";
 export const HTTP_ELD_SUCCESS = "HTTP_ELD_SUCCESS";

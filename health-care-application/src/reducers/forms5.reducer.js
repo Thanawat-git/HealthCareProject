@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS5, GET_COLLECT_S5 } from "../constants";
+import { CREATE_NEW_FORMS5, GET_COLLECT_S5, GET_RESULT_S5 } from "../constants";
 
 const initialState = {
   ans5_1: null,
@@ -56,7 +56,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, isFetching: true };
     case GET_COLLECT_S5:
       return { ...state, collect: payload };
-
+    case GET_RESULT_S5:
+      return { ...state, results: payload };
     default:
       return state;
   }

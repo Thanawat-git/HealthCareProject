@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS92 } from "../constants";
+import { CREATE_NEW_FORMS92, GET_RESULT_S92 } from "../constants";
 
 const initialState = {
   ans1R: false,
@@ -74,12 +74,13 @@ export default (state = initialState, { type, payload }) => {
         ans3_12: payload[28],
         collect: payload[29],
         count: payload[30],
-        results: payload[31],
-        results2: payload[32],
-        results3: payload[33],
+        results: payload[31], //ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อมเบื่องต้น
+        results2: payload[32], //ตอนที่ 2 คัดกรองข้อเข่าเสื่อมทางคลินิค
+        results3: payload[33], //ตอนที่ 3 แบบประเมินระดับความรุนแรงของโรคข้อเข่าเสื่อม (Oxford Knee Score)
         point:payload[34]
       };
-
+    case GET_RESULT_S92:
+      return { ...state, results: payload[0], results2: payload[1], results3: payload[2]}
     default:
       return state;
   }

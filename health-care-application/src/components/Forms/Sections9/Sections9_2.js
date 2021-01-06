@@ -1110,7 +1110,9 @@ export default function Sections9_2() {
 
         <Modal.Footer>
           <Link to="/mainmenu" className={classes.root}>
-            <Button variant="primary" block onClick={()=>formAction.updateExa9_1Osteoarthritis([ans1_1,ans1_2
+            <Button variant="primary" block 
+            onClick={()=>formAction.updateExa9_1Osteoarthritis([
+                ans1_1,ans1_2
                 ,results2,ans1R,ans1L,ans1N,ans2R,ans2L,ans2N,ans3R,ans3L,ans3N,ans4R,ans4L,ans4N,ans5R,ans5L,ans5N
                 ,results,ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,ans3_8,ans3_9,ans3_10,ans3_11,ans3_12
                 ,point,results3,collect,visId])} >

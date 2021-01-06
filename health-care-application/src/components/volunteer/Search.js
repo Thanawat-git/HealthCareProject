@@ -56,6 +56,7 @@ export default function Asynchronous() {
       setisVisId(true)
       setvisData(res.data)
       dispatch(getAction.getCollect(res.data[0].VIS_ID));
+      dispatch(getAction.getAllResult(res.data[0].VIS_ID));
       console.log('res.data ',res.data)
     }).catch(error=>{
       setisVisId(false)
