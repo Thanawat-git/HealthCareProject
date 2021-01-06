@@ -38,10 +38,8 @@ function MainMenu(props) {
   const collect6 = useSelector(({ forms6Reducer }) => forms6Reducer.collect);
   const collect7 = useSelector(({ forms7Reducer }) => forms7Reducer.collect);
   const collect8 = useSelector(({ forms8Reducer }) => forms8Reducer.collect);
-  const collect89q = useSelector(
-    ({ forms89qReducer }) => forms89qReducer.collect
-  );
-  const results8 = useSelector(({ forms8Reducer }) => forms8Reducer.results);
+  // const collect89q = useSelector(({ forms89qReducer }) => forms89qReducer.collect);
+  // const results8 = useSelector(({ forms8Reducer }) => forms8Reducer.results);
   const collect9 = useSelector(({ forms9Reducer }) => forms9Reducer.collect);
   const collect10 = useSelector(({ forms10Reducer }) => forms10Reducer.collect);
   const classes = useStyles();
@@ -56,18 +54,14 @@ function MainMenu(props) {
   const [i10, setI0] = useState("");
 
   useEffect(() => {
-    console.log("ans10: ", collect10);
+    // console.log("ans10: ", collect10);
     collect2 && setI2("green");
     collect3 && setI3("green");
     collect4 && setI4("green");
     collect5 && setI5("green");
     collect6 && setI6("green");
     collect7 && setI7("green");
-    if (collect8 && results8) {
-      setI8("green");
-    } else if (collect8) {
-      collect89q && setI8("green");
-    }
+    collect8 && setI8("green");
     collect9 && setI9("green");
     collect10 && setI0("green");
   }, []);

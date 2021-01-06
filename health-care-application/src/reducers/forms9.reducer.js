@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS9 } from "../constants";
+import { CREATE_NEW_FORMS9, GET_COLLECT_S9 } from "../constants";
 
 const initialState = {
   ans9_1: 0,
@@ -50,7 +50,9 @@ export default (state = initialState, { type, payload }) => {
         result2: payload[19],
         isFetching: false
       };
-
+    
+    case GET_COLLECT_S9:
+      return { ...state, collect: payload};
     default:
       return state;
   }
