@@ -31,34 +31,55 @@ export default function Sections3() {
   const [results, setresults] = useState(forms3Reducer.results3);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(forms3Reducer.count);
-  const [dis,setdis] = useState(false);
-  const [disf,setdisf] = useState(false);
-  const [dis2,setdis2] = useState(false);
-  const [disf2,setdisf2] = useState(false);
+  const [dis1Y, setdis1Y] = useState(false);
+  const [dis1N, setdis1N] = useState(false);
+  const [dis2Y, setdis2Y] = useState(false);
+  const [dis2N, setdis2N] = useState(false);
+  const [dis3Y, setdis3Y] = useState(false);
+  const [dis3N, setdis3N] = useState(false);
+  const [dis4Y, setdis4Y] = useState(false);
+  const [dis4N, setdis4N] = useState(false);
+  const [dis2, setdis2] = useState(false);
+  const [disf2, setdisf2] = useState(false);
+
   const [datesec3, setdateSec3] = useState();
-  const[topicsec3,settopicsec3]= useState();
+  const [topicsec3, settopicsec3] = useState();
+
 
 
   useEffect(() => {
     forms2Reducer === "อ้วนลงพุง" && setAns3_5("1");
-    if(forms2Reducer === "อ้วนลงพุง"){
-       dis2 == false ? setdis2(false) : setdis2(true)
-        disf2 == true ? setdisf2(false) : setdisf2(true)
+    if (forms2Reducer === "อ้วนลงพุง") {
+      dis2 == false ? setdis2(false) : setdis2(true);
+      disf2 == true ? setdisf2(false) : setdisf2(true);
     }
     forms1p6Reducer.map((value) => {
-      value == "ความดันโลหิตสูง" && setAns3_2("1");
-      value == "เบาหวาน" && setAns3_3("1");
-      value == "ไขมันในเส้นเลือดสูง" && setAns3_4("1");
-      value == "โรคหัวใจ" && setAns3_6("1");
-      if(value == "ความดันโลหิตสูง" || value == "เบาหวาน" || value == "ไขมันในเส้นเลือดสูง"
-      || value == "โรคหัวใจ"){
-        dis == false ? setdis(false) : setdis(true)
-        disf == true ? setdisf(false) : setdisf(true)
+      // value == "ความดันโลหิตสูง" && setAns3_2("1");
+      // value == "เบาหวาน" && setAns3_3("1");
+      // value == "ไขมันในเส้นเลือดสูง" && setAns3_4("1");
+      // value == "โรคหัวใจ" && setAns3_6("1");
+
+      switch (value) {
+        case "ความดันโลหิตสูง":
+          setAns3_2("1")
+          setdis1N(true)
+          break;
+        case "เบาหวาน":
+          setAns3_3("1");
+          setdis2N(true)
+          break;
+        case "ไขมันในเส้นเลือดสูง":
+          setAns3_4("1");
+          setdis3N(true)
+          break;
+          case "โรคหัวใจ":
+            setAns3_6("1");
+            setdis4N(true)
+            break;
+        default:
+          break;
       }
     });
-    
-    //console.log("ans32 : "+ans3_2)
-
   }, []);
 
   useEffect(() => {
@@ -77,15 +98,15 @@ export default function Sections3() {
         setresults("ไม่มีความเสี่ยง");
       } else if (countNum >= 1 && countNum <= 2) {
         setresults("มีความเสี่ยง");
-        calDate(1)
-        settopicsec3('โรคหัวใจและหลอดเลือด')
+        calDate(1);
+        settopicsec3("โรคหัวใจและหลอดเลือด");
       } else if (countNum >= 3 && countNum <= 4) {
         setresults("มีความเสี่ยงสูง");
-        calDate(2)
-        settopicsec3('โรคหัวใจและหลอดเลือด')
+        calDate(2);
+        settopicsec3("โรคหัวใจและหลอดเลือด");
       } else if (countNum >= 5) {
         setresults("มีความเสี่ยงสูงมาก");
-        calDate(3)
+        calDate(3);
       }
     }
   }, [collect, ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7]);
@@ -111,10 +132,9 @@ export default function Sections3() {
       count,
     ];
     dispatch(formAction.add(data));
-   
   };
   const saveDataToServer = () => {
-     sendValueTofollow()
+    sendValueTofollow();
     formAction.updateExa3Cardiovascular([
       visId,
       ans3_1,
@@ -127,42 +147,42 @@ export default function Sections3() {
       ans3_7,
       count,
       results,
-      collect
+      collect,
     ]);
   };
   const sendValueTofollow = () => {
-    appointAction.createAppointment([datesec3,topicsec3,peopleId]);
-    console.log("date" + datesec3)
-     
-    };  
-  
-    function calDate(y) {
-      console.log("week = " + y);
-        if (y==1) {
-          var d = new Date(); // วันนี้
-          d.setDate(d.getDate() + 365); //  1year
-          dateToYMD(d)
-          //console.log(topicblood + toDay)
-        } else if (y == 2) {
-          var d = new Date(); // วันนี้
-          d.setDate(d.getDate() + 182.5 ); //  6month
-          dateToYMD(d)
-          //console.log(topicsuga + toDay)
-        }else if (y == 3) {
-          var d = new Date(); // วันนี้
-          d.setDate(d.getDate() + 91.25 ); // 3month
-          dateToYMD(d)
-          //console.log(topicsuga + toDay)
-        }
-    }
-    function dateToYMD(date) {
-      var d = date.getDate();
-      var m = date.getMonth() + 1; //Month from 0 to 11
-      var y = date.getFullYear()+543;
+    appointAction.createAppointment([datesec3, topicsec3, peopleId]);
+    console.log("date" + datesec3);
+  };
 
-      setdateSec3('' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d))
-      return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
-     
+  function calDate(y) {
+    console.log("week = " + y);
+    if (y == 1) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 365); //  1year
+      dateToYMD(d);
+      //console.log(topicblood + toDay)
+    } else if (y == 2) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 182.5); //  6month
+      dateToYMD(d);
+      //console.log(topicsuga + toDay)
+    } else if (y == 3) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 91.25); // 3month
+      dateToYMD(d);
+      //console.log(topicsuga + toDay)
+    }
+  }
+  function dateToYMD(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1; //Month from 0 to 11
+    var y = date.getFullYear() + 543;
+
+    setdateSec3(
+      "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
+    );
+    return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
   }
   return (
     <div className="css-form">
@@ -204,14 +224,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
-              disabled={dis}
+              disabled={dis1Y}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
-              disabled={disf}
+              disabled={dis1N}
             />
           </RadioGroup>
           <hr />
@@ -228,14 +248,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
-              disabled={dis}
+              disabled={dis2Y}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
-              disabled={disf}
+              disabled={dis2N}
             />
           </RadioGroup>
           <hr />
@@ -252,14 +272,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
-              disabled={dis}
+              disabled={dis3Y}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
-              disabled={disf}
+              disabled={dis3N}
             />
           </RadioGroup>
           <hr />
@@ -300,14 +320,14 @@ export default function Sections3() {
               value="1"
               control={<Radio color="primary" />}
               label="ใช่"
-              disabled={dis}
+              disabled={dis4Y}
             />
             <FormControlLabel
               className="radio-size"
               value="0"
               control={<Radio color="primary" />}
               label="ไม่ใช่"
-              disabled={disf}
+              disabled={dis4N}
             />
           </RadioGroup>
           <hr />
