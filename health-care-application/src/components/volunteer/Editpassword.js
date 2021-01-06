@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "./volunteer.css";
+import Header from "./Header"
 //import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 import { Button, Link } from "@material-ui/core";
@@ -57,15 +58,8 @@ export default function Editpassword() {
 
   return (
     <div className="vtcontainer">
+      <Header /> <br/> <br/>
       <div className="nav-vtcontainer linkicon">
-        <AppBar position="static">
-          <Toolbar>
-            {/* <KeyboardBackspaceIcon
-              fontSize="large"
-              className={classes.icon}
-            ></KeyboardBackspaceIcon> */}
-          </Toolbar>
-        </AppBar>
         <h3>
           <b> แก้ไขรหัสผ่าน </b>
         </h3>

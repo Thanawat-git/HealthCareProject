@@ -64,7 +64,7 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to={`${url}/editaccount`}>
+        <Link to="/editaccount">
           <ListItem button>
             <ListItemIcon>
               {" "}
@@ -76,7 +76,8 @@ export default function Header() {
       </List>
       <Divider />
       <List className="link">
-        <Link to={`${url}/editaccount`}>
+        {/* <Link to={`${url}/editaccount`}> */}
+        <Link to="/editaccount">
           <ListItem button>
             <ListItemIcon>
               {" "}
@@ -85,7 +86,7 @@ export default function Header() {
             <ListItemText primary="แก้ไขข้อมูลส่วนตัว" />
           </ListItem>
         </Link>
-        <Link to={`${url}/editpassword`}>
+        <Link to="/editpassword">
           <ListItem button>
             <ListItemIcon>
               {" "}

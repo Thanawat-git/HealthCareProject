@@ -7,7 +7,6 @@ import {
 import Editaccount from "./Editaccount";
 import Editpassword from "./Editpassword";
 import Volunteer from "./Volunteer";
-import History from "./History";
 
 export default function Content() {
   const { path } = useRouteMatch()
@@ -22,9 +21,6 @@ export default function Content() {
       </Route>
       <Route path={`${path}/editpassword`}>
         <Editpassword/>
-      </Route>
-      <Route path={`${path}/history`}>
-        <History/>
       </Route>
       <Route path={`${path}/search`}>
         <Volunteer/>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "./volunteer.css";
+import Header from "./Header"
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+// import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
@@ -69,12 +70,9 @@ export default function Editpassword() {
   // }
   return (
     <div className="vtcontainer">
+      <Header /> <br/> <br/>
       <div className="nav-vtcontainer linkicon">
-        <AppBar position="static">
-          <Toolbar>
-        
-          </Toolbar>
-        </AppBar>
+        {/* <Header /> */}
         <h3>
           <b> แก้ไขข้อมูลส่วนตัว </b>
         </h3>

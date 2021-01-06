@@ -20,6 +20,10 @@ import MainVolunteer from "./components/volunteer";
 // ELD Page
 import EditInfo from "./components/elderly/EditInfo";
 
+// Account
+import Editaccount from "./components/volunteer/Editaccount"
+import Editpassword from "./components/volunteer/Editpassword"
+
 import MainMenu from "./components/Forms";
 
 import {
@@ -151,6 +155,12 @@ export default function App() {
         </GAdminRoute>
         <PrivateRoute path='/volunteerpage'>
           <MainVolunteer/>
+        </PrivateRoute>
+        <PrivateRoute path='/editaccount'>
+          <Editaccount/>
+        </PrivateRoute>
+        <PrivateRoute path='/editpassword'>
+          <Editpassword/>
         </PrivateRoute>
         <ProtectRoute path="/editeld"><EditInfo/></ProtectRoute>
         <ProtectRoute path="/mainmenu"><MainMenu/></ProtectRoute>
