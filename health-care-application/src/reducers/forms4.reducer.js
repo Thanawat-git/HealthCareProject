@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS4, GET_COLLECT_S3 } from "../constants";
+import { CREATE_NEW_FORMS4, GET_COLLECT_S4 } from "../constants";
 
 const initialState = {
   ans4_1: 0,
@@ -28,7 +28,7 @@ export default (state = initialState, { type, payload }) => {
       };
     case "FETCHING4":
       return { ...state, isFetching: true };
-    case GET_COLLECT_S3:
+    case GET_COLLECT_S4:
       return { ...state, collect: payload };
     default:
       return state;
