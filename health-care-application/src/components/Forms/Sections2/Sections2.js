@@ -160,20 +160,20 @@ export default function Sections2_1() {
   };
   const calsugar = () => {
 
-    if (noFood == true) {//noFood == true
+    if (noFood) {//noFood == true
       if (sugar >= 126) {
         setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
         calDate(2);
         setTopicsuga("เบาหวาน(งดอาหาร)");
         setdatesuga(toDay);
         setchecktosend2(true);
-      } else if (sugar <= 125 || sugar >= 100) {
+      } else if (sugar >= 100 && sugar <= 125) {
         setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน");
         calDate(4);
         setTopicsuga("เบาหวาน(งดอาหาร)");
         setdatesuga(toDay);
         setchecktosend2(true);
-      } else if (sugar < 100) {
+      } else {
         setsugarResult("ไม่เสี่ยง");
         setchecktosend2(false);
       }
