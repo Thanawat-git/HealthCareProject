@@ -7,7 +7,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import './volunteer.css'
 import Search from './Search'
 import { Link, useHistory } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { resetDataFromReducer } from "../../actions/resetDataSec1.action";
 
 const useStyles = makeStyles({
@@ -39,8 +39,9 @@ const useStyles = makeStyles({
 export default function Volunteer() {
   const classes = useStyles();
   let history = useHistory();
+  const dispatch = useDispatch()
   const creactNewEld = () => {
-    resetDataFromReducer()
+    dispatch(resetDataFromReducer())
     setTimeout(() => {
       history.push("/sec1-page1");
     }, 200);
