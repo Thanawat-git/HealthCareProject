@@ -184,7 +184,6 @@ export default function Sections9() {
       ans9_12,
       collect,
       result1,
-      count,
       walk,
       walkInfo,
       minute,
