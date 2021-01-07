@@ -205,7 +205,7 @@ export default function Sections2_1() {
       bloodPressureResult,
       sugarResult,
       collect,
-    noFood,
+      noFood,
     ];
     dispatch(formAction.add(data));
     
@@ -228,14 +228,11 @@ console.log(visId)
   };
 
   const sendValueTofollow = () => {
-    if (checktosend1 == true) {
-      appointAction.createAppointment([dateblood, topicblood, peopleId]);
-    } else if (checktosend2 == true) {
-      appointAction.createAppointment([datesuga, topicsuga, peopleId]);
-    }
-    console.log(
-      topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
-    );
+    checktosend1 && appointAction.createAppointment([dateblood, topicblood, peopleId]);
+    checktosend2 && appointAction.createAppointment([datesuga, topicsuga, peopleId]);
+    // console.log(
+    //   topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
+    // );
   };
 
   function calDate(week) {
