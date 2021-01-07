@@ -67,6 +67,7 @@ export default function Asynchronous() {
   }
 
   const createNewForm = (eldId) => {
+    dispatch(getAction.resetCollectFromReducer())
     console.log("eldId ", eldId);
     const d = new Date();
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;

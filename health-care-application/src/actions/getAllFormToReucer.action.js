@@ -55,6 +55,11 @@ export const getCollect = (visId) => {
               type: GET_COLLECT_S2,
               payload: true,
             });
+          } else {
+            dispatch({
+              type: GET_COLLECT_S2,
+              payload: false,
+            });
           }
           console.log("visId in api ", visId);
           dispatch({ type: GET_COLLECT_S3, payload: res.data.cardio_correct });
@@ -73,6 +78,20 @@ export const getCollect = (visId) => {
     );
   };
 };
+
+export const resetCollectFromReducer = ()=>{
+  return dispatch => {
+    dispatch({ type: GET_COLLECT_S2, payload: false });
+    dispatch({ type: GET_COLLECT_S3, payload: false });
+    dispatch({ type: GET_COLLECT_S4, payload: false });
+    dispatch({ type: GET_COLLECT_S5, payload: false });
+    dispatch({ type: GET_COLLECT_S6, payload: false });
+    dispatch({ type: GET_COLLECT_S7, payload: false });
+    dispatch({ type: GET_COLLECT_S8, payload: false });
+    dispatch({ type: GET_COLLECT_S9, payload: false });
+    dispatch({ type: GET_COLLECT_S10, payload: false });
+  }
+}
 
 export const getAllResult = visId => {
   return dispatch => {
