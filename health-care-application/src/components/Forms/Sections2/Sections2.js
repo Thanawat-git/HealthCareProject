@@ -133,7 +133,7 @@ export default function Sections2_1() {
   const [sugarResult, setsugarResult] = useState("");
 
   const calwaist = () => {
-    elderlyGender == "Male" ? calInner(90) : calInner(80);
+    elderlyGender == "ชาย" ? calInner(90) : calInner(80);
     function calInner(num) {
       waist <= num ? setWaistResult("ปกติ") : setWaistResult("อ้วนลงพุง");
     }
@@ -164,24 +164,30 @@ export default function Sections2_1() {
       if (sugar >= 126) {
         setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
         calDate(2);
-        setTopicsuga("ระดับน้ำตาล");
+        setTopicsuga("เบาหวาน(งดอาหาร)");
         setdatesuga(toDay);
         setchecktosend2(true);
       } else if (sugar <= 125 || sugar >= 100) {
         setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน");
         calDate(4);
-        setTopicsuga("ระดับน้ำตาล");
+        setTopicsuga("เบาหวาน(งดอาหาร)");
         setdatesuga(toDay);
         setchecktosend2(true);
       } else if (sugar < 100) {
-        setsugarResult("ปกติ");
+        setsugarResult("ไม่เสี่ยง");
         setchecktosend2(false);
       }
     } else {
-      sugar >= 200
-        ? setsugarResult("มีความเสี่ยงเป็นเบาหวาน")
-        : setsugarResult("ไม่เสี่ยง");
-      setchecktosend2(false);
+      if(sugar >= 200){
+        setsugarResult("มีความเสี่ยงเป็นเบาหวาน")
+        setTopicsuga("เบาหวาน(ไม่ได้งดอาหาร)");
+        calDate(2);
+        setdatesuga(toDay);
+        setchecktosend2(true);
+      }else{
+        setsugarResult("ไม่เสี่ยง");
+        setchecktosend2(false);
+      }
     }
   };
   const handleSubmit = () => {
@@ -208,7 +214,6 @@ console.log(visId)
 //console.log("nofood " + noFood+ " ansfood " + ansfood)
   const saveDataToServer = () => {
    sendValueTofollow();
-  
     formAction.updateExa2Waist([visId, waist, waistResult, collect]);
     formAction.updateExa2Bmi([visId, weight, high, bmi, bmiResult, collect]);
     formAction.updateExa2Bp([

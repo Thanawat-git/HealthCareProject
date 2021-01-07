@@ -107,6 +107,7 @@ export default function Sections3() {
       } else if (countNum >= 5) {
         setresults("มีความเสี่ยงสูงมาก");
         calDate(3);
+        settopicsec3("โรคหัวใจและหลอดเลือด");
       }
     }
   }, [collect, ans3_1, ans3_2, ans3_3, ans3_4, ans3_5, ans3_6, ans3_7]);
