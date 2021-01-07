@@ -200,9 +200,9 @@ function MainMenu(props) {
     <React.Fragment>
         <Header/> <br/>
         <Card className={classes.root}>
-        {/* <h3> ชื่อ นามสกุล </h3> */}
-        <h4 style={{ textAlign: "center" }}> คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME} {elderlyReducer.resultSelected.ELD_LASTNAME}</h4>
-        {/* <h5> ชื่อ นามสกุล </h5> */}
+        <h4 style={{ textAlign: "center" }}> 
+        คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME} {elderlyReducer.resultSelected.ELD_LASTNAME}
+        </h4>
           <CardContent>
             <Link
               onClick={() => {

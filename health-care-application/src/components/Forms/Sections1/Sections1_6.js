@@ -12,6 +12,7 @@ import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from "@
 export default function Sections1_6() {
   const [open, setOpen] = useState(false); // open dialog
   const forms1p6Reducer = useSelector(({forms1p6Reducer}) => forms1p6Reducer)
+  const forms1p1Reducer = useSelector(({forms1p1Reducer}) => forms1p1Reducer)
   const peopleID = useSelector(({ forms1p1Reducer }) => forms1p1Reducer.peopleID);
   const dispatch = useDispatch()
   const [disease, setdisease] = useState(null);
@@ -48,6 +49,7 @@ export default function Sections1_6() {
     const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     const data = [visDate, eldId];
     dispatch(formAction.createVisitTable(data));
+    dispatch(formAction.setSelectEldFromNewEld([forms1p1Reducer.firstname,forms1p1Reducer.lastname]));
     // formAction.updateLastVisDate(data);
   };
 

@@ -353,12 +353,21 @@ export const createVisitTable = (payload) => {
       console.log('error in createVisitTable: ',error)
     })
     updateLastVisDate(payload)
-    dispatch({
-      type: HTTP_ELD_SELECTED,
-      payload: "not null" //ทำให้ elder selected ไม่ null  เพื่อให้สามารถเข้า mainmanu ได้
-    })
+    
   }
 };
+
+export const setSelectEldFromNewEld = payload => {
+  return dispatch => {
+    dispatch({
+      type: HTTP_ELD_SELECTED,
+      payload: {
+        ELD_FIRSTNAME: payload[0],
+        ELD_LASTNAME: payload[1]
+      }//ทำให้ elder selected ไม่ null  เพื่อให้สามารถเข้า mainmanu ได้
+    })
+  }
+}
 
 export const updateLastVisDate = payload => {
   console.log('eld id ',payload[1], 'vis date ',payload[0])
