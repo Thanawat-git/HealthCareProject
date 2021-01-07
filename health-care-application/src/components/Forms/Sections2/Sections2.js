@@ -207,7 +207,7 @@ export default function Sections2_1() {
 console.log(visId) 
 //console.log("nofood " + noFood+ " ansfood " + ansfood)
   const saveDataToServer = () => {
-   // sendValueTofollow();
+   sendValueTofollow();
   
     formAction.updateExa2Waist([visId, waist, waistResult, collect]);
     formAction.updateExa2Bmi([visId, weight, high, bmi, bmiResult, collect]);
