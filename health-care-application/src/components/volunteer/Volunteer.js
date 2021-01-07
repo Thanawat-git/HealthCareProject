@@ -41,7 +41,10 @@ export default function Volunteer() {
   let history = useHistory();
   const creactNewEld = () => {
     resetDataFromReducer()
-    history.push("/sec1-page1");
+    setTimeout(() => {
+      history.push("/sec1-page1");
+    }, 200);
+    
   }
 
   return (

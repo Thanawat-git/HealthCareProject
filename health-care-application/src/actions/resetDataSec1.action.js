@@ -121,6 +121,7 @@ const resets1p6 = () => {
 };
 
 export const resetDataFromReducer = () => {
+console.log('Is in resetDataFromReducer')
   resets1p1();
   resets1p2();
   resets1p3();
