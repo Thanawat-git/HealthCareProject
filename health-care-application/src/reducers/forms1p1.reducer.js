@@ -4,7 +4,7 @@ const initialState = {
     peopleID: null,
     firstname: null,
     lastname: null,
-    elderlyGender: 'Male',
+    elderlyGender: null,
     nickname: null,
     elderlyBirthdate: null,
     elderlyAge: null,
