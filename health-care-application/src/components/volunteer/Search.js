@@ -122,7 +122,12 @@ export default function Asynchronous() {
           <Dialog
             open={open}
             keepMounted
-            onClose={() => setOpen(false)}
+            onClose={() => {
+              setOpen(false)
+              setTimeout(() => {
+                setshowHistory(false)
+              }, 200);
+            }}
             className={classes.title}
             contentStyle={{ width: "100%", maxWidth: "none" }}
           >
