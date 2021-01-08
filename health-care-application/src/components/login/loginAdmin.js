@@ -5,6 +5,8 @@ import loginImg from '../images/undraw_surfer_m6jb.svg'
 import { Link } from "react-router-dom";
 import { loginAdmin,autoLogin } from "../../actions/auth.action";
 import { connect } from "react-redux";
+import Alert from "./Alert"
+import Alert2 from "./Alert2"
 
 class LoginAdmin extends Component {
   constructor(props) {
@@ -27,6 +29,8 @@ class LoginAdmin extends Component {
           <div className="signin">
             <form action="#" className="login-form sign-in-form">
               <img src={logo1} className="company-logo" />
+              {this.props.messageReducer.message === "Retired." && <Alert/>}
+              {this.props.messageReducer.message === "User Not found." && <Alert2/>}
               <div className="input-field">
                 <i className="fas fa-user"/>
                 <input
@@ -54,6 +58,8 @@ class LoginAdmin extends Component {
               }}
               />
               </Link>
+              
+              
               <Link to="/verify" >ลืมรหัสผ่าน</Link>
             </form>
           </div>
@@ -73,7 +79,10 @@ class LoginAdmin extends Component {
   }
 }
 
-const mapStateToProps = ({ authReducer,messageReducer }) => ({ authReducer,messageReducer }); //state
+const mapStateToProps = ({ 
+  authReducer,
+  messageReducer,
+}) => ({ authReducer,messageReducer }); //state
 const mapDispatchToProps = {loginAdmin,autoLogin};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginAdmin);

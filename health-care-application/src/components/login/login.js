@@ -5,7 +5,8 @@ import loginImg from "../images/undraw_surfer_m6jb.svg";
 import { Link } from "react-router-dom";
 import { loginVolunteer,autoLogin } from "../../actions/auth.action";
 import { connect } from "react-redux";
-
+import Alert from "./Alert"
+import Alert2 from "./Alert2"
 
 class Login extends Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class Login extends Component {
           <div className="signin">
             <form action="#" className="login-form sign-in-form">
               <img src={logo1} className="company-logo" />
+              {this.props.messageReducer.message === "Retired." && <Alert/>}
+              {this.props.messageReducer.message === "User Not found." && <Alert2/>}
               <div className="input-field">
                 <i className="fas fa-user" />
                 <input
@@ -43,9 +46,7 @@ class Login extends Component {
                   onChange={(e) => this.setState({ password: e.target.value })}
                 />
               </div>
-              {this.props.messageReducer.isError && <div class="alert alert-danger" role="alert">
-                username or password wrong!!!
-              </div>}
+              
               <Link>
                 <input
                   type="submit"
