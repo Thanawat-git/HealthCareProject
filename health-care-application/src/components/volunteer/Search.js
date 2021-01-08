@@ -147,8 +147,9 @@ export default function Asynchronous() {
                     {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
                   </DialogContentText>
                   <DialogContentText>
-                    ตรวจเยี่ยมครั้งล่าสุด{" "}
-                    {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE}
+                    ตรวจเยี่ยมครั้งล่าสุด{" "} 
+                    {/* {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).add(543, 'year').format("LL")} */}
+                    {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).format("dddd")} ที่ {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).add(543, 'year').format("LL")}
                   </DialogContentText>
                   <DialogContentText>
                     ตรวจโดย {elderlyReducer.resultSelected.updateBy}
