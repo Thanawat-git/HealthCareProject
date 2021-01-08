@@ -246,7 +246,7 @@ export default function Asynchronous() {
                                 }
                               }}
                               fullWidth>
-                                การตรวจวัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
+                                การตรวจวัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).add(543, 'year').format("LL")}
                               </Button>
                             </Link>
                           </div>

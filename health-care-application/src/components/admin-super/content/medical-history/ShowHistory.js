@@ -359,7 +359,7 @@ export default function ShowHistory({ value }) {
     <React.Fragment>
       <button
         type="button"
-        className="btn btn-info"
+        className="btn btn-success"
         onClick={() => selectHistory(value.VIS_ID)}
       >
         ดูข้อมูล
