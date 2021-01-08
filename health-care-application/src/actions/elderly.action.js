@@ -3,8 +3,8 @@ import {
   HTTP_ELD_FETCHING,
   HTTP_ELD_SUCCESS,
   HTTP_ELD_SELECTED,
-  apiBase,
   apiEld,
+  GET_HISTORY_EDL,
 } from "../constants";
 import Axios from "axios";
 
@@ -46,4 +46,16 @@ export const setElderlySelectedToState = (payload)=>{
     return dispatch =>{
         dispatch(setElderlyStateToSelected(payload))
     }
+}
+
+export const getHistoryEld = id => {
+  return dispatch=>{
+    return Axios.get(`${apiEld}/visit/findAllVisitsForHistoryDraw/${id}`).then(res=>{
+      console.log('res.data in getHistoryEld ',res.data)
+      dispatch({
+        type: GET_HISTORY_EDL,
+        payload: res.data,
+      })
+    })
+  }
 }

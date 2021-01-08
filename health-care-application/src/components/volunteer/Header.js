@@ -10,6 +10,7 @@ import './volunteer.css'
 import { Link,useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from "../../actions/auth.action";
+import { resetDateAllForm, resetCollectFromReducer} from "../../actions/getAllFormToReucer.action";
 
 const useStyles = makeStyles({
   root: {
@@ -123,7 +124,11 @@ export default function Header() {
             </Drawer>
           
             <Typography variant="h6" className={classes.title}>
-                <Link to="/volunteerpage/search">
+                <Link to="/volunteerpage/search" 
+                onClick={()=>{
+                  dispatch(resetDateAllForm())
+                  dispatch(resetCollectFromReducer())
+                }} >
               Project Name
                </Link>
             </Typography>

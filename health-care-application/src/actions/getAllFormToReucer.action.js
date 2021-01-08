@@ -133,6 +133,27 @@ export const getAllResult = visId => {
   }
 }
 
+export const resetDateAllForm = ()=> {
+  return dispatch=>{
+    let resultsec2 = [null,null,null,null,]
+    let resultsec9 = [null,null,]
+    let resultsec92 = [null,null,null]
+    dispatch({ type: GET_RESULT_S2, payload: resultsec2 }) 
+    dispatch({ type: GET_RESULT_S3, payload: null }) //หัวใจและหลอดเลือด
+    dispatch({ type: GET_RESULT_S4, payload: null }) //สุขภาพตา
+    dispatch({ type: GET_RESULT_S5, payload: null }) //ช่องปาก
+    dispatch({ type: GET_RESULT_S6, payload: null }) //การทำกิจวัตร => ชื่อ group
+    dispatch({ type: GET_RESULT_TAI, payload: null }) //TAI
+    dispatch({ type: GET_RESULT_S7, payload: null }) //สมองเสื่อม
+    dispatch({ type: GET_RESULT_S7M, payload: null }) //MMSE
+    dispatch({ type: GET_RESULT_S8, payload: null }) //ซึ่มเศร้า 
+    dispatch({ type: GET_RESULT_S89Q, payload: null }) //89q
+    dispatch({ type: GET_RESULT_S9, payload: resultsec9 }) //กระดูก 2 result => 9r1[0], 9r2[1] 
+    dispatch({ type: GET_RESULT_S92, payload: resultsec92 }) //กระดูก 92 3 result
+    dispatch({ type: GET_RESULT_S10, payload: null }) //ปัสสาวะ 
+  }
+}
+
 export const getDataSec2 = (visId) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)

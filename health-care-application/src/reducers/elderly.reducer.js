@@ -1,4 +1,5 @@
 import {
+  GET_HISTORY_EDL,
   HTTP_ELD_FAILED,
   HTTP_ELD_FETCHING,
   HTTP_ELD_SELECTED,
@@ -8,6 +9,7 @@ import {
 const initialState = {
   result: [],
   resultSelected: null,
+  history: [],
   isFetching: false,
   inError: false,
 };
@@ -27,7 +29,13 @@ export default (state = initialState, { type, payload }) => {
         isFetching: false,
         inError: false,
       };
-
+    case GET_HISTORY_EDL:
+      return {
+        ...state,
+        history: payload,
+        isFetching: false,
+        isError: false,
+      };
     default:
       return state;
   }

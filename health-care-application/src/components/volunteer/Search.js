@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
@@ -15,7 +16,6 @@ import {
   Paper,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-// import Header from "./Header";
 import * as formAction from "../../actions/forms1p6.action";
 import Axios from "axios";
 import { apiEld } from "../../constants/index";
@@ -23,6 +23,10 @@ import { apiEld } from "../../constants/index";
 // import mdi from "@mdi/js"
 import * as getAction from "../../actions/getAllFormToReucer.action";
 import { updateLastVisDate } from "../../actions/forms1p6.action";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import "moment/locale/th";
+
+moment.locale("th");
 
 const useStyles = makeStyles({
   title: {
@@ -35,7 +39,8 @@ const useStyles = makeStyles({
   },
 });
 export default function Asynchronous() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [showHistory, setshowHistory] = useState(false);
   
   useEffect(() => {
     let local = JSON.parse(localStorage.getItem('user'))
@@ -62,6 +67,7 @@ export default function Asynchronous() {
       setisVisId(false)
     })
     dispatch(elderly.setElderlySelectedToState(value));
+    dispatch(elderly.getHistoryEld(value.ELD_ID_NUMBER))
     console.log("value: ", value);
     setOpen(true);
   }
@@ -120,87 +126,132 @@ export default function Asynchronous() {
             className={classes.title}
             contentStyle={{ width: "100%", maxWidth: "none" }}
           >
-            <DialogTitle>
-              <b>หมายเลข</b>
-            </DialogTitle>
+          {
+            !showHistory ? (
+              <React.Fragment>
+                <DialogTitle>
+                  <b>หมายเลข</b>
+                </DialogTitle>
 
-            <DialogContent>
-              <DialogContentText>
-                {elderlyReducer.resultSelected.ELD_ID_NUMBER}
-              </DialogContentText>
+                <DialogContent>
+                  <DialogContentText>
+                    {elderlyReducer.resultSelected.ELD_ID_NUMBER}
+                  </DialogContentText>
 
-              <DialogContentText>
-                {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
-              </DialogContentText>
-              <DialogContentText>
-                ตรวจเยี่ยมครั้งล่าสุด{" "}
-                {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE}
-              </DialogContentText>
-              <DialogContentText>
-                ตรวจโดย {elderlyReducer.resultSelected.updateBy}
-              </DialogContentText>
-            </DialogContent>
+                  <DialogContentText>
+                    {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
+                  </DialogContentText>
+                  <DialogContentText>
+                    ตรวจเยี่ยมครั้งล่าสุด{" "}
+                    {elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE}
+                  </DialogContentText>
+                  <DialogContentText>
+                    ตรวจโดย {elderlyReducer.resultSelected.updateBy}
+                  </DialogContentText>
+                </DialogContent>
 
-            {isVisId ? (
-              <div className="bt-searchInfo">
-                <Link className="bt-searchInfo-link">
-                  {/* <Button className="bt1" onClick={saveSelected}> */}
-                  <Button 
-                  className="bt1" 
-                  variant="contained" 
-                  onClick={()=>{
-                    const data = [visData[0].VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
-                    dispatch({
-                      type: "VIS_ID",
-                      payload: data,
-                    })
-                    if(!forms2Reducer.isFetching){
-                      setTimeout(() => {
-                          history.push("/mainmenu");
-                      }, 200);
-                  }
-                    
-                  }}
-                  fullWidth
-                  >
-                    แก้ไขการตรวจครั้งล่าสุด
-                  </Button>
-                </Link>
-              </div>
-            ) : (
-              <div className="bt-searchInfo">
-                <Link to="/mainmenu" className="bt-searchInfo-link">
-                  {/* <Button className="bt2" onClick={saveSelected} > */}
-                  <Button
-                    className="bt2"
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      const eldId = elderlyReducer.resultSelected.ELD_ID_NUMBER;
-                      createNewForm(eldId);
-                    }}
-                    fullWidth
-                  >
-                    เก็บข้อมูลสุขภาพ
-                  </Button>
-                </Link>
-              </div>
-            )}
-            <div className="bt-searchInfo">
-              <Link to="/editeld" className="bt-searchInfo-link">
-                <Button className="btn btn-light" variant="contained" fullWidth>
-                  ประวัติการตรวจ
-                </Button>
-              </Link>
-            </div>
-            <div className="bt-searchInfo">
-              <Link to="/editeld" className="bt-searchInfo-link">
-                {/* <Button className="bt1" onClick={saveSelected}> */}
-                <Button className="bt3" variant="contained" fullWidth>
-                  แก้ไขข้อมูลพื้นฐาน
-                </Button>
-              </Link>
-            </div>
+                {isVisId ? (
+                  <div className="bt-searchInfo">
+                    <Link className="bt-searchInfo-link">
+                      {/* <Button className="bt1" onClick={saveSelected}> */}
+                      <Button 
+                      className="bt1" 
+                      variant="contained" 
+                      onClick={()=>{
+                        const data = [visData[0].VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
+                        dispatch({
+                          type: "VIS_ID",
+                          payload: data,
+                        })
+                        if(!forms2Reducer.isFetching){
+                          setTimeout(() => {
+                              history.push("/mainmenu");
+                          }, 200);
+                        }
+                      }}
+                      fullWidth
+                      >
+                        แก้ไขการตรวจครั้งล่าสุด
+                      </Button>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="bt-searchInfo">
+                    <Link to="/mainmenu" className="bt-searchInfo-link">
+                      {/* <Button className="bt2" onClick={saveSelected} > */}
+                      <Button
+                        className="bt2"
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                          const eldId = elderlyReducer.resultSelected.ELD_ID_NUMBER;
+                          createNewForm(eldId);
+                        }}
+                        fullWidth
+                      >
+                        เก็บข้อมูลสุขภาพ
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+                <div className="bt-searchInfo">
+                  <Link className="bt-searchInfo-link" onClick={()=>setshowHistory(true)}>
+                    <Button className="btn btn-light" variant="contained" fullWidth>
+                      ประวัติการตรวจ
+                    </Button>
+                  </Link>
+                </div>
+                <div className="bt-searchInfo">
+                  <Link to="/editeld" className="bt-searchInfo-link">
+                    {/* <Button className="bt1" onClick={saveSelected}> */}
+                    <Button className="bt3" variant="contained" fullWidth>
+                      แก้ไขข้อมูลพื้นฐาน
+                    </Button>
+                  </Link>
+                </div>
+              </React.Fragment>
+            ):(
+              <React.Fragment>
+                <DialogTitle>
+                  <ArrowBackIcon onClick={()=>setshowHistory(false)}/> ประวัติการตรวจของ คุณ
+                  {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
+                </DialogTitle>
+                <DialogContent>
+                    {elderlyReducer.history.map(value=>{
+                      return (
+                        <React.Fragment>
+                          <div className="bt-searchInfo">
+                            <Link className="bt-searchInfo-link">
+                              <Button 
+                              className="btn btn-light" 
+                              variant="contained"
+                              onClick={()=>{
+                                // dispatch(getAction.resetCollectFromReducer())
+                                const data = [value.VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
+                                dispatch({
+                                  type: "VIS_ID",
+                                  payload: data,
+                                })
+                                dispatch(getAction.getCollect(value.VIS_ID));
+                                dispatch(getAction.getAllResult(value.VIS_ID));
+                                if(!forms2Reducer.isFetching){
+                                  setTimeout(() => {
+                                      history.push("/mainmenu");
+                                  }, 500);
+                                }
+                              }}
+                              fullWidth>
+                                การตรวจวัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
+                              </Button>
+                            </Link>
+                          </div>
+                        </React.Fragment>
+                      )
+                    })}
+                </DialogContent>
+              </React.Fragment>
+            )
+          }
           </Dialog>
         )}
       </div>
