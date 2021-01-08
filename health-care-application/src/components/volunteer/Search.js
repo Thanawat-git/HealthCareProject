@@ -186,7 +186,13 @@ export default function Asynchronous() {
                 </Link>
               </div>
             )}
-
+            <div className="bt-searchInfo">
+              <Link to="/editeld" className="bt-searchInfo-link">
+                <Button className="btn btn-light" variant="contained" fullWidth>
+                  ประวัติการตรวจ
+                </Button>
+              </Link>
+            </div>
             <div className="bt-searchInfo">
               <Link to="/editeld" className="bt-searchInfo-link">
                 {/* <Button className="bt1" onClick={saveSelected}> */}
