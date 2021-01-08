@@ -34,5 +34,5 @@ await   Axios.put(`${apiBase}/eye/update/${payload[0]}`, {
         EYE_CORRECT_FORM:payload[8],
         updateBy: USERLOGIN.Fullname
     })
-      alert("Eye update Success")
+    console.log("Eye update Success")
   }

@@ -12,7 +12,7 @@ export const createAppointment = (payload) => {
     ELD_ID_NUMBER: payload[2],
     ADDER_ID_NUMBER: USERLOGIN.Id
   }).then(() => {
-    alert("Appointment Create Success");
+    console.log("Appointment Create Success");
   }).catch(error=>{
     console.log('error ', error)
   })

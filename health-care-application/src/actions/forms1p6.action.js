@@ -19,14 +19,14 @@ export const createDisease = async (payload) => {
     EXAM_DATE: new Date(),
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Disease Success");
+  console.log("Disease Success");
 };
 
 export const deleteDisease = async (payload) => {
   await Axios.delete(
     `${apiEld}/disease/delete/${payload[0]}/diseasename/${payload[1]}`
   )
-    alert("Delete disease Success");
+  console.log("Delete disease Success");
 };
 // create null table form 2-10
 const createExa2Waist = async (visId) => {
@@ -36,7 +36,7 @@ const createExa2Waist = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Waist Create Success");
+  console.log("Waist Create Success");
 };
 
 const createExa2Bmi = async (visId) => {
@@ -48,7 +48,7 @@ const createExa2Bmi = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Bmi Create Success");
+  console.log("Bmi Create Success");
 };
 
 const createExa2Bp = async (visId) => {
@@ -60,7 +60,7 @@ const createExa2Bp = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Bp Create Success");
+  console.log("Bp Create Success");
 };
 
 const createExa2Fbs = async (visId) => {
@@ -71,7 +71,7 @@ const createExa2Fbs = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Fbs Create Success");
+  console.log("Fbs Create Success");
 };
 
 const createExa3Cardiovascular = async (visId) => {
@@ -89,7 +89,7 @@ const createExa3Cardiovascular = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Cardiovascular Create Success");
+  console.log("Cardiovascular Create Success");
 };
 
 const createExa4Eye = async (visId) => {
@@ -104,7 +104,7 @@ const createExa4Eye = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Eye Create Success");
+  console.log("Eye Create Success");
 };
 
 const createExa5OralHealth = async  (visId) => {
@@ -131,7 +131,7 @@ const createExa5OralHealth = async  (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Oral_Health Create Success");
+  console.log("Oral_Health Create Success");
 };
 
 const createExa6AbilityInLife = async (visId) => {
@@ -152,7 +152,7 @@ const createExa6AbilityInLife = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Ability_In_Life Create Success");
+  console.log("Ability_In_Life Create Success");
 };
 
 const createExa6TAI = async (visId) => {
@@ -166,7 +166,7 @@ const createExa6TAI = async (visId) => {
     updateBy: USERLOGIN.Fullname,
     VIS_ID: visId
   })
-    alert("TAI Create Success");
+  console.log("TAI Create Success");
 };
 
 const createExa7Alzheimer = async (visId) => {
@@ -196,7 +196,7 @@ const createExa7Alzheimer = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Alzheimer Create Success");
+  console.log("Alzheimer Create Success");
 };
 
 const createExa7MMSE = async (visId) => {
@@ -247,7 +247,7 @@ const createExa7MMSE = async (visId) => {
     updateBy: USERLOGIN.Fullname,
     VIS_ID: visId
   })
-    alert("MMSE Create Success");
+  console.log("MMSE Create Success");
 };
 
 const createExa8DepressionScreening = async (visId) => {
@@ -270,7 +270,7 @@ const createExa8DepressionScreening = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Depression_Screening Create Success");
+  console.log("Depression_Screening Create Success");
 };
 
 const createExa9BoneMuscle = async (visId) => {
@@ -296,7 +296,7 @@ const createExa9BoneMuscle = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Bone_Muscle Create Success");
+  console.log("Bone_Muscle Create Success");
 };
 
 const createExa9_1Osteoarthritis = async (visId) => {
@@ -318,7 +318,7 @@ const createExa9_1Osteoarthritis = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Osteoarthritis Create Success");
+  console.log("Osteoarthritis Create Success");
 };
 
 export const createExa10Urination = async (visId) => {
@@ -327,7 +327,7 @@ export const createExa10Urination = async (visId) => {
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Urination Create Success");
+  console.log("Urination Create Success");
 };
 
 export const createVisitTable = (payload) => {
@@ -343,7 +343,7 @@ export const createVisitTable = (payload) => {
       ELD_ID_NUMBER: payload[1],
       // updateBy: USERLOGIN.Fullname, //fix
     }).then((res) => {
-      alert("Visit Create Success");
+      console.log("Visit Create Success");
       createAllDatabase(res.data.VIS_ID)
       dispatch({
         type: "VIS_ID",

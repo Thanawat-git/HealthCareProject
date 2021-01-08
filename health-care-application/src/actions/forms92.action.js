@@ -59,5 +59,5 @@ export const updateExa9_1Osteoarthritis = async (payload)=>{
         OST_CORRECT_FORM: payload[33],
         updateBy: USERLOGIN.Fullname
     })
-      alert("Osteoarthritis Update Success")
+    console.log("Osteoarthritis Update Success")
   }

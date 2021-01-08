@@ -30,5 +30,5 @@ export const updateDepressionScreening = async (payload)=>{
       DEP_CORRECT_FORM:payload[5],
       updateBy: USERLOGIN.Fullname
     })
-      alert("Depression_Screening Update Success")
+    console.log("Depression_Screening Update Success")
   }

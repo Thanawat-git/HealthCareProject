@@ -19,7 +19,7 @@ export const createDrug = async (payload) => {
     EXAM_DATE: new Date(),
     updateBy: USERLOGIN.Fullname
   })
-  alert("drug Success");
+  console.log("drug Success");
 };
 
 export const createFood = async (payload) => {
@@ -30,7 +30,7 @@ export const createFood = async (payload) => {
     updateBy: USERLOGIN.Fullname
   })
   .then(() => {
-    alert("Food Success");
+    console.log("Food Success");
   });
 };
 
@@ -39,7 +39,7 @@ export const deleteDrug = async (payload) => {
     `${apiEld}/drug/delete/${payload[0]}/drugname/${payload[1]}`
   )
 
-    alert("Delete Drug Success");
+  console.log("Delete Drug Success");
 };
 
 export const deleteFood = async (payload) => {
@@ -47,6 +47,6 @@ export const deleteFood = async (payload) => {
     `${apiEld}/food/delete/${payload[0]}/foodname/${payload[1]}`
   )
 
-    alert("Delete Food Success");
+  console.log("Delete Food Success");
 
 };

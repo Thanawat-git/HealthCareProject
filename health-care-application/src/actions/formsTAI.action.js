@@ -20,5 +20,5 @@ await  Axios.put(`${apiBase}/TAI/update/${payload[0]}`, {
     TAI_CORRECT_FORM: payload[6],
     updateBy: USERLOGIN.Fullname
   })
-    alert("Alzheimer Tai Update Success")
+  console.log("Alzheimer Tai Update Success")
 }

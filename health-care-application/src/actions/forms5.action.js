@@ -47,6 +47,6 @@ export const updateOralHealth = async (payload)=>{
       ORAL_CORRECT_FORM:payload[21],
       updateBy: USERLOGIN.Fullname
     })
-      alert("Oral_Health Update Success")
+    console.log("Oral_Health Update Success")
   }
   

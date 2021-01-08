@@ -32,5 +32,5 @@ export const updateExa3Cardiovascular = async (payload)=>{
         CARDIO_CORRECT_FORM:payload[11],
         updateBy: USERLOGIN.Fullname
     })
-      alert("Cardiovascular update Success")
+    console.log("Cardiovascular update Success")
   }

@@ -20,7 +20,7 @@ export const updateExa2Waist = async (payload)=>{
       WAI_CORRECT_FORM:payload[3],
       updateBy: USERLOGIN.Fullname,
     })
-      alert("Waist update Success")
+    console.log("Waist update Success")
   }
   
   export  const updateExa2Bmi = async (payload)=>{
@@ -32,7 +32,7 @@ export const updateExa2Waist = async (payload)=>{
       BMI_CORRECT_FORM:payload[5],
       updateBy: USERLOGIN.Fullname,
     })
-      alert("Bmi update Success")
+    console.log("Bmi update Success")
   }
   
   export  const updateExa2Bp = async (payload)=>{
@@ -44,7 +44,7 @@ export const updateExa2Waist = async (payload)=>{
       BP_CORRECT_FORM:payload[5],
       updateBy: USERLOGIN.Fullname,
     })
-      alert("Bp update Success")
+    console.log("Bp update Success")
   }
   
   export  const updateExa2Fbs = async (payload)=>{
@@ -56,5 +56,5 @@ export const updateExa2Waist = async (payload)=>{
       FBS_CORRECT_FORM:payload[4],
       updateBy: USERLOGIN.Fullname,
     })
-      alert("Fbs update Success")
+    console.log("Fbs update Success")
   }

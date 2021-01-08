@@ -46,5 +46,5 @@ export const updateExa9BoneMuscle = async (payload)=>{
         BONE_CORRECT_FORM:payload[19],
         updateBy: USERLOGIN.Fullname
     })
-      alert("Bone_Muscle Update Success")
+    console.log("Bone_Muscle Update Success")
   }

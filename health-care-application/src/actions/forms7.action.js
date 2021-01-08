@@ -49,5 +49,5 @@ export const updateAlzheimer = async (payload)=>{
       ALZ_CORRECT_FORM:payload[21],
       updateBy: USERLOGIN.Fullname
     })
-      alert("Alzheimer Update Success")
+    console.log("Alzheimer Update Success")
   }

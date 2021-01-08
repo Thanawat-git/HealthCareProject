@@ -33,7 +33,7 @@ export const  updateElderRelative = async (payload) =>{
       ELD_REL_PHONE: payload[6],
       // updateBy: null
     })
-      alert("Update Elder Relative Success")
+    console.log("Update Elder Relative Success")
   }
   
 export const createElderRelative2 = async (payload) => {
@@ -47,5 +47,5 @@ export const createElderRelative2 = async (payload) => {
       ELD_ID_NUMBER: payload[6],
       // updateBy: null
     })
-      alert("Elder Relative Success")
+    console.log("Elder Relative Success")
   }

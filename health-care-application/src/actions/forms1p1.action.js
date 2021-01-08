@@ -23,7 +23,7 @@ const createElder = async (payload) => {
     ELD_AKA: payload[4],
     updateBy: USERLOGIN.Fullname,
   })
-  alert("Elder Success");
+  console.log("Elder Success");
 };
 
 // update elder
@@ -36,7 +36,7 @@ export const updateElder = async (payload) => {
     ELD_AKA: payload[5],
     updateBy: USERLOGIN.Fullname,
   })
-    alert("Elder update Success");
+  console.log("Elder update Success");
 };
 
 // Create form1 sec1-6
@@ -60,7 +60,7 @@ const createElderinfo = async (payload) => {
     updateBy: USERLOGIN.Fullname,
     ADDER_ID_NUMBER: USERLOGIN.Id,
   })
-    alert("Elder Info Success");
+  console.log("Elder Info Success");
 
 };
 
@@ -73,7 +73,7 @@ const createElderRelative = async (payload) => {
     updateBy: USERLOGIN.Fullname,
     ELD_ID_NUMBER: payload[0],
   })
-    alert("Elder Relative Success");
+  console.log("Elder Relative Success");
 };
 
 const createElderCurrent = async (payload) => {
@@ -89,7 +89,7 @@ const createElderCurrent = async (payload) => {
     updateBy: USERLOGIN.Fullname,
     ELD_ID_NUMBER: payload[0],
   })
-    alert("Elder Currentaddress Success");
+  console.log("Elder Currentaddress Success");
 };
 
 const createElderIdCurrent = async (payload) => {
@@ -105,7 +105,7 @@ const createElderIdCurrent = async (payload) => {
     updateBy: USERLOGIN.Fullname,
     ELD_ID_NUMBER: payload[0],
   })
-    alert("Elder ID Currentaddress Success");
+  console.log("Elder ID Currentaddress Success");
 };
 
 export const createAllElder = async (payload) => {

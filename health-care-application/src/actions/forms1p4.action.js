@@ -38,13 +38,13 @@ export const updateElderinfo = async (payload) =>{
     // updateBy: "กรองแก้ว ก้องวัฒนะกุล",
     // ADDER_ID_NUMBER: "1200101000000",
   })
-    alert("Update Elder Info Success");
+  console.log("Update Elder Info Success");
   }
 
 // export function updateElderinfo(payload) {
 //   Axios.put(`${apiEld}/information/update/1249900485439`, {
 //     ELD_STATUS: "โสดสัส",
 //   }).then(() => {
-//     alert("Elder Relative Success");
+//     console.log("Elder Relative Success");
 //   });
 

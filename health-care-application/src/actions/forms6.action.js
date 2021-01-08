@@ -40,5 +40,5 @@ await   Axios.put(`${apiBase}/abilityInLife/update/${payload[13]}`, {
         ABI_CORRECT_FORM: payload[12],
         updateBy: USERLOGIN.Fullname
     })
-      alert("AilityInLife Update Success")
+    console.log("AilityInLife Update Success")
   }

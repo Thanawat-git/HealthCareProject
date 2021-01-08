@@ -37,5 +37,5 @@ await Axios.put(`${apiBase}/depressionScreening/update/${payload[0]}`, {
       DEP_SUM_POINT: payload[10],
       DEP_9Q_RESULT: payload[11]
     })
-      alert("Depression_Screening Update Success")
+    console.log("Depression_Screening Update Success")
   }

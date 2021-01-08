@@ -17,7 +17,7 @@ export const updateElder = async (payload) => {
     ELD_PHONE: payload[1],
   })
 
-    alert("Update Elder Success");
+  console.log("Update Elder Success");
 
 };
 
@@ -30,7 +30,7 @@ export const updateElderCurrent = async (payload) => {
     ELD_CUR_AREA: payload[5],
     // updateBy: null
   })
-  alert("Update ElderCurrent Success");
+  console.log("Update ElderCurrent Success");
 };
 
 export const updateElderIdCurrent = async (payload) => {
@@ -45,5 +45,5 @@ export const updateElderIdCurrent = async (payload) => {
       // updateBy: null
     }
   )
-    alert("Update Elder ID Currentaddress Success");
+  console.log("Update Elder ID Currentaddress Success");
 };

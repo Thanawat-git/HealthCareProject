@@ -28,5 +28,5 @@ export const upadateExa10Urination = async (payload)=>{
         URI_CORRECT_FORM:payload[3],
         updateBy: USERLOGIN.Fullname
     })
-      alert("Urination update Success")
+    console.log("Urination update Success")
   }

@@ -65,7 +65,7 @@ await  Axios.put(`${apiBase}/MMSE/update/${payload[43]}`, {
       MMSE_RESULT:payload[42],
       updateBy: USERLOGIN.Fullname
   })
-     alert("MMSE Update Success")
+  console.log("MMSE Update Success")
 }
 
 // export const updatemmse = () =>{
@@ -73,7 +73,7 @@ await  Axios.put(`${apiBase}/MMSE/update/${payload[43]}`, {
 //   Axios.put("http://localhost:3001/MMSE/update/8", {
 //     MMSE_1_1_POINT: '0',
 //   }).then(()=>{
-//     alert("MMSE Update Success")
+//     console.log("MMSE Update Success")
 //     // console.log('res ', res.data)
 //   })
 // }
