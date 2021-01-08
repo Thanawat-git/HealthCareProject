@@ -264,7 +264,7 @@ export default function MedicalHistory() {
                   <td> {value.ELD_ID_NUMBER} </td>
                   <td> {value.ELD_NAME} </td>
                   <td> {value.VIS_DATE} </td>
-                  {/* <td style={{ textAlign: "center" }}>
+                  <td style={{ textAlign: "center" }}>
                     <button
                       // onClick={() => {}}
                       type="button"
@@ -274,8 +274,8 @@ export default function MedicalHistory() {
                     </button>
                     <span style={{ color: "grey" }}> | </span>
                     <ShowHistory value={value} />
-                  </td> */}
-                  <td> <ShowHistory value={value} /> </td>
+                  </td>
+                  {/* <td> <ShowHistory value={value} /> </td> */}
                 </tr>
                 </React.Fragment>
                 );
