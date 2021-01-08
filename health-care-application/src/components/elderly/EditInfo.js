@@ -12,9 +12,10 @@ import "./elderly.css";
 import { Link, Redirect, } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import * as actionP5 from '../../actions/forms1p5.action' // เรียกมาใช้งานในการ ลบ และ เพิ่ม อาหาร และ ยา
-import * as actionP6 from '../../actions/forms1p6.action'
-import * as actionP1 from '../../actions/forms1p1.action'
+import * as actionP5 from '../../actions/forms1p5.action'; // เรียกมาใช้งานในการ ลบ และ เพิ่ม อาหาร และ ยา
+import * as actionP6 from '../../actions/forms1p6.action';
+import * as actionP1 from '../../actions/forms1p1.action';
+import { USERLOGIN } from "../../constants";
 
 const useStyles = makeStyles({
     title: {
@@ -144,9 +145,13 @@ export default function EditInfo() {
           <h3>แก้ไขข้อมูล</h3>
           <h4>{elderlyReducer.resultSelected.ELD_ID_NUMBER}</h4>
         </div>
-        <div className="edit-fill">
-          <TextField name="eid" onChange={onChange} label="รหัสบัตรประชาชน" defaultValue={eid} fullWidth />
-        </div>
+        {
+          USERLOGIN.Role === 'ADMIN' &&
+          <div className="edit-fill">
+            <TextField name="eid" onChange={onChange} label="รหัสบัตรประชาชน" defaultValue={eid} fullWidth />
+          </div>
+        }
+        
         <div className="edit-fill">
           <TextField name="fName" onChange={onChange} label="ชื่อ" defaultValue={fName} fullWidth />
         </div>
