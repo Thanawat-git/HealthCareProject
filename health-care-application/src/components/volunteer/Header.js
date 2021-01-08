@@ -10,7 +10,8 @@ import './volunteer.css'
 import { Link,useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from "../../actions/auth.action";
-import { resetDateAllForm, resetCollectFromReducer} from "../../actions/getAllFormToReucer.action";
+import { resetDateAllForm, resetCollectFromReducer } from "../../actions/getAllFormToReucer.action";
+import { getEldByKeyword } from "../../actions/elderly.action";
 
 const useStyles = makeStyles({
   root: {
@@ -128,6 +129,7 @@ export default function Header() {
                 onClick={()=>{
                   dispatch(resetDateAllForm())
                   dispatch(resetCollectFromReducer())
+                  dispatch(getEldByKeyword(""))
                 }} >
               Project Name
                </Link>
