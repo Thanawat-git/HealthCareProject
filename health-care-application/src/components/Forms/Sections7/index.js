@@ -1,4 +1,4 @@
-import sec7 from './Sections7';
-import mmsi from "./mmsiThai2002";
+import Sec7 from './Sections7';
+import Mmsi from "./mmsiThai2002";
 
-export {sec7, mmsi};
+export {Sec7, Mmsi};

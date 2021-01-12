@@ -14,6 +14,7 @@ import {
   InputAdornment,
   makeStyles,
   Paper,
+  CircularProgress,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import * as formAction from "../../actions/forms1p6.action";
@@ -240,9 +241,10 @@ export default function Asynchronous() {
                                 })
                                 dispatch(getAction.getCollect(value.VIS_ID));
                                 dispatch(getAction.getAllResult(value.VIS_ID));
+                                // <CircularProgress />
                                 if(!forms2Reducer.isFetching){
                                   setTimeout(() => {
-                                      history.push("/mainmenu");
+                                    history.push("/mainmenu");
                                   }, 500);
                                 }
                               }}

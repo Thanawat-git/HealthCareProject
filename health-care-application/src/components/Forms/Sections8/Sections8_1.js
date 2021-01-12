@@ -4,6 +4,9 @@ import {
   Radio,
   FormControlLabel,
   makeStyles,
+  DialogTitle,
+  DialogContent,
+  Dialog,
 } from "@material-ui/core";
 import { Modal, Button } from "react-bootstrap";
 import "../form-style.css";
@@ -12,6 +15,8 @@ import "./Sections8.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms8.action";
+import { CancelBT } from "../../AppButtons";
+import { SELECT_SECTION } from "../../../constants";
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +27,9 @@ const useStyles = makeStyles({
 function Sections8_1() {
   const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -59,7 +67,16 @@ function Sections8_1() {
     const data = [ans8_1, ans8_2, collect, results];
     dispatch(formAction.add(data));
   };
-  console.log(visId+"manaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  const updateDepressionScreening = ()=> {
+    formAction.updateDepressionScreening([
+      visId,
+      ans8_1,
+      ans8_2,
+      linkTo9Q,
+      results,
+      collect,
+    ])
+  }
   return (
     <div className="css-form">
       <h1>ข้อมูลของผู้สูงอายุ</h1>
@@ -138,11 +155,12 @@ function Sections8_1() {
         {/* bt */}
 
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
+        <CancelBT/>
+          {/* <Link to="/mainmenu">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ย้อนกลับ
             </button>
-          </Link>
+          </Link> */}
 
           <button
             type="button"
@@ -153,17 +171,17 @@ function Sections8_1() {
           </button>
         </div>
       </form>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
+      <Dialog
+        open={show}
+        scroll="paper"
+        maxWidth="xs"
+        fullWidth={true}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>ผลการประเมินโรคซึมเศร้า</Modal.Title>
-        </Modal.Header>
+        <DialogTitle>
+          ผลการประเมินโรคซึมเศร้า
+        </DialogTitle>
 
-        <Modal.Body>
+        <DialogContent>
           <div className="row">
             <div className="col-12 col-xl-3 title-result">
               <p> ผลการประเมิน </p>
@@ -174,51 +192,81 @@ function Sections8_1() {
               </strong>
             </div>
           </div>
-        </Modal.Body>
-
-        <Modal.Footer>
-          
           {linkTo9Q ? (
-            <Link to="/mainmenu/sec8-9q" className={classes.root}>
-              <Button
-                variant="primary"
-                block
-                onClick={() =>
-                  formAction.updateDepressionScreening([
-                    visId,
-                    ans8_1,
-                    ans8_2,
-                    linkTo9Q,
-                    results,
-                    collect,
-                  ])
-                }
-              >
-                ทำแบบประเมินโรคซึมเศร้า 9Q
-              </Button>
-            </Link>
+            <React.Fragment>
+              {
+                selectFormSection.section === "mainmenu" ? (
+                <Link to="/mainmenu/sec8-9q" className={classes.root}>
+                  <Button
+                    variant="primary"
+                    block
+                    onClick={updateDepressionScreening}
+                  >
+                    ทำแบบประเมินโรคซึมเศร้า 9Q
+                  </Button>
+                </Link>
+                ) : (
+                <Link className={classes.root}>
+                  <Button
+                    variant="primary"
+                    block
+                    onClick={()=>{
+                      updateDepressionScreening()
+                      dispatch({
+                        type: SELECT_SECTION,
+                        payload: "s89q",
+                      });
+                    }}
+                  >
+                    ทำแบบประเมินโรคซึมเศร้า 9Q
+                  </Button>
+                </Link>
+                )
+              }
+            </React.Fragment>
+            // <Link to="/mainmenu/sec8-9q" className={classes.root}>
+            //   <Button
+            //     variant="primary"
+            //     block
+            //     onClick={updateDepressionScreening}
+            //   >
+            //     ทำแบบประเมินโรคซึมเศร้า 9Q
+            //   </Button>
+            // </Link>
           ) : (
-            <Link to="/mainmenu" className={classes.root}>
-              <Button
-                variant="primary"
-                block
-                onClick={() =>
-                  formAction.updateDepressionScreening([
-                    visId,
-                    ans8_1,
-                    ans8_2,
-                    linkTo9Q,
-                    results,
-                    collect,
-                  ])
-                }
-              >
-                กลับสู่หน้าเมนูหลัก
-              </Button>
-            </Link>
+            <div>
+            {selectFormSection.section === "mainmenu" ? (
+              <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={updateDepressionScreening}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button variant="primary" block onClick={()=>{
+                  updateDepressionScreening()
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "mainmenu",
+                  });
+                }}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+          </div>
+            // <Link to="/mainmenu" className={classes.root}>
+            //   <Button
+            //     variant="primary"
+            //     block
+            //     onClick={updateDepressionScreening}
+            //   >
+            //     กลับสู่หน้าเมนูหลัก
+            //   </Button>
+            // </Link>
           )}
-        </Modal.Footer>
-      </Modal>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

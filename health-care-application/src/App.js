@@ -24,6 +24,7 @@ import EditInfo from "./components/elderly/EditInfo";
 import Editaccount from "./components/volunteer/Editaccount"
 import Editpassword from "./components/volunteer/Editpassword"
 
+// import VolHeader from "./components/volunteer/Header"
 import MainMenu from "./components/Forms";
 
 import {
@@ -163,7 +164,10 @@ export default function App() {
           <Editpassword/>
         </PrivateRoute>
         <ProtectRoute path="/editeld"><EditInfo/></ProtectRoute>
-        <ProtectRoute path="/mainmenu"><MainMenu/></ProtectRoute>
+        <ProtectRoute path="/mainmenu">
+          {/* <VolHeader/> <br/> */}
+          <MainMenu/>
+        </ProtectRoute>
 
         <PrivateRoute path="/sec1-page1"><Sec1_1/></PrivateRoute>
         <PrivateRoute path="/sec1-page2"><Sec1_2/></PrivateRoute>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import ShowHistory from "./ShowHistory";
+import EditForm from "./EditForm"
 import { FormControl, InputAdornment, InputLabel, makeStyles, MenuItem, Select, TextField } from "@material-ui/core";
 import * as historyAction from "../../../../actions/history.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -265,13 +266,7 @@ export default function MedicalHistory() {
                   <td> {value.ELD_NAME} </td>
                   <td> {value.VIS_DATE} </td>
                   <td style={{ textAlign: "center" }}>
-                    <button
-                      // onClick={() => {}}
-                      type="button"
-                      className="btn btn-info"
-                    >
-                      แก้ไข
-                    </button>
+                    <EditForm value={value} />
                     <span style={{ color: "grey" }}> | </span>
                     <ShowHistory value={value} />
                   </td>

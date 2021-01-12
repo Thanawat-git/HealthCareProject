@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms5.action";
 import ShowResultPopup from "../ResuleShowsPopUp";
+import { CancelBT } from "../../AppButtons";
 
 export default function Sections5_1() {
   const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
@@ -550,11 +551,12 @@ export default function Sections5_1() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
+        <CancelBT/>
+          {/* <Link to="/mainmenu">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ยกเลิก
             </button>
-          </Link>
+          </Link> */}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"

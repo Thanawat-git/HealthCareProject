@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RadioGroup, Radio, FormControlLabel, makeStyles, } from "@material-ui/core";
+import { RadioGroup, Radio, FormControlLabel, makeStyles, DialogContent, Dialog, DialogTitle, } from "@material-ui/core";
 import { Modal, Button } from "react-bootstrap";
 import "../form-style.css";
 import "../../genaralConfig.css";
@@ -7,6 +7,8 @@ import "../../genaralConfig.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms6.action";
+import { CancelBT } from "../../AppButtons";
+import { SELECT_SECTION } from "../../../constants";
 
 const useStyles = makeStyles({
   root: {
@@ -19,6 +21,9 @@ export default function Sections6() {
   const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
   const { user } = useSelector((state) => state.authReducer);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
 
   const dispatch = useDispatch();
   const [ans6_1, setAns6_1] = useState(forms6Reducer.ans6_1);
@@ -423,11 +428,12 @@ export default function Sections6() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
+        <CancelBT/>
+          {/* <Link to="/mainmenu">
             <button type="button" class="btn form-btn btn-back btn-lg">
               ยกเลิก
             </button>
-          </Link>
+          </Link> */}
           <button
             type="button"
             class="btn form-btn btn-primary btn-lg"
@@ -437,27 +443,18 @@ export default function Sections6() {
           </button>
         </div>
       </form>
-      {/* <ShowResultPopup
-        title="ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ"
-        result={resultsTai}
-        show={show}
-         onClick={saveDataToServer}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
-      /> */}
 
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
+        <Dialog
+        open={show}
+        scroll="paper"
+        maxWidth="xs"
+        fullWidth={true}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ</Modal.Title>
-        </Modal.Header>
+        <DialogTitle>
+          ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ
+        </DialogTitle>
 
-        <Modal.Body>
+        <DialogContent>
           <div className="row">
             <div className="col-12 col-xl-3 title-result">
               <p> ผลการประเมิน </p>
@@ -468,9 +465,90 @@ export default function Sections6() {
               </strong>
             </div>
           </div>
-        </Modal.Body>
+          {group !=1 ? (
+            <React.Fragment>
+              {/* {selectFormSection.section === "mainmenu" ? (
 
-        <Modal.Footer>
+              )
+              } */}
+              {
+                user.Role !== 'VOLUNTEER' ? (
+                  <React.Fragment>
+                    {
+                      selectFormSection.section === "mainmenu" ?
+                      <Link to="/mainmenu/tai" className={classes.root}>
+                        <Button
+                          variant="primary"
+                          block
+                          onClick={saveDataToServer}
+                        >
+                          ทำแบบประเมิน TAI Classified
+                        </Button>
+                      </Link>
+                      :
+                      <Link className={classes.root}>
+                        <Button
+                          variant="primary"
+                          block
+                          onClick={()=>{
+                            saveDataToServer()
+                            dispatch({
+                              type: SELECT_SECTION,
+                              payload: "tai",
+                            });
+                          }}
+                        >
+                          ทำแบบประเมิน TAI Classified
+                        </Button>
+                      </Link>
+                    }
+                  </React.Fragment>
+                
+                ) : (
+                <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={saveDataToServer}>
+                  ทำแบบประเมิน TAI Classified ติดต่อเจ้าหน้าที่
+                </Button>
+                </Link>
+                )
+              }
+            
+            </React.Fragment>
+          ) : (
+            <div>
+            {selectFormSection.section === "mainmenu" ? (
+              <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={saveDataToServer}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button variant="primary" block onClick={()=>{
+                  saveDataToServer()
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "mainmenu",
+                  });
+                }}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+          </div>
+            // <Link to="/mainmenu" className={classes.root}>
+            //   <Button
+            //     variant="primary"
+            //     block
+            //     onClick={saveDataToServer}
+            //   >
+            //     กลับสู่หน้าเมนูหลัก
+            //   </Button>
+            // </Link>
+          )}
+        </DialogContent>
+
+        {/* <Modal.Footer>
           {group !=1 ? (
             <React.Fragment>
               {
@@ -505,8 +583,8 @@ export default function Sections6() {
               </Button>
             </Link>
           )}
-        </Modal.Footer>
-      </Modal>
+        </Modal.Footer> */}
+      </Dialog>
     </div>
   );
 }

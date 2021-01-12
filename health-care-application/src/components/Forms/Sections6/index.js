@@ -1,4 +1,4 @@
-import sec6 from './Sections6'
-import tai from './Tai'
+import Sec6 from './Sections6'
+import Tai from './Tai'
 
-export {sec6,tai};
+export {Sec6,Tai};

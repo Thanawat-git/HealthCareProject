@@ -7,16 +7,20 @@ import {
   FormControlLabel,
   TextField,
   makeStyles,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from "@material-ui/core";
 import "../form-style.css";
 import "../../genaralConfig.css";
 import "./Sections7.css";
-import { apiBase } from "../../../constants";
+import { apiBase, SELECT_SECTION } from "../../../constants";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms7.action";
 import 'moment/locale/th';
+import { CancelBT } from "../../AppButtons";
 
 moment.locale("th");
 
@@ -31,6 +35,9 @@ export default function Sections7_1() {
   const visId = useSelector(({ visitID }) => visitID.visiId);
   const peopleId = useSelector(({ visitID }) => visitID.peopleId);
   const { user } = useSelector((state) => state.authReducer);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
   // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -186,6 +193,34 @@ export default function Sections7_1() {
     ];
     dispatch(formAction.add(data));
   };
+
+  const updateAlzheimer = () => {
+    formAction.updateAlzheimer([
+      textAns1,
+      ans7_1,
+      textAns2,
+      ans7_2,
+      textAns3,
+      ans7_3,
+      textAns4,
+      ans7_4,
+      textAns5,
+      ans7_5,
+      textAns6,
+      ans7_6,
+      textAns7,
+      ans7_7,
+      textAns8,
+      ans7_8,
+      textAns9,
+      ans7_9,
+      textAns10,
+      ans7_10,
+      results,
+      collect,
+      visId,
+    ])
+  }
 
   return (
     <div className="css-form">
@@ -633,11 +668,12 @@ export default function Sections7_1() {
         {/* bt */}
 
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
+        <CancelBT/>
+          {/* <Link to="/mainmenu">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ย้อนกลับ
             </button>
-          </Link>
+          </Link> */}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -647,17 +683,17 @@ export default function Sections7_1() {
           </button>
         </div>
       </form>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
+      <Dialog
+        open={show}
+        scroll="paper"
+        maxWidth="xs"
+        fullWidth={true}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>ผลการประเมินภาวะสมองเสื่อม</Modal.Title>
-        </Modal.Header>
+        <DialogTitle>
+          ผลการประเมินภาวะสมองเสื่อม
+        </DialogTitle>
 
-        <Modal.Body>
+        <DialogContent>
           <div className="row">
             <div className="col-12 col-xl-3 title-result">
               <p> ผลการประเมิน </p>
@@ -668,125 +704,85 @@ export default function Sections7_1() {
               </strong>
             </div>
           </div>
-        </Modal.Body>
-
-        <Modal.Footer>
           {linkTommse ? (
             <React.Fragment>
               {
                 user.Role !== 'VOLUNTEER' ? (
-                <Link to="/mainmenu/mmsi" className={classes.root}>
-                <Button
-                  variant="primary"
-                  block
-                  onClick={() =>
-                    formAction.updateAlzheimer([
-                      textAns1,
-                      ans7_1,
-                      textAns2,
-                      ans7_2,
-                      textAns3,
-                      ans7_3,
-                      textAns4,
-                      ans7_4,
-                      textAns5,
-                      ans7_5,
-                      textAns6,
-                      ans7_6,
-                      textAns7,
-                      ans7_7,
-                      textAns8,
-                      ans7_8,
-                      textAns9,
-                      ans7_9,
-                      textAns10,
-                      ans7_10,
-                      results,
-                      collect,
-                      visId,
-                    ])
-                  }
-                >
-                  ทำแบบประเมินการทดสอบสมองเบื่องต้นฉบับภาษาไทย
-                </Button>
-                </Link>
+                  <React.Fragment>
+                    {
+                      selectFormSection.section === "mainmenu" ?
+                      <Link to="/mainmenu/tai" className={classes.root}>
+                        <Button
+                          variant="primary"
+                          block
+                          onClick={updateAlzheimer}
+                        >
+                          ทำแบบประเมิน TAI Classified
+                        </Button>
+                      </Link>
+                      :
+                      <Link className={classes.root}>
+                        <Button
+                          variant="primary"
+                          block
+                          onClick={()=>{
+                            updateAlzheimer()
+                            dispatch({
+                              type: SELECT_SECTION,
+                              payload: "mmse",
+                            });
+                          }}
+                        >
+                          ทำแบบประเมิน TAI Classified
+                        </Button>
+                      </Link>
+                    }
+                  </React.Fragment>
                 ) : (
                 <Link to="/mainmenu" className={classes.root}>
                 <Button variant="primary" block
-                onClick={() =>
-                  formAction.updateAlzheimer([
-                    textAns1,
-                    ans7_1,
-                    textAns2,
-                    ans7_2,
-                    textAns3,
-                    ans7_3,
-                    textAns4,
-                    ans7_4,
-                    textAns5,
-                    ans7_5,
-                    textAns6,
-                    ans7_6,
-                    textAns7,
-                    ans7_7,
-                    textAns8,
-                    ans7_8,
-                    textAns9,
-                    ans7_9,
-                    textAns10,
-                    ans7_10,
-                    results,
-                    collect,
-                    visId,
-                  ])
-                }
+                onClick={updateAlzheimer}
                 >
                   ทำแบบประเมินการ MMSE-Thai 2002 ติดต่อเจ้าหน้าที่
                 </Button>
                 </Link>
                 )
               }
-            
             </React.Fragment>
           ) : (
-            <Link to="/mainmenu" className={classes.root}>
-              <Button
-                variant="primary"
-                block
-                onClick={() =>
-                  formAction.updateAlzheimer([
-                    textAns1,
-                    ans7_1,
-                    textAns2,
-                    ans7_2,
-                    textAns3,
-                    ans7_3,
-                    textAns4,
-                    ans7_4,
-                    textAns5,
-                    ans7_5,
-                    textAns6,
-                    ans7_6,
-                    textAns7,
-                    ans7_7,
-                    textAns8,
-                    ans7_8,
-                    textAns9,
-                    ans7_9,
-                    textAns10,
-                    ans7_10,
-                    results,
-                    collect,
-                    visId,
-                  ])
-                }
-              >
-                กลับสู่หน้าเมนูหลัก
-              </Button>
-            </Link>
+            <div>
+            {selectFormSection.section === "mainmenu" ? (
+              <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={updateAlzheimer}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button variant="primary" block onClick={()=>{
+                  updateAlzheimer()
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "mainmenu",
+                  });
+                }}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+          </div>
+            // <Link to="/mainmenu" className={classes.root}>
+            //   <Button
+            //     variant="primary"
+            //     block
+            //     onClick={updateAlzheimer}
+            //   >
+            //     กลับสู่หน้าเมนูหลัก
+            //   </Button>
+            // </Link>
           )}
-        </Modal.Footer>
-      </Modal>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
