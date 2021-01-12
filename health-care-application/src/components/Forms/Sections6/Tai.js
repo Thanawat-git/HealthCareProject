@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
+import { RadioGroup, Radio, FormControlLabel, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 import "../form-style.css";
 import "../../genaralConfig.css";
-import ShowResultPopup from "../ResuleShowsPopUp";
+// import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
+import { BackToMainmenuBT } from "../../AppButtons";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/formsTAI.action";
 
@@ -301,7 +302,7 @@ export default function Sections6_Tai() {
           </button>
         </div>
       </form>
-      <ShowResultPopup
+      {/* <ShowResultPopup
         title="ผลการประเมิน TAI Classified"
         result={results}
         show={show}
@@ -309,7 +310,29 @@ export default function Sections6_Tai() {
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
-      />
+      /> */}
+      <Dialog
+          open={show}
+          scroll="paper"
+          maxWidth="xs"
+          fullWidth={true}
+          onClick={saveDataToServer}
+        >
+        <DialogTitle style={{ textAlign: "center" }}>
+        ผลการประเมิน TAI Classified
+          </DialogTitle>
+          <DialogContent>
+            <div className="row">
+              <div className="col-12 col-xl-6 title-result">
+                <p> ผลการประเมิน </p>
+              </div>
+              <div className="col-12 col-xl-6 result-result">
+                <p> {results} </p>
+              </div>
+            </div>
+            <BackToMainmenuBT />
+          </DialogContent>
+        </Dialog>
     </div>
   );
 }

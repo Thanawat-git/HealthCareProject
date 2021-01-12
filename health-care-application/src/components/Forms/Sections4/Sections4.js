@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import { RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
+import { RadioGroup, Radio, FormControlLabel, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections4.css'
-import ShowResultPopup from '../ResuleShowsPopUp'
-import { Link } from 'react-router-dom';
+import { BackToMainmenuBT } from "../../AppButtons";
+// import ShowResultPopup from '../ResuleShowsPopUp'
+// import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as formAction from "../../../actions/forms4.action";
 import { CancelBT } from '../../AppButtons';
@@ -105,7 +106,7 @@ export default function Sections4_1() {
         </button>
       </div>
       </form>
-      <ShowResultPopup
+      {/* <ShowResultPopup
           title='ผลการประเมินสุขภาพตา' 
           result={results}
           show={show}
@@ -113,7 +114,29 @@ export default function Sections4_1() {
           onHide={()=>setShow(false)}
           backdrop="static"
           keyboard={false}
-        />
+        /> */}
+        <Dialog
+          open={show}
+          scroll="paper"
+          maxWidth="xs"
+          fullWidth={true}
+          onClick={saveDataToServer}
+        >
+        <DialogTitle style={{ textAlign: "center" }}>
+          ผลการประเมินสุขภาพตา
+          </DialogTitle>
+          <DialogContent>
+            <div className="row">
+              <div className="col-12 col-xl-6 title-result">
+                <p> ผลการประเมิน </p>
+              </div>
+              <div className="col-12 col-xl-6 result-result">
+                <p> {results} </p>
+              </div>
+            </div>
+            <BackToMainmenuBT />
+          </DialogContent>
+        </Dialog>
   </div>
   );
 }

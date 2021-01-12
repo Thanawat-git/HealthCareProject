@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import { RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
+import { RadioGroup, Radio, FormControlLabel, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 import '../form-style.css'
 import '../../genaralConfig.css'
 import './Sections8.css'
 // import { Link } from 'react-router-dom';
+import { BackToMainmenuBT } from "../../AppButtons";
 import { useDispatch, useSelector } from 'react-redux';
-import ShowResultPopup from '../ResuleShowsPopUp'
+// import ShowResultPopup from '../ResuleShowsPopUp'
 import * as formAction from "../../../actions/forms89q.action";
 
 export default function Sections8_9Q() {
@@ -222,7 +223,7 @@ export default function Sections8_9Q() {
             </div>
           </form>
 
-          <ShowResultPopup
+          {/* <ShowResultPopup
           title='ผลการประเมินการคัดกรองโรคซึมเศร้า 9Q' 
           result={results}
           show={show}
@@ -231,7 +232,30 @@ export default function Sections8_9Q() {
             point,results])}
           backdrop="static"
           keyboard={false}
-        />
+        /> */}
+        <Dialog
+          open={show}
+          scroll="paper"
+          maxWidth="xs"
+          fullWidth={true}
+          onClick={()=>formAction.updateDepressionScreening9q([visId,ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
+            point,results])}
+        >
+        <DialogTitle style={{ textAlign: "center" }}>
+        ผลการประเมินการคัดกรองโรคซึมเศร้า 9Q
+          </DialogTitle>
+          <DialogContent>
+            <div className="row">
+              <div className="col-12 col-xl-6 title-result">
+                <p> ผลการประเมิน </p>
+              </div>
+              <div className="col-12 col-xl-6 result-result">
+                <p> {results} </p>
+              </div>
+            </div>
+            <BackToMainmenuBT />
+          </DialogContent>
+        </Dialog>
         </div>
     );
 }

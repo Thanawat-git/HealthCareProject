@@ -6,12 +6,13 @@ import {
   RadioGroup,
   Radio,
   Checkbox,
-  colors,
+  Dialog, DialogContent, DialogTitle
 } from "@material-ui/core";
+import { BackToMainmenuBT } from "../../AppButtons";
 import "../form-style.css";
 import "../../genaralConfig.css";
 import "./Sections7.css";
-import ShowResultPopup from "../ResuleShowsPopUp";
+// import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/formsMMSE.action";
@@ -1528,7 +1529,7 @@ export default function MMSIThai2002() {
           </button>
         </div>
       </form>
-      <ShowResultPopup
+      {/* <ShowResultPopup
         title="ผลการประเมินการทดสอบเบื้องต้นฉบับภาษาไทย"
         result={results}
         show={show}
@@ -1536,7 +1537,29 @@ export default function MMSIThai2002() {
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
-      />
+      /> */}
+      <Dialog
+          open={show}
+          scroll="paper"
+          maxWidth="xs"
+          fullWidth={true}
+          onClick={saveDataToServer}
+        >
+        <DialogTitle style={{ textAlign: "center" }}>
+        ผลการประเมินการทดสอบเบื้องต้นฉบับภาษาไทย
+          </DialogTitle>
+          <DialogContent>
+            <div className="row">
+              <div className="col-12 col-xl-6 title-result">
+                <p> ผลการประเมิน </p>
+              </div>
+              <div className="col-12 col-xl-6 result-result">
+                <p> {results} </p>
+              </div>
+            </div>
+            <BackToMainmenuBT />
+          </DialogContent>
+        </Dialog>
     </div>
   );
 }

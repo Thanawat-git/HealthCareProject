@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
+import { RadioGroup, Radio, FormControlLabel, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 import "../form-style.css";
 import "../../genaralConfig.css";
-import ShowResultPopup from "../ResuleShowsPopUp";
-import { Link } from "react-router-dom";
+import { BackToMainmenuBT } from "../../AppButtons";
+// import ShowResultPopup from "../ResuleShowsPopUp";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms10.action";
 import { CancelBT } from "../../AppButtons";
@@ -87,7 +88,7 @@ export default function Sections10() {
           </button>
         </div>
       </form>
-      <ShowResultPopup
+      {/* <ShowResultPopup
         title='ผลการคัดกรองการกลั้นปัสสาวะ'
         result={results}
         show={show}
@@ -95,7 +96,29 @@ export default function Sections10() {
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
-      />
+      /> */}
+      <Dialog
+          open={show}
+          scroll="paper"
+          maxWidth="xs"
+          fullWidth={true}
+          onClick={()=>formAction.upadateExa10Urination([visId,ans10,results,collect])}
+        >
+        <DialogTitle style={{ textAlign: "center" }}>
+        ผลการคัดกรองการกลั้นปัสสาวะ
+          </DialogTitle>
+          <DialogContent>
+            <div className="row">
+              <div className="col-12 col-xl-6 title-result">
+                <p> ผลการประเมิน </p>
+              </div>
+              <div className="col-12 col-xl-6 result-result">
+                <p> {results} </p>
+              </div>
+            </div>
+            <BackToMainmenuBT />
+          </DialogContent>
+        </Dialog>
     </div>
   );
 }

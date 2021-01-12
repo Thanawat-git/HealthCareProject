@@ -8,13 +8,15 @@ import {
   InputAdornment,
   FormControl,
   InputLabel,
+  Dialog, DialogContent, DialogTitle
 } from "@material-ui/core";
 import "../form-style.css";
+import { BackToMainmenuBT } from "../../AppButtons";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms5.action";
-import ShowResultPopup from "../ResuleShowsPopUp";
+// import ShowResultPopup from "../ResuleShowsPopUp";
 import { CancelBT } from "../../AppButtons";
 
 export default function Sections5_1() {
@@ -566,7 +568,7 @@ export default function Sections5_1() {
           </button>
         </div>
       </form>
-      <ShowResultPopup
+      {/* <ShowResultPopup
         title="ผลการประเมินสุขภาพช่องปาก"
         result={results}
         show={show}
@@ -574,7 +576,29 @@ export default function Sections5_1() {
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
-      />
+      /> */}
+      <Dialog
+          open={show}
+          scroll="paper"
+          maxWidth="xs"
+          fullWidth={true}
+          onClick={saveDataToServer}
+        >
+        <DialogTitle style={{ textAlign: "center" }}>
+        ผลการประเมินสุขภาพช่องปาก
+          </DialogTitle>
+          <DialogContent>
+            <div className="row">
+              <div className="col-12 col-xl-6 title-result">
+                <p> ผลการประเมิน </p>
+              </div>
+              <div className="col-12 col-xl-6 result-result">
+                <p> {results} </p>
+              </div>
+            </div>
+            <BackToMainmenuBT />
+          </DialogContent>
+        </Dialog>
     </div>
   );
 }
