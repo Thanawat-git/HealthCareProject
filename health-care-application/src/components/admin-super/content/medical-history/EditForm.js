@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import {
   Button,
@@ -19,6 +20,9 @@ import { Sec9, Sec9_2 } from "../../../Forms/Sections9";
 import { Sec10 } from "../../../Forms/Sections10";
 import { useDispatch, useSelector } from "react-redux";
 import * as getAction from "../../../../actions/getAllFormToReucer.action";
+import "moment/locale/th";
+
+moment.locale("th");
 
 export default function EditForm({ value }) {
   const [open, setOpen] = useState(false);
@@ -69,7 +73,7 @@ export default function EditForm({ value }) {
           แก้ไขการตรวจ
         </DialogTitle>
         <DialogContent style={{ textAlign: "center" }}>
-          content
+          ข้อมูลการตรวจของคุณ {value.ELD_NAME} วัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
           {
           selectFormSection.section === "mainmenu" ? 
           <MainMenuInFormHistory 

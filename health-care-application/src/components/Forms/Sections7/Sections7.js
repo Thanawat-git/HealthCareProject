@@ -711,13 +711,13 @@ export default function Sections7_1() {
                   <React.Fragment>
                     {
                       selectFormSection.section === "mainmenu" ?
-                      <Link to="/mainmenu/tai" className={classes.root}>
+                      <Link to="/mainmenu/mmsi" className={classes.root}>
                         <Button
                           variant="primary"
                           block
                           onClick={updateAlzheimer}
                         >
-                          ทำแบบประเมิน TAI Classified
+                          ทำแบบประเมินการ MMSE-Thai 2002
                         </Button>
                       </Link>
                       :
@@ -733,7 +733,7 @@ export default function Sections7_1() {
                             });
                           }}
                         >
-                          ทำแบบประเมิน TAI Classified
+                          ทำแบบประเมินการ MMSE-Thai 2002
                         </Button>
                       </Link>
                     }
