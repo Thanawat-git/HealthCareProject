@@ -39,6 +39,7 @@ export default function Editpassword() {
   const classes = useStyles();
   const dispatch = useDispatch()
   //const editaccountReducer = useSelector(({editaccountReducer}) => editaccountReducer)
+  const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const [open, setOpen] = useState(false);
 
   const uploadedImage = useState();

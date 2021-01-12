@@ -110,9 +110,9 @@ export default function Sections1_2(props) {
         <h2>ส่วนที่ 1 ข้อมูลพื้นฐาน </h2>
         <div className="question">
           {/* content */}
-          <p>
+          <p><b>
             <span className="text-danger">*</span>ที่อยู่ตามบัตรประชาชน{" "}
-          </p>
+           </b></p>
           <div className="row">
             <div className="col-xl-6 col-12 mb-15">
               <TextField
@@ -215,9 +215,9 @@ export default function Sections1_2(props) {
           {/* Condition needed */}
           {radioValue === "no" ? (
             <div>
-              <p>
+              <p><b>
                 <span className="text-danger">*</span>ที่อยู่ปัจจุบัน{" "}
-              </p>
+              </b></p>
               <div className="row">
                 <div className="col-xl-6 col-12 mb-15">
                   <TextField

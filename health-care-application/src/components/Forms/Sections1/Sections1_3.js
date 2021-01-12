@@ -232,7 +232,7 @@ export default function Sections1_3() {
                 </RadioGroup>
               </div>
               <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกเวลาที่อยู่กับผู้สูงอายุ" : ""}</FormHelperText>
-              <br />
+          
               <hr />
               <div className="row">
                 <div className="col-12">
@@ -386,6 +386,7 @@ export default function Sections1_3() {
               </div>
               <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุเพศ" : ""}</FormHelperText>
               <br />
+              
               <div className="row">
                 <div className="col-12">
                   <InputLabel htmlFor="time1">
@@ -418,7 +419,7 @@ export default function Sections1_3() {
                 </RadioGroup>
               </div>
               <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกเวลาที่อยู่กับผู้สูงอายุ" : ""}</FormHelperText>
-              <br />
+              <hr />
               <div className="row">
                 <div className="col-12">
                   <InputLabel htmlFor="relative1">
