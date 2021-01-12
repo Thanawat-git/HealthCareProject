@@ -1,3 +1,3 @@
-import sec10 from './Sections10';
+import Sec10 from './Sections10';
 
-export {sec10};
+export {Sec10};

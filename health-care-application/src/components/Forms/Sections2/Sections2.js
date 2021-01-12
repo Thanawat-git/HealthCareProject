@@ -9,6 +9,9 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Dialog,
+  DialogContent,
+  DialogTitle,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +19,8 @@ import * as formAction from "../../../actions/forms2.action";
 import * as appointAction from "../../../actions/appointment.action";
 import { Modal, Button } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
+import { CancelBT, SaveBt } from "../../AppButtons";
+import { SELECT_SECTION } from "../../../constants";
 
 const useStyles = makeStyles({
   root: {
@@ -32,6 +37,9 @@ export default function Sections2_1() {
   const elderlyGender = useSelector(
     ({ forms1p1Reducer }) => forms1p1Reducer.elderlyGender
   ); // check gender
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
   const dispatch = useDispatch();
 
   const [waist, setWaist] = useState(forms2Reducer.waist);
@@ -70,10 +78,6 @@ export default function Sections2_1() {
 
 
   }, [noFood])
-
-
-
-
   useEffect(() => {
     if (
       waist &&
@@ -87,7 +91,6 @@ export default function Sections2_1() {
       setCollect(true);
     }
   }, [waist, weight, high, pulse, bloodPressure1, bloodPressure2, sugar]);
-
   useEffect(() => {
     waist !== null && calwaist();
   }, [waist]);
@@ -225,6 +228,7 @@ console.log(visId)
       collect,
     ]);
     formAction.updateExa2Fbs([visId, ansfood, sugar, sugarResult, collect]);
+    
   };
 
   const sendValueTofollow = () => {
@@ -452,7 +456,8 @@ console.log(visId)
         </div>
 
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
+          <CancelBT/>
+          {/* <Link to="/mainmenu">
             <button
               type="button"
               className="btn form-btn btn-back btn-lg"
@@ -460,7 +465,8 @@ console.log(visId)
             >
               ยกเลิก
             </button>
-          </Link>
+          </Link> */}
+          {/* <SaveBt onClick={()=>console.log("click save")}/> */}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -470,17 +476,17 @@ console.log(visId)
           </button>
         </div>
       </form>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>ผลการประเมินสภาวะสุขภาพ</Modal.Title>
-        </Modal.Header>
+      <Dialog
+      open={show}
+      scroll="paper"
+      maxWidth="xs"
+      fullWidth={true}
+    >
+        <DialogTitle>
+          ผลการประเมินสภาวะสุขภาพ
+        </DialogTitle>
 
-        <Modal.Body>
+        <DialogContent>
           <div className="row">
             <div className="col-12 col-xl-6 title-result">
               <p> แปลผลเส้นรอบเอว </p>
@@ -516,16 +522,37 @@ console.log(visId)
               </strong>
             </div>
           </div>
-        </Modal.Body>
+          <div>
+            {selectFormSection.section === "mainmenu" ? (
+              <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={saveDataToServer}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button variant="primary" block onClick={()=>{
+                  saveDataToServer()
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "mainmenu",
+                  });
+                }}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+          </div>
+        </DialogContent>
 
-        <Modal.Footer>
-          <Link to="/mainmenu" className={classes.root}>
+        {/* <Modal.Footer> */}
+          {/* <Link to="/mainmenu" className={classes.root}>
             <Button variant="primary" block onClick={saveDataToServer}>
               กลับสู่หน้าเมนูหลัก
             </Button>
-          </Link>
-        </Modal.Footer>
-      </Modal>
+          </Link> */}
+        {/* </Modal.Footer> */}
+      </Dialog>
     </div>
   );
 }

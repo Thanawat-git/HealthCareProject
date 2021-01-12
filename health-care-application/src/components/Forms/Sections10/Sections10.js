@@ -6,6 +6,7 @@ import ShowResultPopup from "../ResuleShowsPopUp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms10.action";
+import { CancelBT } from "../../AppButtons";
 
 export default function Sections10() {
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
@@ -70,11 +71,12 @@ export default function Sections10() {
           </RadioGroup>
         </div>
         <div className="row justify-content-between">
-          <Link to="/mainmenu">
+        <CancelBT/>
+          {/* <Link to="/mainmenu">
             <button type="button" class="btn form-btn btn-back btn-lg">
               ยกเลิก
             </button>
-          </Link>
+          </Link> */}
 
           <button
             type="button"

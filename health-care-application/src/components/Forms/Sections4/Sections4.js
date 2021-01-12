@@ -7,6 +7,7 @@ import ShowResultPopup from '../ResuleShowsPopUp'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as formAction from "../../../actions/forms4.action";
+import { CancelBT } from '../../AppButtons';
 
 export default function Sections4_1() {
   
@@ -93,11 +94,12 @@ export default function Sections4_1() {
 
       </div>
       <div className="row justify-content-between">
-        <Link to="/mainmenu">
+      <CancelBT/>
+        {/* <Link to="/mainmenu">
         <button type="button" className="btn form-btn btn-back btn-lg">
           ยกเลิก
         </button>
-        </Link>
+        </Link> */}
         <button type="button" className="btn form-btn btn-primary btn-lg" onClick={handleSubmit} >
           บันทึก
         </button>

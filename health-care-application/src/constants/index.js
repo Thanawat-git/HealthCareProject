@@ -71,6 +71,7 @@ export const HTTP_HISTORY_SUCCESS = "HTTP_HISTORY_SUCCESS";
 export const HTTP_HISTORY_FAILED = "HTTP_HISTORY_FAILED";
 export const HTTP_HISTORY_SELECTED = "HTTP_HISTORY_SELECTED";
 export const GET_HISTORY_EDL = "GET_HISTORY_EDL"; // get all form history's this eldery
+export const SELECT_SECTION = "SELECT_SECTION"
 
 // Follow Up
 export const HTTP_FOLLOWUP_FETCHING = "HTTP_FOLLOWUP_FETCHING";

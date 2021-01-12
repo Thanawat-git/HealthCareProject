@@ -11,6 +11,9 @@ import {
   MenuItem,
   OutlinedInput,
   InputAdornment,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from "@material-ui/core";
 import { Modal, Button } from "react-bootstrap";
 import "../form-style.css";
@@ -18,6 +21,8 @@ import "./Sections9.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms9.action";
 import { Link } from "react-router-dom";
+import { CancelBT } from "../../AppButtons";
+import { SELECT_SECTION } from "../../../constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +39,9 @@ export default function Sections9() {
 
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
   const dispatch = useDispatch();
   const [state, setState] = useState({
     ans9_1: forms9Reducer.ans9_1,
@@ -193,6 +201,30 @@ export default function Sections9() {
     dispatch(formAction.add(data));
   };
 
+  const updateExa9BoneMuscle = ()=> {
+    formAction.updateExa9BoneMuscle([
+      visId,
+      ans9_1,
+      ans9_2,
+      ans9_3,
+      ans9_4,
+      ans9_5,
+      ans9_6,
+      ans9_7,
+      ans9_8,
+      ans9_9,
+      ans9_10,
+      ans9_11,
+      ans9_12,
+      result1,
+      walk,
+      walkInfo,
+      minute,
+      second,
+      result2,
+      collect,
+    ])
+  }
   return (
     <div className="css-form">
       <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -559,12 +591,12 @@ export default function Sections9() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="./mainmenu">
+        <CancelBT/>
+          {/* <Link to="./mainmenu">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ย้อนกลับ
             </button>
-          </Link>
-          {/* <Link to="./sec9-2"> */}
+          </Link> */}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -575,17 +607,17 @@ export default function Sections9() {
           {/* </Link> */}
         </div>
       </form>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
+      <Dialog
+      open={show}
+      scroll="paper"
+      maxWidth="xs"
+      fullWidth={true}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>ผลการประเมิน</Modal.Title>
-        </Modal.Header>
+        <DialogTitle>
+          ผลการประเมิน
+        </DialogTitle>
 
-        <Modal.Body>
+        <DialogContent>
           <div className="row">
             <div className="col-12 col-xl-3 title-result">
               <p> ความเสี่ยงต่อการพลัดตกหกล้ม </p>
@@ -604,43 +636,36 @@ export default function Sections9() {
               </strong>
             </div>
           </div>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Link to="/mainmenu/sec9-2" className={classes.root}>
+          {selectFormSection.section === "mainmenu" ? (
+              <Link to="/mainmenu/sec9-2" className={classes.root}>
+                <Button variant="primary" block onClick={updateExa9BoneMuscle}>
+                  ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button variant="primary" block onClick={()=>{
+                  updateExa9BoneMuscle()
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "s92",
+                  });
+                }}>
+                  ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
+                </Button>
+              </Link>
+            )}
+          {/* <Link to="/mainmenu/sec9-2" className={classes.root}>
             <Button
               variant="primary"
               block
-              onClick={() =>
-                formAction.updateExa9BoneMuscle([
-                  visId,
-                  ans9_1,
-                  ans9_2,
-                  ans9_3,
-                  ans9_4,
-                  ans9_5,
-                  ans9_6,
-                  ans9_7,
-                  ans9_8,
-                  ans9_9,
-                  ans9_10,
-                  ans9_11,
-                  ans9_12,
-                  result1,
-                  walk,
-                  walkInfo,
-                  minute,
-                  second,
-                  result2,
-                  collect,
-                ])
-              }
+              onClick={updateExa9BoneMuscle}
             >
               ทำแบบประเมินคัดกรองโรคข้อเข่าเสื่อม
             </Button>
-          </Link>
-        </Modal.Footer>
-      </Modal>
+          </Link> */}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -37,6 +37,7 @@ import {
   GET_RESULT_S9,
   GET_RESULT_S92,
   GET_RESULT_TAI,
+  SELECT_SECTION,
 } from "../constants";
 
 export const getCollect = (visId) => {
@@ -176,12 +177,15 @@ export const getDataSec2 = (visId) => {
         ];
         dispatch({
           type: "FETCHING2",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS2,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec2",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -207,12 +211,15 @@ export const getDataSec3 = (visId) => {
         ];
         dispatch({
           type: "FETCHING3",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS3,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec3",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -236,12 +243,15 @@ export const getDataSec4 = (visId) => {
         ];
         dispatch({
           type: "FETCHING4",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS4,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec4",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -274,18 +284,19 @@ export const getDataSec5 = (visId) => {
           res.data.ORAL_5_13,
           res.data.ORAL_RESULT,
           res.data.ORAL_CORRECT_FORM,
-          res.data.ORAL_COUNT,
-          
-          
+          res.data.ORAL_COUNT,  
         ];
         dispatch({
           type: "FETCHING5",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS5,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec5",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -314,12 +325,15 @@ export const getDataSec6 = (visId) => {
         ];
         dispatch({
           type: "FETCHING6",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS6,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec6",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -357,12 +371,15 @@ export const getDataSec7 = (visId) => {
         ];
         dispatch({
           type: "FETCHING7",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS7,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec7",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -382,12 +399,15 @@ export const getDataSec8 = (visId) => {
         ];
         dispatch({
           type: "FETCHING8",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS8,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec8",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -424,12 +444,15 @@ export const getDataSec9 = (visId) => {
         ];
         dispatch({
           type: "FETCHING9",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS9,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec9",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);
@@ -448,12 +471,15 @@ export const getDataSec10 = (visId) => {
         ];
         dispatch({
           type: "FETCHING10",
-          payload: data,
         });
         dispatch({
           type: CREATE_NEW_FORMS10,
           payload: data,
         });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec10",
+        // });
       })
       .catch((error) => {
         console.log("err ", error);

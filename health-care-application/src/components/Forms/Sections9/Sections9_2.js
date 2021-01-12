@@ -5,6 +5,9 @@ import {
   FormGroup,
   RadioGroup,
   Radio,
+  DialogContent,
+  Dialog,
+  DialogTitle,
 } from "@material-ui/core";
 import { Modal, Button } from "react-bootstrap";
 import "../form-style.css";
@@ -13,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms92.action";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { SELECT_SECTION } from "../../../constants";
 const useStyles = makeStyles({
     root: {
       width: "100%",
@@ -23,6 +27,9 @@ const useStyles = makeStyles({
 export default function Sections9_2() {
   const forms92Reducer = useSelector(({ forms92Reducer }) => forms92Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
   const dispatch = useDispatch();
   const classes = useStyles();
   const [stateCheck, setstateCheck] = useState({
@@ -259,6 +266,13 @@ export default function Sections9_2() {
     dispatch(formAction.add(data));
   };
 
+  const updateExa9_1Osteoarthritis = ()=>{
+    formAction.updateExa9_1Osteoarthritis([
+      ans1_1,parseInt(ans1_2)
+      ,results2,ans1R,ans1L,ans1N,ans2R,ans2L,ans2N,ans3R,ans3L,ans3N,ans4R,ans4L,ans4N,ans5R,ans5L,ans5N
+      ,results,ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,ans3_8,ans3_9,ans3_10,ans3_11,ans3_12
+      ,point,results3,collect,visId])
+  }
   return (
     <div className="css-form">
       <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -1067,17 +1081,17 @@ export default function Sections9_2() {
           </button>
         </div>
       </form>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
+      <Dialog
+      open={show}
+      scroll="paper"
+      maxWidth="xs"
+      fullWidth={true}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>ผลการประเมินโรคข้อเข่าเสื่อม</Modal.Title>
-        </Modal.Header>
+        <DialogTitle>
+          ผลการประเมินโรคข้อเข่าเสื่อม
+        </DialogTitle>
 
-        <Modal.Body>
+        <DialogContent>
           <div className="row">
             <div className="col-12 col-xl-6 title-result">
               <p> แปลผลตอนที่ 1 ระดับความเจ็บปวดของข้อเข่า </p>
@@ -1105,22 +1119,36 @@ export default function Sections9_2() {
               </strong>
             </div>
           </div>
-          
-        </Modal.Body>
+          {selectFormSection.section === "mainmenu" ? (
+              <Link to="/mainmenu" className={classes.root}>
+                <Button variant="primary" block onClick={updateExa9_1Osteoarthritis}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button variant="primary" block onClick={()=>{
+                  updateExa9_1Osteoarthritis()
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "mainmenu",
+                  });
+                }}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+        </DialogContent>
 
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Link to="/mainmenu" className={classes.root}>
             <Button variant="primary" block 
-            onClick={()=>formAction.updateExa9_1Osteoarthritis([
-                ans1_1,parseInt(ans1_2)
-                ,results2,ans1R,ans1L,ans1N,ans2R,ans2L,ans2N,ans3R,ans3L,ans3N,ans4R,ans4L,ans4N,ans5R,ans5L,ans5N
-                ,results,ans3_1,ans3_2,ans3_3,ans3_4,ans3_5,ans3_6,ans3_7,ans3_8,ans3_9,ans3_10,ans3_11,ans3_12
-                ,point,results3,collect,visId])} >
+            onClick={updateExa9_1Osteoarthritis} >
               กลับสู่หน้าเมนูหลัก
             </Button>
           </Link>
-        </Modal.Footer>
-      </Modal>
+        </Modal.Footer> */}
+      </Dialog>
     </div>
     
   );

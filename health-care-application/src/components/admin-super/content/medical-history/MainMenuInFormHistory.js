@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, ListItem, ListItemIcon } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Header from "../volunteer/Header"
-import { Link, useHistory, useRouteMatch, Route,} from "react-router-dom";
+import { Link, useHistory, useRouteMatch, } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import SumaryReport from "./SumaryReport";
-import * as getAction from "../../actions/getAllFormToReucer.action";
+// import SumaryReport from "./SumaryReport";
+import * as getAction from "../../../../actions/getAllFormToReucer.action";
+import { SELECT_SECTION } from "../../../../constants";
 
 const useStyles = makeStyles({
   root: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-function MainMenu(props) {
+function MainMenu({fname, lname}) {
   const { url, path } = useRouteMatch();
   useEffect(() => {
     console.log('url in mainmenu ', url, 'path ',path)
@@ -119,89 +119,46 @@ function MainMenu(props) {
     switch (sec) {
       case "sec2":
         dispatch(getAction.getDataSec2(visitID));
-        if (!forms2Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec2`);
-          }, 200);
-        }
         break;
       case "sec3":
         dispatch(getAction.getDataSec3(visitID));
-        if (!forms3Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec3`);
-          }, 200);
-        }
         break;
       case "sec4":
         dispatch(getAction.getDataSec4(visitID));
-        if (!forms4Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec4`);
-          }, 200);
-        }
         break;
       case "sec5":
         dispatch(getAction.getDataSec5(visitID));
-        if (!forms5Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec5`);
-          }, 200);
-        }
         break;
       case "sec6":
         dispatch(getAction.getDataSec6(visitID));
-        if (!forms6Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec6`);
-          }, 200);
-        }
         break;
       case "sec7":
         dispatch(getAction.getDataSec7(visitID));
         dispatch(getAction.getEducate(peopleID))
-        if (!forms7Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec7`);
-          }, 200);
-        }
         break;
       case "sec8":
         dispatch(getAction.getDataSec8(visitID));
-        if (!forms8Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec8_1`);
-          }, 200);
-        }
         break;
       case "sec9":
         dispatch(getAction.getDataSec9(visitID));
-        if (!forms9Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec9`);
-          }, 200);
-        }
         break;
       case "sec10":
         dispatch(getAction.getDataSec10(visitID));
-        if (!forms10Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec10`);
-          }, 200);
-        }
         break;
-        
       default:
         break;
     }
+    dispatch({
+      type: SELECT_SECTION,
+      payload: sec,
+    });
   };
 
   return (
     <React.Fragment>
-      <Header/> <br/>
         <Card className={classes.root}>
         <h4 style={{ textAlign: "center" }}> 
-        คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME} {elderlyReducer.resultSelected.ELD_LASTNAME}
+        {/* คุณ{fname} {lname} */}
         </h4>
           <CardContent>
             <Link
@@ -322,7 +279,7 @@ function MainMenu(props) {
             </Link>
             <hr />
            
-            <SumaryReport />
+            {/* <SumaryReport /> */}
           </CardContent>
         </Card>
     </React.Fragment>

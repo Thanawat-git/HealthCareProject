@@ -1,3 +1,3 @@
-import sec3 from './Sections3'
+import Sec3 from './Sections3'
 
-export {sec3}
+export {Sec3}

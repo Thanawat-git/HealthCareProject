@@ -1,48 +1,28 @@
-import React from 'react'
-import { Modal, Button } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { connect, useSelector } from 'react-redux'
-
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-});
+import React from "react";
+import { BackToMainmenuBT } from "../AppButtons";
+import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 
 function ResuleShowsPopUp(props) {
-    const classes = useStyles();
-
   return (
-        <Modal
-        {...props}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{props.title}</Modal.Title>
-          </Modal.Header>
-
-          <Modal.Body>
-            <React.Fragment>
-              <div className="row">
-                <div className="col-12 col-xl-6 title-result">
-                <p> ผลการประเมิน </p>
-                </div>
-                <div className="col-12 col-xl-6 result-result">
-                <p> {props.result} </p>
-                </div>
-              </div>
-            </React.Fragment>
-          </Modal.Body>
-
-          <Modal.Footer>
-              <Link to="/mainmenu" className={classes.root}>
-                <Button variant="primary" block>
-                  กลับสู่หน้าเมนูหลัก
-                </Button>
-              </Link>
-          </Modal.Footer>
-        </Modal>
-  )
+    <Dialog
+      open={props.show}
+      scroll="paper"
+      maxWidth="xs"
+      fullWidth={true}
+    >
+      <DialogTitle style={{ textAlign: "center" }}>{props.title}</DialogTitle>
+      <DialogContent>
+        <div className="row">
+          <div className="col-12 col-xl-6 title-result">
+            <p> ผลการประเมิน </p>
+          </div>
+          <div className="col-12 col-xl-6 result-result">
+            <p> {props.result} </p>
+          </div>
+        </div>
+        <BackToMainmenuBT />
+      </DialogContent>
+    </Dialog>
+  );
 }
 export default ResuleShowsPopUp;
-// export default connect()(ResuleShowsPopUp);
