@@ -380,7 +380,7 @@ export default function Sections3() {
         title="ผลการประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด"
         result={results}
         show={show}
-        onClick={saveDataToServer}
+        onClick={()=>saveDataToServer}
         onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
