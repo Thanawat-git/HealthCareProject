@@ -468,40 +468,40 @@ export const getDataSec9 = (visId) => {
 };
 
 export const getDataSec92 = visId => {
-  
+
   return dispatch => {
     return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(res=> {
       console.log("res.data 9-2 ", res.data);
       const data = [
         res.data.OST_2_1_R,
-        res.data.OST_2_1_L,
-        res.data.OST_2_1_N,
         res.data.OST_2_2_R,
-        res.data.OST_2_2_L,
-        res.data.OST_2_2_N,
         res.data.OST_2_3_R,
-        res.data.OST_2_3_L,
-        res.data.OST_2_3_N,
         res.data.OST_2_4_R,
-        res.data.OST_2_4_L,
-        res.data.OST_2_4_N,
         res.data.OST_2_5_R,
+        res.data.OST_2_1_L,
+        res.data.OST_2_2_L,
+        res.data.OST_2_3_L,
+         res.data.OST_2_4_L,
         res.data.OST_2_5_L,
+        res.data.OST_2_1_N,
+        res.data.OST_2_2_N,
+        res.data.OST_2_3_N,
+        res.data.OST_2_4_N,
         res.data.OST_2_5_N,//2
         res.data.OST_1_KNEE_PAIN,
         res.data.OST_1_LVL_PAIN,//1
-        res.data.OST_3_1,
-        res.data.OST_3_2,
-        res.data.OST_3_3,
-        res.data.OST_3_4,
-        res.data.OST_3_5,
-        res.data.OST_3_6,
-        res.data.OST_3_7,
-        res.data.OST_3_8,
-        res.data.OST_3_9,
-        res.data.OST_3_10,
-        res.data.OST_3_11,
-        res.data.OST_3_12,//3
+        res.data.OST_3_1.toString(),
+        res.data.OST_3_2.toString(),
+        res.data.OST_3_3.toString(),
+        res.data.OST_3_4.toString(),
+        res.data.OST_3_5.toString(),
+        res.data.OST_3_6.toString(),
+        res.data.OST_3_7.toString(),
+        res.data.OST_3_8.toString(),
+        res.data.OST_3_9.toString(),
+        res.data.OST_3_10.toString(),
+        res.data.OST_3_11.toString(),
+        res.data.OST_3_12.toString(),//3
         res.data.OST_CORRECT_FORM,
         res.data.OST_1_RESULT,
         res.data.OST_2_RESULT,

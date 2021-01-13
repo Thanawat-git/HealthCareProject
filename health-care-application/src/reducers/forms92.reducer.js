@@ -43,21 +43,21 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CREATE_NEW_FORMS92:
       return {
-        ans1R: payload[0],
-        ans2R: payload[1],
-        ans3R: payload[2],
-        ans4R: payload[3],
-        ans5R: payload[4],
-        ans1L: payload[5],
-        ans2L: payload[6],
-        ans3L: payload[7],
-        ans4L: payload[8],
-        ans5L: payload[9],
-        ans1N: payload[10],
-        ans2N: payload[11],
-        ans3N: payload[12],
-        ans4N: payload[13],
-        ans5N: payload[14],//2
+        ans1R: payload[0],//2.1
+        ans2R: payload[1],//2.2
+        ans3R: payload[2],//2.3
+        ans4R: payload[3],//2.4
+        ans5R: payload[4],//2.5
+        ans1L: payload[5],//2.1
+        ans2L: payload[6],//2.2
+        ans3L: payload[7],//2.3
+        ans4L: payload[8],//2.4
+        ans5L: payload[9],//2.5
+        ans1N: payload[10],//2.1
+        ans2N: payload[11],//2.2
+        ans3N: payload[12],//2.3
+        ans4N: payload[13],//2.4
+        ans5N: payload[14],//2.5
         ans1_1: payload[15],
         ans1_2: payload[16],//1
         ans3_1: payload[17],
