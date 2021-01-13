@@ -200,7 +200,7 @@ export default function AddNewAdmin() {
     let count = 0
     if(`${adminId}`.length!=13){
       setError1(true)
-      setErrorText1("กรอกเลขให้ครบด้วยไอ้พวกเหี้ย จาก บิ๊กบ้านโป่ง!!!")
+      setErrorText1("กรอกเลขประจำตัวประชาชน 13 หลัก")
       count+=1
     } else {
       setError1(false)
