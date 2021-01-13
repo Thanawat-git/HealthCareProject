@@ -1067,11 +1067,33 @@ export default function Sections9_2() {
         </div>
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/sec9">
+        {selectFormSection.section === "mainmenu" ? (
+          <Link to="/mainmenu/sec9">
             <button type="button" className="btn form-btn btn-back btn-lg">
               ย้อนกลับ
             </button>
           </Link>
+        ) : (
+          <Link>
+            <button
+              type="button"
+              className="btn form-btn btn-back btn-lg"
+              onClick={()=>{
+                dispatch({
+                  type: SELECT_SECTION,
+                  payload: "sec9",
+                });
+              }}
+            >
+              ย้อนกลับ
+            </button>
+          </Link>
+        )}
+          {/* <Link to="/sec9">
+            <button type="button" className="btn form-btn btn-back btn-lg">
+              ย้อนกลับ
+            </button>
+          </Link> */}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
