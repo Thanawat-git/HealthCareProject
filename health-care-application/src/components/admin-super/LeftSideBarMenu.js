@@ -56,7 +56,7 @@ export default function LeftSideBarMenu() {
               <li className="nav-item">
                 <a href="#" className="nav-link">
                   <i className="nav-icon fas fa-star-of-life" />
-                  <p>จัดการแพทย์</p>
+                  <p>ผู้สูงอายุ</p>
                 </a>
               </li>
 
