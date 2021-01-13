@@ -473,23 +473,23 @@ export const getDataSec92 = visId => {
     return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(res=> {
       console.log("res.data 9-2 ", res.data);
       const data = [
-        res.data.OST_2_1_R,
-        res.data.OST_2_2_R,
-        res.data.OST_2_3_R,
-        res.data.OST_2_4_R,
-        res.data.OST_2_5_R,
-        res.data.OST_2_1_L,
-        res.data.OST_2_2_L,
-        res.data.OST_2_3_L,
-         res.data.OST_2_4_L,
-        res.data.OST_2_5_L,
-        res.data.OST_2_1_N,
-        res.data.OST_2_2_N,
-        res.data.OST_2_3_N,
-        res.data.OST_2_4_N,
-        res.data.OST_2_5_N,//2
+        parseInt(res.data.OST_2_1_R),
+        parseInt(res.data.OST_2_2_R),
+        parseInt(res.data.OST_2_3_R),
+        parseInt(res.data.OST_2_4_R),
+        parseInt(res.data.OST_2_5_R),
+        parseInt(res.data.OST_2_1_L),
+        parseInt(res.data.OST_2_2_L),
+        parseInt(res.data.OST_2_3_L),
+        parseInt(res.data.OST_2_4_L),
+        parseInt(res.data.OST_2_5_L),
+        parseInt(res.data.OST_2_1_N),
+        parseInt(res.data.OST_2_2_N),
+        parseInt(res.data.OST_2_3_N),
+        parseInt(res.data.OST_2_4_N),
+        parseInt(res.data.OST_2_5_N),//2
         res.data.OST_1_KNEE_PAIN,
-        res.data.OST_1_LVL_PAIN,//1
+        res.data.OST_1_LVL_PAIN.toString(),//1
         res.data.OST_3_1.toString(),
         res.data.OST_3_2.toString(),
         res.data.OST_3_3.toString(),
