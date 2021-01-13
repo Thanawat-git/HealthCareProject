@@ -462,7 +462,7 @@ export const getDataSec9 = (visId) => {
 };
 
 export const getDataSec92 = visId => {
- 
+  
   return dispatch => {
     return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(res=> {
       console.log("res.data 9-2 ", res.data);
