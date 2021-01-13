@@ -14,6 +14,7 @@ import {
   // CREATE_NEW_FORMS7M,
   CREATE_NEW_FORMS8,
   CREATE_NEW_FORMS9,
+  CREATE_NEW_FORMS92,
   // FORMS1P4_ADD_NEW,
   GET_COLLECT_S10,
   GET_COLLECT_S2,
@@ -459,6 +460,41 @@ export const getDataSec9 = (visId) => {
       });
   };
 };
+
+export const getDataSec92 = visId => {
+  return dispatch => {
+    return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(res=> {
+      const data = [
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+        // res.data.,
+      ]
+      dispatch({
+        type: "FETCHING92",
+      });
+      dispatch({
+        type: CREATE_NEW_FORMS92,
+        payload: data,
+      });
+    })
+  }
+}
+
 export const getDataSec10 = (visId) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/urination/findOne/${visId}`)

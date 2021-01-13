@@ -21,7 +21,8 @@ export const getAllAssessmentForms = ()=>{
     return dispatch => {
         dispatch(setHistoryToFetching())
         // doGetAssessmentForms(dispatch)
-        return Axios.get(`${apiBase}/elder/visit/findAllVisitsForHistory`).then(res=>{
+        return Axios.get(`${apiEld}/visit/findAllVisitsForHistory`).then(res=>{
+            console.log('get history ',res.data)
             dispatch(setHistoryToSuccress(res.data))
         }).catch(error=>{
             dispatch(setHistoryToFailed(error))
@@ -32,7 +33,7 @@ export const getAllAssessmentForms = ()=>{
 export const getHistorySelected = (id)=>{
     return dispatch => {
         // dispatch(setHistoryToFetching())
-        return Axios.get(`${apiBase}/elder/examsummary/forhistory/${id}`).then(res=>{
+        return Axios.get(`${apiEld}/examsummary/forhistory/${id}`).then(res=>{
             dispatch(setHistorySelected(res.data))
         }).catch(error=>{
             dispatch(setHistoryToFailed(error))
