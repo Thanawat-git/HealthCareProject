@@ -57,7 +57,7 @@ export default function Asynchronous() {
 
   function handleClickOpen(value) {
     const d = new Date();
-    const visDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    const visDate = `${d.getFullYear()+543}-${d.getMonth() + 1}-${d.getDate()}`;
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
       setisVisId(true)
       setvisData(res.data)
@@ -150,7 +150,7 @@ export default function Asynchronous() {
                   <DialogContentText>
                     ตรวจเยี่ยมครั้งล่าสุด{" "} 
                     {/* {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).add(543, 'year').format("LL")} */}
-                    {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).format("dddd")} ที่ {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).add(543, 'year').format("LL")}
+                    {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).format("dddd")} ที่ {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).format("LL")}
                   </DialogContentText>
                   <DialogContentText>
                     ตรวจโดย {elderlyReducer.resultSelected.updateBy}
@@ -249,7 +249,7 @@ export default function Asynchronous() {
                                 }
                               }}
                               fullWidth>
-                                การตรวจวัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).add(543, 'year').format("LL")}
+                                การตรวจวัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
                               </Button>
                             </Link>
                           </div>
