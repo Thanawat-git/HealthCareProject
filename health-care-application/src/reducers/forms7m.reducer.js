@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7M, GET_RESULT_S7M } from "../constants";
+import { CREATE_NEW_FORMS7M, GET_RESULT_S7M, SET_MMSE_TO_DEFAULT } from "../constants";
 
 const initialState = {
   ans1: 0,
@@ -108,6 +108,62 @@ export default (state = initialState, { type, payload }) => {
       };
     case GET_RESULT_S7M:
       return { ...state, results: payload };
+    case SET_MMSE_TO_DEFAULT:
+      return {
+        ans1: 0,
+        ans12: 0,
+        ans13: 0,
+        ans14: 0,
+        ans15: 0,
+        ans2_1_1: 0,
+        ans2_1_2: 0,
+        ans2_1_3: 0,
+        ans2_1_4: 0,
+        ans2_1_5: 0,
+        ans2_2_1: 0,
+        ans2_2_2: 0,
+        ans2_2_3: 0,
+        ans2_2_4: 0,
+        ans2_2_5: 0,
+        ansF: 0,
+        ansR: 0,
+        ansT: 0,
+        num1: 0,
+        num2: 0,
+        num3: 0,
+        num4: 0,
+        num5: 0,
+        ansF2: 0,
+        ansR2: 0,
+        ansT2: 0,
+        ans61: 0,
+        ans62: 0,
+        ans7: 0,
+        ans9: 0,
+        ans10: 0,
+        ans11: 0,
+        textAns11: null,
+        textAns12: null,
+        textAns13: null,
+        textAns14: null,
+        textAns15: null,
+        textAns211: null,
+        textAns212: null,
+        textAns213: null,
+        textAns214: null,
+        textAns215: null,
+        textAns221: null,
+        textAns222: null,
+        textAns223: null,
+        textAns224: null,
+        textAns225: null,
+        textAns10: null,
+        collect: false,
+        results: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+        point: 0,
+        group: null,
+        isFetching: null,
+      }
     default:
       return state;
   }
