@@ -257,7 +257,6 @@ export default function Sections9_2() {
       ans3_11,
       ans3_12,  
       collect,
-      count, 
       results,
       results2,
       results3,

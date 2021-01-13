@@ -57,9 +57,9 @@ export default (state = initialState, { type, payload }) => {
         ans2N: payload[11],
         ans3N: payload[12],
         ans4N: payload[13],
-        ans5N: payload[14],
+        ans5N: payload[14],//2
         ans1_1: payload[15],
-        ans1_2: payload[16],
+        ans1_2: payload[16],//1
         ans3_1: payload[17],
         ans3_2: payload[18],
         ans3_3: payload[19],
@@ -71,13 +71,12 @@ export default (state = initialState, { type, payload }) => {
         ans3_9: payload[25],
         ans3_10: payload[26],
         ans3_11: payload[27],
-        ans3_12: payload[28],
+        ans3_12: payload[28],//3
         collect: payload[29],
-        count: payload[30],
-        results: payload[31], //ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อมเบื่องต้น
-        results2: payload[32], //ตอนที่ 2 คัดกรองข้อเข่าเสื่อมทางคลินิค
-        results3: payload[33], //ตอนที่ 3 แบบประเมินระดับความรุนแรงของโรคข้อเข่าเสื่อม (Oxford Knee Score)
-        point:payload[34]
+        results: payload[30], //ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อมเบื่องต้น
+        results2: payload[31], //ตอนที่ 2 คัดกรองข้อเข่าเสื่อมทางคลินิค
+        results3: payload[32], //ตอนที่ 3 แบบประเมินระดับความรุนแรงของโรคข้อเข่าเสื่อม (Oxford Knee Score)
+        point:payload[33]
       };
     case GET_RESULT_S92:
       return { ...state, results: payload[0], results2: payload[1], results3: payload[2]}
