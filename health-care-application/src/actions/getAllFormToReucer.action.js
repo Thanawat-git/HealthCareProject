@@ -39,6 +39,9 @@ import {
   GET_RESULT_S92,
   GET_RESULT_TAI,
   SELECT_SECTION,
+  SET_89Q_TO_DEFAULT,
+  SET_MMSE_TO_DEFAULT,
+  SET_TAI_TO_DEFAULT,
 } from "../constants";
 
 export const getCollect = (visId) => {
@@ -152,7 +155,10 @@ export const resetDateAllForm = ()=> {
     dispatch({ type: GET_RESULT_S89Q, payload: null }) //89q
     dispatch({ type: GET_RESULT_S9, payload: resultsec9 }) //กระดูก 2 result => 9r1[0], 9r2[1] 
     dispatch({ type: GET_RESULT_S92, payload: resultsec92 }) //กระดูก 92 3 result
-    dispatch({ type: GET_RESULT_S10, payload: null }) //ปัสสาวะ 
+    dispatch({ type: GET_RESULT_S10, payload: null }) //ปัสสาวะ
+    dispatch({ type: SET_MMSE_TO_DEFAULT })
+    dispatch({ type: SET_TAI_TO_DEFAULT })
+    dispatch({ type: SET_89Q_TO_DEFAULT })
   }
 }
 

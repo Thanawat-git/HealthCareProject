@@ -1,4 +1,8 @@
-import { CREATE_NEW_FORMS6T, GET_RESULT_TAI } from "../constants";
+import {
+  CREATE_NEW_FORMS6T,
+  GET_RESULT_TAI,
+  SET_TAI_TO_DEFAULT,
+} from "../constants";
 
 const initialState = {
   ans6_Im: 0,
@@ -23,7 +27,17 @@ export default (state = initialState, { type, payload }) => {
         results: payload[6],
       };
     case GET_RESULT_TAI:
-        return { ...state, results: payload}
+      return { ...state, results: payload };
+    case SET_TAI_TO_DEFAULT:
+      return {
+        ans6_Im: 0,
+        ans6_Me: 0,
+        ans6_To: 0,
+        ans6_Fe: 0,
+        groupT: 0,
+        collect: false,
+        results: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+      };
     default:
       return state;
   }
