@@ -15,6 +15,7 @@ import {
   CREATE_NEW_FORMS8,
   CREATE_NEW_FORMS9,
   CREATE_NEW_FORMS92,
+  FORMS1P6_ADD_NEW,
   // FORMS1P4_ADD_NEW,
   GET_COLLECT_S10,
   GET_COLLECT_S2,
@@ -43,6 +44,24 @@ import {
   SET_MMSE_TO_DEFAULT,
   SET_TAI_TO_DEFAULT,
 } from "../constants";
+
+export const getDisease = eldId => {
+  return dispatch => {
+    return Axios.get(`${apiEld}/disease/findOne/${eldId}`).then(res=>{
+      let disease = []
+      if(res.data!==null){
+        res.data.DISEASE.map(value=>{
+          return disease.push(value.DIS_NAME)
+        })
+      }
+      console.log('getDisease Arr ',disease)
+      dispatch({
+        type: FORMS1P6_ADD_NEW,
+        payload: [disease]
+      })
+    })
+  }
+}
 
 export const getCollect = (visId) => {
   return (dispatch) => {

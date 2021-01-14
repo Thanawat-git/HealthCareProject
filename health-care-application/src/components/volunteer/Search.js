@@ -14,7 +14,6 @@ import {
   InputAdornment,
   makeStyles,
   Paper,
-  CircularProgress,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import * as formAction from "../../actions/forms1p6.action";
@@ -56,6 +55,8 @@ export default function Asynchronous() {
   const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
 
   function handleClickOpen(value) {
+    dispatch(getAction.resetCollectFromReducer())
+    dispatch(getAction.resetDateAllForm())
     const d = new Date();
     const visDate = `${d.getFullYear()+543}-${d.getMonth() + 1}-${d.getDate()}`;
     Axios.get(`${apiEld}/visit/search/${value.ELD_ID_NUMBER}/date/${visDate}`).then(res=>{
@@ -111,7 +112,10 @@ export default function Asynchronous() {
               <div>
                 <Paper
                   className="paper-show"
-                  onClick={() => handleClickOpen(value)}
+                  onClick={() => {
+                    handleClickOpen(value)
+                    dispatch(getAction.getDisease(value.ELD_ID_NUMBER))
+                  }}
                 >
                   {`${value.ELD_ID_NUMBER}   ${value.ELD_FIRSTNAME} ${value.ELD_LASTNAME}`}
                 </Paper>
@@ -233,7 +237,8 @@ export default function Asynchronous() {
                               className="btn btn-light" 
                               variant="contained"
                               onClick={()=>{
-                                // dispatch(getAction.resetCollectFromReducer())
+                                dispatch(getAction.resetCollectFromReducer())
+                                dispatch(getAction.resetDateAllForm())
                                 const data = [value.VIS_ID,elderlyReducer.resultSelected.ELD_ID_NUMBER]
                                 dispatch({
                                   type: "VIS_ID",
@@ -241,7 +246,6 @@ export default function Asynchronous() {
                                 })
                                 dispatch(getAction.getCollect(value.VIS_ID));
                                 dispatch(getAction.getAllResult(value.VIS_ID));
-                                // <CircularProgress />
                                 if(!forms2Reducer.isFetching){
                                   setTimeout(() => {
                                     history.push("/mainmenu");
