@@ -21,6 +21,7 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "moment/locale/th";
+import { SET_SEC2_TO_DEFAULT } from "../../../../constants";
 
 moment.locale("th");
 let noResult = "ไม่มีผลการประเมิน"
@@ -63,6 +64,9 @@ export default function ShowHistory({ value }) {
   };
   const handleClose = () => {
     setOpen(false);
+    dispatch({
+      type: SET_SEC2_TO_DEFAULT,
+    })
   };
 
   const historyShow = ()=>{
