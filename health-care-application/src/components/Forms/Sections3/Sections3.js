@@ -74,10 +74,14 @@ export default function Sections3() {
           setAns3_4("1");
           setdis3N(true)
           break;
-          case "โรคหัวใจ":
+        case "โรคหัวใจ":
             setAns3_6("1");
             setdis4N(true)
             break;
+        case "อัมพฤตษ์ อัมพาต":
+              setAns3_6("1");
+              setdis4N(true)
+              break;
         default:
           break;
       }
