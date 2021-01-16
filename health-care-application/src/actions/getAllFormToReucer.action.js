@@ -42,8 +42,36 @@ import {
   SELECT_SECTION,
   SET_89Q_TO_DEFAULT,
   SET_MMSE_TO_DEFAULT,
+  SET_SEC10_TO_DEFAULT,
+  SET_SEC2_TO_DEFAULT,
+  SET_SEC3_TO_DEFAULT,
+  SET_SEC4_TO_DEFAULT,
+  SET_SEC5_TO_DEFAULT,
+  SET_SEC6_TO_DEFAULT,
+  SET_SEC7_TO_DEFAULT,
+  SET_SEC8_TO_DEFAULT,
+  SET_SEC92_TO_DEFAULT,
+  SET_SEC9_TO_DEFAULT,
   SET_TAI_TO_DEFAULT,
 } from "../constants";
+
+export const setDataToDefaultForAllSection = ()=> {
+  return dispatch => {
+    dispatch({type: SET_SEC2_TO_DEFAULT})
+    dispatch({type: SET_SEC3_TO_DEFAULT})
+    dispatch({type: SET_SEC4_TO_DEFAULT})
+    dispatch({type: SET_SEC5_TO_DEFAULT})
+    dispatch({type: SET_SEC6_TO_DEFAULT})
+    dispatch({type: SET_SEC7_TO_DEFAULT})
+    dispatch({type: SET_SEC8_TO_DEFAULT})
+    dispatch({type: SET_SEC9_TO_DEFAULT})
+    dispatch({type: SET_SEC92_TO_DEFAULT})
+    dispatch({type: SET_SEC10_TO_DEFAULT})
+    dispatch({type: SET_TAI_TO_DEFAULT})
+    dispatch({type: SET_MMSE_TO_DEFAULT})
+    dispatch({type: SET_89Q_TO_DEFAULT})
+  }
+}
 
 export const getDisease = eldId => {
   return dispatch => {

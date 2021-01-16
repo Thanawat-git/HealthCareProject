@@ -1,4 +1,9 @@
-import { CREATE_NEW_FORMS4, GET_COLLECT_S4, GET_RESULT_S4 } from "../constants";
+import {
+  CREATE_NEW_FORMS4,
+  GET_COLLECT_S4,
+  GET_RESULT_S4,
+  SET_SEC4_TO_DEFAULT,
+} from "../constants";
 
 const initialState = {
   ans4_1: 0,
@@ -32,6 +37,18 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, collect: payload };
     case GET_RESULT_S4:
       return { ...state, results: payload };
+    case SET_SEC4_TO_DEFAULT:
+      return {
+        ans4_1: 0,
+        ans4_2: 0,
+        ans4_3: 0,
+        ans4_4: 0,
+        ans4_5: 0,
+        count: 0,
+        results: "ยังไม่สามารถแปลผลได้เนื่องจากข้อมูลยังไม่ครบ",
+        collect: false,
+        isFetching: null,
+      };
     default:
       return state;
   }

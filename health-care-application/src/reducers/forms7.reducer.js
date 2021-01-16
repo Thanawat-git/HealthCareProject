@@ -1,4 +1,9 @@
-import { CREATE_NEW_FORMS7, GET_COLLECT_S7, GET_RESULT_S7 } from "../constants";
+import {
+  CREATE_NEW_FORMS7,
+  GET_COLLECT_S7,
+  GET_RESULT_S7,
+  SET_SEC7_TO_DEFAULT,
+} from "../constants";
 
 const initialState = {
   ans7_1: 0,
@@ -58,6 +63,32 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, collect: payload };
     case GET_RESULT_S7:
       return { ...state, results: payload };
+    case SET_SEC7_TO_DEFAULT:
+      return {
+        ans7_1: 0,
+        ans7_2: 0,
+        ans7_3: 0,
+        ans7_4: 0,
+        ans7_5: 0,
+        ans7_6: 0,
+        ans7_7: 0,
+        ans7_8: 0,
+        ans7_9: 0,
+        ans7_10: 0,
+        collect: false,
+        results: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+        textAns1: null,
+        textAns2: null,
+        textAns3: null,
+        textAns4: null,
+        textAns5: null,
+        textAns6: null,
+        textAns7: null,
+        textAns8: null,
+        textAns9: null,
+        textAns10: null,
+        isFetching: null,
+      };
     default:
       return state;
   }

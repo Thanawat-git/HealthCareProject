@@ -1,4 +1,9 @@
-import { CREATE_NEW_FORMS9, GET_COLLECT_S9, GET_RESULT_S9 } from "../constants";
+import {
+  CREATE_NEW_FORMS9,
+  GET_COLLECT_S9,
+  GET_RESULT_S9,
+  SET_SEC9_TO_DEFAULT,
+} from "../constants";
 
 const initialState = {
   ans9_1: 0,
@@ -21,7 +26,7 @@ const initialState = {
   minute: null,
   second: null,
   result2: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
-  isFetching:null
+  isFetching: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -47,13 +52,37 @@ export default (state = initialState, { type, payload }) => {
         minute: payload[16],
         second: payload[17],
         result2: payload[18],
-        isFetching: false
+        isFetching: false,
       };
-    
+
     case GET_COLLECT_S9:
-      return { ...state, collect: payload};
+      return { ...state, collect: payload };
     case GET_RESULT_S9:
-      return { ...state, result1: payload[0], result2: payload[1]}
+      return { ...state, result1: payload[0], result2: payload[1] };
+    case SET_SEC9_TO_DEFAULT:
+      return {
+        ans9_1: 0,
+        ans9_2: 0,
+        ans9_3: 0,
+        ans9_4: 0,
+        ans9_5: 0,
+        ans9_6: 0,
+        ans9_7: 0,
+        ans9_8: 0,
+        ans9_9: 0,
+        ans9_10: 0,
+        ans9_11: 0,
+        ans9_12: 0,
+        collect: false,
+        result1: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+        count: 0,
+        walk: null,
+        walkInfo: null,
+        minute: null,
+        second: null,
+        result2: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+        isFetching: null,
+      };
     default:
       return state;
   }
