@@ -42,6 +42,7 @@ export default function EditForm({ value }) {
     });
     dispatch(getAction.getCollect(value.VIS_ID));
     dispatch(getAction.getAllResult(value.VIS_ID));
+    dispatch(getAction.getDisease(value.ELD_ID_NUMBER));
     setTimeout(() => {
       setOpen(true);
     }, 500);
