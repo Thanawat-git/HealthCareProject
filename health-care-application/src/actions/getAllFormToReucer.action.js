@@ -9,11 +9,13 @@ import {
   CREATE_NEW_FORMS4,
   CREATE_NEW_FORMS5,
   CREATE_NEW_FORMS6,
+  CREATE_NEW_FORMS6T,
   // CREATE_NEW_FORMS6T,
   CREATE_NEW_FORMS7,
   CREATE_NEW_FORMS7M,
   //CREATE_NEW_FORMS7M,
   CREATE_NEW_FORMS8,
+  CREATE_NEW_FORMS89Q,
   CREATE_NEW_FORMS9,
   CREATE_NEW_FORMS92,
   FORMS1P6_ADD_NEW,
@@ -395,6 +397,37 @@ export const getDataSec6 = (visId) => {
       });
   };
 };
+
+export const getDataTai = (visId) => {
+  return (dispatch) => {
+    return Axios.get(`${apiBase}/TAI/findOne/${visId}`)
+      .then((res) => {
+        console.log("res.data tai ", res.data);
+        const data = [
+          res.data.TAI_IMMOBILIZE+"",
+          res.data.TAI_MENTAL+"",
+          res.data.TAI_TOILET+"",
+          res.data.TAI_FEED+"",
+          res.data.TAI_GROUP,
+          res.data.TAI_CORRECT_FORM
+        ];
+        dispatch({
+          type: "FETCHING6T",
+        });
+        dispatch({
+          type: CREATE_NEW_FORMS6T,
+          payload: data,
+        });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec6",
+        // });
+      })
+      .catch((error) => {
+        console.log("err ", error);
+      });
+  };
+};
 export const getDataSec7 = (visId) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/alzheimer/findOne/${visId}`)
@@ -524,6 +557,20 @@ export const getDataSec8 = (visId) => {
           res.data.DEP_CORRECT_FORM,
           res.data.DEP_RESULT,
         ];
+        const data2 =[
+          res.data.DEP_8_1+"",
+          res.data.DEP_8_2+"",
+          res.data.DEP_8_3+"",
+          res.data.DEP_8_4+"",
+          res.data.DEP_8_5+"",
+          res.data.DEP_8_6+"",
+          res.data.DEP_8_7+"",
+          res.data.DEP_8_8+"",
+          res.data.DEP_8_9+"",
+          res.data.DEP_9Q_RESULT,
+          res.data.DEP_CORRECT_FORM,
+        ]
+
         dispatch({
           type: "FETCHING8",
         });
@@ -531,6 +578,10 @@ export const getDataSec8 = (visId) => {
           type: CREATE_NEW_FORMS8,
           payload: data,
         });
+        dispatch({
+          type: CREATE_NEW_FORMS89Q,
+          payload:data2
+        })
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec8",
@@ -541,6 +592,9 @@ export const getDataSec8 = (visId) => {
       });
   };
 };
+
+
+
 
 export const getDataSec9 = (visId) => {
   return (dispatch) => {
