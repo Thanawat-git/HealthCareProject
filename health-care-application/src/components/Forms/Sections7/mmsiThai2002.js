@@ -16,10 +16,14 @@ import "./Sections7.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/formsMMSE.action";
+import { SELECT_SECTION } from "../../../constants";
 
 export default function MMSIThai2002() {
   const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
   const dispatch = useDispatch();
 
   const [ans1, setAns1] = useState(forms7mReducer.ans1);
@@ -1513,21 +1517,28 @@ export default function MMSIThai2002() {
 
         {/* question */}
 
-        {/* bt */}
-        <div className="row justify-content-between">
-          <Link to="/mainmenu">
+        {selectFormSection.section === "mainmenu" ? (
+          <Link to="/mainmenu/sec7">
             <button type="button" className="btn form-btn btn-back btn-lg">
-              ยกเลิก
+              ย้อนกลับ
             </button>
           </Link>
-          <button
-            type="button"
-            className="btn form-btn btn-primary btn-lg"
-            onClick={handleSubmit}
-          >
-            บันทึก
-          </button>
-        </div>
+        ) : (
+          <Link>
+            <button
+              type="button"
+              className="btn form-btn btn-back btn-lg"
+              onClick={()=>{
+                dispatch({
+                  type: SELECT_SECTION,
+                  payload: "sec7",
+                });
+              }}
+            >
+              ย้อนกลับ
+            </button>
+          </Link>
+        )}
       </form>
       {/* <ShowResultPopup
         title="ผลการประเมินการทดสอบเบื้องต้นฉบับภาษาไทย"
