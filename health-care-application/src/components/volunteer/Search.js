@@ -115,6 +115,7 @@ export default function Asynchronous() {
                   onClick={() => {
                     handleClickOpen(value)
                     dispatch(getAction.getDisease(value.ELD_ID_NUMBER))
+                    dispatch(getAction.getEducate(value.ELD_ID_NUMBER))
                   }}
                 >
                   {`${value.ELD_ID_NUMBER}   ${value.ELD_FIRSTNAME} ${value.ELD_LASTNAME}`}

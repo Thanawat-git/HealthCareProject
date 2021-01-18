@@ -141,6 +141,7 @@ function MainMenu({fname, lname}) {
         break;
       case "sec9":
         dispatch(getAction.getDataSec9(visitID));
+        dispatch(getAction.getDataSec92(visitID));
         break;
       case "sec10":
         dispatch(getAction.getDataSec10(visitID));

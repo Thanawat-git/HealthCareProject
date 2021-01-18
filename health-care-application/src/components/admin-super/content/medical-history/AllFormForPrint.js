@@ -13,7 +13,19 @@ import {
   FormHelperText,
   Checkbox,
   FormGroup,
+  makeStyles,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   width: "100%",
+  // },
+  formControl: {
+    minWidth: 120,
+  },
+}));
 
 export default function AllFormForPrint() {
   return (
@@ -26,6 +38,10 @@ export default function AllFormForPrint() {
       <Tai />
       <Section7 />
       {/* <MMSE /> */}
+      <Section8 />
+      <Section89Q />
+      <Section9 />
+      <Section92 />
       <Section10 />
     </div>
   );
@@ -2724,6 +2740,1381 @@ function Section7() {
 //         </div>
 //   )
 // }
+
+function Section8() {
+  const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
+  const {ans8_1,ans8_2} = forms8Reducer
+  return <div className="css-form">
+      <h1>ข้อมูลของผู้สูงอายุ</h1>
+        <h2>ส่วนที่ 8 การคัดกรองโรคซึมเศร้า</h2>
+        <div className="question">
+          <div className="row">
+            <div className="col-12">
+              <p>
+                1. ช่วง 2 สัปดาห์ที่ผ่านมา ผู้สูงอายุรู้สึกหดหู่ เศร้า
+                หรือท้อแท้สิ้นหวัง
+              </p>
+            </div>
+            <div className="col-12">
+              <RadioGroup
+                className="pl-20"
+                aria-label="questions8.1"
+                name="questions8.1"
+                value={ans8_1}
+              >
+                <FormControlLabel
+                  className="radio-size"
+                  value="1"
+                  control={<Radio color="primary" />}
+                  label="มี"
+                />
+                <FormControlLabel
+                  className="radio-size"
+                  value="0"
+                  control={<Radio color="primary" />}
+                  label="ไม่มี"
+                />
+              </RadioGroup>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col-12">
+              <p>
+                2. ช่วง 2 สัปดาห์ที่ผ่านมา ผู้สูงอายุรู้สึกทำอะไรก็ไม่เพลิดเพลิน
+              </p>
+            </div>
+            <div className="col-12">
+              <RadioGroup
+                className="pl-20"
+                aria-label="questions8.2"
+                name="questions8.2"
+                value={ans8_2}
+              >
+                <FormControlLabel
+                  className="radio-size"
+                  value="1"
+                  control={<Radio color="primary" />}
+                  label="มี"
+                />
+                <FormControlLabel
+                  className="radio-size"
+                  value="0"
+                  control={<Radio color="primary" />}
+                  label="ไม่มี"
+                />
+              </RadioGroup>
+            </div>
+          </div>
+          <hr />
+        </div>
+        </div>
+}
+
+function Section89Q() {
+  const forms89qReducer = useSelector(({forms89qReducer}) => forms89qReducer)
+  const {
+    ans8_9q_1,
+    ans8_9q_2,
+    ans8_9q_3,
+    ans8_9q_4,
+    ans8_9q_5,
+    ans8_9q_6,
+    ans8_9q_7,
+    ans8_9q_8,
+    ans8_9q_9,
+  } = forms89qReducer
+  return (
+      <div className="css-form">
+          <h1>ข้อมูลของผู้สูงอายุ</h1>
+            <h2>ส่วนที่ 8 การคัดกรองโรคซึมเศร้า 9Q</h2>
+            <div className="question">
+              <p> <strong>ในช่วง 2 สัปดาห์ที่ผ่านมารวมทั้งวันนี้ ท่านมีอาการเหล่านี้บ่อยแค่ไหน</strong> </p>
+             <div className="row">
+                <div className="col-12">
+                    <p>1. เบื่อ ไม่สนใจอยากทำอะไร</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.1' name='questions8.9q.1' value={ans8_9q_1}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>2. ไม่สบาย ซึมเศร้า ท้อเเท้</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.2' name='questions8.9q.2' value={ans8_9q_2}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>3. หลับยาก หรือหลับๆ ตื่นๆ หรือ หลับมากไป</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.3' name='questions8.9q.3' value={ans8_9q_3}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>4. เหนื่อยง่าย หรือ ไม่ค่อยมีแรง</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.4' name='questions8.9q.4' value={ans8_9q_4}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>5. เบื่ออาหาร หรือ กินมากเกินไป</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.5' name='questions8.9q.5' value={ans8_9q_5}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>6. รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว หรือทำให้ตนเองหรือครอบครัวผิดหวัง</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.6' name='questions8.9q.6' value={ans8_9q_6}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>7. สมาธิไม่ดีเวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ หรือทำงานที่ต้องใช้ความตั้งใจ</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.7' name='questions8.9q.7' value={ans8_9q_7}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          <div className="row">
+                <div className="col-12">
+                    <p>8. พูดช้า หรือทำอะไรช้าลงจนคนอื่นสังเกตเห็นได้ หรือกระสับกระส่ายไม่สามารถอยู่นิ่งได้</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.8' name='questions8.9q.8' value={ans8_9q_8} >
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+
+          <div className="row">
+                <div className="col-12">
+                    <p>9. คิดทำร้ายตนเอง หรือคิดว่าถ้าตายไปคงจะดี</p>
+                </div>
+                <div className="col-12">
+                <RadioGroup className="pl-20" aria-label='questions8.9q.9' name='questions8.9q.9' value={ans8_9q_9}>
+                    <FormControlLabel className="radio-size" value='0'  control={<Radio color="primary" />} label="ไม่มีเลย" />
+                    <FormControlLabel className="radio-size" value='1' control={<Radio color="primary" />} label="เป็นบางวัน (1-7 วัน)" />
+                    <FormControlLabel className="radio-size" value='2'  control={<Radio color="primary" />} label="เป็นบ่อย (มากกว่า 7วัน)" />
+                    <FormControlLabel className="radio-size" value='3' control={<Radio color="primary" />} label="เป็นทุกวัน" />
+                </RadioGroup>             
+                </div>
+             </div>
+             <hr/>
+          
+            </div>
+            </div>
+  )
+}
+
+function Section9() {
+  const classes = useStyles();
+  const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
+  const {
+    ans9_1,
+    ans9_2,
+    ans9_3,
+    ans9_4,
+    ans9_5,
+    ans9_6,
+    ans9_7,
+    ans9_8,
+    ans9_9,
+    ans9_10,
+    ans9_11,
+    ans9_12,
+    walk,
+    walkInfo,
+    minute,
+    second,
+  } = forms9Reducer
+  return (
+      <div className="css-form">
+        <h2>ส่วนที่ 9 สุขภาพกระดูกและกล้ามเนื้อ</h2>
+        <h4 style={{ marginLeft: 10, marginTop: 10 }}>
+          การคัดกรองความเสี่ยงต่อการพลัดตกหกล้ม
+        </h4>
+        <div className="question">
+          <p>เคยพลัดตกหกล้มในช่วง 1 ปีที่ผ่านมา</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_1"
+            name="ans9_1"
+            value={ans9_1}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>ใช้ไม้เท้าหรืออุปกรณ์ช่วยเดิน</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_2"
+            name="ans9_2"
+            value={ans9_2}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>บางครั้งมีความรู้สึกว่าเดินไม่ค่อยมั่นคง</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_3"
+            name="ans9_3"
+            value={ans9_3}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>ต้องจับเฟอร์นิเจอร์เพื่อประคองตนเองขณะเดินในบ้าน</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_4"
+            name="ans9_4"
+            value={ans9_4}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>ต้องใช้มือดันตัวเองขึ้นเวลาลุกจากเก้าอี้</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_5"
+            name="ans9_5"
+            value={ans9_5}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>มีความกังวลว่าตนเองจะหกล้ม</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_6"
+            name="ans9_6"
+            value={ans9_6}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>มีปัญหาเวลาก้าวขึ้นขอบฟุตบาท</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_7"
+            name="ans9_7"
+            value={ans9_7}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>ต้องรีบเร่งเข้าห้องน้ำเมื่อปวดปัสสาวะหรืออุจจาระ</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_8"
+            name="ans9_8"
+            value={ans9_8}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>มีอาการชาที่ฝ่าเท้า</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_9"
+            name="ans9_9"
+            value={ans9_9}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>กินยาที่ทำให้เวียนหัวหรือเหนื่อยง่ายกว่าปกติ</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_10"
+            name="ans9_10"
+            value={ans9_10}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>กินยานอนหลับหรือยาแก้เครียด</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_11"
+            name="ans9_11"
+            value={ans9_11}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <p>รู้สึกเศร้าหรือหดหู่</p>
+          <RadioGroup
+            className="pl-10"
+            aria-label="ans9_12"
+            name="ans9_12"
+            value={ans9_12}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <hr />
+          <h4>
+            <b>ประเมินสมรรถภาพทางกาย</b>
+          </h4>
+          <h4 style={{ marginLeft: 10 }}>การเดิน</h4>
+          <RadioGroup
+            className="pl-10"
+            aria-label="walk"
+            name="walk"
+            value={walk}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="เดินได้ด้วยตัวเอง"
+              control={<Radio color="primary" />}
+              label="เดินได้ด้วยตัวเอง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="เดินโดยใช้อุปกรณ์"
+              control={<Radio color="primary" />}
+              label="เดินโดยใช้อุปกรณ์"
+            />
+            {walk === "เดินโดยใช้อุปกรณ์" && (
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="useEquipment">เลือกอุปกรณ์</InputLabel>
+                <Select
+                  name="walkInfo"
+                  id="useEquipment"
+                  value={walkInfo}
+                >
+                  <MenuItem value="ไม้เท้า">ไม้เท้า</MenuItem>
+                  <MenuItem value="ไม้ค้ำยืน">ไม้ค้ำยืน</MenuItem>
+                  <MenuItem value="ไม้เท้าแบบ3ขา">ไม้เท้าแบบ 3 ขา</MenuItem>
+                  <MenuItem value="ไม้เท้าแบบ4ขา">ไม้เท้าแบบ 4 ขา</MenuItem>
+                </Select>
+              </FormControl>
+            )}
+            <FormControlLabel
+              className="radio-size"
+              value="เดินไม่ได้"
+              control={<Radio color="primary" />}
+              label="เดินไม่ได้"
+            />
+            {walk === "เดินไม่ได้" ? (
+              <TextField
+                id="outlined-basic"
+                defaultValue={walkInfo}
+                name="walkInfo"
+                label="ระบุสาเหตุ"
+                variant="outlined"
+                size="small"
+              />
+            ) : (
+              ""
+            )}
+          </RadioGroup>
+
+          {(walk == "เดินได้ด้วยตัวเอง" || walk == "เดินโดยใช้อุปกรณ์") && (
+            <React.Fragment>
+              <p>Time Up & Go</p>
+              <div className="row">
+                <div className="col-6">
+                  <OutlinedInput
+                    name="minute"
+                    defaultValue={minute}
+                    endAdornment={
+                      <InputAdornment position="end">นาที</InputAdornment>
+                    }
+                    fullWidth
+                  />
+                </div>
+                <div className="col-6">
+                  <OutlinedInput
+                    name="second"
+                    defaultValue={second}
+                    endAdornment={
+                      <InputAdornment position="end">วินาที</InputAdornment>
+                    }
+                    fullWidth
+                  />
+                </div>
+              </div>
+            </React.Fragment>
+          )}
+        </div>
+        </div>
+  )
+}
+
+function Section92() {
+  const forms92Reducer = useSelector(({ forms92Reducer }) => forms92Reducer);
+  const {
+    ans1R,
+    ans2R,
+    ans3R,
+    ans4R,
+    ans5R,
+    ans1L,
+    ans2L,
+    ans3L,
+    ans4L,
+    ans5L,
+    ans1N,
+    ans2N,
+    ans3N,
+    ans4N,
+    ans5N,
+    ans1_1,
+    ans1_2,
+    ans3_1,
+    ans3_2,
+    ans3_3,
+    ans3_4,
+    ans3_5,
+    ans3_6,
+    ans3_7,
+    ans3_8,
+    ans3_9,
+    ans3_10,
+    ans3_11,
+    ans3_12,
+  } = forms92Reducer
+  return (
+      <div className="css-form">
+        <h2>ส่วนที่ 9 สุขภาพกระดูกและกล้ามเนื้อ (ต่อ) </h2>
+        <div className="question">
+          <p>
+            <b>ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อม</b>
+          </p>
+          <p>ท่านมีอาการปวดเข่าหรือไม่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans1_1}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ใช่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่ใช่"
+            />
+          </RadioGroup>
+          <div id="myDIV">
+            <hr />
+            <p>
+              หากท่านมีอาการปวดเข่าหรือเคยมี
+              ขณะนี้ท่านมีระดับความเจ็บปวดของข้อเข่าอยู่ในระดับใด
+            </p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans1_2}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ไม่เจ็บ"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="2"
+                control={<Radio color="primary" />}
+                label="เจ็บเล็กน้อย"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="4"
+                control={<Radio color="primary" />}
+                label="เจ็บปานกลาง"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="6"
+                control={<Radio color="primary" />}
+                label="เจ็บมาก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="8"
+                control={<Radio color="primary" />}
+                label="เจ็บมากที่สุด"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="10"
+                control={<Radio color="primary" />}
+                label="เจ็บอย่างรุนเเรง"
+              />
+            </RadioGroup>
+          </div>
+          <hr />
+          <p>
+            <b>ตอนที่ 2 การคัดกรองข้อเข่าเสื่อมทางคลินิก</b>
+          </p>
+          <p>1. ข้อเข่าฝืดตึงหลังตื่นนอนตอนเช้า &lt; 30 นาที</p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans1R}
+                  value="ปวดข้างขวา"
+                  name="ans1R"
+                  color="primary"
+                />
+              }
+              label="ขวา"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans1L}
+                  value="ปวดข้างซ้าย"
+                  name="ans1L"
+                  color="primary"
+                />
+              }
+              label="ซ้าย"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans1N}
+                  value="ไม่ปวด"
+                  name="ans1N"
+                />
+              }
+              label="ไม่ใช่"
+            />
+          </FormGroup>
+          <hr />
+          <p>2. เสียงดังกรอบแกรบขณะเคลื่อนไหว</p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans2R}
+                  name="ans2R"
+                  color="primary"
+                />
+              }
+              label="ขวา"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans2L}
+                  name="ans2L"
+                  color="primary"
+                />
+              }
+              label="ซ้าย"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans2N}
+                  name="ans2N"
+                />
+              }
+              label="ไม่ใช่"
+            />
+          </FormGroup>
+          <p>3. กดเจ็บที่กระดูกข้อเข่า</p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans3R}
+                  name="ans3R"
+                  color="primary"
+                />
+              }
+              label="ขวา"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans3L}
+                  name="ans3L"
+                  color="primary"
+                />
+              }
+              label="ซ้าย"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans3N}
+                  name="ans3N"
+                />
+              }
+              label="ไม่ใช่"
+            />
+          </FormGroup>
+          <hr />
+          <p>4. ข้อใหญ่ผิดรูป</p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans4R}
+                  name="ans4R"
+                  color="primary"
+                />
+              }
+              label="ขวา"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans4L}
+                  name="ans4L"
+                  color="primary"
+                />
+              }
+              label="ซ้าย"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans4N}
+                  name="ans4N"
+                />
+              }
+              label="ไม่ใช่"
+            />
+          </FormGroup>
+          <hr />
+          <p>5. ไม่พบข้ออุ่น</p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans5R}
+                  name="ans5R"
+                  color="primary"
+                />
+              }
+              label="ขวา"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans5L}
+                  name="ans5L"
+                  color="primary"
+                />
+              }
+              label="ซ้าย"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ans5N}
+                  name="ans5N"
+                />
+              }
+              label="ไม่ใช่"
+            />
+          </FormGroup>
+          <hr />
+          <p>
+            <b>
+              ตอนที่ 3 แบบประเมินระดับความรุนแรงของโรคข้อเข่าเสื่อม (Oxford Knee
+              Score)
+            </b>
+          </p>
+          <p>1.ให้ท่านบรรยายลักษณะอาการเจ็บปวดเข่าของท่าน</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_1}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่มีอาการ"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="แทบไม่มีอาการ"
+            />
+            <p className="hh">
+              (เช่น อาการปวดลึกๆที่เข่าเล็กน้อย
+              เฉพาะเวลาขยับตัวหรือในบางท่าเท่านั้น)
+            </p>
+
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเล็กน้อย"
+            />
+            <p className="hh">
+              (เช่น หลังใช้งานนาน อาการปวดเข่ามากขึ้น พักแล้วดีขึ้น เป็นๆหายๆ)
+            </p>
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดปานกลาง"
+            />
+            <p className="hh">(เช่น อาการปวดเข่าเพิ่มมากขึ้น ปวดนานขึ้น)</p>
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดรุนแรง"
+            />
+            <p className="hh">(เช่น อยู่เฉยๆก็ปวดมาก ขยับไม่ได้)</p>
+          </RadioGroup>
+          <hr />
+          <p>
+            2.ท่านมีปัญหาเรื่องเข่าในการทำกิจวัตรประจำวันด้วยตัวเองหรือไม่ เช่น
+            การยืนอาบน้ำเป็นต้น
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_2}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่มีปัญหา"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืดตึงขัดเล็กน้อย แต่น้อยมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืดตึงปานกลาง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="เริ่มมีปัญหาทำกิจกรรมด้วยความยากลำบาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่สามารถทำได้"
+            />
+          </RadioGroup>
+          <hr />
+
+          <p>3.ท่านมีปัญหาเรื่องเข่า เมื่อก้าวขึ้นลงรถหรือรถประจำทางหรือไม่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_3}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่มีอาการใดๆ"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืดตึงขัดเล็กน้อย แต่น้อยมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืดปานกลาง ก้าวขึ้นลงได้ช้ากว่าปกติ"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืด ก้าวขึ้นลงด้วยความยากลำบาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไม่สามารถทำได้"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            4.ระยะเวลานานเท่าไหร่ที่ท่านเดินได้มากที่สุดก่อนที่ท่านจะมีอาการปวดเข่า
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_4}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="เดินได้เกิน 1 ชั่วโมง โดยไม่มีอาการอะไร"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="เดินได้ 6-60 นาที เริ่มมีอาการปวด"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="เดินได้เพียง 5-15 นาที เริ่มมีอาการปวด"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="เดินได้แค่รอบบ้านเท่านั้น เริ่มมีอาการปวด"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ทำไม่ได้และเดินไม่ไหว"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            5.หลังทานอาหารเสร็จ ในขณะที่ลุกขึ้นจากเก้าอี้นั่ง
+            เข่าของท่านมีอาการอย่างไร
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_5}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่มีอาการใดๆ"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืดตึงขัดเล็กน้อย แต่น้อยมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่า/ข้อเข่าฝืดปานกลาง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="มีอาการปวดเข่ามาก/ข้อเข่าฝืด ลุกขึ้นยืนได้ด้วยความยากลำบาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ปวดมากไม่สามารถลุกขึ้นได้"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            6.ท่านต้องเดินโยกตัว(เดินกระโผลกกระเผลก)
+            เพราะอาการที่เกิดจากเข่าของท่าน หรือไม่
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_6}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่เคย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="ในช่วง 2-3 ก้าวแรกที่ออกเดินเท่านั้น"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="เป็นบางครั้ง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="เป็นส่วนใหญ่"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ตลอดเวลา"
+            />
+          </RadioGroup>
+          <hr />
+          <p>7.ท่านสามารถนั่งลงคุกเข่าและลุกขึ้นได้หรือไม่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_7}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ลุกได้ง่าย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="ลุกได้ ลำบากเล็กน้อย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="ได้แต่ลำบากปานกลาง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ลุกได้แต่ยากลำบากมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ลุกไม่ไหว"
+            />
+          </RadioGroup>
+          <hr />
+          <p>8.ท่านเคยมีปัญหาปวดเข่าในขณะที่นอนตอนกลางคืนหรือไม่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_8}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่เคย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="ใน 1 เดือน มี 1-2 ครั้ง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="บางคืน"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="เกือบทุกคืน"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ทุกคืน"
+            />
+          </RadioGroup>
+          <hr />
+          <p>9.ในขณะที่คุณทำงาน/ทำงานบ้าน ท่านมีอาการปวดเข่าหรือไม่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_9}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่มี"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="น้อยมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="บางครั้ง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ส่วนมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ตลอดเวลา"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            10.ท่านเคยมีความรู้สึกว่าเข่าของท่านทรุดลงทันทีหรือหมดแรงทันทีจนตัวทรุดลง
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_10}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ไม่เคย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="ในช่วงแรกที่ก้าวเดินเท่านั้น "
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="บ่อยครั้ง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="แทบจะตลอดเวลา"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ตลอดเวลา"
+            />
+          </RadioGroup>
+          <hr />
+          <p>11.ท่านสามารถไปซื้อของใช้ต่างๆได้ด้วยตัวท่านเอง</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_11}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="ได้เป็นปกติ"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="ได้ เริ่มมีอาการปวดเข่า/ตึงเข่าเล็กน้อย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="ไปได้ เริ่มมีอาการปวดเข่า /ตึงเข่าปานกลาง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="พอไปได้ แต่ด้วยความยากลำบากมาก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ไปไม่ไหว"
+            />
+          </RadioGroup>
+          <hr />
+          <p>12.ท่านสามารถเดินลงบันไดได้หรือไม่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions6.Im"
+            name="questions6.Im"
+            value={ans3_12}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="4"
+              control={<Radio color="primary" />}
+              label="เดินลงได้ เป็นปกติ"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="3"
+              control={<Radio color="primary" />}
+              label="เดินลงได้ เริ่มมีอาการปวดเข่า/ตึงเข่าเล็กน้อย"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="2"
+              control={<Radio color="primary" />}
+              label="เดินลงได้ เริ่มมีอาการปวดเข่า/ตึงเข่าปานกลาง"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="เดินลงได้ด้วยความยากลำบากมาก "
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="เดินลงไม่ได้"
+            />
+          </RadioGroup>
+          <hr />
+        </div>
+        </div>
+  )
+}
 
 const Section10 = () => {
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
