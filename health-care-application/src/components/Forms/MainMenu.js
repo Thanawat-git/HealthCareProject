@@ -99,6 +99,9 @@ function MainMenu(props) {
   const visitID = useSelector(({ visitID }) => visitID.visiId);
   // console.log('visitID ',visitID)
   const peopleID = useSelector(({ visitID }) => visitID.peopleId);
+  useEffect(() => {
+    dispatch(getAction.getEducate(peopleID))
+  }, [])
   // const { user } = useSelector((state) => state.authReducer);
   let history = useHistory();
   const dispatch = useDispatch();
