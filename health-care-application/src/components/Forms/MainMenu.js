@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, ListItem, ListItemIcon } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Header from "../volunteer/Header"
-import { Link, useHistory, useRouteMatch, Route,} from "react-router-dom";
+import Header from "../volunteer/Header";
+import { Link, useHistory, useRouteMatch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SumaryReport from "./SumaryReport";
 import * as getAction from "../../actions/getAllFormToReucer.action";
@@ -29,8 +29,8 @@ const useStyles = makeStyles({
 function MainMenu(props) {
   const { url, path } = useRouteMatch();
   useEffect(() => {
-    console.log('url in mainmenu ', url, 'path ',path)
-  }, [])
+    console.log("url in mainmenu ", url, "path ", path);
+  }, []);
   const collect2 = useSelector(({ forms2Reducer }) => forms2Reducer.collect);
   const collect3 = useSelector(({ forms3Reducer }) => forms3Reducer.collect);
   const collect4 = useSelector(({ forms4Reducer }) => forms4Reducer.collect);
@@ -116,6 +116,7 @@ function MainMenu(props) {
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
   const getData = (sec) => {
+    
     switch (sec) {
       case "sec2":
         dispatch(getAction.getDataSec2(visitID));
@@ -160,7 +161,7 @@ function MainMenu(props) {
       case "sec7":
         dispatch(getAction.getDataSec7(visitID));
         dispatch(getAction.getEducate(peopleID));
-        //dispatch(getAction.getDatammse(visitID));
+        dispatch(getAction.getDatammse(visitID));
         if (!forms7Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec7`);
@@ -192,7 +193,7 @@ function MainMenu(props) {
           }, 200);
         }
         break;
-        
+
       default:
         break;
     }
@@ -200,133 +201,133 @@ function MainMenu(props) {
 
   return (
     <React.Fragment>
-      <Header/> <br/>
-        <Card className={classes.root}>
-        <h4 style={{ textAlign: "center" }}> 
-        คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME} {elderlyReducer.resultSelected.ELD_LASTNAME}
+      <Header /> <br />
+      <Card className={classes.root}>
+        <h4 style={{ textAlign: "center" }}>
+          คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME}{" "}
+          {elderlyReducer.resultSelected.ELD_LASTNAME}
         </h4>
-          <CardContent>
-            <Link
-              onClick={() => {
-                getData("sec2");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i2} />
-                </ListItemIcon>
-                แบบคัดกรองสภาวะสุขภาพ
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec3");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i3} />
-                </ListItemIcon>
-                ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec4");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i4} />
-                </ListItemIcon>
-                แบบคัดกรองสุขภาพตา
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec5");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i5} />
-                </ListItemIcon>
-                การประเมินสุขภาพช่องปาก
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec6");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i6} />
-                </ListItemIcon>
-                การประเมินความสามารถในการทำกิจวัตรประจำ
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec7");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i7} />
-                </ListItemIcon>
-                การประเมินภาวะสมองเสื่อม
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec8");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i8} />
-                </ListItemIcon>
-                การคัดกรองโรคซึมเศร้า
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec9");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i9} />
-                </ListItemIcon>
-                สุขภาพกระดูกและกล้ามเนื้อ
-              </ListItem>
-            </Link>{" "}
-            <hr />
-            <Link
-              onClick={() => {
-                getData("sec10");
-              }}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <CheckCircleIcon className={colorIcon.i10} />
-                </ListItemIcon>
-                การคัดกรองการกลั้นปัสสาวะ
-              </ListItem>
-            </Link>
-            <hr />
-           
-            <SumaryReport />
-          </CardContent>
-        </Card>
+        <CardContent>
+          <Link
+            onClick={() => {
+              getData("sec2");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i2} />
+              </ListItemIcon>
+              แบบคัดกรองสภาวะสุขภาพ
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec3");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i3} />
+              </ListItemIcon>
+              ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec4");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i4} />
+              </ListItemIcon>
+              แบบคัดกรองสุขภาพตา
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec5");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i5} />
+              </ListItemIcon>
+              การประเมินสุขภาพช่องปาก
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec6");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i6} />
+              </ListItemIcon>
+              การประเมินความสามารถในการทำกิจวัตรประจำ
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec7");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i7} />
+              </ListItemIcon>
+              การประเมินภาวะสมองเสื่อม
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec8");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i8} />
+              </ListItemIcon>
+              การคัดกรองโรคซึมเศร้า
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec9");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i9} />
+              </ListItemIcon>
+              สุขภาพกระดูกและกล้ามเนื้อ
+            </ListItem>
+          </Link>{" "}
+          <hr />
+          <Link
+            onClick={() => {
+              getData("sec10");
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i10} />
+              </ListItemIcon>
+              การคัดกรองการกลั้นปัสสาวะ
+            </ListItem>
+          </Link>
+          <hr />
+          <SumaryReport />
+        </CardContent>
+      </Card>
     </React.Fragment>
   );
 }

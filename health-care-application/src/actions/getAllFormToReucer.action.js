@@ -11,7 +11,8 @@ import {
   CREATE_NEW_FORMS6,
   // CREATE_NEW_FORMS6T,
   CREATE_NEW_FORMS7,
-  // CREATE_NEW_FORMS7M,
+  CREATE_NEW_FORMS7M,
+  //CREATE_NEW_FORMS7M,
   CREATE_NEW_FORMS8,
   CREATE_NEW_FORMS9,
   CREATE_NEW_FORMS92,
@@ -55,41 +56,41 @@ import {
   SET_TAI_TO_DEFAULT,
 } from "../constants";
 
-export const setDataToDefaultForAllSection = ()=> {
-  return dispatch => {
-    dispatch({type: SET_SEC2_TO_DEFAULT})
-    dispatch({type: SET_SEC3_TO_DEFAULT})
-    dispatch({type: SET_SEC4_TO_DEFAULT})
-    dispatch({type: SET_SEC5_TO_DEFAULT})
-    dispatch({type: SET_SEC6_TO_DEFAULT})
-    dispatch({type: SET_SEC7_TO_DEFAULT})
-    dispatch({type: SET_SEC8_TO_DEFAULT})
-    dispatch({type: SET_SEC9_TO_DEFAULT})
-    dispatch({type: SET_SEC92_TO_DEFAULT})
-    dispatch({type: SET_SEC10_TO_DEFAULT})
-    dispatch({type: SET_TAI_TO_DEFAULT})
-    dispatch({type: SET_MMSE_TO_DEFAULT})
-    dispatch({type: SET_89Q_TO_DEFAULT})
-  }
-}
+export const setDataToDefaultForAllSection = () => {
+  return (dispatch) => {
+    dispatch({ type: SET_SEC2_TO_DEFAULT });
+    dispatch({ type: SET_SEC3_TO_DEFAULT });
+    dispatch({ type: SET_SEC4_TO_DEFAULT });
+    dispatch({ type: SET_SEC5_TO_DEFAULT });
+    dispatch({ type: SET_SEC6_TO_DEFAULT });
+    dispatch({ type: SET_SEC7_TO_DEFAULT });
+    dispatch({ type: SET_SEC8_TO_DEFAULT });
+    dispatch({ type: SET_SEC9_TO_DEFAULT });
+    dispatch({ type: SET_SEC92_TO_DEFAULT });
+    dispatch({ type: SET_SEC10_TO_DEFAULT });
+    dispatch({ type: SET_TAI_TO_DEFAULT });
+    dispatch({ type: SET_MMSE_TO_DEFAULT });
+    dispatch({ type: SET_89Q_TO_DEFAULT });
+  };
+};
 
-export const getDisease = eldId => {
-  return dispatch => {
-    return Axios.get(`${apiEld}/disease/findOne/${eldId}`).then(res=>{
-      let disease = []
-      if(res.data!==null){
-        res.data.DISEASE.map(value=>{
-          return disease.push(value.DIS_NAME)
-        })
+export const getDisease = (eldId) => {
+  return (dispatch) => {
+    return Axios.get(`${apiEld}/disease/findOne/${eldId}`).then((res) => {
+      let disease = [];
+      if (res.data !== null) {
+        res.data.DISEASE.map((value) => {
+          return disease.push(value.DIS_NAME);
+        });
       }
-      console.log('getDisease Arr ',disease)
+      console.log("getDisease Arr ", disease);
       dispatch({
         type: FORMS1P6_ADD_NEW,
-        payload: [disease]
-      })
-    })
-  }
-}
+        payload: [disease],
+      });
+    });
+  };
+};
 
 export const getCollect = (visId) => {
   return (dispatch) => {
@@ -131,8 +132,8 @@ export const getCollect = (visId) => {
   };
 };
 
-export const resetCollectFromReducer = ()=>{
-  return dispatch => {
+export const resetCollectFromReducer = () => {
+  return (dispatch) => {
     dispatch({ type: GET_COLLECT_S2, payload: false });
     dispatch({ type: GET_COLLECT_S3, payload: false });
     dispatch({ type: GET_COLLECT_S4, payload: false });
@@ -142,72 +143,72 @@ export const resetCollectFromReducer = ()=>{
     dispatch({ type: GET_COLLECT_S8, payload: false });
     dispatch({ type: GET_COLLECT_S9, payload: false });
     dispatch({ type: GET_COLLECT_S10, payload: false });
-  }
-}
+  };
+};
 
-export const getAllResult = visId => {
-  return dispatch => {
-    return (
-      Axios.get(`${apiEld}/examsummary/${visId}`).then(res=>{
-        console.log('res.data result in getAllresult ',res.data)
+export const getAllResult = (visId) => {
+  return (dispatch) => {
+    return Axios.get(`${apiEld}/examsummary/${visId}`)
+      .then((res) => {
+        console.log("res.data result in getAllresult ", res.data);
         let resultsec2 = [
           res.data.WAI_RESULT,
           res.data.BMI_RESULT,
           res.data.BP_RESULT,
           res.data.FBS_RESULT,
-        ]
-        let resultsec9 = [
-          res.data.BONE_RESULT,
-          res.data.BONE_PHY_RESULT,
-        ]
+        ];
+        let resultsec9 = [res.data.BONE_RESULT, res.data.BONE_PHY_RESULT];
         let resultsec92 = [
           res.data.OST_1_RESULT,
           res.data.OST_2_RESULT,
-          res.data.OST_3_RESULT
-        ]
-        dispatch({ type: GET_RESULT_S2, payload: resultsec2 }) 
-        dispatch({ type: GET_RESULT_S3, payload: res.data.CARDIO_COUNT_RESULT }) //หัวใจและหลอดเลือด
-        dispatch({ type: GET_RESULT_S4, payload: res.data.EYE_RESULT }) //สุขภาพตา
-        dispatch({ type: GET_RESULT_S5, payload: res.data.ORAL_RESULT }) //ช่องปาก
-        dispatch({ type: GET_RESULT_S6, payload: res.data.ABI_GROUP }) //การทำกิจวัตร => ชื่อ group
-        dispatch({ type: GET_RESULT_TAI, payload: res.data.TAI_GROUP }) //TAI
-        dispatch({ type: GET_RESULT_S7, payload: res.data.ALZ_RESULT }) //สมองเสื่อม
-        dispatch({ type: GET_RESULT_S7M, payload: res.data.MMSE_RESULT }) //MMSE
-        dispatch({ type: GET_RESULT_S8, payload: res.data.DEP_RESULT }) //ซึ่มเศร้า 
-        dispatch({ type: GET_RESULT_S89Q, payload: res.data.DEP_9Q_RESULT }) //89q
-        dispatch({ type: GET_RESULT_S9, payload: resultsec9 }) //กระดูก 2 result => 9r1[0], 9r2[1] 
-        dispatch({ type: GET_RESULT_S92, payload: resultsec92 }) //กระดูก 92 3 result
-        dispatch({ type: GET_RESULT_S10, payload: res.data.URI_RESULT }) //ปัสสาวะ 
-      }).catch(error=>{
-        console.log('Err in get all result ', error)
+          res.data.OST_3_RESULT,
+        ];
+        dispatch({ type: GET_RESULT_S2, payload: resultsec2 });
+        dispatch({
+          type: GET_RESULT_S3,
+          payload: res.data.CARDIO_COUNT_RESULT,
+        }); //หัวใจและหลอดเลือด
+        dispatch({ type: GET_RESULT_S4, payload: res.data.EYE_RESULT }); //สุขภาพตา
+        dispatch({ type: GET_RESULT_S5, payload: res.data.ORAL_RESULT }); //ช่องปาก
+        dispatch({ type: GET_RESULT_S6, payload: res.data.ABI_GROUP }); //การทำกิจวัตร => ชื่อ group
+        dispatch({ type: GET_RESULT_TAI, payload: res.data.TAI_GROUP }); //TAI
+        dispatch({ type: GET_RESULT_S7, payload: res.data.ALZ_RESULT }); //สมองเสื่อม
+        dispatch({ type: GET_RESULT_S7M, payload: res.data.MMSE_RESULT }); //MMSE
+        dispatch({ type: GET_RESULT_S8, payload: res.data.DEP_RESULT }); //ซึ่มเศร้า
+        dispatch({ type: GET_RESULT_S89Q, payload: res.data.DEP_9Q_RESULT }); //89q
+        dispatch({ type: GET_RESULT_S9, payload: resultsec9 }); //กระดูก 2 result => 9r1[0], 9r2[1]
+        dispatch({ type: GET_RESULT_S92, payload: resultsec92 }); //กระดูก 92 3 result
+        dispatch({ type: GET_RESULT_S10, payload: res.data.URI_RESULT }); //ปัสสาวะ
       })
-    )
-  }
-}
+      .catch((error) => {
+        console.log("Err in get all result ", error);
+      });
+  };
+};
 
-export const resetDateAllForm = ()=> {
-  return dispatch=>{
-    let resultsec2 = [null,null,null,null,]
-    let resultsec9 = [null,null,]
-    let resultsec92 = [null,null,null]
-    dispatch({ type: GET_RESULT_S2, payload: resultsec2 }) 
-    dispatch({ type: GET_RESULT_S3, payload: null }) //หัวใจและหลอดเลือด
-    dispatch({ type: GET_RESULT_S4, payload: null }) //สุขภาพตา
-    dispatch({ type: GET_RESULT_S5, payload: null }) //ช่องปาก
-    dispatch({ type: GET_RESULT_S6, payload: null }) //การทำกิจวัตร => ชื่อ group
-    dispatch({ type: GET_RESULT_TAI, payload: null }) //TAI
-    dispatch({ type: GET_RESULT_S7, payload: null }) //สมองเสื่อม
-    dispatch({ type: GET_RESULT_S7M, payload: null }) //MMSE
-    dispatch({ type: GET_RESULT_S8, payload: null }) //ซึ่มเศร้า 
-    dispatch({ type: GET_RESULT_S89Q, payload: null }) //89q
-    dispatch({ type: GET_RESULT_S9, payload: resultsec9 }) //กระดูก 2 result => 9r1[0], 9r2[1] 
-    dispatch({ type: GET_RESULT_S92, payload: resultsec92 }) //กระดูก 92 3 result
-    dispatch({ type: GET_RESULT_S10, payload: null }) //ปัสสาวะ
-    dispatch({ type: SET_MMSE_TO_DEFAULT })
-    dispatch({ type: SET_TAI_TO_DEFAULT })
-    dispatch({ type: SET_89Q_TO_DEFAULT })
-  }
-}
+export const resetDateAllForm = () => {
+  return (dispatch) => {
+    let resultsec2 = [null, null, null, null];
+    let resultsec9 = [null, null];
+    let resultsec92 = [null, null, null];
+    dispatch({ type: GET_RESULT_S2, payload: resultsec2 });
+    dispatch({ type: GET_RESULT_S3, payload: null }); //หัวใจและหลอดเลือด
+    dispatch({ type: GET_RESULT_S4, payload: null }); //สุขภาพตา
+    dispatch({ type: GET_RESULT_S5, payload: null }); //ช่องปาก
+    dispatch({ type: GET_RESULT_S6, payload: null }); //การทำกิจวัตร => ชื่อ group
+    dispatch({ type: GET_RESULT_TAI, payload: null }); //TAI
+    dispatch({ type: GET_RESULT_S7, payload: null }); //สมองเสื่อม
+    dispatch({ type: GET_RESULT_S7M, payload: null }); //MMSE
+    dispatch({ type: GET_RESULT_S8, payload: null }); //ซึ่มเศร้า
+    dispatch({ type: GET_RESULT_S89Q, payload: null }); //89q
+    dispatch({ type: GET_RESULT_S9, payload: resultsec9 }); //กระดูก 2 result => 9r1[0], 9r2[1]
+    dispatch({ type: GET_RESULT_S92, payload: resultsec92 }); //กระดูก 92 3 result
+    dispatch({ type: GET_RESULT_S10, payload: null }); //ปัสสาวะ
+    dispatch({ type: SET_MMSE_TO_DEFAULT });
+    dispatch({ type: SET_TAI_TO_DEFAULT });
+    dispatch({ type: SET_89Q_TO_DEFAULT });
+  };
+};
 
 export const getDataSec2 = (visId) => {
   return (dispatch) => {
@@ -225,7 +226,7 @@ export const getDataSec2 = (visId) => {
           res.data.waist_result,
           res.data.bmi_result,
           res.data.bp_result,
-          res.data.fbs_result,  
+          res.data.fbs_result,
           res.data.fbs_correct,
           res.data.fbs_fast,
         ];
@@ -338,7 +339,7 @@ export const getDataSec5 = (visId) => {
           res.data.ORAL_5_13,
           res.data.ORAL_RESULT,
           res.data.ORAL_CORRECT_FORM,
-          res.data.ORAL_COUNT,  
+          res.data.ORAL_COUNT,
         ];
         dispatch({
           type: "FETCHING5",
@@ -421,7 +422,7 @@ export const getDataSec7 = (visId) => {
           res.data.ALZ_7_7_EL_BIRTHDATE,
           res.data.ALZ_7_8_EL_OCT14,
           res.data.ALZ_7_9_EL_KING,
-          res.data.ALZ_7_10_EL_COUNTDOWN, 
+          res.data.ALZ_7_10_EL_COUNTDOWN,
         ];
         dispatch({
           type: "FETCHING7",
@@ -446,29 +447,32 @@ export const getDatammse = (visId) => {
     return Axios.get(`${apiBase}/MMSE/findOne/${visId}`)
       .then((res) => {
         console.log("res.data mmse ", res.data);
+        let ans81 = res.data.MMSE_8_1_POINT == 1 ? true : false;
+        let ans82 = res.data.MMSE_8_2_POINT == 1 ? true : false;
+        let ans83 = res.data.MMSE_8_3_POINT == 1 ? true : false;
         const data = [
           res.data.MMSE_1_1,
-          res.data.MMSE_1_1_POINT,
+          res.data.MMSE_1_1_POINT + "",
           res.data.MMSE_1_2,
-          res.data.MMSE_1_2_POINT,
+          res.data.MMSE_1_2_POINT + "",
           res.data.MMSE_1_3,
-          res.data.MMSE_1_3_POINT,
+          res.data.MMSE_1_3_POINT + "",
           res.data.MMSE_1_4,
-          res.data.MMSE_1_4_POINT,
+          res.data.MMSE_1_4_POINT + "",
           res.data.MMSE_1_5,
-          res.data.MMSE_1_5_POINT,
+          res.data.MMSE_1_5_POINT + "",
           res.data.MMSE_2_1,
-          res.data.MMSE_2_1_POINT,
+          res.data.MMSE_2_1_POINT + "",
           res.data.MMSE_2_2,
-          res.data.MMSE_2_2_POINT,
+          res.data.MMSE_2_2_POINT + "",
           res.data.MMSE_2_3,
-          res.data.MMSE_2_3_POINT,
+          res.data.MMSE_2_3_POINT + "",
           res.data.MMSE_2_4,
-          res.data.MMSE_2_4_POINT,
+          res.data.MMSE_2_4_POINT + "",
           res.data.MMSE_2_5,
-          res.data.MMSE_2_5_POINT,
+          res.data.MMSE_2_5_POINT + "",
           res.data.MMSE_3_1_POINT,
-          res.data.MMSE_3_2_POINT, 
+          res.data.MMSE_3_2_POINT,
           res.data.MMSE_3_3_POINT,
           res.data.MMSE_4_1_POINT,
           res.data.MMSE_4_2_POINT,
@@ -478,25 +482,24 @@ export const getDatammse = (visId) => {
           res.data.MMSE_5_1_POINT,
           res.data.MMSE_5_2_POINT,
           res.data.MMSE_5_3_POINT,
-          res.data.MMSE_6_1_POINT,
-          res.data.MMSE_6_2_POINT,
-          res.data.MMSE_7_POINT,
-          res.data.MMSE_8_1_POINT, 
-          res.data.MMSE_8_2_POINT,
-          res.data.MMSE_8_3_POINT,
-          res.data.MMSE_9_POINT,
-          res.data.MMSE_10, 
-          res.data.MMSE_10_POINT,
-          res.data.MMSE_11_POINT,
-          res.data.MMSE_CORRECT_FORM, 
+          res.data.MMSE_6_1_POINT + "",
+          res.data.MMSE_6_2_POINT + "",
+          res.data.MMSE_7_POINT + "",
+          ans81,
+          ans82,
+          ans83,
+          res.data.MMSE_9_POINT + "",
+          res.data.MMSE_10,
+          res.data.MMSE_10_POINT + "",
+          res.data.MMSE_11_POINT + "",
+          res.data.MMSE_CORRECT_FORM,
           res.data.MMSE_RESULT,
-          
         ];
         dispatch({
-          type: "FETCHING7",
+          type: "FETCHINGMMSE",
         });
         dispatch({
-          type: CREATE_NEW_FORMS7,
+          type: CREATE_NEW_FORMS7M,
           payload: data,
         });
         // dispatch({
@@ -509,7 +512,6 @@ export const getDatammse = (visId) => {
       });
   };
 };
-
 
 export const getDataSec8 = (visId) => {
   return (dispatch) => {
@@ -565,7 +567,6 @@ export const getDataSec9 = (visId) => {
           res.data.BONE_PHY_FIT_MINUTE,
           res.data.BONE_PHY_FIT_SECOND,
           res.data.BONE_PHY_RESULT,
-          
         ];
         dispatch({
           type: "FETCHING9",
@@ -585,56 +586,58 @@ export const getDataSec9 = (visId) => {
   };
 };
 
-export const getDataSec92 = visId => {
-  return dispatch => {
-    return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(res=> {
-      console.log("res.data 9-2 ", res.data);
-      const data = [
-        parseInt(res.data.OST_2_1_R),
-        parseInt(res.data.OST_2_2_R),
-        parseInt(res.data.OST_2_3_R),
-        parseInt(res.data.OST_2_4_R),
-        parseInt(res.data.OST_2_5_R),
-        parseInt(res.data.OST_2_1_L),
-        parseInt(res.data.OST_2_2_L),
-        parseInt(res.data.OST_2_3_L),
-        parseInt(res.data.OST_2_4_L),
-        parseInt(res.data.OST_2_5_L),
-        parseInt(res.data.OST_2_1_N),
-        parseInt(res.data.OST_2_2_N),
-        parseInt(res.data.OST_2_3_N),
-        parseInt(res.data.OST_2_4_N),
-        parseInt(res.data.OST_2_5_N),//2
-        res.data.OST_1_KNEE_PAIN,
-        res.data.OST_1_LVL_PAIN+"",//1
-        res.data.OST_3_1+"",
-        res.data.OST_3_2+"",
-        res.data.OST_3_3+"",
-        res.data.OST_3_4+"",
-        res.data.OST_3_5+"",
-        res.data.OST_3_6+"",
-        res.data.OST_3_7+"",
-        res.data.OST_3_8+"",
-        res.data.OST_3_9+"",
-        res.data.OST_3_10+"",
-        res.data.OST_3_11+"",
-        res.data.OST_3_12+"",//3
-        res.data.OST_CORRECT_FORM,
-        res.data.OST_1_RESULT,
-        res.data.OST_2_RESULT,
-        res.data.OST_3_RESULT,
-        res.data.OST_SUM_POINT,
-      ]
-      dispatch({
-        type: "FETCHING92",
-      });
-      dispatch({
-        type: CREATE_NEW_FORMS92,
-        payload: data,
-      });
-    })
-  }
-}
+export const getDataSec92 = (visId) => {
+  return (dispatch) => {
+    return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(
+      (res) => {
+        console.log("res.data 9-2 ", res.data);
+        const data = [
+          parseInt(res.data.OST_2_1_R),
+          parseInt(res.data.OST_2_2_R),
+          parseInt(res.data.OST_2_3_R),
+          parseInt(res.data.OST_2_4_R),
+          parseInt(res.data.OST_2_5_R),
+          parseInt(res.data.OST_2_1_L),
+          parseInt(res.data.OST_2_2_L),
+          parseInt(res.data.OST_2_3_L),
+          parseInt(res.data.OST_2_4_L),
+          parseInt(res.data.OST_2_5_L),
+          parseInt(res.data.OST_2_1_N),
+          parseInt(res.data.OST_2_2_N),
+          parseInt(res.data.OST_2_3_N),
+          parseInt(res.data.OST_2_4_N),
+          parseInt(res.data.OST_2_5_N), //2
+          res.data.OST_1_KNEE_PAIN,
+          res.data.OST_1_LVL_PAIN + "", //1
+          res.data.OST_3_1 + "",
+          res.data.OST_3_2 + "",
+          res.data.OST_3_3 + "",
+          res.data.OST_3_4 + "",
+          res.data.OST_3_5 + "",
+          res.data.OST_3_6 + "",
+          res.data.OST_3_7 + "",
+          res.data.OST_3_8 + "",
+          res.data.OST_3_9 + "",
+          res.data.OST_3_10 + "",
+          res.data.OST_3_11 + "",
+          res.data.OST_3_12 + "", //3
+          res.data.OST_CORRECT_FORM,
+          res.data.OST_1_RESULT,
+          res.data.OST_2_RESULT,
+          res.data.OST_3_RESULT,
+          res.data.OST_SUM_POINT,
+        ];
+        dispatch({
+          type: "FETCHING92",
+        });
+        dispatch({
+          type: CREATE_NEW_FORMS92,
+          payload: data,
+        });
+      }
+    );
+  };
+};
 
 export const getDataSec10 = (visId) => {
   return (dispatch) => {
@@ -680,4 +683,3 @@ export const getEducate = (peopleId) => {
       });
   };
 };
-
