@@ -480,9 +480,9 @@ export const getDatammse = (visId) => {
     return Axios.get(`${apiBase}/MMSE/findOne/${visId}`)
       .then((res) => {
         console.log("res.data mmse ", res.data);
-        let ans81 = res.data.MMSE_8_1_POINT == 1 ? true : false;
-        let ans82 = res.data.MMSE_8_2_POINT == 1 ? true : false;
-        let ans83 = res.data.MMSE_8_3_POINT == 1 ? true : false;
+        // let ans81 = res.data.MMSE_8_1_POINT == 1 ? true : false;
+        // let ans82 = res.data.MMSE_8_2_POINT == 1 ? true : false;
+        // let ans83 = res.data.MMSE_8_3_POINT == 1 ? true : false;
         const data = [
           res.data.MMSE_1_1,
           res.data.MMSE_1_1_POINT + "",
