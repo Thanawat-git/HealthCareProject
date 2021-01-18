@@ -159,7 +159,7 @@ function MainMenu(props) {
         break;
       case "sec7":
         dispatch(getAction.getDataSec7(visitID));
-        dispatch(getAction.getEducate(peopleID))
+        // dispatch(getAction.getEducate(peopleID))
         if (!forms7Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec7`);

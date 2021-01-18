@@ -58,6 +58,7 @@ export default function ShowHistory({ value }) {
     dispatch(getAll.getDataSec7(id))
     dispatch(getAll.getDataSec8(id))
     dispatch(getAll.getDataSec9(id))
+    dispatch(getAll.getDataSec92(id))
     dispatch(getAll.getDataSec10(id))
     setOpen(true);
   };
