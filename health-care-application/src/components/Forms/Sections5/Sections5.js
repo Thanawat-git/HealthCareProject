@@ -104,6 +104,7 @@ export default function Sections5_1() {
         : setresults("ไม่ต้องส่งต่อ");
       setCount(c);
     }
+    console.log("c", results);
   }, [collect, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15]);
 
   const handleSubmit = () => {

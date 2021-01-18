@@ -13,6 +13,7 @@ function Sections1_4(props) {
 
   const forms1p4Reducer = useSelector(({forms1p4Reducer}) => forms1p4Reducer)
   const peopleID = useSelector(({forms1p1Reducer})=>forms1p1Reducer.peopleID)
+  const form1 =useSelector(({forms1p1Reducer})=>forms1p1Reducer)
   const dispatch = useDispatch()
   const[err,seterr]= useState(false);
 
@@ -42,9 +43,11 @@ function Sections1_4(props) {
         treatment, hospital, otherTreatment, 
         salary, otherReligion, otherCareers
       ]
-      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,religion,educations,
-      careers,treatment,hospital,salary
-      ])
+      formAction.createElderinfo([peopleID,elderlyStatus,
+        elderlyBeing,elderlyBeingDetail,neighborName,
+        religion,educations,
+      careers,treatment,hospital,salary,
+      form1.elderlyBirthdate,form1.elderlyGender,form1.elderlyAge])
 
       elderlyStatus===null && emptyValue()
 

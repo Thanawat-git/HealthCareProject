@@ -412,6 +412,77 @@ export const getDataSec7 = (visId) => {
       });
   };
 };
+
+export const getDatammse = (visId) => {
+  return (dispatch) => {
+    return Axios.get(`${apiBase}/MMSE/findOne/${visId}`)
+      .then((res) => {
+        console.log("res.data mmse ", res.data);
+        const data = [
+          res.data.MMSE_1_1,
+          res.data.MMSE_1_1_POINT,
+          res.data.MMSE_1_2,
+          res.data.MMSE_1_2_POINT,
+          res.data.MMSE_1_3,
+          res.data.MMSE_1_3_POINT,
+          res.data.MMSE_1_4,
+          res.data.MMSE_1_4_POINT,
+          res.data.MMSE_1_5,
+          res.data.MMSE_1_5_POINT,
+          res.data.MMSE_2_1,
+          res.data.MMSE_2_1_POINT,
+          res.data.MMSE_2_2,
+          res.data.MMSE_2_2_POINT,
+          res.data.MMSE_2_3,
+          res.data.MMSE_2_3_POINT,
+          res.data.MMSE_2_4,
+          res.data.MMSE_2_4_POINT,
+          res.data.MMSE_2_5,
+          res.data.MMSE_2_5_POINT,
+          res.data.MMSE_3_1_POINT,
+          res.data.MMSE_3_2_POINT, 
+          res.data.MMSE_3_3_POINT,
+          res.data.MMSE_4_1_POINT,
+          res.data.MMSE_4_2_POINT,
+          res.data.MMSE_4_3_POINT,
+          res.data.MMSE_4_4_POINT,
+          res.data.MMSE_4_5_POINT,
+          res.data.MMSE_5_1_POINT,
+          res.data.MMSE_5_2_POINT,
+          res.data.MMSE_5_3_POINT,
+          res.data.MMSE_6_1_POINT,
+          res.data.MMSE_6_2_POINT,
+          res.data.MMSE_7_POINT,
+          res.data.MMSE_8_1_POINT, 
+          res.data.MMSE_8_2_POINT,
+          res.data.MMSE_8_3_POINT,
+          res.data.MMSE_9_POINT,
+          res.data.MMSE_10, 
+          res.data.MMSE_10_POINT,
+          res.data.MMSE_11_POINT,
+          res.data.MMSE_CORRECT_FORM, 
+          res.data.MMSE_RESULT,
+          
+        ];
+        dispatch({
+          type: "FETCHING7",
+        });
+        dispatch({
+          type: CREATE_NEW_FORMS7,
+          payload: data,
+        });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec7",
+        // });
+      })
+      .catch((error) => {
+        console.log("err ", error);
+      });
+  };
+};
+
+
 export const getDataSec8 = (visId) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/depressionScreening/findOne/${visId}`)
@@ -487,7 +558,6 @@ export const getDataSec9 = (visId) => {
 };
 
 export const getDataSec92 = visId => {
-
   return dispatch => {
     return Axios.get(`${apiBase}/osteoarthritis/findOne/${visId}`).then(res=> {
       console.log("res.data 9-2 ", res.data);
