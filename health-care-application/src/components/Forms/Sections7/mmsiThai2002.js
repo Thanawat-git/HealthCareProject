@@ -107,9 +107,9 @@ export default function MMSIThai2002() {
     num4: forms7mReducer.num4,
     num5: forms7mReducer.num5,
     //8
-    think1: forms7mReducer.think1,
-    think2: forms7mReducer.think2,
-    think3: forms7mReducer.think3,
+    think1: forms7mReducer.thank1,
+    think2: forms7mReducer.thank2,
+    think3: forms7mReducer.thank3,
   });
   const {
     ansF,
@@ -1516,7 +1516,7 @@ export default function MMSIThai2002() {
         </div>
 
         {/* question */}
-
+        <div className="row justify-content-between">
         {selectFormSection.section === "mainmenu" ? (
           <Link to="/mainmenu/sec7">
             <button type="button" className="btn form-btn btn-back btn-lg">
@@ -1539,16 +1539,16 @@ export default function MMSIThai2002() {
             </button>
           </Link>
         )}
+        <button
+            type="button"
+            class="btn form-btn btn-primary btn-lg"
+            onClick={handleSubmit}
+          >
+            บันทึก
+          </button>
+        </div>
       </form>
-      {/* <ShowResultPopup
-        title="ผลการประเมินการทดสอบเบื้องต้นฉบับภาษาไทย"
-        result={results}
-        show={show}
-        onClick={saveDataToServer}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
-      /> */}
+      
       <Dialog
           open={show}
           scroll="paper"
