@@ -1,6 +1,8 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { PrintResultOnly, PrintAllForm } from "./PrintPage"
 import * as historyAction from "../../../../actions/history.action";
+import * as getAll from "../../../../actions/getAllFormToReucer.action"
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -48,10 +50,20 @@ export default function ShowHistory({ value }) {
   }, [openAll])
   const selectHistory = (id) => {
     dispatch(historyAction.getHistorySelected(id))
-      setOpen(true);
+    dispatch(getAll.getDataSec2(id))
+    dispatch(getAll.getDataSec3(id))
+    dispatch(getAll.getDataSec4(id))
+    dispatch(getAll.getDataSec5(id))
+    dispatch(getAll.getDataSec6(id))
+    dispatch(getAll.getDataSec7(id))
+    dispatch(getAll.getDataSec8(id))
+    dispatch(getAll.getDataSec9(id))
+    dispatch(getAll.getDataSec10(id))
+    setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    dispatch(getAll.setDataToDefaultForAllSection())
   };
 
   const historyShow = ()=>{
@@ -379,7 +391,13 @@ export default function ShowHistory({ value }) {
           วัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
         </DialogTitle>
         <DialogContent dividers="paper">
-          <Grid container justify="flex-end">
+          <Grid container justify="space-between">
+            <div>
+            <button
+            onClick={()=>window.print()}
+            >Print this page</button>
+            <PrintAllForm visdate={value.VIS_DATE} />
+            </div>
             <FormControlLabel
                 control={
                   <Switch

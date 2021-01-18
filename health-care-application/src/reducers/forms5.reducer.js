@@ -1,4 +1,9 @@
-import { CREATE_NEW_FORMS5, GET_COLLECT_S5, GET_RESULT_S5 } from "../constants";
+import {
+  CREATE_NEW_FORMS5,
+  GET_COLLECT_S5,
+  GET_RESULT_S5,
+  SET_SEC5_TO_DEFAULT,
+} from "../constants";
 
 const initialState = {
   ans5_1: null,
@@ -58,6 +63,31 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, collect: payload };
     case GET_RESULT_S5:
       return { ...state, results: payload };
+    case SET_SEC5_TO_DEFAULT:
+      return {
+        ans5_1: null,
+        moreInfoAns5_1: null,
+        ans5_2: null,
+        ans5_3: null,
+        ans5_4: null,
+        ans5_5: null,
+        ans5_6: null,
+        ans5_7: null,
+        ans5_8: null,
+        ans5_9: null,
+        ans5_10: null,
+        ans5_11: null,
+        ans5_12: null,
+        ans5_13: null,
+        ans5_14: null,
+        ans5_15: null,
+        ans5_16: null,
+        ans5_17: null,
+        results: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+        collect: false,
+        count: 0,
+        isFetching: null,
+      };
     default:
       return state;
   }

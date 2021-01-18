@@ -1,4 +1,9 @@
-import { CREATE_NEW_FORMS3, GET_COLLECT_S3, GET_RESULT_S3 } from "../constants";
+import {
+  CREATE_NEW_FORMS3,
+  GET_COLLECT_S3,
+  GET_RESULT_S3,
+  SET_SEC3_TO_DEFAULT,
+} from "../constants";
 
 const initialState = {
   ans3_1: 0,
@@ -36,6 +41,20 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, collect: payload };
     case GET_RESULT_S3:
       return { ...state, results: payload };
+    case SET_SEC3_TO_DEFAULT:
+      return {
+        ans3_1: 0,
+        ans3_2: 0,
+        ans3_3: 0,
+        ans3_4: 0,
+        ans3_5: 0,
+        ans3_6: 0,
+        ans3_7: 0,
+        results: "ยังไม่สามารถแปลผลได้เนื่องจากยังกรอกข้อมูลไม่ครบ",
+        collect: false,
+        count: 0,
+        isFetching: null,
+      };
     default:
       return state;
   }
