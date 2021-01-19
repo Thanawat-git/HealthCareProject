@@ -73,7 +73,7 @@ export default function MMSIThai2002() {
   const [group, setGroup] = useState(forms7mReducer.group);
   const [show, setShow] = useState(false);
   const [colorS, setcolorS] = useState("");
-  const [anstf, settf] = useState(null);
+  const [anstf, settf] = useState(forms7mReducer.anstf);
 
   const forms1p4Reducer = useSelector(
     ({ forms1p4Reducer }) => forms1p4Reducer.educations
@@ -821,8 +821,8 @@ export default function MMSIThai2002() {
               className="pl-20"
               aria-label="questions3.4"
               name="questions3.4"
-              value={ans2_2_1}
-              onChange={(e) => setAns2_2_1(e.target.value)}
+              value={ans2_1_1}
+              onChange={(e) => setAns2_1_1(e.target.value)}
             >
               <FormControlLabel
                 className="radio-size"
@@ -844,8 +844,8 @@ export default function MMSIThai2002() {
                 variant="outlined"
                 className="TextField"
                 size="small"
-                defaultValue={textAns221}
-                onChange={(e) => settextAns221(e.target.value)}
+                defaultValue={textAns211}
+                onChange={(e) => settextAns211(e.target.value)}
               />
             </div>
             <hr />
@@ -854,8 +854,8 @@ export default function MMSIThai2002() {
               className="pl-20"
               aria-label="questions3.4"
               name="questions3.4"
-              value={ans2_2_2}
-              onChange={(e) => setAns2_2_2(e.target.value)}
+              value={ans2_1_2}
+              onChange={(e) => setAns2_1_2(e.target.value)}
             >
               <FormControlLabel
                 className="radio-size"
@@ -877,8 +877,8 @@ export default function MMSIThai2002() {
                 variant="outlined"
                 className="TextField"
                 size="small"
-                defaultValue={textAns222}
-                onChange={(e) => settextAns222(e.target.value)}
+                defaultValue={textAns212}
+                onChange={(e) => settextAns212(e.target.value)}
               />
             </div>
             <hr />
@@ -887,8 +887,8 @@ export default function MMSIThai2002() {
               className="pl-20"
               aria-label="questions3.4"
               name="questions3.4"
-              value={ans2_2_3}
-              onChange={(e) => setAns2_2_3(e.target.value)}
+              value={ans2_1_3}
+              onChange={(e) => setAns2_1_3(e.target.value)}
             >
               <FormControlLabel
                 className="radio-size"
@@ -910,8 +910,8 @@ export default function MMSIThai2002() {
                 variant="outlined"
                 className="TextField"
                 size="small"
-                defaultValue={textAns223}
-                onChange={(e) => settextAns223(e.target.value)}
+                defaultValue={textAns213}
+                onChange={(e) => settextAns213(e.target.value)}
               />
             </div>
             <hr />
@@ -920,8 +920,8 @@ export default function MMSIThai2002() {
               className="pl-20"
               aria-label="questions3.4"
               name="questions3.4"
-              value={ans2_2_4}
-              onChange={(e) => setAns2_2_4(e.target.value)}
+              value={ans2_1_4}
+              onChange={(e) => setAns2_1_4(e.target.value)}
             >
               <FormControlLabel
                 className="radio-size"
@@ -943,8 +943,8 @@ export default function MMSIThai2002() {
                 variant="outlined"
                 className="TextField"
                 size="small"
-                defaultValue={textAns224}
-                onChange={(e) => settextAns224(e.target.value)}
+                defaultValue={textAns214}
+                onChange={(e) => settextAns214(e.target.value)}
               />
             </div>
             <hr />
@@ -953,8 +953,8 @@ export default function MMSIThai2002() {
               className="pl-20"
               aria-label="questions3.4"
               name="questions3.4"
-              value={ans2_2_5}
-              onChange={(e) => setAns2_2_5(e.target.value)}
+              value={ans2_1_5}
+              onChange={(e) => setAns2_1_5(e.target.value)}
             >
               <FormControlLabel
                 className="radio-size"
@@ -976,8 +976,8 @@ export default function MMSIThai2002() {
                 variant="outlined"
                 className="TextField"
                 size="small"
-                defaultValue={textAns225}
-                onChange={(e) => settextAns225(e.target.value)}
+                defaultValue={textAns215}
+                onChange={(e) => settextAns215(e.target.value)}
               />
             </div>
           </div>

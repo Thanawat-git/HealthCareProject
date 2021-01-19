@@ -16,6 +16,7 @@ const initialState = {
   ans2_2_3: 0,
   ans2_2_4: 0,
   ans2_2_5: 0,
+  anstf:null,
   ansF: 0,
   ansR: 0,
   ansT: 0,
