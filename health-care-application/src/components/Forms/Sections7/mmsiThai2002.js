@@ -73,7 +73,7 @@ export default function MMSIThai2002() {
   const [group, setGroup] = useState(forms7mReducer.group);
   const [show, setShow] = useState(false);
   const [colorS, setcolorS] = useState("");
-  const [anstf, settf] = useState(forms7mReducer.anstf);
+  const [atHospital, setatHospital] = useState(forms7mReducer.atHospital);
 
   const forms1p4Reducer = useSelector(
     ({ forms1p4Reducer }) => forms1p4Reducer.educations
@@ -91,9 +91,9 @@ export default function MMSIThai2002() {
     ansF2:forms7mReducer.ansF2,
     ansR2: forms7mReducer.ansR2,
     ansT2: forms7mReducer.ansT2,
-    ansTh2: false,
-    ansS2: false,
-    ansC2: false,
+    // ansTh2: false,
+    // ansS2: false,
+    // ansC2: false,
     //4
     spell1: forms7mReducer. spell1,
     spell2: forms7mReducer.spell2,
@@ -138,13 +138,13 @@ export default function MMSIThai2002() {
   console.log("group", group);
 
   useEffect(() => {
-    var x = document.getElementById("myID4");
-    var y = document.getElementById("myID9");
-    var z = document.getElementById("myID10");
-    var c21 = document.getElementById("myID21");
-    var c22 = document.getElementById("myID22");
-    c21.style.display = "none";
-    c22.style.display = "none";
+    // var x = document.getElementById("myID4");
+    // var y = document.getElementById("myID9");
+    // var z = document.getElementById("myID10");
+    // var c21 = document.getElementById("myID21");
+    // var c22 = document.getElementById("myID22");
+    // c21.style.display = "none";
+    // c22.style.display = "none";
 
     forms1p4Reducer === "ไม่ได้เรียนหนังสือ" && setGroup(1);
     forms1p4Reducer === "ประถมศึกษา" && setGroup(2);
@@ -153,21 +153,21 @@ export default function MMSIThai2002() {
     forms1p4Reducer === "ปริญญาตรี" && setGroup(5);
     forms1p4Reducer === "สูงกว่าปริญญาตรี" && setGroup(6);
 
-    if (forms1p4Reducer === "ไม่ได้เรียนหนังสือ") {
-      x.style.display = "none";
-      y.style.display = "none";
-      z.style.display = "none";
-      setcolorS("darkgray");
-    }
-    console.log("anstf", anstf);
-    if (anstf == 0) {
-      c22.style.display = "block";
-      c21.style.display = "none";
-    } else if (anstf == 1) {
-      c22.style.display = "none";
-      c21.style.display = "block";
-    }
-  }, [anstf, group]);
+    // if (forms1p4Reducer === "ไม่ได้เรียนหนังสือ") {
+    //   x.style.display = "none";
+    //   y.style.display = "none";
+    //   z.style.display = "none";
+    //   setcolorS("darkgray");
+    // }
+    // console.log("anstf", anstf);
+    // if (anstf == 0) {
+    //   c22.style.display = "block";
+    //   c21.style.display = "none";
+    // } else if (anstf == 1) {
+    //   c22.style.display = "none";
+    //   c21.style.display = "block";
+    // }
+  }, [group]);
   var c = colorS;
   const divStyle = {
     color: c,
@@ -200,11 +200,6 @@ export default function MMSIThai2002() {
       var ansNo2_3 = parseInt(ans2_1_3);
       var ansNo2_4 = parseInt(ans2_1_4);
       var ansNo2_5 = parseInt(ans2_1_5);
-      var ansNo2_2_1 = parseInt(ans2_2_1);
-      var ansNo2_2_2 = parseInt(ans2_2_2);
-      var ansNo2_2_3 = parseInt(ans2_2_3);
-      var ansNo2_2_4 = parseInt(ans2_2_4);
-      var ansNo2_2_5 = parseInt(ans2_2_5);
       var ansNo6_1 = parseInt(ans61);
       var ansNo6_2 = parseInt(ans62);
       var ansNo7 = parseInt(ans7);
@@ -222,11 +217,6 @@ export default function MMSIThai2002() {
         ansNo2_3 +
         ansNo2_4 +
         ansNo2_5 +
-        ansNo2_2_1 +
-        ansNo2_2_2 +
-        ansNo2_2_3 +
-        ansNo2_2_4 +
-        ansNo2_2_5 +
         ansNo6_1 +
         ansNo6_2 +
         ansNo7 +
@@ -277,11 +267,6 @@ export default function MMSIThai2002() {
     ans2_1_3,
     ans2_1_4,
     ans2_1_5,
-    ans2_2_1,
-    ans2_2_2,
-    ans2_2_3,
-    ans2_2_4,
-    ans2_2_5,
     ans61,
     ans62,
     ans7,
@@ -317,11 +302,6 @@ export default function MMSIThai2002() {
     ans2_1_3,
     ans2_1_4,
     ans2_1_5,
-    ans2_2_1,
-    ans2_2_2,
-    ans2_2_3,
-    ans2_2_4,
-    ans2_2_5,
     ans61,
     ans62,
     ans7,
@@ -376,6 +356,7 @@ export default function MMSIThai2002() {
       ans11,
       collect,
       results,
+      atHospital
     ];
     dispatch(formAction.add(data));
     //console.log();
@@ -403,6 +384,7 @@ export default function MMSIThai2002() {
       ans2_1_4,
       textAns215,
       ans2_1_5,
+      atHospital,
       ansF,
       ansR,
       ansT,
@@ -429,9 +411,6 @@ export default function MMSIThai2002() {
       visId,
     ]);
   };
-  // function saveDataToServer(){
-
-  // }
   return (
     <div className="css-form">
       <form action="#" className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -625,23 +604,370 @@ export default function MMSIThai2002() {
             className="pl-20"
             aria-label="questions"
             name="questions"
-            value={anstf}
-            onChange={(e) => settf(e.target.value)}
+            value={atHospital}
+            // onClick={(e) => setatHospital(e.target.value)}
+            onChange={(e) => setatHospital(e.target.value)}
           >
             <FormControlLabel
               className="radio-size"
-              value="1"
+              value="true"
               control={<Radio color="primary" />}
               label="2.1 กรณีอยู่สถานพยาบาล"
             />
             <FormControlLabel
               className="radio-size"
-              value="0"
+              value="false"
               control={<Radio color="primary" />}
               label="2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ"
             />
           </RadioGroup>
 
+          {
+            atHospital == "true" ? (
+              <React.Fragment>
+                <p>
+              <b>2.1 กรณีอยู่สถานพยาบาล</b>
+            </p>
+            <p>2.1.1 สถานที่ตรงนี้เรียกว่าอะไร และชื่อว่าอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_1}
+              onChange={(e) => setAns2_1_1(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns211}
+                onChange={(e) => settextAns211(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.1.2 ขณะนี้อยู่ชั้นที่เท่าไหร่ของตัวอาคาร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_2}
+              onChange={(e) => setAns2_1_2(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns212}
+                onChange={(e) => settextAns212(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.1.3 ที่นี่อยู่ในอำเภออะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_3}
+              onChange={(e) => setAns2_1_3(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns213}
+                onChange={(e) => settextAns213(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.1.4 ที่นี่จังหวัดอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_4}
+              onChange={(e) => setAns2_1_4(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns214}
+                onChange={(e) => settextAns214(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.1.5 ที่นี่ภาคอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_5}
+              onChange={(e) => setAns2_1_5(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns215}
+                onChange={(e) => settextAns215(e.target.value)}
+              />
+            </div>
+            <hr />
+              </React.Fragment>
+            )
+            : atHospital == "false" && (
+              <React.Fragment>
+                <p>
+              <b>2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ</b>
+            </p>
+            <p>2.2.1 สถานที่ตรงนี้เรียกว่าอะไร และเลขที่เท่าไหร่</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_2_1}
+              onChange={(e) => setAns2_2_1(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns221}
+                onChange={(e) => settextAns221(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.2.2 ที่นี่หมู่บ้าน(หรือละแวก คุ้ม ย่าน ถนน) อะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_2_2}
+              onChange={(e) => setAns2_2_2(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns222}
+                onChange={(e) => settextAns222(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.2.3 ที่นี่อำเภอ หรือเขตอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_2_3}
+              onChange={(e) => setAns2_2_3(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns223}
+                onChange={(e) => settextAns223(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.2.4 ที่นี่จังหวัดอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_2_4}
+              onChange={(e) => setAns2_2_4(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns224}
+                onChange={(e) => settextAns224(e.target.value)}
+              />
+            </div>
+            <hr />
+            <p>2.2.5 ที่นี่ภาคอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_2_5}
+              onChange={(e) => setAns2_2_5(e.target.value)}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns225}
+                onChange={(e) => settextAns225(e.target.value)}
+              />
+            </div>
+              </React.Fragment>
+            )
+          }
+{/* 
           <div id="myID21">
             <p>
               <b>2.1 กรณีอยู่สถานพยาบาล</b>
@@ -812,7 +1138,8 @@ export default function MMSIThai2002() {
             </div>
             <hr />
           </div>
-          <div id="myID22">
+           */}
+          {/* <div id="myID22">
             <p>
               <b>2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ</b>
             </p>
@@ -980,7 +1307,7 @@ export default function MMSIThai2002() {
                 onChange={(e) => settextAns215(e.target.value)}
               />
             </div>
-          </div>
+          </div> */}
           <hr />
           <p>
             <b>
