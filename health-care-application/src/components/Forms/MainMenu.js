@@ -155,6 +155,7 @@ function MainMenu(props) {
         break;
       case "sec6":
         dispatch(getAction.getDataSec6(visitID));
+        dispatch(getAction.getDataTai(visitID));
         if (!forms6Reducer.isFetching) {
           setTimeout(() => {
             history.push(`${url}/sec6`);
