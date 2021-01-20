@@ -29,6 +29,8 @@ import visitID from "./visitID.reducer";
 import historyReducer from "./history.reducer";
 import followUpReducer from "./followUp.reducer";
 import selectFormSection from "./selectFormSection.reducer"
+import chart1Reducer from "./charts/chart1.reducer";
+import chart2Reducer from "./charts/chart2.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -60,4 +62,6 @@ export default combineReducers({
     historyReducer,
     followUpReducer,
     selectFormSection,
+    chart1Reducer,
+    chart2Reducer,
 })
