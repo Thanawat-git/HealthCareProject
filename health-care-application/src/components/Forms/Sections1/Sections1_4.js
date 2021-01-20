@@ -43,18 +43,16 @@ function Sections1_4(props) {
         treatment, hospital, otherTreatment, 
         salary, otherReligion, otherCareers
       ]
-      formAction.createElderinfo([peopleID,elderlyStatus,
-        elderlyBeing,elderlyBeingDetail,neighborName,
-        religion,educations,
-      careers,treatment,hospital,salary,
-      form1.elderlyBirthdate,form1.elderlyGender,form1.elderlyAge])
+      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,religion,educations,
+        careers,treatment,hospital,salary
+        ])
 
       elderlyStatus===null && emptyValue()
 
       if(elderlyBeing!==null){
-        if(elderlyBeing=="alone"){
+        if(elderlyBeing=="อยู่ลำพัง"){
           if(elderlyBeingDetail!==null){
-            if(elderlyBeingDetail!= "D/N"){
+            if(elderlyBeingDetail!= "ทั้งกลางวันและกลางคืน"){
               if(neighborName===null)emptyValue()
             }
           }else {emptyValue()}
@@ -64,7 +62,7 @@ function Sections1_4(props) {
       } else {emptyValue()}
 
       if(religion!==null){
-        if(religion=="otherReligion"){
+        if(religion=="อื่นๆ ระบุ"){
           if(otherReligion===null)emptyValue()
         }
       } else {emptyValue()}
@@ -72,14 +70,14 @@ function Sections1_4(props) {
       educations===null && emptyValue()
 
       if(careers!==null){
-        if(careers=="otherCareers"){
+        if(careers=="อื่นๆ ระบุ"){
           if(otherCareers===null)emptyValue()
         }
       }else {emptyValue()}
 
       if(treatment!==null){
-        if(treatment!="withdrawMoney" && treatment!="payMyself") {
-          if(treatment=="otherTreatment"){
+        if(treatment!="เบิกต้นสังกัด" && treatment!="ชำระเงินเอง") {
+          if(treatment=="อื่นๆ"){
             if(otherTreatment===null){emptyValue()}
           } else {
             if(hospital===null){emptyValue()}
@@ -113,11 +111,11 @@ function Sections1_4(props) {
                 </div>
 
                 <RadioGroup className="pl-5" aria-label="elderlyStatus" name="elderlyStatus" defaultValue={elderlyStatus} onChange={(event) => setElderlyStatus(event.target.value)}>
-                  <FormControlLabel value="single" control={<Radio color='primary' />} label="โสด"  />
-                  <FormControlLabel value="marry" control={<Radio color='primary' />} label="สมรส" />
-                  <FormControlLabel value="widow" control={<Radio color='primary' />} label="หม้าย"  />
-                  <FormControlLabel value="divorced" control={<Radio color='primary' />} label="หย่าร้าง" />
-                  <FormControlLabel value="broken" control={<Radio color='primary' />} label="แยกกันอยู่" />
+                  <FormControlLabel value="โสด" control={<Radio color='primary' />} label="โสด"  />
+                  <FormControlLabel value="สมรส" control={<Radio color='primary' />} label="สมรส" />
+                  <FormControlLabel value="หม้าย" control={<Radio color='primary' />} label="หม้าย"  />
+                  <FormControlLabel value="หย่าร้าง" control={<Radio color='primary' />} label="หย่าร้าง" />
+                  <FormControlLabel value="แยกกันอยู่" control={<Radio color='primary' />} label="แยกกันอยู่" />
                 </RadioGroup>
 
             </div>
@@ -130,22 +128,22 @@ function Sections1_4(props) {
                 <p><span className="text-danger" >*</span><strong>ความเป็นอยู่</strong></p>
               </div>
               <RadioGroup className="pl-4" aria-label="elderlyBeing" name="elderlyBeing" defaultValue={elderlyBeing} onChange={(e)=>{setElderlyBeing(e.target.value); setBeing(e.target.value);}}>
-                <FormControlLabel value="alone" control={<Radio color='primary' />} label="อยู่ลำพัง"  />
+                <FormControlLabel value="อยู่ลำพัง" control={<Radio color='primary' />} label="อยู่ลำพัง"  />
                 {/* Selected being */}
-                {being === "alone"? 
+                {being === "อยู่ลำพัง"? 
                 <React.Fragment>
                   <RadioGroup className="pl-4" aria-label="elderlyBeingDetail" name="elderlyBeingDetail" defaultValue={elderlyBeingDetail} onChange={(event) => {setElderlyBeingDetail(event.target.value)}}>
-                    <FormControlLabel value="day" control={<Radio color='primary' />} label="กลางวัน กลางคืนอยู่กับ"  /> {elderlyBeingDetail === 'day'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''} 
-                    <FormControlLabel value="night" control={<Radio color='primary' />} label="กลางคืน กลางวันอยู่กับ" />{elderlyBeingDetail === 'night'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''}
-                    <FormControlLabel value="D/N" control={<Radio color='primary' />} label="ทั้งกลางวันและกลางคืน" />
+                    <FormControlLabel value="กลางวัน กลางคืนอยู่กับ" control={<Radio color='primary' />} label="กลางวัน กลางคืนอยู่กับ"  /> {elderlyBeingDetail === 'กลางวัน กลางคืนอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''} 
+                    <FormControlLabel value="กลางคืน กลางวันอยู่กับ" control={<Radio color='primary' />} label="กลางคืน กลางวันอยู่กับ" />{elderlyBeingDetail === 'กลางคืน กลางวันอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''}
+                    <FormControlLabel value="ทั้งกลางวันและกลางคืน" control={<Radio color='primary' />} label="ทั้งกลางวันและกลางคืน" />
                   </RadioGroup>
                 </React.Fragment>
                 : ''}
-                <FormControlLabel value="notalone" control={<Radio color='primary' />} label="ไม่ได้อยู่ลำพัง" />
+                <FormControlLabel value="ไม่ได้อยู่ลำพัง" control={<Radio color='primary' />} label="ไม่ได้อยู่ลำพัง" />
               </RadioGroup>
             </div>
 
-            {being === "notalone" ? 
+            {being === "ไม่ได้อยู่ลำพัง" ? 
             <TextField id="outlined-basic" label="ใส่ชื่อญาติหรือคนที่อยู่ด้วย" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} variant="outlined" size="small" fullWidth className="TextField"/>
             : ''}
             {/* row-2 */}
@@ -160,11 +158,11 @@ function Sections1_4(props) {
                 </div>
 
                 <RadioGroup className="pl-5" aria-label="religion" name="religion" defaultValue={religion} onChange={(e)=>setReligion(e.target.value)}>
-                  <FormControlLabel value="buddhism" control={<Radio color='primary' />} label="พุทธ"  />
-                  <FormControlLabel value="christianity" control={<Radio color='primary' />} label="คริสต์" />
-                  <FormControlLabel value="islamic" control={<Radio color='primary' />} label="อิสลาม"  />
-                  <FormControlLabel value="otherReligion" control={<Radio color='primary' />} label="อื่นๆ ระบุ" />
-                  {religion === 'otherReligion'? <TextField id="outlined-basic" defaultValue={otherReligion} onChange={(e)=>setotherReligion(e.target.value)} label="" variant="outlined" size="small" /> :''}
+                  <FormControlLabel value="พุทธ" control={<Radio color='primary' />} label="พุทธ"  />
+                  <FormControlLabel value="คริสต์" control={<Radio color='primary' />} label="คริสต์" />
+                  <FormControlLabel value="อิสลาม" control={<Radio color='primary' />} label="อิสลาม"  />
+                  <FormControlLabel value="อื่นๆ ระบุ" control={<Radio color='primary' />} label="อื่นๆ ระบุ" />
+                  {religion === 'อื่นๆ ระบุ'? <TextField id="outlined-basic" defaultValue={otherReligion} onChange={(e)=>setotherReligion(e.target.value)} label="" variant="outlined" size="small" /> :''}
                 </RadioGroup>
             </div>
             {/* row-3 */}
@@ -191,33 +189,33 @@ function Sections1_4(props) {
               <p><span className="text-danger" >*</span ><strong>อาชีพ</strong></p>
             </div>
             <RadioGroup className="pl-5" aria-label="careers" name="careers" defaultValue={careers} onChange={(e)=>setCareers(e.target.value)}>
-              <FormControlLabel value="unemployed" control={<Radio color='primary' />} label="ไม่ได้ประกอบอาชีพ"  />
-              <FormControlLabel value="trade" control={<Radio color='primary' />} label="ค้าขาย" />
-              <FormControlLabel value="pensioner" control={<Radio color='primary' />} label="ข้าราชการบำนาญ"  />
-              <FormControlLabel value="employee" control={<Radio color='primary' />} label="รับจ้าง" />
-              <FormControlLabel value="privateBusiness" control={<Radio color='primary' />} label="ธุรกิจส่วนตัว" />
-              <FormControlLabel value="otherCareers" control={<Radio color='primary' />} label="อื่นๆ ระบุ" />
-              {careers === 'otherCareers'? <TextField id="outlined-basic" defaultValue={otherCareers} onChange={(e)=>setotherCareers(e.target.value)} label="" variant="outlined" size="small" /> :''}
+              <FormControlLabel value="ไม่ได้ประกอบอาชีพ" control={<Radio color='primary' />} label="ไม่ได้ประกอบอาชีพ"  />
+              <FormControlLabel value="ค้าขาย" control={<Radio color='primary' />} label="ค้าขาย" />
+              <FormControlLabel value="ข้าราชการบำนาญ" control={<Radio color='primary' />} label="ข้าราชการบำนาญ"  />
+              <FormControlLabel value="รับจ้าง" control={<Radio color='primary' />} label="รับจ้าง" />
+              <FormControlLabel value="ธุรกิจส่วนตัว" control={<Radio color='primary' />} label="ธุรกิจส่วนตัว" />
+              <FormControlLabel value="อื่นๆ ระบุ" control={<Radio color='primary' />} label="อื่นๆ ระบุ" />
+              {careers === 'อื่นๆ ระบุ'? <TextField id="outlined-basic" defaultValue={otherCareers} onChange={(e)=>setotherCareers(e.target.value)} label="" variant="outlined" size="small" /> :''}
             </RadioGroup>
           </div>
           {/* row-5 */}
-          <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกอาชีพ" : ""}</FormHelperText>
+          <FormHelperText style={{color:'red'}}  >{err ? "กรุณาเลือกอาชีพ" : ""}</FormHelperText>
 <hr/>
           <div className="row">
             <div className="col-12">
               <p><span className="text-danger" >*</span ><strong>สิทธิการรักษา</strong></p>
             </div>
             <RadioGroup className="pl-5" aria-label="treatment" name="treatment" defaultValue={treatment} onChange={(e)=>setTreatment(e.target.value)}>
-              <FormControlLabel value="withdrawMoney" control={<Radio color='primary' />} label="เบิกต้นสังกัด"  />
-              <FormControlLabel value="payMyself" control={<Radio color='primary' />} label="ชำระเงินเอง" />
-              <FormControlLabel value="goldCard" control={<Radio color='primary' />} label="บัตรทอง"  />
-              {treatment === 'goldCard'? <TextField id="outlined-basic" defaultValue={hospital} onChange={(e)=>sethospital(e.target.value)} label="ระบุโรงพยาบาล" variant="outlined" size="small" /> :''}
-              <FormControlLabel value="disabledCard" control={<Radio color='primary' />} label="บัตรผู้พิการ" />
-              {treatment === 'disabledCard'? <TextField id="outlined-basic" defaultValue={hospital} onChange={(e)=>sethospital(e.target.value)} label="ระบุโรงพยาบาล" variant="outlined" size="small" /> :''}
-              <FormControlLabel value="socialSecurity" control={<Radio color='primary' />} label="บัตรประกันสังคม" />
-              {treatment === 'socialSecurity'? <TextField id="outlined-basic" defaultValue={hospital} onChange={(e)=>sethospital(e.target.value)} label="ระบุโรงพยาบาล" variant="outlined" size="small" /> :''}
-              <FormControlLabel value="otherTreatment" control={<Radio color='primary' />} label="อื่นๆ" />
-              {treatment === 'otherTreatment'? <TextField id="outlined-basic" defaultValue={otherTreatment} onChange={(e)=>setotherTreatment(e.target.value)} label="" variant="outlined" size="small" /> :''}
+              <FormControlLabel value="เบิกต้นสังกัด" control={<Radio color='primary' />} label="เบิกต้นสังกัด"  />
+              <FormControlLabel value="ชำระเงินเอง" control={<Radio color='primary' />} label="ชำระเงินเอง" />
+              <FormControlLabel value="บัตรทอง" control={<Radio color='primary' />} label="บัตรทอง"  />
+              {treatment === 'บัตรทอง'? <TextField id="outlined-basic" defaultValue={hospital} onChange={(e)=>sethospital(e.target.value)} label="ระบุโรงพยาบาล" variant="outlined" size="small" /> :''}
+              <FormControlLabel value="บัตรผู้พิการ" control={<Radio color='primary' />} label="บัตรผู้พิการ" />
+              {treatment === 'บัตรผู้พิการ'? <TextField id="outlined-basic" defaultValue={hospital} onChange={(e)=>sethospital(e.target.value)} label="ระบุโรงพยาบาล" variant="outlined" size="small" /> :''}
+              <FormControlLabel value="บัตรประกันสังคม" control={<Radio color='primary' />} label="บัตรประกันสังคม" />
+              {treatment === 'บัตรประกันสังคม'? <TextField id="outlined-basic" defaultValue={hospital} onChange={(e)=>sethospital(e.target.value)} label="ระบุโรงพยาบาล" variant="outlined" size="small" /> :''}
+              <FormControlLabel value="อื่นๆ" control={<Radio color='primary' />} label="อื่นๆ" />
+              {treatment === 'อื่นๆ'? <TextField id="outlined-basic" defaultValue={otherTreatment} onChange={(e)=>setotherTreatment(e.target.value)} label="" variant="outlined" size="small" /> :''}
             </RadioGroup>
           </div>
           {/* row-6 */}
@@ -228,15 +226,15 @@ function Sections1_4(props) {
               <p><span className="text-danger" >*</span><strong>รายได้ต่อเดือน</strong><span className="text-secondary" >(บาท)</span></p>
             </div>
             <RadioGroup className="pl-5" aria-label="salary" name="salary" defaultValue={salary} onChange={(e)=>setSalary(e.target.value)}>
-              <FormControlLabel value="noSalary" control={<Radio color='primary' />} label="ไม่มีรายได้"  />
-              <FormControlLabel value="less1k" control={<Radio color='primary' />} label="ไม่เกิน 1,000" />
-              <FormControlLabel value="1kto3k" control={<Radio color='primary' />} label="1,001 - 3,000"  />
-              <FormControlLabel value="3kto5k" control={<Radio color='primary' />} label="3,001 - 5,000" />
-              <FormControlLabel value="5kto10k" control={<Radio color='primary' />} label="5,001 - 10,000" />
-              <FormControlLabel value="10kto15k" control={<Radio color='primary' />} label="10,001 - 15,000" />
-              <FormControlLabel value="15kto20k" control={<Radio color='primary' />} label="15,001 - 20,000" />
-              <FormControlLabel value="20kto25k" control={<Radio color='primary' />} label="20,001 - 25,000" />
-              <FormControlLabel value="over25k" control={<Radio color='primary' />} label="25,001 ขึ้นไป" />
+              <FormControlLabel value="ไม่มีรายได้" control={<Radio color='primary' />} label="ไม่มีรายได้"  />
+              <FormControlLabel value="ไม่เกิน 1,000" control={<Radio color='primary' />} label="ไม่เกิน 1,000" />
+              <FormControlLabel value="1,001 - 3,000" control={<Radio color='primary' />} label="1,001 - 3,000"  />
+              <FormControlLabel value="3,001 - 5,000" control={<Radio color='primary' />} label="3,001 - 5,000" />
+              <FormControlLabel value="5,001 - 10,000" control={<Radio color='primary' />} label="5,001 - 10,000" />
+              <FormControlLabel value="10,001 - 15,000" control={<Radio color='primary' />} label="10,001 - 15,000" />
+              <FormControlLabel value="15,001 - 20,000" control={<Radio color='primary' />} label="15,001 - 20,000" />
+              <FormControlLabel value="20,001 - 25,000" control={<Radio color='primary' />} label="20,001 - 25,000" />
+              <FormControlLabel value="25,001 ขึ้นไป" control={<Radio color='primary' />} label="25,001 ขึ้นไป" />
             </RadioGroup>
           </div>
           {/* row-7 */}

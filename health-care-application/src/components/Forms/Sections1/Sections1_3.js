@@ -215,17 +215,17 @@ export default function Sections1_3() {
                   onChange={(event)=>setneighborTime1(event.target.value)}
                 >
                   <FormControlLabel
-                    value="allday"
+                    value="ทั้งวัน"
                     control={<Radio color="primary" />}
                     label="ทั้งวัน"
                   />
                   <FormControlLabel
-                    value="day"
+                    value="เฉพาะกลางวัน"
                     control={<Radio color="primary" />}
                     label="เฉพาะกลางวัน"
                   />
                   <FormControlLabel
-                    value="night"
+                    value="เฉพาะกลางคืน"
                     control={<Radio color="primary" />}
                     label="เฉพาะกลางคืน"
                   />
@@ -249,37 +249,37 @@ export default function Sections1_3() {
                   onChange={(event)=>setneighborRelative1(event.target.value)}
                 >
                   <FormControlLabel
-                    value="child1"
+                    value="บุตรชาย/บุตรสาว"
                     control={<Radio color="primary" />}
                     label="บุตรชาย/บุตรสาว"
                   />
                   <FormControlLabel
-                    value="sonInLaw1"
+                    value="ลูกเขย/ลูกสะใภ้"
                     control={<Radio color="primary" />}
                     label="ลูกเขย/ลูกสะใภ้"
                   />
                   <FormControlLabel
-                    value="grandchild1"
+                    value="หลานชาย/หลานสาว"
                     control={<Radio color="primary" />}
                     label="หลานชาย/หลานสาว"
                   />
                   <FormControlLabel
-                    value="siblings1"
+                    value="พี่น้อง"
                     control={<Radio color="primary" />}
                     label="พี่น้อง"
                   />
                   <FormControlLabel
-                    value="parents1"
+                    value="บิดา/มารดา"
                     control={<Radio color="primary" />}
                     label="บิดา/มารดา"
                   />
                   <FormControlLabel
-                    value="partner1"
+                    value="สามี/ภรรยา"
                     control={<Radio color="primary" />}
                     label="สามี/ภรรยา"
                   />
                   <FormControlLabel
-                    value="otherP1"
+                    value="บุคคลอื่น"
                     control={<Radio color="primary" />}
                     label="บุคคลอื่น"
                   />
@@ -402,17 +402,17 @@ export default function Sections1_3() {
                   onChange={(event)=>setneighborTime2(event.target.value)}
                 >
                   <FormControlLabel
-                    value="allday"
+                    value="ทั้งวัน"
                     control={<Radio color="primary" />}
                     label="ทั้งวัน"
                   />
                   <FormControlLabel
-                    value="day"
+                    value="เฉพาะกลางวัน"
                     control={<Radio color="primary" />}
                     label="เฉพาะกลางวัน"
                   />
                   <FormControlLabel
-                    value="night"
+                    value="เฉพาะกลางคืน"
                     control={<Radio color="primary" />}
                     label="เฉพาะกลางคืน"
                   />
@@ -435,37 +435,37 @@ export default function Sections1_3() {
                   onChange={(event)=>setneighborRelative2(event.target.value)}
                 >
                   <FormControlLabel
-                    value="child1"
+                    value="บุตรชาย/บุตรสาว"
                     control={<Radio color="primary" />}
                     label="บุตรชาย/บุตรสาว"
                   />
                   <FormControlLabel
-                    value="sonInLaw1"
+                    value="ลูกเขย/ลูกสะใภ้"
                     control={<Radio color="primary" />}
                     label="ลูกเขย/ลูกสะใภ้"
                   />
                   <FormControlLabel
-                    value="grandchild1"
+                    value="หลานชาย/หลานสาว"
                     control={<Radio color="primary" />}
                     label="หลานชาย/หลานสาว"
                   />
                   <FormControlLabel
-                    value="siblings1"
+                    value="พี่น้อง"
                     control={<Radio color="primary" />}
                     label="พี่น้อง"
                   />
                   <FormControlLabel
-                    value="parents1"
+                    value="บิดา/มารดา"
                     control={<Radio color="primary" />}
                     label="บิดา/มารดา"
                   />
                   <FormControlLabel
-                    value="partner1"
+                    value="สามี/ภรรยา"
                     control={<Radio color="primary" />}
                     label="สามี/ภรรยา"
                   />
                   <FormControlLabel
-                    value="otherP1"
+                    value="บุคคลอื่น"
                     control={<Radio color="primary" />}
                     label="บุคคลอื่น"
                   />
