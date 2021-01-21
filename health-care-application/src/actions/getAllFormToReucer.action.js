@@ -518,14 +518,14 @@ export const getDatammse = (visId) => {
           res.data.MMSE_8_1_POINT,
           res.data.MMSE_8_2_POINT,
           res.data.MMSE_8_3_POINT,
-          res.data.MMSE_9_POINT + "",
+          res.data.MMSE_9_POINT,
           res.data.MMSE_10,
-          res.data.MMSE_10_POINT + "",
+          res.data.MMSE_10_POINT,
           res.data.MMSE_11_POINT + "",
           res.data.MMSE_CORRECT_FORM,
           res.data.MMSE_RESULT,
-          res.data.MMSE_2_CHECK_LOCATION+"",
-          res.data.MMSE_4_CHECK_CALCULATE+""
+          res.data.MMSE_2_CHECK_LOCATION,
+          res.data.MMSE_4_CHECK_CALCULATE
         ];
         dispatch({
           type: "FETCHING7M",

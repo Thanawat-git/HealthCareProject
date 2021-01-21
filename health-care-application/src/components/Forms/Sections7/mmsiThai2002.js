@@ -77,9 +77,6 @@ export default function MMSIThai2002() {
     ansF: forms7mReducer.ansF,
     ansR: forms7mReducer.ansR,
     ansT: forms7mReducer.ansT,
-    ansTh: false,
-    ansS: false,
-    ansC: false,
     //5
     ansF2: forms7mReducer.ansF2,
     ansR2: forms7mReducer.ansR2,
@@ -261,8 +258,6 @@ export default function MMSIThai2002() {
     ans61,
     ans62,
     ans7,
-    ans9,
-    ans10,
     ans11,
   ]);
 
@@ -318,59 +313,56 @@ export default function MMSIThai2002() {
     dispatch(formAction.add(data));
     //console.log();
   };
-  console.log("what " + atHospital);
   const saveDataToServer = () => {
-    console.log('SaveDataToServer +++++++++++++++++')
-    formAction.updateMMSE([
-      textAns11,
-      ans1,
-      textAns12,
-      ans12,
-      textAns13,
-      ans13,
-      textAns14,
-      ans14,
-      textAns15,
-      ans15,
-      atHospital, //2
-      textAns211,
-      ans2_1_1,
-      textAns212,
-      ans2_1_2,
-      textAns213,
-      ans2_1_3,
-      textAns214,
-      ans2_1_4,
-      textAns215,
-      ans2_1_5,
-      ansF,
-      ansR,
-      ansT, //3
-      thinkNumber,
-      num1,
-      num2,
-      num3,
-      num4,
-      num5, //4
-      ansF2,
-      ansR2,
-      ansT2, //5
-      ans61,
-      ans62,
-      ans7,
-      think1,
-      think2,
-      think3, //8
-      ans9,
-      textAns10,
-      ans10,
-      ans11,
-      collect,
-      results,
-      visId,
-    ]).catch((error) => {
-      console.log("err ", error);
-    });
+    console.log("SaveDataToServer +++++++++++++++++");
+    formAction.updatemmse([
+        textAns11,
+        ans1,
+        textAns12,
+        ans12,
+        textAns13,
+        ans13,
+        textAns14,
+        ans14,
+        textAns15,
+        ans15,
+        atHospital, //2
+        textAns211,
+        ans2_1_1,
+        textAns212,
+        ans2_1_2,
+        textAns213,
+        ans2_1_3,
+        textAns214,
+        ans2_1_4,
+        textAns215,
+        ans2_1_5,
+        ansF,
+        ansR,
+        ansT, //3
+        thinkNumber,
+        num1,
+        num2,
+        num3,
+        num4,
+        num5, //4
+        ansF2,
+        ansR2,
+        ansT2, //5
+        ans61,
+        ans62,
+        ans7,
+        think1,
+        think2,
+        think3, //8
+        ans9,
+        textAns10,
+        ans10,
+        ans11,
+        collect,
+        results,
+        visId
+      ])
   };
   return (
     <div className="css-form">
@@ -570,19 +562,19 @@ export default function MMSIThai2002() {
           >
             <FormControlLabel
               className="radio-size"
-              value="true"
+              value="อยู่สถานพยาบาล"
               control={<Radio color="primary" />}
               label="2.1 กรณีอยู่สถานพยาบาล"
             />
             <FormControlLabel
               className="radio-size"
-              value="false"
+              value="อยู่ที่บ้าน"
               control={<Radio color="primary" />}
               label="2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ"
             />
           </RadioGroup>
 
-          {atHospital == "true" ? (
+          {atHospital === "อยู่สถานพยาบาล" ? (
             <React.Fragment>
               <p>
                 <b>2.1 กรณีอยู่สถานพยาบาล</b>
@@ -754,7 +746,7 @@ export default function MMSIThai2002() {
               <hr />
             </React.Fragment>
           ) : (
-            atHospital == "false" && (
+            atHospital === "อยู่ที่บ้าน" && (
               <React.Fragment>
                 <p>
                   <b>2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ</b>
@@ -992,7 +984,7 @@ export default function MMSIThai2002() {
                 >
                   <FormControlLabel
                     className="radio-size"
-                    value="true"
+                    value="คิดเลขได้"
                     control={<Radio color="primary" />}
                     label="4.1 ข้อนี้ให้คิดเลขในใจโดยเอา 100 ตั้ง ลบออกทีละ 7 ไปเรื่อยๆ
               ได้ผลลัพธ์เท่าไหร่บอกมา"
@@ -1001,7 +993,7 @@ export default function MMSIThai2002() {
                   <FormControlLabel
                     className="radio-size"
                     style={{ marginTop: 15 }}
-                    value="false"
+                    value="คิดเลขไม่ได้"
                     control={<Radio color="primary" />}
                     label="4.2 เดี๋ยวผม/ดิฉัน จะสะกดคำว่ามะนาวให้คุณ(ตายาย)
               ฟังแล้วให้คุณ(ตายาย) สะกดถอยหลังจากพยัญชนะตัวหลังไปตัวเเรก
@@ -1010,7 +1002,7 @@ export default function MMSIThai2002() {
                   />
                 </RadioGroup>
 
-                {thinkNumber == "true" ? (
+                {thinkNumber === "คิดเลขได้" ? (
                   <React.Fragment>
                     <p>
                       <b>
@@ -1079,7 +1071,7 @@ export default function MMSIThai2002() {
                     <hr />
                   </React.Fragment>
                 ) : (
-                  thinkNumber == "false" && (
+                  thinkNumber === "คิดเลขไม่ได้" && (
                     <React.Fragment>
                       <p>
                         <b>
