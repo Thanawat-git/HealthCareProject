@@ -1,13 +1,15 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Chart1, Chart2, Chart4 } from "./charts"
-import { getDataChart1, getDataChart2 } from "../../../actions/charts.action"
+import { Chart1, Chart2, Chart4, Chart5 } from "./charts"
+import { getDataChart1, getDataChart2, getDataChart4, getDataChart5 } from "../../../actions/charts.action"
 
 export default function MainContent() {
   const dispatch = useDispatch()
   React.useEffect(() => {
     dispatch(getDataChart1())
     dispatch(getDataChart2("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart4("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart5("ชุมชนมณีแก้ว"))
   }, [])
     return (
     <React.Fragment>
@@ -75,6 +77,7 @@ export default function MainContent() {
             <Chart1 />
             <Chart2 />
             <Chart4 />
+            <Chart5 />
 
             
 
