@@ -117,6 +117,8 @@ export const updatemmse = async (payload) => {
     MMSE_10: payload[40],
     MMSE_10_POINT: payload[41],
     MMSE_11_POINT: payload[42],
+    MMSE_CORRECT_FORM: payload[43],
+    MMSE_RESULT:payload[44],
     updateBy: USERLOGIN.Fullname,
   });
   console.log("MMSE Update Success");

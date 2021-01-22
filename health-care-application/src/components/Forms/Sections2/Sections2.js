@@ -234,9 +234,9 @@ console.log(visId)
   const sendValueTofollow = () => {
     checktosend1 && appointAction.createAppointment([dateblood, topicblood, peopleId]);
     checktosend2 && appointAction.createAppointment([datesuga, topicsuga, peopleId]);
-    // console.log(
-    //   topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
-    // );
+     console.log(
+       topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
+     );
   };
 
   function calDate(week) {
@@ -251,7 +251,7 @@ console.log(visId)
       var d = new Date(); // วันนี้
       d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
       dateToYMD(d);
-      //console.log(topicsuga + toDay)
+      console.log(topicsuga + toDay)
     }
   }
   function dateToYMD(date) {

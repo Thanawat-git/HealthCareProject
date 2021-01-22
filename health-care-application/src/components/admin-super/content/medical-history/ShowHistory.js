@@ -49,13 +49,16 @@ export default function ShowHistory({ value }) {
     })
   }, [openAll])
   const selectHistory = (id) => {
+    dispatch(getAll.getEducate(id))
     dispatch(historyAction.getHistorySelected(id))
     dispatch(getAll.getDataSec2(id))
     dispatch(getAll.getDataSec3(id))
     dispatch(getAll.getDataSec4(id))
     dispatch(getAll.getDataSec5(id))
     dispatch(getAll.getDataSec6(id))
+    dispatch(getAll.getDataTai(id))
     dispatch(getAll.getDataSec7(id))
+    dispatch(getAll.getDatammse(id))
     dispatch(getAll.getDataSec8(id))
     dispatch(getAll.getDataSec9(id))
     dispatch(getAll.getDataSec92(id))
@@ -264,6 +267,7 @@ export default function ShowHistory({ value }) {
           >
             <Typography>แบบประเมินภาวะสมองเสื่อม</Typography>
           </AccordionSummary>
+    
           <AccordionDetails>
             <Typography color="textSecondary">
               ผลการประเมิน <strong> {alz_result!==null ? `${alz_result}`:noResult} </strong>
@@ -398,6 +402,7 @@ export default function ShowHistory({ value }) {
             onClick={()=>window.print()}
             >Print this page</button>
             <PrintAllForm visdate={value.VIS_DATE} />
+            <PrintResultOnly visdate={value.VIS_DATE} />
             </div>
             <FormControlLabel
                 control={

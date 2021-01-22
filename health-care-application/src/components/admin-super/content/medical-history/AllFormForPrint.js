@@ -28,16 +28,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AllFormForPrint() {
+
   return (
     <div className="all-form-for-print" >
       <Section2 />
       <Section3 />
       <Section4 />
+    
       <Section5 />
+
       <Section6 />
       <Tai />
       <Section7 />
-      {/* <MMSE /> */}
+      <MMSE />
       <Section8 />
       <Section89Q />
       <Section9 />
@@ -454,6 +457,7 @@ function Section5() {
 
   return (
     <div className="css-form">
+      <div style={{margin:'2%'}}> 
         <h2>ส่วนที่ 5 การประเมินสุขภาพช่องปาก</h2>
         <div className="question">
           <p> การแปรงฟัน</p>
@@ -642,9 +646,8 @@ function Section5() {
           <FormHelperText style={{ fontSize : 15}}>
             กรุณาระบุจำนวน ถ้าไม่มีให้ใส่ 0
           </FormHelperText>
-          <br />
-          <hr />
-          <p> สูบบุหรี่มากกว่า 10 มวนต่อวัน</p>
+
+          <p > สูบบุหรี่มากกว่า 10 มวนต่อวัน</p>
           <RadioGroup
             className="pl-20"
             aria-label="questions5.4"
@@ -664,7 +667,13 @@ function Section5() {
               label="ไม่ใช่"
             />
           </RadioGroup>
-          <hr />
+          
+          </div>
+          <br />
+          <br />
+          <br />
+<div style={{margin:'2%'}}> 
+          
           <p> เคี้ยวหมากเป็นประจำ</p>
           <RadioGroup
             className="pl-20"
@@ -818,10 +827,13 @@ function Section5() {
               label="ไม่ใช่"
             />
           </RadioGroup>
-          <hr />
         </div>
         </div>
-
+        <br />
+        <br />
+        <br />
+        <br />
+</div>
         
   )
 }
@@ -841,7 +853,8 @@ function Section6() {
     ans6_10,
   } = forms6Reducer
   return (
-    <div className="css-form">
+    <div className="css-form" >
+     
         <h2>ส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ</h2>
         <div className="question">
           <p>กินอาหารได้เอง เมื่อเตรียมสำรับไว้ให้ต่อหน้า</p>
@@ -1038,7 +1051,9 @@ function Section6() {
               label="ทำไม่ได้"
             />
           </RadioGroup>
-          <hr />
+    
+          <br />
+          <br />
           <p>การอาบน้ำ</p>
           <RadioGroup
             className="pl-20"
@@ -1221,7 +1236,14 @@ function Tai() {
               label="ไม่มีปัญหาเรื่องความจำ / การตัดสินใจ Orientation และพฤติกรรม"
             />
           </RadioGroup>
-          <hr />
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div style={{marginTop:"80px"}}>
           <p>Feed</p>
           <RadioGroup
             className="pl-20"
@@ -1313,7 +1335,7 @@ function Tai() {
           </RadioGroup>
         </div>
         </div>
-        
+        </div>
   )
 }
 
@@ -1735,1011 +1757,1059 @@ function Section7() {
   )
 }
 
-// function MMSE() {
-//   const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
-//   const {
-//     ans1,
-//   ans12,
-//   ans13,
-//   ans14,
-//   ans15,
-//   ans2_1_1,
-//   ans2_1_2,
-//   ans2_1_3,
-//   ans2_1_4,
-//   ans2_1_5,
-//   ans2_2_1,
-//   ans2_2_2,
-//   ans2_2_3,
-//   ans2_2_4,
-//   ans2_2_5,
-//   ansF,
-//   ansR,
-//   ansT,
-//   num1,
-//   num2,
-//   num3,
-//   num4,
-//   num5,
-//   ansF2,
-//   ansR2,
-//   ansT2,
-//   ans61,
-//   ans62,
-//   ans7,
-//   ans9,
-//   ans10,
-//   ans11,
-//   textAns11,
-//   textAns12,
-//   textAns13,
-//   textAns14,
-//   textAns15,
-//   textAns211,
-//   textAns212,
-//   textAns213,
-//   textAns214,
-//   textAns215,
-//   textAns221,
-//   textAns222,
-//   textAns223,
-//   textAns224,
-//   textAns225,
-//   textAns10,
-//   } = forms7mReducer
-//   let divStyle = 0
-//   return (
-//     <div className="css-form">
-//         <h2>การทดสอบสมองเบื่องต้นฉบับภาษาไทย</h2>
-//         <div className="question">
-//           <p>
-//             <b>ข้อแนะนำ</b>
-//           </p>
-//           <span>
-//             แบบทดสอบสภาพสมองเบื่องต้นใช้คัดกรองภาวะสมองเสื่อมในผู้สูงอายุ
-//             สามารถใช้ได้ในผู้สูงอายุที่ไม่ได้เรียนหรือไม่รู้หนังสือ(อ่านไม่ออก
-//             เขียนไม่ได้)ด้วยโดยไม่ต้องทำข้อ 4 ข้อ 9 และข้อ 10
-//           </span>
-//           <p>
-//             <b>1. Orientation for time : ทดสอบการรับรู้เกี่ยวกับเวลาปัจจุบัน</b>
-//           </p>
-//           <p>1.1 วันนี้ วันที่เท่าไหร่</p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans1}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <div className="col-12">
-//             <p>คำตอบของผู้สูงอายุ</p>
-//             <TextField
-//               id=""
-//               variant="outlined"
-//               className="TextField"
-//               size="small"
-//               defaultValue={textAns11}
-//             />
-//           </div>
-//           <hr />
-//           <p>1.2 วันนี้ วันอะไร</p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans12}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <div className="col-12">
-//             <p>คำตอบของผู้สูงอายุ</p>
-//             <TextField
-//               id=""
-//               variant="outlined"
-//               className="TextField"
-//               size="small"
-//               defaultValue={textAns12}
-//             />
-//           </div>
-//           <hr />
-//           <p>1.3 เดือนนี้ เดือนอะไร</p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans13}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <div className="col-12">
-//             <p>คำตอบของผู้สูงอายุ</p>
-//             <TextField
-//               id=""
-//               variant="outlined"
-//               className="TextField"
-//               size="small"
-//               defaultValue={textAns13}
-//             />
-//           </div>
-//           <hr />
-//           <p>1.4 ปีนี้ ปีอะไร</p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans14}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <div className="col-12">
-//             <p>คำตอบของผู้สูงอายุ</p>
-//             <TextField
-//               id=""
-//               variant="outlined"
-//               className="TextField"
-//               size="small"
-//               defaultValue={textAns14}
-//             />
-//           </div>
-//           <hr />
-//           <p>1.5 ฤดูนี้ ฤดูอะไร</p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans15}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <div className="col-12">
-//             <p>คำตอบของผู้สูงอายุ</p>
-//             <TextField
-//               id=""
-//               variant="outlined"
-//               className="TextField"
-//               size="small"
-//               defaultValue={textAns15}
-//             />
-//           </div>
-//           <hr />
-//           <p>
-//             <b>
-//               2. Orientation for place :
-//               ทดสอบการรับรู้เกี่ยวกับที่อยู่ในปัจจุบัน
-//             </b>
-//           </p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions"
-//             name="questions"
-//             // value={anstf}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="2.1 กรณีอยู่สถานพยาบาล"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ"
-//             />
-//           </RadioGroup>
+function MMSE() {
+  const forms1p4Reducer = useSelector(
+    ({ forms1p4Reducer }) => forms1p4Reducer.educations
+  );
+  const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
+  const {
+    textAns11,
+    ans1,
+    textAns12,
+    ans12,
+    textAns13,
+    ans13,
+    textAns14,
+    ans14,
+    textAns15,
+    ans15,
+    textAns211,
+    ans2_1_1,
+    textAns212,
+    ans2_1_2,
+    textAns213,
+    ans2_1_3,
+    textAns214,
+    ans2_1_4,
+    textAns215,
+    ans2_1_5,
+    ansF,
+    ansR,
+    ansT,
+    num1,
+    num2,
+    num3,
+    num4,
+    num5,
+    ansF2,
+    ansR2,
+    ansT2,
+    ans61,
+    ans62,
+    ans7,
+    think1,
+    think2,
+    think3,
+    ans9,
+    textAns10,
+    ans10,
+    ans11,
+    atHospital,
+    thinkNumber
+  } = forms7mReducer
+  let divStyle = {color:'darkgray'}
+  return (
+    <div className="css-form">
+        <h2>การทดสอบสมองเบื่องต้นฉบับภาษาไทย</h2>
+        <div className="question">
+          <p>
+            <b>ข้อแนะนำ</b>
+          </p>
+          <span>
+            แบบทดสอบสภาพสมองเบื่องต้นใช้คัดกรองภาวะสมองเสื่อมในผู้สูงอายุ
+            สามารถใช้ได้ในผู้สูงอายุที่ไม่ได้เรียนหรือไม่รู้หนังสือ(อ่านไม่ออก
+            เขียนไม่ได้)ด้วยโดยไม่ต้องทำข้อ 4 ข้อ 9 และข้อ 10
+          </span>
+          <p>
+            <b>1. Orientation for time : ทดสอบการรับรู้เกี่ยวกับเวลาปัจจุบัน</b>
+          </p>
+          <p>1.1 วันนี้ วันที่เท่าไหร่</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans1}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <div className="col-12">
+            <p>คำตอบของผู้สูงอายุ</p>
+            <TextField
+              id=""
+              variant="outlined"
+              className="TextField"
+              size="small"
+              defaultValue={textAns11}
+            />
+          </div>
+          <hr />
+          <p>1.2 วันนี้ วันอะไร</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans12}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <div className="col-12">
+            <p>คำตอบของผู้สูงอายุ</p>
+            <TextField
+              id=""
+              variant="outlined"
+              className="TextField"
+              size="small"
+              defaultValue={textAns12}
+            />
+          </div>
+          <hr />
+          <p>1.3 เดือนนี้ เดือนอะไร</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans13}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <div className="col-12">
+            <p>คำตอบของผู้สูงอายุ</p>
+            <TextField
+              id=""
+              variant="outlined"
+              className="TextField"
+              size="small"
+              defaultValue={textAns13}
+            />
+          </div>
+          <hr />
+          <p>1.4 ปีนี้ ปีอะไร</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans14}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <div className="col-12">
+            <p>คำตอบของผู้สูงอายุ</p>
+            <TextField
+              id=""
+              variant="outlined"
+              className="TextField"
+              size="small"
+              defaultValue={textAns14}
+            />
+          </div>
+          <hr />
+          <p>1.5 ฤดูนี้ ฤดูอะไร</p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans15}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <div className="col-12">
+            <p>คำตอบของผู้สูงอายุ</p>
+            <TextField
+              id=""
+              variant="outlined"
+              className="TextField"
+              size="small"
+              defaultValue={textAns15}
+            />
+          </div>
+          <hr />
+          <p>
+            <b>
+              2. Orientation for place :
+              ทดสอบการรับรู้เกี่ยวกับที่อยู่ในปัจจุบัน
+            </b>
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions"
+            name="questions"
+            value={atHospital}
+          >
+            <FormControlLabel
+              className="radio-size"
+               value="อยู่สถานพยาบาล"
+              control={<Radio color="primary" />}
+              label="2.1 กรณีอยู่สถานพยาบาล"
+            />
+            <FormControlLabel
+              className="radio-size"
+             value="อยู่ที่บ้าน"
+              control={<Radio color="primary" />}
+              label="2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ"
+            />
+          </RadioGroup>
 
-//           <div id="myID21">
-//             <p>
-//               <b>2.1 กรณีอยู่สถานพยาบาล</b>
-//             </p>
-//             <p>2.1.1 สถานที่ตรงนี้เรียกว่าอะไร และชื่อว่าอะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_1_1}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns211}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.1.2 ขณะนี้อยู่ชั้นที่เท่าไหร่ของตัวอาคาร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_1_2}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns212}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.1.3 ที่นี่อยู่ในอำเภออะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_1_3}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns213}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.1.4 ที่นี่จังหวัดอะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_1_4}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns214}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.1.5 ที่นี่ภาคอะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_1_5}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns215}
-//               />
-//             </div>
-//             <hr />
-//           </div>
-//           <div id="myID22">
-//             <p>
-//               <b>2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ</b>
-//             </p>
-//             <p>2.2.1 สถานที่ตรงนี้เรียกว่าอะไร และเลขที่เท่าไหร่</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_2_1}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns221}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.2.2 ที่นี่หมู่บ้าน(หรือละแวก คุ้ม ย่าน ถนน) อะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_2_2}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns222}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.2.3 ที่นี่อำเภอ หรือเขตอะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_2_3}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns223}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.2.4 ที่นี่จังหวัดอะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_2_4}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns224}
-//               />
-//             </div>
-//             <hr />
-//             <p>2.2.5 ที่นี่ภาคอะไร</p>
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans2_2_5}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ถูก"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ผิด"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns225}
-//               />
-//             </div>
-//           </div>
-//           <hr />
-//           <p>
-//             <b>
-//               3. Registration : ทดสอบการบันทึกความจำโดยให้จำชื่อของ 3 อย่าง
-//               ต่อไปนี้จะเป็นการทดสอบความจำโดยจะบอกชื่อของ 3 อย่าง ให้คุณ(ตายาย)
-//               ฟังดีๆนะคะ จะบอกเพียงครั้งเดียว เมื่อพูดจบแล้วให้คุณ(ตายาย)
-//               พูดทวนตามที่ได้ยินทั้ง 3 ชื่อ แล้วจำไว้ให้ดีนะคะ เดี๋ยวจะถามซ้ำ
-//             </b>
-//           </p>
-//           <FormGroup>
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   checked={ansF}
-//                   name="ansF"
-//                   color="primary"
-//                 />
-//               }
-//               label="ดอกไม้"
-//             />
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   checked={ansR}
-//                   name="ansR"
-//                   color="primary"
-//                 />
-//               }
-//               label="แม่น้ำ"
-//             />
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   checked={ansT}
-//                   name="ansT"
-//                   color="primary"
-//                 />
-//               }
-//               label="รถไฟ"
-//             />
-//           </FormGroup>
-//           <hr />
+          {atHospital === "อยู่สถานพยาบาล" ? (
+            <React.Fragment>
+            <p>
+              <b>2.1 กรณีอยู่สถานพยาบาล</b>
+            </p>
+            <p>2.1.1 สถานที่ตรงนี้เรียกว่าอะไร และชื่อว่าอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_1}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns211}
+              />
+            </div>
+            <hr />
+            <p>2.1.2 ขณะนี้อยู่ชั้นที่เท่าไหร่ของตัวอาคาร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_2}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns212}
+              />
+            </div>
+            <hr />
+            <p>2.1.3 ที่นี่อยู่ในอำเภออะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_3}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns213}
+              />
+            </div>
+            <hr />
+            <p>2.1.4 ที่นี่จังหวัดอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_4}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns214}
+              />
+            </div>
+            <hr />
+            <p>2.1.5 ที่นี่ภาคอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_5}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns215}
+              />
+         </div>
+              <hr />
+            </React.Fragment>
+          ) : (
+            atHospital === "อยู่ที่บ้าน" && (
+              <React.Fragment>
+            <p>
+              <b>2.2 กรณีอยู่ที่บ้านของผู้ถูกทดสอบ</b>
+            </p>
+            <p>2.2.1 สถานที่ตรงนี้เรียกว่าอะไร และเลขที่เท่าไหร่</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_1}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns211}
+              />
+            </div>
+            <hr />
+            <p>2.2.2 ที่นี่หมู่บ้าน(หรือละแวก คุ้ม ย่าน ถนน) อะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_2}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns212}
+              />
+            </div>
+            <hr />
+            <p>2.2.3 ที่นี่อำเภอ หรือเขตอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_3}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns213}
+              />
+            </div>
+            <hr />
+            <p>2.2.4 ที่นี่จังหวัดอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_4}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns214}
+              />
+            </div>
+            <hr />
+            <p>2.2.5 ที่นี่ภาคอะไร</p>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans2_1_5}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ถูก"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ผิด"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns215}
+              />
+        </div>
+              </React.Fragment>
+            )
+          )}
+          <hr />
+          <p>
+            <b>
+              3. Registration : ทดสอบการบันทึกความจำโดยให้จำชื่อของ 3 อย่าง
+              ต่อไปนี้จะเป็นการทดสอบความจำโดยจะบอกชื่อของ 3 อย่าง ให้คุณ(ตายาย)
+              ฟังดีๆนะคะ จะบอกเพียงครั้งเดียว เมื่อพูดจบแล้วให้คุณ(ตายาย)
+              พูดทวนตามที่ได้ยินทั้ง 3 ชื่อ แล้วจำไว้ให้ดีนะคะ เดี๋ยวจะถามซ้ำ
+            </b>
+          </p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ansF}
+                  name="ansF"
+                  color="primary"
+                />
+              }
+              label="ดอกไม้"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ansR}
+                  name="ansR"
+                  color="primary"
+                />
+              }
+              label="แม่น้ำ"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ansT}
+                  name="ansT"
+                  color="primary"
+                />
+              }
+              label="รถไฟ"
+            />
+          </FormGroup>
+          <hr />
 
-//           <p style={divStyle}>
-//             <b>
-//               4.Attention or Calculation : ทดสอบสมาธิโดยให้คิดเลขในใจ
-//               ถามผู้ถูกทดสอบว่า "คิดเลขในใจเป็นหรือไม่" ถ้าคิดเป็นให้ทำข้อ 4.1
-//               ถ้าคิดไม่เป็น หรือไม่ตอบให้ทำข้อ 4.2
-//             </b>
-//           </p>
-//           <div id="myID4">
-//             <p>
-//               4.1 ข้อนี้ให้คิดเลขในใจโดยเอา 100 ตั้ง ลบออกทีละ 7 ไปเรื่อยๆ
-//               ได้ผลลัพธ์เท่าไหร่บอกมา
-//             </p>
-//             <FormGroup>
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     checked={num1}
-//                     name="num1"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="(100-7) = 93 "
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     checked={num2}
-//                     name="num2"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="(93-7) = 86 "
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     checked={num3}
-//                     name="num3"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="(86-7) = 79"
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     checked={num4}
-//                     name="num4"
-//                     value="0"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="(79-7) = 72"
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     checked={num5}
-//                     name="num5"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="(72-7) = 65"
-//               />
-//             </FormGroup>
-//             <hr />
-//             <p>
-//               4.2 เดี๋ยวผม/ดิฉัน จะสะกดคำว่ามะนาวให้คุณ(ตายาย)
-//               ฟังแล้วให้คุณ(ตายาย) สะกดถอยหลังจากพยํญชนะตัวหลังไปตัวเเรก
-//               คำว่ามะนาวสะกดว่า มอม้า-สระอะ-นอหนู- สระอา-วอแหวน คุณ(ตายาย)
-//               สะกดถอยหลังให้ฟังสิครับ/ค่ะ
-//             </p>
-//             <FormGroup>
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     // checked={spell1}
-//                     name="spell1"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="ว"
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     // checked={spell2}
-//                     name="spell2"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="า"
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     // checked={spell3}
-//                     name="spell3"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="น"
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     // checked={spell4}
-//                     name="spell4"
-//                     value="0"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="ะ"
-//               />
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     // checked={spell5}
-//                     name="spell5"
-//                     color="primary"
-//                   />
-//                 }
-//                 label="ม"
-//               />
-//             </FormGroup>
-//           </div>
-//           <hr />
+          <p style={divStyle}>
+            <b>
+              4.Attention or Calculation : ทดสอบสมาธิโดยให้คิดเลขในใจ
+              ถามผู้ถูกทดสอบว่า "คิดเลขในใจเป็นหรือไม่" ถ้าคิดเป็นให้ทำข้อ 4.1
+              ถ้าคิดไม่เป็น หรือไม่ตอบให้ทำข้อ 4.2
+            </b>
+         
+          {forms1p4Reducer == "ไม่ได้เรียนหนังสือ" ? (
+              ""
+            ) : (
+              <React.Fragment> 
+          <RadioGroup
+                  className="pl-20"
+                  aria-label="questions"
+                  name="questions"
+                  value={thinkNumber}
+                >
+                  <FormControlLabel
+                    className="radio-size"
+                    value="คิดเลขได้"
+                    control={<Radio color="primary" />}
+                    label="4.1 ข้อนี้ให้คิดเลขในใจโดยเอา 100 ตั้ง ลบออกทีละ 7 ไปเรื่อยๆ
+              ได้ผลลัพธ์เท่าไหร่บอกมา"
+                  />
 
-//           <p>
-//             <b>
-//               5.Recall : ทดสอบความจำระยะสั้นของชื่อสิ่งของ 3
-//               อย่างที่ให้จำไว้แล้ว
-//             </b>
-//           </p>
-//           <p>เมื่อสักครู่ให้จำของ 3 อย่าง จำได้ไหม มีอะไรบ้าง</p>
-//           <FormGroup>
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   checked={ansF2}
-//                   name="ansF2"
-//                   color="primary"
-//                 />
-//               }
-//               label="ดอกไม้"
-//             />
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   checked={ansR2}
-//                   name="ansR2"
-//                   color="primary"
-//                 />
-//               }
-//               label="แม่น้ำ"
-//             />
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   checked={ansT2}
-//                   name="ansT2"
-//                   color="primary"
-//                 />
-//               }
-//               label="รถไฟ"
-//             />
-//           </FormGroup>
-//           <div className="col-12">
-//             <p>คำตอบของผู้สูงอายุ</p>
-//             <TextField
-//               id=""
-//               variant="outlined"
-//               className="TextField"
-//               size="small"
-//               // defaultValue={textAns5}
-//             />
-//           </div>
-//           <hr />
-//           <p>
-//             <b>6.Naming : ทดสอบการบอกชื่อสิ่งของที่ได้เห็น</b>
-//           </p>
-//           <p>
-//             6.1 ยื่นดินสอให้ผู้ถูกทดสอบดูแล้วถามว่า "ของสิ่งนี้เรียกว่าอะไร"
-//           </p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans61}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <hr />
-//           <p>
-//             6.2 ชี้นาฬิกาให้ผู้ถูกทดสอบดูแล้วถามว่า "ของสิ่งนี้เรียกว่าอะไร"
-//           </p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans62}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <hr />
-//           <p>
-//             <b>
-//               7.Repetiton : ทดสอบการพูดซ้ำคำที่ได้ยิน ตั้งใจฟังผม/ดิฉันนะ
-//               เมื่อผม/ดิฉันพูดข้อความนี้ แล้วให้คุณ(ตายาย) พูดตามผม/ดิฉัน
-//               จะบอกเพียงครั้งเดียว "ใครใคร่ขายไก่ไข่"
-//             </b>
-//           </p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans7}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ถูก"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ผิด"
-//             />
-//           </RadioGroup>
-//           <hr />
-//           <p>
-//             <b>
-//               8.Verbal command : ทดสอบการเข้าใจความหมายและทำตามคำสั่ง
-//               ข้อนี้ให้ทำตามที่บอก ตั้งใจฟังดีๆนะ เดี๋ยวผม/ดิฉัน จะส่งกระดาษให้
-//               แล้วให้คุณ(ตายาย) รับด้วยมือขวา พับครึ่งด้วยมือทั้ง 2 ข้าง
-//               เสร็จแล้ววางไว้ที่(พื้น,โต๊ะ,เตียง)
-//             </b>
-//           </p>
-//           <p>ผู้ทดสอบส่งกระดาษเปล่าขนาดประมาณ A4 ไม่มีรอยพับ ให้ผู้ทดสอบ</p>
-//           <RadioGroup>
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   // checked={think1}
-//                   name="think1"
-//                   color="primary"
-//                 />
-//               }
-//               label="รับด้วยมือขวา"
-//             />
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   // checked={think2}
-//                   name="think2"
-//                   color="primary"
-//                 />
-//               }
-//               label="พับครึ่งด้วยมือ 2 ข้าง"
-//             />
-//             <FormControlLabel
-//               control={
-//                 <Checkbox
-//                   // checked={think3}
-//                   name="think3"
-//                   color="primary"
-//                 />
-//               }
-//               label="วางไว้ที่(พื้น,โต๊ะ,เตียง)"
-//             />
-//           </RadioGroup>
-//           <hr />
+                  <FormControlLabel
+                    className="radio-size"
+                    style={{ marginTop: 15 }}
+                    value="คิดเลขไม่ได้"
+                    control={<Radio color="primary" />}
+                    label="4.2 เดี๋ยวผม/ดิฉัน จะสะกดคำว่ามะนาวให้คุณ(ตายาย)
+              ฟังแล้วให้คุณ(ตายาย) สะกดถอยหลังจากพยัญชนะตัวหลังไปตัวเเรก
+              คำว่ามะนาวสะกดว่า มอม้า-สระอะ-นอหนู-สระอา-วอแหวน คุณ(ตายาย)
+              สะกดถอยหลังให้ฟังสิครับ/ค่ะ"
+                  />
+                </RadioGroup>
+                {thinkNumber === "คิดเลขได้" ? (
+                  <React.Fragment> 
+            <p>
+              4.1 ข้อนี้ให้คิดเลขในใจโดยเอา 100 ตั้ง ลบออกทีละ 7 ไปเรื่อยๆ
+              ได้ผลลัพธ์เท่าไหร่บอกมา
+            </p>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={num1}
+                    name="num1"
+                    color="primary"
+                  />
+                }
+                label="(100-7) = 93 "
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={num2}
+                    name="num2"
+                    color="primary"
+                  />
+                }
+                label="(93-7) = 86 "
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={num3}
+                    name="num3"
+                    color="primary"
+                  />
+                }
+                label="(86-7) = 79"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={num4}
+                    name="num4"
+                    value="0"
+                    color="primary"
+                  />
+                }
+                label="(79-7) = 72"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={num5}
+                    name="num5"
+                    color="primary"
+                  />
+                }
+                label="(72-7) = 65"
+              />
+            </FormGroup>
+            <hr />
+            </React.Fragment>
+                ) : (
+                  thinkNumber === "คิดเลขไม่ได้" && (
+                    <React.Fragment>
+            <p>
+              4.2 เดี๋ยวผม/ดิฉัน จะสะกดคำว่ามะนาวให้คุณ(ตายาย)
+              ฟังแล้วให้คุณ(ตายาย) สะกดถอยหลังจากพยํญชนะตัวหลังไปตัวเเรก
+              คำว่ามะนาวสะกดว่า มอม้า-สระอะ-นอหนู- สระอา-วอแหวน คุณ(ตายาย)
+              สะกดถอยหลังให้ฟังสิครับ/ค่ะ
+            </p>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                  checked={num1}
+                  name="num1"
+                    color="primary"
+                  />
+                }
+                label="ว"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                  checked={num2}
+                  name="num2"
+                    color="primary"
+                  />
+                }
+                label="า"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                  checked={num3}
+                  name="num3"
+                    color="primary"
+                  />
+                }
+                label="น"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                  checked={num4}
+                  name="num4"
+                    value="0"
+                    color="primary"
+                  />
+                }
+                label="ะ"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                  checked={num5}
+                  name="num5"
+                    color="primary"
+                  />
+                }
+                label="ม"
+              />
+            </FormGroup>
+          <hr />
+          </React.Fragment>
+                  )
+                )}
+              </React.Fragment>
+            )}
+ </p>
 
-//           <p style={divStyle}>
-//             <b>
-//               9.Written command : ทดสอบการอ่าน การเข้าใจความหมาย สามารถทำตามได้
-//               ให้คุณ(ตายาย) อ่านแล้วทำตาม จะอ่านออกเสียงหรือในใจก็ได้
-//             </b>
-//           </p>
-//           <div id="myID9">
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans9}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ทำได้"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ทำไม่ได้"
-//               />
-//             </RadioGroup>
-//           </div>
-//           <hr />
+          <p>
+            <b>
+              5.Recall : ทดสอบความจำระยะสั้นของชื่อสิ่งของ 3
+              อย่างที่ให้จำไว้แล้ว
+            </b>
+          </p>
+          <p>เมื่อสักครู่ให้จำของ 3 อย่าง จำได้ไหม มีอะไรบ้าง</p>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ansF2}
+                  name="ansF2"
+                  color="primary"
+                />
+              }
+              label="ดอกไม้"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ansR2}
+                  name="ansR2"
+                  color="primary"
+                />
+              }
+              label="แม่น้ำ"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={ansT2}
+                  name="ansT2"
+                  color="primary"
+                />
+              }
+              label="รถไฟ"
+            />
+          </FormGroup>
+          <div className="col-12">
+            <p>คำตอบของผู้สูงอายุ</p>
+            <TextField
+              id=""
+              variant="outlined"
+              className="TextField"
+              size="small"
+              // defaultValue={textAns5}
+            />
+          </div>
+          <hr />
+          <p>
+            <b>6.Naming : ทดสอบการบอกชื่อสิ่งของที่ได้เห็น</b>
+          </p>
+          <p>
+            6.1 ยื่นดินสอให้ผู้ถูกทดสอบดูแล้วถามว่า "ของสิ่งนี้เรียกว่าอะไร"
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans61}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            6.2 ชี้นาฬิกาให้ผู้ถูกทดสอบดูแล้วถามว่า "ของสิ่งนี้เรียกว่าอะไร"
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans62}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            <b>
+              7.Repetiton : ทดสอบการพูดซ้ำคำที่ได้ยิน ตั้งใจฟังผม/ดิฉันนะ
+              เมื่อผม/ดิฉันพูดข้อความนี้ แล้วให้คุณ(ตายาย) พูดตามผม/ดิฉัน
+              จะบอกเพียงครั้งเดียว "ใครใคร่ขายไก่ไข่"
+            </b>
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans7}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ถูก"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ผิด"
+            />
+          </RadioGroup>
+          <hr />
+          <p>
+            <b>
+              8.Verbal command : ทดสอบการเข้าใจความหมายและทำตามคำสั่ง
+              ข้อนี้ให้ทำตามที่บอก ตั้งใจฟังดีๆนะ เดี๋ยวผม/ดิฉัน จะส่งกระดาษให้
+              แล้วให้คุณ(ตายาย) รับด้วยมือขวา พับครึ่งด้วยมือทั้ง 2 ข้าง
+              เสร็จแล้ววางไว้ที่(พื้น,โต๊ะ,เตียง)
+            </b>
+          </p>
+          <p>ผู้ทดสอบส่งกระดาษเปล่าขนาดประมาณ A4 ไม่มีรอยพับ ให้ผู้ทดสอบ</p>
+          <RadioGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={think1}
+                  name="think1"
+                  color="primary"
+                />
+              }
+              label="รับด้วยมือขวา"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={think2}
+                  name="think2"
+                  color="primary"
+                />
+              }
+              label="พับครึ่งด้วยมือ 2 ข้าง"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={think3}
+                  name="think3"
+                  color="primary"
+                />
+              }
+              label="วางไว้ที่(พื้น,โต๊ะ,เตียง)"
+            />
+          </RadioGroup>
+          <hr />
 
-//           <p style={divStyle}>
-//             <b>
-//               10.Written : ทดสอบการเขียนภาษาอย่างมีความหมาย ให้คุณ(ตายาย)
-//               เขียนข้อความอะไรก็ได้ที่อ่านแล้วรู้เรื่องหรือมีความหมาย
-//             </b>
-//           </p>
-//           <div id="myID10">
-//             <RadioGroup
-//               className="pl-20"
-//               aria-label="questions3.4"
-//               name="questions3.4"
-//               value={ans10}
-//             >
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="1"
-//                 control={<Radio color="primary" />}
-//                 label="ประโยคมีความหมาย"
-//               />
-//               <FormControlLabel
-//                 className="radio-size"
-//                 value="0"
-//                 control={<Radio color="primary" />}
-//                 label="ประโยคไม่มีความหมาย"
-//               />
-//             </RadioGroup>
-//             <div className="col-12">
-//               <p>คำตอบของผู้สูงอายุ</p>
-//               <TextField
-//                 id=""
-//                 variant="outlined"
-//                 className="TextField"
-//                 size="small"
-//                 defaultValue={textAns10}
-//               />
-//             </div>
-//           </div>
-//           <hr />
-
-//           <p>
-//             <b>
-//               11.Visuoconstruction : ทดสอบความสัมพันธ์ระหว่างตากับมือ
-//               ให้คุณ(ตายาย) วาดภาพ
-//             </b>
-//           </p>
-//           <RadioGroup
-//             className="pl-20"
-//             aria-label="questions3.4"
-//             name="questions3.4"
-//             value={ans11}
-//           >
-//             <FormControlLabel
-//               className="radio-size"
-//               value="1"
-//               control={<Radio color="primary" />}
-//               label="ทำได้"
-//             />
-//             <FormControlLabel
-//               className="radio-size"
-//               value="0"
-//               control={<Radio color="primary" />}
-//               label="ทำไม่ได้"
-//             />
-//           </RadioGroup>
-//         </div>
-//         </div>
-//   )
-// }
+          <p style={divStyle}>
+            <b>
+              9.Written command : ทดสอบการอ่าน การเข้าใจความหมาย สามารถทำตามได้
+              ให้คุณ(ตายาย) อ่านแล้วทำตาม จะอ่านออกเสียงหรือในใจก็ได้
+            </b>
+            {forms1p4Reducer == "ไม่ได้เรียนหนังสือ" ? (
+              ""
+            ) : (
+              <React.Fragment>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans9}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ทำได้"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ทำไม่ได้"
+              />
+            </RadioGroup>
+      </React.Fragment>
+      )}
+    </p>
+    <hr />
+          <p style={divStyle}>
+            <b>
+              10.Written : ทดสอบการเขียนภาษาอย่างมีความหมาย ให้คุณ(ตายาย)
+              เขียนข้อความอะไรก็ได้ที่อ่านแล้วรู้เรื่องหรือมีความหมาย
+            </b>
+            {forms1p4Reducer == "ไม่ได้เรียนหนังสือ" ? (
+              ""
+            ) : (
+              <React.Fragment>
+            <RadioGroup
+              className="pl-20"
+              aria-label="questions3.4"
+              name="questions3.4"
+              value={ans10}
+            >
+              <FormControlLabel
+                className="radio-size"
+                value="1"
+                control={<Radio color="primary" />}
+                label="ประโยคมีความหมาย"
+              />
+              <FormControlLabel
+                className="radio-size"
+                value="0"
+                control={<Radio color="primary" />}
+                label="ประโยคไม่มีความหมาย"
+              />
+            </RadioGroup>
+            <div className="col-12">
+              <p>คำตอบของผู้สูงอายุ</p>
+              <TextField
+                id=""
+                variant="outlined"
+                className="TextField"
+                size="small"
+                defaultValue={textAns10}
+              />
+            </div>
+            </React.Fragment>
+            )}
+          </p>
+          <hr />
+          <p>
+            <b>
+              11.Visuoconstruction : ทดสอบความสัมพันธ์ระหว่างตากับมือ
+              ให้คุณ(ตายาย) วาดภาพ
+            </b>
+          </p>
+          <RadioGroup
+            className="pl-20"
+            aria-label="questions3.4"
+            name="questions3.4"
+            value={ans11}
+          >
+            <FormControlLabel
+              className="radio-size"
+              value="1"
+              control={<Radio color="primary" />}
+              label="ทำได้"
+            />
+            <FormControlLabel
+              className="radio-size"
+              value="0"
+              control={<Radio color="primary" />}
+              label="ทำไม่ได้"
+            />
+          </RadioGroup>
+        </div>
+        </div>
+  )
+}
 
 function Section8() {
   const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
