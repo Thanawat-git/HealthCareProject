@@ -71,6 +71,19 @@ export const getFollowUpByKeyword = (event,key) => {
     }
 }
 
+export const getFollowUpById = id => {
+  return dispatch => {
+      dispatch(setFollowupToFetching());
+      try {
+        return Axios.get(`${apiBase}/appointment/findAllBykeyword/${id}`).then(res=>{
+          dispatch(setFollowupToSuccress(res.data))
+        })
+      } catch (error) {
+          dispatch(setFollowupToFailed(error))
+      }
+  }
+}
+
 const doGetFollowUp = (dispatch, key) => {
   dispatch(setFollowupToFetching());
   Axios.get(`${apiBase}/appointment/${key}`)

@@ -23,6 +23,7 @@ import { apiEld } from "../../constants/index";
 // import mdi from "@mdi/js"
 import * as getAction from "../../actions/getAllFormToReucer.action";
 import { updateLastVisDate } from "../../actions/forms1p6.action";
+import * as followUpAction from "../../actions/followUp.action";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import "moment/locale/th";
 
@@ -40,7 +41,7 @@ const useStyles = makeStyles({
 });
 export default function Asynchronous() {
   const [open, setOpen] = useState(false);
-  const [showHistory, setshowHistory] = useState(false);
+  const [switchShow, setswitchShow] = useState("main");
   
   useEffect(() => {
     let local = JSON.parse(localStorage.getItem('user'))
@@ -49,12 +50,14 @@ export default function Asynchronous() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  
   const [isVisId, setisVisId] = useState(true);
   const [visData, setvisData] = useState(null);
   let history = useHistory();
   const forms2Reducer = useSelector(({forms2Reducer}) => forms2Reducer)
 
   function handleClickOpen(value) {
+    dispatch(followUpAction.getFollowUpById(value.ELD_ID_NUMBER))
     dispatch(getAction.resetCollectFromReducer())
     dispatch(getAction.resetDateAllForm())
     const d = new Date();
@@ -73,6 +76,10 @@ export default function Asynchronous() {
     console.log("value: ", value);
     setOpen(true);
   }
+  const followUp = useSelector(({ followUpReducer }) => followUpReducer.result);
+  useEffect(() => {
+    console.log("get follow up ", followUp)
+  }, [followUp])
 
   const createNewForm = (eldId) => {
     dispatch(getAction.resetCollectFromReducer())
@@ -131,14 +138,14 @@ export default function Asynchronous() {
             onClose={() => {
               setOpen(false)
               setTimeout(() => {
-                setshowHistory(false)
+                setswitchShow("main")
               }, 200);
             }}
             className={classes.title}
             contentStyle={{ width: "100%", maxWidth: "none" }}
           >
           {
-            !showHistory ? (
+            switchShow === "main" ? (
               <React.Fragment>
                 <DialogTitle>
                   <b>หมายเลข</b>
@@ -207,9 +214,16 @@ export default function Asynchronous() {
                   </div>
                 )}
                 <div className="bt-searchInfo">
-                  <Link className="bt-searchInfo-link" onClick={()=>setshowHistory(true)}>
+                  <Link className="bt-searchInfo-link" onClick={()=>setswitchShow("history")}>
                     <Button className="btn btn-light" variant="contained" fullWidth>
                       ประวัติการตรวจ
+                    </Button>
+                  </Link>
+                </div>
+                <div className="bt-searchInfo">
+                  <Link className="bt-searchInfo-link" onClick={()=>setswitchShow("followup")}>
+                    <Button color="secondary" variant="contained" fullWidth>
+                      ติดตามผล
                     </Button>
                   </Link>
                 </div>
@@ -222,10 +236,10 @@ export default function Asynchronous() {
                   </Link>
                 </div>
               </React.Fragment>
-            ):(
+            ): switchShow === "history" ? (
               <React.Fragment>
                 <DialogTitle>
-                  <ArrowBackIcon onClick={()=>setshowHistory(false)}/> ประวัติการตรวจของ คุณ
+                  <ArrowBackIcon onClick={()=>setswitchShow("main")}/> ประวัติการตรวจของ คุณ
                   {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
                 </DialogTitle>
                 <DialogContent>
@@ -258,6 +272,50 @@ export default function Asynchronous() {
                               </Button>
                             </Link>
                           </div>
+                        </React.Fragment>
+                      )
+                    })}
+                </DialogContent>
+              </React.Fragment>
+            ): switchShow === "followup" && (
+              <React.Fragment>
+                <DialogTitle>
+                  <ArrowBackIcon onClick={()=>setswitchShow("main")}/> การติดการผล คุณ
+                  {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
+                </DialogTitle>
+                <DialogContent>
+                    {followUp.map(value=>{
+                      return (
+                        <React.Fragment>
+                          {
+                            value.APPOINT_DATE !== null &&
+                            <div className="bt-searchInfo">
+                            <Link className="bt-searchInfo-link">
+                              <Button 
+                              className="btn btn-light" 
+                              variant="contained"
+                              // onClick={()=>{
+                              //   dispatch(getAction.resetCollectFromReducer())
+                              //   dispatch(getAction.resetDateAllForm())
+                              //   const data = [value.VIS_ID, elderlyReducer.resultSelected.ELD_ID_NUMBER]
+                              //   dispatch({
+                              //     type: "VIS_ID",
+                              //     payload: data,
+                              //   })
+                              //   dispatch(getAction.getCollect(value.VIS_ID));
+                              //   dispatch(getAction.getAllResult(value.VIS_ID));
+                              //   if(!forms2Reducer.isFetching){
+                              //     setTimeout(() => {
+                              //       history.push("/mainmenu");
+                              //     }, 500);
+                              //   }
+                              // }}
+                              fullWidth>
+                                ติดตามผลวัน{moment(value.APPOINT_DATE).format("dddd")} ที่ {moment(value.APPOINT_DATE).format("LL")} {value.APP_NAME}
+                              </Button>
+                            </Link>
+                          </div>
+                          }
                         </React.Fragment>
                       )
                     })}
