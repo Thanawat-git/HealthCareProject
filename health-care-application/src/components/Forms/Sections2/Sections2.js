@@ -59,7 +59,8 @@ export default function Sections2_1() {
   const [collect, setCollect] = useState(forms2Reducer.collect);
   const [noFood, setnoFood] = useState(forms2Reducer.noFood);
   const[ansfood,setAnsfood] = useState(0);
-  const [toDay, setToday] = useState();
+  const [toDay, setToday] = useState(null);
+  const [toDay2, setToday2] = useState(null);
   const [topicblood, setTopicblood] = useState();
   const [topicsuga, setTopicsuga] = useState();
   const [dateblood, setdateblood] = useState();
@@ -135,6 +136,26 @@ export default function Sections2_1() {
   const [bloodPressureResult, setbloodPressureResult] = useState("");
   const [sugarResult, setsugarResult] = useState("");
 
+
+  // useEffect(() => {
+  //   console.log("sugar in useEff ",sugar)
+  //   calbloodPressure()
+  //   calsugar()
+  // }, [])
+  // useEffect(() => {
+  //   console.log("toDay in useEff ",toDay)
+  //   console.log("datesuga in useEff ",datesuga)
+    
+  // }, [toDay])
+  useEffect(() => {
+    setdatesuga(toDay)
+    console.log("datesuga in datesuga useEff ",datesuga)
+  }, [datesuga])
+  useEffect(() => {
+    setdateblood(toDay2)
+    console.log("dateblood in dateblood useEff ",dateblood)
+  }, [dateblood])
+
   const calwaist = () => {
     elderlyGender == "ชาย" ? calInner(90) : calInner(80);
     function calInner(num) {
@@ -153,8 +174,8 @@ export default function Sections2_1() {
         "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
       );
       setTopicblood("ความดันโลหิต");
-      calDate(2);
-      setdateblood(toDay);
+      calDate2(2);
+      setdateblood(toDay2);
       setchecktosend1(true);
     } else {
       setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
@@ -162,7 +183,7 @@ export default function Sections2_1() {
     }
   };
   const calsugar = () => {
-
+    console.log("sugar in cal Sugar ",sugar)
     if (noFood) {//noFood == true
       if (sugar >= 126) {
         setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
@@ -192,6 +213,9 @@ export default function Sections2_1() {
         setchecktosend2(false);
       }
     }
+    console.log("today in cal Sugar ",toDay)
+    console.log("datesuga in cal Sugar ",datesuga)
+    // setdatesuga(toDay);
   };
   const handleSubmit = () => {
     setShow(true);
@@ -213,7 +237,7 @@ export default function Sections2_1() {
     dispatch(formAction.add(data));
     
   };
-console.log(visId) 
+// console.log(visId) 
 //console.log("nofood " + noFood+ " ansfood " + ansfood)
   const saveDataToServer = () => {
    sendValueTofollow();
@@ -240,28 +264,68 @@ console.log(visId)
   };
 
   function calDate(week) {
+    console.log("sugar in cal Date ",sugar)
+    console.log("week in cal Date ",week)
     const calw = parseInt(week);
-    console.log("week = " + calw);
-    if (calw == 2) {
+    console.log("week = " + typeof(calw));
+    if (week === 2) {
       var d = new Date(); // วันนี้
+      console.log("d befor ", d)
       d.setDate(d.getDate() + 14); // วันถัดไป 2week
+      console.log("d after ", d)
+
       dateToYMD(d);
       //console.log(topicblood + toDay)
-    } else if (calw == 4) {
+    } else if (week === 4) {
       var d = new Date(); // วันนี้
       d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
+      console.log("d after week = 4: ", d)
       dateToYMD(d);
       //console.log(topicsuga + toDay)
     }
   }
   function dateToYMD(date) {
+    console.log("in dateToYMD function")
+    console.log("in dateToYMD ค่า date: ", date)
     var d = date.getDate();
     var m = date.getMonth() + 1; //Month from 0 to 11
     var y = date.getFullYear() + 543;
-    setToday(
-      "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
-    );
-    return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+    let dd = "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
+    console.log("dd", dd )
+    setToday(dd);
+    // return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+  }
+  function calDate2(week) {
+    console.log("sugar in cal Date ",sugar)
+    console.log("week in cal Date ",week)
+    const calw = parseInt(week);
+    console.log("week = " + typeof(calw));
+    if (week === 2) {
+      var d = new Date(); // วันนี้
+      console.log("d befor ", d)
+      d.setDate(d.getDate() + 14); // วันถัดไป 2week
+      console.log("d after ", d)
+
+      dateToYMD2(d);
+      //console.log(topicblood + toDay)
+    } else if (week === 4) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
+      console.log("d after week = 4: ", d)
+      dateToYMD2(d);
+      //console.log(topicsuga + toDay)
+    }
+  }
+  function dateToYMD2(date) {
+    console.log("in dateToYMD function")
+    console.log("in dateToYMD ค่า date: ", date)
+    var d = date.getDate();
+    var m = date.getMonth() + 1; //Month from 0 to 11
+    var y = date.getFullYear() + 543;
+    let dd = "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
+    console.log("dd", dd )
+    setToday2(dd);
+    // return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
   }
   return (
     <div className="css-form">

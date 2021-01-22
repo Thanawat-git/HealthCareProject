@@ -223,7 +223,7 @@ export default function Asynchronous() {
                 <div className="bt-searchInfo">
                   <Link className="bt-searchInfo-link" onClick={()=>setswitchShow("followup")}>
                     <Button color="secondary" variant="contained" fullWidth>
-                      ติตามผล
+                      ติดตามผล
                     </Button>
                   </Link>
                 </div>
