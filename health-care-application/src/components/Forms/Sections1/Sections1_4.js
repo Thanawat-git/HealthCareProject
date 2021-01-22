@@ -168,7 +168,7 @@ function Sections1_4(props) {
                 </RadioGroup>
             </div>
             {/* row-3 */}
-            <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกศสนา" : ""}</FormHelperText>
+            <FormHelperText style={{color:'red'}} >{err ? "กรุณาเลือกศาสนา" : ""}</FormHelperText>
 <hr/>
           <div className="row">
             <div className="col-12">

@@ -127,6 +127,9 @@ export const CHART4_GET_SUCCRESS = "CHART4_GET_SUCCRESS";
 export const CHART5_FETCHING = "CHART5_FETCHING";
 export const CHART5_ERROR = "CHART5_ERROR";
 export const CHART5_GET_SUCCRESS = "CHART5_GET_SUCCRESS";
+export const CHART6_FETCHING = "CHART6_FETCHING";
+export const CHART6_ERROR = "CHART6_ERROR";
+export const CHART6_GET_SUCCRESS = "CHART6_GET_SUCCRESS";
 
 // // Error Code
 // export const E_PICKER_CANCELLED = 'E_PICKER_CANCELLED'
@@ -181,3 +184,21 @@ export const COMMUNITYS = [
     "ชุมชนเขาสามมุข",
     "ชุมชนบ้านแหลมแท่น",
   ];
+
+export const EDUCATIONS = [
+  "ไม่ได้เรียนหนังสือ",
+  "ประถมศึกษา",
+  "มัธยมศึกษา",
+  "อนุปริญญา/ปวช./ปวส.",
+  "ปริญญาตรี",
+  "สูงกว่าปริญญาตรี",
+]
+
+export const TREATMENT = [
+  "เบิกต้นสังกัด",
+  "ชำระเงินเอง",
+  "บัตรทอง",
+  "บัตรผู้พิการ",
+  "บัตรประกันสังคม",
+  "อื่นๆ",
+]

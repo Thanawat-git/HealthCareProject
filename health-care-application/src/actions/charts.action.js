@@ -16,6 +16,9 @@ import {
   CHART5_ERROR,
   CHART5_FETCHING,
   CHART5_GET_SUCCRESS,
+  CHART6_ERROR,
+  CHART6_FETCHING,
+  CHART6_GET_SUCCRESS,
 } from "../constants";
 
 export const getDataChart4 = community => {
@@ -86,6 +89,23 @@ export const getDataChart5 = (community) => {
     } catch (error) {
       dispatch({ type: CHART5_ERROR });
       console.log("error chart5 ", error);
+    }
+  }
+}
+
+export const getDataChart6 = education => {
+  return async dispatch=> {
+    await dispatch({ type: CHART6_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report01/06-education/${education}`)
+      console.log("chart 6 ", data.data)
+      await dispatch({
+        type: CHART6_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART6_ERROR });
+      console.log("error chart6 ", error);
     }
   }
 }
