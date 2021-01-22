@@ -148,7 +148,7 @@ const createExa6AbilityInLife = async (visId) => {
     ABI_6_10: null,
     ABI_SUM_POINT: null,
     ABI_GROUP: null,
-    ABI_CORRECT_FORM: null,
+    ABI_CORRECT_FORM: false,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
@@ -162,7 +162,7 @@ const createExa6TAI = async (visId) => {
     TAI_FEED: null,
     TAI_TOILET: null,
     TAI_GROUP: null,
-    TAI_CORRECT_FORM: null,
+    TAI_CORRECT_FORM: false,
     updateBy: USERLOGIN.Fullname,
     VIS_ID: visId
   })
@@ -192,7 +192,7 @@ const createExa7Alzheimer = async (visId) => {
     ALZ_7_10_EL_COUNTDOWN: null,
     ALZ_7_10_RESULT_COUNTDOWN: null,
     ALZ_RESULT : null,
-    ALZ_CORRECT_FORM : null,
+    ALZ_CORRECT_FORM : false,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
   })
