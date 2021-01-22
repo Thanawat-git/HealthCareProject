@@ -39,30 +39,30 @@ export const updateElder = async (payload) => {
   console.log("Elder update Success");
 };
 
-// Create form1 sec1-6
-// const createElderinfo = async (payload) => {
-//   await  Axios.post(`${apiEld}/information/create`, {
-//     ELD_BIRTHDATE: payload[5],
-//     ELD_GENDER: payload[3],
-//     ELD_AGE: payload[6],
-//     ELD_STATUS: null,
-//     ELD_LIVELIHOOD: null,
-//     ELD_LIVELIHOOD_DETAIL: null,
-//     ELD_LIVELIHOOD_NEIGHBOR_NAME: null,
-//     ELD_RELIGION: null,
-//     ELD_EDUCATION: null,
-//     ELD_JOB: null,
-//     ELD_TREATMENT: null,
-//     ELD_TREATMENT_HOSPITAL: null,
-//     ELD_INCOME: null,
-//     ELD_ID_NUMBER: payload[0],
-//     adderRole: USERLOGIN.Role,
-//     updateBy: USERLOGIN.Fullname,
-//     ADDER_ID_NUMBER: USERLOGIN.Id,
-//   })
-//   console.log("Elder Info Success");
+//Create form1 sec1-6
+const createElderinfo = async (payload) => {
+  await  Axios.post(`${apiEld}/information/create`, {
+    ELD_BIRTHDATE: payload[5],
+    ELD_GENDER: payload[3],
+    ELD_AGE: payload[6],
+    ELD_STATUS: null,
+    ELD_LIVELIHOOD: null,
+    ELD_LIVELIHOOD_DETAIL: null,
+    ELD_LIVELIHOOD_NEIGHBOR_NAME: null,
+    ELD_RELIGION: null,
+    ELD_EDUCATION: null,
+    ELD_JOB: null,
+    ELD_TREATMENT: null,
+    ELD_TREATMENT_HOSPITAL: null,
+    ELD_INCOME: null,
+    ELD_ID_NUMBER: payload[0],
+    adderRole: USERLOGIN.Role,
+    updateBy: USERLOGIN.Fullname,
+    ADDER_ID_NUMBER: USERLOGIN.Id,
+  })
+  console.log("Elder Info Success");
 
-// };
+};
 
 const createElderRelative = async (payload) => {
   await  Axios.post(`${apiEld}/relative/create`, {
@@ -110,7 +110,7 @@ const createElderIdCurrent = async (payload) => {
 
 export const createAllElder = async (payload) => {
   await createElder(payload);
- // await createElderinfo(payload);
+  await createElderinfo(payload);
   await createElderRelative(payload);
   await createElderCurrent(payload);
   await createElderIdCurrent(payload);

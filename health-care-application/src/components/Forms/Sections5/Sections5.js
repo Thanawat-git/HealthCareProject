@@ -16,12 +16,14 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms5.action";
+import * as appointAction from "../../../actions/appointment.action";
 // import ShowResultPopup from "../ResuleShowsPopUp";
 import { CancelBT } from "../../AppButtons";
 
 export default function Sections5_1() {
   const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
+  const peopleId = useSelector(({ visitID }) => visitID.peopleId);
   const dispatch = useDispatch();
   const [ans5_1, setAns5_1] = useState(forms5Reducer.ans5_1);
   const [moreInfoAns5_1, setmoreInfoAns5_1] = useState(
@@ -47,6 +49,8 @@ export default function Sections5_1() {
   const [results, setresults] = useState(forms5Reducer.results);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(forms5Reducer.count);
+  const [datesec5, setdateSec5] = useState();
+  const [topicsec5, settopicsec5] = useState();
 
   useEffect(() => {
     if (
@@ -99,14 +103,41 @@ export default function Sections5_1() {
         parseInt(ans5_13) +
         parseInt(ans5_14) +
         parseInt(ans5_15);
-      c == 5
-        ? setresults("ส่งต่อเพื่อดูแลรักษาช่องปาก")
-        : setresults("ไม่ต้องส่งต่อ");
+        if(c == 5){
+          setresults("ส่งต่อเพื่อดูแลรักษาช่องปาก")
+          settopicsec5("ตรวจสุขภาพช่องปาก");
+          calDate(1)
+        }else{
+          setresults("ไม่ต้องส่งต่อ");
+        }
+  
       setCount(c);
     }
     console.log("c", results);
   }, [collect, ans5_11, ans5_12, ans5_13, ans5_14, ans5_15]);
 
+  function calDate(y) {
+    console.log("week = " + y);
+    if (y == 1) {
+      var d = new Date(); // วันนี้
+      d.setDate(d.getDate() + 30.4375); //  1m
+      dateToYMD(d);
+    }
+  }
+  function dateToYMD(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1; //Month from 0 to 11
+    var y = date.getFullYear() + 543;
+
+    setdateSec5(
+      "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
+    );
+    return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+  }
+  const sendValueTofollow = () => {
+    appointAction.createAppointment([datesec5, topicsec5, peopleId]);
+    console.log("date" + datesec5);
+  };
   const handleSubmit = () => {
     console.log("c", count);
     setShow(true);
@@ -136,6 +167,7 @@ export default function Sections5_1() {
     dispatch(formAction.add(data));
   };
   const saveDataToServer = () => {
+    sendValueTofollow() 
     formAction.updateOralHealth([
       ans5_1,
       moreInfoAns5_1,
