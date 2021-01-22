@@ -60,6 +60,7 @@ export default function MMSIThai2002() {
   const [textAns5, settextAns5] = useState(forms7mReducer.textAns5);
 
   const [collect, setCollect] = useState(forms7mReducer.collect);
+  
   const [results, setresults] = useState(forms7mReducer.results);
   const [point, setPoint] = useState(0);
   const [group, setGroup] = useState(forms7mReducer.group);
@@ -71,7 +72,7 @@ export default function MMSIThai2002() {
   const forms1p4Reducer = useSelector(
     ({ forms1p4Reducer }) => forms1p4Reducer.educations
   );
-
+  //const[num_4_2_1,setnum_4_2_1]= useState(false);
   const [state, setState] = useState({
     //3
     ansF: forms7mReducer.ansF,
@@ -81,12 +82,18 @@ export default function MMSIThai2002() {
     ansF2: forms7mReducer.ansF2,
     ansR2: forms7mReducer.ansR2,
     ansT2: forms7mReducer.ansT2,
-    //4
+    //4.1
     num1: forms7mReducer.num1,
     num2: forms7mReducer.num2,
     num3: forms7mReducer.num3,
     num4: forms7mReducer.num4,
     num5: forms7mReducer.num5,
+    //4.2
+    num_4_2_1: forms7mReducer.num1,
+    num_4_2_2: forms7mReducer.num2,
+    num_4_2_3: forms7mReducer.num3,
+    num_4_2_4: forms7mReducer.num4,
+    num_4_2_5: forms7mReducer.num5,
     //8
     think1: forms7mReducer.thank1,
     think2: forms7mReducer.thank2,
@@ -106,14 +113,20 @@ export default function MMSIThai2002() {
     num4,
     num5,
 
+    num_4_2_1,
+    num_4_2_2,
+    num_4_2_3,
+    num_4_2_4,
+    num_4_2_5,
+
     think1,
     think2,
     think3,
   } = state;
-  console.log("การศึกษา", forms1p4Reducer);
-  console.log("group", group);
+  
 
   useEffect(() => {
+    console.log("การศึกษา", forms1p4Reducer)
     forms1p4Reducer === "ไม่ได้เรียนหนังสือ" && setGroup(1);
     forms1p4Reducer === "ประถมศึกษา" && setGroup(2);
     forms1p4Reducer === "มัธยมศึกษา" && setGroup(3);
@@ -124,19 +137,21 @@ export default function MMSIThai2002() {
     if (forms1p4Reducer === "ไม่ได้เรียนหนังสือ") {
       setcolorS("darkgray");
     }
-  }, [group]);
+    console.log("collect ", collect)
+    console.log("group", group);
+
+  }, []);
+
+  useEffect(() => {
+    console.log("collect in group change", collect)
+    console.log("group in group change", group);
+  }, [group])
   var c = colorS;
   const divStyle = {
     color: c,
   };
+
   const handleChange = (event) => {
-    console.log(
-      event.target.name,
-      " ",
-      event.target.checked,
-      " ",
-      event.target.value
-    );
     setState({ ...state, [event.target.name]: event.target.checked });
     event.target.checked ? cal(1) : cal(-1);
   };
@@ -207,6 +222,7 @@ export default function MMSIThai2002() {
     } else {
       console.log("point in collect false ", point);
     }
+
   }, [
     collect,
     ans1,
@@ -230,18 +246,26 @@ export default function MMSIThai2002() {
   ]);
 
   useEffect(() => {
+    console.log("in function set collect")
     if (
-      ans1 &&
-      ans12 &&
-      ans13 &&
-      ans14 &&
-      ans15 &&
-      ans61 &&
-      ans62 &&
-      ans7 &&
-      ans11
+      ans1 !== "null" &&
+      ans12 !== "null" &&
+      ans13 !== "null" &&
+      ans14 !== "null" &&
+      ans15 !== "null" &&
+      ans61 !== "null" &&
+      ans62 !== "null" &&
+      ans7 !== "null" &&
+      ans11 !== "null"
     ) {
+      console.log("set collect here!!!")
+      console.log("ans1: ", typeof(ans1), "\nans12", ans12
+      , "\nans13: ", ans13, "\nans14: ", ans14, "\nans15: ", ans15
+      , "\nans61: ", ans61, "\nans62: ", ans62, "\nans7: ", ans7, "\nan11: ", ans11)
       setCollect(true);
+    } else {
+      console.log("set collect to false")
+      setCollect(false);
     }
   }, [
     ans1,
@@ -316,53 +340,53 @@ export default function MMSIThai2002() {
   const saveDataToServer = () => {
     console.log("SaveDataToServer +++++++++++++++++");
     formAction.updatemmse([
-        textAns11,
-        ans1,
-        textAns12,
-        ans12,
-        textAns13,
-        ans13,
-        textAns14,
-        ans14,
-        textAns15,
-        ans15,
-        atHospital, //2
-        textAns211,
-        ans2_1_1,
-        textAns212,
-        ans2_1_2,
-        textAns213,
-        ans2_1_3,
-        textAns214,
-        ans2_1_4,
-        textAns215,
-        ans2_1_5,
-        ansF,
-        ansR,
-        ansT, //3
-        thinkNumber,
-        num1,
-        num2,
-        num3,
-        num4,
-        num5, //4
-        ansF2,
-        ansR2,
-        ansT2, //5
-        ans61,
-        ans62,
-        ans7,
-        think1,
-        think2,
-        think3, //8
-        ans9,
-        textAns10,
-        ans10,
-        ans11,
-        collect,
-        results,
-        visId
-      ])
+      textAns11,
+      ans1,
+      textAns12,
+      ans12,
+      textAns13,
+      ans13,
+      textAns14,
+      ans14,
+      textAns15,
+      ans15,
+      atHospital, //2
+      textAns211,
+      ans2_1_1,
+      textAns212,
+      ans2_1_2,
+      textAns213,
+      ans2_1_3,
+      textAns214,
+      ans2_1_4,
+      textAns215,
+      ans2_1_5,
+      ansF,
+      ansR,
+      ansT, //3
+      thinkNumber,
+      num1,
+      num2,
+      num3,
+      num4,
+      num5, //4
+      ansF2,
+      ansR2,
+      ansT2, //5
+      ans61,
+      ans62,
+      ans7,
+      think1,
+      think2,
+      think3, //8
+      ans9,
+      textAns10,
+      ans10,
+      ans11,
+      collect,
+      results,
+      visId,
+    ]);
   };
   return (
     <div className="css-form">
@@ -1088,7 +1112,7 @@ export default function MMSIThai2002() {
                             <Checkbox
                               checked={num1}
                               onChange={handleChange}
-                              name="spell1"
+                              name="num1"
                               color="primary"
                             />
                           }
@@ -1099,7 +1123,7 @@ export default function MMSIThai2002() {
                             <Checkbox
                               checked={num2}
                               onChange={handleChange}
-                              name="spell2"
+                              name="num2"
                               color="primary"
                             />
                           }
@@ -1110,7 +1134,7 @@ export default function MMSIThai2002() {
                             <Checkbox
                               checked={num3}
                               onChange={handleChange}
-                              name="spell3"
+                              name="num3"
                               color="primary"
                             />
                           }
@@ -1121,7 +1145,7 @@ export default function MMSIThai2002() {
                             <Checkbox
                               checked={num4}
                               onChange={handleChange}
-                              name="spell4"
+                              name="num4"
                               value="0"
                               color="primary"
                             />
@@ -1133,7 +1157,7 @@ export default function MMSIThai2002() {
                             <Checkbox
                               checked={num5}
                               onChange={handleChange}
-                              name="spell5"
+                              name="num5"
                               color="primary"
                             />
                           }
@@ -1461,6 +1485,7 @@ export default function MMSIThai2002() {
             type="button"
             class="btn form-btn btn-primary btn-lg"
             onClick={handleSubmit}
+            disabled={!collect}
           >
             บันทึก
           </button>
