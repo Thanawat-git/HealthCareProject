@@ -244,7 +244,7 @@ const createExa7MMSE = async (visId) => {
     MMSE_10: null,
     MMSE_10_POINT: null,
     MMSE_11_POINT: null,
-    MMSE_CORRECT_FORM: null,
+    MMSE_CORRECT_FORM: false,
     MMSE_RESULT: null,
     updateBy: USERLOGIN.Fullname,
     VIS_ID: visId
