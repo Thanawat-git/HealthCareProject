@@ -103,7 +103,7 @@ export default function Sections5_1() {
         parseInt(ans5_13) +
         parseInt(ans5_14) +
         parseInt(ans5_15);
-        if(c == 5){
+        if(c === 5){
           setresults("ส่งต่อเพื่อดูแลรักษาช่องปาก")
           settopicsec5("ตรวจสุขภาพช่องปาก");
           calDate(1)
@@ -135,7 +135,7 @@ export default function Sections5_1() {
     return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
   }
   const sendValueTofollow = () => {
-    appointAction.createAppointment([datesec5, topicsec5, peopleId]);
+    results === "ส่งต่อเพื่อดูแลรักษาช่องปาก" && appointAction.createAppointment([datesec5, topicsec5, peopleId]);
     console.log("date" + datesec5);
   };
   const handleSubmit = () => {
