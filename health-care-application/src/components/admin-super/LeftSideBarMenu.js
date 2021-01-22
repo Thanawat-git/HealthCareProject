@@ -88,7 +88,7 @@ export default function LeftSideBarMenu() {
               </li>
 
               {/* up date form */}
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a href="#" className="nav-link">
                   <i className="nav-icon fas fa-paste" />
                   <p>
@@ -96,7 +96,6 @@ export default function LeftSideBarMenu() {
                     <i className="right fas fa-angle-left" />
                   </p>
                 </a>
-                {/* sub-menu */}
                 <ul className="nav nav-treeview">
                   <li className="nav-item">
                     <a href="./index.html" className="nav-link">
@@ -117,7 +116,7 @@ export default function LeftSideBarMenu() {
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
           </nav>
           {/* /.sidebar-menu */}

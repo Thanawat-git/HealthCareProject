@@ -1,8 +1,17 @@
-import { Paper } from '@material-ui/core';
 import React from 'react'
-import { Chart } from "react-google-charts";
+import { useDispatch } from 'react-redux'
+import { Chart1, Chart2, Chart4, Chart5 } from "./charts"
+import { getDataChart1, getDataChart2, getDataChart4, getDataChart5, getDataChart6 } from "../../../actions/charts.action"
 
 export default function MainContent() {
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(getDataChart1())
+    dispatch(getDataChart2("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart4("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart5("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart6("ไม่มีการศึกษา"))
+  }, [])
     return (
     <React.Fragment>
       <div className="content-header">
@@ -42,7 +51,7 @@ export default function MainContent() {
                 </div>
               </div>
             </div>
-            <div className="clearfix hidden-md-up" />
+            {/* <div className="clearfix hidden-md-up" /> */}
             <div className="col-12 col-sm-6 col-md-3">
               <div className="info-box mb-3">
                 <span className="info-box-icon bg-success elevation-1">
@@ -65,28 +74,14 @@ export default function MainContent() {
                 </div>
               </div>
             </div>
-            <Paper>
-            <Chart
-              width={'500px'}
-              height={'300px'}
-              chartType="PieChart"
-              loader={<div>Loading Chart</div>}
-              data={[
-                ['Task', 'Hours per Day'],
-                ['Work', 11],
-                ['Eat', 2],
-                ['Commute', 2],
-                ['Watch TV', 2],
-                ['Sleep', 7],
-              ]}
-              options={{
-                title: 'My Daily Activities',
-                // Just add this option
-                is3D: true,
-              }}
-              rootProps={{ 'data-testid': '2' }}
-            />
-            </Paper>
+
+            <Chart1 />
+            <Chart2 />
+            <Chart4 />
+            <Chart5 />
+
+            
+
           </div>
         </div>
       </section>

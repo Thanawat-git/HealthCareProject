@@ -29,6 +29,12 @@ import visitID from "./visitID.reducer";
 import historyReducer from "./history.reducer";
 import followUpReducer from "./followUp.reducer";
 import selectFormSection from "./selectFormSection.reducer"
+import chart1Reducer from "./charts/chart1.reducer";
+import chart2Reducer from "./charts/chart2.reducer";
+import chart3Reducer from "./charts/chart3.reducer";
+import chart4Reducer from "./charts/chart4.reducer";
+import chart5Reducer from "./charts/chart5.reducer";
+import chart6Reducer from "./charts/chart6.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -60,4 +66,10 @@ export default combineReducers({
     historyReducer,
     followUpReducer,
     selectFormSection,
+    chart1Reducer,
+    chart2Reducer,
+    chart3Reducer,
+    chart4Reducer,
+    chart5Reducer,
+    chart6Reducer,
 })

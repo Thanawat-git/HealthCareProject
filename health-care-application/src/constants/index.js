@@ -111,7 +111,25 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 //
 export const APPOINTMENT = "APPOINTMENT";
 
-
+// Chart
+export const CHART1_FETCHING = "CHART1_FETCHING";
+export const CHART1_ERROR = "CHART1_ERROR";
+export const CHART1_GET_SUCCRESS = "CHART1_GET_SUCCRESS";
+export const CHART2_FETCHING = "CHART2_FETCHING";
+export const CHART2_ERROR = "CHART2_ERROR";
+export const CHART2_GET_SUCCRESS = "CHART2_GET_SUCCRESS";
+export const CHART3_FETCHING = "CHART3_FETCHING";
+export const CHART3_ERROR = "CHART3_ERROR";
+export const CHART3_GET_SUCCRESS = "CHART3_GET_SUCCRESS";
+export const CHART4_FETCHING = "CHART4_FETCHING";
+export const CHART4_ERROR = "CHART4_ERROR";
+export const CHART4_GET_SUCCRESS = "CHART4_GET_SUCCRESS";
+export const CHART5_FETCHING = "CHART5_FETCHING";
+export const CHART5_ERROR = "CHART5_ERROR";
+export const CHART5_GET_SUCCRESS = "CHART5_GET_SUCCRESS";
+export const CHART6_FETCHING = "CHART6_FETCHING";
+export const CHART6_ERROR = "CHART6_ERROR";
+export const CHART6_GET_SUCCRESS = "CHART6_GET_SUCCRESS";
 
 // // Error Code
 // export const E_PICKER_CANCELLED = 'E_PICKER_CANCELLED'
@@ -135,4 +153,52 @@ export const apiEld = apiBase + "/elder";
 export const apiVol = apiBase + "/volunteer";
 export const apiAdmin = apiBase + "/admin";
 
-console.log('USERLOGIN ',USERLOGIN)
+
+// คำพูดทั่วไป
+export const PRINT_THIS_SECTION = "พิมพ์ส่วนนี้"
+
+export const COMMUNITYS = [
+    "ชุมชนมณีแก้ว",
+    "ชุมชนดอนบน",
+    "ชุมชนบางแสนทาวเวอร์",
+    "ชุมชนตาลล้อม 1",
+    "ชุมชนตาลล้อม 2",
+    "ชุมชนบ้านเหมือง",
+    "ชุมชนพัฒนา 2",
+    "ชุมชนดอนนารา",
+    "ชุมชนวัดกลางดอน",
+    "ชุมชนแสนสุข",
+    "ชุมชนมาบมะยม",
+    "ชุมชนท้ายตลาด",
+    "ชุมชนร่วมใจพัฒนา",
+    "ชุมชนบางแสนบน",
+    "ชุมชนหาดวอนนภา",
+    "ชุมชนบางเป้ง",
+    "ชุมชนหน้ามอ",
+    "ชุมชนโชคดี",
+    "ชุมชนสมใจนึก",
+    "ชุมชนหน้าเทศบาล",
+    "ชุมชนวัดแสนสุข",
+    "ชุมชนมุขแสนเจริญ 1",
+    "ชุมชนมุขแสนเจริญ 2",
+    "ชุมชนเขาสามมุข",
+    "ชุมชนบ้านแหลมแท่น",
+  ];
+
+export const EDUCATIONS = [
+  "ไม่ได้เรียนหนังสือ",
+  "ประถมศึกษา",
+  "มัธยมศึกษา",
+  "อนุปริญญา/ปวช./ปวส.",
+  "ปริญญาตรี",
+  "สูงกว่าปริญญาตรี",
+]
+
+export const TREATMENT = [
+  "เบิกต้นสังกัด",
+  "ชำระเงินเอง",
+  "บัตรทอง",
+  "บัตรผู้พิการ",
+  "บัตรประกันสังคม",
+  "อื่นๆ",
+]
