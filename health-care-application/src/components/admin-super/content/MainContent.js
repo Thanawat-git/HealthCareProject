@@ -10,7 +10,7 @@ export default function MainContent() {
     dispatch(getDataChart2("ชุมชนมณีแก้ว"))
     dispatch(getDataChart4("ชุมชนมณีแก้ว"))
     dispatch(getDataChart5("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart6("ไม่มีการศึกษา"))
+    dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
   }, [])
     return (
     <React.Fragment>
