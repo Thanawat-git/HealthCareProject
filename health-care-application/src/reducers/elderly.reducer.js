@@ -1,4 +1,6 @@
 import {
+  GET_ALL_ELDERY,
+  GET_ELDERY_INFO,
   GET_HISTORY_EDL,
   HTTP_ELD_FAILED,
   HTTP_ELD_FETCHING,
@@ -10,6 +12,8 @@ const initialState = {
   result: [],
   resultSelected: null,
   history: [],
+  allEldery: [],
+  informationEld: [],
   isFetching: false,
   inError: false,
 };
@@ -17,7 +21,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case HTTP_ELD_FETCHING:
-      return { ...state, result: [], isFetching: true, inError: false };
+      return { ...state, isFetching: true, inError: false };
     case HTTP_ELD_SUCCESS:
       return { ...state, result: payload, isFetching: false, inError: false };
     case HTTP_ELD_FAILED:
@@ -33,6 +37,20 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         history: payload,
+        isFetching: false,
+        isError: false,
+      };
+    case GET_ALL_ELDERY:
+      return {
+        ...state,
+        allEldery: payload,
+        isFetching: false,
+        isError: false,
+      };
+    case GET_ELDERY_INFO:
+      return {
+        ...state,
+        informationEld: payload,
         isFetching: false,
         isError: false,
       };

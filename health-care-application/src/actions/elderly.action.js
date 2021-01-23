@@ -5,6 +5,7 @@ import {
   HTTP_ELD_SELECTED,
   apiEld,
   GET_HISTORY_EDL,
+  GET_ALL_ELDERY,
 } from "../constants";
 import Axios from "axios";
 
@@ -57,5 +58,21 @@ export const getHistoryEld = id => {
         payload: res.data,
       })
     })
+  }
+}
+
+export const getAllEldery = ()=> {
+  return async dispatch=>{
+    await dispatch(setElderlyStateToFetching());
+    try {
+      let data = await Axios.get(`${apiEld}/findAllEverything`)
+      console.log("res get eldery ", data.data)
+      await dispatch({
+        type: GET_ALL_ELDERY,
+        payload: data.data
+      })
+    } catch (error) {
+      console.log("Error get eldery ", error)
+    }
   }
 }

@@ -83,6 +83,9 @@ export const getFollowUpById = id => {
       }
   }
 }
+// export const doFollowUp = ()=> {
+
+// }
 
 const doGetFollowUp = (dispatch, key) => {
   dispatch(setFollowupToFetching());

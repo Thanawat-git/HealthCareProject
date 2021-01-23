@@ -68,6 +68,8 @@ export const HTTP_ELD_FETCHING = "HTTP_ELD_FETCHING";
 export const HTTP_ELD_SUCCESS = "HTTP_ELD_SUCCESS";
 export const HTTP_ELD_SELECTED = "HTTP_ELD_SELECTED";
 export const HTTP_ELD_FAILED = "HTTP_ELD_FAILED";
+export const GET_ALL_ELDERY = "GET_ALL_ELDERY";
+export const GET_ELDERY_INFO = "GET_ELDERY_INFO";
 
 
 // Volunteer
