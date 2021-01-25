@@ -56,7 +56,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    height: 500,
+    height: 400,
     //   backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -111,8 +111,6 @@ export default function ShowElderyInfo({ data }) {
               <Tab label="ข้อมูลญาติคนที่1" {...a11yProps(2)} />
               <Tab label="ข้อมูลญาติคนที่2" {...a11yProps(3)} />
               <Tab label="การแพ้/โรคประจำตัว" {...a11yProps(4)} />
-              {/* <Tab label="Item Six" {...a11yProps(5)} /> */}
-              {/* <Tab label="Item Seven" {...a11yProps(6)} /> */}
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0} className={classes.root}>
@@ -130,12 +128,6 @@ export default function ShowElderyInfo({ data }) {
           <TabPanel value={value} index={4} className={classes.root}>
             Item Five
           </TabPanel>
-          {/* <TabPanel value={value} index={5}>
-            Item Six
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            Item Seven
-          </TabPanel> */}
         </DialogContent>
         <DialogActions>
           <Button
@@ -271,4 +263,33 @@ function Address({ data }) {
       </div>
     </React.Fragment>
   );
+}
+
+function Relative1({ data }) {
+  const {
+    ELD_REL_FIRSTNAME,
+    ELD_REL_LASTNAME,
+    ELD_REL_GENDER,
+    ELD_REL_TIME,
+    ELD_REL_RELATION,
+    ELD_REL_PHONE,
+  } = data.Elder_Relative
+   return (
+     <React.Fragment>
+
+     </React.Fragment>
+   )
+}
+
+function CongenitalDisease({ data }) {
+  const {
+    DRUG,
+    FOOD,
+    DISEASE,
+  } = data
+   return (
+     <React.Fragment>
+       
+     </React.Fragment>
+   )
 }
