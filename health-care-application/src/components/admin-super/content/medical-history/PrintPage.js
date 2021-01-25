@@ -7,10 +7,9 @@ import { Sec4 } from "../../../Forms/Sections4";
 import { Sec5 } from "../../../Forms/Sections5";
 import { Sec6 } from "../../../Forms/Sections6";
 
-class ResultOnly extends React.Component {
-  render() {
-    return (
-      <table>
+function Aaa(){
+  return (
+<table>
         <thead>
           <th>column 1</th>
           <th>column 2</th>
@@ -34,6 +33,13 @@ class ResultOnly extends React.Component {
           </tr>
         </tbody>
       </table>
+  )
+}
+
+class ResultOnly extends React.Component {
+  render() {
+    return (
+      <Aaa />
     );
   }
 }

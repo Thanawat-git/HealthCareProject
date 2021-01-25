@@ -258,9 +258,9 @@ export default function Sections2_1() {
   const sendValueTofollow = () => {
     checktosend1 && appointAction.createAppointment([dateblood, topicblood, peopleId]);
     checktosend2 && appointAction.createAppointment([datesuga, topicsuga, peopleId]);
-    // console.log(
-    //   topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
-    // );
+     console.log(
+       topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
+     );
   };
 
   function calDate(week) {
@@ -281,7 +281,7 @@ export default function Sections2_1() {
       d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
       console.log("d after week = 4: ", d)
       dateToYMD(d);
-      //console.log(topicsuga + toDay)
+      console.log(topicsuga + toDay)
     }
   }
   function dateToYMD(date) {
