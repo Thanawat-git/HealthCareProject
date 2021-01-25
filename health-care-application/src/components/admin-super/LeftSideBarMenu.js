@@ -54,10 +54,10 @@ export default function LeftSideBarMenu() {
               </li>
 
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="nav-icon fab fa-pied-piper-alt" />
+                <Link to={`${url}/eldery`} className="nav-link">
+                  <i className="nav-icon fas fa-users" />
                   <p>ผู้สูงอายุ</p>
-                </a>
+                </Link>
               </li>
 
               <li className="nav-header">อื่นๆ</li>

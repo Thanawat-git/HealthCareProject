@@ -11,6 +11,7 @@ import "./content.css";
 
 import AdminContent from "./admin/AdminContent";
 import VolunteerContent from "./volunteer/VolunteerContent"
+import ElderyContent from "./eldery/ElderyContent"
 import Reports from "./reports";
 import Profileadmin from "./admin/Profileadmin"
 import Editpassadmin from './admin/Editpassadmin';
@@ -25,6 +26,9 @@ export default function Content() {
   
   return (
     <div className="content-wrapper">
+      <Route path={`${path}/eldery`}>
+        <ElderyContent/>
+      </Route>
       <Route path={`${path}/followup`}>
         <FollowUp/>
       </Route>
