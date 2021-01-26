@@ -1,4 +1,10 @@
-import { FORMS1P6_ADD_NEW, apiEld, apiBase, USERLOGIN, HTTP_ELD_SELECTED } from "../constants";
+import {
+  FORMS1P6_ADD_NEW,
+  apiEld,
+  apiBase,
+  USERLOGIN,
+  HTTP_ELD_SELECTED,
+} from "../constants";
 import Axios from "axios";
 
 export const setStateToAdd = (payload) => ({
@@ -13,69 +19,69 @@ export const add = (payload) => {
 };
 
 export const createDisease = async (payload) => {
-  await  Axios.post(`${apiEld}/disease/create`, {
+  await Axios.post(`${apiEld}/disease/create`, {
     ELD_ID_NUMBER: payload[0],
     DIS_NAME: payload[1],
     EXAM_DATE: new Date(),
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Disease Success");
 };
 
 export const deleteDisease = async (payload) => {
   await Axios.delete(
     `${apiEld}/disease/delete/${payload[0]}/diseasename/${payload[1]}`
-  )
+  );
   console.log("Delete disease Success");
 };
 // create null table form 2-10
 const createExa2Waist = async (visId) => {
-  await  Axios.post(`${apiBase}/waist/create`, {
+  await Axios.post(`${apiBase}/waist/create`, {
     WAI_WAIST: null,
     WAI_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Waist Create Success");
 };
 
 const createExa2Bmi = async (visId) => {
-  await  Axios.post(`${apiBase}/bmi/create`, {
+  await Axios.post(`${apiBase}/bmi/create`, {
     BMI_WEIGHT: null,
     BMI_HEIGHT: null,
     BMI_BMI: null,
     BMI_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Bmi Create Success");
 };
 
 const createExa2Bp = async (visId) => {
-  await  Axios.post(`${apiBase}/bp/create`, {
+  await Axios.post(`${apiBase}/bp/create`, {
     BP_PULSE: null,
     BP_BLO_SYS: null,
     BP_BLO_DIA: null,
     BP_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Bp Create Success");
 };
 
 const createExa2Fbs = async (visId) => {
-  await  Axios.post(`${apiBase}/fbs/create`, {
+  await Axios.post(`${apiBase}/fbs/create`, {
     FBS_FAST: null,
     FBS_FBS: null,
     FBS_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Fbs Create Success");
 };
 
 const createExa3Cardiovascular = async (visId) => {
-  await  Axios.post(`${apiBase}/cardiovascular/create`, {
+  await Axios.post(`${apiBase}/cardiovascular/create`, {
     CARDIO_3_1: null,
     CARDIO_3_1_COUNT: null,
     CARDIO_3_2: null,
@@ -88,12 +94,12 @@ const createExa3Cardiovascular = async (visId) => {
     CARDIO_COUNT_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Cardiovascular Create Success");
 };
 
 const createExa4Eye = async (visId) => {
-  await  Axios.post(`${apiBase}/eye/create`, {
+  await Axios.post(`${apiBase}/eye/create`, {
     EYE_4_1: null,
     EYE_4_2: null,
     EYE_4_3: null,
@@ -103,12 +109,12 @@ const createExa4Eye = async (visId) => {
     EYE_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Eye Create Success");
 };
 
-const createExa5OralHealth = async  (visId) => {
-  await  Axios.post(`${apiBase}/oralHealth/create`, {
+const createExa5OralHealth = async (visId) => {
+  await Axios.post(`${apiBase}/oralHealth/create`, {
     ORAL_5_1: null,
     ORAL_5_2: null,
     ORAL_5_3: null,
@@ -130,12 +136,12 @@ const createExa5OralHealth = async  (visId) => {
     ORAL_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Oral_Health Create Success");
 };
 
 const createExa6AbilityInLife = async (visId) => {
-  await  Axios.post(`${apiBase}/abilityInLife/create`, {
+  await Axios.post(`${apiBase}/abilityInLife/create`, {
     ABI_6_1: null,
     ABI_6_2: null,
     ABI_6_3: null,
@@ -151,12 +157,12 @@ const createExa6AbilityInLife = async (visId) => {
     ABI_CORRECT_FORM: false,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Ability_In_Life Create Success");
 };
 
 const createExa6TAI = async (visId) => {
-  await  Axios.post(`${apiBase}/TAI/create`, {
+  await Axios.post(`${apiBase}/TAI/create`, {
     TAI_IMMOBILIZE: null,
     TAI_MENTAL: null,
     TAI_FEED: null,
@@ -164,13 +170,13 @@ const createExa6TAI = async (visId) => {
     TAI_GROUP: null,
     TAI_CORRECT_FORM: false,
     updateBy: USERLOGIN.Fullname,
-    VIS_ID: visId
-  })
+    VIS_ID: visId,
+  });
   console.log("TAI Create Success");
 };
 
 const createExa7Alzheimer = async (visId) => {
-  await   Axios.post(`${apiBase}/alzheimer/create`, {
+  await Axios.post(`${apiBase}/alzheimer/create`, {
     ALZ_7_1_EL_AGE: null,
     ALZ_7_1_RESULT_AGE: null,
     ALZ_7_2_EL_TIME: null,
@@ -191,16 +197,16 @@ const createExa7Alzheimer = async (visId) => {
     ALZ_7_9_RESULT_KING: null,
     ALZ_7_10_EL_COUNTDOWN: null,
     ALZ_7_10_RESULT_COUNTDOWN: null,
-    ALZ_RESULT : null,
-    ALZ_CORRECT_FORM : false,
+    ALZ_RESULT: null,
+    ALZ_CORRECT_FORM: false,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Alzheimer Create Success");
 };
 
 const createExa7MMSE = async (visId) => {
-  await   Axios.post(`${apiBase}/MMSE/create`, {
+  await Axios.post(`${apiBase}/MMSE/create`, {
     MMSE_1_1: null,
     MMSE_1_1_POINT: null,
     MMSE_1_2: null,
@@ -211,7 +217,7 @@ const createExa7MMSE = async (visId) => {
     MMSE_1_4_POINT: null,
     MMSE_1_5: null,
     MMSE_1_5_POINT: null,
-    MMSE_2_CHECK_LOCATION:null,
+    MMSE_2_CHECK_LOCATION: null,
     MMSE_2_1: null,
     MMSE_2_1_POINT: null,
     MMSE_2_2: null,
@@ -225,7 +231,7 @@ const createExa7MMSE = async (visId) => {
     MMSE_3_1_POINT: null,
     MMSE_3_2_POINT: null,
     MMSE_3_3_POINT: null,
-    MMSE_4_CHECK_CALCULATE:null,
+    MMSE_4_CHECK_CALCULATE: null,
     MMSE_4_1_POINT: null,
     MMSE_4_2_POINT: null,
     MMSE_4_3_POINT: null,
@@ -247,13 +253,13 @@ const createExa7MMSE = async (visId) => {
     MMSE_CORRECT_FORM: false,
     MMSE_RESULT: null,
     updateBy: USERLOGIN.Fullname,
-    VIS_ID: visId
-  })
+    VIS_ID: visId,
+  });
   console.log("MMSE Create Success");
 };
 
 const createExa8DepressionScreening = async (visId) => {
-  await   Axios.post(`${apiBase}/depressionScreening/create`, {
+  await Axios.post(`${apiBase}/depressionScreening/create`, {
     DEP_DEPRESSED: null,
     DEP_NOT_ENJOYING: null,
     DEP_CHECK: null,
@@ -271,12 +277,12 @@ const createExa8DepressionScreening = async (visId) => {
     DEP_9Q_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Depression_Screening Create Success");
 };
 
 const createExa9BoneMuscle = async (visId) => {
-  await  Axios.post(`${apiBase}/boneMuscle/create`, {
+  await Axios.post(`${apiBase}/boneMuscle/create`, {
     BONE_9_1: null,
     BONE_9_2: null,
     BONE_9_3: null,
@@ -297,12 +303,12 @@ const createExa9BoneMuscle = async (visId) => {
     BONE_PHY_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Bone_Muscle Create Success");
 };
 
 const createExa9_1Osteoarthritis = async (visId) => {
-  await  Axios.post(`${apiBase}/osteoarthritis/create`, {
+  await Axios.post(`${apiBase}/osteoarthritis/create`, {
     OST_1_KNEE_PAIN: null,
     OST_1_LVL_PAIN: null,
     OST_1_RESULT: null,
@@ -319,77 +325,92 @@ const createExa9_1Osteoarthritis = async (visId) => {
     OST_2_RESULT: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Osteoarthritis Create Success");
 };
 
 export const createExa10Urination = async (visId) => {
-  await   Axios.post(`${apiBase}/urination/create`, {
+  await Axios.post(`${apiBase}/urination/create`, {
     URI_10_1: null,
     VIS_ID: visId,
     updateBy: USERLOGIN.Fullname,
-  })
+  });
   console.log("Urination Create Success");
 };
 
-export const createVisitTable =  (payload) => {
-  console.log('in createVisitTable USERLOGIN.Fullname: ',USERLOGIN.Fullname)
-  console.log('in createVisitTable USERLOGIN.Role: ',USERLOGIN.Role)
-  console.log('in createVisitTable USERLOGIN.Id: ',USERLOGIN.Id)
-  // console.log('in createVisitTable payload[0]: ',payload[0])
-  return async dispatch => {
-  let res=  await  Axios.post(`${apiEld}/visit/create`, {
+export const createVisitTable = (payload) => {
+  return async (dispatch) => {
+    let res = await Axios.post(`${apiEld}/visit/create`, {
       VIS_DATE: payload[0],
       visiterRole: USERLOGIN.Role, //fix
       VISITER_ID_NUMBER: USERLOGIN.Id, //fix
       ELD_ID_NUMBER: payload[1],
+      VIS_STATUS: "NORMAL",
       // updateBy: USERLOGIN.Fullname, //fix
-    })
-      console.log("Visit Create Success");
-    await  createAllDatabase(res.data.VIS_ID)
-   await   dispatch({
-        type: "VIS_ID",
-        payload: [res.data.VIS_ID,payload[1]],
-      })
-  
-    updateLastVisDate(payload)
-    
-  }
+    });
+    console.log("Visit Create Success");
+    await createAllDatabase(res.data.VIS_ID);
+    await dispatch({
+      type: "VIS_ID",
+      payload: [res.data.VIS_ID, payload[1]],
+    });
+
+    updateLastVisDate(payload);
+  };
 };
 
-export const setSelectEldFromNewEld = payload => {
-  return dispatch => {
+export const createVisTableFollowUp = (payload) => {
+  return async (dispatch) => {
+    let res = await Axios.post(`${apiEld}/visit/create`, {
+      VIS_DATE: payload[0],
+      visiterRole: USERLOGIN.Role,
+      VISITER_ID_NUMBER: USERLOGIN.Id,
+      ELD_ID_NUMBER: payload[1],
+      VIS_STATUS: "FOLLOWUP",
+    });
+    console.log("Visit FollowUp Create Success");
+    // await createAllDatabase(res.data.VIS_ID);
+    // creact sec2, 3, 5
+    await dispatch({
+      type: "VIS_ID",
+      payload: [res.data.VIS_ID, payload[1]],
+    });
+  };
+};
+
+export const setSelectEldFromNewEld = (payload) => {
+  return (dispatch) => {
     dispatch({
       type: HTTP_ELD_SELECTED,
       payload: {
         ELD_FIRSTNAME: payload[0],
-        ELD_LASTNAME: payload[1]
-      }//ทำให้ elder selected ไม่ null  เพื่อให้สามารถเข้า mainmanu ได้
-    })
-  }
-}
+        ELD_LASTNAME: payload[1],
+      }, //ทำให้ elder selected ไม่ null  เพื่อให้สามารถเข้า mainmanu ได้
+    });
+  };
+};
 
-export const updateLastVisDate = payload => {
-  console.log('eld id ',payload[1], 'vis date ',payload[0])
-  Axios.put(`${apiEld}/update/${payload[1]}`,{
+export const updateLastVisDate = (payload) => {
+  console.log("eld id ", payload[1], "vis date ", payload[0]);
+  Axios.put(`${apiEld}/update/${payload[1]}`, {
     ELD_LAST_VISIT_DATE: payload[0],
-  })
-}
+  });
+};
 
 export const createAllDatabase = async (visId) => {
- await  createExa2Waist(visId);
- await  createExa2Bmi(visId);
- await  createExa2Bp(visId);
- await  createExa2Fbs(visId);
- await  createExa3Cardiovascular(visId);
- await  createExa4Eye(visId);
- await  createExa5OralHealth(visId);
- await  createExa6AbilityInLife(visId);
- await  createExa6TAI(visId);
- await  createExa7Alzheimer(visId);
- await  createExa7MMSE(visId);
- await  createExa8DepressionScreening(visId);
- await  createExa9BoneMuscle(visId);
- await  createExa9_1Osteoarthritis(visId);
- await  createExa10Urination(visId);
+  await createExa2Waist(visId);
+  await createExa2Bmi(visId);
+  await createExa2Bp(visId);
+  await createExa2Fbs(visId);
+  await createExa3Cardiovascular(visId);
+  await createExa4Eye(visId);
+  await createExa5OralHealth(visId);
+  await createExa6AbilityInLife(visId);
+  await createExa6TAI(visId);
+  await createExa7Alzheimer(visId);
+  await createExa7MMSE(visId);
+  await createExa8DepressionScreening(visId);
+  await createExa9BoneMuscle(visId);
+  await createExa9_1Osteoarthritis(visId);
+  await createExa10Urination(visId);
 };

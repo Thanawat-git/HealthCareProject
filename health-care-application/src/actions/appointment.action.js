@@ -16,7 +16,7 @@ export const createAppointment = (payload) => {
     .then((res) => {
       console.log("Appointment Create Success", res.data);
       console.log("Appointment id: ", res.data.APP_ID, "Appointment id: ", res.data.APP_NAME);
-      // createFollowUp(res.APP_ID,res.APP_NAME)
+      createFollowUp(res.APP_ID,res.APP_NAME)
     })
     .catch((error) => {
       console.log("error ", error);

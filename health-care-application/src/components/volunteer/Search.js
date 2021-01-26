@@ -90,6 +90,13 @@ export default function Asynchronous() {
     dispatch(formAction.createVisitTable(data));
     updateLastVisDate(data)
   };
+  const creactVitFollowUp = eldId => {
+    dispatch(getAction.resetCollectFromReducer())
+    const d = new Date();
+    const visDate = `${d.getFullYear()+543}-${d.getMonth() + 1}-${d.getDate()}`;
+    const data = [visDate, eldId];
+    dispatch(formAction.createVisTableFollowUp(data));
+  }
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
   };
@@ -113,8 +120,6 @@ export default function Asynchronous() {
       <div className="inner-seach2">
         {elderlyReducer.result.length !== 0 &&
           elderlyReducer.result.map((value, index) => {
-            // console.log("v");
-            // console.log(value);
             return (
               <div>
                 <Paper
@@ -294,22 +299,10 @@ export default function Asynchronous() {
                               <Button 
                               className="btn btn-light" 
                               variant="contained"
-                              // onClick={()=>{
-                              //   dispatch(getAction.resetCollectFromReducer())
-                              //   dispatch(getAction.resetDateAllForm())
-                              //   const data = [value.VIS_ID, elderlyReducer.resultSelected.ELD_ID_NUMBER]
-                              //   dispatch({
-                              //     type: "VIS_ID",
-                              //     payload: data,
-                              //   })
-                              //   dispatch(getAction.getCollect(value.VIS_ID));
-                              //   dispatch(getAction.getAllResult(value.VIS_ID));
-                              //   if(!forms2Reducer.isFetching){
-                              //     setTimeout(() => {
-                              //       history.push("/mainmenu");
-                              //     }, 500);
-                              //   }
-                              // }}
+                              onClick={()=>{
+                                const eldId = elderlyReducer.resultSelected.ELD_ID_NUMBER;
+                                creactVitFollowUp(eldId)
+                              }}
                               fullWidth>
                                 ติดตามผลวัน{moment(value.APPOINT_DATE).format("dddd")} ที่ {moment(value.APPOINT_DATE).format("LL")} {value.APP_NAME}
                               </Button>

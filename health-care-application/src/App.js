@@ -26,6 +26,7 @@ import Editpassword from "./components/volunteer/Editpassword"
 
 // import VolHeader from "./components/volunteer/Header"
 import MainMenu from "./components/Forms";
+import FollowUpMenu from "./components/Forms/FollowUpMenu";
 
 import {
   Sec1_1,
@@ -165,9 +166,11 @@ export default function App() {
         </PrivateRoute>
         <ProtectRoute path="/editeld"><EditInfo/></ProtectRoute>
         <ProtectRoute path="/mainmenu">
-          {/* <VolHeader/> <br/> */}
           <MainMenu/>
         </ProtectRoute>
+        <Route  path="/followupmenu">
+          <FollowUpMenu/>
+        </Route>
 
         <PrivateRoute path="/sec1-page1"><Sec1_1/></PrivateRoute>
         <PrivateRoute path="/sec1-page2"><Sec1_2/></PrivateRoute>
