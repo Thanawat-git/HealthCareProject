@@ -5,6 +5,9 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
+import { blue, red, grey } from "@material-ui/core/colors";
+import RoomSharpIcon from "@material-ui/icons/RoomSharp";
+import RecentActorsSharpIcon from "@material-ui/icons/RecentActorsSharp";
 import moment from "moment";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
@@ -93,7 +96,7 @@ export default function ShowElderyInfo({ data }) {
         // className={classes.root}
       >
         <DialogTitle id="scroll-dialog-title" style={{ textAlign: "center" }}>
-          ข้อมููลของคุณ {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}
+          ข้อมูลของคุณ {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}
         </DialogTitle>
         <DialogContent>
           <AppBar position="static" color="default">
@@ -120,13 +123,13 @@ export default function ShowElderyInfo({ data }) {
             <Address data={data} />
           </TabPanel>
           <TabPanel value={value} index={2} className={classes.root}>
-            Item Three
+           <Relative1 data={data} />             
           </TabPanel>
           <TabPanel value={value} index={3} className={classes.root}>
-            Item Four
+            <Relative2 data={data} />
           </TabPanel>
           <TabPanel value={value} index={4} className={classes.root}>
-            Item Five
+            <CongenitalDisease data={data} />
           </TabPanel>
         </DialogContent>
         <DialogActions>
@@ -146,12 +149,16 @@ export default function ShowElderyInfo({ data }) {
 function BasicInfo({ data }) {
   return (
     <React.Fragment>
-      <div className="row">
-        <div className="col-4 btitle">
-          <h5>ชื่อ - นามสกุล</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>
+      <div>
+        <h5 style={{ textAlign: "center" }}>
+          <b>รหัสประจำตัว &nbsp;&nbsp; {data.ELD_ID_NUMBER}</b>
+        </h5>
+      </div>
+      {/* ------------------------ */}
+      <div style={{ textAlign: "center", paddingTop: 10 }}>
+        <div>
+          <h5 style={{ textAlign: "center" }}>
+            ชื่อ - นามสกุล :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {data.Elder_Information.ELD_GENDER === "ชาย"
               ? "นาย"
               : data.Elder_Information.ELD_STATUS === "โสด"
@@ -159,73 +166,98 @@ function BasicInfo({ data }) {
               : "นาง"}
             {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}
           </h5>
+          <hr />
         </div>
-        <div className="col-4 btitle">
-          <h5>รหัสประจำตัว</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>{data.ELD_ID_NUMBER}</h5>
-        </div>
-        <div className="col-4 btitle">
-          <h5>วันเกิด</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>
-            วัน{moment(data.Elder_Information.ELD_BIRTHDATE).format("dddd")} ที่{" "}
-            {moment(data.Elder_Information.ELD_BIRTHDATE).format("LL")}
+        <div>
+          <h5
+            style={{ paddingLeft: 49, marginLeft: "18%", textAlign: "center" }}
+          >
+            วันเกิด :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วัน
+            {moment(data.Elder_Information.ELD_BIRTHDATE).format(
+              "dddd"
+            )} ที่ {moment(data.Elder_Information.ELD_BIRTHDATE).format("LL")}
           </h5>
+          <hr />
         </div>
-        <div className="col-4 btitle">
-          <h5>อายุ</h5>
+
+        <div>
+          <h5
+            style={{ paddingLeft: 49, marginRight: "8%", textAlign: "center" }}
+          >
+            อายุ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.Elder_Information.ELD_AGE} ปี
+          </h5>
+          <hr />
         </div>
-        <div className="col-8 bcontent">
-          <h5>{data.Elder_Information.ELD_AGE} ปี</h5>
+        {/* ----------------- */}
+        <div>
+          <h5
+            style={{ paddingLeft: 49, marginRight: "8%", textAlign: "center" }}
+          >
+            เพศ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.Elder_Information.ELD_GENDER}
+          </h5>
+          <hr />
         </div>
-        <div className="col-4 btitle">
-          <h5>เพศ</h5>
+        {/* ---------------- */}
+        <div>
+          <h5
+            style={{ paddingLeft: 49, marginRight: "9%", textAlign: "center" }}
+          >
+            สถานะ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.Elder_Information.ELD_STATUS}
+          </h5>
+          <hr />
         </div>
-        <div className="col-8 bcontent">
-          <h5>{data.Elder_Information.ELD_GENDER}</h5>
+        {/* ------------------- */}
+        <div>
+          <h5 style={{ marginRight: "2%", textAlign: "center" }}>
+            เบอร์โทรศัพท์ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.ELD_PHONE}
+          </h5>
+          <hr />
         </div>
-        <div className="col-4 btitle">
-          <h5>สถานะ</h5>
+        {/* ---------------- */}
+        <div>
+          <h5
+            style={{ paddingLeft: 47, marginRight: "9%", textAlign: "center" }}
+          >
+            ศาสนา :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.Elder_Information.ELD_RELIGION}
+          </h5>
+          <hr />
         </div>
-        <div className="col-8 bcontent">
-          <h5>{data.Elder_Information.ELD_STATUS}</h5>
+        {/* ----------------- */}
+        <div>
+          <h5
+            style={{ paddingLeft: 47, marginLeft: "7%", textAlign: "center" }}
+          >
+            อาชีพ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.Elder_Information.ELD_JOB}
+          </h5>
+          <hr />
         </div>
-        <div className="col-4 btitle">
-          <h5>เบอร์โทรศัพท์</h5>
+        {/* ------------------- */}
+        <div>
+          <h5
+            style={{ paddingLeft: 47, marginLeft: "1%", textAlign: "center" }}
+          >
+            การศึกษา :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {data.Elder_Information.ELD_EDUCATION}
+          </h5>
+          <hr />
         </div>
-        <div className="col-8 bcontent">
-          <h5>{data.ELD_PHONE}</h5>
-        </div>
-        <div className="col-4 btitle">
-          <h5>ศาสนา</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>{data.Elder_Information.ELD_RELIGION}</h5>
-        </div>
-        <div className="col-4 btitle">
-          <h5>อาชีพ</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>{data.Elder_Information.ELD_JOB}</h5>
-        </div>
-        <div className="col-4 btitle">
-          <h5>การศึกษา</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>{data.Elder_Information.ELD_EDUCATION}</h5>
-        </div>
-        <div className="col-4 btitle">
-          <h5>สิทธิการรักษา</h5>
-        </div>
-        <div className="col-8 bcontent">
-          <h5>
+        {/* ----------------- */}
+        <div>
+          <h5
+            style={{ paddingLeft: 47, marginRight: "9%", textAlign: "center" }}
+          >
+            สิทธิการรักษา :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {data.Elder_Information.ELD_TREATMENT}{" "}
             {data.Elder_Information.ELD_TREATMENT_HOSPITAL !== null &&
               `โรงพยาบาล${data.Elder_Information.ELD_TREATMENT_HOSPITAL}`}
           </h5>
+          <hr />
         </div>
       </div>
     </React.Fragment>
@@ -242,23 +274,38 @@ function Address({ data }) {
   } = data.Elder_Id_Number_Address;
   const {
     ELD_CUR_NUMBER,
-      ELD_CUR_ALLEY,
-      ELD_CUR_STREET,
-      ELD_CUR_SUB_DISTRICT,
-      ELD_CUR_AREA,
+    ELD_CUR_ALLEY,
+    ELD_CUR_STREET,
+    ELD_CUR_SUB_DISTRICT,
+    ELD_CUR_AREA,
   } = data.Elder_Current_Address;
   return (
     <React.Fragment>
-      <h5>ที่อยู่ปัจจุบัน</h5>
+      <h5 style={{ marginTop: "3%" }}>
+        <RoomSharpIcon style={{ color: red[500] }} />{" "}
+        <strong>ที่อยู่ปัจจุบัน</strong>
+      </h5>
       <div className="address-info">
-        <p>
-            เลขที่ {ELD_CUR_NUMBER} ตรอก/ซอย {ELD_CUR_ALLEY} ถนน {ELD_CUR_STREET} {ELD_CUR_AREA} ตำบล{ELD_CUR_SUB_DISTRICT} อำเภอเมือง จังหวัดชลบุรี
+        <p style={{ fontSize: 20, margin: 20 }}>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เลขที่&nbsp; {ELD_CUR_NUMBER}{" "}
+          &nbsp;ตรอก/ซอย&nbsp; {ELD_CUR_ALLEY} &nbsp;ถนน&nbsp; {ELD_CUR_STREET}{" "}
+          {ELD_CUR_AREA} &nbsp;ตำบล&nbsp; {ELD_CUR_SUB_DISTRICT} &nbsp;
+          <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อำเภอเมือง จังหวัดชลบุรี
         </p>
       </div>
-      <h5>ที่อยู่ตามบัตรประชาชน</h5>
+      <h5 style={{ marginTop: "5%" }}>
+        <strong>
+          <RoomSharpIcon style={{ color: red[600] }} />
+          ที่อยู่ตามบัตรประชาชน
+        </strong>
+      </h5>
       <div className="address-info">
-        <p>
-            เลขที่ {ELD_IDN_ADDR_NUMBER} ตรอก/ซอย {ELD_IDN_ADDR_ALLEY} ถนน {ELD_IDN_ADDR_STREET} {ELD_IDN_ADDR_AREA} ตำบล{ELD_IDN_ADDR_SUB_DISTRICT} อำเภอเมือง จังหวัดชลบุรี
+        <p style={{ fontSize: 20, margin: 20 }}>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เลขที่&nbsp; {ELD_IDN_ADDR_NUMBER}{" "}
+          &nbsp;ตรอก/ซอย&nbsp; {ELD_IDN_ADDR_ALLEY} &nbsp;ถนน&nbsp;{" "}
+          {ELD_IDN_ADDR_STREET} &nbsp; {ELD_IDN_ADDR_AREA} &nbsp;ตำบล&nbsp;
+          {ELD_IDN_ADDR_SUB_DISTRICT} &nbsp;
+          <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อำเภอเมือง จังหวัดชลบุรี
         </p>
       </div>
     </React.Fragment>
@@ -267,29 +314,113 @@ function Address({ data }) {
 
 function Relative1({ data }) {
   const {
-    ELD_REL_FIRSTNAME,
-    ELD_REL_LASTNAME,
-    ELD_REL_GENDER,
-    ELD_REL_TIME,
-    ELD_REL_RELATION,
-    ELD_REL_PHONE,
-  } = data.Elder_Relative
-   return (
-     <React.Fragment>
+    Elder_Relatives
+  } = data;
 
-     </React.Fragment>
-   )
+  return (
+    <React.Fragment>
+      {Elder_Relatives.length !== 0 ?
+      <React.Fragment>
+      <h5 style={{ marginLeft: "7%" }}>
+        <RecentActorsSharpIcon style={{ color: grey[500], fontSize: 40 }} />
+        &nbsp;<strong>ข้อมูลญาติคนที่ 1</strong>
+      </h5>
+      <div style={{ marginLeft: "17%", fontSize: 20 }}>
+        <p>
+          ชื่อ-นามสกุล : &nbsp;{Elder_Relatives[0].ELD_REL_FIRSTNAME} &nbsp; {Elder_Relatives[0].ELD_REL_LASTNAME}
+        </p>
+        <p>เพศ : &nbsp;{Elder_Relatives[0].ELD_REL_GENDER} </p>
+        <p>เวลาอยู่กับผู้สูงอายุ : &nbsp;{Elder_Relatives[0].ELD_REL_TIME}</p>
+        <p>ความสัมพันธ์กับผู้สูงอายุ : &nbsp;{Elder_Relatives[0].ELD_REL_RELATION}</p>
+        <p>เบอร์โทรศัพท์ : &nbsp;{Elder_Relatives[0].ELD_REL_PHONE}</p>
+      </div>
+      </React.Fragment>
+      :<p style={{fontSize: 20 }}>ไม่มีข้อมูลญาติ</p>
+      }
+    </React.Fragment>
+  );
+}
+function Relative2({ data }) {
+  const {
+    Elder_Relatives
+  } = data;
+
+  return (
+    <React.Fragment>
+      {Elder_Relatives.length > 1 ?
+      <React.Fragment> 
+      <h5 style={{ marginLeft: "7%" }}>
+        <RecentActorsSharpIcon style={{ color: grey[500], fontSize: 40 }} />
+        &nbsp;<strong>ข้อมูลญาติคนที่ 2</strong>
+      </h5>
+      <div style={{ marginLeft: "17%", fontSize: 20 }}>
+        <p>
+          ชื่อ-นามสกุล : &nbsp;{Elder_Relatives[1].ELD_REL_FIRSTNAME} &nbsp; {Elder_Relatives[1].ELD_REL_LASTNAME}
+        </p>
+        <p>เพศ : &nbsp;{Elder_Relatives[1].ELD_REL_GENDER} </p>
+        <p>เวลาอยู่กับผู้สูงอายุ : &nbsp;{Elder_Relatives[1].ELD_REL_TIME}</p>
+        <p>ความสัมพันธ์กับผู้สูงอายุ : &nbsp;{Elder_Relatives[1].ELD_REL_RELATION}</p>
+        <p>เบอร์โทรศัพท์ : &nbsp;{Elder_Relatives[1].ELD_REL_PHONE}</p>
+      </div>
+      </React.Fragment> 
+      :<p style={{fontSize: 20 }}>ไม่มีข้อมูลญาติ</p>
+}
+    </React.Fragment>
+  );
 }
 
 function CongenitalDisease({ data }) {
-  const {
-    DRUG,
-    FOOD,
-    DISEASE,
-  } = data
-   return (
-     <React.Fragment>
-       
-     </React.Fragment>
-   )
+  const { FOOD, DRUG, DISEASE } = data;
+
+  return (
+    <React.Fragment>
+      <div className="row">
+        <div className="col-4">
+          <h5 style={{ marginTop: "3%" }}>
+            <strong>ประวัติการแพ้อาหาร</strong>
+          </h5>
+          {FOOD.length !== 0 ?
+            FOOD.map((value) => {
+              return (
+                <React.Fragment>
+                  <li style={{ marginLeft: "6%", fontSize: 20 }}>
+                    {value.FOOD_NAME}
+                  </li>
+                </React.Fragment>
+              );
+            }):<p style={{fontSize: 18,marginLeft:"6%" }}>ไม่มี</p>}
+        </div>
+        <div className="col-4">
+          <h5 style={{ marginTop: "3%" }}>
+            <strong>ประวัติการแพ้ยา</strong>
+          </h5>
+          {DRUG.length !== 0 ? 
+            DRUG.map((value, index) => {
+              return (
+                <React.Fragment>
+                  <li key={index} style={{ marginLeft: "6%", fontSize: 20 }}>
+                    {value.DRUG_NAME}
+                  </li>
+                </React.Fragment>
+              );
+            }):<p style={{fontSize: 18,marginLeft:"6%" }}>ไม่มี</p>}
+        </div>
+        <div className="col-4">
+          <h5 style={{ marginTop: "3%" }}>
+            <strong>โรคประจำตัว</strong>
+          </h5>
+          {DISEASE.length !== 0 ?
+            DISEASE.map((value) => {
+              return (
+                <React.Fragment>
+                  <li style={{ marginLeft: "6%", fontSize: 20 }}>
+                    {value.DIS_NAME}
+                  </li>
+                </React.Fragment>
+              );
+            }):<p style={{fontSize: 18,marginLeft:"6%" }}>ไม่มี</p>}
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
