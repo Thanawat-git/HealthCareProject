@@ -5,7 +5,19 @@ import {
 } from "../../constants";
 
 const initialState = {
-  results: {},
+  results: {
+    Community: "ชุมชนมณีแก้ว",
+    Elder: 0,
+    ElderMale: 0,
+    ElderFemale: 0,
+    PerElderMale: 0,
+    PerElderFemale: 0,
+    ElderSurvey: 0,
+    ElderSurveyMale: 0,
+    ElderSurveyFemale: 0,
+    PerElderSurveyMale: 0,
+    PerElderSurveyFemale: 0,
+  },
   isFetching: false,
   isError: false,
 };

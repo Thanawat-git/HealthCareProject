@@ -38,8 +38,21 @@ export const getDataChart4 = community => {
   }
 }
 
-export const getDataChart3 = () => {
-  
+export const getDataChart3 = (community) => {
+  return async dispatch => {
+    await dispatch({ type: CHART3_FETCHING })
+    try {
+      let data = await Axios.get(`${apiBase}/report01/03-survey/${community}`)
+      console.log("chart3 ", data.data);
+      await dispatch({
+        type: CHART3_GET_SUCCRESS,
+        payload: data.data,
+      })
+    } catch (error) {
+      dispatch({ type: CHART3_ERROR });
+      console.log("error chart3 ", error)
+    }
+  }
 }
 
 export const getDataChart2 = community => {
