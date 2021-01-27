@@ -66,17 +66,17 @@ const ShowChart = React.forwardRef((props, ref) => {
           loader={<div>Loading Chart</div>}
           data={[
             ["", "จำนวน"],
-            ["เบิกต้นสังกัด", Affiliation],
-            ["ชำระเงินเอง", Yourself],
-            ["บัตรทอง", Gold],
-            ["บัตรผู้พิการ", Disabled],
-            ["บัตรประกันสังคม", Social],
-            ["อืนๆ", Other],
+            [`เบิกต้นสังกัด\n${Affiliation}คน\n${PerAffiliation}%`,Affiliation],
+            [`ชำระเงินเอง\n${Yourself}คน\n${PerYourself}%`,Yourself],
+            [`บัตรทอง\n${Gold}คน\n${PerGold}%`,Gold],
+            [`บัตรผู้พิการ\n${Disabled}คน\n${PerDisabled}%`,Disabled],
+            [`บัตรประกันสังคม\n${Social}คน\n${PerSocial}%`,Social],
+            [`อืนๆ\n${Other}คน\n${PerOther}%`,Other],
           ]}
           options={{
             chart: {
               title: `จำนวนประชากรผู้สูงอายุทั้งหมดใน ${community} จำนวน ${Sum} คน`,
-              subtitle: "แจกแจงตามช่วงอายุ เพศ และชุมชน",
+              subtitle: "แจกแจงตามสิทธิการรักษา และชุมชน",
             },
           }}
         />
@@ -92,7 +92,7 @@ export default function Chart8() {
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
-            จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษา ช่วงอายุ และเพศ
+            จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษา และชุมชน
           </h3>
           <div className="card-tools">
             <button
