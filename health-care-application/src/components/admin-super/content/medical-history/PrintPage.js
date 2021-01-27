@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight:30
   },
 }));
-function Aaa() {
+function ResultForm({value}) {
   const historyReducer = useSelector(({ historyReducer }) => historyReducer);
   const classes = useStyles();
   const {
@@ -59,10 +59,14 @@ function Aaa() {
     uri_result,
 
   } = historyReducer.resultSelected;
+  useEffect(() => {
+console.log('value : >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ',value)
+  }, [])
+  
   return (
     <div style={{ fontSize: "30px" }}>
-      <p style={{ textAlign: "center", margin: 20 }}>
-        <b>ผลการประเมินของคุณ </b>
+      <p style={{ textAlign: "center", margin: 30 }}>
+        <b>ผลการประเมินของคุณ {value.ELD_NAME}</b>
       </p>
       <div className={classes.interval}>
         <Accordion expanded={true}>
@@ -370,15 +374,18 @@ function Aaa() {
 
 class ResultOnly extends React.Component {
   render() {
-    return <Aaa />;
+    return <ResultForm value={this.props.value}  />;
+    
   }
 }
 
 export class PrintResultOnly extends React.PureComponent {
   render() {
+   
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>',this.props.value)
     return (
       <div>
-        <ReactToPrint content={() => this.componentRef}>
+        <ReactToPrint  content={() => this.componentRef}>
           <PrintContextConsumer>
             {({ handlePrint }) => (
               <Button style={{
@@ -391,7 +398,7 @@ export class PrintResultOnly extends React.PureComponent {
           </PrintContextConsumer>
         </ReactToPrint>
         <div style={{ display: "none" }}>
-          <ResultOnly ref={(el) => (this.componentRef = el)} />
+          <ResultOnly value={this.props.value} ref={(el) => (this.componentRef = el)} />
         </div>
       </div>
     );
