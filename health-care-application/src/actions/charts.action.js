@@ -19,6 +19,12 @@ import {
   CHART6_ERROR,
   CHART6_FETCHING,
   CHART6_GET_SUCCRESS,
+  CHART7_ERROR,
+  CHART7_FETCHING,
+  CHART7_GET_SUCCRESS,
+  CHART8_ERROR,
+  CHART8_FETCHING,
+  CHART8_GET_SUCCRESS,
 } from "../constants";
 
 export const getDataChart4 = community => {
@@ -106,6 +112,38 @@ export const getDataChart6 = education => {
     } catch (error) {
       dispatch({ type: CHART6_ERROR });
       console.log("error chart6 ", error);
+    }
+  }
+}
+export const getDataChart7 = Treatment => {
+  return async dispatch=> {
+    await dispatch({ type: CHART7_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report01/07-treatment/${Treatment}`)
+      console.log("chart 7 ", data.data)
+      await dispatch({
+        type: CHART7_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART7_ERROR });
+      console.log("error chart7 ", error);
+    }
+  }
+}
+export const getDataChart8 = Treatment => {
+  return async dispatch=> {
+    await dispatch({ type: CHART8_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report01/08-treatment/${Treatment}`)
+      console.log("chart 8 ", data.data)
+      await dispatch({
+        type: CHART8_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART8_ERROR });
+      console.log("error chart8 ", error);
     }
   }
 }

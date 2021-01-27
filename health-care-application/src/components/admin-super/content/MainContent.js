@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Chart1, Chart2, Chart4, Chart5 } from "./charts"
-import { getDataChart1, getDataChart2, getDataChart4, getDataChart5, getDataChart6 } from "../../../actions/charts.action"
+import { Chart1, Chart2, Chart4, Chart5,Chart7, Chart8 } from "./charts"
+import { getDataChart1, getDataChart2, getDataChart4, getDataChart5, getDataChart6, getDataChart7, getDataChart8 } from "../../../actions/charts.action"
 
 export default function MainContent() {
   const dispatch = useDispatch()
@@ -11,6 +11,8 @@ export default function MainContent() {
     dispatch(getDataChart4("ชุมชนมณีแก้ว"))
     dispatch(getDataChart5("ชุมชนมณีแก้ว"))
     dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
+    dispatch(getDataChart7("เบิกต้นสังกัด"))
+    dispatch(getDataChart8("ชุมชนมณีแก้ว"))
   }, [])
     return (
     <React.Fragment>
@@ -79,6 +81,8 @@ export default function MainContent() {
             <Chart2 />
             <Chart4 />
             <Chart5 />
+            <Chart7 />
+            <Chart8 />
 
             
 
