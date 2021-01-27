@@ -314,12 +314,12 @@ function Address({ data }) {
 
 function Relative1({ data }) {
   const {
-    Elder_Relatives
+    ELDER_RELATIVE
   } = data;
 
   return (
     <React.Fragment>
-      {Elder_Relatives.length !== 0 ?
+      {ELDER_RELATIVE.length !== 0 ?
       <React.Fragment>
       <h5 style={{ marginLeft: "7%" }}>
         <RecentActorsSharpIcon style={{ color: grey[500], fontSize: 40 }} />
@@ -327,12 +327,12 @@ function Relative1({ data }) {
       </h5>
       <div style={{ marginLeft: "17%", fontSize: 20 }}>
         <p>
-          ชื่อ-นามสกุล : &nbsp;{Elder_Relatives[0].ELD_REL_FIRSTNAME} &nbsp; {Elder_Relatives[0].ELD_REL_LASTNAME}
+          ชื่อ-นามสกุล : &nbsp;{ELDER_RELATIVE[0].ELD_REL_FIRSTNAME} &nbsp; {ELDER_RELATIVE[0].ELD_REL_LASTNAME}
         </p>
-        <p>เพศ : &nbsp;{Elder_Relatives[0].ELD_REL_GENDER} </p>
-        <p>เวลาอยู่กับผู้สูงอายุ : &nbsp;{Elder_Relatives[0].ELD_REL_TIME}</p>
-        <p>ความสัมพันธ์กับผู้สูงอายุ : &nbsp;{Elder_Relatives[0].ELD_REL_RELATION}</p>
-        <p>เบอร์โทรศัพท์ : &nbsp;{Elder_Relatives[0].ELD_REL_PHONE}</p>
+        <p>เพศ : &nbsp;{ELDER_RELATIVE[0].ELD_REL_GENDER} </p>
+        <p>เวลาอยู่กับผู้สูงอายุ : &nbsp;{ELDER_RELATIVE[0].ELD_REL_TIME}</p>
+        <p>ความสัมพันธ์กับผู้สูงอายุ : &nbsp;{ELDER_RELATIVE[0].ELD_REL_RELATION}</p>
+        <p>เบอร์โทรศัพท์ : &nbsp;{ELDER_RELATIVE[0].ELD_REL_PHONE}</p>
       </div>
       </React.Fragment>
       :<p style={{fontSize: 20 }}>ไม่มีข้อมูลญาติ</p>
@@ -342,12 +342,12 @@ function Relative1({ data }) {
 }
 function Relative2({ data }) {
   const {
-    Elder_Relatives
+    ELDER_RELATIVE
   } = data;
 
   return (
     <React.Fragment>
-      {Elder_Relatives.length > 1 ?
+      {ELDER_RELATIVE.length > 1 ?
       <React.Fragment> 
       <h5 style={{ marginLeft: "7%" }}>
         <RecentActorsSharpIcon style={{ color: grey[500], fontSize: 40 }} />
@@ -355,12 +355,12 @@ function Relative2({ data }) {
       </h5>
       <div style={{ marginLeft: "17%", fontSize: 20 }}>
         <p>
-          ชื่อ-นามสกุล : &nbsp;{Elder_Relatives[1].ELD_REL_FIRSTNAME} &nbsp; {Elder_Relatives[1].ELD_REL_LASTNAME}
+          ชื่อ-นามสกุล : &nbsp;{ELDER_RELATIVE[1].ELD_REL_FIRSTNAME} &nbsp; {ELDER_RELATIVE[1].ELD_REL_LASTNAME}
         </p>
-        <p>เพศ : &nbsp;{Elder_Relatives[1].ELD_REL_GENDER} </p>
-        <p>เวลาอยู่กับผู้สูงอายุ : &nbsp;{Elder_Relatives[1].ELD_REL_TIME}</p>
-        <p>ความสัมพันธ์กับผู้สูงอายุ : &nbsp;{Elder_Relatives[1].ELD_REL_RELATION}</p>
-        <p>เบอร์โทรศัพท์ : &nbsp;{Elder_Relatives[1].ELD_REL_PHONE}</p>
+        <p>เพศ : &nbsp;{ELDER_RELATIVE[1].ELD_REL_GENDER} </p>
+        <p>เวลาอยู่กับผู้สูงอายุ : &nbsp;{ELDER_RELATIVE[1].ELD_REL_TIME}</p>
+        <p>ความสัมพันธ์กับผู้สูงอายุ : &nbsp;{ELDER_RELATIVE[1].ELD_REL_RELATION}</p>
+        <p>เบอร์โทรศัพท์ : &nbsp;{ELDER_RELATIVE[1].ELD_REL_PHONE}</p>
       </div>
       </React.Fragment> 
       :<p style={{fontSize: 20 }}>ไม่มีข้อมูลญาติ</p>
