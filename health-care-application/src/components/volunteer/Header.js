@@ -48,6 +48,7 @@ export default function Header() {
   const dispatch = useDispatch()
   const logOut = () => {
     dispatch(logout())
+    window.location.reload();
   };
   const toggleDrawer = (anchor, open) => (event) => {
     if (

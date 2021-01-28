@@ -20,6 +20,7 @@ export default function HeaderSA({ name }) {
   const dispatch = useDispatch()
   const logOut = () => {
     dispatch(logout())
+    window.location.reload();
   };
   return (
     <React.Fragment>
