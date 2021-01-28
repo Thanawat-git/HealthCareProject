@@ -53,11 +53,13 @@ export const loginVolunteer = (history, credential) => {
       credential.password
     ).then(
       (data) => {
+        window.location.reload();
         dispatch({
           type: HTTP_LOGIN_SUCCESS,
           payload: { user: data },
         });
         history.push("/volunteerpage");
+        
         return Promise.resolve();
       },
       (error) => {

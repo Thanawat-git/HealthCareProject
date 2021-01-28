@@ -33,32 +33,6 @@ export default function ElderyContent() {
               <td>{value.ELD_PHONE}</td>
               <td>
                 <ShowElderyInfo data={value}/>
-                {/* <button
-                onClick={() => {
-                  MySwal.fire({
-                    title: "ต้องการลบอาสาสมัครคนนี้ใช่หรือไม่",
-                    text: `คุณ${value.ADM_FIRSTNAME} ${value.ADM_LASTNAME} กำลังจะถูกลบ!`,
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: " ลบ ",
-                    cancelButtonText: "ยกเลิก"
-                  }).then(result => {
-                    if (result.value) {
-                      dispatch(adminAction.deleteAdmin(value.ADM_ID_NUMBER))
-                      Swal.fire(
-                        'ลบสำเร็จ',
-                        `คุณ${value.ADM_FIRSTNAME} ${value.ADM_LASTNAME} ได้ถูกลบแล้ว`,
-                        'success'
-                      )
-                    }
-                  });
-                }}
-                type="button"
-                className="btn btn-danger"
-              >
-                ลบ
-              </button> */}
               </td>
             </tr>
           );
