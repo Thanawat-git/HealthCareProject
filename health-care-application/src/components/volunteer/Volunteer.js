@@ -37,6 +37,9 @@ const useStyles = makeStyles({
 });
 
 export default function Volunteer() {
+  useEffect(() => {
+    window.location.reload();
+  }, [])
   const classes = useStyles();
   let history = useHistory();
   const dispatch = useDispatch()
