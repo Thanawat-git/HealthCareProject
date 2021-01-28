@@ -287,9 +287,9 @@ function Address({ data }) {
       </h5>
       <div className="address-info">
         <p style={{ fontSize: 20, margin: 20 }}>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เลขที่&nbsp; {ELD_CUR_NUMBER}{" "}
-          &nbsp;ตรอก/ซอย&nbsp; {ELD_CUR_ALLEY} &nbsp;ถนน&nbsp; {ELD_CUR_STREET}{" "}
-          {ELD_CUR_AREA} &nbsp;ตำบล&nbsp; {ELD_CUR_SUB_DISTRICT} &nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เลขที่ :&nbsp; {ELD_CUR_NUMBER}{" "}
+          &nbsp;ตรอก/ซอย :&nbsp; {ELD_CUR_ALLEY} &nbsp;ถนน :&nbsp; {ELD_CUR_STREET}{" "}
+          {ELD_CUR_AREA} &nbsp;ตำบล :&nbsp; {ELD_CUR_SUB_DISTRICT} &nbsp;
           <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อำเภอเมือง จังหวัดชลบุรี
         </p>
       </div>
@@ -319,7 +319,7 @@ function Relative1({ data }) {
 
   return (
     <React.Fragment>
-      {ELDER_RELATIVE.length !== 0 ?
+      {(ELDER_RELATIVE.length !== 0 && ELDER_RELATIVE[0].ELD_REL_FIRSTNAME !== null )  ?
       <React.Fragment>
       <h5 style={{ marginLeft: "7%" }}>
         <RecentActorsSharpIcon style={{ color: grey[500], fontSize: 40 }} />
