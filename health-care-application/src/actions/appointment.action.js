@@ -4,7 +4,7 @@ import { APPOINTMENT, apiBase, USERLOGIN } from "../constants";
 export const createAppointment = async (payload, x) => {
   console.log("data sent to appoint ", payload);
 
-  let res =  await Axios.post(`${apiBase}/appointment/create`, {
+  let res = await Axios.post(`${apiBase}/appointment/create`, {
     APPOINT_DATE: payload[0],
     APP_NAME: payload[1],
     APP_STATUS: null,
@@ -13,34 +13,51 @@ export const createAppointment = async (payload, x) => {
     ELD_ID_NUMBER: payload[2],
     ADDER_ID_NUMBER: USERLOGIN.Id,
     APP_FLAG: false,
-  })
+  });
   try {
     console.log("Appointment Create Success", res.data);
-      console.log(
-        "Appointment id: ",
-        res.data.APP_ID,
-        "Appointment id: ",
-        res.data.APP_NAME
-      );
-      await createExa2Waist(res.data.APP_ID)
-      await createExa2Bmi(res.data.APP_ID)
-      await createExa2Bp(res.data.APP_ID)
-      await createExa2Fbs(res.data.APP_ID)
-      switch (x) {
-        case "หัวใจ":
-          await createExa3Cardiovascular(res.data.APP_ID)
-          break;
-        case "ช่องปาก":
-          await createExa5OralHealth(res.data.APP_ID)
-          break;
-      }
+    console.log(
+      "Appointment id: ",
+      res.data.APP_ID,
+      "Appointment id: ",
+      res.data.APP_NAME
+    );
+    
+    switch (x) {
+      case "ความดัน":
+        await createExa2Waist(res.data.APP_ID);
+        await createExa2Bmi(res.data.APP_ID);
+        await createExa2Bp(res.data.APP_ID);
+        await createExa2Fbs(res.data.APP_ID);
+        break;
+      case "เบาหวาน":
+        await createExa2Waist(res.data.APP_ID);
+        await createExa2Bmi(res.data.APP_ID);
+        await createExa2Bp(res.data.APP_ID);
+        await createExa2Fbs(res.data.APP_ID);
+        break;
+      case "หัวใจ":
+        await createExa2Waist(res.data.APP_ID);
+        await createExa2Bmi(res.data.APP_ID);
+        await createExa2Bp(res.data.APP_ID);
+        await createExa2Fbs(res.data.APP_ID);
+        await createExa3Cardiovascular(res.data.APP_ID);
+        break;
+      case "ช่องปาก":
+        await createExa2Waist(res.data.APP_ID);
+        await createExa2Bmi(res.data.APP_ID);
+        await createExa2Bp(res.data.APP_ID);
+        await createExa2Fbs(res.data.APP_ID);
+        await createExa5OralHealth(res.data.APP_ID);
+        break;
+    }
   } catch (error) {
     console.log("error ", error);
   }
 };
 
-
-const createExa2Waist = async (fId) => { // รอบเอว
+const createExa2Waist = async (fId) => {
+  // รอบเอว
   await Axios.post(`${apiBase}/waist/create`, {
     WAI_WAIST: null,
     WAI_RESULT: null,
@@ -50,7 +67,8 @@ const createExa2Waist = async (fId) => { // รอบเอว
   console.log("Follow Up Waist Create Success");
 };
 
-const createExa2Bmi = async (fId) => { // นน สส
+const createExa2Bmi = async (fId) => {
+  // นน สส
   await Axios.post(`${apiBase}/bmi/create`, {
     BMI_WEIGHT: null,
     BMI_HEIGHT: null,
@@ -62,7 +80,8 @@ const createExa2Bmi = async (fId) => { // นน สส
   console.log("Follow Up Bmi Create Success");
 };
 
-const createExa2Bp = async (fId) => { // ความดันโลหิต
+const createExa2Bp = async (fId) => {
+  // ความดันโลหิต
   await Axios.post(`${apiBase}/bp/create`, {
     BP_PULSE: null,
     BP_BLO_SYS: null,
@@ -74,7 +93,8 @@ const createExa2Bp = async (fId) => { // ความดันโลหิต
   console.log("Follow Up Bp Create Success");
 };
 
-const createExa2Fbs = async (fId) => { // น้ำตาล
+const createExa2Fbs = async (fId) => {
+  // น้ำตาล
   await Axios.post(`${apiBase}/fbs/create`, {
     FBS_FAST: null,
     FBS_FBS: null,
@@ -85,7 +105,8 @@ const createExa2Fbs = async (fId) => { // น้ำตาล
   console.log("Follow Up Fbs Create Success");
 };
 
-const createExa3Cardiovascular = async (fId) => { // หัวใจและหลอดเลือด
+const createExa3Cardiovascular = async (fId) => {
+  // หัวใจและหลอดเลือด
   await Axios.post(`${apiBase}/cardiovascular/create`, {
     CARDIO_3_1: null,
     CARDIO_3_1_COUNT: null,
@@ -103,7 +124,8 @@ const createExa3Cardiovascular = async (fId) => { // หัวใจและห
   console.log("Follow Up Cardiovascular Create Success");
 };
 
-const createExa5OralHealth = async (fId) => { // ช่องปาก
+const createExa5OralHealth = async (fId) => {
+  // ช่องปาก
   await Axios.post(`${apiBase}/oralHealth/create`, {
     ORAL_5_1: null,
     ORAL_5_2: null,
