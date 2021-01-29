@@ -358,25 +358,6 @@ export const createVisitTable = (payload) => {
   };
 };
 
-export const createVisTableFollowUp = (payload) => {
-  return async (dispatch) => {
-    let res = await Axios.post(`${apiEld}/visit/create`, {
-      VIS_DATE: payload[0],
-      visiterRole: USERLOGIN.Role,
-      VISITER_ID_NUMBER: USERLOGIN.Id,
-      ELD_ID_NUMBER: payload[1],
-      VIS_STATUS: "FOLLOWUP",
-    });
-    console.log("Visit FollowUp Create Success");
-    // await createAllDatabase(res.data.VIS_ID);
-    // creact sec2, 3, 5
-    await dispatch({
-      type: "VIS_ID",
-      payload: [res.data.VIS_ID, payload[1]],
-    });
-  };
-};
-
 export const setSelectEldFromNewEld = (payload) => {
   return (dispatch) => {
     dispatch({

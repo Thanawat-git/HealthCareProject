@@ -95,7 +95,6 @@ export default function Asynchronous() {
     const d = new Date();
     const visDate = `${d.getFullYear()+543}-${d.getMonth() + 1}-${d.getDate()}`;
     const data = [visDate, eldId];
-    dispatch(formAction.createVisTableFollowUp(data));
   }
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
