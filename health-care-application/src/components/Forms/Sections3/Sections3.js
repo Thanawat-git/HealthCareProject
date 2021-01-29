@@ -159,7 +159,7 @@ export default function Sections3() {
     ]);
   };
   const sendValueTofollow = () => {
-    results !== "ไม่มีความเสี่ยง" && appointAction.createAppointment([datesec3, topicsec3, peopleId]);
+    results !== "ไม่มีความเสี่ยง" && appointAction.createAppointment([datesec3, topicsec3, peopleId], "หัวใจ"); //หัวใจ
     console.log("date" + datesec3);
   };
 

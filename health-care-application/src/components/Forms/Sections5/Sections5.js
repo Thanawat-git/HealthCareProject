@@ -135,7 +135,7 @@ export default function Sections5_1() {
     return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
   }
   const sendValueTofollow = () => {
-    results === "ส่งต่อเพื่อดูแลรักษาช่องปาก" && appointAction.createAppointment([datesec5, topicsec5, peopleId]);
+    results === "ส่งต่อเพื่อดูแลรักษาช่องปาก" && appointAction.createAppointment([datesec5, topicsec5, peopleId], "ช่องปาก"); // ช่องปาก
     console.log("date" + datesec5);
   };
   const handleSubmit = () => {

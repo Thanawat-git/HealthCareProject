@@ -39,7 +39,7 @@ const createExa2Waist = async (visId) => {
   await Axios.post(`${apiBase}/waist/create`, {
     WAI_WAIST: null,
     WAI_RESULT: null,
-    VIS_ID: visId,
+    NF_ID: visId,
     updateBy: USERLOGIN.Fullname,
   });
   console.log("Waist Create Success");
@@ -51,7 +51,7 @@ const createExa2Bmi = async (visId) => {
     BMI_HEIGHT: null,
     BMI_BMI: null,
     BMI_RESULT: null,
-    VIS_ID: visId,
+    NF_ID: visId,
     updateBy: USERLOGIN.Fullname,
   });
   console.log("Bmi Create Success");
@@ -63,7 +63,7 @@ const createExa2Bp = async (visId) => {
     BP_BLO_SYS: null,
     BP_BLO_DIA: null,
     BP_RESULT: null,
-    VIS_ID: visId,
+    NF_ID: visId,
     updateBy: USERLOGIN.Fullname,
   });
   console.log("Bp Create Success");
@@ -74,7 +74,7 @@ const createExa2Fbs = async (visId) => {
     FBS_FAST: null,
     FBS_FBS: null,
     FBS_RESULT: null,
-    VIS_ID: visId,
+    NF_ID: visId,
     updateBy: USERLOGIN.Fullname,
   });
   console.log("Fbs Create Success");
@@ -92,7 +92,7 @@ const createExa3Cardiovascular = async (visId) => {
     CARDIO_3_7: null,
     CARDIO_COUNT: null,
     CARDIO_COUNT_RESULT: null,
-    VIS_ID: visId,
+    NF_ID: visId,
     updateBy: USERLOGIN.Fullname,
   });
   console.log("Cardiovascular Create Success");
@@ -134,7 +134,7 @@ const createExa5OralHealth = async (visId) => {
     ORAL_5_13: null,
     ORAL_COUNT: null,
     ORAL_RESULT: null,
-    VIS_ID: visId,
+    NF_ID: visId,
     updateBy: USERLOGIN.Fullname,
   });
   console.log("Oral_Health Create Success");
@@ -345,7 +345,6 @@ export const createVisitTable = (payload) => {
       visiterRole: USERLOGIN.Role, //fix
       VISITER_ID_NUMBER: USERLOGIN.Id, //fix
       ELD_ID_NUMBER: payload[1],
-      VIS_STATUS: "NORMAL",
       // updateBy: USERLOGIN.Fullname, //fix
     });
     console.log("Visit Create Success");
