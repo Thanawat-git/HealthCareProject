@@ -3,7 +3,7 @@ import { APPOINTMENT, apiBase, USERLOGIN } from "../constants";
 
 export const createAppointment = async (payload, x) => {
   console.log("data sent to appoint ", payload);
-
+  console.log("data sent to appoint2 ", x);
   let res = await Axios.post(`${apiBase}/appointment/create`, {
     APPOINT_DATE: payload[0],
     APP_NAME: payload[1],
@@ -15,7 +15,7 @@ export const createAppointment = async (payload, x) => {
     APP_FLAG: false,
   });
   try {
-    console.log("Appointment Create Success", res.data);
+    // console.log("Appointment Create Success", res.data);
     console.log(
       "Appointment id: ",
       res.data.APP_ID,
@@ -25,12 +25,14 @@ export const createAppointment = async (payload, x) => {
     
     switch (x) {
       case "ความดัน":
+        console.log("Appointment Create Success in case ความดัน", res.data);
         await createExa2Waist(res.data.APP_ID);
         await createExa2Bmi(res.data.APP_ID);
         await createExa2Bp(res.data.APP_ID);
         await createExa2Fbs(res.data.APP_ID);
         break;
       case "เบาหวาน":
+        console.log("Appointment Create Success in case เบาหวาน", res.data);
         await createExa2Waist(res.data.APP_ID);
         await createExa2Bmi(res.data.APP_ID);
         await createExa2Bp(res.data.APP_ID);
