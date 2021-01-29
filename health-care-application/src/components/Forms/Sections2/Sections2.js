@@ -256,6 +256,7 @@ export default function Sections2_1() {
   };
 
   const sendValueTofollow = () => {
+    console.log("in sendValueTofollow checktosend1: ", checktosend1, "checktosend2: ",checktosend2)
     checktosend1 && appointAction.createAppointment([dateblood, topicblood, peopleId], "ความดัน"); //ความดัน
     checktosend2 && appointAction.createAppointment([toDay, topicsuga, peopleId], "เบาหวาน"); // เบาหวาน
      console.log(
