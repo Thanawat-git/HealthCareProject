@@ -64,7 +64,6 @@ export default function Sections2_1() {
   const [topicblood, setTopicblood] = useState();
   const [topicsuga, setTopicsuga] = useState();
   const [dateblood, setdateblood] = useState();
-  const [datesuga, setdatesuga] = useState();
   const [checktosend1, setchecktosend1] = useState();
   const [checktosend2, setchecktosend2] = useState();
 
@@ -136,21 +135,6 @@ export default function Sections2_1() {
   const [bloodPressureResult, setbloodPressureResult] = useState("");
   const [sugarResult, setsugarResult] = useState("");
 
-
-  // useEffect(() => {
-  //   console.log("sugar in useEff ",sugar)
-  //   calbloodPressure()
-  //   calsugar()
-  // }, [])
-  // useEffect(() => {
-  //   console.log("toDay in useEff ",toDay)
-  //   console.log("datesuga in useEff ",datesuga)
-    
-  // }, [toDay])
-  useEffect(() => {
-    setdatesuga(toDay)
-    console.log("datesuga in datesuga useEff ",datesuga)
-  }, [datesuga])
   useEffect(() => {
     setdateblood(toDay2)
     console.log("dateblood in dateblood useEff ",dateblood)
@@ -189,13 +173,11 @@ export default function Sections2_1() {
         setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
         calDate(2);
         setTopicsuga("เบาหวาน(งดอาหาร)");
-        setdatesuga(toDay);
         setchecktosend2(true);
       } else if (sugar >= 100 && sugar <= 125) {
         setsugarResult("ตรวจซ้ำภายใน 1 เดือน *แจ้งเตือน 1 เดือน");
         calDate(4);
         setTopicsuga("เบาหวาน(งดอาหาร)");
-        setdatesuga(toDay);
         setchecktosend2(true);
       } else {
         setsugarResult("ไม่เสี่ยง");
@@ -206,7 +188,6 @@ export default function Sections2_1() {
         setsugarResult("มีความเสี่ยงเป็นเบาหวาน")
         setTopicsuga("เบาหวาน(ไม่ได้งดอาหาร)");
         calDate(2);
-        setdatesuga(toDay);
         setchecktosend2(true);
       }else{
         setsugarResult("ไม่เสี่ยง");
@@ -214,8 +195,6 @@ export default function Sections2_1() {
       }
     }
     console.log("today in cal Sugar ",toDay)
-    console.log("datesuga in cal Sugar ",datesuga)
-    // setdatesuga(toDay);
   };
   const handleSubmit = () => {
     setShow(true);
@@ -263,7 +242,7 @@ export default function Sections2_1() {
       appointAction.createAppointment([toDay, topicsuga, peopleId], "เบาหวาน"); // เบาหวาน
     }, 300);
      console.log(
-       topicblood + " = " + dateblood + ":" + topicsuga + " = " + datesuga
+       topicblood + " = " + dateblood
      );
   };
 
