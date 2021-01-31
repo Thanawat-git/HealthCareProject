@@ -1,47 +1,59 @@
 import Axios from "axios";
-import { APPOINTMENT, apiBase, USERLOGIN } from "../constants";
+import { apiBase, USERLOGIN } from "../constants";
 
 export const createAppointment = async (payload, x) => {
   console.log("data sent to appoint ", payload);
   console.log("data sent to appoint2 ", x);
   let n = new Date();
-  let dd = `${n.getFullYear()}-${n.getMonth()+1}-${n.getDay()}`
-  let getFollow = await Axios.get(`${apiBase}/appointment/check/${payload[2]}/${dd}/${x}`)
-  getFollow && console.log("getFollow ", getFollow.data)
-  console.log("getFollow out ", getFollow.data)
-  // let res = await Axios.post(`${apiBase}/appointment/create`, {
-  //   APPOINT_DATE: payload[0],
-  //   APP_NAME: payload[1],
-  //   APP_STATUS: null,
-  //   adderRole: USERLOGIN.Role,
-  //   updateBy: USERLOGIN.Fullname,
-  //   ELD_ID_NUMBER: payload[2],
-  //   ADDER_ID_NUMBER: USERLOGIN.Id,
-  //   APP_FLAG: false,
-  // });
-  // try {
-  //   console.log("Appointment Create Success", res.data);
-  //   console.log(
-  //     "Appointment id: ",
-  //     res.data.APP_ID,
-  //     "Appointment id: ",
-  //     res.data.APP_NAME
-  //   );
-  //   await createExa2Waist(res.data.APP_ID);
-  //   await createExa2Bmi(res.data.APP_ID);
-  //   await createExa2Bp(res.data.APP_ID);
-  //   await createExa2Fbs(res.data.APP_ID);
-  //   switch (x) {
-  //     case "หัวใจ":
-  //       await createExa3Cardiovascular(res.data.APP_ID);
-  //       break;
-  //     case "ช่องปาก":
-  //       await createExa5OralHealth(res.data.APP_ID);
-  //       break;
-  //   }
-  // } catch (error) {
-  //   console.log("error ", error);
-  // }
+  let dd = `${n.getFullYear()}-${n.getMonth() + 1}-${n.getDate()}`;
+  console.log("date:  ", dd);
+  let getFollow = await Axios.get(
+    `${apiBase}/appointment/check/${payload[2]}/${dd}/${x}`
+  );
+  // getFollow !== null && console.log("getFollow ", getFollow.data);
+
+  if (getFollow) { // ถ้าเจอ appointment ให้ update
+    await Axios.put(`${apiBase}/appointment/update/${getFollow.data.APP_ID}`, {
+      APPOINT_DATE: payload[0],
+      APP_NAME: payload[1],
+      adderRole: USERLOGIN.Role,
+      updateBy: USERLOGIN.Fullname,
+    });
+  } else { // ถ้าไม่เจอ appointment ให้สร้างใหม่
+    let res = await Axios.post(`${apiBase}/appointment/create`, {
+      APPOINT_DATE: payload[0],
+      APP_NAME: payload[1],
+      APP_STATUS: null,
+      adderRole: USERLOGIN.Role,
+      updateBy: USERLOGIN.Fullname,
+      ELD_ID_NUMBER: payload[2],
+      ADDER_ID_NUMBER: USERLOGIN.Id,
+      APP_FLAG: false,
+    });
+    try {
+      console.log("Appointment Create Success", res.data);
+      console.log(
+        "Appointment id: ",
+        res.data.APP_ID,
+        "Appointment id: ",
+        res.data.APP_NAME
+      );
+      await createExa2Waist(res.data.APP_ID);
+      await createExa2Bmi(res.data.APP_ID);
+      await createExa2Bp(res.data.APP_ID);
+      await createExa2Fbs(res.data.APP_ID);
+      switch (x) {
+        case "หัวใจ":
+          await createExa3Cardiovascular(res.data.APP_ID);
+          break;
+        case "ช่องปาก":
+          await createExa5OralHealth(res.data.APP_ID);
+          break;
+      }
+    } catch (error) {
+      console.log("error ", error);
+    }
+  }
 };
 
 const createExa2Waist = async (fId) => {
