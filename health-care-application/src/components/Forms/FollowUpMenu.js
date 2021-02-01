@@ -1,8 +1,14 @@
 import React from "react";
 import Header from "../volunteer/Header";
+import { Sec2F } from "../Forms/Sections2";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, ListItem, ListItemIcon } from "@material-ui/core";
-import { Link, useHistory, useRouteMatch, Route } from "react-router-dom";
+import * as appAction from "../../actions/appointment.action";
+import { Card, CardContent, ListItem, ListItemIcon, Button } from "@material-ui/core";
+import { Link, useHistory, useRouteMatch, Route, Redirect, Switch } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2"; // ทำ alert
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 const useStyles = makeStyles({
   root: {
@@ -22,58 +28,120 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FollowUpMenu() {
-    const classes = useStyles();
+function Menu() {
+  const { url, path } = useRouteMatch();
+  const classes = useStyles();
+  let history = useHistory();
+  const selectFollowUp = useSelector(({ followUpReducer }) => followUpReducer.resultSelected);
+
+  const submitAppointment = ()=> {
+    MySwal.fire({
+      title: 'ตรวจสอบข้อมูล',
+      text: "กรุณาตรวจสอบข้อมูลให้ถูกต้องก่อนกด บันทึกข้อมูล เนื่องจากจะไม่สามารถแก้ไขข้อมูลได้หากบันทึกข้อมูลแล้ว !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'บันทึกข้อมูล',
+      confirmButtonColor: '#4BB543',
+      cancelButtonText: 'ยกเลิก',
+      cancelButtonColor: '#d33',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        appAction.clearAppointment(selectFollowUp.APP_ID)
+        MySwal.fire(
+          'บันทึกข้อมูลสำเร็จ',
+          'การติดตามผลสำเร็จ',
+          'success'
+        )
+        history.push("/volunteerpage");
+      }
+    })
+  }
+
   return (
     <React.Fragment>
       <Header /> <br />
       <Card className={classes.root}>
-        <h4 style={{ textAlign: "center" }}>
-          การติดตามผลการตรวจ
-        </h4>
+        <h4 style={{ textAlign: "center" }}>การติดตามผลการตรวจคุณ {selectFollowUp.ELDER.FIRSTNAME} {selectFollowUp.ELDER.LASTNAME} </h4>
         <CardContent>
           <Link
             onClick={() => {
-            //   getData("sec2");
+              history.push(`${url}/sec2f`);
             }}
           >
             <ListItem button>
               <ListItemIcon>
-                {/* <CheckCircleIcon className={colorIcon.i2} /> */}
               </ListItemIcon>
               แบบคัดกรองสภาวะสุขภาพ
             </ListItem>
-          </Link>{" "}
-          <hr />
-          <Link
-            onClick={() => {
-            //   getData("sec3");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                {/* <CheckCircleIcon className={colorIcon.i3} /> */}
-              </ListItemIcon>
-              ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
-            </ListItem>
-          </Link>{" "}
+          </Link>
+          {
+            selectFollowUp.APP_NAME === "โรคหัวใจและหลอดเลือด" && (
+              <React.Fragment>
+              <hr />
+              <Link
+                onClick={() => {
+                  //   getData("sec3");
+                }}
+              >
+                <ListItem button>
+                  <ListItemIcon>
+                  </ListItemIcon>
+                  ความเสี่ยงต่อโรคหัวใจและหลอดเลือด
+                </ListItem>
+              </Link>{" "}
+              <hr />
+              </React.Fragment>
+            )
+          }
+          {
+            selectFollowUp.APP_NAME === "ตรวจสุขภาพช่องปาก" && (
+              <React.Fragment>
+              <hr />
+              <Link
+                onClick={() => {
+                  //   getData("sec5");
+                }}
+              >
+                <ListItem button>
+                  <ListItemIcon>
+                  </ListItemIcon>
+                  การประเมินสุขภาพช่องปาก
+                </ListItem>
+              </Link>
+              </React.Fragment>
+            )
+          }
           
-          <hr />
-          <Link
-            onClick={() => {
-            //   getData("sec5");
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                {/* <CheckCircleIcon className={colorIcon.i5} /> */}
-              </ListItemIcon>
-              การประเมินสุขภาพช่องปาก
-            </ListItem>
-          </Link>{" "}
-          
+          <div>
+            <Button
+              variant="outlined"
+              color="primary"
+              fullWidth
+              onClick={submitAppointment}
+            >
+              บันทึกข้อมูล
+            </Button>
+          </div>
+
         </CardContent>
       </Card>
+    </React.Fragment>
+  );
+}
+
+export default function FollowUpMenu() {
+  const { path } = useRouteMatch();
+  const redirectToFollowmenu = () => {
+    return <Redirect to={`${path}/`} />;
+  };
+  return (
+    <React.Fragment>
+      <Switch>
+        <Route path={`${path}/sec2f`} component={Sec2F} />
+        <Route path={`${path}/`} component={Menu} />
+        <Route exact={true} path={`${path}/`} component={redirectToFollowmenu} />
+      </Switch>
     </React.Fragment>
   );
 }

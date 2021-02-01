@@ -90,12 +90,7 @@ export default function Asynchronous() {
     dispatch(formAction.createVisitTable(data));
     updateLastVisDate(data)
   };
-  const creactVitFollowUp = eldId => {
-    dispatch(getAction.resetCollectFromReducer())
-    const d = new Date();
-    const visDate = `${d.getFullYear()+543}-${d.getMonth() + 1}-${d.getDate()}`;
-    const data = [visDate, eldId];
-  }
+
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
   };
@@ -292,15 +287,19 @@ export default function Asynchronous() {
                       return (
                         <React.Fragment>
                           {
-                            value.APPOINT_DATE !== null &&
+                            value.APPOINT_DATE !== null && !value.APP_FLAG &&
                             <div className="bt-searchInfo">
                             <Link className="bt-searchInfo-link">
                               <Button 
                               className="btn btn-light" 
                               variant="contained"
                               onClick={()=>{
-                                const eldId = elderlyReducer.resultSelected.ELD_ID_NUMBER;
-                                creactVitFollowUp(eldId)
+                                dispatch(getAction.resetCollectFromReducer())
+                                dispatch(getAction.setDataToDefaultForAllSection())
+                                dispatch(followUpAction.selectedFollowUp(value))
+                                // setTimeout(() => {
+                                  history.push("/followupmenu");
+                                // }, 300);
                               }}
                               fullWidth>
                                 ติดตามผลวัน{moment(value.APPOINT_DATE).format("dddd")} ที่ {moment(value.APPOINT_DATE).format("LL")} {value.APP_NAME}

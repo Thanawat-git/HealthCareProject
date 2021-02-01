@@ -25,7 +25,7 @@ import Editaccount from "./components/volunteer/Editaccount"
 import Editpassword from "./components/volunteer/Editpassword"
 
 // import VolHeader from "./components/volunteer/Header"
-import MainMenu from "./components/Forms";
+import Froms from "./components/Forms";
 import FollowUpMenu from "./components/Forms/FollowUpMenu";
 
 import {
@@ -136,7 +136,22 @@ function ProtectRoute({ children, ...rest }) {
           }} />
         }} />
       )
-    }
+}
+
+function ProtectRoute2({ children, ...rest }) {
+  const { isLoggedIn, user } = useSelector((state) => state.authReducer)
+  const selectFollowUp = useSelector(({ followUpReducer }) => followUpReducer.resultSelected);
+  return (
+    <Route {...rest} render={({ location }) => {
+      return isLoggedIn && selectFollowUp!==null ?
+        children
+        : <Redirect to={{
+            pathname: '/volunteerpage',
+            state: { from: location } 
+          }} />
+        }} />
+      )
+}
 
 export default function App() {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer);
@@ -166,11 +181,11 @@ export default function App() {
         </PrivateRoute>
         <ProtectRoute path="/editeld"><EditInfo/></ProtectRoute>
         <ProtectRoute path="/mainmenu">
-          <MainMenu/>
+          <Froms/>
         </ProtectRoute>
-        <Route  path="/followupmenu">
+        <ProtectRoute2  path="/followupmenu">
           <FollowUpMenu/>
-        </Route>
+        </ProtectRoute2>
 
         <PrivateRoute path="/sec1-page1"><Sec1_1/></PrivateRoute>
         <PrivateRoute path="/sec1-page2"><Sec1_2/></PrivateRoute>

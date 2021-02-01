@@ -13,13 +13,12 @@ import {
   DialogContent,
   DialogTitle,
 } from "@material-ui/core";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms2.action";
 import * as appointAction from "../../../actions/appointment.action";
-import { Modal, Button } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
-import { CancelBT, SaveBt } from "../../AppButtons";
 import { SELECT_SECTION } from "../../../constants";
 
 const useStyles = makeStyles({
@@ -28,10 +27,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Sections2_1() {
+export default function Sections2F() {
   const classes = useStyles();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
-  const visId = useSelector(({ visitID }) => visitID.visiId);
+  const selectFollowUp = useSelector(
+    ({ followUpReducer }) => followUpReducer.resultSelected
+  );
   const peopleId = useSelector(({ visitID }) => visitID.peopleId);
 
   const elderlyGender = useSelector(
@@ -58,7 +59,7 @@ export default function Sections2_1() {
   const [show, setShow] = useState(false);
   const [collect, setCollect] = useState(forms2Reducer.collect);
   const [noFood, setnoFood] = useState(forms2Reducer.noFood);
-  const[ansfood,setAnsfood] = useState(0);
+  const [ansfood, setAnsfood] = useState(0);
   const [toDay, setToday] = useState(null);
   const [toDay2, setToday2] = useState(null);
   const [topicblood, setTopicblood] = useState();
@@ -68,16 +69,14 @@ export default function Sections2_1() {
   const [checktosend2, setchecktosend2] = useState();
 
   useEffect(() => {
-  if(noFood == true){
-    setnoFood(true)
-  }else if(noFood == false){
-    setnoFood(false)
-  }else{
-    setnoFood(null)
-  }
-
-
-  }, [noFood])
+    if (noFood == true) {
+      setnoFood(true);
+    } else if (noFood == false) {
+      setnoFood(false);
+    } else {
+      setnoFood(null);
+    }
+  }, [noFood]);
   useEffect(() => {
     if (
       waist &&
@@ -111,9 +110,9 @@ export default function Sections2_1() {
   useEffect(() => {
     sugar !== null && calsugar();
   }, [sugar]);
-  useEffect(() =>{
-    noFood == true ? setAnsfood(1) : setAnsfood(0)
-  },[noFood,ansfood] );
+  useEffect(() => {
+    noFood == true ? setAnsfood(1) : setAnsfood(0);
+  }, [noFood, ansfood]);
   useEffect(() => {
     if (bmi !== null) {
       if (bmi < 18.5) {
@@ -136,9 +135,9 @@ export default function Sections2_1() {
   const [sugarResult, setsugarResult] = useState("");
 
   useEffect(() => {
-    setdateblood(toDay2)
-    console.log("dateblood in dateblood useEff ",dateblood)
-  }, [dateblood])
+    setdateblood(toDay2);
+    console.log("dateblood in dateblood useEff ", dateblood);
+  }, [dateblood]);
 
   const calwaist = () => {
     elderlyGender == "ชาย" ? calInner(90) : calInner(80);
@@ -167,8 +166,9 @@ export default function Sections2_1() {
     }
   };
   const calsugar = () => {
-    console.log("sugar in cal Sugar ",sugar)
-    if (noFood) {//noFood == true
+    console.log("sugar in cal Sugar ", sugar);
+    if (noFood) {
+      //noFood == true
       if (sugar >= 126) {
         setsugarResult("ตรวจซ้ำ DTX ภายใน 2 สัปดาห์");
         calDate(2);
@@ -184,17 +184,17 @@ export default function Sections2_1() {
         setchecktosend2(false);
       }
     } else {
-      if(sugar >= 200){
-        setsugarResult("มีความเสี่ยงเป็นเบาหวาน")
+      if (sugar >= 200) {
+        setsugarResult("มีความเสี่ยงเป็นเบาหวาน");
         setTopicsuga("เบาหวาน(ไม่ได้งดอาหาร)");
         calDate(2);
         setchecktosend2(true);
-      }else{
+      } else {
         setsugarResult("ไม่เสี่ยง");
         setchecktosend2(false);
       }
     }
-    console.log("today in cal Sugar ",toDay)
+    console.log("today in cal Sugar ", toDay);
   };
   const handleSubmit = () => {
     setShow(true);
@@ -214,99 +214,125 @@ export default function Sections2_1() {
       noFood,
     ];
     dispatch(formAction.add(data));
-    
   };
-// console.log(visId) 
-//console.log("nofood " + noFood+ " ansfood " + ansfood)
   const saveDataToServer = () => {
-   sendValueTofollow();
-    formAction.updateExa2Waist([visId, waist, waistResult, collect]);
-    formAction.updateExa2Bmi([visId, weight, high, bmi, bmiResult, collect]);
+    sendValueTofollow();
+    formAction.updateExa2Waist([
+      selectFollowUp.APP_ID,
+      waist,
+      waistResult,
+      collect,
+    ]);
+    formAction.updateExa2Bmi([
+      selectFollowUp.APP_ID,
+      weight,
+      high,
+      bmi,
+      bmiResult,
+      collect,
+    ]);
     formAction.updateExa2Bp([
-      visId,
+      selectFollowUp.APP_ID,
       pulse,
       bloodPressure1,
       bloodPressure2,
       bloodPressureResult,
       collect,
     ]);
-    formAction.updateExa2Fbs([visId, ansfood, sugar, sugarResult, collect]);
-    
+    formAction.updateExa2Fbs([
+      selectFollowUp.APP_ID,
+      ansfood,
+      sugar,
+      sugarResult,
+      collect,
+    ]);
   };
 
   const sendValueTofollow = () => {
-    
-    console.log("in sendValueTofollow checktosend1: ", checktosend1, "checktosend2: ",checktosend2)
-    checktosend1 && appointAction.createAppointment([dateblood, topicblood, peopleId], "ความดัน"); //ความดัน
-    checktosend2 && setTimeout(() => {
-      appointAction.createAppointment([toDay, topicsuga, peopleId], "เบาหวาน"); // เบาหวาน
-    }, 300);
-     console.log(
-       topicblood + " = " + dateblood
-     );
+    console.log(
+      "in sendValueTofollow checktosend1: ",
+      checktosend1,
+      "checktosend2: ",
+      checktosend2
+    );
+    checktosend1 &&
+      appointAction.createAppointment(
+        [dateblood, topicblood, peopleId],
+        "ความดัน"
+      ); //ความดัน
+    checktosend2 &&
+      setTimeout(() => {
+        appointAction.createAppointment(
+          [toDay, topicsuga, peopleId],
+          "เบาหวาน"
+        ); // เบาหวาน
+      }, 300);
+    console.log(topicblood + " = " + dateblood);
   };
 
   function calDate(week) {
-    console.log("sugar in cal Date ",sugar)
-    console.log("week in cal Date ",week)
+    console.log("sugar in cal Date ", sugar);
+    console.log("week in cal Date ", week);
     const calw = parseInt(week);
-    console.log("week = " + typeof(calw));
+    console.log("week = " + typeof calw);
     if (week === 2) {
       var d = new Date(); // วันนี้
-      console.log("d befor ", d)
+      console.log("d befor ", d);
       d.setDate(d.getDate() + 14); // วันถัดไป 2week
-      console.log("d after ", d)
+      console.log("d after ", d);
 
       dateToYMD(d);
       //console.log(topicblood + toDay)
     } else if (week === 4) {
       var d = new Date(); // วันนี้
       d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
-      console.log("d after week = 4: ", d)
+      console.log("d after week = 4: ", d);
       dateToYMD(d);
-      console.log(topicsuga + toDay)
+      console.log(topicsuga + toDay);
     }
   }
   function dateToYMD(date) {
-    console.log("in dateToYMD function")
-    console.log("in dateToYMD ค่า date: ", date)
+    console.log("in dateToYMD function");
+    console.log("in dateToYMD ค่า date: ", date);
     var d = date.getDate();
     var m = date.getMonth() + 1; //Month from 0 to 11
     var y = date.getFullYear() + 543;
-    let dd = "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
-    console.log("dd", dd )
+    let dd =
+      "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+    console.log("dd", dd);
     setToday(dd);
     // return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
   }
   function calDate2(week) {
-    console.log("sugar in cal Date ",sugar)
-    console.log("week in cal Date ",week)
+    console.log("sugar in cal Date ", sugar);
+    console.log("week in cal Date ", week);
     const calw = parseInt(week);
-    console.log("week = " + typeof(calw));
+    console.log("week = " + typeof calw);
     if (week === 2) {
       var d = new Date(); // วันนี้
-      console.log("d befor ", d)
+      console.log("d befor ", d);
       d.setDate(d.getDate() + 14); // วันถัดไป 2week
-      console.log("d after ", d)
+      console.log("d after ", d);
 
       dateToYMD2(d);
       //console.log(topicblood + toDay)
     } else if (week === 4) {
       var d = new Date(); // วันนี้
       d.setDate(d.getDate() + 30.416666); // วันถัดไป 4week
-      console.log("d after week = 4: ", d)
+      console.log("d after week = 4: ", d);
       dateToYMD2(d);
       //console.log(topicsuga + toDay)
     }
   }
   function dateToYMD2(date) {
-    console.log("in dateToYMD function")
-    console.log("in dateToYMD ค่า date: ", date)
+    console.log("in dateToYMD function");
+    console.log("in dateToYMD ค่า date: ", date);
     var d = date.getDate();
     var m = date.getMonth() + 1; //Month from 0 to 11
     var y = date.getFullYear() + 543;
-    let dd = "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d)
-    console.log("dd", dd )
+    let dd =
+      "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+    console.log("dd", dd);
     setToday2(dd);
     // return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
   }
@@ -503,8 +529,7 @@ export default function Sections2_1() {
         </div>
 
         <div className="row justify-content-between">
-          <CancelBT/>
-          {/* <Link to="/mainmenu">
+          <Link to="/followupmenu">
             <button
               type="button"
               className="btn form-btn btn-back btn-lg"
@@ -512,8 +537,7 @@ export default function Sections2_1() {
             >
               ยกเลิก
             </button>
-          </Link> */}
-          {/* <SaveBt onClick={()=>console.log("click save")}/> */}
+          </Link>
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -524,16 +548,17 @@ export default function Sections2_1() {
         </div>
       </form>
       <Dialog
-      open={show}
-      scroll="paper"
-      maxWidth="xs"
-      fullWidth={true}
-    >
-        <DialogTitle>
-          ผลการประเมินสภาวะสุขภาพ
-        </DialogTitle>
+        open={show}
+        onClose={() => setShow(false)}
+        scroll="paper"
+        maxWidth="xs"
+        fullWidth={true}
+      >
+        <DialogTitle>ผลการประเมินสภาวะสุขภาพ</DialogTitle>
 
         <DialogContent>
+          {/* <Alert severity="warning">กรุณาตรวจสอบข้อมูลให้ถูกต้องก่อนกด <strong>บันทึกข้อมูล</strong> เนื่องจากจะ <strong>ไม่สามารถแก้ไขข้อมูลได้</strong> หากบันทึกข้อมูลแล้ว !</Alert> */}
+
           <div className="row">
             <div className="col-12 col-xl-6 title-result">
               <p> แปลผลเส้นรอบเอว </p>
@@ -571,20 +596,24 @@ export default function Sections2_1() {
           </div>
           <div>
             {selectFormSection.section === "mainmenu" ? (
-              <Link to="/mainmenu" className={classes.root}>
+              <Link to="/followupmenu" className={classes.root}>
                 <Button variant="primary" block onClick={saveDataToServer}>
                   กลับสู่หน้าเมนูหลัก
                 </Button>
               </Link>
             ) : (
               <Link className={classes.root}>
-                <Button variant="primary" block onClick={()=>{
-                  saveDataToServer()
-                  dispatch({
-                    type: SELECT_SECTION,
-                    payload: "mainmenu",
-                  });
-                }}>
+                <Button
+                  variant="primary"
+                  block
+                  onClick={() => {
+                    // saveDataToServer();
+                    dispatch({
+                      type: SELECT_SECTION,
+                      payload: "followupmenu",
+                    });
+                  }}
+                >
                   กลับสู่หน้าเมนูหลัก
                 </Button>
               </Link>

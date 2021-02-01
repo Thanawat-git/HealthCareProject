@@ -1,6 +1,14 @@
 import Axios from "axios";
 import { apiBase, USERLOGIN } from "../constants";
 
+export const clearAppointment = (fid) => {
+  Axios.put(`${apiBase}/appointment/update/${fid}`, {
+    APP_FLAG: true,
+    adderRole: USERLOGIN.Role,
+    updateBy: USERLOGIN.Fullname,
+  });
+}
+
 export const createAppointment = async (payload, x) => {
   console.log("data sent to appoint ", payload);
   console.log("data sent to appoint2 ", x);
@@ -12,7 +20,8 @@ export const createAppointment = async (payload, x) => {
   );
   // getFollow !== null && console.log("getFollow ", getFollow.data);
 
-  if (getFollow) { // ถ้าเจอ appointment ให้ update
+  if (getFollow !== "Not have Appointment") { // ถ้าเจอ appointment ให้ update
+    console.log("getFollow not found ", getFollow.data);
     await Axios.put(`${apiBase}/appointment/update/${getFollow.data.APP_ID}`, {
       APPOINT_DATE: payload[0],
       APP_NAME: payload[1],
@@ -20,6 +29,7 @@ export const createAppointment = async (payload, x) => {
       updateBy: USERLOGIN.Fullname,
     });
   } else { // ถ้าไม่เจอ appointment ให้สร้างใหม่
+    console.log("getFollow ", getFollow.data);
     let res = await Axios.post(`${apiBase}/appointment/create`, {
       APPOINT_DATE: payload[0],
       APP_NAME: payload[1],
@@ -151,3 +161,4 @@ const createExa5OralHealth = async (fId) => {
   });
   console.log("Follow Up Oral_Health Create Success ");
 };
+

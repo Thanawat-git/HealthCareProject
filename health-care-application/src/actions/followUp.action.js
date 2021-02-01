@@ -3,6 +3,7 @@ import {
   apiBase,
   HTTP_FOLLOWUP_FAILED,
   HTTP_FOLLOWUP_FETCHING,
+  HTTP_FOLLOWUP_SELECTED,
   HTTP_FOLLOWUP_SUCCESS,
 } from "../constants";
 
@@ -17,6 +18,15 @@ export const setFollowupToFailed = (payload) => ({
   type: HTTP_FOLLOWUP_FAILED,
   payload,
 });
+
+export const selectedFollowUp = value => {
+  return dispatch =>{
+    dispatch({
+      type: HTTP_FOLLOWUP_SELECTED,
+      payload: value
+    })
+  } 
+}
 
 export const getFollowUp = (key) => {
   return (dispatch) => {
