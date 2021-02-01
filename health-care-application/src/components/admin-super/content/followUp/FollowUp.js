@@ -112,63 +112,61 @@ export default function FollowUp() {
           <tbody>
             {FpReducer.isFetching==false && FpReducer.result!=null && FpReducer.result.map((value, index) => {
               return (
-                <tr>
-                  <td> {index + 1} </td> 
-                  <td> {value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</td>
-                  <td> {value.APP_NAME} </td>
-                  <td> {value.APPOINT_DATE} </td>
-                  {/* {
-                    isStatus === 'searchl30' ? <td> อีก <span className="badge badge-warning">{value.APP_STATUS}</span> วัน </td>
-                    :isStatus === 'searchl60' ? <td> อีก <span className="badge badge-primary">{value.APP_STATUS}</span> วัน </td>
-                    :isStatus === 'searchm60' ? <td> อีก <span className="badge badge-success">{value.APP_STATUS}</span> วัน </td>
-                    :isStatus === 'searchover' ? <td> อีก <span className="badge badge-danger">{value.APP_STATUS}</span> วัน </td>
-                    :<td> อีก <span className="badge badge-secondary">{value.APP_STATUS}</span> วัน </td>
-                  } */}
-                  {
-                    value.APP_STATUS<0 ? <td> ⚠เกินมา <span className="badge badge-danger">{Math.abs(value.APP_STATUS)}</span> วัน </td>
-                    :value.APP_STATUS===0 ? <td> <span className="badge badge-success">วันนี้</span> </td>
-                    :value.APP_STATUS<31 ? <td> อีก <span className="badge badge-warning">{value.APP_STATUS}</span> วัน </td>
-                    :value.APP_STATUS<61 ? <td> อีก <span className="badge badge-primary">{value.APP_STATUS}</span> วัน </td>
-                    :value.APP_STATUS>60 ? <td> อีก <span className="badge badge-success">{value.APP_STATUS}</span> วัน </td>
-                    :<td> อีก <span className="badge badge-secondary">{value.APP_STATUS}</span> วัน </td>
-                  }
-                  {
-                  !value.VOLUNTEER_ADDER?<td> {value.ADMIN_ADDER.FIRSTNAME} {value.ADMIN_ADDER.LASTNAME}</td>
-                  :<td> {value.VOLUNTEER_ADDER.FIRSTNAME} {value.VOLUNTEER_ADDER.LASTNAME}</td>
-                  }
-                  <td style={{ textAlign: "center" }}>
-                    <EditFollowup value={value} headKey={isStatus}/>
-                    <span style={{ color: "grey" }}> | </span>
-                    <button
-                      onClick={() => {
-                        MySwal.fire({
-                          title: "ต้องการลบการนัดหมายนี้ใช่หรือไม่",
-                          text: `ลบการนัดหมายของ คุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME}!`,
-                          type: "warning",
-                          showCancelButton: true,
-                          confirmButtonColor: '#d33',
-                          confirmButtonText: " ลบ ",
-                          cancelButtonText: "ยกเลิก"
-                        }).then(result => {
-                          if (result.value) {
-                            deleteFollowUp(value.APP_ID,isStatus)
-                            Swal.fire(
-                              'ลบสำเร็จ',
-                              `การนัดหมายของคุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME} ได้ถูกลบแล้ว`,
-                              'success'
-                            )
-                          }
-                        });
-                      }}
-                      type="button"
-                      className="btn btn-danger"
-                    >
-                      ลบ
-                    </button>
-                  </td>
-                </tr>
-                );
-              })}
+                <React.Fragment>
+                {
+                  !value.APP_FLAG && 
+                  <tr>
+                    <td> {index + 1} </td> 
+                    <td> {value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</td>
+                    <td> {value.APP_NAME} </td>
+                    <td> {value.APPOINT_DATE} </td>
+                    {
+                      value.APP_STATUS<0 ? <td> ⚠เกินมา <span className="badge badge-danger">{Math.abs(value.APP_STATUS)}</span> วัน </td>
+                      :value.APP_STATUS===0 ? <td> <span className="badge badge-success">วันนี้</span> </td>
+                      :value.APP_STATUS<31 ? <td> อีก <span className="badge badge-warning">{value.APP_STATUS}</span> วัน </td>
+                      :value.APP_STATUS<61 ? <td> อีก <span className="badge badge-primary">{value.APP_STATUS}</span> วัน </td>
+                      :value.APP_STATUS>60 ? <td> อีก <span className="badge badge-success">{value.APP_STATUS}</span> วัน </td>
+                      :<td> อีก <span className="badge badge-secondary">{value.APP_STATUS}</span> วัน </td>
+                    }
+                    {
+                    !value.VOLUNTEER_ADDER?<td> {value.ADMIN_ADDER.FIRSTNAME} {value.ADMIN_ADDER.LASTNAME}</td>
+                    :<td> {value.VOLUNTEER_ADDER.FIRSTNAME} {value.VOLUNTEER_ADDER.LASTNAME}</td>
+                    }
+                    <td style={{ textAlign: "center" }}>
+                      <EditFollowup value={value} headKey={isStatus}/>
+                      <span style={{ color: "grey" }}> | </span>
+                      <button
+                        onClick={() => {
+                          MySwal.fire({
+                            title: "ต้องการลบการนัดหมายนี้ใช่หรือไม่",
+                            text: `ลบการนัดหมายของ คุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME}!`,
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33',
+                            confirmButtonText: " ลบ ",
+                            cancelButtonText: "ยกเลิก"
+                          }).then(result => {
+                            if (result.value) {
+                              deleteFollowUp(value.APP_ID,isStatus)
+                              Swal.fire(
+                                'ลบสำเร็จ',
+                                `การนัดหมายของคุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME} ได้ถูกลบแล้ว`,
+                                'success'
+                              )
+                            }
+                          });
+                        }}
+                        type="button"
+                        className="btn btn-danger"
+                      >
+                        ลบ
+                      </button>
+                    </td>
+                  </tr>
+                }
+                </React.Fragment>
+              )
+            })}
           </tbody>
         </table>
         </div>
