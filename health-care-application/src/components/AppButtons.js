@@ -86,3 +86,34 @@ export function BackToMainmenuBT() {
     </div>
   );
 }
+
+export function BackFollow() {
+  const classes = useStyles();
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection
+  );
+  const dispatch = useDispatch();
+  const setSection = () => {
+    dispatch({
+      type: SELECT_SECTION,
+      payload: "followupmenu",
+    });
+  };
+  return (
+    <div>
+      {selectFormSection.section === "mainmenu" ? (
+        <Link to="/followupmenu" className={classes.root}>
+          <Button variant="primary" block>
+            กลับสู่หน้าเมนูหลัก
+          </Button>
+        </Link>
+      ) : (
+        <Link className={classes.root}>
+          <Button variant="primary" block onClick={setSection}>
+            กลับสู่หน้าเมนูหลัก
+          </Button>
+        </Link>
+      )}
+    </div>
+  );
+}
