@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../volunteer/Header";
 import { Sec2F } from "../Forms/Sections2";
 import { Sec3F } from "../Forms/Sections3";
+import { Sec5F } from "../Forms/Sections5";
 import { makeStyles } from "@material-ui/core/styles";
 import * as appAction from "../../actions/appointment.action";
 import { Card, CardContent, ListItem, ListItemIcon, Button } from "@material-ui/core";
@@ -101,7 +102,7 @@ function Menu() {
               <hr />
               <Link
                 onClick={() => {
-                  //   getData("sec5");
+                  history.push(`${url}/sec5f`);
                 }}
               >
                 <ListItem button>
@@ -141,6 +142,7 @@ export default function FollowUpMenu() {
       <Switch>
         <Route path={`${path}/sec2f`} component={Sec2F} />
         <Route path={`${path}/sec3f`} component={Sec3F} />
+        <Route path={`${path}/sec5f`} component={Sec5F} />
         <Route path={`${path}/`} component={Menu} />
         <Route exact={true} path={`${path}/`} component={redirectToFollowmenu} />
       </Switch>

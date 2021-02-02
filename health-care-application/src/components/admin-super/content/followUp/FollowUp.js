@@ -80,7 +80,7 @@ export default function FollowUp() {
               <button type="button" class="btn btn-warning" value="searchl30" onClick={(e)=>clickFilter(e)} >น้อยกว่า 30 วัน</button>
               <button type="button" class="btn btn-primary" value="searchl60" onClick={(e)=>clickFilter(e)} >31 - 60 วัน</button>
               <button type="button" class="btn btn-success" value="searchm60" onClick={(e)=>clickFilter(e)} >มากกว่า 60 วัน</button>
-              <button type="button" class="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >⚠เกินกำหนด⚠</button>
+              <button type="button" class="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >เกินกำหนด</button>
               {/* <button type="button" class="btn btn-secondary" value="canceldue" onClick={(e)=>clickFilter(e)} >ยกเลิกนัด</button> */}
             </div>
             <div className="col-4">
@@ -121,7 +121,7 @@ export default function FollowUp() {
                     <td> {value.APP_NAME} </td>
                     <td> {value.APPOINT_DATE} </td>
                     {
-                      value.APP_STATUS<0 ? <td> ⚠เกินมา <span className="badge badge-danger">{Math.abs(value.APP_STATUS)}</span> วัน </td>
+                      value.APP_STATUS<0 ? <td> เกินมา <span className="badge badge-danger">{Math.abs(value.APP_STATUS)}</span> วัน </td>
                       :value.APP_STATUS===0 ? <td> <span className="badge badge-success">วันนี้</span> </td>
                       :value.APP_STATUS<31 ? <td> อีก <span className="badge badge-warning">{value.APP_STATUS}</span> วัน </td>
                       :value.APP_STATUS<61 ? <td> อีก <span className="badge badge-primary">{value.APP_STATUS}</span> วัน </td>
