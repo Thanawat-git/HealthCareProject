@@ -18,18 +18,20 @@ export const createAppointment = async (payload, x) => {
   let getFollow = await Axios.get(
     `${apiBase}/appointment/check/${payload[2]}/${dd}/${x}`
   );
-  // getFollow !== null && console.log("getFollow ", getFollow.data);
+  console.log("getFollow ",getFollow)
+  console.log("getFollow.data ",getFollow.data)
 
-  if (getFollow !== "Not have Appointment") { // ถ้าเจอ appointment ให้ update
-    console.log("getFollow not found ", getFollow.data);
+  if (getFollow.data !== "Not have Appointment") { // ถ้าเจอ appointment ให้ update
+    console.log("getFollow have ", x, getFollow.data);
     await Axios.put(`${apiBase}/appointment/update/${getFollow.data.APP_ID}`, {
       APPOINT_DATE: payload[0],
       APP_NAME: payload[1],
       adderRole: USERLOGIN.Role,
       updateBy: USERLOGIN.Fullname,
     });
+    console.log("update appointment success! ");
   } else { // ถ้าไม่เจอ appointment ให้สร้างใหม่
-    console.log("getFollow ", getFollow.data);
+    console.log("getFollow not found ", getFollow.data);
     let res = await Axios.post(`${apiBase}/appointment/create`, {
       APPOINT_DATE: payload[0],
       APP_NAME: payload[1],
@@ -41,7 +43,7 @@ export const createAppointment = async (payload, x) => {
       APP_FLAG: false,
     });
     try {
-      console.log("Appointment Create Success", res.data);
+      console.log("Appointment Create Success", x , res.data);
       console.log(
         "Appointment id: ",
         res.data.APP_ID,
