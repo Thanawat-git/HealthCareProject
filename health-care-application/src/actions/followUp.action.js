@@ -85,9 +85,11 @@ export const getFollowUpById = id => {
   return dispatch => {
       dispatch(setFollowupToFetching());
       try {
-        return Axios.get(`${apiBase}/appointment/findAllBykeyword/${id}`).then(res=>{
-          dispatch(setFollowupToSuccress(res.data))
-        })
+        
+          return Axios.get(`${apiBase}/appointment/findAllBykeyword/${id}`).then(res=>{
+            dispatch(setFollowupToSuccress(res.data))
+          })
+      
       } catch (error) {
           dispatch(setFollowupToFailed(error))
       }
@@ -99,11 +101,20 @@ export const getFollowUpById = id => {
 
 const doGetFollowUp = (dispatch, key) => {
   dispatch(setFollowupToFetching());
-  Axios.get(`${apiBase}/appointment/${key}`)
+  if(key !== "finished") {
+    Axios.get(`${apiBase}/appointment/${key}`)
     .then((res) => {
       dispatch(setFollowupToSuccress(res.data));
     })
     .catch((error) => {
       dispatch(setFollowupToFailed(error));
     });
+  } else {
+    Axios.get(`${apiBase}/appointment/findAllAppointmented`).then(res=>{
+      dispatch(setFollowupToSuccress(res.data))
+    }).catch((error) => {
+      dispatch(setFollowupToFailed(error));
+    });
+  }
+  
 };

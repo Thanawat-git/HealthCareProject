@@ -4,7 +4,6 @@ const initialState = {
     elderlyStatus: null, 
     elderlyBeing: null, 
     elderlyBeingDetail: null,
-    being: null,
     neighborName: null,
     religion: null,
     otherReligion: null,

@@ -40,7 +40,7 @@ export default function FollowUp() {
         dispatch(FpAction.getFollowUp("searchm60"))
       break;
       case "finished":
-        // dispatch(FpAction.getFollowUp("finished"))
+        dispatch(FpAction.getFollowUp("finished"))
         break;
       default:
         break;
@@ -167,12 +167,14 @@ export default function FollowUp() {
                         </td>
                       )
                       :
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                      >
-                        ดูข้อมูล
-                      </button>
+                      <td style={{ textAlign: "center" }}>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                        >
+                          ดูข้อมูล
+                        </button>
+                      </td>
                     }
                     
                   </tr>

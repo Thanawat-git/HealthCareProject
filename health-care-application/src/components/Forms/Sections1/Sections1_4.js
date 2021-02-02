@@ -45,8 +45,11 @@ function Sections1_4(props) {
         treatment, hospital, otherTreatment, 
         salary, otherReligion, otherCareers
       ]
-      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,religion,educations,
-        careers,treatment,hospital,salary
+      let re = religion === "อื่นๆ ระบุ" ? otherReligion : religion
+      let job = careers==="อื่นๆ ระบุ" ? otherCareers : careers
+      let tre = treatment==="อื่นๆ" ? otherTreatment : treatment
+      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,re,educations,
+        job,tre,hospital,salary
         ])
 
       elderlyStatus===null && emptyValue()
@@ -135,8 +138,8 @@ function Sections1_4(props) {
                 {elderlyBeing === "อยู่ลำพัง"? 
                 <React.Fragment>
                   <RadioGroup className="pl-4" aria-label="elderlyBeingDetail" name="elderlyBeingDetail" defaultValue={elderlyBeingDetail} onChange={(event) => {setElderlyBeingDetail(event.target.value)}}>
-                    <FormControlLabel value="กลางวัน กลางคืนอยู่กับ" control={<Radio color='primary' />} label="กลางวัน กลางคืนอยู่กับ"  /> {elderlyBeingDetail === 'กลางวัน กลางคืนอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''} 
-                    <FormControlLabel value="กลางคืน กลางวันอยู่กับ" control={<Radio color='primary' />} label="กลางคืน กลางวันอยู่กับ" />{elderlyBeingDetail === 'กลางคืน กลางวันอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''}
+                    <FormControlLabel value="กลางวัน" control={<Radio color='primary' />} label="กลางวัน กลางคืนอยู่กับ"  /> {elderlyBeingDetail === 'กลางวัน กลางคืนอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''} 
+                    <FormControlLabel value="กลางคืน" control={<Radio color='primary' />} label="กลางคืน กลางวันอยู่กับ" />{elderlyBeingDetail === 'กลางคืน กลางวันอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''}
                     <FormControlLabel value="ทั้งกลางวันและกลางคืน" control={<Radio color='primary' />} label="ทั้งกลางวันและกลางคืน" />
                   </RadioGroup>
                 </React.Fragment>

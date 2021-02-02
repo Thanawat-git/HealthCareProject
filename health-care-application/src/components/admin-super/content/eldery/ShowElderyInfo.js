@@ -166,8 +166,10 @@ function BasicInfo({ data }) {
           <h5>เบอร์โทรศัพท์ :</h5> <hr />
           <h5>ศาสนา :</h5> <hr />
           <h5>อาชีพ :</h5> <hr />
+          <h5>เงินเดือน :</h5> <hr />
           <h5>การศึกษา :</h5> <hr />
           <h5>สิทธิการรักษา :</h5> <hr />
+          <h5>การเป็นอยู่ :</h5>
         </div>
         <div className="col-6 align-self-start" style={{ paddingLeft:0 }}>
           <h5>
@@ -186,12 +188,30 @@ function BasicInfo({ data }) {
          <h5>{data.ELD_PHONE}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_RELIGION}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_JOB}</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_INCOME} บาท</h5> <hr/>
          <h5>{data.Elder_Information.ELD_EDUCATION}</h5> <hr/>
          <h5>
             {data.Elder_Information.ELD_TREATMENT}{" "}
             {data.Elder_Information.ELD_TREATMENT_HOSPITAL !== null && `โรงพยาบาล${data.Elder_Information.ELD_TREATMENT_HOSPITAL}`}
           </h5> <hr/>
-         
+          <h5>
+          {
+            data.Elder_Information.ELD_LIVELIHOOD === "ไม่ได้อยู่ลำพัง" ? `ไม่ได้อยู่ลำพัง อยู่กับ ${data.Elder_Information.ELD_LIVELIHOOD_NEIGHBOR_NAME}`
+            : data.Elder_Information.ELD_LIVELIHOOD_DETAIL === "ทั้งกลางวันและกลางคืน" ? `${data.Elder_Information.ELD_LIVELIHOOD} ${data.Elder_Information.ELD_LIVELIHOOD_DETAIL}` 
+            : data.Elder_Information.ELD_LIVELIHOOD_DETAIL === "กลางวัน" ? (
+              <React.Fragment>
+                {data.Elder_Information.ELD_LIVELIHOOD} {data.Elder_Information.ELD_LIVELIHOOD_DETAIL} <br/>
+                กลางคืนอยู่กับ {data.Elder_Information.ELD_LIVELIHOOD_NEIGHBOR_NAME}
+              </React.Fragment>
+            )
+            : (
+              <React.Fragment>
+                {data.Elder_Information.ELD_LIVELIHOOD} {data.Elder_Information.ELD_LIVELIHOOD_DETAIL} <br/>
+                กลางวันอยู่กับ {data.Elder_Information.ELD_LIVELIHOOD_NEIGHBOR_NAME}
+              </React.Fragment>
+            )
+          }
+          </h5>
         </div>
       </div>
     </React.Fragment>
