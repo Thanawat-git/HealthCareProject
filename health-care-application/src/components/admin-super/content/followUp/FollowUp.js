@@ -39,8 +39,8 @@ export default function FollowUp() {
       case "searchm60":
         dispatch(FpAction.getFollowUp("searchm60"))
       break;
-      case "canceldue":
-        // dispatch(FpAction.getFollowUp("canceldue"))
+      case "finished":
+        // dispatch(FpAction.getFollowUp("finished"))
         break;
       default:
         break;
@@ -77,11 +77,11 @@ export default function FollowUp() {
         <div className="container-fluid">
           <div className="row align-items-end row-filter">
             <div className=" col-8 filter-btn">
-              <button type="button" class="btn btn-warning" value="searchl30" onClick={(e)=>clickFilter(e)} >น้อยกว่า 30 วัน</button>
-              <button type="button" class="btn btn-primary" value="searchl60" onClick={(e)=>clickFilter(e)} >31 - 60 วัน</button>
-              <button type="button" class="btn btn-success" value="searchm60" onClick={(e)=>clickFilter(e)} >มากกว่า 60 วัน</button>
-              <button type="button" class="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >เกินกำหนด</button>
-              {/* <button type="button" class="btn btn-secondary" value="canceldue" onClick={(e)=>clickFilter(e)} >ยกเลิกนัด</button> */}
+              <button type="button" className="btn btn-warning" value="searchl30" onClick={(e)=>clickFilter(e)} >น้อยกว่า 30 วัน</button>
+              <button type="button" className="btn btn-primary" value="searchl60" onClick={(e)=>clickFilter(e)} >31 - 60 วัน</button>
+              <button type="button" className="btn btn-success" value="searchm60" onClick={(e)=>clickFilter(e)} >มากกว่า 60 วัน</button>
+              <button type="button" className="btn btn-danger" value="searchover" onClick={(e)=>clickFilter(e)} >เกินกำหนด</button>
+              <button type="button" className="btn btn-secondary" value="finished" onClick={(e)=>clickFilter(e)} >ดำเนินการแล้ว</button>
             </div>
             <div className="col-4">
               <TextField
@@ -112,59 +112,70 @@ export default function FollowUp() {
           <tbody>
             {FpReducer.isFetching==false && FpReducer.result!=null && FpReducer.result.map((value, index) => {
               return (
-                <React.Fragment>
-                {
-                  !value.APP_FLAG && 
                   <tr>
                     <td> {index + 1} </td> 
                     <td> {value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</td>
                     <td> {value.APP_NAME} </td>
                     <td> {value.APPOINT_DATE} </td>
                     {
-                      value.APP_STATUS<0 ? <td> เกินมา <span className="badge badge-danger">{Math.abs(value.APP_STATUS)}</span> วัน </td>
-                      :value.APP_STATUS===0 ? <td> <span className="badge badge-success">วันนี้</span> </td>
-                      :value.APP_STATUS<31 ? <td> อีก <span className="badge badge-warning">{value.APP_STATUS}</span> วัน </td>
-                      :value.APP_STATUS<61 ? <td> อีก <span className="badge badge-primary">{value.APP_STATUS}</span> วัน </td>
-                      :value.APP_STATUS>60 ? <td> อีก <span className="badge badge-success">{value.APP_STATUS}</span> วัน </td>
-                      :<td> อีก <span className="badge badge-secondary">{value.APP_STATUS}</span> วัน </td>
+                      !value.APP_FLAG ? (
+                        value.APP_STATUS<0 ? <td> เกินมา <span className="badge badge-danger">{Math.abs(value.APP_STATUS)}</span> วัน </td>
+                        :value.APP_STATUS===0 ? <td> <span className="badge badge-success">วันนี้</span> </td>
+                        :value.APP_STATUS<31 ? <td> อีก <span className="badge badge-warning">{value.APP_STATUS}</span> วัน </td>
+                        :value.APP_STATUS<61 ? <td> อีก <span className="badge badge-primary">{value.APP_STATUS}</span> วัน </td>
+                        :value.APP_STATUS>60 ? <td> อีก <span className="badge badge-success">{value.APP_STATUS}</span> วัน </td>
+                        :<td> อีก <span className="badge badge-secondary">{value.APP_STATUS}</span> วัน </td>
+                      )
+                      : <td className="text-secondary">ดำเนินการแล้ว</td>
+                      
                     }
                     {
                     !value.VOLUNTEER_ADDER?<td> {value.ADMIN_ADDER.FIRSTNAME} {value.ADMIN_ADDER.LASTNAME}</td>
                     :<td> {value.VOLUNTEER_ADDER.FIRSTNAME} {value.VOLUNTEER_ADDER.LASTNAME}</td>
                     }
-                    <td style={{ textAlign: "center" }}>
-                      <EditFollowup value={value} headKey={isStatus}/>
-                      <span style={{ color: "grey" }}> | </span>
+                    {
+                      !value.APP_FLAG ? (
+                        <td style={{ textAlign: "center" }}>
+                          <EditFollowup value={value} headKey={isStatus}/>
+                          <span style={{ color: "grey" }}> | </span>
+                          <button
+                            onClick={() => {
+                              MySwal.fire({
+                                title: "ต้องการลบการนัดหมายนี้ใช่หรือไม่",
+                                text: `ลบการนัดหมายของ คุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME}!`,
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: '#d33',
+                                confirmButtonText: " ลบ ",
+                                cancelButtonText: "ยกเลิก"
+                              }).then(result => {
+                                if (result.value) {
+                                  deleteFollowUp(value.APP_ID,isStatus)
+                                  Swal.fire(
+                                    'ลบสำเร็จ',
+                                    `การนัดหมายของคุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME} ได้ถูกลบแล้ว`,
+                                    'success'
+                                  )
+                                }
+                              });
+                            }}
+                            type="button"
+                            className="btn btn-danger"
+                          >
+                            ลบ
+                          </button>
+                        </td>
+                      )
+                      :
                       <button
-                        onClick={() => {
-                          MySwal.fire({
-                            title: "ต้องการลบการนัดหมายนี้ใช่หรือไม่",
-                            text: `ลบการนัดหมายของ คุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME}!`,
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: '#d33',
-                            confirmButtonText: " ลบ ",
-                            cancelButtonText: "ยกเลิก"
-                          }).then(result => {
-                            if (result.value) {
-                              deleteFollowUp(value.APP_ID,isStatus)
-                              Swal.fire(
-                                'ลบสำเร็จ',
-                                `การนัดหมายของคุณ${value.ELDER.FIRSTNAME} ${value.ELDER.LASTNAME} ได้ถูกลบแล้ว`,
-                                'success'
-                              )
-                            }
-                          });
-                        }}
                         type="button"
-                        className="btn btn-danger"
+                        className="btn btn-secondary"
                       >
-                        ลบ
+                        ดูข้อมูล
                       </button>
-                    </td>
+                    }
+                    
                   </tr>
-                }
-                </React.Fragment>
               )
             })}
           </tbody>

@@ -20,7 +20,6 @@ function Sections1_4(props) {
     const [elderlyStatus, setElderlyStatus] = useState(forms1p4Reducer.elderlyStatus) // หลัก
     const [elderlyBeing, setElderlyBeing] = useState(forms1p4Reducer.elderlyBeing) // หลัก
     const [elderlyBeingDetail, setElderlyBeingDetail] = useState(forms1p4Reducer.elderlyBeingDetail)
-    const [being, setBeing] = useState(forms1p4Reducer.being)
     const [neighborName, setneighborName] = useState(forms1p4Reducer.neighborName)
     const [religion, setReligion] = useState(forms1p4Reducer.religion) // หลัก
     const [otherReligion, setotherReligion] = useState(forms1p4Reducer.otherReligion)
@@ -32,13 +31,16 @@ function Sections1_4(props) {
     const [salary, setSalary] = useState(forms1p4Reducer.salary) // หลัก
     const [otherCareers, setotherCareers] = useState(forms1p4Reducer.otherCareers)
     
-    // being ตัวแปลซ้ำซ้อ ต้องเอาออก!!!!!!
+    useEffect(() => {
+      elderlyBeing === "ไม่ได้อยู่ลำพัง" && setElderlyBeingDetail(null)
+    }, [elderlyBeing])
+    
     const handleSubmit = (e)=>{
       const data = [
         elderlyStatus, 
         elderlyBeing, 
         elderlyBeingDetail, 
-        being, neighborName, 
+        neighborName, 
         religion, educations, careers, 
         treatment, hospital, otherTreatment, 
         salary, otherReligion, otherCareers
@@ -127,10 +129,10 @@ function Sections1_4(props) {
               <div className="col-12">
                 <p><span className="text-danger" >*</span><strong>ความเป็นอยู่</strong></p>
               </div>
-              <RadioGroup className="pl-4" aria-label="elderlyBeing" name="elderlyBeing" defaultValue={elderlyBeing} onChange={(e)=>{setElderlyBeing(e.target.value); setBeing(e.target.value);}}>
+              <RadioGroup className="pl-4" aria-label="elderlyBeing" name="elderlyBeing" defaultValue={elderlyBeing} onChange={(e)=>setElderlyBeing(e.target.value)}>
                 <FormControlLabel value="อยู่ลำพัง" control={<Radio color='primary' />} label="อยู่ลำพัง"  />
                 {/* Selected being */}
-                {being === "อยู่ลำพัง"? 
+                {elderlyBeing === "อยู่ลำพัง"? 
                 <React.Fragment>
                   <RadioGroup className="pl-4" aria-label="elderlyBeingDetail" name="elderlyBeingDetail" defaultValue={elderlyBeingDetail} onChange={(event) => {setElderlyBeingDetail(event.target.value)}}>
                     <FormControlLabel value="กลางวัน กลางคืนอยู่กับ" control={<Radio color='primary' />} label="กลางวัน กลางคืนอยู่กับ"  /> {elderlyBeingDetail === 'กลางวัน กลางคืนอยู่กับ'? <TextField id="outlined-basic" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} label="" variant="outlined" size="small" /> :''} 
@@ -143,7 +145,7 @@ function Sections1_4(props) {
               </RadioGroup>
             </div>
 
-            {being === "ไม่ได้อยู่ลำพัง" ? 
+            {elderlyBeing === "ไม่ได้อยู่ลำพัง" ? 
             <TextField id="outlined-basic" label="ใส่ชื่อญาติหรือคนที่อยู่ด้วย" defaultValue={neighborName} onChange={(e)=>setneighborName(e.target.value)} variant="outlined" size="small" fullWidth className="TextField"/>
             : ''}
             {/* row-2 */}

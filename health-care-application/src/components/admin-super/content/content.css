@@ -11,3 +11,8 @@
 .btitle {
     color: #9e9e9e;
 }
+
+.basic-info-title h5{
+    text-align: end;
+    padding-right: 1rem;
+}

@@ -155,109 +155,43 @@ function BasicInfo({ data }) {
         </h5>
       </div>
       {/* ------------------------ */}
-      <div style={{ textAlign: "center", paddingTop: 10 }}>
-        <div>
-          <h5 style={{ textAlign: "center" }}>
-            ชื่อ - นามสกุล :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_GENDER === "ชาย"
-              ? "นาย"
-              : data.Elder_Information.ELD_STATUS === "โสด"
-              ? "นางสาว"
-              : "นาง"}
-            {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}
-          </h5>
-          <hr />
+      <br/>
+      <div className="row">
+        <div className="col-6 basic-info-title" style={{ paddingRight:0 }}>
+          <h5>ชื่อ - นามสกุล :</h5> <hr />
+          <h5>วันเกิด :</h5> <hr />
+          <h5>อายุ :</h5> <hr />
+          <h5>เพศ :</h5> <hr />
+          <h5>สถานะ :</h5> <hr />
+          <h5>เบอร์โทรศัพท์ :</h5> <hr />
+          <h5>ศาสนา :</h5> <hr />
+          <h5>อาชีพ :</h5> <hr />
+          <h5>การศึกษา :</h5> <hr />
+          <h5>สิทธิการรักษา :</h5> <hr />
         </div>
-        <div>
-          <h5
-            style={{ paddingLeft: 49, marginLeft: "18%", textAlign: "center" }}
-          >
-            วันเกิด :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วัน
-            {moment(data.Elder_Information.ELD_BIRTHDATE).format(
-              "dddd"
-            )} ที่ {moment(data.Elder_Information.ELD_BIRTHDATE).format("LL")}
+        <div className="col-6 align-self-start" style={{ paddingLeft:0 }}>
+          <h5>
+          {data.Elder_Information.ELD_GENDER === "ชาย"
+            ? "นาย"
+            : data.Elder_Information.ELD_STATUS === "โสด"
+            ? "นางสาว"
+            : "นาง"}
+          {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}
           </h5>
-          <hr />
-        </div>
-
-        <div>
-          <h5
-            style={{ paddingLeft: 49, marginRight: "8%", textAlign: "center" }}
-          >
-            อายุ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_AGE} ปี
-          </h5>
-          <hr />
-        </div>
-        {/* ----------------- */}
-        <div>
-          <h5
-            style={{ paddingLeft: 49, marginRight: "8%", textAlign: "center" }}
-          >
-            เพศ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_GENDER}
-          </h5>
-          <hr />
-        </div>
-        {/* ---------------- */}
-        <div>
-          <h5
-            style={{ paddingLeft: 49, marginRight: "9%", textAlign: "center" }}
-          >
-            สถานะ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_STATUS}
-          </h5>
-          <hr />
-        </div>
-        {/* ------------------- */}
-        <div>
-          <h5 style={{ marginRight: "2%", textAlign: "center" }}>
-            เบอร์โทรศัพท์ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.ELD_PHONE}
-          </h5>
-          <hr />
-        </div>
-        {/* ---------------- */}
-        <div>
-          <h5
-            style={{ paddingLeft: 47, marginRight: "9%", textAlign: "center" }}
-          >
-            ศาสนา :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_RELIGION}
-          </h5>
-          <hr />
-        </div>
-        {/* ----------------- */}
-        <div>
-          <h5
-            style={{ paddingLeft: 47, marginLeft: "7%", textAlign: "center" }}
-          >
-            อาชีพ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_JOB}
-          </h5>
-          <hr />
-        </div>
-        {/* ------------------- */}
-        <div>
-          <h5
-            style={{ paddingLeft: 47, marginLeft: "1%", textAlign: "center" }}
-          >
-            การศึกษา :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {data.Elder_Information.ELD_EDUCATION}
-          </h5>
-          <hr />
-        </div>
-        {/* ----------------- */}
-        <div>
-          <h5
-            style={{ paddingLeft: 47, marginRight: "9%", textAlign: "center" }}
-          >
-            สิทธิการรักษา :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <hr />
+         <h5>วัน{moment(data.Elder_Information.ELD_BIRTHDATE).format("dddd")} ที่ {moment(data.Elder_Information.ELD_BIRTHDATE).format("LL")}</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_GENDER}</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_AGE} ปี</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_STATUS}</h5> <hr/>
+         <h5>{data.ELD_PHONE}</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_RELIGION}</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_JOB}</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_EDUCATION}</h5> <hr/>
+         <h5>
             {data.Elder_Information.ELD_TREATMENT}{" "}
-            {data.Elder_Information.ELD_TREATMENT_HOSPITAL !== null &&
-              `โรงพยาบาล${data.Elder_Information.ELD_TREATMENT_HOSPITAL}`}
-          </h5>
-          <hr />
+            {data.Elder_Information.ELD_TREATMENT_HOSPITAL !== null && `โรงพยาบาล${data.Elder_Information.ELD_TREATMENT_HOSPITAL}`}
+          </h5> <hr/>
+         
         </div>
       </div>
     </React.Fragment>

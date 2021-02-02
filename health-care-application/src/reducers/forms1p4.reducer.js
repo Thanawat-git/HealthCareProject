@@ -25,17 +25,16 @@ export default (state = initialState, { type, payload }) => {
             elderlyStatus: payload[0], 
             elderlyBeing: payload[1], 
             elderlyBeingDetail: payload[2],
-            being: payload[3],
-            neighborName: payload[4],
-            religion: payload[5],
-            educations: payload[6],
-            careers: payload[7],
-            treatment: payload[8],
-            hospital: payload[9],
-            otherTreatment: payload[10],
-            salary: payload[11],
-            otherReligion: payload[12],
-            otherCareers: payload[13]
+            neighborName: payload[3],
+            religion: payload[4],
+            educations: payload[5],
+            careers: payload[6],
+            treatment: payload[7],
+            hospital: payload[8],
+            otherTreatment: payload[9],
+            salary: payload[10],
+            otherReligion: payload[11],
+            otherCareers: payload[12]
         }
         case "SET_EDUCATION":
             return {...state, educations: payload,}
