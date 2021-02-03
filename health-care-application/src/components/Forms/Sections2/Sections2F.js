@@ -30,6 +30,9 @@ const useStyles = makeStyles({
 export default function Sections2F() {
   const classes = useStyles();
   const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection.section
+  );
   const selectFollowUp = useSelector(
     ({ followUpReducer }) => followUpReducer.resultSelected
   );
@@ -38,9 +41,7 @@ export default function Sections2F() {
   const elderlyGender = useSelector(
     ({ forms1p1Reducer }) => forms1p1Reducer.elderlyGender
   ); // check gender
-  const selectFormSection = useSelector(
-    ({ selectFormSection }) => selectFormSection
-  );
+  
   const dispatch = useDispatch();
 
   const [waist, setWaist] = useState(forms2Reducer.waist);
@@ -529,15 +530,32 @@ export default function Sections2F() {
         </div>
 
         <div className="row justify-content-between">
-          <Link to="/followupmenu">
-            <button
-              type="button"
-              className="btn form-btn btn-back btn-lg"
-              //onClick={handleSubmit}
-            >
-              ยกเลิก
-            </button>
-          </Link>
+          {selectFormSection === "sec2f" ? (
+            <Link>
+              <button
+                type="button"
+                className="btn form-btn btn-back btn-lg"
+                onClick={() => {
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "followupmenu",
+                  });
+                }}
+              >
+                ยกเลิก
+              </button>
+            </Link>
+          ) : (
+            <Link to="/followupmenu">
+              <button
+                type="button"
+                className="btn form-btn btn-back btn-lg"
+              >
+                ยกเลิก
+              </button>
+            </Link>
+          )}
+
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -595,7 +613,7 @@ export default function Sections2F() {
             </div>
           </div>
           <div>
-            {selectFormSection.section === "mainmenu" ? (
+            {selectFormSection !== "sec2f" ? (
               <Link to="/followupmenu" className={classes.root}>
                 <Button variant="primary" block onClick={saveDataToServer}>
                   กลับสู่หน้าเมนูหลัก
@@ -607,7 +625,7 @@ export default function Sections2F() {
                   variant="primary"
                   block
                   onClick={() => {
-                    // saveDataToServer();
+                    saveDataToServer();
                     dispatch({
                       type: SELECT_SECTION,
                       payload: "followupmenu",

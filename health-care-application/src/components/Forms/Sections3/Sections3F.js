@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { RadioGroup, Radio, FormControlLabel, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import "../form-style.css";
 import "../../genaralConfig.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as formAction from "../../../actions/forms3.action";
 import * as appointAction from "../../../actions/appointment.action";
-import { BackFollow } from "../../AppButtons";
+import { SELECT_SECTION } from "../../../constants";
+
+const useStyles = makeStyles({
+  root: {
+    width: "100%",
+  },
+});
 
 export default function Sections3() {
+  const classes = useStyles();
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection.section
+  );
   const selectFollowUp = useSelector(
     ({ followUpReducer }) => followUpReducer.resultSelected
   );
@@ -365,14 +377,31 @@ export default function Sections3() {
         </div>
 
         <div className="row justify-content-between">
-          <Link to="/followupmenu">
-            <button
-              type="button"
-              className="btn form-btn btn-back btn-lg"
-            >
-              ยกเลิก
-            </button>
-          </Link>
+        {selectFormSection === "sec3f" ? (
+            <Link>
+              <button
+                type="button"
+                className="btn form-btn btn-back btn-lg"
+                onClick={() => {
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "followupmenu",
+                  });
+                }}
+              >
+                ยกเลิก
+              </button>
+            </Link>
+          ) : (
+            <Link to="/followupmenu">
+              <button
+                type="button"
+                className="btn form-btn btn-back btn-lg"
+              >
+                ยกเลิก
+              </button>
+            </Link>
+          )}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -403,7 +432,31 @@ export default function Sections3() {
             <p> {results} </p>
           </div>
         </div>
-        <BackFollow />
+        <div>
+            {selectFormSection !== "sec3f" ? (
+              <Link to="/followupmenu" className={classes.root}>
+                <Button variant="primary" block onClick={saveDataToServer}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button
+                  variant="primary"
+                  block
+                  onClick={() => {
+                    saveDataToServer();
+                    dispatch({
+                      type: SELECT_SECTION,
+                      payload: "followupmenu",
+                    });
+                  }}
+                >
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+          </div>
       </DialogContent>
     </Dialog>
     </div>

@@ -1,6 +1,10 @@
 import Axios from "axios";
 import {
   apiBase,
+  apiEld,
+  GET_RESULT_FOLLOW_SEC2,
+  GET_RESULT_FOLLOW_SEC3,
+  GET_RESULT_FOLLOW_SEC5,
   HTTP_FOLLOWUP_FAILED,
   HTTP_FOLLOWUP_FETCHING,
   HTTP_FOLLOWUP_SELECTED,
@@ -30,13 +34,7 @@ export const selectedFollowUp = value => {
 
 export const getFollowUp = (key) => {
   return (dispatch) => {
-    // dispatch(setFollowupToFetching())
     doGetFollowUp(dispatch, key);
-    // return Axios.get(`${apiBase}/appointment/${key}`).then(res=>{
-    //     dispatch(setFollowupToSuccress(res.data))
-    // }).catch(error=>{
-    //     dispatch(setFollowupToFailed(error))
-    // })
   };
 };
 
@@ -118,3 +116,42 @@ const doGetFollowUp = (dispatch, key) => {
   }
   
 };
+
+export const getResultFollowUp = (fid, fName) => {
+  return async dispatch => {
+    let res = await Axios.get(`${apiEld}/examsummary/exam2ForAppointment/${fid}`)
+    try {
+      console.log("res.data sec2 ", res.data);
+      dispatch({
+        type: GET_RESULT_FOLLOW_SEC2,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log("error get result follow sec2 : ", error)
+    }
+    if(fName === "โรคหัวใจและหลอดเลือด"){
+      let res2 = await Axios.get(`${apiEld}/examsummary/exam3ForAppointment/${fid}`)
+      try {
+        console.log("res.data3 ", res2.data);
+        dispatch({
+          type: GET_RESULT_FOLLOW_SEC3,
+          payload: res2.data,
+        });
+      } catch (error) {
+        console.log("error get result follow sec3 : ", error)
+      }
+    } else {
+      let res3 = await Axios.get(`${apiEld}/examsummary/exam5ForAppointment/${fid}`)
+      try {
+        console.log("res.data 5 ", res3.data);
+        dispatch({
+          type: GET_RESULT_FOLLOW_SEC5,
+          payload: res3.data,
+        });
+      } catch (error) {
+        console.log("error get result follow sec5 : ", error)
+      }
+    }
+    
+  }
+}

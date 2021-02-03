@@ -1,12 +1,14 @@
 import Axios from "axios";
 import { apiBase, USERLOGIN } from "../constants";
 
-export const clearAppointment = (fid) => {
-  Axios.put(`${apiBase}/appointment/update/${fid}`, {
+export const clearAppointment = async (fid) => {
+  await Axios.put(`${apiBase}/appointment/update/${fid}`, {
     APP_FLAG: true,
     adderRole: USERLOGIN.Role,
     updateBy: USERLOGIN.Fullname,
-  });
+  }).then(()=>{
+    console.log("APP_FLAG update success!")
+  })
 }
 
 export const createAppointment = async (payload, x) => {

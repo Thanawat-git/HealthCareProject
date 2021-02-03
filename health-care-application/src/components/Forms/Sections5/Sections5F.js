@@ -10,16 +10,28 @@ import {
   InputLabel,
   Dialog, DialogContent, DialogTitle
 } from "@material-ui/core";
+import { Button } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
 import "../form-style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms5.action";
 import * as appointAction from "../../../actions/appointment.action";
-import { BackFollow } from "../../AppButtons";
+import { SELECT_SECTION } from "../../../constants";
+
+const useStyles = makeStyles({
+  root: {
+    width: "100%",
+  },
+});
 
 export default function Sections5_1() {
+  const classes = useStyles();
   const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
+  const selectFormSection = useSelector(
+    ({ selectFormSection }) => selectFormSection.section
+  );
   const selectFollowUp = useSelector(
     ({ followUpReducer }) => followUpReducer.resultSelected
   );
@@ -586,14 +598,31 @@ export default function Sections5_1() {
 
         {/* bt */}
         <div className="row justify-content-between">
-          <Link to="/followupmenu">
-            <button
-              type="button"
-              className="btn form-btn btn-back btn-lg"
-            >
-              ยกเลิก
-            </button>
-          </Link>
+        {selectFormSection === "sec5f" ? (
+            <Link>
+              <button
+                type="button"
+                className="btn form-btn btn-back btn-lg"
+                onClick={() => {
+                  dispatch({
+                    type: SELECT_SECTION,
+                    payload: "followupmenu",
+                  });
+                }}
+              >
+                ยกเลิก
+              </button>
+            </Link>
+          ) : (
+            <Link to="/followupmenu">
+              <button
+                type="button"
+                className="btn form-btn btn-back btn-lg"
+              >
+                ยกเลิก
+              </button>
+            </Link>
+          )}
           <button
             type="button"
             className="btn form-btn btn-primary btn-lg"
@@ -603,15 +632,7 @@ export default function Sections5_1() {
           </button>
         </div>
       </form>
-      {/* <ShowResultPopup
-        title="ผลการประเมินสุขภาพช่องปาก"
-        result={results}
-        show={show}
-        onClick={saveDataToServer}
-        onHide={() => setShow(false)}
-        backdrop="static"
-        keyboard={false}
-      /> */}
+      
       <Dialog
           open={show}
           onClose={() => setShow(false)}
@@ -632,7 +653,31 @@ export default function Sections5_1() {
                 <p> {results} </p>
               </div>
             </div>
-            <BackFollow />
+            <div>
+            {selectFormSection !== "sec5f" ? (
+              <Link to="/followupmenu" className={classes.root}>
+                <Button variant="primary" block onClick={saveDataToServer}>
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            ) : (
+              <Link className={classes.root}>
+                <Button
+                  variant="primary"
+                  block
+                  onClick={() => {
+                    saveDataToServer();
+                    dispatch({
+                      type: SELECT_SECTION,
+                      payload: "followupmenu",
+                    });
+                  }}
+                >
+                  กลับสู่หน้าเมนูหลัก
+                </Button>
+              </Link>
+            )}
+          </div>
           </DialogContent>
         </Dialog>
     </div>
