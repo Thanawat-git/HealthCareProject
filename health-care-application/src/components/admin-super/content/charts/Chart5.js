@@ -1,10 +1,44 @@
 import React from "react";
-import { Tooltip, Select } from "@material-ui/core";
+import {
+  Tooltip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Select,
+} from "@material-ui/core";
+import { withStyles} from "@material-ui/core/styles";
 import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataChart5 } from "../../../../actions/charts.action";
+
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.common.white,
+    textAlign:"center",
+  },
+  body: {
+    fontSize: 18,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+function createData(name,alone, aloneDay, aloneDaynight,alonenight, PeraloneDay, PeraloneDaynight,Peralonenight,notalone) {
+  return {name,alone, aloneDay, aloneDaynight,alonenight, PeraloneDay, PeraloneDaynight,Peralonenight, notalone};
+}
 
 const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
@@ -26,9 +60,14 @@ const ShowChart = React.forwardRef((props, ref) => {
     setCommunity(e.target.value);
     dispatch(getDataChart5(e.target.value));
   };
+
+  const rows = [
+    createData("ชุมชน",Alone,AloneDay,AloneDayNight,AloneNight,`${PerAloneDay}%`,`${PerAloneDayNight}%`,`${PerAloneNight}%`,NotAlone),
+  ];
+
   return (
     <div className="card-body">
-      <div>
+      {/* <div>
         เลือกชุมชน &emsp;
         <Select
           native
@@ -46,7 +85,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             );
           })}
         </Select>
-      </div>
+      </div> 
       <br />
       <div className="row" ref={ref}>
         <div className="col-12">
@@ -91,6 +130,54 @@ const ShowChart = React.forwardRef((props, ref) => {
             }}
           />
         </div>
+      </div>*/}
+      <div>
+        <TableContainer component={Paper}>
+          <Table className="table-report" aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell >ชุมชน&nbsp;</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableCell >อยู่ลำพัง&nbsp;</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableCell >ไม่ได้อยู่ลำพัง</StyledTableCell>
+                <StyledTableCell >&nbsp;</StyledTableCell>            
+                <StyledTableCell ></StyledTableCell>
+              </TableRow>
+              <TableRow>
+                <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableCell >กลางวัน</StyledTableCell>
+                <StyledTableCell >กลางคืน</StyledTableCell>
+                <StyledTableCell >ทั้งกลางวัน-กลางคืน</StyledTableCell>
+                <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableCell ></StyledTableCell>
+                <StyledTableCell ></StyledTableCell>
+                <StyledTableCell ></StyledTableCell>
+                <StyledTableCell ></StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <StyledTableRow key={row.Age}>
+                  <StyledTableCell align="center" component="th" scope="row">ชุมชนมณีแก้ว</StyledTableCell>
+                  <StyledTableCell >&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center">{row.aloneDay}&nbsp;({row.PeraloneDay  ==="NaN%"? "0 %" : row.PeraloneDay})</StyledTableCell>
+                  <StyledTableCell align="center">{row.aloneDaynight}&nbsp;({row.PeraloneDaynight ==="NaN%"? "0 %" : row.PeraloneDaynight})</StyledTableCell>
+                  <StyledTableCell align="center">{row.alonenight}&nbsp;({row.Peralonenight ==="NaN%"? "0 %" : row.Peralonenight})</StyledTableCell>
+                  <StyledTableCell >&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">{row.notalone}&nbsp;(0 %)</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     </div>
   );

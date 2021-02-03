@@ -59,7 +59,7 @@ const ShowChart = React.forwardRef((props, ref) => {
   }, [])
   return (
     <div className="card-body" ref={ref}>
-      <div className="chart">
+      {/* <div className="chart">
         <Chart
           maxWidth={"900px"}
           height={"400px"}
@@ -86,7 +86,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           }}
         />
         <br />
-      </div>
+      </div> */}
 <div> 
       <TableContainer component={Paper}>
       <Table className="table-report" aria-label="customized table">
@@ -135,9 +135,9 @@ export default function Chart1() {
     <div className="col-12">
       <div className="card card-light ">
         <div className="card-header">
-          <h3 className="card-title">
+          <h2 className="card-title" >
             จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ
-          </h3>
+          </h2>
           <div className="card-tools">
             <button
               type="button"
