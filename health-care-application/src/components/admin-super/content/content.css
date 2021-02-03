@@ -16,3 +16,16 @@
     text-align: end;
     padding-right: 1rem;
 }
+
+.d-follow .MuiDialog-container .MuiDialog-paperScrollPaper{
+    display: flex;
+    height: calc(100% - 64px);
+    flex-direction: column;
+}
+
+.bt-menu-follow {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 10px;
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import EditFollowup from "./EditFollowup";
+import ShowResultF from "./ShowResultF";
+import DoFollow from "./DoFollow";
 import { InputAdornment, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect } from "react";
@@ -136,6 +138,8 @@ export default function FollowUp() {
                     {
                       !value.APP_FLAG ? (
                         <td style={{ textAlign: "center" }}>
+                          <DoFollow value={value} headKey={isStatus} />
+                          <span style={{ color: "grey" }}> | </span>
                           <EditFollowup value={value} headKey={isStatus}/>
                           <span style={{ color: "grey" }}> | </span>
                           <button
@@ -168,12 +172,7 @@ export default function FollowUp() {
                       )
                       :
                       <td style={{ textAlign: "center" }}>
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                        >
-                          ดูข้อมูล
-                        </button>
+                        <ShowResultF value={value} />
                       </td>
                     }
                     
