@@ -10,20 +10,21 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
-import { withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { Chart } from "react-google-charts";
 import { EDUCATIONS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataChart6 } from "../../../../actions/charts.action";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.common.white,
-    textAlign:"center",
+    textAlign: "center",
+    border: 1,
   },
   body: {
     fontSize: 18,
@@ -37,8 +38,117 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
-function createData(Age, numMale, numFemale,numPer1, numPer2, sum) {
-  return { Age, numMale, numFemale,numPer1, numPer2, sum };
+function createData(
+  name,
+  numMale,
+  numFemale,
+  sum,
+  Male6569,
+  Female6569,
+  sum6569,
+  Male7074,
+  Female7074,
+  sum7074,
+  Male7579,
+  Female7579,
+  sum7579,
+  Male8084,
+  Female8084,
+  sum8084,
+  Male8590,
+  Female8590,
+  sum8590,
+  Male9094,
+  Female9094,
+  sum9094,
+  Male95,
+  Female95,
+  sum95,
+  sumAllM,
+  sumAllF,
+  sumAll,
+  //////////////////////
+  PerMale,
+  PerFemale,
+  Persum,
+  PerMale6569,
+  PerFemale6569,
+  Persum6569,
+  PerMale7074,
+  PerFemale7074,
+  Persum7074,
+  PerMale7579,
+  PerFemale7579,
+  Persum7579,
+  PerMale8084,
+  PerFemale8084,
+  Persum8084,
+  PerMale8590,
+  PerFemale8590,
+  Persum8590,
+  PerMale9094,
+  PerFemale9094,
+  Persum9094,
+  PerMale95,
+  PerFemale95,
+  Persum95,
+
+
+) {
+  return {
+    name,
+    numMale,
+    numFemale,
+    sum,
+    Male6569,
+    Female6569,
+    sum6569,
+    Male7074,
+    Female7074,
+    sum7074,
+    Male7579,
+    Female7579,
+    sum7579,
+    Male8084,
+    Female8084,
+    sum8084,
+    Male8590,
+    Female8590,
+    sum8590,
+    Male9094,
+    Female9094,
+    sum9094,
+    Male95,
+    Female95,
+    sum95,
+    sumAllM,
+    sumAllF,
+    sumAll,
+    PerMale,
+  PerFemale,
+  Persum,
+  PerMale6569,
+  PerFemale6569,
+  Persum6569,
+  PerMale7074,
+  PerFemale7074,
+  Persum7074,
+  PerMale7579,
+  PerFemale7579,
+  Persum7579,
+  PerMale8084,
+  PerFemale8084,
+  Persum8084,
+  PerMale8590,
+  PerFemale8590,
+  Persum8590,
+  PerMale9094,
+  PerFemale9094,
+  Persum9094,
+  PerMale95,
+  PerFemale95,
+  Persum95,
+  };
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
@@ -48,8 +158,13 @@ const ShowChart = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const [openPaper, setopenPaper] = React.useState(false);
   const {
-    summary, g95, g6064, g6569, g7074, g7579, g8084, g8589, g9094
-  } = chart6Reducer.results
+    Uneducate,
+    SecondarySchool,
+    HighSchool,
+    TechnicalCollege,
+    BachelorDegrees,
+    MasterOrDoctorDegrees,
+  } = chart6Reducer.results;
   const handleChange = (e) => {
     setEducation(e.target.value);
     dispatch(getDataChart6(e.target.value));
@@ -57,15 +172,271 @@ const ShowChart = React.forwardRef((props, ref) => {
   const toggleChecked = () => {
     setopenPaper((prev) => !prev);
   };
-  
+
   const rows = [
-    createData(` ไม่ได้เรียนหนังสือ `,g6064.ElderMale ,g6064.ElderFemale,` ${g6064.ElderPerMale} %`,`${g6064.ElderPerMale} %`,`${g6064.ElderPerFeMale} %`, g6064.Elder),
-    createData(' ประถมศึกษา',g6569.ElderMale,g6569.ElderFemale,`${g6569.ElderPerMale} %`,`${g6569.ElderPerFeMale} %`, g6569.Elder),
-    createData(' มัธยมศึกษา',g7074.ElderMale,g7074.ElderFemale,`${g7074.ElderPerMale} %`,`${g7074.ElderPerFeMale} %`, g7074.Elder),
-    createData(' อนุปริญญา/ปวช./ปวส.',g7579.ElderMale,g7579.ElderFemale,`${g7579.ElderPerMale} %`,`${g7579.ElderPerFeMale} %`, g7579.Elder),
-    createData(' ปริญญาตรี',g8084.ElderMale,g8084.ElderFemale,`${g8084.ElderPerMale} %`,`${g8084.ElderPerFeMale} %`, g8084.Elder),
-    createData(' สูงกว่าปริญญาตรี',g8589.ElderMale,g8589.ElderFemale,`${g8589.ElderPerMale} %`,`${g8589.ElderPerFeMale} %`, g8589.Elder),
+     createData(
+      ` ไม่ได้เรียนหนังสือ `,
+      Uneducate.g6064.ElderMale,
+      Uneducate.g6064.ElderFemale,
+      Uneducate.g6064.Elder,
+
+      Uneducate.g6569.ElderMale,
+      Uneducate.g6569.ElderFemale,
+      Uneducate.g6569.Elder,
+
+      Uneducate.g7074.ElderMale,
+      Uneducate.g7074.ElderFemale,
+      Uneducate.g7074.Elder,
+
+      Uneducate.g7579.ElderMale,
+      Uneducate.g7579.ElderFemale,
+      Uneducate.g7579.Elder,
+
+      Uneducate.g8084.ElderMale,
+      Uneducate.g8084.ElderFemale,
+      Uneducate.g8084.Elder,
+
+      Uneducate.g8589.ElderMale,
+      Uneducate.g8589.ElderFemale,
+      Uneducate.g8589.Elder,
+
+      Uneducate.g9094.ElderMale,
+      Uneducate.g9094.ElderFemale,
+      Uneducate.g9094.Elder,
+
+      Uneducate.g95.ElderMale,
+      Uneducate.g95.ElderFemale,
+      Uneducate.g95.Elder,
+
+      Uneducate.summary.ElderMale,
+      Uneducate.summary.ElderFemale,
+      Uneducate.summary.Elder,
+
+      `${Uneducate.g6064.ElderPerMale} %`,
+      `${Uneducate.g6064.ElderPerFemale} %`,
+      `${Uneducate.g6064.ElderPer} %`,
+
+     `${ Uneducate.g6569.ElderPerMale} %`,
+     `${ Uneducate.g6569.ElderPerFemale} %`,
+     `${ Uneducate.g6569.ElderPer} %`,
+
+      `${Uneducate.g7074.ElderPerMale} %`,
+      `${Uneducate.g7074.ElderPerFemale} %`,
+      `${Uneducate.g7074.ElderPer} %`,
+
+      `${Uneducate.g7579.ElderPerMale} %`,
+      `${Uneducate.g7579.ElderPerFemale} %`,
+      `${Uneducate.g7579.ElderPer} %`,
+
+      `${Uneducate.g8084.ElderPerMale} %`,
+      `${Uneducate.g8084.ElderPerFemale} %`,
+      `${Uneducate.g8084.ElderPer} %`,
+
+      `${Uneducate.g8589.ElderPerMale} %`,
+      `${Uneducate.g8589.ElderPerFemale} %`,
+      `${Uneducate.g8589.ElderPer} %`,
+
+      `${Uneducate.g9094.ElderPerMale} %`,
+      `${Uneducate.g9094.ElderPerFemale} %`,
+      `${Uneducate.g9094.ElderPer} %`,
+
+      `${Uneducate.g95.ElderPerMale} %`,
+      `${Uneducate.g95.ElderPerFemale} %`,
+     `${ Uneducate.g95.ElderPer} %`,
+
+    ),
+    createData(
+      " ประถมศึกษา",
+      SecondarySchool.g6064.ElderMale,
+      SecondarySchool.g6064.ElderFemale,
+      SecondarySchool.g6064.Elder,
+
+      SecondarySchool.g6569.ElderMale,
+      SecondarySchool.g6569.ElderFemale,
+      SecondarySchool.g6569.Elder,
+
+      SecondarySchool.g7074.ElderMale,
+      SecondarySchool.g7074.ElderFemale,
+      SecondarySchool.g7074.Elder,
+
+      SecondarySchool.g7579.ElderMale,
+      SecondarySchool.g7579.ElderFemale,
+      SecondarySchool.g7579.Elder,
+
+      SecondarySchool.g8084.ElderMale,
+      SecondarySchool.g8084.ElderFemale,
+      SecondarySchool.g8084.Elder,
+
+      SecondarySchool.g8589.ElderMale,
+      SecondarySchool.g8589.ElderFemale,
+      SecondarySchool.g8589.Elder,
+
+      SecondarySchool.g9094.ElderMale,
+      SecondarySchool.g9094.ElderFemale,
+      SecondarySchool.g9094.Elder,
+
+      SecondarySchool.g95.ElderMale,
+      SecondarySchool.g95.ElderFemale,
+      SecondarySchool.g95.Elder,
+
+      SecondarySchool.summary.ElderMale,
+      SecondarySchool.summary.ElderFemale,
+      SecondarySchool.summary.Elder
+    ),
+    createData(
+      " มัธยมศึกษา",
+      HighSchool.g6064.ElderMale,
+      HighSchool.g6064.ElderFemale,
+      HighSchool.g6064.Elder,
+
+      HighSchool.g6569.ElderMale,
+      HighSchool.g6569.ElderFemale,
+      HighSchool.g6569.Elder,
+
+      HighSchool.g7074.ElderMale,
+      HighSchool.g7074.ElderFemale,
+      HighSchool.g7074.Elder,
+
+      HighSchool.g7579.ElderMale,
+      HighSchool.g7579.ElderFemale,
+      HighSchool.g7579.Elder,
+
+      HighSchool.g8084.ElderMale,
+      HighSchool.g8084.ElderFemale,
+      HighSchool.g8084.Elder,
+
+      HighSchool.g8589.ElderMale,
+      HighSchool.g8589.ElderFemale,
+      HighSchool.g8589.Elder,
+
+      HighSchool.g9094.ElderMale,
+      HighSchool.g9094.ElderFemale,
+      HighSchool.g9094.Elder,
+
+      HighSchool.g95.ElderMale,
+      HighSchool.g95.ElderFemale,
+      HighSchool.g95.Elder,
+
+      HighSchool.summary.ElderMale,
+      HighSchool.summary.ElderFemale,
+      HighSchool.summary.Elder
+    ),
+    createData(
+      " อนุปริญญา/ปวช./ปวส.",
+      TechnicalCollege.g6064.ElderMale,
+      TechnicalCollege.g6064.ElderFemale,
+      TechnicalCollege.g6064.Elder,
+
+      TechnicalCollege.g6569.ElderMale,
+      TechnicalCollege.g6569.ElderFemale,
+      TechnicalCollege.g6569.Elder,
+
+      TechnicalCollege.g7074.ElderMale,
+      TechnicalCollege.g7074.ElderFemale,
+      TechnicalCollege.g7074.Elder,
+
+      TechnicalCollege.g7579.ElderMale,
+      TechnicalCollege.g7579.ElderFemale,
+      TechnicalCollege.g7579.Elder,
+
+      TechnicalCollege.g8084.ElderMale,
+      TechnicalCollege.g8084.ElderFemale,
+      TechnicalCollege.g8084.Elder,
+
+      TechnicalCollege.g8589.ElderMale,
+      TechnicalCollege.g8589.ElderFemale,
+      TechnicalCollege.g8589.Elder,
+
+      TechnicalCollege.g9094.ElderMale,
+      TechnicalCollege.g9094.ElderFemale,
+      TechnicalCollege.g9094.Elder,
+
+      TechnicalCollege.g95.ElderMale,
+      TechnicalCollege.g95.ElderFemale,
+      TechnicalCollege.g95.Elder,
+
+      TechnicalCollege.summary.ElderMale,
+      TechnicalCollege.summary.ElderFemale,
+      TechnicalCollege.summary.Elder
+    ),
+    createData(
+      " ปริญญาตรี",
+      BachelorDegrees.g6064.ElderMale,
+      BachelorDegrees.g6064.ElderFemale,
+      BachelorDegrees.g6064.Elder,
+
+      BachelorDegrees.g6569.ElderMale,
+      BachelorDegrees.g6569.ElderFemale,
+      BachelorDegrees.g6569.Elder,
+
+      BachelorDegrees.g7074.ElderMale,
+      BachelorDegrees.g7074.ElderFemale,
+      BachelorDegrees.g7074.Elder,
+
+      BachelorDegrees.g7579.ElderMale,
+      BachelorDegrees.g7579.ElderFemale,
+      BachelorDegrees.g7579.Elder,
+
+      BachelorDegrees.g8084.ElderMale,
+      BachelorDegrees.g8084.ElderFemale,
+      BachelorDegrees.g8084.Elder,
+
+      BachelorDegrees.g8589.ElderMale,
+      BachelorDegrees.g8589.ElderFemale,
+      BachelorDegrees.g8589.Elder,
+
+      BachelorDegrees.g9094.ElderMale,
+      BachelorDegrees.g9094.ElderFemale,
+      BachelorDegrees.g9094.Elder,
+
+      BachelorDegrees.g95.ElderMale,
+      BachelorDegrees.g95.ElderFemale,
+      BachelorDegrees.g95.Elder,
+    
+      BachelorDegrees.summary.ElderMale,
+      BachelorDegrees.summary.ElderFemale,
+      BachelorDegrees.summary.Elder
+    ),
+    createData(
+      " สูงกว่าปริญญาตรี",
+      MasterOrDoctorDegrees.g6064.ElderMale,
+      MasterOrDoctorDegrees.g6064.ElderFemale,
+      MasterOrDoctorDegrees.g6064.Elder,
+
+      MasterOrDoctorDegrees.g6569.ElderMale,
+      MasterOrDoctorDegrees.g6569.ElderFemale,
+      MasterOrDoctorDegrees.g6569.Elder,
+
+      MasterOrDoctorDegrees.g7074.ElderMale,
+      MasterOrDoctorDegrees.g7074.ElderFemale,
+      MasterOrDoctorDegrees.g7074.Elder,
+
+      MasterOrDoctorDegrees.g7579.ElderMale,
+      MasterOrDoctorDegrees.g7579.ElderFemale,
+      MasterOrDoctorDegrees.g7579.Elder,
+
+      MasterOrDoctorDegrees.g8084.ElderMale,
+      MasterOrDoctorDegrees.g8084.ElderFemale,
+      MasterOrDoctorDegrees.g8084.Elder,
+
+      MasterOrDoctorDegrees.g8589.ElderMale,
+      MasterOrDoctorDegrees.g8589.ElderFemale,
+      MasterOrDoctorDegrees.g8589.Elder,
+
+      MasterOrDoctorDegrees.g9094.ElderMale,
+      MasterOrDoctorDegrees.g9094.ElderFemale,
+      MasterOrDoctorDegrees.g9094.Elder,
+
+      MasterOrDoctorDegrees.g95.ElderMale,
+      MasterOrDoctorDegrees.g95.ElderFemale,
+      MasterOrDoctorDegrees.g95.Elder,
+
+      MasterOrDoctorDegrees.summary.ElderMale,
+      MasterOrDoctorDegrees.summary.ElderFemale,
+      MasterOrDoctorDegrees.summary.Elder
+    ),
   ];
+  console.log(rows)
   return (
     <div className="card-body">
       {/* <div>
@@ -88,7 +459,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         </Select>
       </div> */}
       <br />
-     {/*  <div className="chart" ref={ref}>
+      {/*  <div className="chart" ref={ref}>
         <div className="col-12">
           <p style={{ textAlign: "center" }}>
             จำนวนประชากรผู้สูงอายุทั้งหมด {education} จำนวน {summary.Elder} คน
@@ -120,120 +491,234 @@ const ShowChart = React.forwardRef((props, ref) => {
         />
       </div>*/}
       <br />
-      <div  >   
-      <FormControlLabel
-        control={<Switch size="medium" checked={openPaper} onChange={toggleChecked} />}
-        label="คิดเป็นร้อยละ"
-      />
-      {openPaper?  
-      <TableContainer component={Paper}> 
-      <Table className="table-report" aria-label="customized table">
-        <TableHead>
-          <TableRow >
-            <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
-            <StyledTableCell align="center">60-64 (%)</StyledTableCell>
-            <StyledTableCell align="center">65-69 (%)</StyledTableCell>
-            <StyledTableCell align="center">70-74 (%)</StyledTableCell>
-            <StyledTableCell align="center">75-79 (%)</StyledTableCell>
-            <StyledTableCell align="center">80-84 (%)</StyledTableCell>
-            <StyledTableCell align="center">85-89 (%)</StyledTableCell>
-            <StyledTableCell align="center">90-94 (%)</StyledTableCell>
-            <StyledTableCell align="center">95+ (%)</StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-            <StyledTableCell align="center">รวม</StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-          </TableRow>
-          <TableRow >
-            <StyledTableCell align="center">ระดับการศึกษา</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-            <StyledTableCell align="center"></StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-          </TableRow>
-
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.Age}>
-              <StyledTableCell align="center" component="th" scope="row">{row.Age}</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp; {row.numFemale} &nbsp; 1 </StyledTableCell>
-              <StyledTableCell align="center"></StyledTableCell>
-              <StyledTableCell align="center">0</StyledTableCell>
-              <StyledTableCell align="center">&nbsp;</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer> :
-      <TableContainer component={Paper}  >
-      <Table className="table-report" aria-label="customized table">
-        <TableHead>
-          <TableRow >
-            <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
-            <StyledTableCell align="center">60-64</StyledTableCell>
-            <StyledTableCell align="center">65-69</StyledTableCell>
-            <StyledTableCell align="center">70-74</StyledTableCell>
-            <StyledTableCell align="center">75-79</StyledTableCell>
-            <StyledTableCell align="center">80-84</StyledTableCell>
-            <StyledTableCell align="center">85-89</StyledTableCell>
-            <StyledTableCell align="center">90-94</StyledTableCell>
-            <StyledTableCell align="center">95+</StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-            <StyledTableCell align="center">รวม</StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-          </TableRow>
-          <TableRow >
-            <StyledTableCell align="center">ระดับการศึกษา</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell align="center">ช ญ ร</StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-            <StyledTableCell align="center"></StyledTableCell>
-            <StyledTableCell >&nbsp;</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.Age}>
-              <StyledTableCell align="center" component="th" scope="row">{row.Age}</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1 </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center">{row.numMale} &nbsp;{row.numFemale}&nbsp;1</StyledTableCell>
-              <StyledTableCell align="center"></StyledTableCell>
-              <StyledTableCell align="center">0 </StyledTableCell>
-              <StyledTableCell align="center">&nbsp;</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer> }
-
-    </div>
-    
+      <div>
+        <FormControlLabel
+          control={
+            <Switch
+              size="medium"
+              checked={openPaper}
+              onChange={toggleChecked}
+            />
+          }
+          label="คิดเป็นร้อยละ"
+        />
+        {openPaper ? (
+          <TableContainer component={Paper}>
+            <Table className="table-report" aria-label="customized table">
+              {/*%%%%%%%%%%%%%%%%55%%%%% */}
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                </TableRow>
+                <TableRow></TableRow>
+                <TableRow>
+                  <StyledTableCell align="center">
+                    ระดับการศึกษา
+                  </StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center">60-64</StyledTableCell>
+                  <StyledTableCell align="center">65-69</StyledTableCell>
+                  <StyledTableCell align="center">70-74</StyledTableCell>
+                  <StyledTableCell align="center">75-79</StyledTableCell>
+                  <StyledTableCell align="center">80-84</StyledTableCell>
+                  <StyledTableCell align="center">85-89</StyledTableCell>
+                  <StyledTableCell align="center">90-94</StyledTableCell>
+                  <StyledTableCell align="center">95+</StyledTableCell>
+                  <StyledTableCell align="center">รวม</StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <StyledTableRow key={row.name}>
+                    <StyledTableCell align="center" component="th" scope="row">
+                      {row.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      ชาย <br /> หญิง <br /> รวม
+                    </StyledTableCell>
+                    <StyledTableCell align="center">  {/* 6064 */}
+                      {row.PerMale ==="NaN %"?  "0 %" : row.PerMale}
+                      <br />
+                      {row.PerFemale ==="NaN %"? "0 %" :row.PerFemale}
+                      <br />
+                      {row.Persum ==="NaN %"? "0 %" :row.Persum}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale6569==="NaN %"? "0 %" : row.PerMale6569}
+                      <br />
+                      {row.PerFemale6569==="NaN %"? "0 %": row.PerFemale6569}
+                      <br />
+                      {row.Persum6569==="NaN %"? "0 %": row.Persum6569}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale7074==="NaN %"? "0 %":row.PerMale7074} 
+                      <br />
+                      {row.PerFemale7074==="NaN %"? "0 %":row.PerFemale7074}
+                      <br />
+                      {row.Persum7074==="NaN %"? "0 %":row.Persum7074}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale7579==="NaN %"? "0 %":row.PerMale7579} 
+                      <br />
+                      {row.PerFemale7579==="NaN %"? "0 %":row.PerFemale7579}
+                      <br />
+                      {row.Persum7579==="NaN %"? "0 %":row.Persum7579}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale8084==="NaN %"? "0 %":row.PerMale8084} <br />
+                      {row.PerFemale8084==="NaN %"? "0 %":row.PerFemale8084}
+                      <br />
+                      {row.Persum8084==="NaN %"? "0 %":row.Persum8084}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale8590==="NaN %"? "0 %": row.PerMale8590} <br />
+                      {row.PerFemale8590==="NaN %"? "0 %": row.PerFemale8590}
+                      <br />
+                      {row.Persum8590 ==="NaN %"? "0 %": row.Persum8590}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale9094==="NaN %"? "0 %":row.PerMale9094} <br />
+                      {row.PerFemale9094==="NaN %"? "0 %":row.PerFemale9094}
+                      <br />
+                      {row.Persum9094==="NaN %"? "0 %":row.Persum9094}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.PerMale95==="NaN %"? "0 %":row.PerMale95} <br />
+                      {row.PerFemale95==="NaN %"? "0 %":row.PerFemale95}
+                      <br />
+                      {row.Persum95==="NaN %"? "0 %":row.Persum95}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{row.sumAllM} <br />
+                      {row.sumAllF}
+                      <br />
+                      {row.sumAll}</StyledTableCell>
+                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : (
+          <TableContainer component={Paper}>
+            <Table className="table-report" aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                </TableRow>
+                <TableRow></TableRow>
+                <TableRow>
+                  <StyledTableCell align="center">
+                    ระดับการศึกษา
+                  </StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center">60-64</StyledTableCell>
+                  <StyledTableCell align="center">65-69</StyledTableCell>
+                  <StyledTableCell align="center">70-74</StyledTableCell>
+                  <StyledTableCell align="center">75-79</StyledTableCell>
+                  <StyledTableCell align="center">80-84</StyledTableCell>
+                  <StyledTableCell align="center">85-89</StyledTableCell>
+                  <StyledTableCell align="center">90-94</StyledTableCell>
+                  <StyledTableCell align="center">95+</StyledTableCell>
+                  <StyledTableCell align="center">รวม</StyledTableCell>
+                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <StyledTableRow key={row.name}>
+                    <StyledTableCell align="center" component="th" scope="row">
+                      {row.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      ชาย <br /> หญิง <br /> รวม
+                    </StyledTableCell>
+                    <StyledTableCell align="center">  {/* 6064 */}
+                      {row.numMale}
+                      <br />
+                      {row.numFemale}
+                      <br />
+                      {row.sum}{" "}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male6569}
+                      <br />
+                      {row.Female6569}
+                      <br />
+                      {row.sum6569}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male7074} <br />
+                      {row.Female7074}
+                      <br />
+                      {row.sum7074}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male7579} <br />
+                      {row.Female7579}
+                      <br />
+                      {row.sum7579}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male8084} <br />
+                      {row.Female8084}
+                      <br />
+                      {row.sum8084}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male8590} <br />
+                      {row.Female8590}
+                      <br />
+                      {row.sum8590}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male9094} <br />
+                      {row.Female9094}
+                      <br />
+                      {row.sum9094}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.Male95} <br />
+                      {row.Female95}
+                      <br />
+                      {row.sum95}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{row.sumAllM} <br />
+                      {row.sumAllF}
+                      <br />
+                      {row.sumAll}</StyledTableCell>
+                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      </div>
     </div>
   );
 });
@@ -245,7 +730,7 @@ export default function Chart6() {
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
-          จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับการศึกษา ช่วงอายุ และเพศ
+            จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับการศึกษา ช่วงอายุ และเพศ
           </h3>
           <div className="card-tools">
             <button

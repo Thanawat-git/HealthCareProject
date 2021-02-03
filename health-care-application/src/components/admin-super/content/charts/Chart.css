@@ -3,6 +3,7 @@
 }
 
 .table-report thead tr th {
-  font-size: 20px;
+  font-size: 18px;
+  /* border-right: 2px solid black; */
 }
 
