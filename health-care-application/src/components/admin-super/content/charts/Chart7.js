@@ -164,452 +164,452 @@ const ShowChart = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
 
   const rows = [
-  //   createData(
-  //    ` เบิกต้นสังกัด `,
-  //    Affiliation.g6064.ElderMale,
-  //    Affiliation.g6064.ElderFemale,
-  //    Affiliation.g6064.Elder,
-
-  //    Affiliation.g6569.ElderMale,
-  //    Affiliation.g6569.ElderFemale,
-  //    Affiliation.g6569.Elder,
-
-  //    Affiliation.g7074.ElderMale,
-  //    Affiliation.g7074.ElderFemale,
-  //    Affiliation.g7074.Elder,
-
-  //    Affiliation.g7579.ElderMale,
-  //    Affiliation.g7579.ElderFemale,
-  //    Affiliation.g7579.Elder,
-
-  //    Affiliation.g8084.ElderMale,
-  //    Affiliation.g8084.ElderFemale,
-  //    Affiliation.g8084.Elder,
-
-  //    Affiliation.g8589.ElderMale,
-  //    Affiliation.g8589.ElderFemale,
-  //    Affiliation.g8589.Elder,
-
-  //    Affiliation.g9094.ElderMale,
-  //    Affiliation.g9094.ElderFemale,
-  //    Affiliation.g9094.Elder,
-
-  //    Affiliation.g95.ElderMale,
-  //    Affiliation.g95.ElderFemale,
-  //    Affiliation.g95.Elder,
-
-  //    Affiliation.summary.ElderMale,
-  //    Affiliation.summary.ElderFemale,
-  //    Affiliation.summary.Elder,//sumAll
-
-  //    `${Affiliation.summary.ElderPerMale} %`,
-  //    `${Affiliation.summary.ElderPerFemale} %`,
-  //  0, //  `${Affiliation.summary.ElderPer} %`,
-
-
-  //    `${Affiliation.g6064.ElderPerMale} %`,
-  //    `${Affiliation.g6064.ElderPerFemale} %`,
-  //    `${Affiliation.g6064.ElderPer} %`,
-
-  //   `${ Affiliation.g6569.ElderPerMale} %`,
-  //   `${ Affiliation.g6569.ElderPerFemale} %`,
-  //   `${ Affiliation.g6569.ElderPer} %`,
-
-  //    `${Affiliation.g7074.ElderPerMale} %`,
-  //    `${Affiliation.g7074.ElderPerFemale} %`,
-  //    `${Affiliation.g7074.ElderPer} %`,
-
-  //    `${Affiliation.g7579.ElderPerMale} %`,
-  //    `${Affiliation.g7579.ElderPerFemale} %`,
-  //    `${Affiliation.g7579.ElderPer} %`,
-
-  //    `${Affiliation.g8084.ElderPerMale} %`,
-  //    `${Affiliation.g8084.ElderPerFemale} %`,
-  //    `${Affiliation.g8084.ElderPer} %`,
-
-  //    `${Affiliation.g8589.ElderPerMale} %`,
-  //    `${Affiliation.g8589.ElderPerFemale} %`,
-  //    `${Affiliation.g8589.ElderPer} %`,
-
-  //    `${Affiliation.g9094.ElderPerMale} %`,
-  //    `${Affiliation.g9094.ElderPerFemale} %`,
-  //    `${Affiliation.g9094.ElderPer} %`,
-
-  //    `${Affiliation.g95.ElderPerMale} %`,
-  //    `${Affiliation.g95.ElderPerFemale} %`,
-  //   `${ Affiliation.g95.ElderPer} %`,
-
-  //  ),
-  //  createData(
-  //    " ชำระเงินเอง",
-  //    Yourself.g6064.ElderMale,
-  //    Yourself.g6064.ElderFemale,
-  //    Yourself.g6064.Elder,
-
-  //    Yourself.g6569.ElderMale,
-  //    Yourself.g6569.ElderFemale,
-  //    Yourself.g6569.Elder,
-
-  //    Yourself.g7074.ElderMale,
-  //    Yourself.g7074.ElderFemale,
-  //    Yourself.g7074.Elder,
-
-  //    Yourself.g7579.ElderMale,
-  //    Yourself.g7579.ElderFemale,
-  //    Yourself.g7579.Elder,
-
-  //    Yourself.g8084.ElderMale,
-  //    Yourself.g8084.ElderFemale,
-  //    Yourself.g8084.Elder,
-
-  //    Yourself.g8589.ElderMale,
-  //    Yourself.g8589.ElderFemale,
-  //    Yourself.g8589.Elder,
-
-  //    Yourself.g9094.ElderMale,
-  //    Yourself.g9094.ElderFemale,
-  //    Yourself.g9094.Elder,
-
-  //    Yourself.g95.ElderMale,
-  //    Yourself.g95.ElderFemale,
-  //    Yourself.g95.Elder,
-
-  //    Yourself.summary.ElderMale,
-  //    Yourself.summary.ElderFemale,
-  //    Yourself.summary.Elder,
-
-  //    `${Yourself.summary.ElderPerMale} %`,
-  //    `${Yourself.summary.ElderPerFemale} %`,
-  //    0,//  `${Yourself.summary.ElderPer} %`,
-
-  //    `${Yourself.g6064.ElderPerMale} %`,
-  //    `${Yourself.g6064.ElderPerFemale} %`,
-  //    `${Yourself.g6064.ElderPer} %`,
-
-  //   `${ Yourself.g6569.ElderPerMale} %`,
-  //   `${ Yourself.g6569.ElderPerFemale} %`,
-  //   `${ Yourself.g6569.ElderPer} %`,
-
-  //    `${Yourself.g7074.ElderPerMale} %`,
-  //    `${Yourself.g7074.ElderPerFemale} %`,
-  //    `${Yourself.g7074.ElderPer} %`,
-
-  //    `${Yourself.g7579.ElderPerMale} %`,
-  //    `${Yourself.g7579.ElderPerFemale} %`,
-  //    `${Yourself.g7579.ElderPer} %`,
-
-  //    `${Yourself.g8084.ElderPerMale} %`,
-  //    `${Yourself.g8084.ElderPerFemale} %`,
-  //    `${Yourself.g8084.ElderPer} %`,
-
-  //    `${Yourself.g8589.ElderPerMale} %`,
-  //    `${Yourself.g8589.ElderPerFemale} %`,
-  //    `${Yourself.g8589.ElderPer} %`,
-
-  //    `${Yourself.g9094.ElderPerMale} %`,
-  //    `${Yourself.g9094.ElderPerFemale} %`,
-  //    `${Yourself.g9094.ElderPer} %`,
-
-  //    `${Yourself.g95.ElderPerMale} %`,
-  //    `${Yourself.g95.ElderPerFemale} %`,
-  //   `${ Yourself.g95.ElderPer} %`,
-  //  ),
-  //  createData(
-  //    " บัตรทอง",
-  //    GoldCard.g6064.ElderMale,
-  //    GoldCard.g6064.ElderFemale,
-  //    GoldCard.g6064.Elder,
-
-  //    GoldCard.g6569.ElderMale,
-  //    GoldCard.g6569.ElderFemale,
-  //    GoldCard.g6569.Elder,
-
-  //    GoldCard.g7074.ElderMale,
-  //    GoldCard.g7074.ElderFemale,
-  //    GoldCard.g7074.Elder,
-
-  //    GoldCard.g7579.ElderMale,
-  //    GoldCard.g7579.ElderFemale,
-  //    GoldCard.g7579.Elder,
-
-  //    GoldCard.g8084.ElderMale,
-  //    GoldCard.g8084.ElderFemale,
-  //    GoldCard.g8084.Elder,
-
-  //    GoldCard.g8589.ElderMale,
-  //    GoldCard.g8589.ElderFemale,
-  //    GoldCard.g8589.Elder,
-
-  //    GoldCard.g9094.ElderMale,
-  //    GoldCard.g9094.ElderFemale,
-  //    GoldCard.g9094.Elder,
-
-  //    GoldCard.g95.ElderMale,
-  //    GoldCard.g95.ElderFemale,
-  //    GoldCard.g95.Elder,
-
-  //    GoldCard.summary.ElderMale,
-  //    GoldCard.summary.ElderFemale,
-  //    GoldCard.summary.Elder,
-
-  //  `${GoldCard.summary.ElderPerMale} %`,
-  //   `${GoldCard.summary.ElderPerFemale} %`,
-  //   0,// `${GoldCard.summary.ElderPer} %`,
-
-  //    `${GoldCard.g6064.ElderPerMale} %`,
-  //    `${GoldCard.g6064.ElderPerFemale} %`,
-  //    `${GoldCard.g6064.ElderPer} %`,
-
-  //   `${ GoldCard.g6569.ElderPerMale} %`,
-  //   `${ GoldCard.g6569.ElderPerFemale} %`,
-  //   `${ GoldCard.g6569.ElderPer} %`,
-
-  //    `${GoldCard.g7074.ElderPerMale} %`,
-  //    `${GoldCard.g7074.ElderPerFemale} %`,
-  //    `${GoldCard.g7074.ElderPer} %`,
-
-  //    `${GoldCard.g7579.ElderPerMale} %`,
-  //    `${GoldCard.g7579.ElderPerFemale} %`,
-  //    `${GoldCard.g7579.ElderPer} %`,
-
-  //    `${GoldCard.g8084.ElderPerMale} %`,
-  //    `${GoldCard.g8084.ElderPerFemale} %`,
-  //    `${GoldCard.g8084.ElderPer} %`,
-
-  //    `${GoldCard.g8589.ElderPerMale} %`,
-  //    `${GoldCard.g8589.ElderPerFemale} %`,
-  //    `${GoldCard.g8589.ElderPer} %`,
-
-  //    `${GoldCard.g9094.ElderPerMale} %`,
-  //    `${GoldCard.g9094.ElderPerFemale} %`,
-  //    `${GoldCard.g9094.ElderPer} %`,
-
-  //    `${GoldCard.g95.ElderPerMale} %`,
-  //    `${GoldCard.g95.ElderPerFemale} %`,
-  //   `${ GoldCard.g95.ElderPer} %`,
-  //  ),
-  //  createData(
-  //    " บัตรผู้พิการ",
-  //    DisabledCard.g6064.ElderMale,
-  //    DisabledCard.g6064.ElderFemale,
-  //    DisabledCard.g6064.Elder,
-
-  //    DisabledCard.g6569.ElderMale,
-  //    DisabledCard.g6569.ElderFemale,
-  //    DisabledCard.g6569.Elder,
-
-  //    DisabledCard.g7074.ElderMale,
-  //    DisabledCard.g7074.ElderFemale,
-  //    DisabledCard.g7074.Elder,
-
-  //    DisabledCard.g7579.ElderMale,
-  //    DisabledCard.g7579.ElderFemale,
-  //    DisabledCard.g7579.Elder,
-
-  //    DisabledCard.g8084.ElderMale,
-  //    DisabledCard.g8084.ElderFemale,
-  //    DisabledCard.g8084.Elder,
-
-  //    DisabledCard.g8589.ElderMale,
-  //    DisabledCard.g8589.ElderFemale,
-  //    DisabledCard.g8589.Elder,
-
-  //    DisabledCard.g9094.ElderMale,
-  //    DisabledCard.g9094.ElderFemale,
-  //    DisabledCard.g9094.Elder,
-
-  //    DisabledCard.g95.ElderMale,
-  //    DisabledCard.g95.ElderFemale,
-  //    DisabledCard.g95.Elder,
-
-  //    DisabledCard.summary.ElderMale,
-  //    DisabledCard.summary.ElderFemale,
-  //    DisabledCard.summary.Elder,
-
-  //    `${DisabledCard.summary.ElderPerMale} %`,
-  //    `${DisabledCard.summary.ElderPerFemale} %`,
-  //    0,//  `${DisabledCard.summary.ElderPer} %`,
-
-  //    `${DisabledCard.g6064.ElderPerMale} %`,
-  //    `${DisabledCard.g6064.ElderPerFemale} %`,
-  //    `${DisabledCard.g6064.ElderPer} %`,
-
-  //   `${ DisabledCard.g6569.ElderPerMale} %`,
-  //   `${ DisabledCard.g6569.ElderPerFemale} %`,
-  //   `${ DisabledCard.g6569.ElderPer} %`,
-
-  //    `${DisabledCard.g7074.ElderPerMale} %`,
-  //    `${DisabledCard.g7074.ElderPerFemale} %`,
-  //    `${DisabledCard.g7074.ElderPer} %`,
-
-  //    `${DisabledCard.g7579.ElderPerMale} %`,
-  //    `${DisabledCard.g7579.ElderPerFemale} %`,
-  //    `${DisabledCard.g7579.ElderPer} %`,
-
-  //    `${DisabledCard.g8084.ElderPerMale} %`,
-  //    `${DisabledCard.g8084.ElderPerFemale} %`,
-  //    `${DisabledCard.g8084.ElderPer} %`,
-
-  //    `${DisabledCard.g8589.ElderPerMale} %`,
-  //    `${DisabledCard.g8589.ElderPerFemale} %`,
-  //    `${DisabledCard.g8589.ElderPer} %`,
-
-  //    `${DisabledCard.g9094.ElderPerMale} %`,
-  //    `${DisabledCard.g9094.ElderPerFemale} %`,
-  //    `${DisabledCard.g9094.ElderPer} %`,
-
-  //    `${DisabledCard.g95.ElderPerMale} %`,
-  //    `${DisabledCard.g95.ElderPerFemale} %`,
-  //   `${ DisabledCard.g95.ElderPer} %`,
-  //  ),
-  //  createData(
-  //    " บัตรประกันสังคม",
-  //    SocialCard.g6064.ElderMale,
-  //    SocialCard.g6064.ElderFemale,
-  //    SocialCard.g6064.Elder,
-
-  //    SocialCard.g6569.ElderMale,
-  //    SocialCard.g6569.ElderFemale,
-  //    SocialCard.g6569.Elder,
-
-  //    SocialCard.g7074.ElderMale,
-  //    SocialCard.g7074.ElderFemale,
-  //    SocialCard.g7074.Elder,
-
-  //    SocialCard.g7579.ElderMale,
-  //    SocialCard.g7579.ElderFemale,
-  //    SocialCard.g7579.Elder,
-
-  //    SocialCard.g8084.ElderMale,
-  //    SocialCard.g8084.ElderFemale,
-  //    SocialCard.g8084.Elder,
-
-  //    SocialCard.g8589.ElderMale,
-  //    SocialCard.g8589.ElderFemale,
-  //    SocialCard.g8589.Elder,
-
-  //    SocialCard.g9094.ElderMale,
-  //    SocialCard.g9094.ElderFemale,
-  //    SocialCard.g9094.Elder,
-
-  //    SocialCard.g95.ElderMale,
-  //    SocialCard.g95.ElderFemale,
-  //    SocialCard.g95.Elder,
+    createData(
+     ` เบิกต้นสังกัด `,
+     Affiliation.g6064.ElderMale,
+     Affiliation.g6064.ElderFemale,
+     Affiliation.g6064.Elder,
+
+     Affiliation.g6569.ElderMale,
+     Affiliation.g6569.ElderFemale,
+     Affiliation.g6569.Elder,
+
+     Affiliation.g7074.ElderMale,
+     Affiliation.g7074.ElderFemale,
+     Affiliation.g7074.Elder,
+
+     Affiliation.g7579.ElderMale,
+     Affiliation.g7579.ElderFemale,
+     Affiliation.g7579.Elder,
+
+     Affiliation.g8084.ElderMale,
+     Affiliation.g8084.ElderFemale,
+     Affiliation.g8084.Elder,
+
+     Affiliation.g8589.ElderMale,
+     Affiliation.g8589.ElderFemale,
+     Affiliation.g8589.Elder,
+
+     Affiliation.g9094.ElderMale,
+     Affiliation.g9094.ElderFemale,
+     Affiliation.g9094.Elder,
+
+     Affiliation.g95.ElderMale,
+     Affiliation.g95.ElderFemale,
+     Affiliation.g95.Elder,
+
+     Affiliation.summary.ElderMale,
+     Affiliation.summary.ElderFemale,
+     Affiliation.summary.Elder,//sumAll
+
+     `${Affiliation.summary.ElderPerMale} %`,
+     `${Affiliation.summary.ElderPerFemale} %`,
+     `${Affiliation.summary.ElderPer} %`,
+
+
+     `${Affiliation.g6064.ElderPerMale} %`,
+     `${Affiliation.g6064.ElderPerFemale} %`,
+     `${Affiliation.g6064.ElderPer} %`,
+
+    `${ Affiliation.g6569.ElderPerMale} %`,
+    `${ Affiliation.g6569.ElderPerFemale} %`,
+    `${ Affiliation.g6569.ElderPer} %`,
+
+     `${Affiliation.g7074.ElderPerMale} %`,
+     `${Affiliation.g7074.ElderPerFemale} %`,
+     `${Affiliation.g7074.ElderPer} %`,
+
+     `${Affiliation.g7579.ElderPerMale} %`,
+     `${Affiliation.g7579.ElderPerFemale} %`,
+     `${Affiliation.g7579.ElderPer} %`,
+
+     `${Affiliation.g8084.ElderPerMale} %`,
+     `${Affiliation.g8084.ElderPerFemale} %`,
+     `${Affiliation.g8084.ElderPer} %`,
+
+     `${Affiliation.g8589.ElderPerMale} %`,
+     `${Affiliation.g8589.ElderPerFemale} %`,
+     `${Affiliation.g8589.ElderPer} %`,
+
+     `${Affiliation.g9094.ElderPerMale} %`,
+     `${Affiliation.g9094.ElderPerFemale} %`,
+     `${Affiliation.g9094.ElderPer} %`,
+
+     `${Affiliation.g95.ElderPerMale} %`,
+     `${Affiliation.g95.ElderPerFemale} %`,
+    `${ Affiliation.g95.ElderPer} %`,
+
+   ),
+   createData(
+     " ชำระเงินเอง",
+     Yourself.g6064.ElderMale,
+     Yourself.g6064.ElderFemale,
+     Yourself.g6064.Elder,
+
+     Yourself.g6569.ElderMale,
+     Yourself.g6569.ElderFemale,
+     Yourself.g6569.Elder,
+
+     Yourself.g7074.ElderMale,
+     Yourself.g7074.ElderFemale,
+     Yourself.g7074.Elder,
+
+     Yourself.g7579.ElderMale,
+     Yourself.g7579.ElderFemale,
+     Yourself.g7579.Elder,
+
+     Yourself.g8084.ElderMale,
+     Yourself.g8084.ElderFemale,
+     Yourself.g8084.Elder,
+
+     Yourself.g8589.ElderMale,
+     Yourself.g8589.ElderFemale,
+     Yourself.g8589.Elder,
+
+     Yourself.g9094.ElderMale,
+     Yourself.g9094.ElderFemale,
+     Yourself.g9094.Elder,
+
+     Yourself.g95.ElderMale,
+     Yourself.g95.ElderFemale,
+     Yourself.g95.Elder,
+
+     Yourself.summary.ElderMale,
+     Yourself.summary.ElderFemale,
+     Yourself.summary.Elder,
+
+     `${Yourself.summary.ElderPerMale} %`,
+     `${Yourself.summary.ElderPerFemale} %`,
+     0,//  `${Yourself.summary.ElderPer} %`,
+
+     `${Yourself.g6064.ElderPerMale} %`,
+     `${Yourself.g6064.ElderPerFemale} %`,
+     `${Yourself.g6064.ElderPer} %`,
+
+    `${ Yourself.g6569.ElderPerMale} %`,
+    `${ Yourself.g6569.ElderPerFemale} %`,
+    `${ Yourself.g6569.ElderPer} %`,
+
+     `${Yourself.g7074.ElderPerMale} %`,
+     `${Yourself.g7074.ElderPerFemale} %`,
+     `${Yourself.g7074.ElderPer} %`,
+
+     `${Yourself.g7579.ElderPerMale} %`,
+     `${Yourself.g7579.ElderPerFemale} %`,
+     `${Yourself.g7579.ElderPer} %`,
+
+     `${Yourself.g8084.ElderPerMale} %`,
+     `${Yourself.g8084.ElderPerFemale} %`,
+     `${Yourself.g8084.ElderPer} %`,
+
+     `${Yourself.g8589.ElderPerMale} %`,
+     `${Yourself.g8589.ElderPerFemale} %`,
+     `${Yourself.g8589.ElderPer} %`,
+
+     `${Yourself.g9094.ElderPerMale} %`,
+     `${Yourself.g9094.ElderPerFemale} %`,
+     `${Yourself.g9094.ElderPer} %`,
+
+     `${Yourself.g95.ElderPerMale} %`,
+     `${Yourself.g95.ElderPerFemale} %`,
+    `${ Yourself.g95.ElderPer} %`,
+   ),
+   createData(
+     " บัตรทอง",
+     GoldCard.g6064.ElderMale,
+     GoldCard.g6064.ElderFemale,
+     GoldCard.g6064.Elder,
+
+     GoldCard.g6569.ElderMale,
+     GoldCard.g6569.ElderFemale,
+     GoldCard.g6569.Elder,
+
+     GoldCard.g7074.ElderMale,
+     GoldCard.g7074.ElderFemale,
+     GoldCard.g7074.Elder,
+
+     GoldCard.g7579.ElderMale,
+     GoldCard.g7579.ElderFemale,
+     GoldCard.g7579.Elder,
+
+     GoldCard.g8084.ElderMale,
+     GoldCard.g8084.ElderFemale,
+     GoldCard.g8084.Elder,
+
+     GoldCard.g8589.ElderMale,
+     GoldCard.g8589.ElderFemale,
+     GoldCard.g8589.Elder,
+
+     GoldCard.g9094.ElderMale,
+     GoldCard.g9094.ElderFemale,
+     GoldCard.g9094.Elder,
+
+     GoldCard.g95.ElderMale,
+     GoldCard.g95.ElderFemale,
+     GoldCard.g95.Elder,
+
+     GoldCard.summary.ElderMale,
+     GoldCard.summary.ElderFemale,
+     GoldCard.summary.Elder,
+
+   `${GoldCard.summary.ElderPerMale} %`,
+    `${GoldCard.summary.ElderPerFemale} %`,
+    `${GoldCard.summary.ElderPer} %`,
+
+     `${GoldCard.g6064.ElderPerMale} %`,
+     `${GoldCard.g6064.ElderPerFemale} %`,
+     `${GoldCard.g6064.ElderPer} %`,
+
+    `${ GoldCard.g6569.ElderPerMale} %`,
+    `${ GoldCard.g6569.ElderPerFemale} %`,
+    `${ GoldCard.g6569.ElderPer} %`,
+
+     `${GoldCard.g7074.ElderPerMale} %`,
+     `${GoldCard.g7074.ElderPerFemale} %`,
+     `${GoldCard.g7074.ElderPer} %`,
+
+     `${GoldCard.g7579.ElderPerMale} %`,
+     `${GoldCard.g7579.ElderPerFemale} %`,
+     `${GoldCard.g7579.ElderPer} %`,
+
+     `${GoldCard.g8084.ElderPerMale} %`,
+     `${GoldCard.g8084.ElderPerFemale} %`,
+     `${GoldCard.g8084.ElderPer} %`,
+
+     `${GoldCard.g8589.ElderPerMale} %`,
+     `${GoldCard.g8589.ElderPerFemale} %`,
+     `${GoldCard.g8589.ElderPer} %`,
+
+     `${GoldCard.g9094.ElderPerMale} %`,
+     `${GoldCard.g9094.ElderPerFemale} %`,
+     `${GoldCard.g9094.ElderPer} %`,
+
+     `${GoldCard.g95.ElderPerMale} %`,
+     `${GoldCard.g95.ElderPerFemale} %`,
+    `${ GoldCard.g95.ElderPer} %`,
+   ),
+   createData(
+     " บัตรผู้พิการ",
+     DisabledCard.g6064.ElderMale,
+     DisabledCard.g6064.ElderFemale,
+     DisabledCard.g6064.Elder,
+
+     DisabledCard.g6569.ElderMale,
+     DisabledCard.g6569.ElderFemale,
+     DisabledCard.g6569.Elder,
+
+     DisabledCard.g7074.ElderMale,
+     DisabledCard.g7074.ElderFemale,
+     DisabledCard.g7074.Elder,
+
+     DisabledCard.g7579.ElderMale,
+     DisabledCard.g7579.ElderFemale,
+     DisabledCard.g7579.Elder,
+
+     DisabledCard.g8084.ElderMale,
+     DisabledCard.g8084.ElderFemale,
+     DisabledCard.g8084.Elder,
+
+     DisabledCard.g8589.ElderMale,
+     DisabledCard.g8589.ElderFemale,
+     DisabledCard.g8589.Elder,
+
+     DisabledCard.g9094.ElderMale,
+     DisabledCard.g9094.ElderFemale,
+     DisabledCard.g9094.Elder,
+
+     DisabledCard.g95.ElderMale,
+     DisabledCard.g95.ElderFemale,
+     DisabledCard.g95.Elder,
+
+     DisabledCard.summary.ElderMale,
+     DisabledCard.summary.ElderFemale,
+     DisabledCard.summary.Elder,
+
+     `${DisabledCard.summary.ElderPerMale} %`,
+     `${DisabledCard.summary.ElderPerFemale} %`,
+      `${DisabledCard.summary.ElderPer} %`,
+
+     `${DisabledCard.g6064.ElderPerMale} %`,
+     `${DisabledCard.g6064.ElderPerFemale} %`,
+     `${DisabledCard.g6064.ElderPer} %`,
+
+    `${ DisabledCard.g6569.ElderPerMale} %`,
+    `${ DisabledCard.g6569.ElderPerFemale} %`,
+    `${ DisabledCard.g6569.ElderPer} %`,
+
+     `${DisabledCard.g7074.ElderPerMale} %`,
+     `${DisabledCard.g7074.ElderPerFemale} %`,
+     `${DisabledCard.g7074.ElderPer} %`,
+
+     `${DisabledCard.g7579.ElderPerMale} %`,
+     `${DisabledCard.g7579.ElderPerFemale} %`,
+     `${DisabledCard.g7579.ElderPer} %`,
+
+     `${DisabledCard.g8084.ElderPerMale} %`,
+     `${DisabledCard.g8084.ElderPerFemale} %`,
+     `${DisabledCard.g8084.ElderPer} %`,
+
+     `${DisabledCard.g8589.ElderPerMale} %`,
+     `${DisabledCard.g8589.ElderPerFemale} %`,
+     `${DisabledCard.g8589.ElderPer} %`,
+
+     `${DisabledCard.g9094.ElderPerMale} %`,
+     `${DisabledCard.g9094.ElderPerFemale} %`,
+     `${DisabledCard.g9094.ElderPer} %`,
+
+     `${DisabledCard.g95.ElderPerMale} %`,
+     `${DisabledCard.g95.ElderPerFemale} %`,
+    `${ DisabledCard.g95.ElderPer} %`,
+   ),
+   createData(
+     " บัตรประกันสังคม",
+     SocialCard.g6064.ElderMale,
+     SocialCard.g6064.ElderFemale,
+     SocialCard.g6064.Elder,
+
+     SocialCard.g6569.ElderMale,
+     SocialCard.g6569.ElderFemale,
+     SocialCard.g6569.Elder,
+
+     SocialCard.g7074.ElderMale,
+     SocialCard.g7074.ElderFemale,
+     SocialCard.g7074.Elder,
+
+     SocialCard.g7579.ElderMale,
+     SocialCard.g7579.ElderFemale,
+     SocialCard.g7579.Elder,
+
+     SocialCard.g8084.ElderMale,
+     SocialCard.g8084.ElderFemale,
+     SocialCard.g8084.Elder,
+
+     SocialCard.g8589.ElderMale,
+     SocialCard.g8589.ElderFemale,
+     SocialCard.g8589.Elder,
+
+     SocialCard.g9094.ElderMale,
+     SocialCard.g9094.ElderFemale,
+     SocialCard.g9094.Elder,
+
+     SocialCard.g95.ElderMale,
+     SocialCard.g95.ElderFemale,
+     SocialCard.g95.Elder,
    
-  //    SocialCard.summary.ElderMale,
-  //    SocialCard.summary.ElderFemale,
-  //    SocialCard.summary.Elder,
+     SocialCard.summary.ElderMale,
+     SocialCard.summary.ElderFemale,
+     SocialCard.summary.Elder,
 
-  //    `${SocialCard.summary.ElderPerMale} %`,
-  //    `${SocialCard.summary.ElderPerFemale} %`,
-  //    0,//  `${SocialCard.summary.ElderPer} %`,
+     `${SocialCard.summary.ElderPerMale} %`,
+     `${SocialCard.summary.ElderPerFemale} %`,
+      `${SocialCard.summary.ElderPer} %`,
 
-  //    `${SocialCard.g6064.ElderPerMale} %`,
-  //    `${SocialCard.g6064.ElderPerFemale} %`,
-  //    `${SocialCard.g6064.ElderPer} %`,
+     `${SocialCard.g6064.ElderPerMale} %`,
+     `${SocialCard.g6064.ElderPerFemale} %`,
+     `${SocialCard.g6064.ElderPer} %`,
 
-  //   `${ SocialCard.g6569.ElderPerMale} %`,
-  //   `${ SocialCard.g6569.ElderPerFemale} %`,
-  //   `${ SocialCard.g6569.ElderPer} %`,
+    `${ SocialCard.g6569.ElderPerMale} %`,
+    `${ SocialCard.g6569.ElderPerFemale} %`,
+    `${ SocialCard.g6569.ElderPer} %`,
 
-  //    `${SocialCard.g7074.ElderPerMale} %`,
-  //    `${SocialCard.g7074.ElderPerFemale} %`,
-  //    `${SocialCard.g7074.ElderPer} %`,
+     `${SocialCard.g7074.ElderPerMale} %`,
+     `${SocialCard.g7074.ElderPerFemale} %`,
+     `${SocialCard.g7074.ElderPer} %`,
 
-  //    `${SocialCard.g7579.ElderPerMale} %`,
-  //    `${SocialCard.g7579.ElderPerFemale} %`,
-  //    `${SocialCard.g7579.ElderPer} %`,
+     `${SocialCard.g7579.ElderPerMale} %`,
+     `${SocialCard.g7579.ElderPerFemale} %`,
+     `${SocialCard.g7579.ElderPer} %`,
 
-  //    `${SocialCard.g8084.ElderPerMale} %`,
-  //    `${SocialCard.g8084.ElderPerFemale} %`,
-  //    `${SocialCard.g8084.ElderPer} %`,
+     `${SocialCard.g8084.ElderPerMale} %`,
+     `${SocialCard.g8084.ElderPerFemale} %`,
+     `${SocialCard.g8084.ElderPer} %`,
 
-  //    `${SocialCard.g8589.ElderPerMale} %`,
-  //    `${SocialCard.g8589.ElderPerFemale} %`,
-  //    `${SocialCard.g8589.ElderPer} %`,
+     `${SocialCard.g8589.ElderPerMale} %`,
+     `${SocialCard.g8589.ElderPerFemale} %`,
+     `${SocialCard.g8589.ElderPer} %`,
 
-  //    `${SocialCard.g9094.ElderPerMale} %`,
-  //    `${SocialCard.g9094.ElderPerFemale} %`,
-  //    `${SocialCard.g9094.ElderPer} %`,
+     `${SocialCard.g9094.ElderPerMale} %`,
+     `${SocialCard.g9094.ElderPerFemale} %`,
+     `${SocialCard.g9094.ElderPer} %`,
 
-  //    `${SocialCard.g95.ElderPerMale} %`,
-  //    `${SocialCard.g95.ElderPerFemale} %`,
-  //   `${ SocialCard.g95.ElderPer} %`,
-  //  ),
-  //  createData(
-  //    " อื่นๆ",
-  //        Other.g6064.ElderMale,
-  //        Other.g6064.ElderFemale,
-  //        Other.g6064.Elder,
+     `${SocialCard.g95.ElderPerMale} %`,
+     `${SocialCard.g95.ElderPerFemale} %`,
+    `${ SocialCard.g95.ElderPer} %`,
+   ),
+   createData(
+     " อื่นๆ",
+         Other.g6064.ElderMale,
+         Other.g6064.ElderFemale,
+         Other.g6064.Elder,
 
-  //        Other.g6569.ElderMale,
-  //        Other.g6569.ElderFemale,
-  //        Other.g6569.Elder,
+         Other.g6569.ElderMale,
+         Other.g6569.ElderFemale,
+         Other.g6569.Elder,
 
-  //        Other.g7074.ElderMale,
-  //        Other.g7074.ElderFemale,
-  //        Other.g7074.Elder,
+         Other.g7074.ElderMale,
+         Other.g7074.ElderFemale,
+         Other.g7074.Elder,
 
-  //        Other.g7579.ElderMale,
-  //        Other.g7579.ElderFemale,
-  //        Other.g7579.Elder,
+         Other.g7579.ElderMale,
+         Other.g7579.ElderFemale,
+         Other.g7579.Elder,
 
-  //        Other.g8084.ElderMale,
-  //        Other.g8084.ElderFemale,
-  //        Other.g8084.Elder,
+         Other.g8084.ElderMale,
+         Other.g8084.ElderFemale,
+         Other.g8084.Elder,
 
-  //        Other.g8589.ElderMale,
-  //        Other.g8589.ElderFemale,
-  //        Other.g8589.Elder,
+         Other.g8589.ElderMale,
+         Other.g8589.ElderFemale,
+         Other.g8589.Elder,
 
-  //        Other.g9094.ElderMale,
-  //        Other.g9094.ElderFemale,
-  //        Other.g9094.Elder,
+         Other.g9094.ElderMale,
+         Other.g9094.ElderFemale,
+         Other.g9094.Elder,
 
-  //        Other.g95.ElderMale,
-  //        Other.g95.ElderFemale,
-  //        Other.g95.Elder,
+         Other.g95.ElderMale,
+         Other.g95.ElderFemale,
+         Other.g95.Elder,
 
-  //        Other.summary.ElderMale,
-  //        Other.summary.ElderFemale,
-  //        Other.summary.Elder,
+         Other.summary.ElderMale,
+         Other.summary.ElderFemale,
+         Other.summary.Elder,
 
-  //    `${Other.summary.ElderPerMale} %`,
-  //    `${Other.summary.ElderPerFemale} %`,
-  //    0,//  `${Other.summary.ElderPer} %`,
+     `${Other.summary.ElderPerMale} %`,
+     `${Other.summary.ElderPerFemale} %`,
+      `${Other.summary.ElderPer} %`,
 
-  //    `${Other.g6064.ElderPerMale} %`,
-  //    `${Other.g6064.ElderPerFemale} %`,
-  //    `${Other.g6064.ElderPer} %`,
+     `${Other.g6064.ElderPerMale} %`,
+     `${Other.g6064.ElderPerFemale} %`,
+     `${Other.g6064.ElderPer} %`,
 
-  //   `${Other.g6569.ElderPerMale} %`,
-  //   `${Other.g6569.ElderPerFemale} %`,
-  //   `${Other.g6569.ElderPer} %`,
+    `${Other.g6569.ElderPerMale} %`,
+    `${Other.g6569.ElderPerFemale} %`,
+    `${Other.g6569.ElderPer} %`,
 
-  //    `${Other.g7074.ElderPerMale} %`,
-  //    `${Other.g7074.ElderPerFemale} %`,
-  //    `${Other.g7074.ElderPer} %`,
+     `${Other.g7074.ElderPerMale} %`,
+     `${Other.g7074.ElderPerFemale} %`,
+     `${Other.g7074.ElderPer} %`,
 
-  //    `${Other.g7579.ElderPerMale} %`,
-  //    `${Other.g7579.ElderPerFemale} %`,
-  //    `${Other.g7579.ElderPer} %`,
+     `${Other.g7579.ElderPerMale} %`,
+     `${Other.g7579.ElderPerFemale} %`,
+     `${Other.g7579.ElderPer} %`,
 
-  //    `${Other.g8084.ElderPerMale} %`,
-  //    `${Other.g8084.ElderPerFemale} %`,
-  //    `${Other.g8084.ElderPer} %`,
+     `${Other.g8084.ElderPerMale} %`,
+     `${Other.g8084.ElderPerFemale} %`,
+     `${Other.g8084.ElderPer} %`,
 
-  //    `${Other.g8589.ElderPerMale} %`,
-  //    `${Other.g8589.ElderPerFemale} %`,
-  //    `${Other.g8589.ElderPer} %`,
+     `${Other.g8589.ElderPerMale} %`,
+     `${Other.g8589.ElderPerFemale} %`,
+     `${Other.g8589.ElderPer} %`,
 
-  //    `${Other.g9094.ElderPerMale} %`,
-  //    `${Other.g9094.ElderPerFemale} %`,
-  //    `${Other.g9094.ElderPer} %`,
+     `${Other.g9094.ElderPerMale} %`,
+     `${Other.g9094.ElderPerFemale} %`,
+     `${Other.g9094.ElderPer} %`,
 
-  //    `${Other.g95.ElderPerMale} %`,
-  //    `${Other.g95.ElderPerFemale} %`,
-  //   `${Other.g95.ElderPer} %`,
-  //  ),
+     `${Other.g95.ElderPerMale} %`,
+     `${Other.g95.ElderPerFemale} %`,
+    `${Other.g95.ElderPer} %`,
+   ),
  ];
   const handleChange = (e) => {
     setTreatment(e.target.value);
@@ -677,6 +677,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           }
           label="คิดเป็นร้อยละ"
         />
+        {Affiliation.g6064.ElderMale}
         {openPaper ? (
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
