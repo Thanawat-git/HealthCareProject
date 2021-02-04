@@ -87,7 +87,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         />
         <br />
       </div> */}
-<div> 
+<div ref={ref}> 
       <TableContainer component={Paper}>
       <Table className="table-report" aria-label="customized table">
         <TableHead>

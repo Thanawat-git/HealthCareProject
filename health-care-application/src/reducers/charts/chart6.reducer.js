@@ -11,6 +11,7 @@ const initialState = {
         Elder: 0,
         ElderMale: 0,
         ElderFemale: 0,
+        ElderPer:0,
         ElderPerMale: 0,
         ElderPerFemale: 0,
       },

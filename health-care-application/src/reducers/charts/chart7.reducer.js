@@ -6,51 +6,396 @@ import {
 
 const initialState = {
   results: {
-    g95: {
+    Affiliation: {
+      summary: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g6064: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6064: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g6569: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6069: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g7074: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7074: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g7579: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7079: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g8084: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8084: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g8589: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8089: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    g9094: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g9094: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
-    summary: {
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g95: {
       Elder: 0,
-      ElderFemale: 0,
       ElderMale: 0,
-    },
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      }
+      },
+      Yourself : {
+      summary: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6064: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6069: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7074: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7079: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8084: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale:0,
+      ElderPerFemale: 0
+      },
+      g8089: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g9094: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g95: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      }
+      },
+      GoldCard: {
+      summary: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6064: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale:0,
+      ElderPerFemale: 0
+      },
+      g6069: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7074: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7079: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8084: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale:0
+      },
+      g8089: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g9094: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g95: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      }
+      },
+      DisabledCard: {
+      summary: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6064: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6069: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7074: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7079: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8084: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8089: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g9094: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g95: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      }
+      },
+      SocialCard: {
+      summary: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6064: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g6069: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale:0
+      },
+      g7074: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale:0
+      },
+      g7079: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8084: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8089: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g9094: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g95: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      }
+      },
+      Other: {
+      summary: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale:0
+      },
+      g6064: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale:0
+      },
+      g6069: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7074: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g7079: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8084: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g8089: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g9094: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      },
+      g95: {
+      Elder: 0,
+      ElderMale: 0,
+      ElderFemale: 0,
+      ElderPerMale: 0,
+      ElderPerFemale: 0
+      }
+      }
 },
   isFetching: false,
   isError: false,

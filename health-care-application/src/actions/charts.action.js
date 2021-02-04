@@ -133,7 +133,7 @@ export const getDataChart7 = Treatment => {
   return async dispatch=> {
     await dispatch({ type: CHART7_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report01/07-treatment/${Treatment}`)
+      let data = await Axios.get(`${apiBase}/report01/07-treatment`)
       console.log("chart 7 ", data.data)
       await dispatch({
         type: CHART7_GET_SUCCRESS,

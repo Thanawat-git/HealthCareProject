@@ -67,7 +67,9 @@ function createData(
   sumAllM,
   sumAllF,
   sumAll,
-  //////////////////////
+  sumAllPerM,
+  sumAllPerF,
+  sumAllPer,
   PerMale,
   PerFemale,
   Persum,
@@ -124,6 +126,9 @@ function createData(
     sumAllM,
     sumAllF,
     sumAll,
+    sumAllPerM,
+    sumAllPerF,
+    sumAllPer,
     PerMale,
   PerFemale,
   Persum,
@@ -210,7 +215,12 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       Uneducate.summary.ElderMale,
       Uneducate.summary.ElderFemale,
-      Uneducate.summary.Elder,
+      Uneducate.summary.Elder,//sumAll
+
+      `${Uneducate.summary.ElderPerMale} %`,
+      `${Uneducate.summary.ElderPerFemale} %`,
+      `${Uneducate.summary.ElderPer} %`,
+
 
       `${Uneducate.g6064.ElderPerMale} %`,
       `${Uneducate.g6064.ElderPerFemale} %`,
@@ -281,7 +291,43 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       SecondarySchool.summary.ElderMale,
       SecondarySchool.summary.ElderFemale,
-      SecondarySchool.summary.Elder
+      SecondarySchool.summary.Elder,
+
+      `${SecondarySchool.summary.ElderPerMale} %`,
+      `${SecondarySchool.summary.ElderPerFemale} %`,
+      `${SecondarySchool.summary.ElderPer} %`,
+
+      `${SecondarySchool.g6064.ElderPerMale} %`,
+      `${SecondarySchool.g6064.ElderPerFemale} %`,
+      `${SecondarySchool.g6064.ElderPer} %`,
+
+     `${ SecondarySchool.g6569.ElderPerMale} %`,
+     `${ SecondarySchool.g6569.ElderPerFemale} %`,
+     `${ SecondarySchool.g6569.ElderPer} %`,
+
+      `${SecondarySchool.g7074.ElderPerMale} %`,
+      `${SecondarySchool.g7074.ElderPerFemale} %`,
+      `${SecondarySchool.g7074.ElderPer} %`,
+
+      `${SecondarySchool.g7579.ElderPerMale} %`,
+      `${SecondarySchool.g7579.ElderPerFemale} %`,
+      `${SecondarySchool.g7579.ElderPer} %`,
+
+      `${SecondarySchool.g8084.ElderPerMale} %`,
+      `${SecondarySchool.g8084.ElderPerFemale} %`,
+      `${SecondarySchool.g8084.ElderPer} %`,
+
+      `${SecondarySchool.g8589.ElderPerMale} %`,
+      `${SecondarySchool.g8589.ElderPerFemale} %`,
+      `${SecondarySchool.g8589.ElderPer} %`,
+
+      `${SecondarySchool.g9094.ElderPerMale} %`,
+      `${SecondarySchool.g9094.ElderPerFemale} %`,
+      `${SecondarySchool.g9094.ElderPer} %`,
+
+      `${SecondarySchool.g95.ElderPerMale} %`,
+      `${SecondarySchool.g95.ElderPerFemale} %`,
+     `${ SecondarySchool.g95.ElderPer} %`,
     ),
     createData(
       " มัธยมศึกษา",
@@ -319,7 +365,43 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       HighSchool.summary.ElderMale,
       HighSchool.summary.ElderFemale,
-      HighSchool.summary.Elder
+      HighSchool.summary.Elder,
+
+    `${HighSchool.summary.ElderPerMale} %`,
+     `${HighSchool.summary.ElderPerFemale} %`,
+     `${HighSchool.summary.ElderPer} %`,
+
+      `${HighSchool.g6064.ElderPerMale} %`,
+      `${HighSchool.g6064.ElderPerFemale} %`,
+      `${HighSchool.g6064.ElderPer} %`,
+
+     `${ HighSchool.g6569.ElderPerMale} %`,
+     `${ HighSchool.g6569.ElderPerFemale} %`,
+     `${ HighSchool.g6569.ElderPer} %`,
+
+      `${HighSchool.g7074.ElderPerMale} %`,
+      `${HighSchool.g7074.ElderPerFemale} %`,
+      `${HighSchool.g7074.ElderPer} %`,
+
+      `${HighSchool.g7579.ElderPerMale} %`,
+      `${HighSchool.g7579.ElderPerFemale} %`,
+      `${HighSchool.g7579.ElderPer} %`,
+
+      `${HighSchool.g8084.ElderPerMale} %`,
+      `${HighSchool.g8084.ElderPerFemale} %`,
+      `${HighSchool.g8084.ElderPer} %`,
+
+      `${HighSchool.g8589.ElderPerMale} %`,
+      `${HighSchool.g8589.ElderPerFemale} %`,
+      `${HighSchool.g8589.ElderPer} %`,
+
+      `${HighSchool.g9094.ElderPerMale} %`,
+      `${HighSchool.g9094.ElderPerFemale} %`,
+      `${HighSchool.g9094.ElderPer} %`,
+
+      `${HighSchool.g95.ElderPerMale} %`,
+      `${HighSchool.g95.ElderPerFemale} %`,
+     `${ HighSchool.g95.ElderPer} %`,
     ),
     createData(
       " อนุปริญญา/ปวช./ปวส.",
@@ -357,7 +439,43 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       TechnicalCollege.summary.ElderMale,
       TechnicalCollege.summary.ElderFemale,
-      TechnicalCollege.summary.Elder
+      TechnicalCollege.summary.Elder,
+
+      `${TechnicalCollege.summary.ElderPerMale} %`,
+      `${TechnicalCollege.summary.ElderPerFemale} %`,
+      `${TechnicalCollege.summary.ElderPer} %`,
+
+      `${TechnicalCollege.g6064.ElderPerMale} %`,
+      `${TechnicalCollege.g6064.ElderPerFemale} %`,
+      `${TechnicalCollege.g6064.ElderPer} %`,
+
+     `${ TechnicalCollege.g6569.ElderPerMale} %`,
+     `${ TechnicalCollege.g6569.ElderPerFemale} %`,
+     `${ TechnicalCollege.g6569.ElderPer} %`,
+
+      `${TechnicalCollege.g7074.ElderPerMale} %`,
+      `${TechnicalCollege.g7074.ElderPerFemale} %`,
+      `${TechnicalCollege.g7074.ElderPer} %`,
+
+      `${TechnicalCollege.g7579.ElderPerMale} %`,
+      `${TechnicalCollege.g7579.ElderPerFemale} %`,
+      `${TechnicalCollege.g7579.ElderPer} %`,
+
+      `${TechnicalCollege.g8084.ElderPerMale} %`,
+      `${TechnicalCollege.g8084.ElderPerFemale} %`,
+      `${TechnicalCollege.g8084.ElderPer} %`,
+
+      `${TechnicalCollege.g8589.ElderPerMale} %`,
+      `${TechnicalCollege.g8589.ElderPerFemale} %`,
+      `${TechnicalCollege.g8589.ElderPer} %`,
+
+      `${TechnicalCollege.g9094.ElderPerMale} %`,
+      `${TechnicalCollege.g9094.ElderPerFemale} %`,
+      `${TechnicalCollege.g9094.ElderPer} %`,
+
+      `${TechnicalCollege.g95.ElderPerMale} %`,
+      `${TechnicalCollege.g95.ElderPerFemale} %`,
+     `${ TechnicalCollege.g95.ElderPer} %`,
     ),
     createData(
       " ปริญญาตรี",
@@ -395,7 +513,43 @@ const ShowChart = React.forwardRef((props, ref) => {
     
       BachelorDegrees.summary.ElderMale,
       BachelorDegrees.summary.ElderFemale,
-      BachelorDegrees.summary.Elder
+      BachelorDegrees.summary.Elder,
+
+      `${BachelorDegrees.summary.ElderPerMale} %`,
+      `${BachelorDegrees.summary.ElderPerFemale} %`,
+      `${BachelorDegrees.summary.ElderPer} %`,
+
+      `${BachelorDegrees.g6064.ElderPerMale} %`,
+      `${BachelorDegrees.g6064.ElderPerFemale} %`,
+      `${BachelorDegrees.g6064.ElderPer} %`,
+
+     `${ BachelorDegrees.g6569.ElderPerMale} %`,
+     `${ BachelorDegrees.g6569.ElderPerFemale} %`,
+     `${ BachelorDegrees.g6569.ElderPer} %`,
+
+      `${BachelorDegrees.g7074.ElderPerMale} %`,
+      `${BachelorDegrees.g7074.ElderPerFemale} %`,
+      `${BachelorDegrees.g7074.ElderPer} %`,
+
+      `${BachelorDegrees.g7579.ElderPerMale} %`,
+      `${BachelorDegrees.g7579.ElderPerFemale} %`,
+      `${BachelorDegrees.g7579.ElderPer} %`,
+
+      `${BachelorDegrees.g8084.ElderPerMale} %`,
+      `${BachelorDegrees.g8084.ElderPerFemale} %`,
+      `${BachelorDegrees.g8084.ElderPer} %`,
+
+      `${BachelorDegrees.g8589.ElderPerMale} %`,
+      `${BachelorDegrees.g8589.ElderPerFemale} %`,
+      `${BachelorDegrees.g8589.ElderPer} %`,
+
+      `${BachelorDegrees.g9094.ElderPerMale} %`,
+      `${BachelorDegrees.g9094.ElderPerFemale} %`,
+      `${BachelorDegrees.g9094.ElderPer} %`,
+
+      `${BachelorDegrees.g95.ElderPerMale} %`,
+      `${BachelorDegrees.g95.ElderPerFemale} %`,
+     `${ BachelorDegrees.g95.ElderPer} %`,
     ),
     createData(
       " สูงกว่าปริญญาตรี",
@@ -433,7 +587,43 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       MasterOrDoctorDegrees.summary.ElderMale,
       MasterOrDoctorDegrees.summary.ElderFemale,
-      MasterOrDoctorDegrees.summary.Elder
+      MasterOrDoctorDegrees.summary.Elder,
+
+      `${MasterOrDoctorDegrees.summary.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.summary.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.summary.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g6064.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g6064.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.g6064.ElderPer} %`,
+
+     `${ MasterOrDoctorDegrees.g6569.ElderPerMale} %`,
+     `${ MasterOrDoctorDegrees.g6569.ElderPerFemale} %`,
+     `${ MasterOrDoctorDegrees.g6569.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g7074.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g7074.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.g7074.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g7579.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g7579.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.g7579.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g8084.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g8084.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.g8084.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g8589.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g8589.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.g8589.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g9094.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g9094.ElderPerFemale} %`,
+      `${MasterOrDoctorDegrees.g9094.ElderPer} %`,
+
+      `${MasterOrDoctorDegrees.g95.ElderPerMale} %`,
+      `${MasterOrDoctorDegrees.g95.ElderPerFemale} %`,
+     `${ MasterOrDoctorDegrees.g95.ElderPer} %`,
     ),
   ];
   console.log(rows)
@@ -491,7 +681,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         />
       </div>*/}
       <br />
-      <div>
+      <div ref={ref}>
         <FormControlLabel
           control={
             <Switch
@@ -512,8 +702,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
@@ -601,10 +791,10 @@ const ShowChart = React.forwardRef((props, ref) => {
                       <br />
                       {row.Persum95==="NaN %"? "0 %":row.Persum95}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.sumAllM} <br />
-                      {row.sumAllF}
-                      <br />
-                      {row.sumAll}</StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.sumAllPerM==="NaN %"? "0 %":row.sumAllPerM} <br />
+                      {row.sumAllPerF==="NaN %"? "0 %":row.sumAllPerF}<br />
+                      {row.sumAllPer==="NaN %"? "0 %":row.sumAllPer}</StyledTableCell>
                     <StyledTableCell align="center">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -620,8 +810,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
