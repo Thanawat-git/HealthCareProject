@@ -31,7 +31,7 @@ export const getDataChart4 = community => {
   return async dispatch => {
     await dispatch({ type: CHART4_FETCHING })
     try {
-      let data = await Axios.get(`${apiBase}/report01/04-keeper/${community}`)
+      let data = await Axios.get(`${apiBase}/report01/04-keeper/getAll`)
       console.log("chart4 ", data.data);
       await dispatch({
         type: CHART4_GET_SUCCRESS,
@@ -100,7 +100,7 @@ export const getDataChart5 = (community) => {
   return async dispatch=>{
     await dispatch({ type: CHART5_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report01/05-livelihood/${community}`)
+      let data = await Axios.get(`${apiBase}/report01/05-livelihood`)
       console.log("chart 5 ", data.data)
       await dispatch({
         type: CHART5_GET_SUCCRESS,
