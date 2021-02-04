@@ -117,7 +117,7 @@ export const getDataChart6 = education => {
   return async dispatch=> {
     await dispatch({ type: CHART6_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report01/06-education/${education}`)
+      let data = await Axios.get(`${apiBase}/report01/06-education`)
       console.log("chart 6 ", data.data)
       await dispatch({
         type: CHART6_GET_SUCCRESS,
