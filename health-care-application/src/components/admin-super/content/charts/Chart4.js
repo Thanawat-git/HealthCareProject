@@ -16,7 +16,7 @@ import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataChart4 } from "../../../../actions/charts.action";
-
+import { CSVLink } from "react-csv"
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.primary.light,
@@ -567,7 +567,9 @@ const ShowChart = React.forwardRef((props, ref) => {
     `${ชุมชนบ้านแหลมแท่น.PerNotAlone.PerPartner} %`,
     `${ชุมชนบ้านแหลมแท่น.PerNotAlone.PerOther} %`),
   ];
-  return (
+  return (    
+  <React.Fragment>
+    <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
     <div className="card-body">
       {/* <div>
         เลือกชุมชน &emsp;
@@ -793,6 +795,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         </TableContainer>
       </div>
     </div>
+    </React.Fragment>
   );
 });
 

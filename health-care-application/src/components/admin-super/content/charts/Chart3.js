@@ -16,6 +16,7 @@ import {
 import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
+import { CSVLink } from "react-csv"
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -108,6 +109,8 @@ const ShowChart = React.forwardRef((props, ref) => {
   ];
 
   return (
+    <React.Fragment>
+    <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
     <div className="card-body" ref={ref}>
       {/* <div>
         เลือกชุมชน &emsp;
@@ -222,6 +225,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         </TableContainer>
       </div>
     </div>
+</React.Fragment>
   );
 });
 

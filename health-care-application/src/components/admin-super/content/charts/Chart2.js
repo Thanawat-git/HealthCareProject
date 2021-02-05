@@ -6,7 +6,7 @@ import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { getDataChart2 } from "../../../../actions/charts.action"
 import { useDispatch, useSelector } from "react-redux";
-
+import { CSVLink } from "react-csv";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -63,6 +63,8 @@ const ShowChart = React.forwardRef((props, ref) => {
   ];
 
   return (
+    <React.Fragment>
+      <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
     <div className="card-body">
       {/* <div>
       เลือกชุมชน &emsp;
@@ -139,6 +141,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     </div>
 
     </div>
+    </React.Fragment>
   );
 });
 
