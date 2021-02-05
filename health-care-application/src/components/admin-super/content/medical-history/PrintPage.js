@@ -393,7 +393,7 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>',this.props.value)
                 color: grey[50],}}
                onClick={handlePrint} 
               startIcon={<PrintIcon />}
-              >{this.props.visdate}</Button>
+              >{this.props.name}</Button>
             )}
           </PrintContextConsumer>
         </ReactToPrint>
@@ -426,7 +426,7 @@ export class PrintAllForm extends React.PureComponent {
                 backgroundColor: blue[600],
                 color: grey[50],
               }} onClick={handlePrint} 
-              startIcon={<PrintIcon />}>{this.props.visdate}</Button>
+              startIcon={<PrintIcon />}>{this.props.name}</Button>
             )}
           </PrintContextConsumer>
         </ReactToPrint>
