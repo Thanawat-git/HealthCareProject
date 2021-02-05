@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDataChart7 } from "../../../../actions/charts.action";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-
+import { CSVLink } from "react-csv"
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -618,7 +618,9 @@ const ShowChart = React.forwardRef((props, ref) => {
   const toggleChecked = () => {
     setopenPaper((prev) => !prev);
   };
-  return (
+  return (   
+     <React.Fragment>
+    <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
     <div className="card-body">
       {/* <div>
         เลือกสิทธิการรักษา &emsp;
@@ -896,6 +898,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         )}
       </div>
     </div>
+    </React.Fragment>
   );
 });
 

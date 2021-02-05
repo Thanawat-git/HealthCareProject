@@ -52,6 +52,7 @@ const ShowChart = React.forwardRef((props, ref) => {
   }, [])
   return (
     <React.Fragment>
+      <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
       <div className="card-body" ref={ref}>
         {/* <div className="chart">
           <Chart
@@ -81,8 +82,8 @@ const ShowChart = React.forwardRef((props, ref) => {
           />
           <br />
         </div> */}
-      <CSVLink data={rows} > Download CSV </CSVLink>
-      <div> 
+      
+      <div ref={ref}> 
         <TableContainer component={Paper}>
         <Table className="table-report" aria-label="customized table">
           <TableHead>

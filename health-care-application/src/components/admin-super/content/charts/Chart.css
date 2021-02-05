@@ -9,3 +9,9 @@
 .table-report strong{
   color: white;
 }
+.csv-link {
+  font-size: 20px;
+  color: blue;
+  padding-left: 20px;
+  padding-top: 10px;
+}
