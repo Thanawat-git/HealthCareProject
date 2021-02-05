@@ -27,11 +27,14 @@ export const getEldByKeyword = (event) => {
     dispatch(setElderlyStateToFetching());
     try {
       var keyword = event.target.value;
-      // console.log("keyword", keyword);
-      return Axios.get(`${apiEld}/findByKeyword/${keyword}`).then((res) => {
-        // console.log("result.data", res.data);
-        dispatch(setElderlyStateToSuccress(res.data)); // เอาเฉพาะที่เจอมาแสดง
-      });
+      console.log("keyword", keyword);
+      if(keyword !== null && keyword != ""){
+        return Axios.get(`${apiEld}/findByKeyword/${keyword}`).then((res) => {
+          console.log("result.data", res.data);
+          dispatch(setElderlyStateToSuccress(res.data)); // เอาเฉพาะที่เจอมาแสดง
+        });
+      }
+      
     } catch (error) {
       dispatch(setElderlyStateToFailed());
     }
@@ -61,18 +64,48 @@ export const getHistoryEld = id => {
   }
 }
 
-export const getAllEldery = ()=> {
-  return async dispatch=>{
-    await dispatch(setElderlyStateToFetching());
+export const getEldByKeyword2 = (event) => {
+  return (dispatch) => {
+    dispatch(setElderlyStateToFetching());
     try {
-      let data = await Axios.get(`${apiEld}/findAllEverything`)
-      console.log("res get eldery ", data.data)
-      await dispatch({
-        type: GET_ALL_ELDERY,
-        payload: data.data
-      })
+      var keyword = event.target.value;
+      console.log("keyword", keyword);
+      if(keyword !== null && keyword != ""){
+        return Axios.get(`${apiEld}/findAllEverythingByKeyword/${keyword}`).then((res) => {
+          console.log("result.data", res.data);
+          dispatch({
+            type: GET_ALL_ELDERY,
+            payload: res.data
+          }); // เอาเฉพาะที่เจอมาแสดง
+        });
+      } else {
+        console.log("no keyword");
+        doGetElderly(dispatch)
+      }
+      
     } catch (error) {
-      console.log("Error get eldery ", error)
+      dispatch(setElderlyStateToFailed());
     }
   }
+}
+
+export const getAllEldery = ()=> {
+  return dispatch => {
+    dispatch(setElderlyStateToFetching());
+    doGetElderly(dispatch)
+  }
+}
+
+const doGetElderly = (dispatch)=>{
+  Axios.get(`${apiEld}/findAllEverything`)
+  .then((res) => {
+    console.log("res.data ", res.data);
+    dispatch({
+      type: GET_ALL_ELDERY,
+      payload: res.data
+    });
+  })
+  .catch((error) => {
+    dispatch(setElderlyStateToFailed());
+  });
 }

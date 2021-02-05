@@ -1,8 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { InputAdornment, TextField } from '@material-ui/core'
 import * as eldAction from "../../../../actions/elderly.action";
-import ShowElderyInfo from "./ShowElderyInfo"
+import ShowElderyInfo from "./ShowElderyInfo";
+import SearchIcon from "@material-ui/icons/Search";
 import Skeleton from '@material-ui/lab/Skeleton';
 
 export default function ElderyContent() {
@@ -17,8 +19,8 @@ export default function ElderyContent() {
       const { allEldery, isFetching } = elderlyReducer;
       return (
         !isFetching ? (
-        allEldery.length !== 0 &&
-        allEldery.map((value, index) => {
+          allEldery.length !== 0 &&
+          allEldery.map((value, index) => {
           return (
             <tr onClick={() => console.log("xxx")}>
               <td>{index + 1}</td>
@@ -31,7 +33,7 @@ export default function ElderyContent() {
                 {value.ELD_FIRSTNAME} {value.ELD_LASTNAME}
               </td>
               <td>{value.ELD_PHONE}</td>
-              <td>
+              <td style={{ textAlign: "center" }} >
                 <ShowElderyInfo data={value}/>
               </td>
             </tr>
@@ -42,9 +44,9 @@ export default function ElderyContent() {
       );
     } catch (e) {}
   };
-  //   const onChange = e =>{
-  //     dispatch(adminAction.getAdminByKeyword(e))
-  //   }
+    const onChange = e =>{
+      dispatch(eldAction.getEldByKeyword2(e))
+    }
   return (
     <React.Fragment>
       <div className="content-header">
@@ -60,7 +62,7 @@ export default function ElderyContent() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-8 card-body">
-              {/* <TextField
+              <TextField
                 label="ค้นหาโดยการกรอกชื่อ-นามสกุล หรือรหัสประจำตัว"
                 id="standard-start-adornment"
                 onChange={onChange}
@@ -72,7 +74,7 @@ export default function ElderyContent() {
                   ),
                 }}
                 fullWidth
-              /> */}
+              />
             </div>
             <div className="col-4 card-body add-staff-bt">
               {/* <AddNewAdmin /> */}
