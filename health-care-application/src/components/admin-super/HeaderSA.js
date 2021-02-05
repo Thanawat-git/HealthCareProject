@@ -57,25 +57,25 @@ export default function HeaderSA({ name }) {
               </i>
             </a>
 
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right"> 
-            <Link to={`${url}/profile`}>
-              <a href="#" className="dropdown-item">
+            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">  
+            {/* <Link to={`${url}/profile`}> */}
+              <a href="#" className="dropdown-item disabled" >
                 <i className="fas fa-user" style={{ paddingRight: 10 }}></i>
                 ข้อมูลส่วนตัว
               </a>
-               </Link>
-               <Link to={`${url}/editpassadmin`}>
-                <a href="#" className="dropdown-item">
+               {/* </Link> */}
+               {/* <Link to={`${url}/editpassadmin`}> */}
+                <a href="#" className="dropdown-item disabled">
                   <i class="fas fa-key" style={{ paddingRight: 10 }}></i>
                   เปลี่ยนรหัสผ่าน
                 </a>
-            </Link>
+            {/* </Link> */}
               <div
                 className="dropdown-divider"
                 onClick={logOut}
               />
               <a href="/login" className="dropdown-item" onClick={logOut}>
-                <i class="fas fa-sign-out-alt" style={{ paddingRight: 10 }} onClick={logOut}></i>
+                <i className="fas fa-sign-out-alt" style={{ paddingRight: 10 }} onClick={logOut}></i>
                 ออกจากระบบ
               </a>
             </div>
