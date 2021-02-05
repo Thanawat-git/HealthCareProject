@@ -529,7 +529,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             <TableBody>
               {rows.map((row) => (
                 <StyledTableRow key={row.name}>
-                  <StyledTableCell align="center" component="th" scope="row">
+                  <StyledTableCell  component="th" scope="row">
                     {row.name}
                   </StyledTableCell>
                   <StyledTableCell >

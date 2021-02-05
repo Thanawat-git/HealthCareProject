@@ -700,41 +700,52 @@ const ShowChart = React.forwardRef((props, ref) => {
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">ชุมชน</StyledTableCell>
+              
+                <StyledTableCell align="center"></StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell align="center">&nbsp;</StyledTableCell>
                 <StyledTableCell align="center">ไม่มีผู้ดูแล</StyledTableCell>
+                
+                
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell>&nbsp;</StyledTableCell>
+                
               </TableRow>
               <TableRow>
-                <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell>บุตรชาย/บุตรสาว</StyledTableCell>
-                <StyledTableCell>ลูกเขย/ลูกสะใภ้</StyledTableCell>
-                <StyledTableCell>หลานชาย/หลานสาว</StyledTableCell>
-                <StyledTableCell>พี่น้อง</StyledTableCell>
-                <StyledTableCell>บิดา/มารดา</StyledTableCell>
-                <StyledTableCell>สามี/ภรรยา</StyledTableCell>
-                <StyledTableCell>บุคคลอื่น</StyledTableCell>
-                <StyledTableCell>&nbsp;</StyledTableCell>
+              <StyledTableCell align="center"><strong>ชุมชน</strong></StyledTableCell>
+              <StyledTableCell align="center">จำนวน/เปอร์เซ๊นต์</StyledTableCell>
+              <StyledTableCell align="center">&nbsp;</StyledTableCell>
+              <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                <StyledTableCell align="center">บุตรชาย/บุตรสาว</StyledTableCell>
+                <StyledTableCell align="center">ลูกเขย/ลูกสะใภ้</StyledTableCell>
+                <StyledTableCell align="center">หลานชาย/หลานสาว</StyledTableCell>
+                <StyledTableCell align="center">พี่น้อง</StyledTableCell>
+                <StyledTableCell align="center">บิดา/มารดา</StyledTableCell>
+                <StyledTableCell align="center">สามี/ภรรยา</StyledTableCell>
+                <StyledTableCell align="center">บุคคลอื่น</StyledTableCell>
+                
+                
                 
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
                 <StyledTableRow key={row.Age}>
+                  
                   <StyledTableCell  component="th" scope="row">
                     {row.name}
                   </StyledTableCell>
                   <StyledTableCell align="center">จำนวน<br />เปอร์เซ๊นต์</StyledTableCell>
+                  
+                  <StyledTableCell align="center">&nbsp;</StyledTableCell>
                   <StyledTableCell >&nbsp;</StyledTableCell>
+                  
+                  
                   <StyledTableCell align="center">
                     {row.numchild}
                     <br />
@@ -773,7 +784,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                     <br />
                     {row.Perother === "NaN %" ? "0  %" : row.Perother}
                   </StyledTableCell>
-                  <StyledTableCell >&nbsp;</StyledTableCell>
+                  
+                 
                 </StyledTableRow>
               ))}
             </TableBody>
