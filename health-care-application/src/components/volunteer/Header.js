@@ -80,24 +80,24 @@ export default function Header() {
       <Divider />
       <List className="link">
         {/* <Link to={`${url}/editaccount`}> */}
-        <Link to="/editaccount">
-          <ListItem button>
+        {/* <Link to="/editaccount"> */}
+          <ListItem button disabled>
             <ListItemIcon>
               {" "}
               <AccountBoxIcon />{" "}
             </ListItemIcon>
             <ListItemText primary="แก้ไขข้อมูลส่วนตัว" />
           </ListItem>
-        </Link>
-        <Link to="/editpassword">
-          <ListItem button>
+        {/* </Link> */}
+        {/* <Link to="/editpassword"> */}
+          <ListItem button disabled>
             <ListItemIcon>
               {" "}
               <VpnKeyIcon />{" "}
             </ListItemIcon>
             <ListItemText primary="เปลี่ยนรหัสผ่าน" />
           </ListItem>
-        </Link>
+        {/* </Link> */}
         <Link to="/login" onClick={logOut}>
           <ListItem button>
             <ListItemIcon>
