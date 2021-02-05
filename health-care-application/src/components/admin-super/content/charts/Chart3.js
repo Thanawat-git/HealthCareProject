@@ -201,7 +201,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             <TableBody>
               {rows.map((row) => (
                 <StyledTableRow key={row.Age}>
-                  <StyledTableCell align="center" component="th" scope="row">{row.name}</StyledTableCell>
+                  <StyledTableCell  component="th" scope="row">{row.name}</StyledTableCell>
                   <StyledTableCell >&nbsp;</StyledTableCell>
                   <StyledTableCell align="center">{row.ElderMale}</StyledTableCell>
                   <StyledTableCell align="center">{row.ElderFemale}</StyledTableCell>

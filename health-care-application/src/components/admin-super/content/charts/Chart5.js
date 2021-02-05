@@ -10,19 +10,19 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
-import { withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataChart5 } from "../../../../actions/charts.action";
 
-
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.common.white,
-    textAlign:"center",
+    textAlign: "center",
+
   },
   body: {
     fontSize: 18,
@@ -33,11 +33,36 @@ const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
+      
     },
   },
 }))(TableRow);
-function createData(name,alone, aloneDay, aloneDaynight,alonenight, PeraloneDay, PeraloneDaynight,Peralonenight,notalone) {
-  return {name,alone, aloneDay, aloneDaynight,alonenight, PeraloneDay, PeraloneDaynight,Peralonenight, notalone};
+function createData(
+  name,
+  alone,
+  aloneDay,
+  aloneDaynight,
+  alonenight,
+  PeraloneDay,
+  PeraloneDaynight,
+  Peralonenight,
+  notalone,
+  Pernotalone,
+  Peralone
+) {
+  return {
+    name,
+    alone,
+    aloneDay,
+    aloneDaynight,
+    alonenight,
+    PeraloneDay,
+    PeraloneDaynight,
+    Peralonenight,
+    notalone,
+    Pernotalone,
+    Peralone
+  };
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
@@ -46,15 +71,31 @@ const ShowChart = React.forwardRef((props, ref) => {
   const chart5Reducer = useSelector(({ chart5Reducer }) => chart5Reducer);
   const dispatch = useDispatch();
   const {
-    Alone,
-    AloneDay,
-    AloneDayNight,
-    AloneNight,
-    NotAlone,
-    PerAloneDay,
-    PerAloneDayNight,
-    PerAloneNight,
-    Summary,
+    ชุมชนมณีแก้ว,
+    ชุมชนดอนบน,
+    ชุมชนบางแสนทาวเวอร์,
+    ชุมชนตาลล้อม1,
+    ชุมชนตาลล้อม2,
+    ชุมชนบ้านเหมือง,
+    ชุมชนพัฒนา2,
+    ชุมชนดอนนารา,
+    ชุมชนวัดกลางดอน,
+    ชุมชนแสนสุข,
+    ชุมชนมาบมะยม,
+    ชุมชนท้ายตลาด,
+    ชุมชนร่วมใจพัฒนา,
+    ชุมชนบางแสนบน,
+    ชุมชนหาดวอนนภา,
+    ชุมชนบางเป้ง,
+    ชุมชนหน้ามอ,
+    ชุมชนโชคดี,
+    ชุมชนสมใจนึก,
+    ชุมชนหน้าเทศบาล,
+    ชุมชนวัดแสนสุข,
+    ชุมชนมุขแสนเจริญ1,
+    ชุมชนมุขแสนเจริญ2,
+    ชุมชนเขาสามมุข,
+    ชุมชนบ้านแหลมแท่น,
   } = chart5Reducer.results;
   const handleChange = (e) => {
     setCommunity(e.target.value);
@@ -62,7 +103,332 @@ const ShowChart = React.forwardRef((props, ref) => {
   };
 
   const rows = [
-    createData("ชุมชน",Alone,AloneDay,AloneDayNight,AloneNight,`${PerAloneDay}%`,`${PerAloneDayNight}%`,`${PerAloneNight}%`,NotAlone),
+    //createData("ชุมชน",Alone,AloneDay,AloneDayNight,AloneNight,` ${PerAloneDay} %`,` ${PerAloneDayNight} %`,` ${PerAloneNight} %`,NotAlone),
+    createData(
+      "ชุมชนมณีแก้ว",
+      ชุมชนมณีแก้ว.Alone.Sum,
+      ชุมชนมณีแก้ว.Alone.AloneDay,
+      ชุมชนมณีแก้ว.Alone.AloneDayNight,
+      ชุมชนมณีแก้ว.Alone.AloneNight,
+      ` ${ชุมชนมณีแก้ว.Alone.PerAloneDay} %`,
+      ` ${ชุมชนมณีแก้ว.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนมณีแก้ว.Alone.PerAloneNight} %`,
+       ชุมชนมณีแก้ว.NotAlone,
+      ` ${ชุมชนมณีแก้ว.PerNotAlone} %`,
+      ` ${ชุมชนมณีแก้ว.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนดอนบน",
+      ชุมชนดอนบน.Alone.Sum,
+      ชุมชนดอนบน.Alone.AloneDay,
+      ชุมชนดอนบน.Alone.AloneDayNight,
+      ชุมชนดอนบน.Alone.AloneNight,
+      ` ${ชุมชนดอนบน.Alone.PerAloneDay} %`,
+      ` ${ชุมชนดอนบน.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนดอนบน.Alone.PerAloneNight} %`,
+      ชุมชนดอนบน.NotAlone,
+      ` ${ชุมชนดอนบน.PerNotAlone} %`,
+      ` ${ชุมชนดอนบน.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนบางแสนทาวเวอร์",
+      ชุมชนบางแสนทาวเวอร์.Alone.Sum,
+      ชุมชนบางแสนทาวเวอร์.Alone.AloneDay,
+      ชุมชนบางแสนทาวเวอร์.Alone.AloneDayNight,
+      ชุมชนบางแสนทาวเวอร์.Alone.AloneNight,
+      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDay} %`,
+      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneNight} %`,
+      ชุมชนบางแสนทาวเวอร์.NotAlone,
+      ` ${ชุมชนบางแสนทาวเวอร์.PerNotAlone} %`,
+      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนตาลล้อม1",
+      ชุมชนตาลล้อม1.Alone.Sum,
+      ชุมชนตาลล้อม1.Alone.AloneDay,
+      ชุมชนตาลล้อม1.Alone.AloneDayNight,
+      ชุมชนตาลล้อม1.Alone.AloneNight,
+      ` ${ชุมชนตาลล้อม1.Alone.PerAloneDay} %`,
+      ` ${ชุมชนตาลล้อม1.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนตาลล้อม1.Alone.PerAloneNight} %`,
+      ชุมชนตาลล้อม1.NotAlone,
+      ` ${ชุมชนตาลล้อม1.PerNotAlone} %`,
+      ` ${ชุมชนตาลล้อม1.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนตาลล้อม2",
+      ชุมชนตาลล้อม2.Alone.Sum,
+      ชุมชนตาลล้อม2.Alone.AloneDay,
+      ชุมชนตาลล้อม2.Alone.AloneDayNight,
+      ชุมชนตาลล้อม2.Alone.AloneNight,
+      ` ${ชุมชนตาลล้อม2.Alone.PerAloneDay} %`,
+      ` ${ชุมชนตาลล้อม2.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนตาลล้อม2.Alone.PerAloneNight} %`,
+      ชุมชนตาลล้อม2.NotAlone,
+      ` ${ชุมชนตาลล้อม2.PerNotAlone} %`,
+      ` ${ชุมชนตาลล้อม2.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนบ้านเหมือง",
+      ชุมชนบ้านเหมือง.Alone.Sum,
+      ชุมชนบ้านเหมือง.Alone.AloneDay,
+      ชุมชนบ้านเหมือง.Alone.AloneDayNight,
+      ชุมชนบ้านเหมือง.Alone.AloneNight,
+      ` ${ชุมชนบ้านเหมือง.Alone.PerAloneDay} %`,
+      ` ${ชุมชนบ้านเหมือง.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนบ้านเหมือง.Alone.PerAloneNight} %`,
+      ชุมชนบ้านเหมือง.NotAlone,
+      ` ${ชุมชนบ้านเหมือง.PerNotAlone} %`,
+      ` ${ชุมชนบ้านเหมือง.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนพัฒนา2",
+      ชุมชนพัฒนา2.Alone.Sum,
+      ชุมชนพัฒนา2.Alone.AloneDay,
+      ชุมชนพัฒนา2.Alone.AloneDayNight,
+      ชุมชนพัฒนา2.Alone.AloneNight,
+      ` ${ชุมชนพัฒนา2.Alone.PerAloneDay} %`,
+      ` ${ชุมชนพัฒนา2.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนพัฒนา2.Alone.PerAloneNight} %`,
+      ชุมชนพัฒนา2.NotAlone,
+      ` ${ชุมชนพัฒนา2.PerNotAlone} %`,
+      ` ${ชุมชนพัฒนา2.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนดอนนารา",
+      ชุมชนดอนนารา.Alone.Sum,
+      ชุมชนดอนนารา.Alone.AloneDay,
+      ชุมชนดอนนารา.Alone.AloneDayNight,
+      ชุมชนดอนนารา.Alone.AloneNight,
+      ` ${ชุมชนดอนนารา.Alone.PerAloneDay} %`,
+      ` ${ชุมชนดอนนารา.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนดอนนารา.Alone.PerAloneNight} %`,
+      ชุมชนดอนนารา.NotAlone,
+      ` ${ชุมชนดอนนารา.PerNotAlone} %`,
+      ` ${ชุมชนดอนนารา.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนวัดกลางดอน",
+      ชุมชนวัดกลางดอน.Alone.Sum,
+      ชุมชนวัดกลางดอน.Alone.AloneDay,
+      ชุมชนวัดกลางดอน.Alone.AloneDayNight,
+      ชุมชนวัดกลางดอน.Alone.AloneNight,
+      ` ${ชุมชนวัดกลางดอน.Alone.PerAloneDay} %`,
+      ` ${ชุมชนวัดกลางดอน.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนวัดกลางดอน.Alone.PerAloneNight} %`,
+      ชุมชนวัดกลางดอน.NotAlone,
+      ` ${ชุมชนวัดกลางดอน.PerNotAlone} %`,
+      ` ${ชุมชนวัดกลางดอน.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนแสนสุข",
+      ชุมชนแสนสุข.Alone.Sum,
+      ชุมชนแสนสุข.Alone.AloneDay,
+      ชุมชนแสนสุข.Alone.AloneDayNight,
+      ชุมชนแสนสุข.Alone.AloneNight,
+      ` ${ชุมชนแสนสุข.Alone.PerAloneDay} %`,
+      ` ${ชุมชนแสนสุข.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนแสนสุข.Alone.PerAloneNight} %`,
+      ชุมชนแสนสุข.NotAlone,
+      ` ${ชุมชนแสนสุข.PerNotAlone} %`,
+      ` ${ชุมชนแสนสุข.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนมาบมะยม",
+      ชุมชนมาบมะยม.Alone.Sum,
+      ชุมชนมาบมะยม.Alone.AloneDay,
+      ชุมชนมาบมะยม.Alone.AloneDayNight,
+      ชุมชนมาบมะยม.Alone.AloneNight,
+      ` ${ชุมชนมาบมะยม.Alone.PerAloneDay} %`,
+      ` ${ชุมชนมาบมะยม.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนมาบมะยม.Alone.PerAloneNight} %`,
+      ชุมชนมาบมะยม.NotAlone,
+      ` ${ชุมชนมาบมะยม.PerNotAlone} %`,
+      ` ${ชุมชนมาบมะยม.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนท้ายตลาด",
+      ชุมชนท้ายตลาด.Alone.Sum,
+      ชุมชนท้ายตลาด.Alone.AloneDay,
+      ชุมชนท้ายตลาด.Alone.AloneDayNight,
+      ชุมชนท้ายตลาด.Alone.AloneNight,
+      ` ${ชุมชนท้ายตลาด.Alone.PerAloneDay} %`,
+      ` ${ชุมชนท้ายตลาด.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนท้ายตลาด.Alone.PerAloneNight} %`,
+      ชุมชนท้ายตลาด.NotAlone,
+      ` ${ชุมชนท้ายตลาด.PerNotAlone} %`,
+      ` ${ชุมชนท้ายตลาด.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนร่วมใจพัฒนา",
+      ชุมชนร่วมใจพัฒนา.Alone.Sum,
+      ชุมชนร่วมใจพัฒนา.Alone.AloneDay,
+      ชุมชนร่วมใจพัฒนา.Alone.AloneDayNight,
+      ชุมชนร่วมใจพัฒนา.Alone.AloneNight,
+      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDay} %`,
+      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerAloneNight} %`,
+      ชุมชนร่วมใจพัฒนา.NotAlone,
+      ` ${ชุมชนร่วมใจพัฒนา.PerNotAlone} %`,
+      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนบางแสนบน",
+      ชุมชนบางแสนบน.Alone.Sum,
+      ชุมชนบางแสนบน.Alone.AloneDay,
+      ชุมชนบางแสนบน.Alone.AloneDayNight,
+      ชุมชนบางแสนบน.Alone.AloneNight,
+      ` ${ชุมชนบางแสนบน.Alone.PerAloneDay} %`,
+      ` ${ชุมชนบางแสนบน.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนบางแสนบน.Alone.PerAloneNight} %`,
+      ชุมชนบางแสนบน.NotAlone,
+      ` ${ชุมชนบางแสนบน.PerNotAlone} %`,
+      ` ${ชุมชนบางแสนบน.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนหาดวอนนภา",
+      ชุมชนหาดวอนนภา.Alone.Sum,
+      ชุมชนหาดวอนนภา.Alone.AloneDay,
+      ชุมชนหาดวอนนภา.Alone.AloneDayNight,
+      ชุมชนหาดวอนนภา.Alone.AloneNight,
+      ` ${ชุมชนหาดวอนนภา.Alone.PerAloneDay} %`,
+      ` ${ชุมชนหาดวอนนภา.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนหาดวอนนภา.Alone.PerAloneNight} %`,
+      ชุมชนหาดวอนนภา.NotAlone,
+      ` ${ชุมชนหาดวอนนภา.PerNotAlone} %`,
+      ` ${ชุมชนหาดวอนนภา.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนบางเป้ง",
+      ชุมชนบางเป้ง.Alone.Sum,
+      ชุมชนบางเป้ง.Alone.AloneDay,
+      ชุมชนบางเป้ง.Alone.AloneDayNight,
+      ชุมชนบางเป้ง.Alone.AloneNight,
+      ` ${ชุมชนบางเป้ง.Alone.PerAloneDay} %`,
+      ` ${ชุมชนบางเป้ง.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนบางเป้ง.Alone.PerAloneNight} %`,
+      ชุมชนบางเป้ง.NotAlone,
+      ` ${ชุมชนบางเป้ง.PerNotAlone} %`,
+      ` ${ชุมชนบางเป้ง.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนหน้ามอ",
+      ชุมชนหน้ามอ.Alone.Sum,
+      ชุมชนหน้ามอ.Alone.AloneDay,
+      ชุมชนหน้ามอ.Alone.AloneDayNight,
+      ชุมชนหน้ามอ.Alone.AloneNight,
+      ` ${ชุมชนหน้ามอ.Alone.PerAloneDay} %`,
+      ` ${ชุมชนหน้ามอ.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนหน้ามอ.Alone.PerAloneNight} %`,
+      ชุมชนหน้ามอ.NotAlone,
+      ` ${ชุมชนหน้ามอ.PerNotAlone} %`,
+      ` ${ชุมชนหน้ามอ.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนโชคดี",
+      ชุมชนโชคดี.Alone.Sum,
+      ชุมชนโชคดี.Alone.AloneDay,
+      ชุมชนโชคดี.Alone.AloneDayNight,
+      ชุมชนโชคดี.Alone.AloneNight,
+      ` ${ชุมชนโชคดี.Alone.PerAloneDay} %`,
+      ` ${ชุมชนโชคดี.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนโชคดี.Alone.PerAloneNight} %`,
+      ชุมชนโชคดี.NotAlone,
+      ` ${ชุมชนโชคดี.PerNotAlone} %`,
+      ` ${ชุมชนโชคดี.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนสมใจนึก",
+      ชุมชนสมใจนึก.Alone.Sum,
+      ชุมชนสมใจนึก.Alone.AloneDay,
+      ชุมชนสมใจนึก.Alone.AloneDayNight,
+      ชุมชนสมใจนึก.Alone.AloneNight,
+      ` ${ชุมชนสมใจนึก.Alone.PerAloneDay} %`,
+      ` ${ชุมชนสมใจนึก.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนสมใจนึก.Alone.PerAloneNight} %`,
+      ชุมชนสมใจนึก.NotAlone,
+      ` ${ชุมชนสมใจนึก.PerNotAlone} %`,
+      ` ${ชุมชนสมใจนึก.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนหน้าเทศบาล",
+      ชุมชนหน้าเทศบาล.Alone.Sum,
+      ชุมชนหน้าเทศบาล.Alone.AloneDay,
+      ชุมชนหน้าเทศบาล.Alone.AloneDayNight,
+      ชุมชนหน้าเทศบาล.Alone.AloneNight,
+      ` ${ชุมชนหน้าเทศบาล.Alone.PerAloneDay} %`,
+      ` ${ชุมชนหน้าเทศบาล.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนหน้าเทศบาล.Alone.PerAloneNight} %`,
+      ชุมชนหน้าเทศบาล.NotAlone,
+      ` ${ชุมชนหน้าเทศบาล.PerNotAlone} %`,
+      ` ${ชุมชนหน้าเทศบาล.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนวัดแสนสุข",
+      ชุมชนวัดแสนสุข.Alone.Sum,
+      ชุมชนวัดแสนสุข.Alone.AloneDay,
+      ชุมชนวัดแสนสุข.Alone.AloneDayNight,
+      ชุมชนวัดแสนสุข.Alone.AloneNight,
+      ` ${ชุมชนวัดแสนสุข.Alone.PerAloneDay} %`,
+      ` ${ชุมชนวัดแสนสุข.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนวัดแสนสุข.Alone.PerAloneNight} %`,
+      ชุมชนวัดแสนสุข.NotAlone,
+      ` ${ชุมชนวัดแสนสุข.PerNotAlone} %`,
+      ` ${ชุมชนวัดแสนสุข.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนมุขแสนเจริญ1",
+      ชุมชนมุขแสนเจริญ1.Alone.Sum,
+      ชุมชนมุขแสนเจริญ1.Alone.AloneDay,
+      ชุมชนมุขแสนเจริญ1.Alone.AloneDayNight,
+      ชุมชนมุขแสนเจริญ1.Alone.AloneNight,
+      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDay} %`,
+      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerAloneNight} %`,
+      ชุมชนมุขแสนเจริญ1.NotAlone,
+      ` ${ชุมชนมุขแสนเจริญ1.PerNotAlone} %`,
+      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนมุขแสนเจริญ2",
+      ชุมชนมุขแสนเจริญ2.Alone.Sum,
+      ชุมชนมุขแสนเจริญ2.Alone.AloneDay,
+      ชุมชนมุขแสนเจริญ2.Alone.AloneDayNight,
+      ชุมชนมุขแสนเจริญ2.Alone.AloneNight,
+      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDay} %`,
+      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerAloneNight} %`,
+      ชุมชนมุขแสนเจริญ2.NotAlone,
+      ` ${ชุมชนมุขแสนเจริญ2.PerNotAlone} %`,
+      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนเขาสามมุข",
+      ชุมชนเขาสามมุข.Alone.Sum,
+      ชุมชนเขาสามมุข.Alone.AloneDay,
+      ชุมชนเขาสามมุข.Alone.AloneDayNight,
+      ชุมชนเขาสามมุข.Alone.AloneNight,
+      ` ${ชุมชนเขาสามมุข.Alone.PerAloneDay} %`,
+      ` ${ชุมชนเขาสามมุข.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนเขาสามมุข.Alone.PerAloneNight} %`,
+      ชุมชนเขาสามมุข.NotAlone,
+      ` ${ชุมชนเขาสามมุข.PerNotAlone} %`,
+      ` ${ชุมชนเขาสามมุข.Alone.PerSum} %`,
+    ),
+    createData(
+      "ชุมชนบ้านแหลมแท่น",
+      ชุมชนบ้านแหลมแท่น.Alone.Sum,
+      ชุมชนบ้านแหลมแท่น.Alone.AloneDay,
+      ชุมชนบ้านแหลมแท่น.Alone.AloneDayNight,
+      ชุมชนบ้านแหลมแท่น.Alone.AloneNight,
+      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDay} %`,
+      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDayNight} %`,
+      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerAloneNight} %`,
+      ชุมชนบ้านแหลมแท่น.NotAlone,
+      ` ${ชุมชนบ้านแหลมแท่น.PerNotAlone} %`,
+      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerSum} %`,
+    ),
   ];
 
   return (
@@ -136,42 +502,61 @@ const ShowChart = React.forwardRef((props, ref) => {
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell >ชุมชน&nbsp;</StyledTableCell>
+                <StyledTableCell><strong>ความเป็นอยู่</strong></StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell >&nbsp;</StyledTableCell>
-                <StyledTableCell >อยู่ลำพัง&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell >&nbsp;</StyledTableCell>
-                <StyledTableCell >&nbsp;</StyledTableCell>
-                <StyledTableCell >ไม่ได้อยู่ลำพัง</StyledTableCell>
-                <StyledTableCell >&nbsp;</StyledTableCell>            
-                <StyledTableCell ></StyledTableCell>
+                <StyledTableCell>อยู่ลำพัง&nbsp;</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell>ไม่ได้อยู่ลำพัง</StyledTableCell>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+               
               </TableRow>
               <TableRow>
-                <StyledTableCell >&nbsp;</StyledTableCell>
-                <StyledTableCell >&nbsp;</StyledTableCell>
-                <StyledTableCell >กลางวัน</StyledTableCell>
-                <StyledTableCell >กลางคืน</StyledTableCell>
-                <StyledTableCell >ทั้งกลางวัน-กลางคืน</StyledTableCell>
-                <StyledTableCell >&nbsp;</StyledTableCell>
-                <StyledTableCell ></StyledTableCell>
-                <StyledTableCell ></StyledTableCell>
-                <StyledTableCell ></StyledTableCell>
-                <StyledTableCell ></StyledTableCell>
+                <StyledTableCell align="center"><strong>ชุมชน</strong></StyledTableCell>
+                <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                <StyledTableCell align="center">กลางวัน</StyledTableCell>
+                <StyledTableCell align="center">กลางคืน</StyledTableCell>
+                <StyledTableCell align="center">ทั้งกลางวัน-กลางคืน</StyledTableCell>
+                <StyledTableCell align="center">รวม</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
+                <StyledTableCell align="center">รวม</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
+                
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <StyledTableRow key={row.Age}>
-                  <StyledTableCell align="center" component="th" scope="row">ชุมชนมณีแก้ว</StyledTableCell>
-                  <StyledTableCell >&nbsp;</StyledTableCell>
-                  <StyledTableCell align="center">{row.aloneDay}&nbsp;({row.PeraloneDay  ==="NaN%"? "0 %" : row.PeraloneDay})</StyledTableCell>
-                  <StyledTableCell align="center">{row.aloneDaynight}&nbsp;({row.PeraloneDaynight ==="NaN%"? "0 %" : row.PeraloneDaynight})</StyledTableCell>
-                  <StyledTableCell align="center">{row.alonenight}&nbsp;({row.Peralonenight ==="NaN%"? "0 %" : row.Peralonenight})</StyledTableCell>
-                  <StyledTableCell >&nbsp;</StyledTableCell>
+                <StyledTableRow key={row.name}>
+                  <StyledTableCell  component="th" scope="row">
+                    {row.name}
+                  </StyledTableCell>
+                  <StyledTableCell >
+                      จำนวน 
+                      <br />เปอร์เซ๊นต์ 
+                    </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.aloneDay}<br />
+                    {row.PeraloneDay === " NaN %" ? "0  %" : row.PeraloneDay}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.aloneDaynight}<br />              
+                    {row.PeraloneDaynight === " NaN %"
+                      ? "0  %"
+                      : row.PeraloneDaynight}
+                    
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.alonenight}<br />
+                    {row.Peralonenight === " NaN %" ? "0  %" : row.Peralonenight}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" >{row.alone}</StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center">{row.notalone}&nbsp;(0 %)</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.notalone}<br />
+                    {row.Pernotalone === " NaN %" ? "0  %" : row.Pernotalone}
+                  </StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                 </StyledTableRow>
               ))}
