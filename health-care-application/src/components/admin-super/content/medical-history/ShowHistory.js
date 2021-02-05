@@ -535,9 +535,9 @@ export default function ShowHistory({ value }) {
             onClick={()=>window.print()}
             >Print this page</button> */}
               <div style={{ marginBottom: 10 }}>
-                <PrintResultOnly visdate="Print results" value={value} />{" "}
+                <PrintResultOnly name="พิมพ์เฉพาะข้อมูลผลการตรวจของครั้งนี้" value={value} />{" "}
               </div>
-              <PrintAllForm visdate={value.VIS_DATE} />
+              <PrintAllForm name="พิมพ์ข้อมูลการตรวจทั้งหมดของครั้งนี้" />
               <br />
             </div>
             <FormControlLabel

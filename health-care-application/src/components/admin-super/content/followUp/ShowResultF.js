@@ -44,12 +44,8 @@ const ShowResult = React.forwardRef((props, ref) => {
     fbs_fbs,
     fbs_result,
   } = FReducer.data2;
-  const {
-    cardio_result,
-  } = FReducer.data3;
-  const {
-    oral_RESULT,
-  } = FReducer.data5;
+  const { cardio_result } = FReducer.data3;
+  const { oral_RESULT } = FReducer.data5;
   return (
     <div className="" ref={ref}>
       <div className="" style={{ fontSize: "30px" }}>
@@ -59,121 +55,133 @@ const ShowResult = React.forwardRef((props, ref) => {
             {props.value.ELDER.LASTNAME}
           </b>
         </p>
-        <p>วัน{moment(props.value.APPOINT_DATE).format("dddd")} ที่{" "}
-          {moment(props.value.APPOINT_DATE).format("LL")} เรื่อง {props.value.APP_NAME} </p>
-        <div className="rfs2">
-          <Typography>ข้อมูลสุขภาพทั่วไป</Typography>
-          <Typography color="textSecondary">
-            <p>
-              ความยาวเส้นรอบเอว:
-              {waist_waist ? (
-                <React.Fragment>
-                  <strong> {waist_waist} </strong>ซม. ผลการประเมิน{" "}
-                  <strong> {waist_result} </strong>
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-            <p>
-              น้ำหนัก:
-              {bmi_weight ? (
-                <React.Fragment>
-                  <strong> {bmi_weight} </strong>กก.
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-            <p>
-              ส่วนสูง:
-              {bmi_height ? (
-                <React.Fragment>
-                  <strong> {bmi_height} </strong>ซม.
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-            <p>
-              ดัชนีมวลการ(BMI):
-              {bmi_bmi ? (
-                <React.Fragment>
-                  <strong> {bmi_bmi} </strong>
-                  ผลการประเมิน <strong> {bmi_result} </strong>
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-            <p>
-              ชีพจร:
-              {bp_pulse ? (
-                <React.Fragment>
-                  <strong> {bp_pulse} </strong>ครั้ง/นาที
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-            <p>
-              ความดันโลหิต:
-              {bp_sys ? (
-                <React.Fragment>
-                  <strong>
-                    {" "}
-                    {bp_sys}/{bp_dia}{" "}
-                  </strong>
-                  มม.ปรอท ผลการประเมินความดันโลหิต:{" "}
-                  <strong> {bp_result} </strong>
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-            <p>
-              การประเมินระดับน้ำตาลจากปลายนิ้ว
-              {bp_sys ? (
-                <React.Fragment>
-                  <p>
-                    ผู้สูงอายุ{!fbs_fast && <strong>ไม่ได้</strong>}
-                    มีการงดอาหารก่อนมาตรวจอย่างน้อย 8 ชั่วโมง
-                  </p>
-                  ระดับน้ำตาลจากปลายนิ้ว: <strong>{fbs_fbs} </strong>
-                  มก./ดล
-                  <p>
-                    ผลการประเมินระดับน้ำตาลจากปลายนิ้ว{" "}
-                    <strong>{fbs_result} </strong>
-                  </p>
-                </React.Fragment>
-              ) : (
-                <strong> {noData} </strong>
-              )}
-            </p>
-          </Typography>
-        </div>
+        <p style={{ textAlign: "center" }}>
+          วัน{moment(props.value.APPOINT_DATE).format("dddd")} ที่{" "}
+          {moment(props.value.APPOINT_DATE).format("LL")} เรื่อง{" "}
+          {props.value.APP_NAME}{" "}
+        </p>
 
-        {props.value.APP_NAME === "โรคหัวใจและหลอดเลือด" && (
-          <div className="rfs3">
-            <Typography>แบบประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด</Typography>
+        <div className="row justify-content-center">
+          <div className="col-8 rfs2">
+            <Typography>ข้อมูลสุขภาพทั่วไป</Typography>
             <Typography color="textSecondary">
               <p>
-                ผลการประเมิน{" "}
-                <strong>
-                  {" "}
-                  {cardio_result !== null ? cardio_result : noData}{" "}
-                </strong>
+                ความยาวเส้นรอบเอว:
+                {waist_waist ? (
+                  <React.Fragment>
+                    <strong> {waist_waist} </strong>ซม. ผลการประเมิน{" "}
+                    <strong> {waist_result} </strong>
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
+              </p>
+              <p>
+                น้ำหนัก:
+                {bmi_weight ? (
+                  <React.Fragment>
+                    <strong> {bmi_weight} </strong>กก.
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
+              </p>
+              <p>
+                ส่วนสูง:
+                {bmi_height ? (
+                  <React.Fragment>
+                    <strong> {bmi_height} </strong>ซม.
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
+              </p>
+              <p>
+                ดัชนีมวลการ(BMI):
+                {bmi_bmi ? (
+                  <React.Fragment>
+                    <strong> {bmi_bmi} </strong>
+                    ผลการประเมิน <strong> {bmi_result} </strong>
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
+              </p>
+              <p>
+                ชีพจร:
+                {bp_pulse ? (
+                  <React.Fragment>
+                    <strong> {bp_pulse} </strong>ครั้ง/นาที
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
+              </p>
+              <p>
+                ความดันโลหิต:
+                {bp_sys ? (
+                  <React.Fragment>
+                    <strong>
+                      {" "}
+                      {bp_sys}/{bp_dia}{" "}
+                    </strong>
+                    มม.ปรอท ผลการประเมินความดันโลหิต:{" "}
+                    <strong> {bp_result} </strong>
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
+              </p>
+              <p>
+                การประเมินระดับน้ำตาลจากปลายนิ้ว
+                {bp_sys ? (
+                  <React.Fragment>
+                    <p>
+                      ผู้สูงอายุ{!fbs_fast && <strong>ไม่ได้</strong>}
+                      มีการงดอาหารก่อนมาตรวจอย่างน้อย 8 ชั่วโมง
+                    </p>
+                    ระดับน้ำตาลจากปลายนิ้ว: <strong>{fbs_fbs} </strong>
+                    มก./ดล
+                    <p>
+                      ผลการประเมินระดับน้ำตาลจากปลายนิ้ว{" "}
+                      <strong>{fbs_result} </strong>
+                    </p>
+                  </React.Fragment>
+                ) : (
+                  <strong> {noData} </strong>
+                )}
               </p>
             </Typography>
           </div>
+        </div>
+
+        {props.value.APP_NAME === "โรคหัวใจและหลอดเลือด" && (
+          <div className="row justify-content-center">
+            <div className="col-6 rfs3">
+              <Typography>
+                แบบประเมินความเสี่ยงต่อโรคหัวใจและหลอดเลือด
+              </Typography>
+              <Typography color="textSecondary">
+                <p>
+                  ผลการประเมิน{" "}
+                  <strong>
+                    {" "}
+                    {cardio_result !== null ? cardio_result : noData}{" "}
+                  </strong>
+                </p>
+              </Typography>
+            </div>
+          </div>
         )}
         {props.value.APP_NAME === "ตรวจสุขภาพช่องปาก" && (
-          <div className="rfs5">
-            <Typography>แบบประเมินสุขภาพช่องปาก</Typography>
-            <Typography color="textSecondary">
-              ผลการประเมิน{" "}
-              <strong> {oral_RESULT !== null ? oral_RESULT : noData} </strong>
-            </Typography>
+          <div className="row justify-content-center">
+            <div className="col-6 rfs5">
+              <Typography>แบบประเมินสุขภาพช่องปาก</Typography>
+              <Typography color="textSecondary">
+                ผลการประเมิน{" "}
+                <strong> {oral_RESULT !== null ? oral_RESULT : noData} </strong>
+              </Typography>
+            </div>
           </div>
         )}
       </div>

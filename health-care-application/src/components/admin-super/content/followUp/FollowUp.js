@@ -135,12 +135,21 @@ export default function FollowUp() {
                     !value.VOLUNTEER_ADDER?<td> {value.ADMIN_ADDER.FIRSTNAME} {value.ADMIN_ADDER.LASTNAME}</td>
                     :<td> {value.VOLUNTEER_ADDER.FIRSTNAME} {value.VOLUNTEER_ADDER.LASTNAME}</td>
                     }
-                    {
-                      !value.APP_FLAG ? (
+                    
                         <td style={{ textAlign: "center" }}>
-                          <DoFollow value={value} headKey={isStatus} />
-                          <span style={{ color: "grey" }}> | </span>
-                          <EditFollowup value={value} headKey={isStatus}/>
+                          {
+                            !value.APP_FLAG ? (
+                              <React.Fragment>
+                              <DoFollow value={value} headKey={isStatus} />
+                                <span style={{ color: "grey" }}> | </span>
+                              <EditFollowup value={value} headKey={isStatus}/>
+                              </React.Fragment>
+                            ) : (
+                              <ShowResultF value={value} />
+                            )
+
+                          }
+                          
                           <span style={{ color: "grey" }}> | </span>
                           <button
                             onClick={() => {
@@ -169,13 +178,6 @@ export default function FollowUp() {
                             ลบ
                           </button>
                         </td>
-                      )
-                      :
-                      <td style={{ textAlign: "center" }}>
-                        <ShowResultF value={value} />
-                      </td>
-                    }
-                    
                   </tr>
               )
             })}
