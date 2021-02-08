@@ -28,6 +28,18 @@ import {
   CHART9_ERROR,
   CHART9_FETCHING,
   CHART9_GET_SUCCRESS,
+  CHART10_ERROR,
+  CHART10_FETCHING,
+  CHART10_GET_SUCCRESS,
+  CHART11_ERROR,
+  CHART11_FETCHING,
+  CHART11_GET_SUCCRESS,
+  CHART12_ERROR,
+  CHART12_FETCHING,
+  CHART12_GET_SUCCRESS,
+  CHART13_ERROR,
+  CHART13_FETCHING,
+  CHART13_GET_SUCCRESS,
 } from "../constants";
 
 export const getDataChart4 = community => {
@@ -179,5 +191,73 @@ export const getDataChart9 = () => {
       dispatch({ type: CHART9_ERROR });
       console.log("error chart9 ", error);
     }
+  }
+}
+
+export const getDataChart10 = () => {
+  return async dispatch=> {
+    // await dispatch({ type: CHART10_FETCHING });
+    // try {
+    //   let data = await Axios.get(`${apiBase}/report02/10-bmi`)
+    //   console.log("chart 10 ", data.data)
+    //   await dispatch({
+    //     type: CHART10_GET_SUCCRESS,
+    //     payload: data.data,
+    //   });
+    // } catch (error) {
+    //   dispatch({ type: CHART10_ERROR });
+    //   console.log("error chart10 ", error);
+    // }
+  }
+}
+
+export const getDataChart11 = () => {
+  return async dispatch=> {
+    // await dispatch({ type: CHART11_FETCHING });
+    // try {
+    //   let data = await Axios.get(`${apiBase}/report02/11-bmi`)
+    //   console.log("chart 11 ", data.data)
+    //   await dispatch({
+    //     type: CHART11_GET_SUCCRESS,
+    //     payload: data.data,
+    //   });
+    // } catch (error) {
+    //   dispatch({ type: CHART11_ERROR });
+    //   console.log("error chart11 ", error);
+    // }
+  }
+}
+
+export const getDataChart12 = () => {
+  return async dispatch=> {
+    // await dispatch({ type: CHART12_FETCHING });
+    // try {
+    //   let data = await Axios.get(`${apiBase}/report02/12-bmi`)
+    //   console.log("chart 12 ", data.data)
+    //   await dispatch({
+    //     type: CHART12_GET_SUCCRESS,
+    //     payload: data.data,
+    //   });
+    // } catch (error) {
+    //   dispatch({ type: CHART12_ERROR });
+    //   console.log("error chart12 ", error);
+    // }
+  }
+}
+
+export const getDataChart13 = () => {
+  return async dispatch=> {
+    // await dispatch({ type: CHART13_FETCHING });
+    // try {
+    //   let data = await Axios.get(`${apiBase}/report02/13-bmi`)
+    //   console.log("chart 13 ", data.data)
+    //   await dispatch({
+    //     type: CHART13_GET_SUCCRESS,
+    //     payload: data.data,
+    //   });
+    // } catch (error) {
+    //   dispatch({ type: CHART13_ERROR });
+    //   console.log("error chart13 ", error);
+    // }
   }
 }

@@ -1,12 +1,40 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { Chart1, Chart2, Chart3, Chart4, Chart5,Chart6, Chart7, Chart8,Chart9 } from "./charts"
-import { getDataChart1, getDataChart2, getDataChart3, getDataChart4, getDataChart5, getDataChart6, getDataChart7, getDataChart8, getDataChart9 } from "../../../actions/charts.action"
+import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  Chart1,
+  Chart2,
+  Chart3,
+  Chart4,
+  Chart5,
+  Chart6,
+  Chart7,
+  Chart8,
+  Chart9,
+  Chart10,
+  Chart11,
+  Chart12,
+  Chart13,
+} from "./charts";
+import {
+  getDataChart1,
+  getDataChart2,
+  getDataChart3,
+  getDataChart4,
+  getDataChart5,
+  getDataChart6,
+  getDataChart7,
+  getDataChart8,
+  getDataChart9,
+  getDataChart10,
+  getDataChart11,
+  getDataChart12,
+  getDataChart13,
+} from "../../../actions/charts.action";
 
 export default function MainContent() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   React.useEffect(() => {
-    console.log("in mainmenu use Effect")
+    console.log("in mainmenu use Effect");
     // dispatch(getDataChart1())
     // dispatch(getDataChart2("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
@@ -15,9 +43,13 @@ export default function MainContent() {
     // dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
     // dispatch(getDataChart7("เบิกต้นสังกัด"))
     // dispatch(getDataChart8("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart9())
-  }, [])
-    return (
+    dispatch(getDataChart9());
+    dispatch(getDataChart10());
+    // dispatch(getDataChart11());
+    // dispatch(getDataChart12());
+    // dispatch(getDataChart13());
+  }, []);
+  return (
     <React.Fragment>
       <div className="content-header">
         <div className="container-fluid">
@@ -39,9 +71,7 @@ export default function MainContent() {
                 </span>
                 <div className="info-box-content">
                   <span className="info-box-text">จำนวนผู้ดูแลระบบ</span>
-                  <span className="info-box-number">
-                    10
-                  </span>
+                  <span className="info-box-number">10</span>
                 </div>
               </div>
             </div>
@@ -88,14 +118,15 @@ export default function MainContent() {
             <Chart6 />
             <Chart7 />
             <Chart8 /> */}
-{/* //ส่วนที่2 */}
-<Chart9 />
-
-            
-
+            {/* //ส่วนที่2 */}
+            <Chart9 />
+            <Chart10 />
+            {/* <Chart11 /> */}
+            {/* <Chart12 /> */}
+            {/* <Chart13 /> */}
           </div>
         </div>
       </section>
     </React.Fragment>
-    )
+  );
 }
