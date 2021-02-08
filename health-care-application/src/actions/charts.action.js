@@ -196,18 +196,18 @@ export const getDataChart9 = () => {
 
 export const getDataChart10 = () => {
   return async dispatch=> {
-    // await dispatch({ type: CHART10_FETCHING });
-    // try {
-    //   let data = await Axios.get(`${apiBase}/report02/10-bmi`)
-    //   console.log("chart 10 ", data.data)
-    //   await dispatch({
-    //     type: CHART10_GET_SUCCRESS,
-    //     payload: data.data,
-    //   });
-    // } catch (error) {
-    //   dispatch({ type: CHART10_ERROR });
-    //   console.log("error chart10 ", error);
-    // }
+    await dispatch({ type: CHART10_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/10-bmi`)
+      console.log("chart 10 ", data.data)
+      await dispatch({
+        type: CHART10_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART10_ERROR });
+      console.log("error chart10 ", error);
+    }
   }
 }
 
