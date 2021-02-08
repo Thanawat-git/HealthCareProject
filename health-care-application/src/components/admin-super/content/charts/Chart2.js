@@ -66,7 +66,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     <React.Fragment>
       <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
     <div className="card-body">
-      {/* <div>
+      <div>
       เลือกชุมชน &emsp;
       <Select
           native
@@ -86,7 +86,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         </Select> 
       </div> 
       <br />
-      <div className="chart" ref={ref}>
+      {/* <div className="chart" ref={ref}>
         <Chart
           maxWidth={"900px"}
           height={"400px"}
@@ -110,7 +110,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             },
           }}
         />
-      </div>*/}
+      </div> */}
       <div ref={ref}> 
       <TableContainer component={Paper}>
       <Table className="table-report" aria-label="customized table">
