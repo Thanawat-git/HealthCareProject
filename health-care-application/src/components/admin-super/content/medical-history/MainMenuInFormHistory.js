@@ -115,40 +115,52 @@ function MainMenu({fname, lname}) {
   // const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
+  useEffect(() => {
+    dispatch(getAction.getDataSec2(visitID));
+    dispatch(getAction.getDataSec3(visitID));
+    dispatch(getAction.getDataSec4(visitID));
+    dispatch(getAction.getDataSec5(visitID));
+    dispatch(getAction.getDataSec6(visitID));
+    dispatch(getAction.getDataSec7(visitID));
+    dispatch(getAction.getDataSec8(visitID));
+    dispatch(getAction.getDataSec9(visitID));
+    dispatch(getAction.getDataSec92(visitID));
+    dispatch(getAction.getDataSec10(visitID));
+  }, [])
   const getData = (sec) => {
-    switch (sec) {
-      case "sec2":
-        dispatch(getAction.getDataSec2(visitID));
-        break;
-      case "sec3":
-        dispatch(getAction.getDataSec3(visitID));
-        break;
-      case "sec4":
-        dispatch(getAction.getDataSec4(visitID));
-        break;
-      case "sec5":
-        dispatch(getAction.getDataSec5(visitID));
-        break;
-      case "sec6":
-        dispatch(getAction.getDataSec6(visitID));
-        break;
-      case "sec7":
-        dispatch(getAction.getDataSec7(visitID));
-        dispatch(getAction.getEducate(peopleID))
-        break;
-      case "sec8":
-        dispatch(getAction.getDataSec8(visitID));
-        break;
-      case "sec9":
-        dispatch(getAction.getDataSec9(visitID));
-        dispatch(getAction.getDataSec92(visitID));
-        break;
-      case "sec10":
-        dispatch(getAction.getDataSec10(visitID));
-        break;
-      default:
-        break;
-    }
+    // switch (sec) {
+    //   case "sec2":
+    //     dispatch(getAction.getDataSec2(visitID));
+    //     break;
+    //   case "sec3":
+    //     dispatch(getAction.getDataSec3(visitID));
+    //     break;
+    //   case "sec4":
+    //     dispatch(getAction.getDataSec4(visitID));
+    //     break;
+    //   case "sec5":
+    //     dispatch(getAction.getDataSec5(visitID));
+    //     break;
+    //   case "sec6":
+    //     dispatch(getAction.getDataSec6(visitID));
+    //     break;
+    //   case "sec7":
+    //     dispatch(getAction.getDataSec7(visitID));
+    //     dispatch(getAction.getEducate(peopleID))
+    //     break;
+    //   case "sec8":
+    //     dispatch(getAction.getDataSec8(visitID));
+    //     break;
+    //   case "sec9":
+    //     dispatch(getAction.getDataSec9(visitID));
+    //     dispatch(getAction.getDataSec92(visitID));
+    //     break;
+    //   case "sec10":
+    //     dispatch(getAction.getDataSec10(visitID));
+    //     break;
+    //   default:
+    //     break;
+    // }
     dispatch({
       type: SELECT_SECTION,
       payload: sec,
