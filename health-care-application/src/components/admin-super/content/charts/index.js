@@ -6,5 +6,6 @@ import Chart5 from "./Chart5";
 import Chart6 from "./Chart6";
 import Chart7 from "./Chart7"
 import Chart8 from "./Chart8"
+import Chart9 from "./Chart9"
 
-export {Chart1, Chart2, Chart3, Chart4, Chart5, Chart6, Chart7, Chart8};
+export {Chart1, Chart2, Chart3, Chart4, Chart5, Chart6, Chart7, Chart8,Chart9};
