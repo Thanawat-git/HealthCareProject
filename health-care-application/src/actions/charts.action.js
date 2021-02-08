@@ -25,6 +25,9 @@ import {
   CHART8_ERROR,
   CHART8_FETCHING,
   CHART8_GET_SUCCRESS,
+  CHART9_ERROR,
+  CHART9_FETCHING,
+  CHART9_GET_SUCCRESS,
 } from "../constants";
 
 export const getDataChart4 = community => {
@@ -158,6 +161,23 @@ export const getDataChart8 = Treatment => {
     } catch (error) {
       dispatch({ type: CHART8_ERROR });
       console.log("error chart8 ", error);
+    }
+  }
+}
+
+export const getDataChart9 = () => {
+  return async dispatch=> {
+    await dispatch({ type: CHART9_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/09-waist`)
+      console.log("chart 9 ", data.data)
+      await dispatch({
+        type: CHART9_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART9_ERROR });
+      console.log("error chart9 ", error);
     }
   }
 }

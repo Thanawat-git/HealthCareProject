@@ -1,20 +1,21 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Chart1, Chart2, Chart3, Chart4, Chart5,Chart6, Chart7, Chart8 } from "./charts"
-import { getDataChart1, getDataChart2, getDataChart3, getDataChart4, getDataChart5, getDataChart6, getDataChart7, getDataChart8 } from "../../../actions/charts.action"
+import { Chart1, Chart2, Chart3, Chart4, Chart5,Chart6, Chart7, Chart8,Chart9 } from "./charts"
+import { getDataChart1, getDataChart2, getDataChart3, getDataChart4, getDataChart5, getDataChart6, getDataChart7, getDataChart8, getDataChart9 } from "../../../actions/charts.action"
 
 export default function MainContent() {
   const dispatch = useDispatch()
   React.useEffect(() => {
     console.log("in mainmenu use Effect")
-    dispatch(getDataChart1())
-    dispatch(getDataChart2("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart3("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart4("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart5("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
-    dispatch(getDataChart7("เบิกต้นสังกัด"))
-    dispatch(getDataChart8("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart1())
+    // dispatch(getDataChart2("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart4("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
+    // dispatch(getDataChart7("เบิกต้นสังกัด"))
+    // dispatch(getDataChart8("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart9())
   }, [])
     return (
     <React.Fragment>
@@ -79,14 +80,16 @@ export default function MainContent() {
               </div>
             </div>
 
-            <Chart1 />
+            {/* <Chart1 />
             <Chart2 />
             <Chart3 />
             <Chart4 />
             <Chart5 />
             <Chart6 />
             <Chart7 />
-            <Chart8 />
+            <Chart8 /> */}
+{/* //ส่วนที่2 */}
+<Chart9 />
 
             
 
