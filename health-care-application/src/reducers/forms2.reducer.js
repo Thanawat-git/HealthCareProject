@@ -4,6 +4,7 @@ import {
   HTTP_SECTIONS2_FETCHING,
   GET_RESULT_S2,
   SET_SEC2_TO_DEFAULT,
+  SEC2_ERROR,
 } from "../constants";
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   noFood: null,
   result: null,
   isFetching: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -44,6 +46,7 @@ export default (state = initialState, { type, payload }) => {
         collect: payload[11],
         noFood: payload[12],
         isFetching: false,
+        isError: false,
       };
     case GET_COLLECT_S2:
       return { ...state, collect: payload };
@@ -72,6 +75,13 @@ export default (state = initialState, { type, payload }) => {
         noFood: null,
         result: null,
         isFetching: null,
+        isError: null,
+      };
+    case SEC2_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        isError: true,
       };
     default:
       return state;

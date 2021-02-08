@@ -42,6 +42,7 @@ import {
   GET_RESULT_S9,
   GET_RESULT_S92,
   GET_RESULT_TAI,
+  SEC2_ERROR,
   SELECT_SECTION,
   SET_89Q_TO_DEFAULT,
   SET_MMSE_TO_DEFAULT,
@@ -213,40 +214,73 @@ export const resetDateAllForm = () => {
 };
 
 export const getDataSec2 = (visId) => {
-  return (dispatch) => {
-    return Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)
-      .then((res) => {
-        console.log("res.data.bmi_bmi ", res.data);
-        const data = [
-          res.data.waist_waist,
-          res.data.bmi_weight,
-          res.data.bmi_height,
-          res.data.bp_pulse,
-          res.data.bp_bio_sys,
-          res.data.bp_bio_dia,
-          res.data.fbs_fbs,
-          res.data.waist_result,
-          res.data.bmi_result,
-          res.data.bp_result,
-          res.data.fbs_result,
-          res.data.fbs_correct,
-          res.data.fbs_fast,
-        ];
-        dispatch({
-          type: "FETCHING2",
-        });
-        dispatch({
-          type: CREATE_NEW_FORMS2,
-          payload: data,
-        });
-        // dispatch({
-        //   type: SELECT_SECTION,
-        //   payload: "sec2",
-        // });
-      })
-      .catch((error) => {
-        console.log("err ", error);
+  return async (dispatch) => {
+    try {
+      let res = await Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)
+      const data = [
+        res.data.waist_waist,
+        res.data.bmi_weight,
+        res.data.bmi_height,
+        res.data.bp_pulse,
+        res.data.bp_bio_sys,
+        res.data.bp_bio_dia,
+        res.data.fbs_fbs,
+        res.data.waist_result,
+        res.data.bmi_result,
+        res.data.bp_result,
+        res.data.fbs_result,
+        res.data.fbs_correct,
+        res.data.fbs_fast,
+      ];
+      await dispatch({
+        type: "FETCHING2",
       });
+      await dispatch({
+        type: CREATE_NEW_FORMS2,
+        payload: data,
+      });
+    } catch (error) {
+      console.log("err ", error);
+      dispatch({
+        type: SEC2_ERROR,
+      });
+    }
+    // return Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)
+    //   .then((res) => {
+    //     console.log("res.data.bmi_bmi ", res.data);
+    //     const data = [
+    //       res.data.waist_waist,
+    //       res.data.bmi_weight,
+    //       res.data.bmi_height,
+    //       res.data.bp_pulse,
+    //       res.data.bp_bio_sys,
+    //       res.data.bp_bio_dia,
+    //       res.data.fbs_fbs,
+    //       res.data.waist_result,
+    //       res.data.bmi_result,
+    //       res.data.bp_result,
+    //       res.data.fbs_result,
+    //       res.data.fbs_correct,
+    //       res.data.fbs_fast,
+    //     ];
+    //     dispatch({
+    //       type: "FETCHING2",
+    //     });
+    //     dispatch({
+    //       type: CREATE_NEW_FORMS2,
+    //       payload: data,
+    //     });
+    //     // dispatch({
+    //     //   type: SELECT_SECTION,
+    //     //   payload: "sec2",
+    //     // });
+    //   })
+    //   .catch((error) => {
+    //     console.log("err ", error);
+    //     dispatch({
+    //       type: SEC2_ERROR,
+    //     });
+    //   });
   };
 };
 export const getDataSec3 = (visId) => {
@@ -699,8 +733,8 @@ export const getDataSec10 = (visId) => {
         console.log("res.data 10", res.data);
         const data = [
           res.data.URI_10_1,
-          res.data.URI_RESULT,
           res.data.URI_CORRECT_FORM,
+          res.data.URI_RESULT,
         ];
         dispatch({
           type: "FETCHING10",

@@ -68,6 +68,12 @@ export default function Sections2_1() {
   const [checktosend2, setchecktosend2] = useState();
 
   useEffect(() => {
+    console.log("waist ",waist)
+    console.log("weight ",weight)
+    console.log("high ",high)
+  }, [])
+
+  useEffect(() => {
   if(noFood == true){
     setnoFood(true)
   }else if(noFood == false){

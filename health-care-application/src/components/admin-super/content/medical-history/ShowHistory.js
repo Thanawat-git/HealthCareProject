@@ -531,9 +531,6 @@ export default function ShowHistory({ value }) {
         <DialogContent dividers="paper">
           <Grid container justify="space-between">
             <div>
-              {/* <button
-            onClick={()=>window.print()}
-            >Print this page</button> */}
               <div style={{ marginBottom: 10 }}>
                 <PrintResultOnly name="พิมพ์เฉพาะข้อมูลผลการตรวจของครั้งนี้" value={value} />{" "}
               </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, ListItem, ListItemIcon } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Header from "../volunteer/Header";
 import { Link, useHistory, useRouteMatch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +28,13 @@ const useStyles = makeStyles({
   },
 });
 
+const useStyles3 = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
+
 function MainMenu(props) {
   const { url, path } = useRouteMatch();
   useEffect(() => {
@@ -43,6 +52,7 @@ function MainMenu(props) {
   const collect9 = useSelector(({ forms9Reducer }) => forms9Reducer.collect);
   const collect10 = useSelector(({ forms10Reducer }) => forms10Reducer.collect);
   const classes = useStyles();
+  const classes2 = useStyles3();
   const [i2, setI2] = useState("");
   const [i3, setI3] = useState("");
   const [i4, setI4] = useState("");
@@ -118,15 +128,40 @@ function MainMenu(props) {
   // const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
+
+  const [open, setOpen] = React.useState(false);
+  useEffect(() => {
+    dispatch(getAction.getDataSec2(visitID));
+    dispatch(getAction.getDataSec3(visitID));
+    dispatch(getAction.getDataSec4(visitID));
+    dispatch(getAction.getDataSec5(visitID));
+    dispatch(getAction.getDataSec6(visitID));
+    dispatch(getAction.getDataSec7(visitID));
+    dispatch(getAction.getDataSec8(visitID));
+    dispatch(getAction.getDataSec9(visitID));
+    dispatch(getAction.getDataSec92(visitID));
+    dispatch(getAction.getDataSec10(visitID));
+  }, [])
+
   const getData = (sec) => {
     
     switch (sec) {
       case "sec2":
         dispatch(getAction.getDataSec2(visitID));
-        if (!forms2Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec2`);
-          }, 200);
+        // dispatch({
+        //   type: "FETCHING2",
+        // });
+        if (forms2Reducer.isFetching === false) {
+          setOpen(false);
+          !forms2Reducer.isError && history.push(`${url}/sec2`);
+          // setOpen(true);
+          // setTimeout(() => {
+          //   setOpen(false);
+          //   history.push(`${url}/sec2`);
+          // }, 200);
+          
+        } else {
+          // setOpen(true);
         }
         break;
       case "sec3":
@@ -205,7 +240,11 @@ function MainMenu(props) {
 
   return (
     <React.Fragment>
+      
       <Header /> <br />
+      <Backdrop className={classes2.backdrop} open={open}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Card className={classes.root}>
         <h4 style={{ textAlign: "center" }}>
           คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME}{" "}
@@ -214,7 +253,8 @@ function MainMenu(props) {
         <CardContent>
           <Link
             onClick={() => {
-              getData("sec2");
+              history.push(`${url}/sec2`)
+              // getData("sec2");
             }}
           >
             <ListItem button>
@@ -227,7 +267,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec3");
+              // getData("sec3");
+              history.push(`${url}/sec3`)
             }}
           >
             <ListItem button>
@@ -240,7 +281,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec4");
+              // getData("sec4");
+              history.push(`${url}/sec4`)
             }}
           >
             <ListItem button>
@@ -253,7 +295,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec5");
+              // getData("sec5");
+              history.push(`${url}/sec5`)
             }}
           >
             <ListItem button>
@@ -266,7 +309,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec6");
+              // getData("sec6");
+              history.push(`${url}/sec6`)
             }}
           >
             <ListItem button>
@@ -279,7 +323,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec7");
+              // getData("sec7");
+              history.push(`${url}/sec7`)
             }}
           >
             <ListItem button>
@@ -292,7 +337,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec8");
+              // getData("sec8");
+              history.push(`${url}/sec8_1`)
             }}
           >
             <ListItem button>
@@ -305,7 +351,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec9");
+              // getData("sec9");
+              history.push(`${url}/sec9`)
             }}
           >
             <ListItem button>
@@ -318,7 +365,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              getData("sec10");
+              // getData("sec10");
+              history.push(`${url}/sec10`)
             }}
           >
             <ListItem button>

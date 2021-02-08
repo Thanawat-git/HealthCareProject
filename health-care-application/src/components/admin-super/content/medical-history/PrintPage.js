@@ -60,7 +60,7 @@ function ResultForm({value}) {
 
   } = historyReducer.resultSelected;
   useEffect(() => {
-console.log('value : >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ',value)
+// console.log('value : >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ',value)
   }, [])
   
   return (
@@ -382,7 +382,7 @@ class ResultOnly extends React.Component {
 export class PrintResultOnly extends React.PureComponent {
   render() {
    
-console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>',this.props.value)
+// console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>',this.props.value)
     return (
       <div>
         <ReactToPrint  content={() => this.componentRef}>
