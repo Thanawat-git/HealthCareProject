@@ -46,7 +46,11 @@ export const updateOralHealth = async (payload)=>{
       ORAL_RESULT: payload[19],
       ORAL_CORRECT_FORM:payload[21],
       updateBy: USERLOGIN.Fullname
+    }).then(()=>{
+        console.log("Oral_Health Update Success")
+    }).catch(error=>{
+        console.log("error con not update Oral_Health SEC5 !!!", error)
     })
-    console.log("Oral_Health Update Success")
+    
   }
   

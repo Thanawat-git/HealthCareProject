@@ -202,8 +202,12 @@ export default function Asynchronous() {
                         variant="contained"
                         color="primary"
                         onClick={() => {
-                          const eldId = elderlyReducer.resultSelected.ELD_ID_NUMBER;
-                          createNewForm(eldId);
+                          dispatch({
+                            type: "VIS_ID",
+                            payload: [null,elderlyReducer.resultSelected.ELD_ID_NUMBER],
+                          })
+                          createNewForm(elderlyReducer.resultSelected.ELD_ID_NUMBER);
+
                         }}
                         fullWidth
                       >

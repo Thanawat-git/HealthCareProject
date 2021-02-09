@@ -2,22 +2,19 @@ import Axios from "axios";
 import {
   apiBase,
   apiEld,
-  // CREATE_NEW_FORMS89Q,
-  CREATE_NEW_FORMS10,
-  CREATE_NEW_FORMS2,
-  CREATE_NEW_FORMS3,
-  CREATE_NEW_FORMS4,
-  CREATE_NEW_FORMS5,
-  CREATE_NEW_FORMS6,
-  CREATE_NEW_FORMS6T,
-  // CREATE_NEW_FORMS6T,
-  CREATE_NEW_FORMS7,
-  CREATE_NEW_FORMS7M,
-  //CREATE_NEW_FORMS7M,
-  CREATE_NEW_FORMS8,
-  CREATE_NEW_FORMS89Q,
-  CREATE_NEW_FORMS9,
-  CREATE_NEW_FORMS92,
+  GET_DATA_S10,
+  GET_DATA_S2,
+  GET_DATA_S3,
+  GET_DATA_S4,
+  GET_DATA_S5,
+  GET_DATA_S6,
+  GET_DATA_TAI,
+  GET_DATA_S7,
+  GET_DATA_S7M,
+  GET_DATA_S8,
+  GET_DATA_S89Q,
+  GET_DATA_S9,
+  GET_DATA_S92,
   FORMS1P6_ADD_NEW,
   // FORMS1P4_ADD_NEW,
   GET_COLLECT_S10,
@@ -129,7 +126,7 @@ export const getCollect = (visId) => {
         })
         .catch((error) => {
           console.log("visId in error ", visId);
-          console.log("err ", error);
+          console.log("err getCollect ", error);
         })
     );
   };
@@ -213,77 +210,58 @@ export const resetDateAllForm = () => {
   };
 };
 
-export const getDataSec2 = (visId) => {
-  return async (dispatch) => {
-    try {
-      let res = await Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)
-      const data = [
-        res.data.waist_waist,
-        res.data.bmi_weight,
-        res.data.bmi_height,
-        res.data.bp_pulse,
-        res.data.bp_bio_sys,
-        res.data.bp_bio_dia,
-        res.data.fbs_fbs,
-        res.data.waist_result,
-        res.data.bmi_result,
-        res.data.bp_result,
-        res.data.fbs_result,
-        res.data.fbs_correct,
-        res.data.fbs_fast,
-      ];
-      await dispatch({
-        type: "FETCHING2",
+export const getDataSec2 = (history,visId, url) => {
+    return dispatch => {
+      Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)
+      .then((res) => {
+        console.log("res.data.bmi_bmi ", res.data);
+        const data = [
+          res.data.waist_waist,
+          res.data.bmi_weight,
+          res.data.bmi_height,
+          res.data.bp_pulse,
+          res.data.bp_bio_sys,
+          res.data.bp_bio_dia,
+          res.data.fbs_fbs,
+          res.data.waist_result,
+          res.data.bmi_result,
+          res.data.bp_result,
+          res.data.fbs_result,
+          res.data.fbs_correct,
+          res.data.fbs_fast,
+        ];
+        dispatch({
+          type: "FETCHING2",
+        });
+        dispatch({
+          type: GET_DATA_S2,
+          payload: data,
+        });
+        // dispatch({
+        //   type: SELECT_SECTION,
+        //   payload: "sec2",
+        // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
+        
+      })
+      .catch((error) => {
+        console.log("err ", error);
+        dispatch({
+          type: SEC2_ERROR,
+        });
       });
-      await dispatch({
-        type: CREATE_NEW_FORMS2,
-        payload: data,
-      });
-    } catch (error) {
-      console.log("err ", error);
-      dispatch({
-        type: SEC2_ERROR,
-      });
-    }
-    // return Axios.get(`${apiBase}/elder/examsummary/exam2/${visId}`)
-    //   .then((res) => {
-    //     console.log("res.data.bmi_bmi ", res.data);
-    //     const data = [
-    //       res.data.waist_waist,
-    //       res.data.bmi_weight,
-    //       res.data.bmi_height,
-    //       res.data.bp_pulse,
-    //       res.data.bp_bio_sys,
-    //       res.data.bp_bio_dia,
-    //       res.data.fbs_fbs,
-    //       res.data.waist_result,
-    //       res.data.bmi_result,
-    //       res.data.bp_result,
-    //       res.data.fbs_result,
-    //       res.data.fbs_correct,
-    //       res.data.fbs_fast,
-    //     ];
-    //     dispatch({
-    //       type: "FETCHING2",
-    //     });
-    //     dispatch({
-    //       type: CREATE_NEW_FORMS2,
-    //       payload: data,
-    //     });
-    //     // dispatch({
-    //     //   type: SELECT_SECTION,
-    //     //   payload: "sec2",
-    //     // });
-    //   })
-    //   .catch((error) => {
-    //     console.log("err ", error);
-    //     dispatch({
-    //       type: SEC2_ERROR,
-    //     });
-    //   });
   };
 };
-export const getDataSec3 = (visId) => {
+
+export const getDataSec3 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/cardiovascular/findOne/${visId}`)
       .then((res) => {
@@ -304,20 +282,29 @@ export const getDataSec3 = (visId) => {
           type: "FETCHING3",
         });
         dispatch({
-          type: CREATE_NEW_FORMS3,
+          type: GET_DATA_S3,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec3",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec3 ", error);
       });
   };
 };
-export const getDataSec4 = (visId) => {
+export const getDataSec4 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/eye/findOne/${visId}`)
       .then((res) => {
@@ -336,20 +323,29 @@ export const getDataSec4 = (visId) => {
           type: "FETCHING4",
         });
         dispatch({
-          type: CREATE_NEW_FORMS4,
+          type: GET_DATA_S4,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec4",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec4 ", error);
       });
   };
 };
-export const getDataSec5 = (visId) => {
+export const getDataSec5 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/oralHealth/findOne/${visId}`)
       .then((res) => {
@@ -381,20 +377,29 @@ export const getDataSec5 = (visId) => {
           type: "FETCHING5",
         });
         dispatch({
-          type: CREATE_NEW_FORMS5,
+          type: GET_DATA_S5,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec5",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec5 ", error);
       });
   };
 };
-export const getDataSec6 = (visId) => {
+export const getDataSec6 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/abilityInLife/findOne/${visId}`)
       .then((res) => {
@@ -418,16 +423,25 @@ export const getDataSec6 = (visId) => {
           type: "FETCHING6",
         });
         dispatch({
-          type: CREATE_NEW_FORMS6,
+          type: GET_DATA_S6,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec6",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec6 ", error);
       });
   };
 };
@@ -449,20 +463,17 @@ export const getDataTai = (visId) => {
           type: "FETCHING6T",
         });
         dispatch({
-          type: CREATE_NEW_FORMS6T,
+          type: GET_DATA_TAI,
           payload: data,
         });
-        // dispatch({
-        //   type: SELECT_SECTION,
-        //   payload: "sec6",
-        // });
+        
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataTai ", error);
       });
   };
 };
-export const getDataSec7 = (visId) => {
+export const getDataSec7 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/alzheimer/findOne/${visId}`)
       .then((res) => {
@@ -495,16 +506,25 @@ export const getDataSec7 = (visId) => {
           type: "FETCHING7",
         });
         dispatch({
-          type: CREATE_NEW_FORMS7,
+          type: GET_DATA_S7,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec7",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec7 ", error);
       });
   };
 };
@@ -565,21 +585,18 @@ export const getDatammse = (visId) => {
           type: "FETCHING7M",
         });
         dispatch({
-          type: CREATE_NEW_FORMS7M,
+          type: GET_DATA_S7M,
           payload: data,
         });
-        // dispatch({
-        //   type: SELECT_SECTION,
-        //   payload: "sec7",
-        // });
+        
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDatammse ", error);
       });
   };
 };
 
-export const getDataSec8 = (visId) => {
+export const getDataSec8 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/depressionScreening/findOne/${visId}`)
       .then((res) => {
@@ -608,28 +625,34 @@ export const getDataSec8 = (visId) => {
           type: "FETCHING8",
         });
         dispatch({
-          type: CREATE_NEW_FORMS8,
+          type: GET_DATA_S8,
           payload: data,
         });
         dispatch({
-          type: CREATE_NEW_FORMS89Q,
+          type: GET_DATA_S89Q,
           payload:data2
         })
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec8",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec8 ", error);
       });
   };
 };
 
-
-
-
-export const getDataSec9 = (visId) => {
+export const getDataSec9 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/boneMuscle/findOne/${visId}`)
       .then((res) => {
@@ -659,16 +682,25 @@ export const getDataSec9 = (visId) => {
           type: "FETCHING9",
         });
         dispatch({
-          type: CREATE_NEW_FORMS9,
+          type: GET_DATA_S9,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec9",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec9 ", error);
       });
   };
 };
@@ -718,7 +750,7 @@ export const getDataSec92 = (visId) => {
           type: "FETCHING92",
         });
         dispatch({
-          type: CREATE_NEW_FORMS92,
+          type: GET_DATA_S92,
           payload: data,
         });
       }
@@ -726,7 +758,7 @@ export const getDataSec92 = (visId) => {
   };
 };
 
-export const getDataSec10 = (visId) => {
+export const getDataSec10 = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/urination/findOne/${visId}`)
       .then((res) => {
@@ -740,16 +772,25 @@ export const getDataSec10 = (visId) => {
           type: "FETCHING10",
         });
         dispatch({
-          type: CREATE_NEW_FORMS10,
+          type: GET_DATA_S10,
           payload: data,
         });
         // dispatch({
         //   type: SELECT_SECTION,
         //   payload: "sec10",
         // });
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getDataSec10 ", error);
       });
   };
 };

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, ListItem, ListItemIcon } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Header from "../volunteer/Header";
 import { Link, useHistory, useRouteMatch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,13 +26,6 @@ const useStyles = makeStyles({
   },
 });
 
-const useStyles3 = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#fff',
-  },
-}));
-
 function MainMenu(props) {
   const { url, path } = useRouteMatch();
   useEffect(() => {
@@ -52,7 +43,6 @@ function MainMenu(props) {
   const collect9 = useSelector(({ forms9Reducer }) => forms9Reducer.collect);
   const collect10 = useSelector(({ forms10Reducer }) => forms10Reducer.collect);
   const classes = useStyles();
-  const classes2 = useStyles3();
   const [i2, setI2] = useState("");
   const [i3, setI3] = useState("");
   const [i4, setI4] = useState("");
@@ -129,108 +119,80 @@ function MainMenu(props) {
   const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
   const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
 
-  const [open, setOpen] = React.useState(false);
-  useEffect(() => {
-    dispatch(getAction.getDataSec2(visitID));
-    dispatch(getAction.getDataSec3(visitID));
-    dispatch(getAction.getDataSec4(visitID));
-    dispatch(getAction.getDataSec5(visitID));
-    dispatch(getAction.getDataSec6(visitID));
-    dispatch(getAction.getDataSec7(visitID));
-    dispatch(getAction.getDataSec8(visitID));
-    dispatch(getAction.getDataSec9(visitID));
-    dispatch(getAction.getDataSec92(visitID));
-    dispatch(getAction.getDataSec10(visitID));
-  }, [])
-
-  const getData = (sec) => {
+  const getData = (sec) => { // ไม่ได้ใช้
     
     switch (sec) {
       case "sec2":
-        dispatch(getAction.getDataSec2(visitID));
-        // dispatch({
-        //   type: "FETCHING2",
-        // });
-        if (forms2Reducer.isFetching === false) {
-          setOpen(false);
-          !forms2Reducer.isError && history.push(`${url}/sec2`);
-          // setOpen(true);
-          // setTimeout(() => {
-          //   setOpen(false);
-          //   history.push(`${url}/sec2`);
-          // }, 200);
-          
-        } else {
-          // setOpen(true);
-        }
+        dispatch(getAction.getDataSec2(history,visitID,`${url}/sec2`));
+        
         break;
       case "sec3":
-        dispatch(getAction.getDataSec3(visitID));
-        if (!forms3Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec3`);
-          }, 200);
-        }
+        dispatch(getAction.getDataSec3(history,visitID,`${url}/sec3`));
+        // if (!forms3Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec3`);
+        //   }, 200);
+        // }
         break;
       case "sec4":
-        dispatch(getAction.getDataSec4(visitID));
-        if (!forms4Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec4`);
-          }, 200);
-        }
+        dispatch(getAction.getDataSec4(history,visitID,`${url}/sec4`));
+        // if (!forms4Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec4`);
+        //   }, 200);
+        // }
         break;
       case "sec5":
-        dispatch(getAction.getDataSec5(visitID));
-        if (!forms5Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec5`);
-          }, 200);
-        }
+        dispatch(getAction.getDataSec5(history,visitID,`${url}/sec5`));
+        // if (!forms5Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec5`);
+        //   }, 200);
+        // }
         break;
       case "sec6":
-        dispatch(getAction.getDataSec6(visitID));
+        dispatch(getAction.getDataSec6(history,visitID,`${url}/sec6`));
         dispatch(getAction.getDataTai(visitID));
-        if (!forms6Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec6`);
-          }, 200);
-        }
+        // if (!forms6Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec6`);
+        //   }, 200);
+        // }
         break;
       case "sec7":
-        dispatch(getAction.getDataSec7(visitID));
+        dispatch(getAction.getDataSec7(history,visitID,`${url}/sec7`));
         // dispatch(getAction.getEducate(peopleID))
         dispatch(getAction.getDatammse(visitID))
-        if (!forms7Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec7`);
-          }, 200);
-        }
+        // if (!forms7Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec7`);
+        //   }, 200);
+        // }
         break;
       case "sec8":
-        dispatch(getAction.getDataSec8(visitID));
-        if (!forms8Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec8_1`);
-          }, 200);
-        }
+        dispatch(getAction.getDataSec8(history,visitID,`${url}/sec8_1`));
+        // if (!forms8Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec8_1`);
+        //   }, 200);
+        // }
         break;
       case "sec9":
-        dispatch(getAction.getDataSec9(visitID));
+        dispatch(getAction.getDataSec9(history,visitID,`${url}/sec9`));
         dispatch(getAction.getDataSec92(visitID));
-        if (!forms9Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec9`);
-          }, 200);
-        }
+        // if (!forms9Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec9`);
+        //   }, 200);
+        // }
         break;
       case "sec10":
-        dispatch(getAction.getDataSec10(visitID));
-        if (!forms10Reducer.isFetching) {
-          setTimeout(() => {
-            history.push(`${url}/sec10`);
-          }, 200);
-        }
+        dispatch(getAction.getDataSec10(history,visitID,`${url}/sec10`));
+        // if (!forms10Reducer.isFetching) {
+        //   setTimeout(() => {
+        //     history.push(`${url}/sec10`);
+        //   }, 200);
+        // }
         break;
 
       default:
@@ -242,9 +204,6 @@ function MainMenu(props) {
     <React.Fragment>
       
       <Header /> <br />
-      <Backdrop className={classes2.backdrop} open={open}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
       <Card className={classes.root}>
         <h4 style={{ textAlign: "center" }}>
           คุณ{elderlyReducer.resultSelected.ELD_FIRSTNAME}{" "}
@@ -253,8 +212,8 @@ function MainMenu(props) {
         <CardContent>
           <Link
             onClick={() => {
-              history.push(`${url}/sec2`)
-              // getData("sec2");
+              // history.push(`${url}/sec2`)
+              getData("sec2");
             }}
           >
             <ListItem button>
@@ -267,8 +226,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec3");
-              history.push(`${url}/sec3`)
+              getData("sec3");
+              // history.push(`${url}/sec3`)
             }}
           >
             <ListItem button>
@@ -281,8 +240,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec4");
-              history.push(`${url}/sec4`)
+              getData("sec4");
+              // history.push(`${url}/sec4`)
             }}
           >
             <ListItem button>
@@ -295,8 +254,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec5");
-              history.push(`${url}/sec5`)
+              getData("sec5");
+              // history.push(`${url}/sec5`)
             }}
           >
             <ListItem button>
@@ -309,8 +268,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec6");
-              history.push(`${url}/sec6`)
+              getData("sec6");
+              // history.push(`${url}/sec6`)
             }}
           >
             <ListItem button>
@@ -323,8 +282,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec7");
-              history.push(`${url}/sec7`)
+              getData("sec7");
+              // history.push(`${url}/sec7`)
             }}
           >
             <ListItem button>
@@ -337,8 +296,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec8");
-              history.push(`${url}/sec8_1`)
+              getData("sec8");
+              // history.push(`${url}/sec8_1`)
             }}
           >
             <ListItem button>
@@ -351,8 +310,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec9");
-              history.push(`${url}/sec9`)
+              getData("sec9");
+              // history.push(`${url}/sec9`)
             }}
           >
             <ListItem button>
@@ -365,8 +324,8 @@ function MainMenu(props) {
           <hr />
           <Link
             onClick={() => {
-              // getData("sec10");
-              history.push(`${url}/sec10`)
+              getData("sec10");
+              // history.push(`${url}/sec10`)
             }}
           >
             <ListItem button>

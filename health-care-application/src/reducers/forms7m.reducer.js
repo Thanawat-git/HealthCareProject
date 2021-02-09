@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7M, GET_RESULT_S7M, SET_MMSE_TO_DEFAULT } from "../constants";
+import { CREATE_NEW_FORMS7M, GET_DATA_S7M, GET_RESULT_S7M, SET_MMSE_TO_DEFAULT } from "../constants";
 
 const initialState = {
   ans1: 0,
@@ -53,6 +53,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_DATA_S7M:
     case CREATE_NEW_FORMS7M:
       return {
         //...state,

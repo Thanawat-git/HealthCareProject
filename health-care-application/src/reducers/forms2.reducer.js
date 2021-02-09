@@ -1,6 +1,7 @@
 import {
   CREATE_NEW_FORMS2,
   GET_COLLECT_S2,
+  GET_DATA_S2,
   HTTP_SECTIONS2_FETCHING,
   GET_RESULT_S2,
   SET_SEC2_TO_DEFAULT,
@@ -30,6 +31,7 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "FETCHING2":
       return { ...state, isFetching: true };
+    case GET_DATA_S2:
     case CREATE_NEW_FORMS2:
       return {
         waist: payload[0],
