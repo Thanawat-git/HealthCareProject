@@ -432,72 +432,12 @@ const ShowChart = React.forwardRef((props, ref) => {
 
   return (    
   <React.Fragment>
-    <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
+    <CSVLink 
+    data={rows} 
+    className="csv-link"
+    filename={"จำนวนและร้อยละของผู้สูงอายุจำแนกตามความเป็นอยู่และชุมชน.csv"}
+    > Download CSV </CSVLink>
     <div className="card-body">
-      {/* <div>
-        เลือกชุมชน &emsp;
-        <Select
-          native
-          open={open}
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          value={community}
-          onChange={handleChange}
-        >
-          {COMMUNITYS.map((value, index) => {
-            return (
-              <option key={index} value={value}>
-                {value}
-              </option>
-            );
-          })}
-        </Select>
-      </div> 
-      <br />
-      <div className="row" ref={ref}>
-        <div className="col-12">
-          <p style={{ textAlign: "center" }}>
-            จำนวนประชากรผู้สูงอายุทั้งหมดใน {community} จำนวน {Summary} คน
-          </p>
-        </div>
-        
-        <div className="chart col-6 align-self-center" style={{ textAlign: "center" }} >
-            {
-                Summary === 0 ?
-                <h1>ไม่มีข้อมูล</h1>
-                :
-            <Chart
-            //   maxWidth={"400px"}
-            height={"400px"}
-            chartType="PieChart"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ["", "จำนวน"],
-              ["อยู่ลำพัง", Alone],
-              ["ไม่ได้อยู่ลำพัง", NotAlone],
-            ]}
-          />
-            }
-          
-        </div>
-        <div className="chart col-6">
-          <Chart
-            // width={"300px"}
-            height={"400px"}
-            chartType="Bar"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ["เวลา", "ผู้สูงอายุที่อยู่ลำพัง"],
-              ["กลางวัน", AloneDay],
-              ["กลางคืน", AloneNight],
-              ["ทั้งวัน", AloneDayNight],
-            ]}
-            options={{
-              title: "ผู้สูงอายุที่อยู่ลำพัง",
-            }}
-          />
-        </div>
-      </div>*/}
       <div ref={ref}>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">

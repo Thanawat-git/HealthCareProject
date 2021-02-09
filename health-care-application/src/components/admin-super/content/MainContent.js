@@ -39,7 +39,7 @@ export default function MainContent() {
     // dispatch(getDataChart2("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart4("ชุมชนมณีแก้ว"))
-    // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart5("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
     // dispatch(getDataChart7("เบิกต้นสังกัด"))
     // dispatch(getDataChart8("ชุมชนมณีแก้ว"))
@@ -114,7 +114,7 @@ export default function MainContent() {
             <Chart2 />
             <Chart3 />
             <Chart4 />*/}
-            {/* <Chart5 /> */}
+            <Chart5 />
             {/* <Chart6 /> */}
             {/* <Chart7 /> */}
             {/* <Chart8 />  */}
