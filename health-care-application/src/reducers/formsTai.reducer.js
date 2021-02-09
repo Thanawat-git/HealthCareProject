@@ -1,5 +1,6 @@
 import {
   CREATE_NEW_FORMS6T,
+  GET_DATA_TAI,
   GET_RESULT_TAI,
   SET_TAI_TO_DEFAULT,
 } from "../constants";
@@ -16,6 +17,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_DATA_TAI:
     case CREATE_NEW_FORMS6T:
       return {
         ans6_Im: payload[0],

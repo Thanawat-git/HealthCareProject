@@ -1,6 +1,7 @@
 import {
   CREATE_NEW_FORMS3,
   GET_COLLECT_S3,
+  GET_DATA_S3,
   GET_RESULT_S3,
   SET_SEC3_TO_DEFAULT,
 } from "../constants";
@@ -23,6 +24,7 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "FETCHING3":
       return { ...state, isFetching: true };
+    case GET_DATA_S3:
     case CREATE_NEW_FORMS3:
       return {
         ans3_1: payload[0],

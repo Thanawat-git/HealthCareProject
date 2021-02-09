@@ -1,5 +1,6 @@
 import {
   CREATE_NEW_FORMS89Q,
+  GET_DATA_S89Q,
   GET_RESULT_S89Q,
   SET_89Q_TO_DEFAULT,
 } from "../constants";
@@ -21,6 +22,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_DATA_S89Q:
     case CREATE_NEW_FORMS89Q:
       return {
         ans8_9q_1: payload[0],
