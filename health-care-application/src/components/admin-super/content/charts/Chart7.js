@@ -30,120 +30,118 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 function createData(
-  name,
-  numMale,
-  numFemale,
-  sum,
-  Male6569,
-  Female6569,
-  sum6569,
-  Male7074,
-  Female7074,
-  sum7074,
-  Male7579,
-  Female7579,
-  sum7579,
-  Male8084,
-  Female8084,
-  sum8084,
-  Male8590,
-  Female8590,
-  sum8590,
-  Male9094,
-  Female9094,
-  sum9094,
-  Male95,
-  Female95,
-  sum95,
-  sumAllM,
-  sumAllF,
-  sumAll,
-  sumAllPerM,
-  sumAllPerF,
-  sumAllPer,
-  PerMale,
-  PerFemale,
-  Persum,
-  PerMale6569,
-  PerFemale6569,
-  Persum6569,
-  PerMale7074,
-  PerFemale7074,
-  Persum7074,
-  PerMale7579,
-  PerFemale7579,
-  Persum7579,
-  PerMale8084,
-  PerFemale8084,
-  Persum8084,
-  PerMale8590,
-  PerFemale8590,
-  Persum8590,
-  PerMale9094,
-  PerFemale9094,
-  Persum9094,
-  PerMale95,
-  PerFemale95,
-  Persum95,
-
-
+  สิทธิการรักษา,
+  ผู้ชาย6064,
+  ผู้หญิง6064,
+  รวม6064,
+  ผู้ชาย6569,
+  ผู้หญิง6569,
+  รวม6569,
+  ผู้ชาย7074,
+  ผู้หญิง7074,
+  รวม7074,
+  ผู้ชาย7579,
+  ผู้หญิง7579,
+  รวม7579,
+  ผู้ชาย8084,
+  ผู้หญิง8084,
+  รวม8084,
+  ผู้ชาย8590,
+  ผู้หญิง8590,
+  รวม8590,
+  ผู้ชาย9094,
+  ผู้หญิง9094,
+  รวม9094,
+  ผู้ชาย95,
+  ผู้หญิง95,
+  รวม95,
+  รวมทั้งหมดผู้ชาย,
+  รวมทั้งหมดผู้หญิง,
+  รวมทั้งหมด,
+  เปอร์เซ็นต์รวมทั้งหมดผู้ชาย,
+  เปอร์เซ็นต์รวมทั้งหมดผู้หญิง,
+  เปอร์เซ็นต์รวมทั้งหมด,
+  เปอร์เซ็นต์ผู้ชาย6064,
+  เปอร์เซ็นต์ผู้หญิง6064,
+  เปอร์เซ็นต์รวม6064,
+  เปอร์เซ็นต์ผู้ชาย6569,
+  เปอร์เซ็นต์ผู้หญิง6569,
+  เปอร์เซ็นต์รวม6569,
+  เปอร์เซ็นต์ผู้ชาย7074,
+  เปอร์เซ็นต์ผู้หญิง7074,
+  เปอร์เซ็นต์รวม7074,
+  เปอร์เซ็นต์ผู้ชาย7579,
+  เปอร์เซ็นต์ผู้หญิง7579,
+  เปอร์เซ็นต์รวม7579,
+  เปอร์เซ็นต์ผู้ชาย8084,
+  เปอร์เซ็นต์ผู้หญิง8084,
+  เปอร์เซ็นต์รวม8084,
+  เปอร์เซ็นต์ผู้ชาย8590,
+  เปอร์เซ็นต์ผู้หญิง8590,
+  เปอร์เซ็นต์รวม8590,
+  เปอร์เซ็นต์ผู้ชาย9094,
+  เปอร์เซ็นต์ผู้หญิง9094,
+  เปอร์เซ็นต์รวม9094,
+  เปอร์เซ็นต์ผู้ชาย95,
+  เปอร์เซ็นต์ผู้หญิง95,
+  เปอร์เซ็นต์รวม95,
 ) {
   return {
-    name,
-    numMale,
-    numFemale,
-    sum,
-    Male6569,
-    Female6569,
-    sum6569,
-    Male7074,
-    Female7074,
-    sum7074,
-    Male7579,
-    Female7579,
-    sum7579,
-    Male8084,
-    Female8084,
-    sum8084,
-    Male8590,
-    Female8590,
-    sum8590,
-    Male9094,
-    Female9094,
-    sum9094,
-    Male95,
-    Female95,
-    sum95,
-    sumAllM,
-    sumAllF,
-    sumAll,
-    sumAllPerM,
-    sumAllPerF,
-    sumAllPer,
-    PerMale,
-  PerFemale,
-  Persum,
-  PerMale6569,
-  PerFemale6569,
-  Persum6569,
-  PerMale7074,
-  PerFemale7074,
-  Persum7074,
-  PerMale7579,
-  PerFemale7579,
-  Persum7579,
-  PerMale8084,
-  PerFemale8084,
-  Persum8084,
-  PerMale8590,
-  PerFemale8590,
-  Persum8590,
-  PerMale9094,
-  PerFemale9094,
-  Persum9094,
-  PerMale95,
-  PerFemale95,
-  Persum95,
+    สิทธิการรักษา,
+  ผู้ชาย6064,
+  ผู้หญิง6064,
+  รวม6064,
+  ผู้ชาย6569,
+  ผู้หญิง6569,
+  รวม6569,
+  ผู้ชาย7074,
+  ผู้หญิง7074,
+  รวม7074,
+  ผู้ชาย7579,
+  ผู้หญิง7579,
+  รวม7579,
+  ผู้ชาย8084,
+  ผู้หญิง8084,
+  รวม8084,
+  ผู้ชาย8590,
+  ผู้หญิง8590,
+  รวม8590,
+  ผู้ชาย9094,
+  ผู้หญิง9094,
+  รวม9094,
+  ผู้ชาย95,
+  ผู้หญิง95,
+  รวม95,
+  รวมทั้งหมดผู้ชาย,
+  รวมทั้งหมดผู้หญิง,
+  รวมทั้งหมด,
+  เปอร์เซ็นต์รวมทั้งหมดผู้ชาย,
+  เปอร์เซ็นต์รวมทั้งหมดผู้หญิง,
+  เปอร์เซ็นต์รวมทั้งหมด,
+  เปอร์เซ็นต์ผู้ชาย6064,
+  เปอร์เซ็นต์ผู้หญิง6064,
+  เปอร์เซ็นต์รวม6064,
+  เปอร์เซ็นต์ผู้ชาย6569,
+  เปอร์เซ็นต์ผู้หญิง6569,
+  เปอร์เซ็นต์รวม6569,
+  เปอร์เซ็นต์ผู้ชาย7074,
+  เปอร์เซ็นต์ผู้หญิง7074,
+  เปอร์เซ็นต์รวม7074,
+  เปอร์เซ็นต์ผู้ชาย7579,
+  เปอร์เซ็นต์ผู้หญิง7579,
+  เปอร์เซ็นต์รวม7579,
+  เปอร์เซ็นต์ผู้ชาย8084,
+  เปอร์เซ็นต์ผู้หญิง8084,
+  เปอร์เซ็นต์รวม8084,
+  เปอร์เซ็นต์ผู้ชาย8590,
+  เปอร์เซ็นต์ผู้หญิง8590,
+  เปอร์เซ็นต์รวม8590,
+  เปอร์เซ็นต์ผู้ชาย9094,
+  เปอร์เซ็นต์ผู้หญิง9094,
+  เปอร์เซ็นต์รวม9094,
+  เปอร์เซ็นต์ผู้ชาย95,
+  เปอร์เซ็นต์ผู้หญิง95,
+  เปอร์เซ็นต์รวม95,
   };
 }
 
@@ -202,42 +200,42 @@ const ShowChart = React.forwardRef((props, ref) => {
      Affiliation.summary.ElderFemale,
      Affiliation.summary.Elder,//sumAll
 
-     `${Affiliation.summary.ElderPerMale} %`,
-     `${Affiliation.summary.ElderPerFemale} %`,
-     `${Affiliation.summary.ElderPer} %`,
+     `${Affiliation.summary.ElderPerMale}`==="NaN"? "0" :`${Affiliation.summary.ElderPerMale}`,
+     `${Affiliation.summary.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.summary.ElderPerFemale}`,
+     `${Affiliation.summary.ElderPer}`==="NaN"? "0" :`${Affiliation.summary.ElderPer}`,
 
 
-     `${Affiliation.g6064.ElderPerMale} %`,
-     `${Affiliation.g6064.ElderPerFemale} %`,
-     `${Affiliation.g6064.ElderPer} %`,
+     `${Affiliation.g6064.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g6064.ElderPerMale}`,
+     `${Affiliation.g6064.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g6064.ElderPerFemale}`,
+     `${Affiliation.g6064.ElderPer}`==="NaN"? "0" : `${Affiliation.g6064.ElderPer}`,
 
-    `${ Affiliation.g6569.ElderPerMale} %`,
-    `${ Affiliation.g6569.ElderPerFemale} %`,
-    `${ Affiliation.g6569.ElderPer} %`,
+    `${ Affiliation.g6569.ElderPerMale}`==="NaN"? "0" :`${ Affiliation.g6569.ElderPerMale}`,
+    `${ Affiliation.g6569.ElderPerFemale}`==="NaN"? "0" :`${ Affiliation.g6569.ElderPerFemale}`,
+    `${ Affiliation.g6569.ElderPer}`==="NaN"? "0" :`${ Affiliation.g6569.ElderPer}`,
 
-     `${Affiliation.g7074.ElderPerMale} %`,
-     `${Affiliation.g7074.ElderPerFemale} %`,
-     `${Affiliation.g7074.ElderPer} %`,
+     `${Affiliation.g7074.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g7074.ElderPerMale}`,
+     `${Affiliation.g7074.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g7074.ElderPerFemale}`,
+     `${Affiliation.g7074.ElderPer}`==="NaN"? "0" :`${Affiliation.g7074.ElderPer}`,
 
-     `${Affiliation.g7579.ElderPerMale} %`,
-     `${Affiliation.g7579.ElderPerFemale} %`,
-     `${Affiliation.g7579.ElderPer} %`,
+     `${Affiliation.g7579.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g7579.ElderPerMale}`,
+     `${Affiliation.g7579.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g7579.ElderPerFemale}`,
+     `${Affiliation.g7579.ElderPer}`==="NaN"? "0" :`${Affiliation.g7579.ElderPer}`,
 
-     `${Affiliation.g8084.ElderPerMale} %`,
-     `${Affiliation.g8084.ElderPerFemale} %`,
-     `${Affiliation.g8084.ElderPer} %`,
+     `${Affiliation.g8084.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g8084.ElderPerMale}`,
+     `${Affiliation.g8084.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g8084.ElderPerFemale}`,
+     `${Affiliation.g8084.ElderPer}`==="NaN"? "0" :`${Affiliation.g8084.ElderPer}`,
 
-     `${Affiliation.g8589.ElderPerMale} %`,
-     `${Affiliation.g8589.ElderPerFemale} %`,
-     `${Affiliation.g8589.ElderPer} %`,
+     `${Affiliation.g8589.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g8589.ElderPerMale}`,
+     `${Affiliation.g8589.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g8589.ElderPerFemale}`,
+     `${Affiliation.g8589.ElderPer}`==="NaN"? "0" :`${Affiliation.g8589.ElderPer}`,
 
-     `${Affiliation.g9094.ElderPerMale} %`,
-     `${Affiliation.g9094.ElderPerFemale} %`,
-     `${Affiliation.g9094.ElderPer} %`,
+     `${Affiliation.g9094.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g9094.ElderPerMale}`,
+     `${Affiliation.g9094.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g9094.ElderPerFemale}`,
+     `${Affiliation.g9094.ElderPer}`==="NaN"? "0" :`${Affiliation.g9094.ElderPer}`,
 
-     `${Affiliation.g95.ElderPerMale} %`,
-     `${Affiliation.g95.ElderPerFemale} %`,
-    `${ Affiliation.g95.ElderPer} %`,
+     `${Affiliation.g95.ElderPerMale}`==="NaN"? "0" :`${Affiliation.g95.ElderPerMale}`,
+     `${Affiliation.g95.ElderPerFemale}`==="NaN"? "0" :`${Affiliation.g95.ElderPerFemale}`,
+    `${Affiliation.g95.ElderPer}`==="NaN"? "0" :`${Affiliation.g95.ElderPer}`,
 
    ),
    createData(
@@ -278,41 +276,41 @@ const ShowChart = React.forwardRef((props, ref) => {
      Yourself.summary.ElderFemale,
      Yourself.summary.Elder,
 
-     `${Yourself.summary.ElderPerMale} %`,
-     `${Yourself.summary.ElderPerFemale} %`,
-     0,//  `${Yourself.summary.ElderPer} %`,
+     `${Yourself.summary.ElderPerMale}`==="NaN"? "0" :`${Yourself.summary.ElderPerMale}`,
+     `${Yourself.summary.ElderPerFemale}`==="NaN"? "0" :`${Yourself.summary.ElderPerFemale}`,
+      `${Yourself.summary.ElderPer}`==="NaN"? "0" :`${Yourself.summary.ElderPer}`,
 
-     `${Yourself.g6064.ElderPerMale} %`,
-     `${Yourself.g6064.ElderPerFemale} %`,
-     `${Yourself.g6064.ElderPer} %`,
+     `${Yourself.g6064.ElderPerMale}`==="NaN"? "0" :`${Yourself.g6064.ElderPerMale}`,
+     `${Yourself.g6064.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g6064.ElderPerFemale}`,
+     `${Yourself.g6064.ElderPer}`==="NaN"? "0" :`${Yourself.g6064.ElderPer}`,
 
-    `${ Yourself.g6569.ElderPerMale} %`,
-    `${ Yourself.g6569.ElderPerFemale} %`,
-    `${ Yourself.g6569.ElderPer} %`,
+    `${ Yourself.g6569.ElderPerMale}`==="NaN"? "0" :`${ Yourself.g6569.ElderPerMale}`,
+    `${ Yourself.g6569.ElderPerFemale}`==="NaN"? "0" :`${ Yourself.g6569.ElderPerFemale}`,
+    `${ Yourself.g6569.ElderPer}`==="NaN"? "0" :`${ Yourself.g6569.ElderPer}`,
 
-     `${Yourself.g7074.ElderPerMale} %`,
-     `${Yourself.g7074.ElderPerFemale} %`,
-     `${Yourself.g7074.ElderPer} %`,
+     `${Yourself.g7074.ElderPerMale}`==="NaN"? "0" :`${Yourself.g7074.ElderPerMale}`,
+     `${Yourself.g7074.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g7074.ElderPerFemale}`,
+     `${Yourself.g7074.ElderPer}`==="NaN"? "0" :`${Yourself.g7074.ElderPer}`,
 
-     `${Yourself.g7579.ElderPerMale} %`,
-     `${Yourself.g7579.ElderPerFemale} %`,
-     `${Yourself.g7579.ElderPer} %`,
+     `${Yourself.g7579.ElderPerMale}`==="NaN"? "0" :`${Yourself.g7579.ElderPerMale}`,
+     `${Yourself.g7579.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g7579.ElderPerFemale}`,
+     `${Yourself.g7579.ElderPer}`==="NaN"? "0" :`${Yourself.g7579.ElderPer}`,
 
-     `${Yourself.g8084.ElderPerMale} %`,
-     `${Yourself.g8084.ElderPerFemale} %`,
-     `${Yourself.g8084.ElderPer} %`,
+     `${Yourself.g8084.ElderPerMale}`==="NaN"? "0" :`${Yourself.g8084.ElderPerMale}`,
+     `${Yourself.g8084.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g8084.ElderPerFemale}`,
+     `${Yourself.g8084.ElderPer}`==="NaN"? "0" : `${Yourself.g8084.ElderPer}`,
 
-     `${Yourself.g8589.ElderPerMale} %`,
-     `${Yourself.g8589.ElderPerFemale} %`,
-     `${Yourself.g8589.ElderPer} %`,
+     `${Yourself.g8589.ElderPerMale}`==="NaN"? "0" :`${Yourself.g8589.ElderPerMale}`,
+     `${Yourself.g8589.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g8589.ElderPerFemale}`,
+     `${Yourself.g8589.ElderPer}`==="NaN"? "0" :`${Yourself.g8589.ElderPer}`,
 
-     `${Yourself.g9094.ElderPerMale} %`,
-     `${Yourself.g9094.ElderPerFemale} %`,
-     `${Yourself.g9094.ElderPer} %`,
+     `${Yourself.g9094.ElderPerMale}`==="NaN"? "0" :`${Yourself.g9094.ElderPerMale}`,
+     `${Yourself.g9094.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g9094.ElderPerFemale}`,
+     `${Yourself.g9094.ElderPer}`==="NaN"? "0" :`${Yourself.g9094.ElderPer}`,
 
-     `${Yourself.g95.ElderPerMale} %`,
-     `${Yourself.g95.ElderPerFemale} %`,
-    `${ Yourself.g95.ElderPer} %`,
+     `${Yourself.g95.ElderPerMale}`==="NaN"? "0" :`${Yourself.g95.ElderPerMale}`,
+     `${Yourself.g95.ElderPerFemale}`==="NaN"? "0" :`${Yourself.g95.ElderPerFemale}`,
+    `${Yourself.g95.ElderPer}`==="NaN"? "0" :`${Yourself.g95.ElderPer}`,
    ),
    createData(
      " บัตรทอง",
@@ -352,41 +350,41 @@ const ShowChart = React.forwardRef((props, ref) => {
      GoldCard.summary.ElderFemale,
      GoldCard.summary.Elder,
 
-   `${GoldCard.summary.ElderPerMale} %`,
-    `${GoldCard.summary.ElderPerFemale} %`,
-    `${GoldCard.summary.ElderPer} %`,
+   `${GoldCard.summary.ElderPerMale}`==="NaN"? "0" :`${GoldCard.summary.ElderPerMale}`,
+    `${GoldCard.summary.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.summary.ElderPerFemale}`,
+    `${GoldCard.summary.ElderPer}`==="NaN"? "0" :`${GoldCard.summary.ElderPer}`,
 
-     `${GoldCard.g6064.ElderPerMale} %`,
-     `${GoldCard.g6064.ElderPerFemale} %`,
-     `${GoldCard.g6064.ElderPer} %`,
+     `${GoldCard.g6064.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g6064.ElderPerMale}`,
+     `${GoldCard.g6064.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g6064.ElderPerFemale}`,
+     `${GoldCard.g6064.ElderPer}`==="NaN"? "0" :`${GoldCard.g6064.ElderPer}`,
 
-    `${ GoldCard.g6569.ElderPerMale} %`,
-    `${ GoldCard.g6569.ElderPerFemale} %`,
-    `${ GoldCard.g6569.ElderPer} %`,
+    `${GoldCard.g6569.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g6569.ElderPerMale}`,
+    `${GoldCard.g6569.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g6569.ElderPerFemale}`,
+    `${GoldCard.g6569.ElderPer}`==="NaN"? "0" :`${GoldCard.g6569.ElderPer}`,
 
-     `${GoldCard.g7074.ElderPerMale} %`,
-     `${GoldCard.g7074.ElderPerFemale} %`,
-     `${GoldCard.g7074.ElderPer} %`,
+     `${GoldCard.g7074.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g7074.ElderPerMale}`,
+     `${GoldCard.g7074.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g7074.ElderPerFemale}`,
+     `${GoldCard.g7074.ElderPer}`==="NaN"? "0" :`${GoldCard.g7074.ElderPer}`,
 
-     `${GoldCard.g7579.ElderPerMale} %`,
-     `${GoldCard.g7579.ElderPerFemale} %`,
-     `${GoldCard.g7579.ElderPer} %`,
+     `${GoldCard.g7579.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g7579.ElderPerMale}`,
+     `${GoldCard.g7579.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g7579.ElderPerFemale}`,
+     `${GoldCard.g7579.ElderPer}`==="NaN"? "0" :`${GoldCard.g7579.ElderPer}`,
 
-     `${GoldCard.g8084.ElderPerMale} %`,
-     `${GoldCard.g8084.ElderPerFemale} %`,
-     `${GoldCard.g8084.ElderPer} %`,
+     `${GoldCard.g8084.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g8084.ElderPerMale}`,
+     `${GoldCard.g8084.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g8084.ElderPerFemale}`,
+     `${GoldCard.g8084.ElderPer}`==="NaN"? "0" :`${GoldCard.g8084.ElderPer}`,
 
-     `${GoldCard.g8589.ElderPerMale} %`,
-     `${GoldCard.g8589.ElderPerFemale} %`,
-     `${GoldCard.g8589.ElderPer} %`,
+     `${GoldCard.g8589.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g8589.ElderPerMale}`,
+     `${GoldCard.g8589.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g8589.ElderPerFemale}`,
+     `${GoldCard.g8589.ElderPer}`==="NaN"? "0" :`${GoldCard.g8589.ElderPer}`,
 
-     `${GoldCard.g9094.ElderPerMale} %`,
-     `${GoldCard.g9094.ElderPerFemale} %`,
-     `${GoldCard.g9094.ElderPer} %`,
+     `${GoldCard.g9094.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g9094.ElderPerMale}`,
+     `${GoldCard.g9094.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g9094.ElderPerFemale}`,
+     `${GoldCard.g9094.ElderPer}`==="NaN"? "0" :`${GoldCard.g9094.ElderPer}`,
 
-     `${GoldCard.g95.ElderPerMale} %`,
-     `${GoldCard.g95.ElderPerFemale} %`,
-    `${ GoldCard.g95.ElderPer} %`,
+     `${GoldCard.g95.ElderPerMale}`==="NaN"? "0" :`${GoldCard.g95.ElderPerMale}`,
+     `${GoldCard.g95.ElderPerFemale}`==="NaN"? "0" :`${GoldCard.g95.ElderPerFemale}`,
+    `${GoldCard.g95.ElderPer}`==="NaN"? "0" :`${GoldCard.g95.ElderPer}`,
    ),
    createData(
      " บัตรผู้พิการ",
@@ -426,41 +424,41 @@ const ShowChart = React.forwardRef((props, ref) => {
      DisabledCard.summary.ElderFemale,
      DisabledCard.summary.Elder,
 
-     `${DisabledCard.summary.ElderPerMale} %`,
-     `${DisabledCard.summary.ElderPerFemale} %`,
-      `${DisabledCard.summary.ElderPer} %`,
+     `${DisabledCard.summary.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.summary.ElderPerMale}`,
+     `${DisabledCard.summary.ElderPerFemale}`==="NaN"? "0" :`${DisabledCard.summary.ElderPerFemale}`,
+      `${DisabledCard.summary.ElderPer}`==="NaN"? "0" :`${DisabledCard.summary.ElderPer}`,
 
-     `${DisabledCard.g6064.ElderPerMale} %`,
-     `${DisabledCard.g6064.ElderPerFemale} %`,
-     `${DisabledCard.g6064.ElderPer} %`,
+     `${DisabledCard.g6064.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g6064.ElderPerMale}`,
+     `${DisabledCard.g6064.ElderPerFemale}`==="NaN"? "0" :`${DisabledCard.g6064.ElderPerFemale}`,
+     `${DisabledCard.g6064.ElderPer}`==="NaN"? "0" :`${DisabledCard.g6064.ElderPer}`,
 
-    `${ DisabledCard.g6569.ElderPerMale} %`,
-    `${ DisabledCard.g6569.ElderPerFemale} %`,
-    `${ DisabledCard.g6569.ElderPer} %`,
+    `${ DisabledCard.g6569.ElderPerMale}`==="NaN"? "0" :`${ DisabledCard.g6569.ElderPerMale}`,
+    `${ DisabledCard.g6569.ElderPerFemale}`==="NaN"? "0" :`${ DisabledCard.g6569.ElderPerFemale}`,
+    `${ DisabledCard.g6569.ElderPer}`==="NaN"? "0" :`${ DisabledCard.g6569.ElderPer}`,
 
-     `${DisabledCard.g7074.ElderPerMale} %`,
-     `${DisabledCard.g7074.ElderPerFemale} %`,
-     `${DisabledCard.g7074.ElderPer} %`,
+     `${DisabledCard.g7074.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g7074.ElderPerMale}`,
+     `${DisabledCard.g7074.ElderPerFemale}`==="NaN"? "0" : `${DisabledCard.g7074.ElderPerFemale}`,
+     `${DisabledCard.g7074.ElderPer}`==="NaN"? "0" :`${DisabledCard.g7074.ElderPer}`,
 
-     `${DisabledCard.g7579.ElderPerMale} %`,
-     `${DisabledCard.g7579.ElderPerFemale} %`,
-     `${DisabledCard.g7579.ElderPer} %`,
+     `${DisabledCard.g7579.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g7579.ElderPerMale}`,
+     `${DisabledCard.g7579.ElderPerFemale}`==="NaN"? "0" :`${DisabledCard.g7579.ElderPerFemale}`,
+     `${DisabledCard.g7579.ElderPer}`==="NaN"? "0" :`${DisabledCard.g7579.ElderPer}`,
 
-     `${DisabledCard.g8084.ElderPerMale} %`,
-     `${DisabledCard.g8084.ElderPerFemale} %`,
-     `${DisabledCard.g8084.ElderPer} %`,
+     `${DisabledCard.g8084.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g8084.ElderPerMale}`,
+     `${DisabledCard.g8084.ElderPerFemale}`==="NaN"? "0" :`${DisabledCard.g8084.ElderPerFemale}`,
+     `${DisabledCard.g8084.ElderPer}`==="NaN"? "0" :`${DisabledCard.g8084.ElderPer}`,
 
-     `${DisabledCard.g8589.ElderPerMale} %`,
-     `${DisabledCard.g8589.ElderPerFemale} %`,
-     `${DisabledCard.g8589.ElderPer} %`,
+     `${DisabledCard.g8589.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g8589.ElderPerMale}`,
+     `${DisabledCard.g8589.ElderPerFemale}`==="NaN"? "0" :`${DisabledCard.g8589.ElderPerFemale}`,
+     `${DisabledCard.g8589.ElderPer}`==="NaN"? "0" :`${DisabledCard.g8589.ElderPer}`,
 
-     `${DisabledCard.g9094.ElderPerMale} %`,
-     `${DisabledCard.g9094.ElderPerFemale} %`,
-     `${DisabledCard.g9094.ElderPer} %`,
+     `${DisabledCard.g9094.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g9094.ElderPerMale}`,
+     `${DisabledCard.g9094.ElderPerFemale}`==="NaN"? "0" :`${DisabledCard.g9094.ElderPerFemale}`,
+     `${DisabledCard.g9094.ElderPer}`==="NaN"? "0" :`${DisabledCard.g9094.ElderPer}`,
 
-     `${DisabledCard.g95.ElderPerMale} %`,
-     `${DisabledCard.g95.ElderPerFemale} %`,
-    `${ DisabledCard.g95.ElderPer} %`,
+     `${DisabledCard.g95.ElderPerMale}`==="NaN"? "0" :`${DisabledCard.g95.ElderPerMale}`,
+     `${DisabledCard.g95.ElderPerFemale}`==="NaN"? "0" : `${DisabledCard.g95.ElderPerFemale}`,
+    `${DisabledCard.g95.ElderPer}`==="NaN"? "0" :`${DisabledCard.g95.ElderPer}`,
    ),
    createData(
      " บัตรประกันสังคม",
@@ -500,41 +498,41 @@ const ShowChart = React.forwardRef((props, ref) => {
      SocialCard.summary.ElderFemale,
      SocialCard.summary.Elder,
 
-     `${SocialCard.summary.ElderPerMale} %`,
-     `${SocialCard.summary.ElderPerFemale} %`,
-      `${SocialCard.summary.ElderPer} %`,
+     `${SocialCard.summary.ElderPerMale}`==="NaN"? "0" :`${SocialCard.summary.ElderPerMale}`,
+     `${SocialCard.summary.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.summary.ElderPerFemale}`,
+      `${SocialCard.summary.ElderPer}`==="NaN"? "0" :`${SocialCard.summary.ElderPer}`,
 
-     `${SocialCard.g6064.ElderPerMale} %`,
-     `${SocialCard.g6064.ElderPerFemale} %`,
-     `${SocialCard.g6064.ElderPer} %`,
+     `${SocialCard.g6064.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g6064.ElderPerMale}`,
+     `${SocialCard.g6064.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g6064.ElderPerFemale}`,
+     `${SocialCard.g6064.ElderPer}`==="NaN"? "0" :`${SocialCard.g6064.ElderPer}`,
 
-    `${ SocialCard.g6569.ElderPerMale} %`,
-    `${ SocialCard.g6569.ElderPerFemale} %`,
-    `${ SocialCard.g6569.ElderPer} %`,
+    `${ SocialCard.g6569.ElderPerMale}`==="NaN"? "0" :`${ SocialCard.g6569.ElderPerMale}`,
+    `${ SocialCard.g6569.ElderPerFemale}`==="NaN"? "0" :`${ SocialCard.g6569.ElderPerFemale}`,
+    `${ SocialCard.g6569.ElderPer}`==="NaN"? "0" :`${ SocialCard.g6569.ElderPer}`,
 
-     `${SocialCard.g7074.ElderPerMale} %`,
-     `${SocialCard.g7074.ElderPerFemale} %`,
-     `${SocialCard.g7074.ElderPer} %`,
+     `${SocialCard.g7074.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g7074.ElderPerMale}`,
+     `${SocialCard.g7074.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g7074.ElderPerFemale}`,
+     `${SocialCard.g7074.ElderPer}`==="NaN"? "0" :`${SocialCard.g7074.ElderPer}`,
 
-     `${SocialCard.g7579.ElderPerMale} %`,
-     `${SocialCard.g7579.ElderPerFemale} %`,
-     `${SocialCard.g7579.ElderPer} %`,
+     `${SocialCard.g7579.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g7579.ElderPerMale}`,
+     `${SocialCard.g7579.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g7579.ElderPerFemale}`,
+     `${SocialCard.g7579.ElderPer}`==="NaN"? "0" :`${SocialCard.g7579.ElderPer}`,
 
-     `${SocialCard.g8084.ElderPerMale} %`,
-     `${SocialCard.g8084.ElderPerFemale} %`,
-     `${SocialCard.g8084.ElderPer} %`,
+     `${SocialCard.g8084.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g8084.ElderPerMale}`,
+     `${SocialCard.g8084.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g8084.ElderPerFemale}`,
+     `${SocialCard.g8084.ElderPer}`==="NaN"? "0" :`${SocialCard.g8084.ElderPer}`,
 
-     `${SocialCard.g8589.ElderPerMale} %`,
-     `${SocialCard.g8589.ElderPerFemale} %`,
-     `${SocialCard.g8589.ElderPer} %`,
+     `${SocialCard.g8589.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g8589.ElderPerMale}`,
+     `${SocialCard.g8589.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g8589.ElderPerFemale}`,
+     `${SocialCard.g8589.ElderPer}`==="NaN"? "0" :`${SocialCard.g8589.ElderPer}`,
 
-     `${SocialCard.g9094.ElderPerMale} %`,
-     `${SocialCard.g9094.ElderPerFemale} %`,
-     `${SocialCard.g9094.ElderPer} %`,
+     `${SocialCard.g9094.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g9094.ElderPerMale}`,
+     `${SocialCard.g9094.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g9094.ElderPerFemale}`,
+     `${SocialCard.g9094.ElderPer}`==="NaN"? "0" :`${SocialCard.g9094.ElderPer}`,
 
-     `${SocialCard.g95.ElderPerMale} %`,
-     `${SocialCard.g95.ElderPerFemale} %`,
-    `${ SocialCard.g95.ElderPer} %`,
+     `${SocialCard.g95.ElderPerMale}`==="NaN"? "0" :`${SocialCard.g95.ElderPerMale}`,
+     `${SocialCard.g95.ElderPerFemale}`==="NaN"? "0" :`${SocialCard.g95.ElderPerFemale}`,
+    `${SocialCard.g95.ElderPer}`==="NaN"? "0" :`${SocialCard.g95.ElderPer}`,
    ),
    createData(
      " อื่นๆ",
@@ -574,41 +572,41 @@ const ShowChart = React.forwardRef((props, ref) => {
          Other.summary.ElderFemale,
          Other.summary.Elder,
 
-     `${Other.summary.ElderPerMale} %`,
-     `${Other.summary.ElderPerFemale} %`,
-      `${Other.summary.ElderPer} %`,
+     `${Other.summary.ElderPerMale}`==="NaN"? "0" :`${Other.summary.ElderPerMale}`,
+     `${Other.summary.ElderPerFemale}`==="NaN"? "0" :`${Other.summary.ElderPerFemale}`,
+      `${Other.summary.ElderPer}`==="NaN"? "0" :`${Other.summary.ElderPer}`,
 
-     `${Other.g6064.ElderPerMale} %`,
-     `${Other.g6064.ElderPerFemale} %`,
-     `${Other.g6064.ElderPer} %`,
+     `${Other.g6064.ElderPerMale}`==="NaN"? "0" : `${Other.g6064.ElderPerMale}`,
+     `${Other.g6064.ElderPerFemale}`==="NaN"? "0" : `${Other.g6064.ElderPerFemale}`,
+     `${Other.g6064.ElderPer}`==="NaN"? "0" :`${Other.g6064.ElderPer}`,
 
-    `${Other.g6569.ElderPerMale} %`,
-    `${Other.g6569.ElderPerFemale} %`,
-    `${Other.g6569.ElderPer} %`,
+    `${Other.g6569.ElderPerMale}`==="NaN"? "0" :`${Other.g6569.ElderPerMale}`,
+    `${Other.g6569.ElderPerFemale}`==="NaN"? "0" :`${Other.g6569.ElderPerFemale}`,
+    `${Other.g6569.ElderPer}`==="NaN"? "0" :`${Other.g6569.ElderPer}`,
 
-     `${Other.g7074.ElderPerMale} %`,
-     `${Other.g7074.ElderPerFemale} %`,
-     `${Other.g7074.ElderPer} %`,
+     `${Other.g7074.ElderPerMale}`==="NaN"? "0" :`${Other.g7074.ElderPerMale}`,
+     `${Other.g7074.ElderPerFemale}`==="NaN"? "0" :`${Other.g7074.ElderPerFemale}`,
+     `${Other.g7074.ElderPer}`==="NaN"? "0" :`${Other.g7074.ElderPer}`,
 
-     `${Other.g7579.ElderPerMale} %`,
-     `${Other.g7579.ElderPerFemale} %`,
-     `${Other.g7579.ElderPer} %`,
+     `${Other.g7579.ElderPerMale}`==="NaN"? "0" :`${Other.g7579.ElderPerMale}`,
+     `${Other.g7579.ElderPerFemale}`==="NaN"? "0" :`${Other.g7579.ElderPerFemale}`,
+     `${Other.g7579.ElderPer}`==="NaN"? "0" :`${Other.g7579.ElderPer}`,
 
-     `${Other.g8084.ElderPerMale} %`,
-     `${Other.g8084.ElderPerFemale} %`,
-     `${Other.g8084.ElderPer} %`,
+     `${Other.g8084.ElderPerMale}`==="NaN"? "0" :`${Other.g8084.ElderPerMale}`,
+     `${Other.g8084.ElderPerFemale}`==="NaN"? "0" :`${Other.g8084.ElderPerFemale}`,
+     `${Other.g8084.ElderPer}`==="NaN"? "0" :`${Other.g8084.ElderPer}`,
 
-     `${Other.g8589.ElderPerMale} %`,
-     `${Other.g8589.ElderPerFemale} %`,
-     `${Other.g8589.ElderPer} %`,
+     `${Other.g8589.ElderPerMale}`==="NaN"? "0" :`${Other.g8589.ElderPerMale}`,
+     `${Other.g8589.ElderPerFemale}`==="NaN"? "0" :`${Other.g8589.ElderPerFemale}`,
+     `${Other.g8589.ElderPer}`==="NaN"? "0" :`${Other.g8589.ElderPer}`,
 
-     `${Other.g9094.ElderPerMale} %`,
-     `${Other.g9094.ElderPerFemale} %`,
-     `${Other.g9094.ElderPer} %`,
+     `${Other.g9094.ElderPerMale}`==="NaN"? "0" :`${Other.g9094.ElderPerMale}`,
+     `${Other.g9094.ElderPerFemale}`==="NaN"? "0" :`${Other.g9094.ElderPerFemale}`,
+     `${Other.g9094.ElderPer}`==="NaN"? "0" :`${Other.g9094.ElderPer}`,
 
-     `${Other.g95.ElderPerMale} %`,
-     `${Other.g95.ElderPerFemale} %`,
-    `${Other.g95.ElderPer} %`,
+     `${Other.g95.ElderPerMale}`==="NaN"? "0" :`${Other.g95.ElderPerMale}`,
+     `${Other.g95.ElderPerFemale}`==="NaN"? "0" :`${Other.g95.ElderPerFemale}`,
+    `${Other.g95.ElderPer}`==="NaN"? "0" :`${Other.g95.ElderPer}`,
    ),
  ];
   const handleChange = (e) => {
@@ -679,7 +677,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           }
           label="คิดเป็นร้อยละ"
         />
-        {Affiliation.g6064.ElderMale}
+        {/* {Affiliation.g6064.ElderMale} */}
         {openPaper ? (
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
@@ -720,70 +718,77 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.สิทธิการรักษา}>
                     <StyledTableCell  component="th" scope="row">
-                      {row.name}
+                      {row.สิทธิการรักษา}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="left">
                       ชาย <br /> หญิง <br /> รวม
                     </StyledTableCell>
-                    <StyledTableCell align="center">  {/* 6064 */}
-                      {row.PerMale ==="NaN %"?  "0 %" : row.PerMale}
+                    <StyledTableCell align="left">  {/* 6064 */}
+                      {row.เปอร์เซ็นต์ผู้ชาย6064} %
                       <br />
-                      {row.PerFemale ==="NaN %"? "0 %" :row.PerFemale}
+                      {row.เปอร์เซ็นต์ผู้หญิง6064} %
                       <br />
-                      {row.Persum ==="NaN %"? "0 %" :row.Persum}
+                      {row.เปอร์เซ็นต์รวม6064} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale6569==="NaN %"? "0 %" : row.PerMale6569}
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย6569} %
                       <br />
-                      {row.PerFemale6569==="NaN %"? "0 %": row.PerFemale6569}
+                      {row.เปอร์เซ็นต์ผู้หญิง6569} %
                       <br />
-                      {row.Persum6569==="NaN %"? "0 %": row.Persum6569}
+                      {row.เปอร์เซ็นต์รวม6569} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale7074==="NaN %"? "0 %":row.PerMale7074} 
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย7074} % 
                       <br />
-                      {row.PerFemale7074==="NaN %"? "0 %":row.PerFemale7074}
+                      {row.เปอร์เซ็นต์ผู้หญิง7074} %
                       <br />
-                      {row.Persum7074==="NaN %"? "0 %":row.Persum7074}
+                      {row.เปอร์เซ็นต์รวม7074} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale7579==="NaN %"? "0 %":row.PerMale7579} 
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย7579} % 
                       <br />
-                      {row.PerFemale7579==="NaN %"? "0 %":row.PerFemale7579}
+                      {row.เปอร์เซ็นต์ผู้หญิง7579} %
                       <br />
-                      {row.Persum7579==="NaN %"? "0 %":row.Persum7579}
+                      {row.เปอร์เซ็นต์รวม7579} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale8084==="NaN %"? "0 %":row.PerMale8084} <br />
-                      {row.PerFemale8084==="NaN %"? "0 %":row.PerFemale8084}
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย8084} % 
                       <br />
-                      {row.Persum8084==="NaN %"? "0 %":row.Persum8084}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale8590==="NaN %"? "0 %": row.PerMale8590} <br />
-                      {row.PerFemale8590==="NaN %"? "0 %": row.PerFemale8590}
+                      {row.เปอร์เซ็นต์ผู้หญิง8084} %
                       <br />
-                      {row.Persum8590 ==="NaN %"? "0 %": row.Persum8590}
+                      {row.เปอร์เซ็นต์รวม8084} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale9094==="NaN %"? "0 %":row.PerMale9094} <br />
-                      {row.PerFemale9094==="NaN %"? "0 %":row.PerFemale9094}
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย8590} % 
                       <br />
-                      {row.Persum9094==="NaN %"? "0 %":row.Persum9094}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale95==="NaN %"? "0 %":row.PerMale95} <br />
-                      {row.PerFemale95==="NaN %"? "0 %":row.PerFemale95}
+                      {row.เปอร์เซ็นต์ผู้หญิง8590} %
                       <br />
-                      {row.Persum95==="NaN %"? "0 %":row.Persum95}
+                      {row.เปอร์เซ็นต์รวม8590} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.sumAllPerM==="NaN %"? "0 %":row.sumAllPerM} <br />
-                      {row.sumAllPerF==="NaN %"? "0 %":row.sumAllPerF}<br />
-                      {row.sumAllPer==="NaN %"? "0 %":row.sumAllPer}</StyledTableCell>
-                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย9094} % 
+                      <br />
+                      {row.เปอร์เซ็นต์ผู้หญิง9094} %
+                      <br />
+                      {row.เปอร์เซ็นต์รวม9094} %
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย95} % 
+                      <br />
+                      {row.เปอร์เซ็นต์ผู้หญิง95} %
+                      <br />
+                      {row.เปอร์เซ็นต์รวม95} %
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้ชาย} % 
+                      <br />
+                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิง} %
+                      <br />
+                      {row.เปอร์เซ็นต์รวมทั้งหมด} %
+                      </StyledTableCell>
+                    <StyledTableCell align="left">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -828,67 +833,74 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.สิทธิการรักษา}>
                     <StyledTableCell  component="th" scope="row">
-                      {row.name}
+                      {row.สิทธิการรักษา}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="left">
                       ชาย <br /> หญิง <br /> รวม
                     </StyledTableCell>
                     <StyledTableCell align="center">  {/* 6064 */}
-                      {row.numMale}
+                      {row.ผู้ชาย6064}
                       <br />
-                      {row.numFemale}
+                      {row.ผู้หญิง6064}
                       <br />
-                      {row.sum}{" "}
+                      {row.รวม6064}{" "}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male6569}
+                      {row.ผู้ชาย6569}
                       <br />
-                      {row.Female6569}
+                      {row.ผู้หญิง6569}
                       <br />
-                      {row.sum6569}
+                      {row.รวม6569}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male7074} <br />
-                      {row.Female7074}
+                      {row.ผู้ชาย7074} 
                       <br />
-                      {row.sum7074}
+                      {row.ผู้หญิง7074}
+                      <br />
+                      {row.รวม7074}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male7579} <br />
-                      {row.Female7579}
+                      {row.ผู้ชาย7579} 
                       <br />
-                      {row.sum7579}
+                      {row.ผู้หญิง7579}
+                      <br />
+                      {row.รวม7579}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male8084} <br />
-                      {row.Female8084}
+                      {row.ผู้ชาย8084} <br />
+                      {row.ผู้หญิง8084}
                       <br />
-                      {row.sum8084}
+                      {row.รวม8084}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male8590} <br />
-                      {row.Female8590}
+                      {row.ผู้ชาย8590} 
                       <br />
-                      {row.sum8590}
+                      {row.ผู้หญิง8590}
+                      <br />
+                      {row.รวม8590}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male9094} <br />
-                      {row.Female9094}
+                      {row.ผู้ชาย9094} 
                       <br />
-                      {row.sum9094}
+                      {row.ผู้หญิง9094}
+                      <br />
+                      {row.รวม9094}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male95} <br />
-                      {row.Female95}
+                      {row.ผู้ชาย95} 
                       <br />
-                      {row.sum95}
+                      {row.ผู้หญิง95}
+                      <br />
+                      {row.รวม95}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.sumAllM} <br />
-                      {row.sumAllF}
+                    <StyledTableCell align="center">
+                      {row.รวมทั้งหมดผู้ชาย} 
                       <br />
-                      {row.sumAll}</StyledTableCell>
+                      {row.รวมทั้งหมดผู้หญิง}
+                      <br />
+                      {row.รวมทั้งหมด}</StyledTableCell>
                     <StyledTableCell align="center">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}

@@ -38,30 +38,30 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 function createData(
-  name,
-  alone,
-  aloneDay,
-  aloneDaynight,
-  alonenight,
-  PeraloneDay,
-  PeraloneDaynight,
-  Peralonenight,
-  notalone,
-  Pernotalone,
-  Peralone
+  ชุมชน,
+  อยู่ลำพัง,
+  อยู่ลำพังกลางวัน,
+  อยู่ลำพังกลางวันกลางคืน,
+  อยู่ลำพังกลางคืน,
+  เปอร์เซ็นต์อยู่ลำพังกลางวัน,
+  เปอร์เซ็นต์อยู่ลำพังกลางวันกลางคืน,
+  เปอร์เซ็นต์อยู่ลำพังกลางคืน,
+  ไม่ได้อยู่ลำพัง,
+  เปอร์เซ็นต์ไม่ได้อยู่ลำพัง,
+  เปอร์เซ็นต์อยู่ลำพัง
 ) {
   return {
-    name,
-    alone,
-    aloneDay,
-    aloneDaynight,
-    alonenight,
-    PeraloneDay,
-    PeraloneDaynight,
-    Peralonenight,
-    notalone,
-    Pernotalone,
-    Peralone
+    ชุมชน,
+    อยู่ลำพัง,
+    อยู่ลำพังกลางวัน,
+    อยู่ลำพังกลางวันกลางคืน,
+    อยู่ลำพังกลางคืน,
+    เปอร์เซ็นต์อยู่ลำพังกลางวัน,
+    เปอร์เซ็นต์อยู่ลำพังกลางวันกลางคืน,
+    เปอร์เซ็นต์อยู่ลำพังกลางคืน,
+    ไม่ได้อยู่ลำพัง,
+    เปอร์เซ็นต์ไม่ได้อยู่ลำพัง,
+    เปอร์เซ็นต์อยู่ลำพัง
   };
 }
 
@@ -103,19 +103,18 @@ const ShowChart = React.forwardRef((props, ref) => {
   };
 
   const rows = [
-    //createData("ชุมชน",Alone,AloneDay,AloneDayNight,AloneNight,` ${PerAloneDay} %`,` ${PerAloneDayNight} %`,` ${PerAloneNight} %`,NotAlone),
     createData(
       "ชุมชนมณีแก้ว",
       ชุมชนมณีแก้ว.Alone.Sum,
       ชุมชนมณีแก้ว.Alone.AloneDay,
       ชุมชนมณีแก้ว.Alone.AloneDayNight,
       ชุมชนมณีแก้ว.Alone.AloneNight,
-      ` ${ชุมชนมณีแก้ว.Alone.PerAloneDay} %`,
-      ` ${ชุมชนมณีแก้ว.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนมณีแก้ว.Alone.PerAloneNight} %`,
+      `${ชุมชนมณีแก้ว.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนมณีแก้ว.Alone.PerAloneDay}`,
+      `${ชุมชนมณีแก้ว.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนมณีแก้ว.Alone.PerAloneDayNight}`,
+      `${ชุมชนมณีแก้ว.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนมณีแก้ว.Alone.PerAloneNight}`,
        ชุมชนมณีแก้ว.NotAlone,
-      ` ${ชุมชนมณีแก้ว.PerNotAlone} %`,
-      ` ${ชุมชนมณีแก้ว.Alone.PerSum} %`,
+      `${ชุมชนมณีแก้ว.PerNotAlone}`==="NaN"? "0" :`${ชุมชนมณีแก้ว.PerNotAlone}`,
+      `${ชุมชนมณีแก้ว.Alone.PerSum}`==="NaN"? "0" : `${ชุมชนมณีแก้ว.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนดอนบน",
@@ -123,12 +122,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนดอนบน.Alone.AloneDay,
       ชุมชนดอนบน.Alone.AloneDayNight,
       ชุมชนดอนบน.Alone.AloneNight,
-      ` ${ชุมชนดอนบน.Alone.PerAloneDay} %`,
-      ` ${ชุมชนดอนบน.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนดอนบน.Alone.PerAloneNight} %`,
+      `${ชุมชนดอนบน.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนดอนบน.Alone.PerAloneDay}`,
+      `${ชุมชนดอนบน.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนดอนบน.Alone.PerAloneDayNight}`,
+      `${ชุมชนดอนบน.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนดอนบน.Alone.PerAloneNight}`,
       ชุมชนดอนบน.NotAlone,
-      ` ${ชุมชนดอนบน.PerNotAlone} %`,
-      ` ${ชุมชนดอนบน.Alone.PerSum} %`,
+      `${ชุมชนดอนบน.PerNotAlone}`==="NaN"? "0" :`${ชุมชนดอนบน.PerNotAlone}`,
+      `${ชุมชนดอนบน.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนดอนบน.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนบางแสนทาวเวอร์",
@@ -136,12 +135,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนบางแสนทาวเวอร์.Alone.AloneDay,
       ชุมชนบางแสนทาวเวอร์.Alone.AloneDayNight,
       ชุมชนบางแสนทาวเวอร์.Alone.AloneNight,
-      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDay} %`,
-      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneNight} %`,
+      `${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDay}`,
+      `${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneDayNight}`,
+      `${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนบางแสนทาวเวอร์.Alone.PerAloneNight}`,
       ชุมชนบางแสนทาวเวอร์.NotAlone,
-      ` ${ชุมชนบางแสนทาวเวอร์.PerNotAlone} %`,
-      ` ${ชุมชนบางแสนทาวเวอร์.Alone.PerSum} %`,
+      `${ชุมชนบางแสนทาวเวอร์.PerNotAlone}`==="NaN"? "0" :`${ชุมชนบางแสนทาวเวอร์.PerNotAlone}`,
+      `${ชุมชนบางแสนทาวเวอร์.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนบางแสนทาวเวอร์.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนตาลล้อม1",
@@ -149,12 +148,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนตาลล้อม1.Alone.AloneDay,
       ชุมชนตาลล้อม1.Alone.AloneDayNight,
       ชุมชนตาลล้อม1.Alone.AloneNight,
-      ` ${ชุมชนตาลล้อม1.Alone.PerAloneDay} %`,
-      ` ${ชุมชนตาลล้อม1.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนตาลล้อม1.Alone.PerAloneNight} %`,
+      `${ชุมชนตาลล้อม1.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนตาลล้อม1.Alone.PerAloneDay}`,
+      `${ชุมชนตาลล้อม1.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนตาลล้อม1.Alone.PerAloneDayNight}`,
+      `${ชุมชนตาลล้อม1.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนตาลล้อม1.Alone.PerAloneNight}`,
       ชุมชนตาลล้อม1.NotAlone,
-      ` ${ชุมชนตาลล้อม1.PerNotAlone} %`,
-      ` ${ชุมชนตาลล้อม1.Alone.PerSum} %`,
+      `${ชุมชนตาลล้อม1.PerNotAlone}`==="NaN"? "0" :`${ชุมชนตาลล้อม1.PerNotAlone}`,
+      `${ชุมชนตาลล้อม1.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนตาลล้อม1.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนตาลล้อม2",
@@ -162,12 +161,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนตาลล้อม2.Alone.AloneDay,
       ชุมชนตาลล้อม2.Alone.AloneDayNight,
       ชุมชนตาลล้อม2.Alone.AloneNight,
-      ` ${ชุมชนตาลล้อม2.Alone.PerAloneDay} %`,
-      ` ${ชุมชนตาลล้อม2.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนตาลล้อม2.Alone.PerAloneNight} %`,
+      `${ชุมชนตาลล้อม2.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนตาลล้อม2.Alone.PerAloneDay}`,
+      `${ชุมชนตาลล้อม2.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนตาลล้อม2.Alone.PerAloneDayNight}`,
+      `${ชุมชนตาลล้อม2.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนตาลล้อม2.Alone.PerAloneNight}`,
       ชุมชนตาลล้อม2.NotAlone,
-      ` ${ชุมชนตาลล้อม2.PerNotAlone} %`,
-      ` ${ชุมชนตาลล้อม2.Alone.PerSum} %`,
+      `${ชุมชนตาลล้อม2.PerNotAlone}`==="NaN"? "0" :`${ชุมชนตาลล้อม2.PerNotAlone}`,
+      `${ชุมชนตาลล้อม2.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนตาลล้อม2.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนบ้านเหมือง",
@@ -175,12 +174,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนบ้านเหมือง.Alone.AloneDay,
       ชุมชนบ้านเหมือง.Alone.AloneDayNight,
       ชุมชนบ้านเหมือง.Alone.AloneNight,
-      ` ${ชุมชนบ้านเหมือง.Alone.PerAloneDay} %`,
-      ` ${ชุมชนบ้านเหมือง.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนบ้านเหมือง.Alone.PerAloneNight} %`,
+      `${ชุมชนบ้านเหมือง.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนบ้านเหมือง.Alone.PerAloneDay}`,
+      `${ชุมชนบ้านเหมือง.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนบ้านเหมือง.Alone.PerAloneDayNight}`,
+      `${ชุมชนบ้านเหมือง.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนบ้านเหมือง.Alone.PerAloneNight}`,
       ชุมชนบ้านเหมือง.NotAlone,
-      ` ${ชุมชนบ้านเหมือง.PerNotAlone} %`,
-      ` ${ชุมชนบ้านเหมือง.Alone.PerSum} %`,
+      `${ชุมชนบ้านเหมือง.PerNotAlone}`==="NaN"? "0" :`${ชุมชนบ้านเหมือง.PerNotAlone}`,
+      `${ชุมชนบ้านเหมือง.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนบ้านเหมือง.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนพัฒนา2",
@@ -188,12 +187,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนพัฒนา2.Alone.AloneDay,
       ชุมชนพัฒนา2.Alone.AloneDayNight,
       ชุมชนพัฒนา2.Alone.AloneNight,
-      ` ${ชุมชนพัฒนา2.Alone.PerAloneDay} %`,
-      ` ${ชุมชนพัฒนา2.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนพัฒนา2.Alone.PerAloneNight} %`,
+      `${ชุมชนพัฒนา2.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนพัฒนา2.Alone.PerAloneDay}`,
+      `${ชุมชนพัฒนา2.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนพัฒนา2.Alone.PerAloneDayNight}`,
+      `${ชุมชนพัฒนา2.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนพัฒนา2.Alone.PerAloneNight}`,
       ชุมชนพัฒนา2.NotAlone,
-      ` ${ชุมชนพัฒนา2.PerNotAlone} %`,
-      ` ${ชุมชนพัฒนา2.Alone.PerSum} %`,
+      `${ชุมชนพัฒนา2.PerNotAlone}`==="NaN"? "0" :`${ชุมชนพัฒนา2.PerNotAlone}`,
+      `${ชุมชนพัฒนา2.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนพัฒนา2.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนดอนนารา",
@@ -201,12 +200,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนดอนนารา.Alone.AloneDay,
       ชุมชนดอนนารา.Alone.AloneDayNight,
       ชุมชนดอนนารา.Alone.AloneNight,
-      ` ${ชุมชนดอนนารา.Alone.PerAloneDay} %`,
-      ` ${ชุมชนดอนนารา.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนดอนนารา.Alone.PerAloneNight} %`,
+      `${ชุมชนดอนนารา.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนดอนนารา.Alone.PerAloneDay}`,
+      `${ชุมชนดอนนารา.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนดอนนารา.Alone.PerAloneDayNight}`,
+      `${ชุมชนดอนนารา.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนดอนนารา.Alone.PerAloneNight}`,
       ชุมชนดอนนารา.NotAlone,
-      ` ${ชุมชนดอนนารา.PerNotAlone} %`,
-      ` ${ชุมชนดอนนารา.Alone.PerSum} %`,
+      `${ชุมชนดอนนารา.PerNotAlone}`==="NaN"? "0" :`${ชุมชนดอนนารา.PerNotAlone}`,
+      `${ชุมชนดอนนารา.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนดอนนารา.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนวัดกลางดอน",
@@ -214,12 +213,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนวัดกลางดอน.Alone.AloneDay,
       ชุมชนวัดกลางดอน.Alone.AloneDayNight,
       ชุมชนวัดกลางดอน.Alone.AloneNight,
-      ` ${ชุมชนวัดกลางดอน.Alone.PerAloneDay} %`,
-      ` ${ชุมชนวัดกลางดอน.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนวัดกลางดอน.Alone.PerAloneNight} %`,
+      `${ชุมชนวัดกลางดอน.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนวัดกลางดอน.Alone.PerAloneDay}`,
+      `${ชุมชนวัดกลางดอน.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนวัดกลางดอน.Alone.PerAloneDayNight}`,
+      `${ชุมชนวัดกลางดอน.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนวัดกลางดอน.Alone.PerAloneNight}`,
       ชุมชนวัดกลางดอน.NotAlone,
-      ` ${ชุมชนวัดกลางดอน.PerNotAlone} %`,
-      ` ${ชุมชนวัดกลางดอน.Alone.PerSum} %`,
+      `${ชุมชนวัดกลางดอน.PerNotAlone}`==="NaN"? "0" :`${ชุมชนวัดกลางดอน.PerNotAlone}`,
+      `${ชุมชนวัดกลางดอน.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนวัดกลางดอน.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนแสนสุข",
@@ -227,12 +226,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนแสนสุข.Alone.AloneDay,
       ชุมชนแสนสุข.Alone.AloneDayNight,
       ชุมชนแสนสุข.Alone.AloneNight,
-      ` ${ชุมชนแสนสุข.Alone.PerAloneDay} %`,
-      ` ${ชุมชนแสนสุข.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนแสนสุข.Alone.PerAloneNight} %`,
+      `${ชุมชนแสนสุข.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนแสนสุข.Alone.PerAloneDay}`,
+      `${ชุมชนแสนสุข.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนแสนสุข.Alone.PerAloneDayNight}`,
+      `${ชุมชนแสนสุข.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนแสนสุข.Alone.PerAloneNight}`,
       ชุมชนแสนสุข.NotAlone,
-      ` ${ชุมชนแสนสุข.PerNotAlone} %`,
-      ` ${ชุมชนแสนสุข.Alone.PerSum} %`,
+      `${ชุมชนแสนสุข.PerNotAlone}`==="NaN"? "0" :`${ชุมชนแสนสุข.PerNotAlone}`,
+      `${ชุมชนแสนสุข.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนแสนสุข.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนมาบมะยม",
@@ -240,12 +239,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนมาบมะยม.Alone.AloneDay,
       ชุมชนมาบมะยม.Alone.AloneDayNight,
       ชุมชนมาบมะยม.Alone.AloneNight,
-      ` ${ชุมชนมาบมะยม.Alone.PerAloneDay} %`,
-      ` ${ชุมชนมาบมะยม.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนมาบมะยม.Alone.PerAloneNight} %`,
+      `${ชุมชนมาบมะยม.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนมาบมะยม.Alone.PerAloneDay}`,
+      `${ชุมชนมาบมะยม.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนมาบมะยม.Alone.PerAloneDayNight}`,
+      `${ชุมชนมาบมะยม.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนมาบมะยม.Alone.PerAloneNight}`,
       ชุมชนมาบมะยม.NotAlone,
-      ` ${ชุมชนมาบมะยม.PerNotAlone} %`,
-      ` ${ชุมชนมาบมะยม.Alone.PerSum} %`,
+      `${ชุมชนมาบมะยม.PerNotAlone}`==="NaN"? "0" :`${ชุมชนมาบมะยม.PerNotAlone}`,
+      `${ชุมชนมาบมะยม.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนมาบมะยม.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนท้ายตลาด",
@@ -253,12 +252,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนท้ายตลาด.Alone.AloneDay,
       ชุมชนท้ายตลาด.Alone.AloneDayNight,
       ชุมชนท้ายตลาด.Alone.AloneNight,
-      ` ${ชุมชนท้ายตลาด.Alone.PerAloneDay} %`,
-      ` ${ชุมชนท้ายตลาด.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนท้ายตลาด.Alone.PerAloneNight} %`,
+      `${ชุมชนท้ายตลาด.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนท้ายตลาด.Alone.PerAloneDay}`,
+      `${ชุมชนท้ายตลาด.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนท้ายตลาด.Alone.PerAloneDayNight}`,
+      `${ชุมชนท้ายตลาด.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนท้ายตลาด.Alone.PerAloneNight}`,
       ชุมชนท้ายตลาด.NotAlone,
-      ` ${ชุมชนท้ายตลาด.PerNotAlone} %`,
-      ` ${ชุมชนท้ายตลาด.Alone.PerSum} %`,
+      `${ชุมชนท้ายตลาด.PerNotAlone}`==="NaN"? "0" :`${ชุมชนท้ายตลาด.PerNotAlone}`,
+      `${ชุมชนท้ายตลาด.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนท้ายตลาด.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนร่วมใจพัฒนา",
@@ -266,12 +265,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนร่วมใจพัฒนา.Alone.AloneDay,
       ชุมชนร่วมใจพัฒนา.Alone.AloneDayNight,
       ชุมชนร่วมใจพัฒนา.Alone.AloneNight,
-      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDay} %`,
-      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerAloneNight} %`,
+      `${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDay}`,
+      `${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนร่วมใจพัฒนา.Alone.PerAloneDayNight}`,
+      `${ชุมชนร่วมใจพัฒนา.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนร่วมใจพัฒนา.Alone.PerAloneNight}`,
       ชุมชนร่วมใจพัฒนา.NotAlone,
-      ` ${ชุมชนร่วมใจพัฒนา.PerNotAlone} %`,
-      ` ${ชุมชนร่วมใจพัฒนา.Alone.PerSum} %`,
+      `${ชุมชนร่วมใจพัฒนา.PerNotAlone}`==="NaN"? "0" :`${ชุมชนร่วมใจพัฒนา.PerNotAlone}`,
+      `${ชุมชนร่วมใจพัฒนา.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนร่วมใจพัฒนา.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนบางแสนบน",
@@ -279,12 +278,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนบางแสนบน.Alone.AloneDay,
       ชุมชนบางแสนบน.Alone.AloneDayNight,
       ชุมชนบางแสนบน.Alone.AloneNight,
-      ` ${ชุมชนบางแสนบน.Alone.PerAloneDay} %`,
-      ` ${ชุมชนบางแสนบน.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนบางแสนบน.Alone.PerAloneNight} %`,
+      `${ชุมชนบางแสนบน.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนบางแสนบน.Alone.PerAloneDay}`,
+      `${ชุมชนบางแสนบน.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนบางแสนบน.Alone.PerAloneDayNight}`,
+      `${ชุมชนบางแสนบน.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนบางแสนบน.Alone.PerAloneNight}`,
       ชุมชนบางแสนบน.NotAlone,
-      ` ${ชุมชนบางแสนบน.PerNotAlone} %`,
-      ` ${ชุมชนบางแสนบน.Alone.PerSum} %`,
+      `${ชุมชนบางแสนบน.PerNotAlone}`==="NaN"? "0" :`${ชุมชนบางแสนบน.PerNotAlone}`,
+      `${ชุมชนบางแสนบน.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนบางแสนบน.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนหาดวอนนภา",
@@ -292,12 +291,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนหาดวอนนภา.Alone.AloneDay,
       ชุมชนหาดวอนนภา.Alone.AloneDayNight,
       ชุมชนหาดวอนนภา.Alone.AloneNight,
-      ` ${ชุมชนหาดวอนนภา.Alone.PerAloneDay} %`,
-      ` ${ชุมชนหาดวอนนภา.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนหาดวอนนภา.Alone.PerAloneNight} %`,
+      `${ชุมชนหาดวอนนภา.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนหาดวอนนภา.Alone.PerAloneDay}`,
+      `${ชุมชนหาดวอนนภา.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนหาดวอนนภา.Alone.PerAloneDayNight}`,
+      `${ชุมชนหาดวอนนภา.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนหาดวอนนภา.Alone.PerAloneNight}`,
       ชุมชนหาดวอนนภา.NotAlone,
-      ` ${ชุมชนหาดวอนนภา.PerNotAlone} %`,
-      ` ${ชุมชนหาดวอนนภา.Alone.PerSum} %`,
+      `${ชุมชนหาดวอนนภา.PerNotAlone}`==="NaN"? "0" :`${ชุมชนหาดวอนนภา.PerNotAlone}`,
+      `${ชุมชนหาดวอนนภา.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนหาดวอนนภา.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนบางเป้ง",
@@ -305,12 +304,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนบางเป้ง.Alone.AloneDay,
       ชุมชนบางเป้ง.Alone.AloneDayNight,
       ชุมชนบางเป้ง.Alone.AloneNight,
-      ` ${ชุมชนบางเป้ง.Alone.PerAloneDay} %`,
-      ` ${ชุมชนบางเป้ง.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนบางเป้ง.Alone.PerAloneNight} %`,
+      `${ชุมชนบางเป้ง.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนบางเป้ง.Alone.PerAloneDay}`,
+      `${ชุมชนบางเป้ง.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนบางเป้ง.Alone.PerAloneDayNight}`,
+      `${ชุมชนบางเป้ง.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนบางเป้ง.Alone.PerAloneNight}`,
       ชุมชนบางเป้ง.NotAlone,
-      ` ${ชุมชนบางเป้ง.PerNotAlone} %`,
-      ` ${ชุมชนบางเป้ง.Alone.PerSum} %`,
+      `${ชุมชนบางเป้ง.PerNotAlone}`==="NaN"? "0" :`${ชุมชนบางเป้ง.PerNotAlone}`,
+      `${ชุมชนบางเป้ง.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนบางเป้ง.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนหน้ามอ",
@@ -318,12 +317,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนหน้ามอ.Alone.AloneDay,
       ชุมชนหน้ามอ.Alone.AloneDayNight,
       ชุมชนหน้ามอ.Alone.AloneNight,
-      ` ${ชุมชนหน้ามอ.Alone.PerAloneDay} %`,
-      ` ${ชุมชนหน้ามอ.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนหน้ามอ.Alone.PerAloneNight} %`,
+      `${ชุมชนหน้ามอ.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนหน้ามอ.Alone.PerAloneDay}`,
+      `${ชุมชนหน้ามอ.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนหน้ามอ.Alone.PerAloneDayNight}`,
+      `${ชุมชนหน้ามอ.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนหน้ามอ.Alone.PerAloneNight}`,
       ชุมชนหน้ามอ.NotAlone,
-      ` ${ชุมชนหน้ามอ.PerNotAlone} %`,
-      ` ${ชุมชนหน้ามอ.Alone.PerSum} %`,
+      `${ชุมชนหน้ามอ.PerNotAlone}`==="NaN"? "0" :`${ชุมชนหน้ามอ.PerNotAlone}`,
+      `${ชุมชนหน้ามอ.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนหน้ามอ.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนโชคดี",
@@ -331,12 +330,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนโชคดี.Alone.AloneDay,
       ชุมชนโชคดี.Alone.AloneDayNight,
       ชุมชนโชคดี.Alone.AloneNight,
-      ` ${ชุมชนโชคดี.Alone.PerAloneDay} %`,
-      ` ${ชุมชนโชคดี.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนโชคดี.Alone.PerAloneNight} %`,
+      `${ชุมชนโชคดี.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนโชคดี.Alone.PerAloneDay}`,
+      `${ชุมชนโชคดี.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนโชคดี.Alone.PerAloneDayNight}`,
+      `${ชุมชนโชคดี.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนโชคดี.Alone.PerAloneNight}`,
       ชุมชนโชคดี.NotAlone,
-      ` ${ชุมชนโชคดี.PerNotAlone} %`,
-      ` ${ชุมชนโชคดี.Alone.PerSum} %`,
+      `${ชุมชนโชคดี.PerNotAlone}`==="NaN"? "0" :`${ชุมชนโชคดี.PerNotAlone}`,
+      `${ชุมชนโชคดี.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนโชคดี.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนสมใจนึก",
@@ -344,12 +343,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนสมใจนึก.Alone.AloneDay,
       ชุมชนสมใจนึก.Alone.AloneDayNight,
       ชุมชนสมใจนึก.Alone.AloneNight,
-      ` ${ชุมชนสมใจนึก.Alone.PerAloneDay} %`,
-      ` ${ชุมชนสมใจนึก.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนสมใจนึก.Alone.PerAloneNight} %`,
+      `${ชุมชนสมใจนึก.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนสมใจนึก.Alone.PerAloneDay}`,
+      `${ชุมชนสมใจนึก.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนสมใจนึก.Alone.PerAloneDayNight}`,
+      `${ชุมชนสมใจนึก.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนสมใจนึก.Alone.PerAloneNight}`,
       ชุมชนสมใจนึก.NotAlone,
-      ` ${ชุมชนสมใจนึก.PerNotAlone} %`,
-      ` ${ชุมชนสมใจนึก.Alone.PerSum} %`,
+      `${ชุมชนสมใจนึก.PerNotAlone}`==="NaN"? "0" :`${ชุมชนสมใจนึก.PerNotAlone}`,
+      `${ชุมชนสมใจนึก.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนสมใจนึก.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนหน้าเทศบาล",
@@ -357,12 +356,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนหน้าเทศบาล.Alone.AloneDay,
       ชุมชนหน้าเทศบาล.Alone.AloneDayNight,
       ชุมชนหน้าเทศบาล.Alone.AloneNight,
-      ` ${ชุมชนหน้าเทศบาล.Alone.PerAloneDay} %`,
-      ` ${ชุมชนหน้าเทศบาล.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนหน้าเทศบาล.Alone.PerAloneNight} %`,
+      `${ชุมชนหน้าเทศบาล.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนหน้าเทศบาล.Alone.PerAloneDay}`,
+      `${ชุมชนหน้าเทศบาล.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนหน้าเทศบาล.Alone.PerAloneDayNight}`,
+      `${ชุมชนหน้าเทศบาล.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนหน้าเทศบาล.Alone.PerAloneNight}`,
       ชุมชนหน้าเทศบาล.NotAlone,
-      ` ${ชุมชนหน้าเทศบาล.PerNotAlone} %`,
-      ` ${ชุมชนหน้าเทศบาล.Alone.PerSum} %`,
+      `${ชุมชนหน้าเทศบาล.PerNotAlone}`==="NaN"? "0" :`${ชุมชนหน้าเทศบาล.PerNotAlone}`,
+      `${ชุมชนหน้าเทศบาล.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนหน้าเทศบาล.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนวัดแสนสุข",
@@ -370,12 +369,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนวัดแสนสุข.Alone.AloneDay,
       ชุมชนวัดแสนสุข.Alone.AloneDayNight,
       ชุมชนวัดแสนสุข.Alone.AloneNight,
-      ` ${ชุมชนวัดแสนสุข.Alone.PerAloneDay} %`,
-      ` ${ชุมชนวัดแสนสุข.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนวัดแสนสุข.Alone.PerAloneNight} %`,
+      `${ชุมชนวัดแสนสุข.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนวัดแสนสุข.Alone.PerAloneDay}`,
+      `${ชุมชนวัดแสนสุข.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนวัดแสนสุข.Alone.PerAloneDayNight}`,
+      `${ชุมชนวัดแสนสุข.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนวัดแสนสุข.Alone.PerAloneNight}`,
       ชุมชนวัดแสนสุข.NotAlone,
-      ` ${ชุมชนวัดแสนสุข.PerNotAlone} %`,
-      ` ${ชุมชนวัดแสนสุข.Alone.PerSum} %`,
+      `${ชุมชนวัดแสนสุข.PerNotAlone}`==="NaN"? "0" :`${ชุมชนวัดแสนสุข.PerNotAlone}`,
+      `${ชุมชนวัดแสนสุข.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนวัดแสนสุข.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนมุขแสนเจริญ1",
@@ -383,12 +382,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนมุขแสนเจริญ1.Alone.AloneDay,
       ชุมชนมุขแสนเจริญ1.Alone.AloneDayNight,
       ชุมชนมุขแสนเจริญ1.Alone.AloneNight,
-      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDay} %`,
-      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerAloneNight} %`,
+      `${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDay}`,
+      `${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ1.Alone.PerAloneDayNight}`,
+      `${ชุมชนมุขแสนเจริญ1.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ1.Alone.PerAloneNight}`,
       ชุมชนมุขแสนเจริญ1.NotAlone,
-      ` ${ชุมชนมุขแสนเจริญ1.PerNotAlone} %`,
-      ` ${ชุมชนมุขแสนเจริญ1.Alone.PerSum} %`,
+      `${ชุมชนมุขแสนเจริญ1.PerNotAlone}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ1.PerNotAlone}`,
+      `${ชุมชนมุขแสนเจริญ1.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ1.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนมุขแสนเจริญ2",
@@ -396,12 +395,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนมุขแสนเจริญ2.Alone.AloneDay,
       ชุมชนมุขแสนเจริญ2.Alone.AloneDayNight,
       ชุมชนมุขแสนเจริญ2.Alone.AloneNight,
-      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDay} %`,
-      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerAloneNight} %`,
+      `${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDay}`,
+      `${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ2.Alone.PerAloneDayNight}`,
+      `${ชุมชนมุขแสนเจริญ2.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ2.Alone.PerAloneNight}`,
       ชุมชนมุขแสนเจริญ2.NotAlone,
-      ` ${ชุมชนมุขแสนเจริญ2.PerNotAlone} %`,
-      ` ${ชุมชนมุขแสนเจริญ2.Alone.PerSum} %`,
+      `${ชุมชนมุขแสนเจริญ2.PerNotAlone}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ2.PerNotAlone}`,
+      `${ชุมชนมุขแสนเจริญ2.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนมุขแสนเจริญ2.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนเขาสามมุข",
@@ -409,12 +408,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนเขาสามมุข.Alone.AloneDay,
       ชุมชนเขาสามมุข.Alone.AloneDayNight,
       ชุมชนเขาสามมุข.Alone.AloneNight,
-      ` ${ชุมชนเขาสามมุข.Alone.PerAloneDay} %`,
-      ` ${ชุมชนเขาสามมุข.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนเขาสามมุข.Alone.PerAloneNight} %`,
+      `${ชุมชนเขาสามมุข.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนเขาสามมุข.Alone.PerAloneDay}`,
+      `${ชุมชนเขาสามมุข.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนเขาสามมุข.Alone.PerAloneDayNight}`,
+      `${ชุมชนเขาสามมุข.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนเขาสามมุข.Alone.PerAloneNight}`,
       ชุมชนเขาสามมุข.NotAlone,
-      ` ${ชุมชนเขาสามมุข.PerNotAlone} %`,
-      ` ${ชุมชนเขาสามมุข.Alone.PerSum} %`,
+      `${ชุมชนเขาสามมุข.PerNotAlone}`==="NaN"? "0" :`${ชุมชนเขาสามมุข.PerNotAlone}`,
+      `${ชุมชนเขาสามมุข.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนเขาสามมุข.Alone.PerSum}`,
     ),
     createData(
       "ชุมชนบ้านแหลมแท่น",
@@ -422,12 +421,12 @@ const ShowChart = React.forwardRef((props, ref) => {
       ชุมชนบ้านแหลมแท่น.Alone.AloneDay,
       ชุมชนบ้านแหลมแท่น.Alone.AloneDayNight,
       ชุมชนบ้านแหลมแท่น.Alone.AloneNight,
-      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDay} %`,
-      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDayNight} %`,
-      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerAloneNight} %`,
+      `${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDay}`==="NaN"? "0" :`${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDay}`,
+      `${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDayNight}`==="NaN"? "0" :`${ชุมชนบ้านแหลมแท่น.Alone.PerAloneDayNight}`,
+      `${ชุมชนบ้านแหลมแท่น.Alone.PerAloneNight}`==="NaN"? "0" :`${ชุมชนบ้านแหลมแท่น.Alone.PerAloneNight}`,
       ชุมชนบ้านแหลมแท่น.NotAlone,
-      ` ${ชุมชนบ้านแหลมแท่น.PerNotAlone} %`,
-      ` ${ชุมชนบ้านแหลมแท่น.Alone.PerSum} %`,
+      `${ชุมชนบ้านแหลมแท่น.PerNotAlone}`==="NaN"? "0" :`${ชุมชนบ้านแหลมแท่น.PerNotAlone}`,
+      `${ชุมชนบ้านแหลมแท่น.Alone.PerSum}`==="NaN"? "0" :`${ชุมชนบ้านแหลมแท่น.Alone.PerSum}`,
     ),
   ];
 
@@ -530,36 +529,33 @@ const ShowChart = React.forwardRef((props, ref) => {
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <StyledTableRow key={row.name}>
+                <StyledTableRow key={row.ชุมชน}>
                   <StyledTableCell  component="th" scope="row">
-                    {row.name}
+                    {row.ชุมชน}
                   </StyledTableCell>
-                  <StyledTableCell >
+                  <StyledTableCell align="left">
                       จำนวน 
-                      <br />เปอร์เซ๊นต์ 
+                      <br />เปอร์เซ็นต์ 
                     </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.aloneDay}<br />
-                    {row.PeraloneDay === " NaN %" ? "0  %" : row.PeraloneDay}
+                    {row.อยู่ลำพังกลางวัน}<br />
+                    {row.เปอร์เซ็นต์อยู่ลำพังกลางวัน} %
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.aloneDaynight}<br />              
-                    {row.PeraloneDaynight === " NaN %"
-                      ? "0  %"
-                      : row.PeraloneDaynight}
-                    
+                    {row.อยู่ลำพังกลางคืน}<br />
+                    {row.เปอร์เซ็นต์อยู่ลำพังกลางคืน} %
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.alonenight}<br />
-                    {row.Peralonenight === " NaN %" ? "0  %" : row.Peralonenight}
+                    {row.อยู่ลำพังกลางวันกลางคืน}<br />              
+                    {row.เปอร์เซ็นต์อยู่ลำพังกลางวันกลางคืน} %                   
                   </StyledTableCell>
-                  <StyledTableCell align="center" >{row.alone}</StyledTableCell>
+                  <StyledTableCell align="center" >{row.อยู่ลำพัง}</StyledTableCell>
                   <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.notalone}<br />
-                    {row.Pernotalone === " NaN %" ? "0  %" : row.Pernotalone}
+                    {row.ไม่ได้อยู่ลำพัง}<br />
+                    {row.เปอร์เซ็นต์ไม่ได้อยู่ลำพัง} %
                   </StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
+                  
                 </StyledTableRow>
               ))}
             </TableBody>

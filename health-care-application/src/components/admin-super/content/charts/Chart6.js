@@ -39,120 +39,121 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 function createData(
-  name,
-  numMale,
-  numFemale,
-  sum,
-  Male6569,
-  Female6569,
-  sum6569,
-  Male7074,
-  Female7074,
-  sum7074,
-  Male7579,
-  Female7579,
-  sum7579,
-  Male8084,
-  Female8084,
-  sum8084,
-  Male8590,
-  Female8590,
-  sum8590,
-  Male9094,
-  Female9094,
-  sum9094,
-  Male95,
-  Female95,
-  sum95,
-  sumAllM,
-  sumAllF,
-  sumAll,
-  sumAllPerM,
-  sumAllPerF,
-  sumAllPer,
-  PerMale,
-  PerFemale,
-  Persum,
-  PerMale6569,
-  PerFemale6569,
-  Persum6569,
-  PerMale7074,
-  PerFemale7074,
-  Persum7074,
-  PerMale7579,
-  PerFemale7579,
-  Persum7579,
-  PerMale8084,
-  PerFemale8084,
-  Persum8084,
-  PerMale8590,
-  PerFemale8590,
-  Persum8590,
-  PerMale9094,
-  PerFemale9094,
-  Persum9094,
-  PerMale95,
-  PerFemale95,
-  Persum95,
+  ระดับการศึกษา,
+  ผู้ชาย6064,
+  ผู้หญิง6064,
+  รวม6064,
+  ผู้ชาย6569,
+  ผู้หญิง6569,
+  รวม6569,
+  ผู้ชาย7074,
+  ผู้หญิง7074,
+  รวม7074,
+  ผู้ชาย7579,
+  ผู้หญิง7579,
+  รวม7579,
+  ผู้ชาย8084,
+  ผู้หญิง8084,
+  รวม8084,
+  ผู้ชาย8590,
+  ผู้หญิง8590,
+  รวม8590,
+  ผู้ชาย9094,
+  ผู้หญิง9094,
+  รวม9094,
+  ผู้ชาย95,
+  ผู้หญิง95,
+  รวม95,
+  รวมทั้งหมดผู้ชาย,
+  รวมทั้งหมดผู้หญิง,
+  รวมทั้งหมด,
+  เปอร์เซ็นต์รวมทั้งหมดผู้ชาย,
+  เปอร์เซ็นต์รวมทั้งหมดผู้หญิง,
+  เปอร์เซ็นต์รวมทั้งหมด,
+  เปอร์เซ็นต์ผู้ชาย6064,
+  เปอร์เซ็นต์ผู้หญิง6064,
+  เปอร์เซ็นต์รวม6064,
+  เปอร์เซ็นต์ผู้ชาย6569,
+  เปอร์เซ็นต์ผู้หญิง6569,
+  เปอร์เซ็นต์รวม6569,
+  เปอร์เซ็นต์ผู้ชาย7074,
+  เปอร์เซ็นต์ผู้หญิง7074,
+  เปอร์เซ็นต์รวม7074,
+  เปอร์เซ็นต์ผู้ชาย7579,
+  เปอร์เซ็นต์ผู้หญิง7579,
+  เปอร์เซ็นต์รวม7579,
+  เปอร์เซ็นต์ผู้ชาย8084,
+  เปอร์เซ็นต์ผู้หญิง8084,
+  เปอร์เซ็นต์รวม8084,
+  เปอร์เซ็นต์ผู้ชาย8590,
+  เปอร์เซ็นต์ผู้หญิง8590,
+  เปอร์เซ็นต์รวม8590,
+  เปอร์เซ็นต์ผู้ชาย9094,
+  เปอร์เซ็นต์ผู้หญิง9094,
+  เปอร์เซ็นต์รวม9094,
+  เปอร์เซ็นต์ผู้ชาย95,
+  เปอร์เซ็นต์ผู้หญิง95,
+  เปอร์เซ็นต์รวม95,
 
 
 ) {
   return {
-    name,
-    numMale,
-    numFemale,
-    sum,
-    Male6569,
-    Female6569,
-    sum6569,
-    Male7074,
-    Female7074,
-    sum7074,
-    Male7579,
-    Female7579,
-    sum7579,
-    Male8084,
-    Female8084,
-    sum8084,
-    Male8590,
-    Female8590,
-    sum8590,
-    Male9094,
-    Female9094,
-    sum9094,
-    Male95,
-    Female95,
-    sum95,
-    sumAllM,
-    sumAllF,
-    sumAll,
-    sumAllPerM,
-    sumAllPerF,
-    sumAllPer,
-    PerMale,
-  PerFemale,
-  Persum,
-  PerMale6569,
-  PerFemale6569,
-  Persum6569,
-  PerMale7074,
-  PerFemale7074,
-  Persum7074,
-  PerMale7579,
-  PerFemale7579,
-  Persum7579,
-  PerMale8084,
-  PerFemale8084,
-  Persum8084,
-  PerMale8590,
-  PerFemale8590,
-  Persum8590,
-  PerMale9094,
-  PerFemale9094,
-  Persum9094,
-  PerMale95,
-  PerFemale95,
-  Persum95,
+    ระดับการศึกษา,
+  ผู้ชาย6064,
+  ผู้หญิง6064,
+  รวม6064,
+  ผู้ชาย6569,
+  ผู้หญิง6569,
+  รวม6569,
+  ผู้ชาย7074,
+  ผู้หญิง7074,
+  รวม7074,
+  ผู้ชาย7579,
+  ผู้หญิง7579,
+  รวม7579,
+  ผู้ชาย8084,
+  ผู้หญิง8084,
+  รวม8084,
+  ผู้ชาย8590,
+  ผู้หญิง8590,
+  รวม8590,
+  ผู้ชาย9094,
+  ผู้หญิง9094,
+  รวม9094,
+  ผู้ชาย95,
+  ผู้หญิง95,
+  รวม95,
+  รวมทั้งหมดผู้ชาย,
+  รวมทั้งหมดผู้หญิง,
+  รวมทั้งหมด,
+  เปอร์เซ็นต์รวมทั้งหมดผู้ชาย,
+  เปอร์เซ็นต์รวมทั้งหมดผู้หญิง,
+  เปอร์เซ็นต์รวมทั้งหมด,
+  เปอร์เซ็นต์ผู้ชาย6064,
+  เปอร์เซ็นต์ผู้หญิง6064,
+  เปอร์เซ็นต์รวม6064,
+  เปอร์เซ็นต์ผู้ชาย6569,
+  เปอร์เซ็นต์ผู้หญิง6569,
+  เปอร์เซ็นต์รวม6569,
+  เปอร์เซ็นต์ผู้ชาย7074,
+  เปอร์เซ็นต์ผู้หญิง7074,
+  เปอร์เซ็นต์รวม7074,
+  เปอร์เซ็นต์ผู้ชาย7579,
+  เปอร์เซ็นต์ผู้หญิง7579,
+  เปอร์เซ็นต์รวม7579,
+  เปอร์เซ็นต์ผู้ชาย8084,
+  เปอร์เซ็นต์ผู้หญิง8084,
+  เปอร์เซ็นต์รวม8084,
+  เปอร์เซ็นต์ผู้ชาย8590,
+  เปอร์เซ็นต์ผู้หญิง8590,
+  เปอร์เซ็นต์รวม8590,
+  เปอร์เซ็นต์ผู้ชาย9094,
+  เปอร์เซ็นต์ผู้หญิง9094,
+  เปอร์เซ็นต์รวม9094,
+  เปอร์เซ็นต์ผู้ชาย95,
+  เปอร์เซ็นต์ผู้หญิง95,
+  เปอร์เซ็นต์รวม95,
+
   };
 }
 
@@ -217,42 +218,42 @@ const ShowChart = React.forwardRef((props, ref) => {
       Uneducate.summary.ElderFemale,
       Uneducate.summary.Elder,//sumAll
 
-      `${Uneducate.summary.ElderPerMale} %`,
-      `${Uneducate.summary.ElderPerFemale} %`,
-      `${Uneducate.summary.ElderPer} %`,
+      `${Uneducate.summary.ElderPerMale}`==="NaN"? "0" :`${Uneducate.summary.ElderPerMale}`,
+      `${Uneducate.summary.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.summary.ElderPerFemale}`,
+      `${Uneducate.summary.ElderPer}`==="NaN"? "0" :`${Uneducate.summary.ElderPer}`,
 
 
-      `${Uneducate.g6064.ElderPerMale} %`,
-      `${Uneducate.g6064.ElderPerFemale} %`,
-      `${Uneducate.g6064.ElderPer} %`,
+      `${Uneducate.g6064.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g6064.ElderPerMale}`,
+      `${Uneducate.g6064.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g6064.ElderPerFemale}`,
+      `${Uneducate.g6064.ElderPer}`==="NaN"? "0" :`${Uneducate.g6064.ElderPer}`,
 
-     `${ Uneducate.g6569.ElderPerMale} %`,
-     `${ Uneducate.g6569.ElderPerFemale} %`,
-     `${ Uneducate.g6569.ElderPer} %`,
+     `${ Uneducate.g6569.ElderPerMale}`==="NaN"? "0" :`${ Uneducate.g6569.ElderPerMale}`,
+     `${ Uneducate.g6569.ElderPerFemale}`==="NaN"? "0" :`${ Uneducate.g6569.ElderPerFemale}`,
+     `${ Uneducate.g6569.ElderPer}`==="NaN"? "0" :`${ Uneducate.g6569.ElderPer}`,
 
-      `${Uneducate.g7074.ElderPerMale} %`,
-      `${Uneducate.g7074.ElderPerFemale} %`,
-      `${Uneducate.g7074.ElderPer} %`,
+      `${Uneducate.g7074.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g7074.ElderPerMale}`,
+      `${Uneducate.g7074.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g7074.ElderPerFemale}`,
+      `${Uneducate.g7074.ElderPer}`==="NaN"? "0" : `${Uneducate.g7074.ElderPer}`,
 
-      `${Uneducate.g7579.ElderPerMale} %`,
-      `${Uneducate.g7579.ElderPerFemale} %`,
-      `${Uneducate.g7579.ElderPer} %`,
+      `${Uneducate.g7579.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g7579.ElderPerMale}`,
+      `${Uneducate.g7579.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g7579.ElderPerFemale}`,
+      `${Uneducate.g7579.ElderPer}`==="NaN"? "0" :`${Uneducate.g7579.ElderPer}`,
 
-      `${Uneducate.g8084.ElderPerMale} %`,
-      `${Uneducate.g8084.ElderPerFemale} %`,
-      `${Uneducate.g8084.ElderPer} %`,
+      `${Uneducate.g8084.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g8084.ElderPerMale}`,
+      `${Uneducate.g8084.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g8084.ElderPerFemale}`,
+      `${Uneducate.g8084.ElderPer}`==="NaN"? "0" :`${Uneducate.g8084.ElderPer}`,
 
-      `${Uneducate.g8589.ElderPerMale} %`,
-      `${Uneducate.g8589.ElderPerFemale} %`,
-      `${Uneducate.g8589.ElderPer} %`,
+      `${Uneducate.g8589.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g8589.ElderPerMale}`,
+      `${Uneducate.g8589.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g8589.ElderPerFemale}`,
+      `${Uneducate.g8589.ElderPer}`==="NaN"? "0" :`${Uneducate.g8589.ElderPer}`,
 
-      `${Uneducate.g9094.ElderPerMale} %`,
-      `${Uneducate.g9094.ElderPerFemale} %`,
-      `${Uneducate.g9094.ElderPer} %`,
+      `${Uneducate.g9094.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g9094.ElderPerMale}`,
+      `${Uneducate.g9094.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g9094.ElderPerFemale}`,
+      `${Uneducate.g9094.ElderPer}`==="NaN"? "0" :`${Uneducate.g9094.ElderPer}`,
 
-      `${Uneducate.g95.ElderPerMale} %`,
-      `${Uneducate.g95.ElderPerFemale} %`,
-     `${ Uneducate.g95.ElderPer} %`,
+      `${Uneducate.g95.ElderPerMale}`==="NaN"? "0" :`${Uneducate.g95.ElderPerMale}`,
+      `${Uneducate.g95.ElderPerFemale}`==="NaN"? "0" :`${Uneducate.g95.ElderPerFemale}`,
+     `${Uneducate.g95.ElderPer}`==="NaN"? "0" :`${Uneducate.g95.ElderPer}`,
 
     ),
     createData(
@@ -293,41 +294,41 @@ const ShowChart = React.forwardRef((props, ref) => {
       SecondarySchool.summary.ElderFemale,
       SecondarySchool.summary.Elder,
 
-      `${SecondarySchool.summary.ElderPerMale} %`,
-      `${SecondarySchool.summary.ElderPerFemale} %`,
-      `${SecondarySchool.summary.ElderPer} %`,
+      `${SecondarySchool.summary.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.summary.ElderPerMale}`,
+      `${SecondarySchool.summary.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.summary.ElderPerFemale}`,
+      `${SecondarySchool.summary.ElderPer}`==="NaN"? "0" :`${SecondarySchool.summary.ElderPer}`,
 
-      `${SecondarySchool.g6064.ElderPerMale} %`,
-      `${SecondarySchool.g6064.ElderPerFemale} %`,
-      `${SecondarySchool.g6064.ElderPer} %`,
+      `${SecondarySchool.g6064.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g6064.ElderPerMale}`,
+      `${SecondarySchool.g6064.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g6064.ElderPerFemale}`,
+      `${SecondarySchool.g6064.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g6064.ElderPer}`,
 
-     `${ SecondarySchool.g6569.ElderPerMale} %`,
-     `${ SecondarySchool.g6569.ElderPerFemale} %`,
-     `${ SecondarySchool.g6569.ElderPer} %`,
+     `${ SecondarySchool.g6569.ElderPerMale}`==="NaN"? "0" :`${ SecondarySchool.g6569.ElderPerMale}`,
+     `${ SecondarySchool.g6569.ElderPerFemale}`==="NaN"? "0" :`${ SecondarySchool.g6569.ElderPerFemale}`,
+     `${ SecondarySchool.g6569.ElderPer}`==="NaN"? "0" :`${ SecondarySchool.g6569.ElderPer}`,
 
-      `${SecondarySchool.g7074.ElderPerMale} %`,
-      `${SecondarySchool.g7074.ElderPerFemale} %`,
-      `${SecondarySchool.g7074.ElderPer} %`,
+      `${SecondarySchool.g7074.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g7074.ElderPerMale}`,
+      `${SecondarySchool.g7074.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g7074.ElderPerFemale}`,
+      `${SecondarySchool.g7074.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g7074.ElderPer}`,
 
-      `${SecondarySchool.g7579.ElderPerMale} %`,
-      `${SecondarySchool.g7579.ElderPerFemale} %`,
-      `${SecondarySchool.g7579.ElderPer} %`,
+      `${SecondarySchool.g7579.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g7579.ElderPerMale}`,
+      `${SecondarySchool.g7579.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g7579.ElderPerFemale}`,
+      `${SecondarySchool.g7579.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g7579.ElderPer}`,
 
-      `${SecondarySchool.g8084.ElderPerMale} %`,
-      `${SecondarySchool.g8084.ElderPerFemale} %`,
-      `${SecondarySchool.g8084.ElderPer} %`,
+      `${SecondarySchool.g8084.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g8084.ElderPerMale}`,
+      `${SecondarySchool.g8084.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g8084.ElderPerFemale}`,
+      `${SecondarySchool.g8084.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g8084.ElderPer}`,
 
-      `${SecondarySchool.g8589.ElderPerMale} %`,
-      `${SecondarySchool.g8589.ElderPerFemale} %`,
-      `${SecondarySchool.g8589.ElderPer} %`,
+      `${SecondarySchool.g8589.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g8589.ElderPerMale}`,
+      `${SecondarySchool.g8589.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g8589.ElderPerFemale}`,
+      `${SecondarySchool.g8589.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g8589.ElderPer}`,
 
-      `${SecondarySchool.g9094.ElderPerMale} %`,
-      `${SecondarySchool.g9094.ElderPerFemale} %`,
-      `${SecondarySchool.g9094.ElderPer} %`,
+      `${SecondarySchool.g9094.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g9094.ElderPerMale}`,
+      `${SecondarySchool.g9094.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g9094.ElderPerFemale}`,
+      `${SecondarySchool.g9094.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g9094.ElderPer}`,
 
-      `${SecondarySchool.g95.ElderPerMale} %`,
-      `${SecondarySchool.g95.ElderPerFemale} %`,
-     `${ SecondarySchool.g95.ElderPer} %`,
+      `${SecondarySchool.g95.ElderPerMale}`==="NaN"? "0" :`${SecondarySchool.g95.ElderPerMale}`,
+      `${SecondarySchool.g95.ElderPerFemale}`==="NaN"? "0" :`${SecondarySchool.g95.ElderPerFemale}`,
+     `${ SecondarySchool.g95.ElderPer}`==="NaN"? "0" :`${SecondarySchool.g95.ElderPer}`,
     ),
     createData(
       " มัธยมศึกษา",
@@ -367,41 +368,41 @@ const ShowChart = React.forwardRef((props, ref) => {
       HighSchool.summary.ElderFemale,
       HighSchool.summary.Elder,
 
-    `${HighSchool.summary.ElderPerMale} %`,
-     `${HighSchool.summary.ElderPerFemale} %`,
-     `${HighSchool.summary.ElderPer} %`,
+    `${HighSchool.summary.ElderPerMale}`==="NaN"? "0" :`${HighSchool.summary.ElderPerMale}`,
+     `${HighSchool.summary.ElderPerFemale}`==="NaN"? "0" :`${HighSchool.summary.ElderPerFemale}`,
+     `${HighSchool.summary.ElderPer}`==="NaN"? "0" :`${HighSchool.summary.ElderPer}`,
 
-      `${HighSchool.g6064.ElderPerMale} %`,
-      `${HighSchool.g6064.ElderPerFemale} %`,
-      `${HighSchool.g6064.ElderPer} %`,
+      `${HighSchool.g6064.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g6064.ElderPerMale}`,
+      `${HighSchool.g6064.ElderPerFemale}`==="NaN"? "0" :`${HighSchool.g6064.ElderPerFemale}`,
+      `${HighSchool.g6064.ElderPer}`==="NaN"? "0" :`${HighSchool.g6064.ElderPer}`,
 
-     `${ HighSchool.g6569.ElderPerMale} %`,
-     `${ HighSchool.g6569.ElderPerFemale} %`,
-     `${ HighSchool.g6569.ElderPer} %`,
+     `${ HighSchool.g6569.ElderPerMale}`==="NaN"? "0" :`${ HighSchool.g6569.ElderPerMale}`,
+     `${ HighSchool.g6569.ElderPerFemale}`==="NaN"? "0" :`${ HighSchool.g6569.ElderPerFemale}`,
+     `${ HighSchool.g6569.ElderPer}`==="NaN"? "0" :`${ HighSchool.g6569.ElderPer}`,
 
-      `${HighSchool.g7074.ElderPerMale} %`,
-      `${HighSchool.g7074.ElderPerFemale} %`,
-      `${HighSchool.g7074.ElderPer} %`,
+      `${HighSchool.g7074.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g7074.ElderPerMale}`,
+      `${HighSchool.g7074.ElderPerFemale}`==="NaN"? "0" :`${HighSchool.g7074.ElderPerFemale}`,
+      `${HighSchool.g7074.ElderPer}`==="NaN"? "0" :`${HighSchool.g7074.ElderPer}`,
 
-      `${HighSchool.g7579.ElderPerMale} %`,
-      `${HighSchool.g7579.ElderPerFemale} %`,
-      `${HighSchool.g7579.ElderPer} %`,
+      `${HighSchool.g7579.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g7579.ElderPerMale}`,
+      `${HighSchool.g7579.ElderPerFemale}`==="NaN"? "0" :`${HighSchool.g7579.ElderPerFemale}`,
+      `${HighSchool.g7579.ElderPer}`==="NaN"? "0" :`${HighSchool.g7579.ElderPer}`,
 
-      `${HighSchool.g8084.ElderPerMale} %`,
-      `${HighSchool.g8084.ElderPerFemale} %`,
-      `${HighSchool.g8084.ElderPer} %`,
+      `${HighSchool.g8084.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g8084.ElderPerMale}`,
+      `${HighSchool.g8084.ElderPerFemale}`==="NaN"? "0" :`${HighSchool.g8084.ElderPerFemale}`,
+      `${HighSchool.g8084.ElderPer}`==="NaN"? "0" :`${HighSchool.g8084.ElderPer}`,
 
-      `${HighSchool.g8589.ElderPerMale} %`,
-      `${HighSchool.g8589.ElderPerFemale} %`,
-      `${HighSchool.g8589.ElderPer} %`,
+      `${HighSchool.g8589.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g8589.ElderPerMale}`,
+      `${HighSchool.g8589.ElderPerFemale}`==="NaN"? "0" : `${HighSchool.g8589.ElderPerFemale}`,
+      `${HighSchool.g8589.ElderPer}`==="NaN"? "0" :`${HighSchool.g8589.ElderPer}`,
 
-      `${HighSchool.g9094.ElderPerMale} %`,
-      `${HighSchool.g9094.ElderPerFemale} %`,
-      `${HighSchool.g9094.ElderPer} %`,
+      `${HighSchool.g9094.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g9094.ElderPerMale}`,
+      `${HighSchool.g9094.ElderPerFemale}`==="NaN"? "0" : `${HighSchool.g9094.ElderPerFemale}`,
+      `${HighSchool.g9094.ElderPer}`==="NaN"? "0" :`${HighSchool.g9094.ElderPer}`,
 
-      `${HighSchool.g95.ElderPerMale} %`,
-      `${HighSchool.g95.ElderPerFemale} %`,
-     `${ HighSchool.g95.ElderPer} %`,
+      `${HighSchool.g95.ElderPerMale}`==="NaN"? "0" :`${HighSchool.g95.ElderPerMale}`,
+      `${HighSchool.g95.ElderPerFemale}`==="NaN"? "0" :`${HighSchool.g95.ElderPerFemale}`,
+     `${ HighSchool.g95.ElderPer}`==="NaN"? "0" :`${ HighSchool.g95.ElderPer}`,
     ),
     createData(
       " อนุปริญญา/ปวช./ปวส.",
@@ -441,41 +442,41 @@ const ShowChart = React.forwardRef((props, ref) => {
       TechnicalCollege.summary.ElderFemale,
       TechnicalCollege.summary.Elder,
 
-      `${TechnicalCollege.summary.ElderPerMale} %`,
-      `${TechnicalCollege.summary.ElderPerFemale} %`,
-      `${TechnicalCollege.summary.ElderPer} %`,
+      `${TechnicalCollege.summary.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.summary.ElderPerMale}`,
+      `${TechnicalCollege.summary.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.summary.ElderPerFemale}`,
+      `${TechnicalCollege.summary.ElderPer}`==="NaN"? "0" :`${TechnicalCollege.summary.ElderPer}`,
 
-      `${TechnicalCollege.g6064.ElderPerMale} %`,
-      `${TechnicalCollege.g6064.ElderPerFemale} %`,
-      `${TechnicalCollege.g6064.ElderPer} %`,
+      `${TechnicalCollege.g6064.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g6064.ElderPerMale}`,
+      `${TechnicalCollege.g6064.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.g6064.ElderPerFemale}`,
+      `${TechnicalCollege.g6064.ElderPer}`==="NaN"? "0" :`${TechnicalCollege.g6064.ElderPer}`,
 
-     `${ TechnicalCollege.g6569.ElderPerMale} %`,
-     `${ TechnicalCollege.g6569.ElderPerFemale} %`,
-     `${ TechnicalCollege.g6569.ElderPer} %`,
+     `${ TechnicalCollege.g6569.ElderPerMale}`==="NaN"? "0" :`${ TechnicalCollege.g6569.ElderPerMale}`,
+     `${ TechnicalCollege.g6569.ElderPerFemale}`==="NaN"? "0" :`${ TechnicalCollege.g6569.ElderPerFemale}`,
+     `${ TechnicalCollege.g6569.ElderPer}`==="NaN"? "0" :`${ TechnicalCollege.g6569.ElderPer}`,
 
-      `${TechnicalCollege.g7074.ElderPerMale} %`,
-      `${TechnicalCollege.g7074.ElderPerFemale} %`,
-      `${TechnicalCollege.g7074.ElderPer} %`,
+      `${TechnicalCollege.g7074.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g7074.ElderPerMale}`,
+      `${TechnicalCollege.g7074.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.g7074.ElderPerFemale}`,
+      `${TechnicalCollege.g7074.ElderPer}`==="NaN"? "0" :`${TechnicalCollege.g7074.ElderPer}`,
 
-      `${TechnicalCollege.g7579.ElderPerMale} %`,
-      `${TechnicalCollege.g7579.ElderPerFemale} %`,
-      `${TechnicalCollege.g7579.ElderPer} %`,
+      `${TechnicalCollege.g7579.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g7579.ElderPerMale}`,
+      `${TechnicalCollege.g7579.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.g7579.ElderPerFemale}`,
+      `${TechnicalCollege.g7579.ElderPer}`==="NaN"? "0" :`${TechnicalCollege.g7579.ElderPer}`,
 
-      `${TechnicalCollege.g8084.ElderPerMale} %`,
-      `${TechnicalCollege.g8084.ElderPerFemale} %`,
-      `${TechnicalCollege.g8084.ElderPer} %`,
+      `${TechnicalCollege.g8084.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g8084.ElderPerMale}`,
+      `${TechnicalCollege.g8084.ElderPerFemale}`==="NaN"? "0" : `${TechnicalCollege.g8084.ElderPerFemale}`,
+      `${TechnicalCollege.g8084.ElderPer}`==="NaN"? "0" :`${TechnicalCollege.g8084.ElderPer}`,
 
-      `${TechnicalCollege.g8589.ElderPerMale} %`,
-      `${TechnicalCollege.g8589.ElderPerFemale} %`,
-      `${TechnicalCollege.g8589.ElderPer} %`,
+      `${TechnicalCollege.g8589.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g8589.ElderPerMale}`,
+      `${TechnicalCollege.g8589.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.g8589.ElderPerFemale}`,
+      `${TechnicalCollege.g8589.ElderPer}`==="NaN"? "0" :`${TechnicalCollege.g8589.ElderPer}`,
 
-      `${TechnicalCollege.g9094.ElderPerMale} %`,
-      `${TechnicalCollege.g9094.ElderPerFemale} %`,
-      `${TechnicalCollege.g9094.ElderPer} %`,
+      `${TechnicalCollege.g9094.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g9094.ElderPerMale}`,
+      `${TechnicalCollege.g9094.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.g9094.ElderPerFemale}`,
+      `${TechnicalCollege.g9094.ElderPer}`==="NaN"? "0" : `${TechnicalCollege.g9094.ElderPer}`,
 
-      `${TechnicalCollege.g95.ElderPerMale} %`,
-      `${TechnicalCollege.g95.ElderPerFemale} %`,
-     `${ TechnicalCollege.g95.ElderPer} %`,
+      `${TechnicalCollege.g95.ElderPerMale}`==="NaN"? "0" :`${TechnicalCollege.g95.ElderPerMale}`,
+      `${TechnicalCollege.g95.ElderPerFemale}`==="NaN"? "0" :`${TechnicalCollege.g95.ElderPerFemale}`,
+     `${ TechnicalCollege.g95.ElderPer}`==="NaN"? "0" :`${ TechnicalCollege.g95.ElderPer}`,
     ),
     createData(
       " ปริญญาตรี",
@@ -515,41 +516,41 @@ const ShowChart = React.forwardRef((props, ref) => {
       BachelorDegrees.summary.ElderFemale,
       BachelorDegrees.summary.Elder,
 
-      `${BachelorDegrees.summary.ElderPerMale} %`,
-      `${BachelorDegrees.summary.ElderPerFemale} %`,
-      `${BachelorDegrees.summary.ElderPer} %`,
+      `${BachelorDegrees.summary.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.summary.ElderPerMale}`,
+      `${BachelorDegrees.summary.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.summary.ElderPerFemale}`,
+      `${BachelorDegrees.summary.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.summary.ElderPer}`,
 
-      `${BachelorDegrees.g6064.ElderPerMale} %`,
-      `${BachelorDegrees.g6064.ElderPerFemale} %`,
-      `${BachelorDegrees.g6064.ElderPer} %`,
+      `${BachelorDegrees.g6064.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g6064.ElderPerMale}`,
+      `${BachelorDegrees.g6064.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.g6064.ElderPerFemale}`,
+      `${BachelorDegrees.g6064.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.g6064.ElderPer}`,
 
-     `${ BachelorDegrees.g6569.ElderPerMale} %`,
-     `${ BachelorDegrees.g6569.ElderPerFemale} %`,
-     `${ BachelorDegrees.g6569.ElderPer} %`,
+     `${ BachelorDegrees.g6569.ElderPerMale}`==="NaN"? "0" :`${ BachelorDegrees.g6569.ElderPerMale}`,
+     `${ BachelorDegrees.g6569.ElderPerFemale}`==="NaN"? "0" :`${ BachelorDegrees.g6569.ElderPerFemale}`,
+     `${ BachelorDegrees.g6569.ElderPer}`==="NaN"? "0" :`${ BachelorDegrees.g6569.ElderPer}`,
 
-      `${BachelorDegrees.g7074.ElderPerMale} %`,
-      `${BachelorDegrees.g7074.ElderPerFemale} %`,
-      `${BachelorDegrees.g7074.ElderPer} %`,
+      `${BachelorDegrees.g7074.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g7074.ElderPerMale}`,
+      `${BachelorDegrees.g7074.ElderPerFemale}`==="NaN"? "0" : `${BachelorDegrees.g7074.ElderPerFemale}`,
+      `${BachelorDegrees.g7074.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.g7074.ElderPer}`,
 
-      `${BachelorDegrees.g7579.ElderPerMale} %`,
-      `${BachelorDegrees.g7579.ElderPerFemale} %`,
-      `${BachelorDegrees.g7579.ElderPer} %`,
+      `${BachelorDegrees.g7579.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g7579.ElderPerMale}`,
+      `${BachelorDegrees.g7579.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.g7579.ElderPerFemale}`,
+      `${BachelorDegrees.g7579.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.g7579.ElderPer}`,
 
-      `${BachelorDegrees.g8084.ElderPerMale} %`,
-      `${BachelorDegrees.g8084.ElderPerFemale} %`,
-      `${BachelorDegrees.g8084.ElderPer} %`,
+      `${BachelorDegrees.g8084.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g8084.ElderPerMale}`,
+      `${BachelorDegrees.g8084.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.g8084.ElderPerFemale}`,
+      `${BachelorDegrees.g8084.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.g8084.ElderPer}`,
 
-      `${BachelorDegrees.g8589.ElderPerMale} %`,
-      `${BachelorDegrees.g8589.ElderPerFemale} %`,
-      `${BachelorDegrees.g8589.ElderPer} %`,
+      `${BachelorDegrees.g8589.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g8589.ElderPerMale}`,
+      `${BachelorDegrees.g8589.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.g8589.ElderPerFemale}`,
+      `${BachelorDegrees.g8589.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.g8589.ElderPer}`,
 
-      `${BachelorDegrees.g9094.ElderPerMale} %`,
-      `${BachelorDegrees.g9094.ElderPerFemale} %`,
-      `${BachelorDegrees.g9094.ElderPer} %`,
+      `${BachelorDegrees.g9094.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g9094.ElderPerMale}`,
+      `${BachelorDegrees.g9094.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.g9094.ElderPerFemale}`,
+      `${BachelorDegrees.g9094.ElderPer}`==="NaN"? "0" :`${BachelorDegrees.g9094.ElderPer}`,
 
-      `${BachelorDegrees.g95.ElderPerMale} %`,
-      `${BachelorDegrees.g95.ElderPerFemale} %`,
-     `${ BachelorDegrees.g95.ElderPer} %`,
+      `${BachelorDegrees.g95.ElderPerMale}`==="NaN"? "0" :`${BachelorDegrees.g95.ElderPerMale}`,
+      `${BachelorDegrees.g95.ElderPerFemale}`==="NaN"? "0" :`${BachelorDegrees.g95.ElderPerFemale}`,
+     `${ BachelorDegrees.g95.ElderPer}`==="NaN"? "0" :`${ BachelorDegrees.g95.ElderPer}`,
     ),
     createData(
       " สูงกว่าปริญญาตรี",
@@ -589,41 +590,41 @@ const ShowChart = React.forwardRef((props, ref) => {
       MasterOrDoctorDegrees.summary.ElderFemale,
       MasterOrDoctorDegrees.summary.Elder,
 
-      `${MasterOrDoctorDegrees.summary.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.summary.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.summary.ElderPer} %`,
+      `${MasterOrDoctorDegrees.summary.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.summary.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.summary.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.summary.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.summary.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.summary.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g6064.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g6064.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.g6064.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g6064.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g6064.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g6064.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g6064.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.g6064.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g6064.ElderPer}`,
 
-     `${ MasterOrDoctorDegrees.g6569.ElderPerMale} %`,
-     `${ MasterOrDoctorDegrees.g6569.ElderPerFemale} %`,
-     `${ MasterOrDoctorDegrees.g6569.ElderPer} %`,
+     `${ MasterOrDoctorDegrees.g6569.ElderPerMale}`==="NaN"? "0" :`${ MasterOrDoctorDegrees.g6569.ElderPerMale}`,
+     `${ MasterOrDoctorDegrees.g6569.ElderPerFemale}`==="NaN"? "0" :`${ MasterOrDoctorDegrees.g6569.ElderPerFemale}`,
+     `${ MasterOrDoctorDegrees.g6569.ElderPer}`==="NaN"? "0" :`${ MasterOrDoctorDegrees.g6569.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g7074.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g7074.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.g7074.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g7074.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g7074.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g7074.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g7074.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.g7074.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g7074.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g7579.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g7579.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.g7579.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g7579.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g7579.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g7579.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g7579.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.g7579.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g7579.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g8084.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g8084.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.g8084.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g8084.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g8084.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g8084.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g8084.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.g8084.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g8084.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g8589.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g8589.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.g8589.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g8589.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g8589.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g8589.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g8589.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.g8589.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g8589.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g9094.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g9094.ElderPerFemale} %`,
-      `${MasterOrDoctorDegrees.g9094.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g9094.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g9094.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g9094.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g9094.ElderPerFemale}`,
+      `${MasterOrDoctorDegrees.g9094.ElderPer}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g9094.ElderPer}`,
 
-      `${MasterOrDoctorDegrees.g95.ElderPerMale} %`,
-      `${MasterOrDoctorDegrees.g95.ElderPerFemale} %`,
-     `${ MasterOrDoctorDegrees.g95.ElderPer} %`,
+      `${MasterOrDoctorDegrees.g95.ElderPerMale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g95.ElderPerMale}`,
+      `${MasterOrDoctorDegrees.g95.ElderPerFemale}`==="NaN"? "0" :`${MasterOrDoctorDegrees.g95.ElderPerFemale}`,
+     `${ MasterOrDoctorDegrees.g95.ElderPer}`==="NaN"? "0" :`${ MasterOrDoctorDegrees.g95.ElderPer}`,
     ),
   ];
   console.log(rows)
@@ -734,70 +735,77 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.ระดับการศึกษา}>
                     <StyledTableCell  component="th" scope="row">
-                      {row.name}
+                      {row.ระดับการศึกษา}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="left">
                       ชาย <br /> หญิง <br /> รวม
                     </StyledTableCell>
-                    <StyledTableCell align="center">  {/* 6064 */}
-                      {row.PerMale ==="NaN %"?  "0 %" : row.PerMale}
+                    <StyledTableCell align="left">  {/* 6064 */}
+                      {row.เปอร์เซ็นต์ผู้ชาย6064} %
                       <br />
-                      {row.PerFemale ==="NaN %"? "0 %" :row.PerFemale}
+                      {row.เปอร์เซ็นต์ผู้หญิง6064} %
                       <br />
-                      {row.Persum ==="NaN %"? "0 %" :row.Persum}
+                      {row.เปอร์เซ็นต์รวม6064} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale6569==="NaN %"? "0 %" : row.PerMale6569}
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย6569} %
                       <br />
-                      {row.PerFemale6569==="NaN %"? "0 %": row.PerFemale6569}
+                      {row.เปอร์เซ็นต์ผู้หญิง6569} %
                       <br />
-                      {row.Persum6569==="NaN %"? "0 %": row.Persum6569}
+                      {row.เปอร์เซ็นต์รวม6569} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale7074==="NaN %"? "0 %":row.PerMale7074} 
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย7074} % 
                       <br />
-                      {row.PerFemale7074==="NaN %"? "0 %":row.PerFemale7074}
+                      {row.เปอร์เซ็นต์ผู้หญิง7074} %
                       <br />
-                      {row.Persum7074==="NaN %"? "0 %":row.Persum7074}
+                      {row.เปอร์เซ็นต์รวม7074} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale7579==="NaN %"? "0 %":row.PerMale7579} 
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย7579} % 
                       <br />
-                      {row.PerFemale7579==="NaN %"? "0 %":row.PerFemale7579}
+                      {row.เปอร์เซ็นต์ผู้หญิง7579} %
                       <br />
-                      {row.Persum7579==="NaN %"? "0 %":row.Persum7579}
+                      {row.เปอร์เซ็นต์รวม7579} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale8084==="NaN %"? "0 %":row.PerMale8084} <br />
-                      {row.PerFemale8084==="NaN %"? "0 %":row.PerFemale8084}
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย8084} % 
                       <br />
-                      {row.Persum8084==="NaN %"? "0 %":row.Persum8084}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale8590==="NaN %"? "0 %": row.PerMale8590} <br />
-                      {row.PerFemale8590==="NaN %"? "0 %": row.PerFemale8590}
+                      {row.เปอร์เซ็นต์ผู้หญิง8084} %
                       <br />
-                      {row.Persum8590 ==="NaN %"? "0 %": row.Persum8590}
+                      {row.เปอร์เซ็นต์รวม8084} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale9094==="NaN %"? "0 %":row.PerMale9094} <br />
-                      {row.PerFemale9094==="NaN %"? "0 %":row.PerFemale9094}
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย8590} % 
                       <br />
-                      {row.Persum9094==="NaN %"? "0 %":row.Persum9094}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.PerMale95==="NaN %"? "0 %":row.PerMale95} <br />
-                      {row.PerFemale95==="NaN %"? "0 %":row.PerFemale95}
+                      {row.เปอร์เซ็นต์ผู้หญิง8590} %
                       <br />
-                      {row.Persum95==="NaN %"? "0 %":row.Persum95}
+                      {row.เปอร์เซ็นต์รวม8590} %
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {row.sumAllPerM==="NaN %"? "0 %":row.sumAllPerM} <br />
-                      {row.sumAllPerF==="NaN %"? "0 %":row.sumAllPerF}<br />
-                      {row.sumAllPer==="NaN %"? "0 %":row.sumAllPer}</StyledTableCell>
-                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย9094} % 
+                      <br />
+                      {row.เปอร์เซ็นต์ผู้หญิง9094} %
+                      <br />
+                      {row.เปอร์เซ็นต์รวม9094} %
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์ผู้ชาย95} % 
+                      <br />
+                      {row.เปอร์เซ็นต์ผู้หญิง95} %
+                      <br />
+                      {row.เปอร์เซ็นต์รวม95} %
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้ชาย} % 
+                      <br />
+                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิง} %
+                      <br />
+                      {row.เปอร์เซ็นต์รวมทั้งหมด} %
+                      </StyledTableCell>
+                    <StyledTableCell align="left">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -842,67 +850,74 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.ระดับการศึกษา}>
                     <StyledTableCell  component="th" scope="row">
-                      {row.name}
+                      {row.ระดับการศึกษา}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="left">
                       ชาย <br /> หญิง <br /> รวม
                     </StyledTableCell>
                     <StyledTableCell align="center">  {/* 6064 */}
-                      {row.numMale}
+                      {row.ผู้ชาย6064}
                       <br />
-                      {row.numFemale}
+                      {row.ผู้หญิง6064}
                       <br />
-                      {row.sum}{" "}
+                      {row.รวม6064}{" "}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male6569}
+                      {row.ผู้ชาย6569}
                       <br />
-                      {row.Female6569}
+                      {row.ผู้หญิง6569}
                       <br />
-                      {row.sum6569}
+                      {row.รวม6569}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male7074} <br />
-                      {row.Female7074}
+                      {row.ผู้ชาย7074} 
                       <br />
-                      {row.sum7074}
+                      {row.ผู้หญิง7074}
+                      <br />
+                      {row.รวม7074}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male7579} <br />
-                      {row.Female7579}
+                      {row.ผู้ชาย7579} 
                       <br />
-                      {row.sum7579}
+                      {row.ผู้หญิง7579}
+                      <br />
+                      {row.รวม7579}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male8084} <br />
-                      {row.Female8084}
+                      {row.ผู้ชาย8084} <br />
+                      {row.ผู้หญิง8084}
                       <br />
-                      {row.sum8084}
+                      {row.รวม8084}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male8590} <br />
-                      {row.Female8590}
+                      {row.ผู้ชาย8590} 
                       <br />
-                      {row.sum8590}
+                      {row.ผู้หญิง8590}
+                      <br />
+                      {row.รวม8590}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male9094} <br />
-                      {row.Female9094}
+                      {row.ผู้ชาย9094} 
                       <br />
-                      {row.sum9094}
+                      {row.ผู้หญิง9094}
+                      <br />
+                      {row.รวม9094}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.Male95} <br />
-                      {row.Female95}
+                      {row.ผู้ชาย95} 
                       <br />
-                      {row.sum95}
+                      {row.ผู้หญิง95}
+                      <br />
+                      {row.รวม95}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.sumAllM} <br />
-                      {row.sumAllF}
+                    <StyledTableCell align="center">
+                      {row.รวมทั้งหมดผู้ชาย} 
                       <br />
-                      {row.sumAll}</StyledTableCell>
+                      {row.รวมทั้งหมดผู้หญิง}
+                      <br />
+                      {row.รวมทั้งหมด}</StyledTableCell>
                     <StyledTableCell align="center">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}
