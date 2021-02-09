@@ -241,8 +241,16 @@ export const getDataSec2 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec2",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
+        
       })
       .catch((error) => {
         console.log("err ", error);
@@ -281,8 +289,15 @@ export const getDataSec3 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec3",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec3 ", error);
@@ -315,8 +330,15 @@ export const getDataSec4 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec4",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec4 ", error);
@@ -362,8 +384,15 @@ export const getDataSec5 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec5",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec5 ", error);
@@ -401,8 +430,15 @@ export const getDataSec6 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec6",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec6 ", error);
@@ -477,8 +513,15 @@ export const getDataSec7 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec7",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec7 ", error);
@@ -593,8 +636,15 @@ export const getDataSec8 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec8",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec8 ", error);
@@ -639,8 +689,15 @@ export const getDataSec9 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec9",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec9 ", error);
@@ -722,8 +779,15 @@ export const getDataSec10 = (history,visId, url) => {
         //   type: SELECT_SECTION,
         //   payload: "sec10",
         // });
-        console.log("url ",url)
-        history.push(url)
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDataSec10 ", error);
