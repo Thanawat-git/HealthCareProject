@@ -224,35 +224,75 @@ const ShowChart = React.forwardRef((props, ref) => {
             <Table className="table-report" aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  {/* {headers.map((value, i) => {
-                    return (
-                      <StyledTableCell align="center">
-                        {value.label.topic}
-                        {
-                          value.label.subl.map((v2,i2)=>{
-                            return (
-                              <StyledTableCell>
-                                {v2.sub}
-                              </StyledTableCell>
-                            )
-                          })
-                        }
-                      </StyledTableCell>
-                    );
-                  })} */}
+                  <StyledTableCell >ชุมชน</StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="right">60-64</StyledTableCell>
+                  <StyledTableCell align="right">65-69</StyledTableCell>
+                  <StyledTableCell align="right">70-74</StyledTableCell>
+                  <StyledTableCell align="right">75-79</StyledTableCell>
+                  <StyledTableCell align="right">80-84</StyledTableCell>
+                  <StyledTableCell align="right">85-89</StyledTableCell>
+                  <StyledTableCell align="right">90-94</StyledTableCell>
+                  <StyledTableCell align="right">95+</StyledTableCell>
+                  <StyledTableCell align="right">รวม</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-              {/* {data.map((value) => {
+              {row.map((value) => {
                   return (
                     <StyledTableRow>
-                      <StyledTableCell>{value.hcol}</StyledTableCell>
-                      <StyledTableCell align="right">{value.male}</StyledTableCell>
-                      <StyledTableCell align="right">{value.female}</StyledTableCell>
-                      <StyledTableCell align="right">{value.sum}</StyledTableCell>
+                      <StyledTableCell>{value.ชุมชน}</StyledTableCell>
+                      <StyledTableCell>
+                        ชาย <br/> หญิง <br/> รวม
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย6064}<br/>
+                        {value.ผู้หญิง6064}<br/>
+                        {value.รวม6064}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย6569}<br/>
+                        {value.ผู้หญิง6569}<br/>
+                        {value.รวม6569}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย7074}<br/>
+                        {value.ผู้หญิง7074}<br/>
+                        {value.รวม7074}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย7579}<br/>
+                        {value.ผู้หญิง7579}<br/>
+                        {value.รวม7579}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย8084}<br/>
+                        {value.ผู้หญิง8084}<br/>
+                        {value.รวม8084}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย8590}<br/>
+                        {value.ผู้หญิง8590}<br/>
+                        {value.รวม8590}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย9094}<br/>
+                        {value.ผู้หญิง9094}<br/>
+                        {value.รวม9094}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.ผู้ชาย95}<br/>
+                        {value.ผู้หญิง95}<br/>
+                        {value.รวม95}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {value.รวมทั้งหมดผู้ชาย}<br/>
+                        {value.รวมทั้งหมดผู้หญิง}<br/>
+                        {value.รวมทั้งหมด}
+                      </StyledTableCell>
                     </StyledTableRow>
                   );
-                })} */}
+                })}
               </TableBody>
             </Table>
           </TableContainer>
