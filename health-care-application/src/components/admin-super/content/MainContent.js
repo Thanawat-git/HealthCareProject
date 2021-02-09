@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Chart1,
   Chart2,
@@ -35,16 +35,16 @@ export default function MainContent() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
-    dispatch(getDataChart1())
-    // dispatch(getDataChart2("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart1())
+    dispatch(getDataChart2("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart4("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart5("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
     // dispatch(getDataChart7("เบิกต้นสังกัด"))
     // dispatch(getDataChart8("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart9());
-    dispatch(getDataChart10());
+    // dispatch(getDataChart10());
     // dispatch(getDataChart11());
     // dispatch(getDataChart12());
     // dispatch(getDataChart13());
@@ -86,7 +86,6 @@ export default function MainContent() {
                 </div>
               </div>
             </div>
-            {/* <div className="clearfix hidden-md-up" /> */}
             <div className="col-12 col-sm-6 col-md-3">
               <div className="info-box mb-3">
                 <span className="info-box-icon bg-success elevation-1">
@@ -110,17 +109,17 @@ export default function MainContent() {
               </div>
             </div>
 
-            {/* <Chart1 />
+            {/* <Chart1 /> */}
             <Chart2 />
-            <Chart3 />
-            <Chart4 />*/}
-            <Chart5 />
+            {/* <Chart3 /> */}
+            {/* <Chart4 /> */}
+            {/* <Chart5 /> */}
             {/* <Chart6 /> */}
             {/* <Chart7 /> */}
             {/* <Chart8 />  */}
             {/* //ส่วนที่2 */}
             {/* <Chart9 /> */}
-            <Chart10 />
+            {/* <Chart10 /> */}
             {/* <Chart11 /> */}
             {/* <Chart12 /> */}
             {/* <Chart13 /> */}

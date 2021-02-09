@@ -1,10 +1,19 @@
-import React from "react";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Tooltip,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper ,Select } from "@material-ui/core";
+import React, {useEffect, useState} from "react";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import {
+  Tooltip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Select,
+} from "@material-ui/core";
 import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
-import { getDataChart2 } from "../../../../actions/charts.action"
 import { useDispatch, useSelector } from "react-redux";
 import { CSVLink } from "react-csv";
 
@@ -20,7 +29,7 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
   },
@@ -29,118 +38,226 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
-  topicColumn:{
+  topicColumn: {
     fontSize: 20,
-  }
+  },
 });
-function createData(Age, numMale, numFemale,sum) {
-  return { Age, numMale, numFemale,sum };
+function createData(
+  ชุมชน,ผู้ชาย6064,
+  ผู้หญิง6064,
+  รวม6064,
+  ผู้ชาย6569,
+  ผู้หญิง6569,
+  รวม6569,
+  ผู้ชาย7074,
+  ผู้หญิง7074,
+  รวม7074,
+  ผู้ชาย7579,
+  ผู้หญิง7579,
+  รวม7579,
+  ผู้ชาย8084,
+  ผู้หญิง8084,
+  รวม8084,
+  ผู้ชาย8590,
+  ผู้หญิง8590,
+  รวม8590,
+  ผู้ชาย9094,
+  ผู้หญิง9094,
+  รวม9094,
+  ผู้ชาย95,
+  ผู้หญิง95,
+  รวม95,
+  รวมทั้งหมดผู้ชาย,
+  รวมทั้งหมดผู้หญิง,
+  รวมทั้งหมด,) {
+  return { ชุมชน,ผู้ชาย6064,
+    ผู้หญิง6064,
+    รวม6064,
+    ผู้ชาย6569,
+    ผู้หญิง6569,
+    รวม6569,
+    ผู้ชาย7074,
+    ผู้หญิง7074,
+    รวม7074,
+    ผู้ชาย7579,
+    ผู้หญิง7579,
+    รวม7579,
+    ผู้ชาย8084,
+    ผู้หญิง8084,
+    รวม8084,
+    ผู้ชาย8590,
+    ผู้หญิง8590,
+    รวม8590,
+    ผู้ชาย9094,
+    ผู้หญิง9094,
+    รวม9094,
+    ผู้ชาย95,
+    ผู้หญิง95,
+    รวม95,
+    รวมทั้งหมดผู้ชาย,
+    รวมทั้งหมดผู้หญิง,
+    รวมทั้งหมด, };
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(0);
   const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
-  const chart2Reducer = useSelector(({chart2Reducer}) => chart2Reducer)
+  const chart2Reducer = useSelector(({ chart2Reducer }) => chart2Reducer);
   const {
-    summary, g95, g6064, g6569, g7074, g7579, g8084, g8589, g9094
-  } = chart2Reducer.results
-  const dispatch = useDispatch()
-  const handleChange = (e) => {
-    setCommunity(e.target.value)
-    dispatch(getDataChart2(e.target.value))
-  };
-  const rows = [
-    createData(` 60-64 `,g6064.ElderMale,g6064.ElderFemale, g6064.Elder),
-    createData(' 65-69',g6569.ElderMale,g6569.ElderFemale, g6569.Elder),
-    createData(' 70-74',g7074.ElderMale,g7074.ElderFemale, g7074.Elder),
-    createData(' 75-79',g7579.ElderMale,g7579.ElderFemale, g7579.Elder),
-    createData(' 80-84',g8084.ElderMale,g8084.ElderFemale, g8084.Elder),
-    createData(' 85-89',g8589.ElderMale,g8589.ElderFemale, g8589.Elder),
-    createData(' 90-94',g9094.ElderMale,g9094.ElderFemale, g9094.Elder),
-    createData(' 95+',g95.ElderMale,g95.ElderFemale, g95.Elder),
-  
-  ];
+    ชุมชนมณีแก้ว,
+    ชุมชนดอนบน,
+    ชุมชนบางแสนทาวเวอร์,
+    ชุมชนตาลล้อม1,
+    ชุมชนตาลล้อม2,
+    ชุมชนบ้านเหมือง,
+    ชุมชนพัฒนา2,
+    ชุมชนดอนนารา,
+    ชุมชนวัดกลางดอน,
+    ชุมชนแสนสุข,
+    ชุมชนมาบมะยม,
+    ชุมชนท้ายตลาด,
+    ชุมชนร่วมใจพัฒนา,
+    ชุมชนบางแสนบน,
+    ชุมชนหาดวอนนภา,
+    ชุมชนบางเป้ง,
+    ชุมชนหน้ามอ,
+    ชุมชนโชคดี,
+    ชุมชนสมใจนึก,
+    ชุมชนหน้าเทศบาล,
+    ชุมชนวัดแสนสุข,
+    ชุมชนมุขแสนเจริญ1,
+    ชุมชนมุขแสนเจริญ2,
+    ชุมชนเขาสามมุข,
+    ชุมชนบ้านแหลมแท่น,
+  } = chart2Reducer.results;
+  const dispatch = useDispatch();
+  const communi = [
+    ชุมชนมณีแก้ว,
+    ชุมชนดอนบน,
+    ชุมชนบางแสนทาวเวอร์,
+    ชุมชนตาลล้อม1,
+    ชุมชนตาลล้อม2,
+    ชุมชนบ้านเหมือง,
+    ชุมชนพัฒนา2,
+    ชุมชนดอนนารา,
+    ชุมชนวัดกลางดอน,
+    ชุมชนแสนสุข,
+    ชุมชนมาบมะยม,
+    ชุมชนท้ายตลาด,
+    ชุมชนร่วมใจพัฒนา,
+    ชุมชนบางแสนบน,
+    ชุมชนหาดวอนนภา,
+    ชุมชนบางเป้ง,
+    ชุมชนหน้ามอ,
+    ชุมชนโชคดี,
+    ชุมชนสมใจนึก,
+    ชุมชนหน้าเทศบาล,
+    ชุมชนวัดแสนสุข,
+    ชุมชนมุขแสนเจริญ1,
+    ชุมชนมุขแสนเจริญ2,
+    ชุมชนเขาสามมุข,
+    ชุมชนบ้านแหลมแท่น,
+  ]
+  const [row, setRow] = useState([])
+  React.useEffect(() => {
+    console.log('communi.length ',communi.length)
+    if(chart2Reducer.isFetching === false){
+    for (let i = 0; i < communi.length; i++) {
+      row.push(
+        createData(Object.keys(chart2Reducer.results)[i],
+          communi[i].g6064.ElderMale,
+          communi[i].g6064.ElderFemale,
+          communi[i].g6064.Elder,
+          communi[i].g6569.ElderMale,
+          communi[i].g6569.ElderFemale,
+          communi[i].g6569.Elder,
+          communi[i].g7074.ElderMale,
+          communi[i].g7074.ElderFemale,
+          communi[i].g7074.Elder,
+          communi[i].g7579.ElderMale,
+          communi[i].g7579.ElderFemale,
+          communi[i].g7579.Elder,
+          communi[i].g8084.ElderMale,
+          communi[i].g8084.ElderFemale,
+          communi[i].g8084.Elder,
+          communi[i].g8589.ElderMale,
+          communi[i].g8589.ElderFemale,
+          communi[i].g8589.Elder,
+          communi[i].g9094.ElderMale,
+          communi[i].g9094.ElderFemale,
+          communi[i].g9094.Elder,
+          communi[i].g95.ElderMale,
+          communi[i].g95.ElderFemale,
+          communi[i].g95.Elder,
+          communi[i].summary.ElderMale,
+          communi[i].summary.ElderFemale,
+          communi[i].summary.Elder,
+        )
+      )
+    }
+  }
+    console.log('row ',row)
+    console.log('row length ',row.length)
+    setOpen(row.length)
+  }, [chart2Reducer.isFetching])
 
   return (
     <React.Fragment>
-      <CSVLink data={rows} className="csv-link"> Download CSV </CSVLink>
-    <div className="card-body">
-      <div>
-      เลือกชุมชน &emsp;
-      <Select
-          native
-          open={open}
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          value={community}
-          onChange={handleChange}
-        >
-          {COMMUNITYS.map((value, index) => {
-            return (
-              <option key={index} value={value}>
-                {value}
-              </option>
-            );
-          })}
-        </Select> 
-      </div> 
-      <br />
-      {/* <div className="chart" ref={ref}>
-        <Chart
-          maxWidth={"900px"}
-          height={"400px"}
-          chartType="Bar"
-          loader={<div>Loading Chart</div>}
-          data={[
-            ["อายุ", `ชาย`, "หญิง", "รวม"],
-            ["60-64", g6064.ElderMale, g6064.ElderFemale, g6064.Elder],
-            ["65-69", g6569.ElderMale, g6569.ElderFemale, g6569.Elder],
-            ["70-74", g7074.ElderMale, g7074.ElderFemale, g7074.Elder],
-            ["75-79", g7579.ElderMale, g7579.ElderFemale, g7579.Elder],
-            ["80-84", g8084.ElderMale, g8084.ElderFemale, g8084.Elder],
-            ["85-89", g8589.ElderMale, g8589.ElderFemale, g8589.Elder],
-            ["90-94", g9094.ElderMale, g9094.ElderFemale, g9094.Elder],
-            ["95+", g95.ElderMale, g95.ElderFemale, g95.Elder],
-          ]}
-          options={{
-            chart: {
-              title: `จำนวนประชากรผู้สูงอายุทั้งหมดใน ${community} จำนวน ${summary.Elder} คน`,
-              subtitle: "แจกแจงตามช่วงอายุ เพศ และชุมชน",
-            },
-          }}
-        />
-      </div> */}
-      <div ref={ref}> 
-      <TableContainer component={Paper}>
-      <Table className="table-report" aria-label="customized table">
-        <TableHead>
-          <TableRow >
-            <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
-            <StyledTableCell align="center">จำนวนเพศชาย</StyledTableCell>
-            <StyledTableCell align="center">จำนวนเพศหญิง </StyledTableCell>
-            <StyledTableCell align="center">รวม</StyledTableCell>
-            <StyledTableCell align="center">&nbsp;</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.Age}>
-              <StyledTableCell align="center" component="th" scope="row">
-                {row.Age}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.numMale}</StyledTableCell>
-              <StyledTableCell align="center">{row.numFemale}</StyledTableCell>
-              <StyledTableCell align="center">{row.sum}</StyledTableCell>
-              <StyledTableCell align="center">&nbsp;</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer> 
-    </div>
-
-    </div>
+      <div className="card-body">
+        <div className="csv-link">
+          {
+            open!==0 && 
+              <CSVLink
+                data={row}
+                filename={
+                  "จำนวนประชากรผู้สูงอายุแจกแจงตามช่วงอายุเพศและชุมชน.csv"
+                }
+              >
+                Download CSV
+              </CSVLink>
+          }
+            
+          </div>
+        <div ref={ref}>
+          <TableContainer component={Paper}>
+            <Table className="table-report" aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  {/* {headers.map((value, i) => {
+                    return (
+                      <StyledTableCell align="center">
+                        {value.label.topic}
+                        {
+                          value.label.subl.map((v2,i2)=>{
+                            return (
+                              <StyledTableCell>
+                                {v2.sub}
+                              </StyledTableCell>
+                            )
+                          })
+                        }
+                      </StyledTableCell>
+                    );
+                  })} */}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+              {/* {data.map((value) => {
+                  return (
+                    <StyledTableRow>
+                      <StyledTableCell>{value.hcol}</StyledTableCell>
+                      <StyledTableCell align="right">{value.male}</StyledTableCell>
+                      <StyledTableCell align="right">{value.female}</StyledTableCell>
+                      <StyledTableCell align="right">{value.sum}</StyledTableCell>
+                    </StyledTableRow>
+                  );
+                })} */}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
     </React.Fragment>
   );
 });

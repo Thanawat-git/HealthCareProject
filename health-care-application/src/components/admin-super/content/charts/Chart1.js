@@ -118,16 +118,20 @@ const ShowChart = React.forwardRef((props, ref) => {
       g95.Elder
     ),
   ];
-  React.useEffect(() => {
-    console.log(summary.Elder);
-  }, []);
+  // React.useEffect(() => {
+  //   console.log(summary.Elder);
+  // }, []);
   return (
     <React.Fragment>
-      <CSVLink data={rows} className="csv-link">
-        {" "}
-        Download CSV{" "}
-      </CSVLink>
-      <div className="card-body" ref={ref}>
+      <div className="card-body">
+        <div className="csv-link" >
+          <CSVLink 
+          data={rows}
+          filename={
+            "จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ.csv"
+          }
+          >Download CSV</CSVLink>
+        </div>
         {/* <div className="chart">
           <Chart
             maxWidth={"900px"}
@@ -158,11 +162,12 @@ const ShowChart = React.forwardRef((props, ref) => {
         </div> */}
 
         <div ref={ref}>
+          <h4 style={{ textAlign: "center" }} >จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ</h4>
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
+                  <StyledTableCell align="center">ช่วงอายุ(ปี)</StyledTableCell>
                   <StyledTableCell align="center">จำนวนเพศชาย</StyledTableCell>
                   <StyledTableCell align="center">
                     จำนวนเพศหญิง{" "}

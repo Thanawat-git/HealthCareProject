@@ -52,10 +52,10 @@ const ShowChart = React.forwardRef((props, ref) => {
   const headers = [
     { label: "ระดับดัชนีมวลกาย (กิโลกรัม/ตารางเมตร)", key: "hcol" },
     { label: "ชาย", key: "male" },
-    { label: "ชาย(%)", key: "permale" },
     { label: "หญิง", key: "female" },
-    { label: "หญิง(%)", key: "perfemale" },
     { label: "รวม", key: "sum" },
+    { label: "ชาย(%)", key: "permale" },
+    { label: "หญิง(%)", key: "perfemale" },
     { label: "รวม(%)", key: "persum" },
   ];
 
@@ -145,10 +145,10 @@ const ShowChart = React.forwardRef((props, ref) => {
                     <StyledTableRow>
                       <StyledTableCell>{value.hcol}</StyledTableCell>
                       <StyledTableCell align="right">{value.male}</StyledTableCell>
-                      <StyledTableCell align="right">{value.permale}</StyledTableCell>
                       <StyledTableCell align="right">{value.female}</StyledTableCell>
-                      <StyledTableCell align="right">{value.perfemale}</StyledTableCell>
                       <StyledTableCell align="right">{value.sum}</StyledTableCell>
+                      <StyledTableCell align="right">{value.permale}</StyledTableCell>
+                      <StyledTableCell align="right">{value.perfemale}</StyledTableCell>
                       <StyledTableCell align="right">{value.persum}</StyledTableCell>
                     </StyledTableRow>
                   );

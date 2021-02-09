@@ -6,54 +6,1184 @@ import {
 
 const initialState = {
   results: {
-    g95: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนมณีแก้ว: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g6064: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนดอนบน: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g6569: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนบางแสนทาวเวอร์: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g7074: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนตาลล้อม1: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g7579: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนตาลล้อม2: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g8084: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนบ้านเหมือง: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g8589: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนพัฒนา2: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    g9094: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนดอนนารา: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
-    summary: {
-      Elder: 0,
-      ElderFemale: 0,
-      ElderMale: 0,
+    ชุมชนวัดกลางดอน: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนแสนสุข: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนมาบมะยม: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนท้ายตลาด: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนร่วมใจพัฒนา: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนบางแสนบน: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนหาดวอนนภา: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนบางเป้ง: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนหน้ามอ: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนโชคดี: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนสมใจนึก: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนหน้าเทศบาล: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนวัดแสนสุข: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนมุขแสนเจริญ1: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนมุขแสนเจริญ2: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนเขาสามมุข: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+    },
+    ชุมชนบ้านแหลมแท่น: {
+      g6064: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g6569: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7074: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g7579: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8084: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g8589: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g9094: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      g95: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
+      summary: {
+        Elder: 0,
+        ElderMale: 0,
+        ElderFemale: 0,
+      },
     },
   },
-  isFetching: false,
-  isError: false,
+  isFetching: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {
