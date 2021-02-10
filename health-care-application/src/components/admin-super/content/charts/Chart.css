@@ -1,3 +1,16 @@
+.report-container{
+  background: #7986cb;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.report-container h4{
+  text-align: center;
+  padding-top: 10px; 
+  font-size: large;
+  color: white;
+}
+
 .table-report {
   color: red;
 }
@@ -11,8 +24,12 @@
 }
 .csv-link {
   font-size: 20px;
-  color: blue;
-  /* padding-left: 20px; */
-  /* padding-top: 10px; */
+  padding-bottom: 10px;
+}
+
+.csv-link-select{
+  font-size: 20px;
+  padding-left: 15px;
+  padding-right: 17px;
   padding-bottom: 10px;
 }

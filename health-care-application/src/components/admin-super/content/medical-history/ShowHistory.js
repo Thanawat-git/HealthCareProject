@@ -75,18 +75,18 @@ export default function ShowHistory({ value }) {
   const selectHistory = (id) => {
     dispatch(getAll.getEducate(id));
     dispatch(historyAction.getHistorySelected(id));
-    dispatch(getAll.getDataSec2(id));
-    dispatch(getAll.getDataSec3(id));
-    dispatch(getAll.getDataSec4(id));
-    dispatch(getAll.getDataSec5(id));
-    dispatch(getAll.getDataSec6(id));
+    dispatch(getAll.getDataSec2("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec3("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec4("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec5("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec6("null",id,"mainmenu"));
     dispatch(getAll.getDataTai(id));
-    dispatch(getAll.getDataSec7(id));
+    dispatch(getAll.getDataSec7("null",id,"mainmenu"));
     dispatch(getAll.getDatammse(id));
-    dispatch(getAll.getDataSec8(id));
-    dispatch(getAll.getDataSec9(id));
+    dispatch(getAll.getDataSec8("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec9("null",id,"mainmenu"));
     dispatch(getAll.getDataSec92(id));
-    dispatch(getAll.getDataSec10(id));
+    dispatch(getAll.getDataSec10("null",id,"mainmenu"));
     setOpen(true);
   };
   const handleClose = () => {
