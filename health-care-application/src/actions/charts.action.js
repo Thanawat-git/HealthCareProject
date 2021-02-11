@@ -273,20 +273,20 @@ export const getDataChart16 = () => {
 }
 
 export const getDataChart17 = () => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART16_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report02/16-congenital`)
-  //     console.log("chart 16 ", data.data)
-  //     await dispatch({
-  //       type: CHART16_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //   } catch (error) {
-  //     dispatch({ type: CHART16_ERROR });
-  //     console.log("error chart16 ", error);
-  //   }
-  // }
+  return async dispatch=> {
+    await dispatch({ type: CHART17_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/17-congenital`)
+      console.log("chart 17 ", data.data)
+      await dispatch({
+        type: CHART17_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART17_ERROR });
+      console.log("error chart17 ", error);
+    }
+  }
 }
 
 export const getDataChart18 = community => {
