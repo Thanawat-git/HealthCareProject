@@ -35,10 +35,10 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function creactData(รายชื่อ, จำนวน) {
+function creactData(ชุมชน, เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก) {
   return {
-    รายชื่อ,
-    จำนวน,
+    ชุมชน,
+    เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก
   };
 }
 
@@ -76,7 +76,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           {open1 !== 0 && (
             <CSVLink
               data={row}
-              filename={`จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
+              filename={`จำนวนและชุมชนของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
             >
               Download CSV
             </CSVLink>
