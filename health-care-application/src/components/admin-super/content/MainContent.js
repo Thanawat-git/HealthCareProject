@@ -16,6 +16,7 @@ import {
   Chart16,
   Chart17,
   Chart18,
+  Chart20,
 } from "./charts";
 import {
   getDataChart1,
@@ -33,6 +34,7 @@ import {
   getDataChart16,
   getDataChart17,
   getDataChart18,
+  getDataChart20,
 } from "../../../actions/charts.action";
 
 export default function MainContent() {
@@ -54,6 +56,7 @@ export default function MainContent() {
     // dispatch(getDataChart16());
     // dispatch(getDataChart17());
     // dispatch(getDataChart18("ทุกชุมชน"));
+     dispatch(getDataChart20("ชุมชนมณีแก้ว"));
   }, []);
   return (
     <React.Fragment>
@@ -131,6 +134,7 @@ export default function MainContent() {
             {/* <Chart16 /> */}
             {/* <Chart17 /> */}
             {/* <Chart18 /> */}
+            <Chart20 />
           </div>
         </div>
       </section>

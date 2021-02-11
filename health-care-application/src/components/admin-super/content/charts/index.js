@@ -13,6 +13,7 @@ import Chart14 from "./Chart14";
 import Chart16 from "./Chart16";
 import Chart17 from "./Chart17";
 import Chart18 from "./Chart18";
+import Chart20 from "./Chart20";
 
 export {
   Chart1,
@@ -30,4 +31,5 @@ export {
   Chart16,
   Chart17,
   Chart18,
+  Chart20,
 };

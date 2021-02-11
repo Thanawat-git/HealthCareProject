@@ -48,6 +48,10 @@ import {
   CHART18_ERROR,
   CHART18_FETCHING,
   CHART18_GET_SUCCRESS,
+  CHART20_GET_SUCCRESS,
+  CHART20_FETCHING,
+  CHART20_ERROR,
+  CHART20_DEF_FETCHING,
   
 } from "../constants";
 
@@ -304,4 +308,21 @@ export const getDataChart18 = community => {
   //     console.log("error chart16 ", error);
   //   }
   // }
+}
+export const getDataChart20 = community => {
+  return async dispatch=> {
+    await dispatch({ type: CHART20_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/20-fbs/${community}`)
+      console.log("chart 20 ", data.data)
+      await dispatch({
+        type: CHART20_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART20_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART20_ERROR });
+      console.log("error chart20 ", error);
+    }
+  }
 }
