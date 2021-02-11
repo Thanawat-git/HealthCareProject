@@ -42,6 +42,12 @@ import {
   CHART16_ERROR,
   CHART16_FETCHING,
   CHART16_GET_SUCCRESS,
+  CHART17_ERROR,
+  CHART17_FETCHING,
+  CHART17_GET_SUCCRESS,
+  CHART18_ERROR,
+  CHART18_FETCHING,
+  CHART18_GET_SUCCRESS,
   
 } from "../constants";
 
@@ -264,4 +270,38 @@ export const getDataChart16 = () => {
       console.log("error chart16 ", error);
     }
   }
+}
+
+export const getDataChart17 = () => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART16_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report02/16-congenital`)
+  //     console.log("chart 16 ", data.data)
+  //     await dispatch({
+  //       type: CHART16_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //   } catch (error) {
+  //     dispatch({ type: CHART16_ERROR });
+  //     console.log("error chart16 ", error);
+  //   }
+  // }
+}
+
+export const getDataChart18 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART16_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report02/16-congenital`)
+  //     console.log("chart 16 ", data.data)
+  //     await dispatch({
+  //       type: CHART16_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //   } catch (error) {
+  //     dispatch({ type: CHART16_ERROR });
+  //     console.log("error chart16 ", error);
+  //   }
+  // }
 }

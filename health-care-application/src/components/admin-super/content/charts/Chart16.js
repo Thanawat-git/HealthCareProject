@@ -14,9 +14,7 @@ import {
   //   Select,
 } from "@material-ui/core";
 // import { Chart } from "react-google-charts";
-import {
-    PRINT_THIS_SECTION,
-  } from "../../../../constants";
+import { PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
 
@@ -38,9 +36,74 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+function creactData(โรคประจำตัว, จำนวน, ร้อยละ) {
+  return {
+    โรคประจำตัว,
+    จำนวน,
+    ร้อยละ,
+  };
+}
+
 const ShowChart = React.forwardRef((props, ref) => {
-    
-})
+  const [open, setOpen] = React.useState(false);
+  const chart16Reducer = useSelector(({ chart16Reducer }) => chart16Reducer);
+  const [row, setRow] = React.useState([]);
+  React.useEffect(() => {
+    if (chart16Reducer.isFetching === false) {
+      for (const key in chart16Reducer.results) {
+        if (Object.hasOwnProperty.call(chart16Reducer.results, key)) {
+          const element = chart16Reducer.results[key];
+          console.log("element ",element)
+          row.push(
+            creactData(element.DisName, element.DisCount, element.DisPer)
+          );
+        }
+      }
+      console.log("row ", row);
+      setOpen(row.length);
+    }
+  }, [chart16Reducer.isFetching]);
+
+  return (
+    <div className="card-body">
+      <div className="csv-link">
+        {open !== 0 && (
+          <CSVLink
+            data={row}
+            filename={`จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ.csv`}
+          >
+            Download CSV
+          </CSVLink>
+        )}
+      </div>
+      <div ref={ref} className="report-container">
+        <h4>จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัว ที่สำรวจพบ</h4>
+        <TableContainer component={Paper}>
+          <Table className="table-report" aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>โรคประจำตัว</StyledTableCell>
+                <StyledTableCell align="">จำนวน</StyledTableCell>
+                <StyledTableCell align="">ร้อยละ</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {row.map((value) => {
+                return (
+                  <StyledTableRow>
+                    <StyledTableCell>{value.โรคประจำตัว}</StyledTableCell>
+                    <StyledTableCell>{value.จำนวน}</StyledTableCell>
+                    <StyledTableCell>{value.ร้อยละ}</StyledTableCell>
+                  </StyledTableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </div>
+  );
+});
 
 export default function Chart16() {
   const componentRef = React.useRef();
