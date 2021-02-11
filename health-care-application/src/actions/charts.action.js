@@ -213,18 +213,18 @@ export const getDataChart10 = () => {
 
 export const getDataChart11 = () => {
   return async dispatch=> {
-    // await dispatch({ type: CHART11_FETCHING });
-    // try {
-    //   let data = await Axios.get(`${apiBase}/report02/11-bmi`)
-    //   console.log("chart 11 ", data.data)
-    //   await dispatch({
-    //     type: CHART11_GET_SUCCRESS,
-    //     payload: data.data,
-    //   });
-    // } catch (error) {
-    //   dispatch({ type: CHART11_ERROR });
-    //   console.log("error chart11 ", error);
-    // }
+    await dispatch({ type: CHART11_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/11-bmi`)
+      console.log("chart 11 ", data.data)
+      await dispatch({
+        type: CHART11_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART11_ERROR });
+      console.log("error chart11 ", error);
+    }
   }
 }
 

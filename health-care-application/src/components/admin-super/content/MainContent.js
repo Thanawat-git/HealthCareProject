@@ -36,7 +36,7 @@ export default function MainContent() {
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
     // dispatch(getDataChart1())
-    dispatch(getDataChart2("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart2("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart4("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
@@ -110,7 +110,7 @@ export default function MainContent() {
             </div>
 
             {/* <Chart1 /> */}
-            <Chart2 />
+            {/* <Chart2 /> */}
             {/* <Chart3 /> */}
             {/* <Chart4 /> */}
             {/* <Chart5 /> */}
