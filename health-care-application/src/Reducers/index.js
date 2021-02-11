@@ -42,6 +42,8 @@ import chart10Reducer from "./charts/chart10.reducer";
 import chart11Reducer from "./charts/chart11.reducer";
 import chart14Reducer from "./charts/chart14.reducer";
 import chart16Reducer from "./charts/chart16.reducer";
+import chart17Reducer from "./charts/chart17.reducer";
+import chart18Reducer from "./charts/chart18.reducer";
 
 export default combineReducers({
     forms1p1Reducer,
@@ -86,4 +88,6 @@ export default combineReducers({
     chart11Reducer,
     chart14Reducer,
     chart16Reducer,
+    chart17Reducer,
+    chart18Reducer,
 })
