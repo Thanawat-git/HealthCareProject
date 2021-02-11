@@ -1,7 +1,8 @@
 import {
-  CHART16_ERROR,
-  CHART16_FETCHING,
-  CHART16_GET_SUCCRESS,
+  CHART18_ERROR,
+  CHART18_FETCHING,
+  CHART18_GET_SUCCRESS,
+  CHART18_DEF_FETCHING
 } from "../../constants";
 
 const initialState = {
@@ -12,11 +13,13 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case CHART16_GET_SUCCRESS:
+    case CHART18_GET_SUCCRESS:
       return { results: payload, isFetching: false, isError: false };
-    case CHART16_FETCHING:
+    case CHART18_FETCHING:
       return { ...state, isFetching: true, isError: false };
-    case CHART16_ERROR:
+    case CHART18_DEF_FETCHING:
+      return { ...state, isFetching: null };
+    case CHART18_ERROR:
       return { ...state, isFetching: false, isError: true };
     default:
       return state;

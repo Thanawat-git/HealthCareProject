@@ -12,7 +12,7 @@
 }
 
 .table-report {
-  color: red;
+  /* min-width: 500px; */
 }
 
 .table-report thead tr th {

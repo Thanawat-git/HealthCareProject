@@ -14,10 +14,7 @@ import {
   Select,
 } from "@material-ui/core";
 // import { Chart } from "react-google-charts";
-import {
-  COMMUNITYS,
-  PRINT_THIS_SECTION,
-} from "../../../../constants";
+import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
 
@@ -129,7 +126,7 @@ const ShowChart = React.forwardRef((props, ref) => {
   const [row, setRow] = React.useState([]);
   React.useEffect(() => {
     if (chart14Reducer.isFetching === false) {
-      let j = community ==="ทุกชุมชน"?3:7
+      let j = community === "ทุกชุมชน" ? 3 : 7;
       for (let i = 0; i < ageRange.length; i++) {
         row.push(
           createData(
@@ -217,9 +214,7 @@ const ShowChart = React.forwardRef((props, ref) => {
   }, [community]);
   const handleChange = (e) => {
     setCommunity(e.target.value);
-    e.target.value === "ทุกชุมชน" ?
-    dispatch(getDataChart14("ทุกชุมชน"))
-    :dispatch(getDataChart14(e.target.value))
+    dispatch(getDataChart14(e.target.value));
   };
   return (
     <div className="card-body">
@@ -256,94 +251,115 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุ เพศ และระดับดัชนีมวลกายของ{community}</h4>
-      <TableContainer component={Paper}>
-            <Table className="table-report" aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell >ช่วงอายุ (ปี)</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="right">ผอม</StyledTableCell>
-                  <StyledTableCell align="left">%</StyledTableCell>
-                  <StyledTableCell align="right">ปกติ</StyledTableCell>
-                  <StyledTableCell align="left">%</StyledTableCell>
-                  <StyledTableCell align="right">ท้วม</StyledTableCell>
-                  <StyledTableCell align="left">%</StyledTableCell>
-                  <StyledTableCell align="right">อ้วน</StyledTableCell>
-                  <StyledTableCell align="left">%</StyledTableCell>
-                  <StyledTableCell align="right">อ้วนมาก</StyledTableCell>
-                  <StyledTableCell align="left">%</StyledTableCell>
-                  <StyledTableCell align="right">รวม</StyledTableCell>
-                  {/* <StyledTableCell align="right">%</StyledTableCell> */}
-                </TableRow>
-              </TableHead>
-              <TableBody>
+        <h4>
+          จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุ เพศ
+          และระดับดัชนีมวลกายของ{community}
+        </h4>
+        <TableContainer component={Paper}>
+          <Table className="table-report" aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>ช่วงอายุ (ปี)</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
+                <StyledTableCell align="right">ผอม</StyledTableCell>
+                <StyledTableCell align="left">%</StyledTableCell>
+                <StyledTableCell align="right">ปกติ</StyledTableCell>
+                <StyledTableCell align="left">%</StyledTableCell>
+                <StyledTableCell align="right">ท้วม</StyledTableCell>
+                <StyledTableCell align="left">%</StyledTableCell>
+                <StyledTableCell align="right">อ้วน</StyledTableCell>
+                <StyledTableCell align="left">%</StyledTableCell>
+                <StyledTableCell align="right">อ้วนมาก</StyledTableCell>
+                <StyledTableCell align="left">%</StyledTableCell>
+                <StyledTableCell align="right">รวม</StyledTableCell>
+                {/* <StyledTableCell align="right">%</StyledTableCell> */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {row.map((value) => {
-                  return (
-                    <StyledTableRow>
-                      <StyledTableCell>{value.ช่วงอายุ}</StyledTableCell>
-                      <StyledTableCell>
-                        ชาย <br/> หญิง <br/> รวม
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {value.ชายผอม}<br/>
-                        {value.หญิงผอม}<br/>
-                        {value.รวมผอม}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {value.เปอร์เซ็นต์ชายผอม}<br/>
-                        {value.เปอร์เซ็นต์หญิงผอม}<br/>
-                        {value.เปอร์เซ็นต์รวมผอม}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {value.ชายปกติ}<br/>
-                        {value.หญิงปกติ}<br/>
-                        {value.รวมปกติ}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {value.เปอร์เซ็นต์ชายปกติ}<br/>
-                        {value.เปอร์เซ็นต์หญิงปกติ}<br/>
-                        {value.เปอร์เซ็นต์รวมปกติ}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {value.ชายท้วม}<br/>
-                        {value.หญิงท้วม}<br/>
-                        {value.รวมท้วม}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {value.เปอร์เซ็นต์ชายท้วม}<br/>
-                        {value.เปอร์เซ็นต์หญิงท้วม}<br/>
-                        {value.เปอร์เซ็นต์รวมท้วม}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {value.ชายอ้วน}<br/>
-                        {value.หญิงอ้วน}<br/>
-                        {value.รวมอ้วน}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {value.เปอร์เซ็นต์ชายอ้วน}<br/>
-                        {value.เปอร์เซ็นต์หญิงอ้วน}<br/>
-                        {value.เปอร์เซ็นต์รวมอ้วน}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {value.ชายอ้วนมาก}<br/>
-                        {value.หญิงอ้วนมาก}<br/>
-                        {value.รวมอ้วนมาก}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {value.เปอร์เซ็นต์ชายอ้วนมาก}<br/>
-                        {value.เปอร์เซ็นต์หญิงอ้วนมาก}<br/>
-                        {value.เปอร์เซ็นต์รวมอ้วนมาก}
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        {value.รวม}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                return (
+                  <StyledTableRow>
+                    <StyledTableCell>{value.ช่วงอายุ}</StyledTableCell>
+                    <StyledTableCell>
+                      ชาย <br /> หญิง <br /> รวม
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {value.ชายผอม}
+                      <br />
+                      {value.หญิงผอม}
+                      <br />
+                      {value.รวมผอม}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {value.เปอร์เซ็นต์ชายผอม}
+                      <br />
+                      {value.เปอร์เซ็นต์หญิงผอม}
+                      <br />
+                      {value.เปอร์เซ็นต์รวมผอม}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {value.ชายปกติ}
+                      <br />
+                      {value.หญิงปกติ}
+                      <br />
+                      {value.รวมปกติ}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {value.เปอร์เซ็นต์ชายปกติ}
+                      <br />
+                      {value.เปอร์เซ็นต์หญิงปกติ}
+                      <br />
+                      {value.เปอร์เซ็นต์รวมปกติ}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {value.ชายท้วม}
+                      <br />
+                      {value.หญิงท้วม}
+                      <br />
+                      {value.รวมท้วม}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {value.เปอร์เซ็นต์ชายท้วม}
+                      <br />
+                      {value.เปอร์เซ็นต์หญิงท้วม}
+                      <br />
+                      {value.เปอร์เซ็นต์รวมท้วม}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {value.ชายอ้วน}
+                      <br />
+                      {value.หญิงอ้วน}
+                      <br />
+                      {value.รวมอ้วน}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {value.เปอร์เซ็นต์ชายอ้วน}
+                      <br />
+                      {value.เปอร์เซ็นต์หญิงอ้วน}
+                      <br />
+                      {value.เปอร์เซ็นต์รวมอ้วน}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {value.ชายอ้วนมาก}
+                      <br />
+                      {value.หญิงอ้วนมาก}
+                      <br />
+                      {value.รวมอ้วนมาก}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {value.เปอร์เซ็นต์ชายอ้วนมาก}
+                      <br />
+                      {value.เปอร์เซ็นต์หญิงอ้วนมาก}
+                      <br />
+                      {value.เปอร์เซ็นต์รวมอ้วนมาก}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{value.รวม}</StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     </div>
   );
