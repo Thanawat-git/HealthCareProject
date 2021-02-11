@@ -34,12 +34,15 @@ import {
   CHART11_ERROR,
   CHART11_FETCHING,
   CHART11_GET_SUCCRESS,
-  CHART12_ERROR,
-  CHART12_FETCHING,
-  CHART12_GET_SUCCRESS,
-  CHART13_ERROR,
-  CHART13_FETCHING,
-  CHART13_GET_SUCCRESS,
+  
+  CHART14_ERROR,
+  CHART14_FETCHING,
+  CHART14_GET_SUCCRESS,
+  CHART14_DEF_FETCHING,
+  CHART16_ERROR,
+  CHART16_FETCHING,
+  CHART16_GET_SUCCRESS,
+  
 } from "../constants";
 
 export const getDataChart4 = community => {
@@ -228,36 +231,37 @@ export const getDataChart11 = () => {
   }
 }
 
-export const getDataChart12 = () => {
+export const getDataChart14 = community => {
   return async dispatch=> {
-    // await dispatch({ type: CHART12_FETCHING });
-    // try {
-    //   let data = await Axios.get(`${apiBase}/report02/12-bmi`)
-    //   console.log("chart 12 ", data.data)
-    //   await dispatch({
-    //     type: CHART12_GET_SUCCRESS,
-    //     payload: data.data,
-    //   });
-    // } catch (error) {
-    //   dispatch({ type: CHART12_ERROR });
-    //   console.log("error chart12 ", error);
-    // }
+    await dispatch({ type: CHART14_FETCHING });
+    try {
+      let data = community==="ทุกชุมชน"?await Axios.get(`${apiBase}/report02/14-bmi`):await Axios.get(`${apiBase}/report02/15-bmi/${community}`)
+      community==="ทุกชุมชน"?console.log("chart 14 ", data.data):console.log("chart 15 ", data.data)
+      await dispatch({
+        type: CHART14_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART14_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART14_ERROR });
+      community==="ทุกชุมชน"?console.log("error chart14 ", error):console.log("error chart15 ", error)
+    }
   }
 }
 
-export const getDataChart13 = () => {
+export const getDataChart16 = () => {
   return async dispatch=> {
-    // await dispatch({ type: CHART13_FETCHING });
-    // try {
-    //   let data = await Axios.get(`${apiBase}/report02/13-bmi`)
-    //   console.log("chart 13 ", data.data)
-    //   await dispatch({
-    //     type: CHART13_GET_SUCCRESS,
-    //     payload: data.data,
-    //   });
-    // } catch (error) {
-    //   dispatch({ type: CHART13_ERROR });
-    //   console.log("error chart13 ", error);
-    // }
+    await dispatch({ type: CHART16_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/16-congenital`)
+      console.log("chart 16 ", data.data)
+      await dispatch({
+        type: CHART16_GET_SUCCRESS,
+        payload: data.data,
+      });
+    } catch (error) {
+      dispatch({ type: CHART16_ERROR });
+      console.log("error chart16 ", error);
+    }
   }
 }

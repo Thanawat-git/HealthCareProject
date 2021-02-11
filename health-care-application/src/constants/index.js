@@ -162,12 +162,15 @@ export const CHART10_GET_SUCCRESS = "CHART10_GET_SUCCRESS";
 export const CHART11_FETCHING = "CHART11_FETCHING";
 export const CHART11_ERROR = "CHART11_ERROR";
 export const CHART11_GET_SUCCRESS = "CHART11_GET_SUCCRESS";
-export const CHART12_FETCHING = "CHART12_FETCHING";
-export const CHART12_ERROR = "CHART12_ERROR";
-export const CHART12_GET_SUCCRESS = "CHART12_GET_SUCCRESS";
-export const CHART13_FETCHING = "CHART13_FETCHING";
-export const CHART13_ERROR = "CHART13_ERROR";
-export const CHART13_GET_SUCCRESS = "CHART13_GET_SUCCRESS";
+
+export const CHART14_FETCHING = "CHART14_FETCHING";
+export const CHART14_ERROR = "CHART14_ERROR";
+export const CHART14_GET_SUCCRESS = "CHART14_GET_SUCCRESS";
+export const CHART14_DEF_FETCHING = "CHART14_DEF_FETCHING";
+export const CHART16_FETCHING = "CHART16_FETCHING";
+export const CHART16_ERROR = "CHART16_ERROR";
+export const CHART16_GET_SUCCRESS = "CHART16_GET_SUCCRESS";
+
 
 // // Error Code
 export const SEC2_ERROR = "SEC2_ERROR"
@@ -197,6 +200,7 @@ export const apiAdmin = apiBase + "/admin";
 export const PRINT_THIS_SECTION = "พิมพ์ส่วนนี้"
 
 export const COMMUNITYS = [
+    "ทุกชุมชน",
     "ชุมชนมณีแก้ว",
     "ชุมชนดอนบน",
     "ชุมชนบางแสนทาวเวอร์",

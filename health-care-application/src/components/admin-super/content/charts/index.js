@@ -9,7 +9,7 @@ import Chart8 from "./Chart8"
 import Chart9 from "./Chart9"
 import Chart10 from "./Chart10"
 import Chart11 from "./Chart11"
-import Chart12 from "./Chart12"
-import Chart13 from "./Chart13"
+import Chart14 from "./Chart14"
+import Chart16 from "./Chart16"
 
-export {Chart1, Chart2, Chart3, Chart4, Chart5, Chart6, Chart7, Chart8,Chart9, Chart10, Chart11, Chart12, Chart13};
+export {Chart1, Chart2, Chart3, Chart4, Chart5, Chart6, Chart7, Chart8,Chart9, Chart10, Chart11, Chart14, Chart16};
