@@ -15,7 +15,7 @@ import {
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
-import { getDataChart20 } from "../../../../actions/charts.action";
+import { getDataChart21 } from "../../../../actions/charts.action";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -46,14 +46,14 @@ const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(0);
   const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
-  const chart20Reducer = useSelector(({ chart20Reducer }) => chart20Reducer);
+  const chart21Reducer = useSelector(({ chart21Reducer }) => chart21Reducer);
   const [row, setRow] = React.useState([]);
   const dispatch = useDispatch();
   React.useEffect(() => {
-    if (chart20Reducer.isFetching === false) {
-      for (const key in chart20Reducer.results) {
-        if (Object.hasOwnProperty.call(chart20Reducer.results, key)) {
-          const element = chart20Reducer.results[key];
+    if (chart21Reducer.isFetching === false) {
+      for (const key in chart21Reducer.results) {
+        if (Object.hasOwnProperty.call(chart21Reducer.results, key)) {
+          const element = chart21Reducer.results[key];
           console.log("element ", element);
           row.push(creactData(element.ElderName, element.Elder));
         }
@@ -61,13 +61,13 @@ const ShowChart = React.forwardRef((props, ref) => {
       console.log("row ", row);
       setOpen1(row.length);
     }
-  }, [chart20Reducer.isFetching]);
+  }, [chart21Reducer.isFetching]);
   React.useEffect(() => {
     setRow([]);
   }, [community]);
   const handleChange = (e) => {
     setCommunity(e.target.value);
-    dispatch(getDataChart20(e.target.value));
+    dispatch(getDataChart21(e.target.value));
   };
   return (
     <div className="card-body">
@@ -76,7 +76,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           {open1 !== 0 && (
             <CSVLink
               data={row}
-              filename={`จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุเพศและระดับดัชนีมวลกายของ${community}.csv`}
+              filename={`จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
             >
               Download CSV
             </CSVLink>
@@ -109,8 +109,7 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       <div ref={ref} className="report-container">
         <h4>
-          จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคเบาหวาน
-          จำแนกตามชุมชนของ{community}
+        จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ{community}
         </h4>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
@@ -141,7 +140,7 @@ const ShowChart = React.forwardRef((props, ref) => {
   );
 });
 
-export default function Chart20() {
+export default function Chart21() {
   const componentRef = React.useRef();
   return (
     <div className="col-12">

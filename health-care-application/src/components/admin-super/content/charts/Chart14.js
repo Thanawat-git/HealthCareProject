@@ -234,7 +234,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           <Select
             native
             open={open}
-            onClose={() => setOpen(false)}
+            onClose={() =>  (false)}
             onOpen={() => setOpen(true)}
             value={community}
             onChange={handleChange}
