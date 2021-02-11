@@ -42,7 +42,7 @@ export default function MainContent() {
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
     // dispatch(getDataChart1())
-    // dispatch(getDataChart2("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart2("ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้"))
     // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart4("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
@@ -55,8 +55,8 @@ export default function MainContent() {
     // dispatch(getDataChart14("ทุกชุมชน"));
     // dispatch(getDataChart16());
     // dispatch(getDataChart17());
-    // dispatch(getDataChart18("ทุกชุมชน"));
-     dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart18("ทุกชุมชน"));
+    //  dispatch(getDataChart20("ชุมชนมณีแก้ว"));
   }, []);
   return (
     <React.Fragment>
@@ -133,8 +133,8 @@ export default function MainContent() {
             {/* <Chart14 /> */}
             {/* <Chart16 /> */}
             {/* <Chart17 /> */}
-            {/* <Chart18 /> */}
-            <Chart20 />
+            <Chart18 />
+            {/* <Chart20 /> */}
           </div>
         </div>
       </section>

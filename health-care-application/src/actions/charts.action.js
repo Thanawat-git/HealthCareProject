@@ -48,6 +48,7 @@ import {
   CHART18_ERROR,
   CHART18_FETCHING,
   CHART18_GET_SUCCRESS,
+  CHART18_DEF_FETCHING,
   CHART20_GET_SUCCRESS,
   CHART20_FETCHING,
   CHART20_ERROR,
@@ -294,21 +295,23 @@ export const getDataChart17 = () => {
 }
 
 export const getDataChart18 = community => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART16_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report02/16-congenital`)
-  //     console.log("chart 16 ", data.data)
-  //     await dispatch({
-  //       type: CHART16_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //   } catch (error) {
-  //     dispatch({ type: CHART16_ERROR });
-  //     console.log("error chart16 ", error);
-  //   }
-  // }
+  return async dispatch=> {
+    await dispatch({ type: CHART18_FETCHING });
+    try {
+      let data = community==="ทุกชุมชน"?await Axios.get(`${apiBase}/report02/18-congenital/ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้`):await Axios.get(`${apiBase}/report02/19-congenital/${community}`)
+      community==="ทุกชุมชน"?console.log("chart 18 ", data.data):console.log("chart 19 ", data.data)
+      await dispatch({
+        type: CHART18_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART18_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART18_ERROR });
+      community==="ทุกชุมชน"?console.log("error chart18 ", error):console.log("error chart19 ", error)
+    }
+  }
 }
+
 export const getDataChart20 = community => {
   return async dispatch=> {
     await dispatch({ type: CHART20_FETCHING });
