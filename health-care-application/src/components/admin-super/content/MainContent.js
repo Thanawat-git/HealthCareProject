@@ -17,6 +17,7 @@ import {
   Chart17,
   Chart18,
   Chart20,
+  Chart22,
 } from "./charts";
 import {
   getDataChart1,
@@ -36,6 +37,7 @@ import {
   getDataChart18,
   getDataChart20,
   getDataChart21,
+  getDataChart22,
 } from "../../../actions/charts.action";
 import Chart21 from "./charts/Chart21";
 
@@ -59,7 +61,8 @@ export default function MainContent() {
     // dispatch(getDataChart17());
     // dispatch(getDataChart18("ทุกชุมชน"));
     //  dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart22("ทุกชุมชน"));
   }, []);
   return (
     <React.Fragment>
@@ -138,7 +141,9 @@ export default function MainContent() {
             {/* <Chart17 /> */}
             {/* <Chart18 /> */}
             {/* <Chart20 /> */}
-            {/* <Chart21 /> */}
+            <Chart21 />
+            {/* //ส่วนที่3 */}
+            <Chart22 />
           </div>
         </div>
       </section>

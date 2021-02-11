@@ -57,6 +57,10 @@ import {
   CHART21_GET_SUCCRESS,
   CHART21_DEF_FETCHING,
   CHART21_ERROR,
+  CHART22_FETCHING,
+  CHART22_GET_SUCCRESS,
+  CHART22_DEF_FETCHING,
+  CHART22_ERROR,
   
 } from "../constants";
 
@@ -347,6 +351,23 @@ export const getDataChart21 = community => {
     } catch (error) {
       dispatch({ type: CHART21_ERROR });
       console.log("error chart21 ", error);
+    }
+  }
+}
+export const getDataChart22 = community => {
+  return async dispatch=> {
+    await dispatch({ type: CHART22_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report02/22-bp/${community}`)
+      console.log("chart 22 ", data.data)
+      await dispatch({
+        type: CHART22_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART22_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART22_ERROR });
+      console.log("error chart22 ", error);
     }
   }
 }
