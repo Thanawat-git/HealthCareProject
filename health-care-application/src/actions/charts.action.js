@@ -354,11 +354,30 @@ export const getDataChart21 = community => {
     }
   }
 }
+
 export const getDataChart22 = community => {
   return async dispatch=> {
     await dispatch({ type: CHART22_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report02/22-bp/${community}`)
+      let data = await Axios.get(`${apiBase}/report03/22-bp/${community}`)
+      console.log("chart 22 ", data.data)
+      await dispatch({
+        type: CHART22_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART22_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART22_ERROR });
+      console.log("error chart22 ", error);
+    }
+  }
+}
+
+export const getDataChart23 = community => {
+  return async dispatch=> {
+    await dispatch({ type: CHART22_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report03/23-cardio?`)
       console.log("chart 22 ", data.data)
       await dispatch({
         type: CHART22_GET_SUCCRESS,

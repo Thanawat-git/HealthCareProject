@@ -19,6 +19,7 @@ import {
   Chart20,
   Chart21,
   Chart22,
+  Chart23,
 } from "./charts";
 import {
   getDataChart1,
@@ -144,6 +145,7 @@ export default function MainContent() {
             {/* <Chart21 /> */}
             {/* //ส่วนที่3 */}
             {/* <Chart22 /> */}
+            {/* <Chart23 /> */}
           </div>
         </div>
       </section>
