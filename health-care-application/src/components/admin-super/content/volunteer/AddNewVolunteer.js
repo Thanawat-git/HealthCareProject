@@ -248,17 +248,18 @@ export default function AddNewVolunteer() {
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
-    var Age = nowYear - parseInt(yea);
+    
     const volBirthday = `${yea}-${numMon}-${day}`
-    if (numMon == nowMonth) {
-      parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
-    } else if (numMon > nowMonth) {
-      Age = Age - 1;
-    } else {
-      Age = Age;
-    }
+    // var Age = nowYear - parseInt(yea);
+    // if (numMon == nowMonth) {
+    //   parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
+    // } else if (numMon > nowMonth) {
+    //   Age = Age - 1;
+    // } else {
+    //   Age = Age;
+    // }
 
-    const data = [volId,fName,lName,phone,line,facebook,reference, preName, Age, volBirthday, 
+    const data = [volId,fName,lName,phone,line,facebook,reference, preName, null, volBirthday, 
                   homeNumber,alley,street,subDistrict,area];
     dispatch(volAction.createVolunteer(data));
     onClose()

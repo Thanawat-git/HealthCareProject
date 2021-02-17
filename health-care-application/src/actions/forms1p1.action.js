@@ -44,7 +44,7 @@ const createElderinfo = async (payload) => {
   await  Axios.post(`${apiEld}/information/create`, {
     ELD_BIRTHDATE: payload[5],
     ELD_GENDER: payload[3],
-    ELD_AGE: payload[6],
+    ELD_AGE: null,
     ELD_STATUS: null,
     ELD_LIVELIHOOD: null,
     ELD_LIVELIHOOD_DETAIL: null,

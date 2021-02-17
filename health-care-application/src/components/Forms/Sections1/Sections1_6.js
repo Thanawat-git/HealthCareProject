@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../form-style.css";
 import "./Sections1.css";
-import DatePicker from "react-date-picker";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p6.action";
 import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
+import { SIMPLEDISEASE } from "../../../constants";
 
 export default function Sections1_6() {
   const [open, setOpen] = useState(false); // open dialog
@@ -69,10 +69,11 @@ export default function Sections1_6() {
             <div className="col-9">
               <Autocomplete
                 id="SimpleDisease"
-                options={SimpleDisease}
+                options={SIMPLEDISEASE}
                 getOptionLabel={(option) => option.name}
                 inputValue={disease}
                 size="small"
+                freeSolo
                 onInputChange={(event, value)=>setdisease(value)}
                 renderInput={(params) => (
                   <TextField {...params} 

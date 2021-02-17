@@ -15,7 +15,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import * as actionP5 from '../../actions/forms1p5.action'; // เรียกมาใช้งานในการ ลบ และ เพิ่ม อาหาร และ ยา
 import * as actionP6 from '../../actions/forms1p6.action';
 import * as actionP1 from '../../actions/forms1p1.action';
-import { USERLOGIN } from "../../constants";
+import { SIMPLEDISEASE, USERLOGIN } from "../../constants";
 
 const useStyles = makeStyles({
     title: {
@@ -296,10 +296,11 @@ export default function EditInfo() {
             { defineDialog=='diseases' &&
             <Autocomplete
             className={classes.title} 
-            options={SimpleDisease}
+            options={SIMPLEDISEASE}
             getOptionLabel={(option) => option.name}
             size="small"
             inputValue={disease}
+            freeSolo
             onInputChange={(event, value)=>setdisease(value)}
             renderInput={(params) => (<TextField {...params} />)}
             /> }
@@ -315,40 +316,3 @@ export default function EditInfo() {
     </div>
   );
 }
-
-
-const SimpleDisease = [
-    {name: "ความดันโลหิตสูง"},
-    {name: "เบาหวาน"},
-    {name: "ไขมันในเส้นเลือดสูง"},
-    {name: "โรคหัวใจ"},
-    {name: "อัมพฤต อัมพาต"},
-    {name: "หลอดเลือดในสมอง"},
-    {name: "หลอดเลือดหัวใจ"},
-    {name: "กระดูกพรุน"},
-    {name: "ข้อเข่าเสื่อม/อักเสบ"},
-    {name: "กระดูกทับเส้น"},
-    {name: "กล้ามเนื้ออ่อนแรง/ชา"},
-    {name: "เก๊าซ์"},
-    {name: "รูมาตอยด์"},
-    {name: "ปวดเมื่อยกล้ามเนื้อ"},
-    {name: "ไตเรื้อรัง"},
-    {name: "นิ่วในไต"},
-    {name: "ต่อมลูกหมากโต"},
-    {name: "หอบหืด/หลอดลมตีบ/ภูมิแพ้/ไซนัส"},
-    {name: "ปอด"},
-    {name: "โรคกระเพาะ/กรดไหลย้อน/ลำไส้"},
-    {name: "ริดสีดวง"},
-    {name: "ตับ/ถุงน้ำดี"},
-    {name: "โรคตา"},
-    {name: "หูพิการ"},
-    {name: "พิการ"},
-    {name: "ลมชัก"},
-    {name: "พากินสัน"},
-    {name: "ไมเกรน"},
-    {name: "โรคประสาท"},
-    {name: "Hypothyroid"},
-    {name: "มะเร็ง/เนื้องอก"},
-    {name: "โลหิตจาง"},
-  ];
-  

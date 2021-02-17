@@ -171,14 +171,14 @@ const[err,seterr]= useState(false);
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
-    var Age = nowYear - parseInt(yea);
-    if (numMon == nowMonth) {
-      parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
-    } else if (numMon > nowMonth) {
-      Age = Age - 1;
-    } else {
-      Age = Age;
-    }
+    // var Age = nowYear - parseInt(yea);
+    // if (numMon == nowMonth) {
+    //   parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
+    // } else if (numMon > nowMonth) {
+    //   Age = Age - 1;
+    // } else {
+    //   Age = Age;
+    // }
     const data = [
       PID,
       firstname,
@@ -186,7 +186,7 @@ const[err,seterr]= useState(false);
       elderlyGender,
       nickname,
       elderlyBirthday,
-      Age,
+      // Age,
     ];
     dispatch(formAction.add(data));
     // dispatch(savePID.addPidOnly(PID))
