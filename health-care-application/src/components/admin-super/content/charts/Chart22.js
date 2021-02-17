@@ -35,32 +35,93 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function creactData(ชุมชน, เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก) {
+function creactData(ชุมชน, เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก,รวม,เปอร์เซ็นต์เสี่ยง,เปอร์เซ็นต์เสี่ยงสูง,เปอร์เซ็นต์เสี่ยงสูงมาก,เปอร์เซ็นต์รวม) {
   return {
     ชุมชน,
-    เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก
+    เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก,รวม,เปอร์เซ็นต์เสี่ยง,เปอร์เซ็นต์เสี่ยงสูง,เปอร์เซ็นต์เสี่ยงสูงมาก,เปอร์เซ็นต์รวม
   };
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(0);
-  const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
+  const [community, setCommunity] = React.useState("ทุกชุมชน");
   const chart22Reducer = useSelector(({ chart22Reducer }) => chart22Reducer);
   const [row, setRow] = React.useState([]);
   const dispatch = useDispatch();
+  const {
+    ชุมชนมณีแก้ว,
+    ชุมชนดอนบน,
+    ชุมชนบางแสนทาวเวอร์,
+    ชุมชนตาลล้อม1,
+    ชุมชนตาลล้อม2,
+    ชุมชนบ้านเหมือง,
+    ชุมชนพัฒนา2,
+    ชุมชนดอนนารา,
+    ชุมชนวัดกลางดอน,
+    ชุมชนแสนสุข,
+    ชุมชนมาบมะยม,
+    ชุมชนท้ายตลาด,
+    ชุมชนร่วมใจพัฒนา,
+    ชุมชนบางแสนบน,
+    ชุมชนหาดวอนนภา,
+    ชุมชนบางเป้ง,
+    ชุมชนหน้ามอ,
+    ชุมชนโชคดี,
+    ชุมชนสมใจนึก,
+    ชุมชนหน้าเทศบาล,
+    ชุมชนวัดแสนสุข,
+    ชุมชนมุขแสนเจริญ1,
+    ชุมชนมุขแสนเจริญ2,
+    ชุมชนเขาสามมุข,
+    ชุมชนบ้านแหลมแท่น,
+  } = chart22Reducer.results;
+  const communi = [
+    ชุมชนมณีแก้ว,
+    ชุมชนดอนบน,
+    ชุมชนบางแสนทาวเวอร์,
+    ชุมชนตาลล้อม1,
+    ชุมชนตาลล้อม2,
+    ชุมชนบ้านเหมือง,
+    ชุมชนพัฒนา2,
+    ชุมชนดอนนารา,
+    ชุมชนวัดกลางดอน,
+    ชุมชนแสนสุข,
+    ชุมชนมาบมะยม,
+    ชุมชนท้ายตลาด,
+    ชุมชนร่วมใจพัฒนา,
+    ชุมชนบางแสนบน,
+    ชุมชนหาดวอนนภา,
+    ชุมชนบางเป้ง,
+    ชุมชนหน้ามอ,
+    ชุมชนโชคดี,
+    ชุมชนสมใจนึก,
+    ชุมชนหน้าเทศบาล,
+    ชุมชนวัดแสนสุข,
+    ชุมชนมุขแสนเจริญ1,
+    ชุมชนมุขแสนเจริญ2,
+    ชุมชนเขาสามมุข,
+    ชุมชนบ้านแหลมแท่น,
+  ]
   React.useEffect(() => {
     if (chart22Reducer.isFetching === false) {
-      for (const key in chart22Reducer.results) {
-        if (Object.hasOwnProperty.call(chart22Reducer.results, key)) {
-          const element = chart22Reducer.results[key];
-          console.log("element ", element);
-          row.push(creactData(element.ElderName, element.Elder));
-        }
+      for (let i = 1; i < communi.length; i++) {
+       
+          row.push(creactData(Object.keys(chart22Reducer.results)[i],
+            communi[i].Risk, 
+            communi[i].RiskII,
+            communi[i].RiskIII, 
+            communi[i].ElderCardio,
+            communi[i].PerRisk, 
+            communi[i].PerRiskII,
+            communi[i].PerRiskIII, 
+            communi[i].PerElderCardio,                       
+            ));
+        
       }
+    }
       console.log("row ", row);
       setOpen1(row.length);
-    }
   }, [chart22Reducer.isFetching]);
   React.useEffect(() => {
     setRow([]);
@@ -92,7 +153,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">ชุมชน</StyledTableCell>
+                <StyledTableCell align="left">ชุมชน</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูงมาก</StyledTableCell>
@@ -104,16 +165,19 @@ const ShowChart = React.forwardRef((props, ref) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="center">
-                      00
+                     {value.ชุมชน}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      000
+                      {value.เสี่ยง}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      0000
+                      {value.เสี่ยงสูง}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      00000
+                      {value.เสี่ยงสูงมาก}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {value.รวม}
                     </StyledTableCell>
                   </StyledTableRow>
                 );

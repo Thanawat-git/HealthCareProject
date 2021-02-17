@@ -62,7 +62,7 @@ export default function MainContent() {
     // dispatch(getDataChart18("ทุกชุมชน"));
     //  dispatch(getDataChart20("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
-    // dispatch(getDataChart22("ทุกชุมชน"));
+    dispatch(getDataChart22("ทุกชุมชน"));
   }, []);
   return (
     <React.Fragment>
@@ -143,7 +143,7 @@ export default function MainContent() {
             {/* <Chart20 /> */}
             {/* <Chart21 /> */}
             {/* //ส่วนที่3 */}
-            {/* <Chart22 /> */}
+            <Chart22 />
           </div>
         </div>
       </section>

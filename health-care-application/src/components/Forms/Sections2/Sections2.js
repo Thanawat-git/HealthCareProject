@@ -81,8 +81,7 @@ export default function Sections2_1() {
   }else{
     setnoFood(null)
   }
-
-
+console.log("Nofood 1 : ", noFood)
   }, [noFood])
   useEffect(() => {
     if (
@@ -119,6 +118,7 @@ export default function Sections2_1() {
   }, [sugar]);
   useEffect(() =>{
     noFood == true ? setAnsfood(1) : setAnsfood(0)
+    console.log("Nofood 2 : ", noFood)
   },[noFood,ansfood] );
   useEffect(() => {
     if (bmi !== null) {

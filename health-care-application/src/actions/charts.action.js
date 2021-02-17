@@ -358,7 +358,7 @@ export const getDataChart22 = community => {
   return async dispatch=> {
     await dispatch({ type: CHART22_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report02/22-cardio`)
+      let data = await Axios.get(`${apiBase}/report03/22-cardio`)
       console.log("chart 22 ", data.data)
       await dispatch({
         type: CHART22_GET_SUCCRESS,
