@@ -170,7 +170,7 @@ export default function Chart10() {
 
   return (
     <div className="col-12">
-      <div className="card card-light ">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
             จำนวนและร้อยละผู้สูงอายุจำแนกตามระดับดัชนีมวลกายและเพศ

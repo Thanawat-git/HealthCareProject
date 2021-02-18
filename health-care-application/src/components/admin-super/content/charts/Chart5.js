@@ -236,7 +236,7 @@ export default function Chart5() {
   const componentRef = React.useRef();
   return (
     <div className="col-12">
-      <div className="card card-light ">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title"> CH5
             จำนวนและร้อยละของผู้สูงอายุจำแนกตามความเป็นอยู่ และชุมชน

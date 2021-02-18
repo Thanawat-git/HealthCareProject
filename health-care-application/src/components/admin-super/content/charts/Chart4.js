@@ -394,7 +394,7 @@ export default function Chart4() {
 
   return (
     <div className="col-12">
-      <div className="card card-light ">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title"> CH4
             จำนวนและร้อยละของผู้สูงอายุที่มีผู้ดูแลและผู้ที่ดูแลของแต่ละชุมชน

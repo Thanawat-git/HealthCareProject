@@ -33,6 +33,8 @@ export const getEldByKeyword = (event) => {
           console.log("result.data", res.data);
           dispatch(setElderlyStateToSuccress(res.data)); // เอาเฉพาะที่เจอมาแสดง
         });
+      } else {
+        dispatch(setElderlyStateToSuccress([]));
       }
       
     } catch (error) {

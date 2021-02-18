@@ -294,7 +294,7 @@ export default function Chart3() {
   });
   return (
     <div className="col-12">
-      <div className="card card-light ">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title"> CH3
             จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้

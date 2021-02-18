@@ -15,6 +15,7 @@ import {
   makeStyles,
   Paper,
 } from "@material-ui/core";
+import Skeleton from '@material-ui/lab/Skeleton';
 import { Link, useHistory } from "react-router-dom";
 import * as formAction from "../../actions/forms1p6.action";
 import Axios from "axios";
@@ -25,6 +26,8 @@ import * as getAction from "../../actions/getAllFormToReucer.action";
 import { updateLastVisDate } from "../../actions/forms1p6.action";
 import * as followUpAction from "../../actions/followUp.action";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import searchImg from '../images/search.svg'
+import nodataM from '../images/no_dataM.svg'
 import "moment/locale/th";
 
 moment.locale("th");
@@ -94,6 +97,7 @@ export default function Asynchronous() {
   const onChange = (e) => {
     dispatch(elderly.getEldByKeyword(e));
   };
+
   return (
     <React.Fragment>
       {/* <Header/> */}
@@ -111,8 +115,16 @@ export default function Asynchronous() {
           }}
         />
       </div>
-      <div className="inner-seach2">
-        {elderlyReducer.result.length !== 0 &&
+      {
+        elderlyReducer.isFetching === true
+        ? [1,1,1,1,1,1,1,1,1,1].map(()=>{
+          return <React.Fragment>
+            <br/>
+            <Skeleton variant="rect" width={300} height={24} style={{ borderRadius: 3 }} />
+          </React.Fragment>
+        })
+        : <div className="inner-seach2">
+        {elderlyReducer.result.length !== 0 ?
           elderlyReducer.result.map((value, index) => {
             return (
               <div>
@@ -128,7 +140,11 @@ export default function Asynchronous() {
                 </Paper>
               </div>
             );
-          })}
+          })
+          : elderlyReducer.isFetching === null 
+          ? <img src={searchImg} style={{ maxHeight: 250 }} />
+          : <img src={nodataM} style={{ maxHeight: 250 }} />
+        }
 
         {elderlyReducer.resultSelected !== null && (
           <Dialog
@@ -321,7 +337,7 @@ export default function Asynchronous() {
           </Dialog>
         )}
       </div>
-      {/* )} */}
+      }
     </React.Fragment>
   );
 }
