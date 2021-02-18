@@ -383,9 +383,6 @@ export default function Sections7_1() {
                 />
               </RadioGroup>
             </div>
-            <div className="col-6">
-              <p>เฉลย: </p>
-            </div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>
               <TextField
