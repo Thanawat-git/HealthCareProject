@@ -38,7 +38,7 @@ export const createVolunteer = (payload) => {
     await Axios.post(`${apiVol}/information/create`,{
       VOL_ID_NUMBER: payload[0],
       VOL_GENDER: payload[7],
-      VOL_AGE: payload[8],
+      VOL_AGE: null,
       VOL_BIRTHDATE: payload[9],
       VOL_ADDR_NUMBER: payload[10],
       VOL_ADDR_ALLEY: payload[11],

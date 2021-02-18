@@ -242,15 +242,16 @@ export default function AddNewAdmin() {
     const nowDay = nowDate.getDate();
     const nowMonth = nowDate.getMonth() + 1;
     const nowYear = nowDate.getFullYear() + 543;
-    var Age = nowYear - parseInt(yea);
+    
     const elderlyBirthday = `${yea}-${numMon}-${day}`
-    if (numMon == nowMonth) {
-      parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
-    } else if (numMon > nowMonth) {
-      Age = Age - 1;
-    } else {
-      Age = Age;
-    }
+    // var Age = nowYear - parseInt(yea);
+    // if (numMon == nowMonth) {
+    //   parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
+    // } else if (numMon > nowMonth) {
+    //   Age = Age - 1;
+    // } else {
+    //   Age = Age;
+    // }
     const data = [adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
     dispatch(adminAction.createAdmin(data))
     onClose()

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Axios from "axios";
 import "./App.css";
 import { login, loginAdmin, loginAdminMobile, loginSuperAdmin } from "./components/login";
 import {
@@ -37,6 +38,7 @@ import {
   Sec1_6,
 } from "./components/Forms/Sections1";
 import { useSelector } from "react-redux";
+import { apiEld } from "./constants";
 
 function PrivateRoute({ children, ...rest }) {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer)
@@ -157,6 +159,8 @@ export default function App() {
   const { isLoggedIn, user } = useSelector((state) => state.authReducer);
   useEffect(() => {
     console.log('isLoggedIn ',isLoggedIn)
+    console.log("in use effect in App.js")
+    Axios.get(`${apiEld}/information/updateAge`).then((res)=>console.log("Trigger update Age ",res.data)).catch((err)=>console.log("Trigger update Age ",err))
   }, [])
   
   const redirectToLogin = () => {
