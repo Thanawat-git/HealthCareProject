@@ -125,6 +125,9 @@ const ShowChart = React.forwardRef((props, ref) => {
           <TableContainer component={Paper}>
             <Table className="table-report">
               <TableHead>
+              <TableRow>
+                  <StyledTableCell align="center" colSpan={7}>จำนวนและร้อยละผู้สูงอายุจำแนกตามระดับดัชนีมวลกายและเพศ</StyledTableCell>
+                </TableRow>
                 <TableRow>
                   {headers.map((value, i) => {
                     return (

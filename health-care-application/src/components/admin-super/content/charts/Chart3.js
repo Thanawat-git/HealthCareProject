@@ -425,6 +425,9 @@ const ShowChart = React.forwardRef((props, ref) => {
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
               <TableHead>
+              <TableRow>
+                  <StyledTableCell align="center" colSpan={4}>จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้</StyledTableCell>
+                </TableRow>
                 <TableRow>
                   <StyledTableCell>ชุมชน&nbsp;</StyledTableCell>
                   <StyledTableCell>&nbsp;</StyledTableCell>

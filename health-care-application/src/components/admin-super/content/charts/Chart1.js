@@ -162,10 +162,13 @@ const ShowChart = React.forwardRef((props, ref) => {
         </div> */}
 
         <div ref={ref}>
-          <h4 style={{ textAlign: "center" }} >จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ</h4>
+          {/* <h4 style={{ textAlign: "center" }} >จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ</h4> */}
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
               <TableHead>
+                <TableRow>
+                  <StyledTableCell align="center" colSpan={6}>จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ</StyledTableCell>
+                </TableRow>
                 <TableRow>
                   <StyledTableCell align="center">ช่วงอายุ(ปี)</StyledTableCell>
                   <StyledTableCell align="center">จำนวนเพศชาย</StyledTableCell>
@@ -179,7 +182,7 @@ const ShowChart = React.forwardRef((props, ref) => {
                     ร้อยละเพศหญิง
                   </StyledTableCell>
                   <StyledTableCell align="center">รวม</StyledTableCell>
-                  <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                  {/* <StyledTableCell align="center">&nbsp;</StyledTableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -199,7 +202,7 @@ const ShowChart = React.forwardRef((props, ref) => {
                       {row.PercentFemale} %
                     </StyledTableCell>
                     <StyledTableCell align="center">{row.Sum}</StyledTableCell>
-                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                    {/* <StyledTableCell align="center">&nbsp;</StyledTableCell> */}
                   </StyledTableRow>
                 ))}
               </TableBody>

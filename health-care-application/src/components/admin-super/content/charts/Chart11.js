@@ -149,6 +149,8 @@ const ShowChart = React.forwardRef((props, ref) => {
     checkedC: true,
     checkedG: true,
   });
+  const {checkedA,checkedB,checkedC} = state
+  const [label, setLabel] = React.useState("");
   const [openPaper, setopenPaper] = React.useState(false);
   const handleChange = (event) => {
     console.log(event.target.checked, event.target.name);
@@ -231,6 +233,25 @@ const ShowChart = React.forwardRef((props, ref) => {
     console.log("row length ", row.length);
     setOpen(row.length);
   }, [chart11Reducer.isFetching]);
+  React.useEffect(()=>{
+    if(checkedA&&checkedB&&checkedC){
+      setLabel("ของทั้งหมด (ชาย หญิง รวม)")
+    } else if(checkedA&&checkedB){
+      setLabel("ของชายและหญิง")
+    } else if(checkedA&&checkedC){
+      setLabel("ของชายและรวม")
+    } else if(checkedB&&checkedC){
+      setLabel("ของหญิงและรวม")
+    } else if(checkedA){
+      setLabel("ของชาย")
+    } else if(checkedB){
+      setLabel("ของหญิง")
+    } else if(checkedC){
+      setLabel("ของทั้งหมด")
+    } else {
+      setLabel("ของทั้งหมด")
+    }
+  },[checkedA,checkedB,checkedC])
   return (
     <React.Fragment>
       <div className="card-body">
@@ -283,8 +304,11 @@ const ShowChart = React.forwardRef((props, ref) => {
             <TableContainer component={Paper}>
               <Table className="table-report" aria-label="customized table">
                 <TableHead>
+                <TableRow>
+                  <StyledTableCell align="center" colSpan={8}>จำนวนของผู้สูงอายุจำแนกตามระดับดัชนีมวลกายและชุมชน {label}</StyledTableCell>
+                </TableRow>
                   <TableRow>
-                    <StyledTableCell align="center">ชุมชน1</StyledTableCell>
+                    <StyledTableCell align="center">ชุมชน</StyledTableCell>
                     <StyledTableCell align="center"></StyledTableCell>
                     <StyledTableCell align="center">ผอม</StyledTableCell>
                     <StyledTableCell align="center">ปกติ</StyledTableCell>
@@ -677,8 +701,11 @@ const ShowChart = React.forwardRef((props, ref) => {
             <TableContainer component={Paper}>
               <Table className="table-report" aria-label="customized table">
                 <TableHead>
+                <TableRow>
+                  <StyledTableCell align="center" colSpan={8}>จำนวนร้อยละของผู้สูงอายุจำแนกตามระดับดัชนีมวลกายและชุมชน {label}</StyledTableCell>
+                </TableRow>
                   <TableRow>
-                    <StyledTableCell align="center">ชุมชน2</StyledTableCell>
+                    <StyledTableCell align="center">ชุมชน</StyledTableCell>
                     <StyledTableCell align="center"></StyledTableCell>
                     <StyledTableCell align="center">ผอม</StyledTableCell>
                     <StyledTableCell align="center">ปกติ</StyledTableCell>

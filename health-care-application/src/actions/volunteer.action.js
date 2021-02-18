@@ -130,6 +130,7 @@ const doGetVolunteer = (dispatch) => {
       dispatch(setVolunteerStateToSuccress(res.data));
     })
     .catch((error) => {
+      console.log("get vol error ",error)
       dispatch(setVolunteerStateToFailed());
     });
 };

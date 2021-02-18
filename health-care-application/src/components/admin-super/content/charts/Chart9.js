@@ -220,6 +220,7 @@ const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
   const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
   const [openPaper, setopenPaper] = React.useState(false);
+  const [genderLabel ,setGenderLabel] = React.useState("เพศชาย")
   const chart9Reducer = useSelector(({ chart9Reducer }) => chart9Reducer);
   const {
     ชุมชนมณีแก้ว,
@@ -249,6 +250,10 @@ const ShowChart = React.forwardRef((props, ref) => {
     ชุมชนบ้านแหลมแท่น,
   } = chart9Reducer.results;
   const dispatch = useDispatch();
+
+  React.useEffect(()=>{
+    openPaper ? setGenderLabel("เพศหญิง") : setGenderLabel("เพศชาย")
+  },[openPaper])
 
   const handleChange = (e) => {
     setCommunity(e.target.value);
@@ -2326,14 +2331,16 @@ const ShowChart = React.forwardRef((props, ref) => {
 
   return (
     <React.Fragment>
-      <CSVLink data={rows} className="csv-link">
-        {" "}
-        Download CSV{" "}
-      </CSVLink>
-      {/* <h4 style={{ textAlign: "center" }}>
-        <strong>เพศชาย</strong>
-      </h4> */}
+      
       <div className="card-body">
+        <div className="csv-link" >
+          <CSVLink 
+          data={rows}
+          filename={
+            "จำนวนและร้อยละของผู้สูงอายุจำแนกตามเส้นรอบเอวช่วงอายุเพศและชุมชน.csv"
+          }
+          >Download CSV</CSVLink>
+        </div>
         <div ref={ref}>
         <FormControlLabel
           control={
@@ -2343,25 +2350,14 @@ const ShowChart = React.forwardRef((props, ref) => {
               onChange={toggleChecked}
             />
           }
-          label="เพศชาย"
+          label={genderLabel}
         />
         {openPaper ? (
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center" colSpan={11}>จำนวนและร้อยละของผู้สูงอายุจำแนกตามเส้นรอบเอว ช่วงอายุ และชุมชน ของ{genderLabel}</StyledTableCell>
                 </TableRow>
 
                 <TableRow>
@@ -2376,7 +2372,6 @@ const ShowChart = React.forwardRef((props, ref) => {
                   <StyledTableCell align="center">90-94</StyledTableCell>
                   <StyledTableCell align="center">95+</StyledTableCell>
                   <StyledTableCell align="center">รวม</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -2472,7 +2467,6 @@ const ShowChart = React.forwardRef((props, ref) => {
                       {row.sumAllPerMO==="NaN %"?  "0 %" :row.sumAllPerMO} 
                       
                     </StyledTableCell>
-                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -2483,18 +2477,7 @@ const ShowChart = React.forwardRef((props, ref) => {
              <Table className="table-report" aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center">ช่วงอายุ</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell align="center" colSpan={11}>จำนวนและร้อยละของผู้สูงอายุจำแนกตามเส้นรอบเอว ช่วงอายุ และชุมชน ของ{genderLabel}</StyledTableCell>
                 </TableRow>
 
                 <TableRow>
@@ -2509,7 +2492,6 @@ const ShowChart = React.forwardRef((props, ref) => {
                   <StyledTableCell align="center">90-94</StyledTableCell>
                   <StyledTableCell align="center">95+</StyledTableCell>
                   <StyledTableCell align="center">รวม</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -2605,7 +2587,6 @@ const ShowChart = React.forwardRef((props, ref) => {
                       {row.sumAllPerMO==="NaN %"?  "0 %" :row.sumAllPerMO} 
                       
                     </StyledTableCell>
-                    <StyledTableCell align="center">&nbsp;</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
