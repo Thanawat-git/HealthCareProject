@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { getDataChart3 } from "../../../../actions/charts.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,7 +40,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 function createData(
   ชุมชน,
-  จำนวนผู้ชาย,
+  จำนวนผู้ชาย,  
   จำนวนผู้หญิง,
  รวมประชากรผู้สูงอายุ,
  จำนวนที่สำรวจผู้ชาย,
@@ -96,269 +96,60 @@ const ShowChart = React.forwardRef((props, ref) => {
     setCommunity(e.target.value);
     dispatch(getDataChart3(e.target.value));
   };
-  const rows = [
-    createData(
-      "ชุมชนมณีแก้ว",
-      ชุมชนมณีแก้ว.ElderMale,
-      ชุมชนมณีแก้ว.ElderFemale,
-      ชุมชนมณีแก้ว.Elder,
-      ชุมชนมณีแก้ว.ElderSurveyMale,
-      ชุมชนมณีแก้ว.ElderSurveyFemale,
-      ชุมชนมณีแก้ว.ElderSurvey,
-      `${ชุมชนมณีแก้ว.PerElderSurvey}`==="NaN"? "0":`${ชุมชนมณีแก้ว.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนดอนบน",
-      ชุมชนดอนบน.ElderMale,
-      ชุมชนดอนบน.ElderFemale,
-      ชุมชนดอนบน.Elder,
-      ชุมชนดอนบน.ElderSurveyMale,
-      ชุมชนดอนบน.ElderSurveyFemale,
-      ชุมชนดอนบน.ElderSurvey,
-      `${ชุมชนดอนบน.PerElderSurvey}`==="NaN"? "0":`${ชุมชนดอนบน.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนบางแสนทาวเวอร์",
-      ชุมชนบางแสนทาวเวอร์.ElderMale,
-      ชุมชนบางแสนทาวเวอร์.ElderFemale,
-      ชุมชนบางแสนทาวเวอร์.Elder,
-      ชุมชนบางแสนทาวเวอร์.ElderSurveyMale,
-      ชุมชนบางแสนทาวเวอร์.ElderSurveyFemale,
-      ชุมชนบางแสนทาวเวอร์.ElderSurvey,
-      `${ชุมชนบางแสนทาวเวอร์.PerElderSurvey}`==="NaN"? "0":`${ชุมชนบางแสนทาวเวอร์.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนตาลล้อม1",
-      ชุมชนตาลล้อม1.ElderMale,
-      ชุมชนตาลล้อม1.ElderFemale,
-      ชุมชนตาลล้อม1.Elder,
-      ชุมชนตาลล้อม1.ElderSurveyMale,
-      ชุมชนตาลล้อม1.ElderSurveyFemale,
-      ชุมชนตาลล้อม1.ElderSurvey,
-      `${ชุมชนตาลล้อม1.PerElderSurvey}`==="NaN"? "0":`${ชุมชนตาลล้อม1.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนตาลล้อม2",
-      ชุมชนตาลล้อม2.ElderMale,
-      ชุมชนตาลล้อม2.ElderFemale,
-      ชุมชนตาลล้อม2.Elder,
-      ชุมชนตาลล้อม2.ElderSurveyMale,
-      ชุมชนตาลล้อม2.ElderSurveyFemale,
-      ชุมชนตาลล้อม2.ElderSurvey,
-      `${ชุมชนตาลล้อม2.PerElderSurvey}`==="NaN"? "0":`${ชุมชนตาลล้อม2.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนบ้านเหมือง",
-      ชุมชนบ้านเหมือง.ElderMale,
-      ชุมชนบ้านเหมือง.ElderFemale,
-      ชุมชนบ้านเหมือง.Elder,
-      ชุมชนบ้านเหมือง.ElderSurveyMale,
-      ชุมชนบ้านเหมือง.ElderSurveyFemale,
-      ชุมชนบ้านเหมือง.ElderSurvey,
-      `${ชุมชนบ้านเหมือง.PerElderSurvey}`==="NaN"? "0":`${ชุมชนบ้านเหมือง.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนพัฒนา2",
-      ชุมชนพัฒนา2.ElderMale,
-      ชุมชนพัฒนา2.ElderFemale,
-      ชุมชนพัฒนา2.Elder,
-      ชุมชนพัฒนา2.ElderSurveyMale,
-      ชุมชนพัฒนา2.ElderSurveyFemale,
-      ชุมชนพัฒนา2.ElderSurvey,
-      `${ชุมชนพัฒนา2.PerElderSurvey}`==="NaN"? "0":`${ชุมชนพัฒนา2.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนดอนนารา",
-      ชุมชนดอนนารา.ElderMale,
-      ชุมชนดอนนารา.ElderFemale,
-      ชุมชนดอนนารา.Elder,
-      ชุมชนดอนนารา.ElderSurveyMale,
-      ชุมชนดอนนารา.ElderSurveyFemale,
-      ชุมชนดอนนารา.ElderSurvey,
-      `${ชุมชนดอนนารา.PerElderSurvey}`==="NaN"? "0":`${ชุมชนดอนนารา.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนวัดกลางดอน",
-      ชุมชนวัดกลางดอน.ElderMale,
-      ชุมชนวัดกลางดอน.ElderFemale,
-      ชุมชนวัดกลางดอน.Elder,
-      ชุมชนวัดกลางดอน.ElderSurveyMale,
-      ชุมชนวัดกลางดอน.ElderSurveyFemale,
-      ชุมชนวัดกลางดอน.ElderSurvey,
-      `${ชุมชนวัดกลางดอน.PerElderSurvey}`==="NaN"? "0":`${ชุมชนวัดกลางดอน.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนวัดกลางดอน",
-      ชุมชนวัดกลางดอน.ElderMale,
-      ชุมชนวัดกลางดอน.ElderFemale,
-      ชุมชนวัดกลางดอน.Elder,
-      ชุมชนวัดกลางดอน.ElderSurveyMale,
-      ชุมชนวัดกลางดอน.ElderSurveyFemale,
-      ชุมชนวัดกลางดอน.ElderSurvey,
-      `${ชุมชนวัดกลางดอน.PerElderSurvey}`==="NaN"? "0":`${ชุมชนวัดกลางดอน.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนแสนสุข",
-      ชุมชนแสนสุข.ElderMale,
-      ชุมชนแสนสุข.ElderFemale,
-      ชุมชนแสนสุข.Elder,
-      ชุมชนแสนสุข.ElderSurveyMale,
-      ชุมชนแสนสุข.ElderSurveyFemale,
-      ชุมชนแสนสุข.ElderSurvey,
-      `${ชุมชนแสนสุข.PerElderSurvey}`==="NaN"? "0":`${ชุมชนแสนสุข.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนมาบมะยม",
-      ชุมชนมาบมะยม.ElderMale,
-      ชุมชนมาบมะยม.ElderFemale,
-      ชุมชนมาบมะยม.Elder,
-      ชุมชนมาบมะยม.ElderSurveyMale,
-      ชุมชนมาบมะยม.ElderSurveyFemale,
-      ชุมชนมาบมะยม.ElderSurvey,
-      `${ชุมชนมาบมะยม.PerElderSurvey}`==="NaN"? "0":`${ชุมชนมาบมะยม.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนท้ายตลาด",
-      ชุมชนท้ายตลาด.ElderMale,
-      ชุมชนท้ายตลาด.ElderFemale,
-      ชุมชนท้ายตลาด.Elder,
-      ชุมชนท้ายตลาด.ElderSurveyMale,
-      ชุมชนท้ายตลาด.ElderSurveyFemale,
-      ชุมชนท้ายตลาด.ElderSurvey,
-      `${ชุมชนท้ายตลาด.PerElderSurvey}`==="NaN"? "0":`${ชุมชนท้ายตลาด.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนร่วมใจพัฒนา",
-      ชุมชนร่วมใจพัฒนา.ElderMale,
-      ชุมชนร่วมใจพัฒนา.ElderFemale,
-      ชุมชนร่วมใจพัฒนา.Elder,
-      ชุมชนร่วมใจพัฒนา.ElderSurveyMale,
-      ชุมชนร่วมใจพัฒนา.ElderSurveyFemale,
-      ชุมชนร่วมใจพัฒนา.ElderSurvey,
-      `${ชุมชนร่วมใจพัฒนา.PerElderSurvey}`==="NaN"? "0":`${ชุมชนร่วมใจพัฒนา.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนบางแสนบน",
-      ชุมชนบางแสนบน.ElderMale,
-      ชุมชนบางแสนบน.ElderFemale,
-      ชุมชนบางแสนบน.Elder,
-      ชุมชนบางแสนบน.ElderSurveyMale,
-      ชุมชนบางแสนบน.ElderSurveyFemale,
-      ชุมชนบางแสนบน.ElderSurvey,
-      `${ชุมชนบางแสนบน.PerElderSurvey}`==="NaN"? "0":`${ชุมชนบางแสนบน.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนหาดวอนนภา",
-      ชุมชนหาดวอนนภา.ElderMale,
-      ชุมชนหาดวอนนภา.ElderFemale,
-      ชุมชนหาดวอนนภา.Elder,
-      ชุมชนหาดวอนนภา.ElderSurveyMale,
-      ชุมชนหาดวอนนภา.ElderSurveyFemale,
-      ชุมชนหาดวอนนภา.ElderSurvey,
-      `${ชุมชนหาดวอนนภา.PerElderSurvey}`==="NaN"? "0":`${ชุมชนหาดวอนนภา.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนบางเป้ง",
-      ชุมชนบางเป้ง.ElderMale,
-      ชุมชนบางเป้ง.ElderFemale,
-      ชุมชนบางเป้ง.Elder,
-      ชุมชนบางเป้ง.ElderSurveyMale,
-      ชุมชนบางเป้ง.ElderSurveyFemale,
-      ชุมชนบางเป้ง.ElderSurvey,
-      `${ชุมชนบางเป้ง.PerElderSurvey}`==="NaN"? "0":`${ชุมชนบางเป้ง.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนหน้ามอ",
-      ชุมชนหน้ามอ.ElderMale,
-      ชุมชนหน้ามอ.ElderFemale,
-      ชุมชนหน้ามอ.Elder,
-      ชุมชนหน้ามอ.ElderSurveyMale,
-      ชุมชนหน้ามอ.ElderSurveyFemale,
-      ชุมชนหน้ามอ.ElderSurvey,
-      `${ชุมชนหน้ามอ.PerElderSurvey}`==="NaN"? "0":`${ชุมชนหน้ามอ.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนโชคดี",
-      ชุมชนโชคดี.ElderMale,
-      ชุมชนโชคดี.ElderFemale,
-      ชุมชนโชคดี.Elder,
-      ชุมชนโชคดี.ElderSurveyMale,
-      ชุมชนโชคดี.ElderSurveyFemale,
-      ชุมชนโชคดี.ElderSurvey,
-      `${ชุมชนโชคดี.PerElderSurvey}`==="NaN"? "0":`${ชุมชนโชคดี.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนสมใจนึก",
-      ชุมชนสมใจนึก.ElderMale,
-      ชุมชนสมใจนึก.ElderFemale,
-      ชุมชนสมใจนึก.Elder,
-      ชุมชนสมใจนึก.ElderSurveyMale,
-      ชุมชนสมใจนึก.ElderSurveyFemale,
-      ชุมชนสมใจนึก.ElderSurvey,
-      `${ชุมชนสมใจนึก.PerElderSurvey}`==="NaN"? "0":`${ชุมชนสมใจนึก.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนหน้าเทศบาล",
-      ชุมชนหน้าเทศบาล.ElderMale,
-      ชุมชนหน้าเทศบาล.ElderFemale,
-      ชุมชนหน้าเทศบาล.Elder,
-      ชุมชนหน้าเทศบาล.ElderSurveyMale,
-      ชุมชนหน้าเทศบาล.ElderSurveyFemale,
-      ชุมชนหน้าเทศบาล.ElderSurvey,
-      `${ชุมชนหน้าเทศบาล.PerElderSurvey}`==="NaN"? "0":`${ชุมชนหน้าเทศบาล.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนวัดแสนสุข",
-      ชุมชนวัดแสนสุข.ElderMale,
-      ชุมชนวัดแสนสุข.ElderFemale,
-      ชุมชนวัดแสนสุข.Elder,
-      ชุมชนวัดแสนสุข.ElderSurveyMale,
-      ชุมชนวัดแสนสุข.ElderSurveyFemale,
-      ชุมชนวัดแสนสุข.ElderSurvey,
-      `${ชุมชนวัดแสนสุข.PerElderSurvey}`==="NaN"? "0":`${ชุมชนวัดแสนสุข.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนมุขแสนเจริญ1",
-      ชุมชนมุขแสนเจริญ1.ElderMale,
-      ชุมชนมุขแสนเจริญ1.ElderFemale,
-      ชุมชนมุขแสนเจริญ1.Elder,
-      ชุมชนมุขแสนเจริญ1.ElderSurveyMale,
-      ชุมชนมุขแสนเจริญ1.ElderSurveyFemale,
-      ชุมชนมุขแสนเจริญ1.ElderSurvey,
-      `${ชุมชนมุขแสนเจริญ1.PerElderSurvey}`==="NaN"? "0":`${ชุมชนมุขแสนเจริญ1.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนมุขแสนเจริญ2",
-      ชุมชนมุขแสนเจริญ2.ElderMale,
-      ชุมชนมุขแสนเจริญ2.ElderFemale,
-      ชุมชนมุขแสนเจริญ2.Elder,
-      ชุมชนมุขแสนเจริญ2.ElderSurveyMale,
-      ชุมชนมุขแสนเจริญ2.ElderSurveyFemale,
-      ชุมชนมุขแสนเจริญ2.ElderSurvey,
-      `${ชุมชนมุขแสนเจริญ2.PerElderSurvey}`==="NaN"? "0":`${ชุมชนมุขแสนเจริญ2.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนเขาสามมุข",
-      ชุมชนเขาสามมุข.ElderMale,
-      ชุมชนเขาสามมุข.ElderFemale,
-      ชุมชนเขาสามมุข.Elder,
-      ชุมชนเขาสามมุข.ElderSurveyMale,
-      ชุมชนเขาสามมุข.ElderSurveyFemale,
-      ชุมชนเขาสามมุข.ElderSurvey,
-      `${ชุมชนเขาสามมุข.PerElderSurvey}`==="NaN"? "0":`${ชุมชนเขาสามมุข.PerElderSurvey}`
-    ),
-    createData(
-      "ชุมชนบ้านแหลมแท่น",
-      ชุมชนบ้านแหลมแท่น.ElderMale,
-      ชุมชนบ้านแหลมแท่น.ElderFemale,
-      ชุมชนบ้านแหลมแท่น.Elder,
-      ชุมชนบ้านแหลมแท่น.ElderSurveyMale,
-      ชุมชนบ้านแหลมแท่น.ElderSurveyFemale,
-      ชุมชนบ้านแหลมแท่น.ElderSurvey,
-      `${ชุมชนบ้านแหลมแท่น.PerElderSurvey}`==="NaN"? "0":`${ชุมชนบ้านแหลมแท่น.PerElderSurvey}`
-    ),
-  ];
-
+  
+  const communi = [
+    ชุมชนมณีแก้ว,
+    ชุมชนดอนบน,
+    ชุมชนบางแสนทาวเวอร์,
+    ชุมชนตาลล้อม1,
+    ชุมชนตาลล้อม2,
+    ชุมชนบ้านเหมือง,
+    ชุมชนพัฒนา2,
+    ชุมชนดอนนารา,
+    ชุมชนวัดกลางดอน,
+    ชุมชนแสนสุข,
+    ชุมชนมาบมะยม,
+    ชุมชนท้ายตลาด,
+    ชุมชนร่วมใจพัฒนา,
+    ชุมชนบางแสนบน,
+    ชุมชนหาดวอนนภา,
+    ชุมชนบางเป้ง,
+    ชุมชนหน้ามอ,
+    ชุมชนโชคดี,
+    ชุมชนสมใจนึก,
+    ชุมชนหน้าเทศบาล,
+    ชุมชนวัดแสนสุข,
+    ชุมชนมุขแสนเจริญ1,
+    ชุมชนมุขแสนเจริญ2,
+    ชุมชนเขาสามมุข,
+    ชุมชนบ้านแหลมแท่น,
+  ]
+  const [rows, setRow] = useState([])
+  React.useEffect(() => {
+    console.log('communi.length ',communi.length)
+    if(chart3Reducer.isFetching === false){
+    for (let i = 0; i < communi.length; i++) {
+      rows.push(
+        createData(Object.keys(chart3Reducer.results)[i],
+          communi[i].ElderMale,
+          communi[i].ElderFemale,
+          communi[i].Elder,
+          communi[i].ElderSurveyMale,
+          communi[i].ElderSurveyFemale,
+          communi[i].ElderSurvey,
+          communi[i].PerElderSurvey==="NaN"? "0":communi[i].PerElderSurvey,
+        )
+      )
+    }
+  }
+    console.log('row ',rows)
+    console.log('row length ',rows.length)
+    setOpen(rows.length)
+  }, [chart3Reducer.isFetching])
+  React.useEffect(() => {
+    setRow([]);
+  }, [community]);
+ 
   return (
     <React.Fragment>
       <CSVLink data={rows} className="csv-link">
@@ -426,7 +217,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             <Table className="table-report" aria-label="customized table">
               <TableHead>
               <TableRow>
-                  <StyledTableCell align="center" colSpan={4}>จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้</StyledTableCell>
+                  <StyledTableCell align="center" colSpan={11}>จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้</StyledTableCell>
                 </TableRow>
                 <TableRow>
                   <StyledTableCell>ชุมชน&nbsp;</StyledTableCell>
@@ -505,7 +296,7 @@ export default function Chart3() {
     <div className="col-12">
       <div className="card card-light ">
         <div className="card-header">
-          <h3 className="card-title">
+          <h3 className="card-title"> CH3
             จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้
           </h3>
           <div className="card-tools">

@@ -43,7 +43,8 @@ const useStyles = makeStyles({
   },
 });
 function createData(
-  ชุมชน,ผู้ชาย6064,
+  ชุมชน,
+  ผู้ชาย6064,
   ผู้หญิง6064,
   รวม6064,
   ผู้ชาย6569,
