@@ -82,7 +82,7 @@ export default function Sections1_6() {
                 getOptionLabel={(option) => option.name}
                 inputValue={disease}
                 size="small"
-                freeSolo
+                // freeSolo
                 onInputChange={(event, value)=>setdisease(value)}
                 renderInput={(params) => (
                   <TextField {...params} variant="outlined" />

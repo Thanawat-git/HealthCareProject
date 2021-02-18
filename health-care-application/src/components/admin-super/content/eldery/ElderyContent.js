@@ -11,6 +11,7 @@ export default function ElderyContent() {
   const dispatch = useDispatch();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   useEffect(() => {
+    console.log('eldery file')
     elderlyReducer.allEldery.length === 0 && dispatch(eldAction.getAllEldery());
   }, []);
 
@@ -21,8 +22,9 @@ export default function ElderyContent() {
         !isFetching ? (
           allEldery.length !== 0 &&
           allEldery.map((value, index) => {
+            console.log("allEldery ", value)
           return (
-            <tr onClick={() => console.log("xxx")}>
+            <tr>
               <td>{index + 1}</td>
               <td>{value.ELD_ID_NUMBER}</td>
               <td>

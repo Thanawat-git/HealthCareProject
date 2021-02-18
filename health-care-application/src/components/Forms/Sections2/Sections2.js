@@ -58,7 +58,6 @@ export default function Sections2_1() {
   const [show, setShow] = useState(false);
   const [collect, setCollect] = useState(forms2Reducer.collect);
   const [noFood, setnoFood] = useState(forms2Reducer.noFood);
-  const[ansfood,setAnsfood] = useState(0);
   const [toDay, setToday] = useState(null);
   const [toDay2, setToday2] = useState(null);
   const [topicblood, setTopicblood] = useState();
@@ -116,10 +115,7 @@ console.log("Nofood 1 : ", noFood)
   useEffect(() => {
     sugar !== null && calsugar();
   }, [sugar]);
-  useEffect(() =>{
-    noFood == true ? setAnsfood(1) : setAnsfood(0)
-    console.log("Nofood 2 : ", noFood)
-  },[noFood,ansfood] );
+  
   useEffect(() => {
     if (bmi !== null) {
       if (bmi < 18.5) {
@@ -236,7 +232,7 @@ console.log("Nofood 1 : ", noFood)
       bloodPressureResult,
       collect,
     ]);
-    formAction.updateExa2Fbs([visId, ansfood, sugar, sugarResult, collect]);
+    formAction.updateExa2Fbs([visId, noFood, sugar, sugarResult, collect]);
     
   };
 

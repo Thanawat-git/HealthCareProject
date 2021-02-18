@@ -29,3 +29,13 @@
     padding-right: 0 !important;
     padding-bottom: 10px;
 }
+.nodata-display {
+    text-align: center;
+    opacity: .8;
+}
+
+.nodata-display .nodata-img {
+    filter: grayscale(100%);
+    width: 100%;
+    /* opacity: .8; */
+}

@@ -17,6 +17,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import NoDataImg from '../../../images/no_data.svg'
 import "moment/locale/th";
 
 // use css from content.css
@@ -120,6 +121,7 @@ export default function ShowElderyInfo({ data }) {
             <BasicInfo data={data} />
           </TabPanel>
           <TabPanel value={value} index={1} className={classes.root}>
+
             <Address data={data} />
           </TabPanel>
           <TabPanel value={value} index={2} className={classes.root}>
@@ -317,7 +319,20 @@ function Relative2({ data }) {
         <p>เบอร์โทรศัพท์ : &nbsp;{ELDER_RELATIVE[1].ELD_REL_PHONE}</p>
       </div>
       </React.Fragment> 
-      :<p style={{fontSize: 20 }}>ไม่มีข้อมูลญาติ</p>
+      : 
+      <div className="row justify-content-center nodata-display">
+        <div className="col align-self-start">
+          {/* One of three columns */}
+        </div>
+        <div className="col align-self-center">
+          <img src={NoDataImg} className="nodata-img" alt=""/>
+          <span>ไม่พบข้อมูล</span>
+        </div>
+        <div className="col align-self-end">
+          {/* One of three columns */}
+        </div>
+      </div>
+    
 }
     </React.Fragment>
   );

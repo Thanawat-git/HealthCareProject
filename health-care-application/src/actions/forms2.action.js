@@ -48,7 +48,7 @@ export const updateExa2Waist = async (payload)=>{
   }
   
   export  const updateExa2Fbs = async (payload)=>{
-    console.log(payload[1])
+    console.log("fbs data send ",payload)
     await  Axios.put(`${apiBase}/fbs/update/${payload[0]}`, {
       FBS_FAST:payload[1],
       FBS_FBS: payload[2],
