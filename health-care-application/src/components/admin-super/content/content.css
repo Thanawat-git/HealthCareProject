@@ -32,6 +32,7 @@
 .nodata-display {
     text-align: center;
     opacity: .8;
+    min-height: 300px;
 }
 
 .nodata-display .nodata-img {
