@@ -184,10 +184,10 @@ function BasicInfo({ data }) {
           </h5>
          <hr />
          <h5>วัน{moment(data.Elder_Information.ELD_BIRTHDATE).format("dddd")} ที่ {moment(data.Elder_Information.ELD_BIRTHDATE).format("LL")}</h5> <hr/>
-         <h5>{data.Elder_Information.ELD_GENDER}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_AGE} ปี</h5> <hr/>
+         <h5>{data.Elder_Information.ELD_GENDER}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_STATUS}</h5> <hr/>
-         <h5>{data.ELD_PHONE}</h5> <hr/>
+         <h5>{!data.ELD_PHONE?"-":data.ELD_PHONE}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_RELIGION}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_JOB}</h5> <hr/>
          <h5>{data.Elder_Information.ELD_INCOME} บาท</h5> <hr/>
