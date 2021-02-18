@@ -34,7 +34,7 @@ export default function ElderyContent() {
                 }
                 {value.ELD_FIRSTNAME} {value.ELD_LASTNAME}
               </td>
-              <td>{value.ELD_PHONE}</td>
+              <td>{!value.ELD_PHONE?"-":value.ELD_PHONE}</td>
               <td style={{ textAlign: "center" }} >
                 <ShowElderyInfo data={value}/>
               </td>
