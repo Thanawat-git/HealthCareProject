@@ -222,7 +222,7 @@ export default function Chart1() {
 
   return (
     <div className="col-12">
-      <div className="card card-light ">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h2 className="card-title">
             จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ
