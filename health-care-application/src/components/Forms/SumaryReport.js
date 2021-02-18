@@ -124,7 +124,7 @@ const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
           <h5> {forms7Reducer.results} </h5>
           {
             forms7Reducer.results !== 'การรู้คิดปกติ' &&
-            <h5>ผลการประเมิน MMSE-Thai 2002 {forms7mReducer.results}</h5>
+            <h5>ผลการประเมิน {forms7mReducer.results}</h5>
           }
           <hr />
           {/* sec8 */}

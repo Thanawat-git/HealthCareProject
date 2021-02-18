@@ -736,7 +736,7 @@ const ShowChart = React.forwardRef((props, ref) => {
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>
-                <StyledTableCell align="center">ไม่มีผู้ดูแล</StyledTableCell>
+                <StyledTableCell align="center">มีผู้ดูแล</StyledTableCell>
                 <StyledTableCell align="center"></StyledTableCell>               
                 <StyledTableCell>&nbsp;</StyledTableCell>
                 <StyledTableCell>&nbsp;</StyledTableCell>

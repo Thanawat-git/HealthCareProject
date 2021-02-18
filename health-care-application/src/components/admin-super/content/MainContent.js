@@ -58,10 +58,10 @@ export default function MainContent() {
     // dispatch(getDataChart10());
     // dispatch(getDataChart11());
     // dispatch(getDataChart14("ทุกชุมชน"));
-    // dispatch(getDataChart16());
-    // dispatch(getDataChart17());
-    // dispatch(getDataChart18("ทุกชุมชน"));
-    //  dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart16());
+    dispatch(getDataChart17());
+    dispatch(getDataChart18("ทุกชุมชน"));
+     dispatch(getDataChart20("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart22("ทุกชุมชน"));
   }, []);
@@ -138,11 +138,11 @@ export default function MainContent() {
             {/* <Chart10 /> */}
             {/* <Chart11 /> */}
             {/* <Chart14 /> */}
-            {/* <Chart16 /> */}
-            {/* <Chart17 /> */}
-            {/* <Chart18 /> */}
-            {/* <Chart20 /> */}
-            {/* <Chart21 /> */}
+            <Chart16 />
+            <Chart17 />
+            <Chart18 />
+            <Chart20 />
+            <Chart21 />
             {/* //ส่วนที่3 */}
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}
