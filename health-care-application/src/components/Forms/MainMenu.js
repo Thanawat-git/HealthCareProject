@@ -336,6 +336,21 @@ function MainMenu(props) {
             </ListItem>
           </Link>
           <hr />
+          <Link
+            onClick={() => {
+              // getData("mmsi");
+              history.push(`${url}/mmsi`)
+            }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <CheckCircleIcon className={colorIcon.i10} />
+              </ListItemIcon>
+              MMSE
+            </ListItem>
+          </Link>
+
+          <hr />
           <SumaryReport />
         </CardContent>
       </Card>

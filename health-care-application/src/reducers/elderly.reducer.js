@@ -14,8 +14,8 @@ const initialState = {
   history: [],
   allEldery: [],
   informationEld: [],
-  isFetching: false,
-  inError: false,
+  isFetching: null,
+  inError: null,
 };
 
 export default (state = initialState, { type, payload }) => {

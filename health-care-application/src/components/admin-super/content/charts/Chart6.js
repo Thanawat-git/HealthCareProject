@@ -935,7 +935,7 @@ export default function Chart6() {
   const componentRef = React.useRef();
   return (
     <div className="col-12">
-      <div className="card card-light ">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
             จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับการศึกษา ช่วงอายุ และเพศ
