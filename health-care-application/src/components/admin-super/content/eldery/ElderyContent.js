@@ -21,9 +21,9 @@ export default function ElderyContent() {
       return (
           allEldery.length !== 0 &&
           allEldery.map((value, index) => {
-            console.log("allEldery ", value)
+            // console.log("allEldery ", value)
           return (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{value.ELD_ID_NUMBER}</td>
               <td>
