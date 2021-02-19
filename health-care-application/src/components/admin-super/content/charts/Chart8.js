@@ -259,7 +259,7 @@ export default function Chart8() {
     <div className="col-12">
       <div className="card card-light collapsed-card">
         <div className="card-header">
-          <h3 className="card-title">CH8
+          <h3 className="card-title">
             จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษา และชุมชน
           </h3>
           <div className="card-tools">

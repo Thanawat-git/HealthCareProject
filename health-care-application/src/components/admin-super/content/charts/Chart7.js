@@ -573,7 +573,7 @@ export default function Chart7() {
     <div className="col-12">
       <div className="card card-light collapsed-card">
         <div className="card-header">
-          <h3 className="card-title"> CH7
+          <h3 className="card-title">
             จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษา ช่วงอายุ และเพศ
           </h3>
           <div className="card-tools">

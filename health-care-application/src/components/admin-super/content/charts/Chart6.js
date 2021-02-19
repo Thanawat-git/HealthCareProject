@@ -598,8 +598,7 @@ export default function Chart6() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            {" "}
-            CH6 จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับการศึกษา ช่วงอายุ และเพศ
+ จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับการศึกษา ช่วงอายุ และเพศ
           </h3>
           <div className="card-tools">
             <button

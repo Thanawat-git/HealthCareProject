@@ -258,8 +258,7 @@ export default function Chart5() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            {" "}
-            CH5 จำนวนและร้อยละของผู้สูงอายุจำแนกตามความเป็นอยู่ และชุมชน
+จำนวนและร้อยละของผู้สูงอายุจำแนกตามความเป็นอยู่ และชุมชน
           </h3>
           <div className="card-tools">
             <button

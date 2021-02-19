@@ -353,8 +353,6 @@ export default function Chart4() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            {" "}
-            CH4
             จำนวนและร้อยละของผู้สูงอายุที่มีผู้ดูแลและผู้ที่ดูแลของแต่ละชุมชน
           </h3>
           <div className="card-tools">
