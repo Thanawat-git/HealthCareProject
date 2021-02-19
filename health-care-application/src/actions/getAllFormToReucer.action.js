@@ -529,7 +529,7 @@ export const getDataSec7 = (history,visId, url) => {
   };
 };
 
-export const getDatammse = (visId) => {
+export const getDatammse = (history,visId, url) => {
   return (dispatch) => {
     return Axios.get(`${apiBase}/MMSE/findOne/${visId}`)
       .then((res) => {
@@ -588,7 +588,15 @@ export const getDatammse = (visId) => {
           type: GET_DATA_S7M,
           payload: data,
         });
-        
+        if(history!=="null"){
+          console.log("url ",url)
+          history.push(url)
+        } else {
+          dispatch({
+            type: SELECT_SECTION,
+            payload: url,
+          });
+        }
       })
       .catch((error) => {
         console.log("err getDatammse ", error);

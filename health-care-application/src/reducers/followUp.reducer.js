@@ -65,45 +65,45 @@ const initialState = {
     oral_RESULT: null,
     oral_CORRECT_FORM: null,
   },
-  isFetching: false,
-  inError: false,
+  isFetching: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case HTTP_FOLLOWUP_FETCHING:
-      return { ...state, result: null, isFetching: true, inError: false };
+      return { ...state, result: null, isFetching: true, isError: false };
     case HTTP_FOLLOWUP_SUCCESS:
-      return { ...state, result: payload, isFetching: false, inError: false };
+      return { ...state, result: payload, isFetching: false, isError: false };
     case HTTP_FOLLOWUP_FAILED:
-      return { ...state, result: payload, isFetching: false, inError: true };
+      return { ...state, result: payload, isFetching: false, isError: true };
     case HTTP_FOLLOWUP_SELECTED:
       return {
         ...state,
         resultSelected: payload,
         isFetching: false,
-        inError: false,
+        isError: false,
       };
     case GET_RESULT_FOLLOW_SEC2:
       return {
         ...state,
         data2: payload,
         isFetching: false,
-        inError: false,
+        isError: false,
       };
     case GET_RESULT_FOLLOW_SEC3:
       return {
         ...state,
         data3: payload,
         isFetching: false,
-        inError: false,
+        isError: false,
       };
     case GET_RESULT_FOLLOW_SEC5:
       return {
         ...state,
         data5: payload,
         isFetching: false,
-        inError: false,
+        isError: false,
       };
     default:
       return state;

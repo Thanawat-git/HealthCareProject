@@ -29,8 +29,8 @@ export default function EditForm({ value }) {
 
   const selectFormSection = useSelector(({selectFormSection}) => selectFormSection)
   useEffect(() => {
-    console.log("edit form value ", value);
-    console.log("edit form name ", value.ELD_NAME.split(" ")[0]);
+    // console.log("edit form value ", value);
+    // console.log("edit form name ", value.ELD_NAME.split(" ")[0]);
   }, []);
   const dispatch = useDispatch();
   const getForm = () => {
