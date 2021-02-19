@@ -5,6 +5,8 @@ import AddNewVolunteer from "./AddNewVolunteer";
 import EditVolunteerInfo from "./EditVolunteerInfo";
 import * as volAction from "../../../../actions/volunteer.action";
 import { useDispatch, useSelector } from 'react-redux';
+import notfound from '../../../images/notfound.svg'
+import Skeleton from '@material-ui/lab/Skeleton';
 
 export default function VolunteerContent() {
   const dispatch = useDispatch()
@@ -18,13 +20,14 @@ export default function VolunteerContent() {
   const updateStatus = (value)=>{
     dispatch(volAction.updateVolStatus([value.VOL_ID_NUMBER, !value.VOLUNTEER.VOL_STATUS]))
   }
+  const {result, isFetching, isError} = volunteerReducer
   
   const createRow = ()=>{
     try{
-      const {result, isFetching} = volunteerReducer
       return (
         !isFetching &&
-        result != null && result.map((value, index)=>{
+        result !== null && 
+        result.length !== 0 ? result.map((value, index)=>{
           return (
           <tr key={value.VOL_ID_NUMBER} onClick={() => console.log("xxx")}>
             <td>{index+1}</td>
@@ -63,6 +66,9 @@ export default function VolunteerContent() {
           </tr>
           )
         })
+        : <React.Fragment>
+          {/* <img src={notfound} alt=""/> */}
+        </React.Fragment>
         
       )
     }catch(e){}
@@ -109,9 +115,32 @@ export default function VolunteerContent() {
               </thead>
 
               <tbody>
-              {createRow()}
+              {isFetching === false 
+              ? createRow()
+              : [1,1,1,1,1,1,1,1,1,1].map((v,i)=>{
+                return <React.Fragment>
+                  <tr key={i}>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  </tr>
+                </React.Fragment>
+              })
+              }
               </tbody>
             </table>
+            
+            {
+              isFetching === false && isError === false && result.length === 0 && 
+              <div className="nodata-display">
+              <img src={notfound} className="nodata-img" />
+              <h4>ไม่พบข้อมูล</h4>
+              </div>
+            }
+            
             
           </div>
         </div>

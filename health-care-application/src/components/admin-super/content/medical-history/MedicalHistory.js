@@ -5,6 +5,7 @@ import EditForm from "./EditForm"
 import { FormControl, InputAdornment, InputLabel, makeStyles, MenuItem, Select, TextField } from "@material-ui/core";
 import * as historyAction from "../../../../actions/history.action";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -257,7 +258,9 @@ export default function MedicalHistory() {
           </thead>
 
           <tbody>
-            {reArr.map((value, index) => {
+            {
+            isFetching ?
+            reArr.map((value, index) => {
               return (
                 <React.Fragment>
                 <tr>
@@ -274,7 +277,19 @@ export default function MedicalHistory() {
                 </tr>
                 </React.Fragment>
                 );
-            })}
+            })
+            : [1,1,1,1,1,1,1,1,1,1].map((v,i)=>{
+              return <React.Fragment>
+                <tr key={i}>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                </tr>
+              </React.Fragment>
+            })
+          }
           </tbody>
         </table>
         </div>

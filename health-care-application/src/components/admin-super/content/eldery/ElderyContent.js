@@ -15,11 +15,10 @@ export default function ElderyContent() {
     elderlyReducer.allEldery.length === 0 && dispatch(eldAction.getAllEldery());
   }, []);
 
+  const { allEldery, isFetching } = elderlyReducer;
   const createRow = () => {
     try {
-      const { allEldery, isFetching } = elderlyReducer;
       return (
-        !isFetching ? (
           allEldery.length !== 0 &&
           allEldery.map((value, index) => {
             console.log("allEldery ", value)
@@ -40,9 +39,7 @@ export default function ElderyContent() {
               </td>
             </tr>
           );
-        })):
-        <Skeleton />
-        // "กำลังโหลดข้อมูล"
+        })
       );
     } catch (e) {}
   };
@@ -93,7 +90,22 @@ export default function ElderyContent() {
                 </tr>
               </thead>
 
-              <tbody>{createRow()}</tbody>
+              <tbody>
+              {isFetching === false 
+              ? createRow()
+              : [1,1,1,1,1,1,1,1,1,1].map((v,i)=>{
+                return <React.Fragment>
+                  <tr key={i}>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                    <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  </tr>
+                </React.Fragment>
+              })
+              }
+              </tbody>
             </table>
           </div>
         </div>

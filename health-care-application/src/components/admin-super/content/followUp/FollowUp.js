@@ -4,6 +4,8 @@ import ShowResultF from "./ShowResultF";
 import DoFollow from "./DoFollow";
 import { InputAdornment, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import Skeleton from '@material-ui/lab/Skeleton';
+import notfound from '../../../images/notfound.svg'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as FpAction from "../../../../actions/followUp.action";
@@ -112,7 +114,8 @@ export default function FollowUp() {
           </thead>
 
           <tbody>
-            {FpReducer.isFetching==false && FpReducer.result!=null && FpReducer.result.map((value, index) => {
+            {FpReducer.isFetching==false ? ( 
+              FpReducer.result!=null && FpReducer.result.map((value, index) => {
               return (
                   <tr>
                     <td> {index + 1} </td> 
@@ -180,9 +183,30 @@ export default function FollowUp() {
                         </td>
                   </tr>
               )
-            })}
+            }))
+            : [1,1,1,1,1,1,1,1,1,1].map((v,i)=>{
+              return <React.Fragment>
+                <tr key={i}>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                  <td><Skeleton variant="rect" style={{ borderRadius: 3 }} /></td>
+                </tr>
+              </React.Fragment>
+            })
+            }
           </tbody>
         </table>
+        {
+              FpReducer.isFetching === false && FpReducer.isError === false && FpReducer.result.length === 0 && 
+              <div className="nodata-display">
+              <img src={notfound} className="nodata-img" />
+              <h4>ไม่พบข้อมูล</h4>
+              </div>
+            }
         </div>
       </section>
     </React.Fragment>

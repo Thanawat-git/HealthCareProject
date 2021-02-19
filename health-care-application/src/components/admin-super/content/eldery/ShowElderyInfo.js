@@ -202,7 +202,8 @@ function BasicInfo({ data }) {
           </h5>{" "}
           <hr />
           <h5>
-            {data.Elder_Information.ELD_LIVELIHOOD === "ไม่ได้อยู่ลำพัง" ? (
+            {data.Elder_Information.ELD_LIVELIHOOD!=="-"?(
+              data.Elder_Information.ELD_LIVELIHOOD === "ไม่ได้อยู่ลำพัง" ? (
               `ไม่ได้อยู่ลำพัง อยู่กับ ${data.Elder_Information.ELD_LIVELIHOOD_NEIGHBOR_NAME}`
             ) : data.Elder_Information.ELD_LIVELIHOOD_DETAIL ===
               "ทั้งกลางวันและกลางคืน" ? (
@@ -221,7 +222,9 @@ function BasicInfo({ data }) {
                 กลางวันอยู่กับ{" "}
                 {data.Elder_Information.ELD_LIVELIHOOD_NEIGHBOR_NAME}
               </React.Fragment>
-            )}
+            ))
+          : "-"
+          }
           </h5>
         </div>
       </div>
@@ -310,7 +313,7 @@ function Relative1({ data }) {
         <div className="row justify-content-center nodata-display">
           <div className="col align-self-start"></div>
           <div className="col align-self-center">
-            <img src={NoDataImg} className="nodata-img" alt="" />
+            <img src={NoDataImg} className="notfound-img" alt="" />
             <span>ไม่พบข้อมูล</span>
           </div>
           <div className="col align-self-end"></div>
@@ -350,7 +353,7 @@ function Relative2({ data }) {
         <div className="row justify-content-center nodata-display">
           <div className="col align-self-start"></div>
           <div className="col align-self-center">
-            <img src={NoDataImg} className="nodata-img" alt="" />
+            <img src={NoDataImg} className="notfound-img" alt="" />
             <span>ไม่พบข้อมูล</span>
           </div>
           <div className="col align-self-end"></div>

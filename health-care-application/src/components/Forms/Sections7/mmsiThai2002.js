@@ -1458,9 +1458,10 @@ export default function MMSIThai2002() {
         </div>
 
         {/* question */}
+
         <div className="row justify-content-between">
           {selectFormSection.section === "mainmenu" ? (
-            <Link to="/mainmenu/sec7">
+            <Link to="/mainmenu">
               <button type="button" className="btn form-btn btn-back btn-lg">
                 ย้อนกลับ
               </button>
@@ -1473,7 +1474,7 @@ export default function MMSIThai2002() {
                 onClick={() => {
                   dispatch({
                     type: SELECT_SECTION,
-                    payload: "sec7",
+                    payload: "mainmenu",
                   });
                 }}
               >

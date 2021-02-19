@@ -6,6 +6,7 @@ import Header from "../volunteer/Header";
 import { Link, useHistory, useRouteMatch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SumaryReport from "./SumaryReport";
+import { USERLOGIN } from "../../constants";
 import * as getAction from "../../actions/getAllFormToReucer.action";
 
 const useStyles = makeStyles({
@@ -42,6 +43,7 @@ function MainMenu(props) {
   // const results8 = useSelector(({ forms8Reducer }) => forms8Reducer.results);
   const collect9 = useSelector(({ forms9Reducer }) => forms9Reducer.collect);
   const collect10 = useSelector(({ forms10Reducer }) => forms10Reducer.collect);
+  const collectMM = useSelector(({ forms7mReducer }) => forms7mReducer.collect);
   const classes = useStyles();
   const [i2, setI2] = useState("");
   const [i3, setI3] = useState("");
@@ -52,6 +54,7 @@ function MainMenu(props) {
   const [i8, setI8] = useState("");
   const [i9, setI9] = useState("");
   const [i10, setI0] = useState("");
+  const [i11, setI11] = useState("");
 
   useEffect(() => {
     // console.log("ans10: ", collect10);
@@ -64,6 +67,7 @@ function MainMenu(props) {
     collect8 && setI8("green");
     collect9 && setI9("green");
     collect10 && setI0("green");
+    collectMM && setI11("green");
   }, []);
 
   const useStyles2 = makeStyles({
@@ -94,40 +98,32 @@ function MainMenu(props) {
     i10: {
       color: i10,
     },
+    i11: {
+      color: i11,
+    },
   });
   const colorIcon = useStyles2();
   const visitID = useSelector(({ visitID }) => visitID.visiId);
   // console.log('visitID ',visitID)
   const peopleID = useSelector(({ visitID }) => visitID.peopleId);
   useEffect(() => {
-    dispatch(getAction.getEducate(peopleID))
-  }, [])
+    dispatch(getAction.getEducate(peopleID));
+  }, []);
   // const { user } = useSelector((state) => state.authReducer);
   let history = useHistory();
   const dispatch = useDispatch();
   const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
-  const forms2Reducer = useSelector(({ forms2Reducer }) => forms2Reducer);
-  const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
-  const forms4Reducer = useSelector(({ forms4Reducer }) => forms4Reducer);
-  const forms5Reducer = useSelector(({ forms5Reducer }) => forms5Reducer);
-  const forms6Reducer = useSelector(({ forms6Reducer }) => forms6Reducer);
-  // const formsTaiReducer = useSelector(({ formsTaiReducer }) => formsTaiReducer);
-  const forms7Reducer = useSelector(({ forms7Reducer }) => forms7Reducer);
-  // const forms7mReducer = useSelector(({ forms7mReducer }) => forms7mReducer);
-  const forms8Reducer = useSelector(({ forms8Reducer }) => forms8Reducer);
-  // const forms89qReducer = useSelector(({ forms89qReducer }) => forms89qReducer);
-  const forms9Reducer = useSelector(({ forms9Reducer }) => forms9Reducer);
-  const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
+  const { user } = useSelector((state) => state.authReducer);
 
-  const getData = (sec) => { // ไม่ได้ใช้
-    
+  const getData = (sec) => {
+
     switch (sec) {
       case "sec2":
-        dispatch(getAction.getDataSec2(history,visitID,`${url}/sec2`));
-        
+        dispatch(getAction.getDataSec2(history, visitID, `${url}/sec2`));
+
         break;
       case "sec3":
-        dispatch(getAction.getDataSec3(history,visitID,`${url}/sec3`));
+        dispatch(getAction.getDataSec3(history, visitID, `${url}/sec3`));
         // if (!forms3Reducer.isFetching) {
         //   setTimeout(() => {
         //     history.push(`${url}/sec3`);
@@ -135,7 +131,7 @@ function MainMenu(props) {
         // }
         break;
       case "sec4":
-        dispatch(getAction.getDataSec4(history,visitID,`${url}/sec4`));
+        dispatch(getAction.getDataSec4(history, visitID, `${url}/sec4`));
         // if (!forms4Reducer.isFetching) {
         //   setTimeout(() => {
         //     history.push(`${url}/sec4`);
@@ -143,7 +139,7 @@ function MainMenu(props) {
         // }
         break;
       case "sec5":
-        dispatch(getAction.getDataSec5(history,visitID,`${url}/sec5`));
+        dispatch(getAction.getDataSec5(history, visitID, `${url}/sec5`));
         // if (!forms5Reducer.isFetching) {
         //   setTimeout(() => {
         //     history.push(`${url}/sec5`);
@@ -151,7 +147,7 @@ function MainMenu(props) {
         // }
         break;
       case "sec6":
-        dispatch(getAction.getDataSec6(history,visitID,`${url}/sec6`));
+        dispatch(getAction.getDataSec6(history, visitID, `${url}/sec6`));
         dispatch(getAction.getDataTai(visitID));
         // if (!forms6Reducer.isFetching) {
         //   setTimeout(() => {
@@ -160,9 +156,9 @@ function MainMenu(props) {
         // }
         break;
       case "sec7":
-        dispatch(getAction.getDataSec7(history,visitID,`${url}/sec7`));
+        dispatch(getAction.getDataSec7(history, visitID, `${url}/sec7`));
         // dispatch(getAction.getEducate(peopleID))
-        dispatch(getAction.getDatammse(visitID))
+        dispatch(getAction.getDatammse(visitID));
         // if (!forms7Reducer.isFetching) {
         //   setTimeout(() => {
         //     history.push(`${url}/sec7`);
@@ -170,7 +166,7 @@ function MainMenu(props) {
         // }
         break;
       case "sec8":
-        dispatch(getAction.getDataSec8(history,visitID,`${url}/sec8_1`));
+        dispatch(getAction.getDataSec8(history, visitID, `${url}/sec8_1`));
         // if (!forms8Reducer.isFetching) {
         //   setTimeout(() => {
         //     history.push(`${url}/sec8_1`);
@@ -178,7 +174,7 @@ function MainMenu(props) {
         // }
         break;
       case "sec9":
-        dispatch(getAction.getDataSec9(history,visitID,`${url}/sec9`));
+        dispatch(getAction.getDataSec9(history, visitID, `${url}/sec9`));
         dispatch(getAction.getDataSec92(visitID));
         // if (!forms9Reducer.isFetching) {
         //   setTimeout(() => {
@@ -187,14 +183,16 @@ function MainMenu(props) {
         // }
         break;
       case "sec10":
-        dispatch(getAction.getDataSec10(history,visitID,`${url}/sec10`));
+        dispatch(getAction.getDataSec10(history, visitID, `${url}/sec10`));
         // if (!forms10Reducer.isFetching) {
         //   setTimeout(() => {
         //     history.push(`${url}/sec10`);
         //   }, 200);
         // }
         break;
-
+      case "mmsi":
+        dispatch(getAction.getDatammse(history, visitID, `${url}/mmsi`));
+        break;
       default:
         break;
     }
@@ -202,7 +200,6 @@ function MainMenu(props) {
 
   return (
     <React.Fragment>
-      
       <Header /> <br />
       <Card className={classes.root}>
         <h4 style={{ textAlign: "center" }}>
@@ -336,21 +333,25 @@ function MainMenu(props) {
             </ListItem>
           </Link>
           <hr />
-          <Link
-            onClick={() => {
-              // getData("mmsi");
-              history.push(`${url}/mmsi`)
-            }}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <CheckCircleIcon className={colorIcon.i10} />
-              </ListItemIcon>
-              MMSE
-            </ListItem>
-          </Link>
+          {user.Role !== "VOLUNTEER" && (
+            <React.Fragment>
+              <Link
+                onClick={() => {
+                  getData("mmsi");
+                  // history.push(`${url}/mmsi`);
+                }}
+              >
+                <ListItem button>
+                  <ListItemIcon>
+                    <CheckCircleIcon className={colorIcon.i11} />
+                  </ListItemIcon>
+                  MMSE
+                </ListItem>
+              </Link>
 
-          <hr />
+              <hr />
+            </React.Fragment>
+          )}
           <SumaryReport />
         </CardContent>
       </Card>

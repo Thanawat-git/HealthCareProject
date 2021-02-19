@@ -32,11 +32,18 @@
 .nodata-display {
     text-align: center;
     opacity: .8;
+    width: 100%;
     min-height: 300px;
 }
 
-.nodata-display .nodata-img {
+.nodata-display .notfound-img {
     filter: grayscale(100%);
     width: 100%;
     /* opacity: .8; */
+}
+
+.nodata-display .nodata-img {
+    height: 300px;
+    /* filter: grayscale(100%); */
+    width: 100%;
 }

@@ -37,8 +37,8 @@ const initialState = {
     ost_3_result: null,
     uri_result: null,
   },
-  isFetching: false,
-  isError: false,
+  isFetching: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {
