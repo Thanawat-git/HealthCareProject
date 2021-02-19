@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { getDataChart3 } from "../../../../actions/charts.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,21 +40,21 @@ const StyledTableRow = withStyles((theme) => ({
 
 function createData(
   ชุมชน,
-  จำนวนผู้ชาย,  
+  จำนวนผู้ชาย,
   จำนวนผู้หญิง,
- รวมประชากรผู้สูงอายุ,
- จำนวนที่สำรวจผู้ชาย,
- จำนวนที่สำรวจผู้หญิง,
+  รวมประชากรผู้สูงอายุ,
+  จำนวนที่สำรวจผู้ชาย,
+  จำนวนที่สำรวจผู้หญิง,
   รวมจำนวนที่สำรวจได้,
-  เปอร์เซ็นต์ที่สำรวจได้,
+  เปอร์เซ็นต์ที่สำรวจได้
 ) {
   return {
     ชุมชน,
     จำนวนผู้ชาย,
     จำนวนผู้หญิง,
-   รวมประชากรผู้สูงอายุ,
-   จำนวนที่สำรวจผู้ชาย,
-   จำนวนที่สำรวจผู้หญิง,
+    รวมประชากรผู้สูงอายุ,
+    จำนวนที่สำรวจผู้ชาย,
+    จำนวนที่สำรวจผู้หญิง,
     รวมจำนวนที่สำรวจได้,
     เปอร์เซ็นต์ที่สำรวจได้,
   };
@@ -96,7 +96,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     setCommunity(e.target.value);
     dispatch(getDataChart3(e.target.value));
   };
-  
+
   const communi = [
     ชุมชนมณีแก้ว,
     ชุมชนดอนบน,
@@ -123,106 +123,61 @@ const ShowChart = React.forwardRef((props, ref) => {
     ชุมชนมุขแสนเจริญ2,
     ชุมชนเขาสามมุข,
     ชุมชนบ้านแหลมแท่น,
-  ]
-  const [rows, setRow] = useState([])
+  ];
+  const [rows, setRow] = useState([]);
   React.useEffect(() => {
-    console.log('communi.length ',communi.length)
-    if(chart3Reducer.isFetching === false){
-    for (let i = 0; i < communi.length; i++) {
-      rows.push(
-        createData(Object.keys(chart3Reducer.results)[i],
-          communi[i].ElderMale,
-          communi[i].ElderFemale,
-          communi[i].Elder,
-          communi[i].ElderSurveyMale,
-          communi[i].ElderSurveyFemale,
-          communi[i].ElderSurvey,
-          communi[i].PerElderSurvey==="NaN"? "0":communi[i].PerElderSurvey,
-        )
-      )
+    console.log("communi.length ", communi.length);
+    if (chart3Reducer.isFetching === false) {
+      for (let i = 0; i < communi.length; i++) {
+        rows.push(
+          createData(
+            Object.keys(chart3Reducer.results)[i],
+            communi[i].ElderMale,
+            communi[i].ElderFemale,
+            communi[i].Elder,
+            communi[i].ElderSurveyMale,
+            communi[i].ElderSurveyFemale,
+            communi[i].ElderSurvey,
+            communi[i].PerElderSurvey === "NaN"
+              ? "0"
+              : communi[i].PerElderSurvey
+          )
+        );
+      }
     }
-  }
-    console.log('row ',rows)
-    console.log('row length ',rows.length)
-    setOpen(rows.length)
-  }, [chart3Reducer.isFetching])
+    console.log("row ", rows);
+    console.log("row length ", rows.length);
+    setOpen(rows.length);
+  }, [chart3Reducer.isFetching]);
   React.useEffect(() => {
     setRow([]);
   }, [community]);
- 
+
   return (
     <React.Fragment>
-      <CSVLink data={rows} className="csv-link">
-        {" "}
-        Download CSV{" "}
-      </CSVLink>
-      <div className="card-body" ref={ref}>
-        {/* <div>
-        เลือกชุมชน &emsp;
-        <Select
-          native
-          open={open}
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          value={community}
-          onChange={handleChange}
-        >
-          {COMMUNITYS.map((value, index) => {
-            return (
-              <option key={index} value={value}>
-                {value}
-              </option>
-            );
-          })}
-        </Select>
-      </div> */}
-        <br />
-        {/* <div className="chart">
-        <Chart
-          maxWidth={"900px"}
-          height={"400px"}
-          chartType="Bar"
-          loader={<div>Loading Chart</div>}
-          data={[
-            [
-              "",
-              `ชาย ${ElderMale} คน`,
-              `หญิง ${ElderFemale} คน`,
-              `รวม ${Elder} คน`,
-            ],
-            [
-              `ผู้สูงอายุทั้งหมด ${Elder} คน\nชาย ${PerElderMale}%\nหญิง ${PerElderFemale}%`,
-              ElderMale,
-              ElderFemale,
-              Elder,
-            ],
-            [
-              `ผู้สูงอายุที่สำรวจได้ ${ElderSurvey} คน\nชาย ${PerElderSurveyMale}%\nหญิง ${PerElderSurveyFemale}%`,
-              ElderSurveyMale,
-              ElderSurveyFemale,
-              ElderSurvey,
-            ],
-          ]}
-          options={{
-            // Material design options
-            chart: {
-              title: `จำนวนประชากรผู้สูงอายุ ทั้งหมดใน ${community} จำนวน ${Elder} คน`,
-              subtitle: "จำแนกตามเพศ และจำนวนที่สำรวจได้",
-            },
-          }}
-        />
-      </div> */}
+      <div className="card-body">
+        <div className="csv-link">
+          <CSVLink
+            data={rows}
+            filename={
+              "จำนวนประชากรผู้สูงอายุจำแนกตามเพศและจำนวนที่สำรวจได้.csv"
+            }
+          >
+            Download CSV
+          </CSVLink>
+        </div>
+
         <div ref={ref}>
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
               <TableHead>
-              <TableRow>
-                  <StyledTableCell align="center" colSpan={11}>จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้</StyledTableCell>
+                <TableRow>
+                  <StyledTableCell align="center" colSpan={11}>
+                    จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้
+                  </StyledTableCell>
                 </TableRow>
                 <TableRow>
-                  <StyledTableCell>ชุมชน&nbsp;</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell colSpan={3}>ชุมชน&nbsp;</StyledTableCell>
                   <StyledTableCell>ประชากรผู้สูงอายุ&nbsp;</StyledTableCell>
                   <StyledTableCell>&nbsp;</StyledTableCell>
                   <StyledTableCell>&nbsp;</StyledTableCell>
@@ -296,8 +251,9 @@ export default function Chart3() {
     <div className="col-12">
       <div className="card card-light collapsed-card">
         <div className="card-header">
-          <h3 className="card-title"> CH3
-            จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้
+          <h3 className="card-title">
+            {" "}
+            CH3 จำนวนประชากรผู้สูงอายุจำแนกตามเพศ และจำนวนที่สำรวจได้
           </h3>
           <div className="card-tools">
             <button

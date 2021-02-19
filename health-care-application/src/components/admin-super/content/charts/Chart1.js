@@ -95,75 +95,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     setOpen(row.length);
   }, [chart1Reducer.isFetching]);
 
-  // const rows = [
-  //   createData(
-  //     ` 60-64 `,
-  //     g6064.ElderMale,
-  //     g6064.ElderFemale,
-  //     `${g6064.ElderPerMale}`=== "NaN"? "0":`${g6064.ElderPerMale}`,
-  //     `${g6064.ElderPerFemale}`=== "NaN"? "0":`${g6064.ElderPerFemale}`,
-  //     g6064.Elder
-  //   ),
-  //   createData(
-  //     " 65-69",
-  //     g6569.ElderMale,
-  //     g6569.ElderFemale,
-  //     `${g6569.ElderPerMale}`=== "NaN"? "0":`${g6569.ElderPerMale}`,
-  //     `${g6569.ElderPerFemale}`=== "NaN"? "0":`${g6569.ElderPerFemale}`,
-  //     g6569.Elder
-  //   ),
-  //   createData(
-  //     " 70-74",
-  //     g7074.ElderMale,
-  //     g7074.ElderFemale,
-  //     `${g7074.ElderPerMale}`=== "NaN"? "0":`${g7074.ElderPerMale}`,
-  //     `${g7074.ElderPerFemale}`=== "NaN"? "0":`${g7074.ElderPerFemale}`,
-  //     g7074.Elder
-  //   ),
-  //   createData(
-  //     " 75-79",
-  //     g7579.ElderMale,
-  //     g7579.ElderFemale,
-  //     `${g7579.ElderPerMale}`=== "NaN"? "0":`${g7579.ElderPerMale}`,
-  //     `${g7579.ElderPerFemale}`=== "NaN"? "0":`${g7579.ElderPerFemale}`,
-  //     g7579.Elder
-  //   ),
-  //   createData(
-  //     " 80-84",
-  //     g8084.ElderMale,
-  //     g8084.ElderFemale,
-  //     `${g8084.ElderPerMale}`=== "NaN"? "0":`${g8084.ElderPerMale}`,
-  //     `${g8084.ElderPerFemale}`=== "NaN"? "0":`${g8084.ElderPerFemale}`,
-  //     g8084.Elder
-  //   ),
-  //   createData(
-  //     " 85-89",
-  //     g8589.ElderMale,
-  //     g8589.ElderFemale,
-  //     `${g8589.ElderPerMale}`=== "NaN"? "0":`${g8589.ElderPerMale}`,
-  //     `${g8589.ElderPerFemale}`=== "NaN"? "0":`${g8589.ElderPerFemale}`,
-  //     g8589.Elder
-  //   ),
-  //   createData(
-  //     " 90-94",
-  //     g9094.ElderMale,
-  //     g9094.ElderFemale,
-  //     `${g9094.ElderPerMale}`=== "NaN"? "0":`${g9094.ElderPerMale}`,
-  //     `${g9094.ElderPerFemale}`=== "NaN"? "0":`${g9094.ElderPerFemale}`,
-  //     g9094.Elder
-  //   ),
-  //   createData(
-  //     " 95+",
-  //     g95.ElderMale,
-  //     g95.ElderFemale,
-  //     `${g95.ElderPerMale}`=== "NaN"? "0":`${g95.ElderPerMale}`,
-  //     `${g95.ElderPerFemale}`=== "NaN"? "0":`${g95.ElderPerFemale}`,
-  //     g95.Elder
-  //   ),
-  // ];
-  // React.useEffect(() => {
-  //   console.log(summary.Elder);
-  // }, []);
+
   return (
     <React.Fragment>
       <div className="card-body">
