@@ -39,70 +39,70 @@ const StyledTableRow = withStyles((theme) => ({
 function createData(
   ช่วงอายุ,
   ชายผอม,
-  หญิงผอม,
-  รวมผอม,
   เปอร์เซ็นต์ชายผอม,
+  หญิงผอม,
   เปอร์เซ็นต์หญิงผอม,
+  รวมผอม,
   เปอร์เซ็นต์รวมผอม,
   ชายปกติ,
-  หญิงปกติ,
-  รวมปกติ,
   เปอร์เซ็นต์ชายปกติ,
+  หญิงปกติ,
   เปอร์เซ็นต์หญิงปกติ,
+  รวมปกติ,
   เปอร์เซ็นต์รวมปกติ,
   ชายท้วม,
-  หญิงท้วม,
-  รวมท้วม,
   เปอร์เซ็นต์ชายท้วม,
+  หญิงท้วม,
   เปอร์เซ็นต์หญิงท้วม,
+  รวมท้วม,
   เปอร์เซ็นต์รวมท้วม,
   ชายอ้วน,
-  หญิงอ้วน,
-  รวมอ้วน,
   เปอร์เซ็นต์ชายอ้วน,
+  หญิงอ้วน,
   เปอร์เซ็นต์หญิงอ้วน,
+  รวมอ้วน,
   เปอร์เซ็นต์รวมอ้วน,
   ชายอ้วนมาก,
-  หญิงอ้วนมาก,
-  รวมอ้วนมาก,
   เปอร์เซ็นต์ชายอ้วนมาก,
+  หญิงอ้วนมาก,
   เปอร์เซ็นต์หญิงอ้วนมาก,
+  รวมอ้วนมาก,
   เปอร์เซ็นต์รวมอ้วนมาก,
   รวม
 ) {
   return {
     ช่วงอายุ,
     ชายผอม,
-    หญิงผอม,
-    รวมผอม,
     เปอร์เซ็นต์ชายผอม,
+    หญิงผอม,
     เปอร์เซ็นต์หญิงผอม,
+    รวมผอม,
     เปอร์เซ็นต์รวมผอม,
     ชายปกติ,
-    หญิงปกติ,
-    รวมปกติ,
     เปอร์เซ็นต์ชายปกติ,
+    หญิงปกติ,
     เปอร์เซ็นต์หญิงปกติ,
+    รวมปกติ,
     เปอร์เซ็นต์รวมปกติ,
     ชายท้วม,
-    หญิงท้วม,
-    รวมท้วม,
     เปอร์เซ็นต์ชายท้วม,
+    หญิงท้วม,
     เปอร์เซ็นต์หญิงท้วม,
+    รวมท้วม,
     เปอร์เซ็นต์รวมท้วม,
     ชายอ้วน,
-    หญิงอ้วน,
-    รวมอ้วน,
     เปอร์เซ็นต์ชายอ้วน,
+    หญิงอ้วน,
     เปอร์เซ็นต์หญิงอ้วน,
+    รวมอ้วน,
     เปอร์เซ็นต์รวมอ้วน,
     ชายอ้วนมาก,
-    หญิงอ้วนมาก,
-    รวมอ้วนมาก,
     เปอร์เซ็นต์ชายอ้วนมาก,
+    หญิงอ้วนมาก,
     เปอร์เซ็นต์หญิงอ้วนมาก,
+    รวมอ้วนมาก,
     เปอร์เซ็นต์รวมอ้วนมาก,
-    รวม,
+    รวม
   };
 }
 
@@ -137,62 +137,64 @@ const ShowChart = React.forwardRef((props, ref) => {
               : Object.keys(chart14Reducer.results)[i + j].substring(1, 3) +
                   "+",
             ageRange[i].Thin.Male,
-            ageRange[i].Thin.Female,
-            ageRange[i].Thin.Sum,
             ageRange[i].Thin.PerMale === "NaN"
               ? "0%"
               : ageRange[i].Thin.PerMale + "%",
+            ageRange[i].Thin.Female,
             ageRange[i].Thin.PerFemale === "NaN"
               ? "0%"
               : ageRange[i].Thin.PerFemale + "%",
+            ageRange[i].Thin.Sum,
             ageRange[i].Thin.PerSum === "NaN"
               ? "0%"
               : ageRange[i].Thin.PerSum + "%",
+            
+            
             ageRange[i].Normal.Male,
-            ageRange[i].Normal.Female,
-            ageRange[i].Normal.Sum,
             ageRange[i].Normal.PerMale === "NaN"
               ? "0%"
               : ageRange[i].Normal.PerMale + "%",
+            ageRange[i].Normal.Female,
             ageRange[i].Normal.PerFemale === "NaN"
               ? "0%"
               : ageRange[i].Normal.PerFemale + "%",
+            ageRange[i].Normal.Sum,
             ageRange[i].Normal.PerSum === "NaN"
               ? "0%"
               : ageRange[i].Normal.PerSum + "%",
             ageRange[i].Plump.Male,
-            ageRange[i].Plump.Female,
-            ageRange[i].Plump.Sum,
             ageRange[i].Plump.PerMale === "NaN"
               ? "0%"
               : ageRange[i].Plump.PerMale + "%",
+            ageRange[i].Plump.Female,
             ageRange[i].Plump.PerFemale === "NaN"
               ? "0%"
               : ageRange[i].Plump.PerFemale + "%",
+            ageRange[i].Plump.Sum,
             ageRange[i].Plump.PerSum === "NaN"
               ? "0%"
               : ageRange[i].Plump.PerSum + "%",
             ageRange[i].Fat.Male,
-            ageRange[i].Fat.Female,
-            ageRange[i].Fat.Sum,
             ageRange[i].Fat.PerMale === "NaN"
               ? "0%"
               : ageRange[i].Fat.PerMale + "%",
+            ageRange[i].Fat.Female,
             ageRange[i].Fat.PerFemale === "NaN"
               ? "0%"
               : ageRange[i].Fat.PerFemale + "%",
+            ageRange[i].Fat.Sum,
             ageRange[i].Fat.PerSum === "NaN"
               ? "0%"
               : ageRange[i].Fat.PerSum + "%",
             ageRange[i].VeryFat.Male,
-            ageRange[i].VeryFat.Female,
-            ageRange[i].VeryFat.Sum,
             ageRange[i].VeryFat.PerMale === "NaN"
               ? "0%"
               : ageRange[i].VeryFat.PerMale + "%",
+            ageRange[i].VeryFat.Female,
             ageRange[i].VeryFat.PerFemale === "NaN"
               ? "0%"
               : ageRange[i].VeryFat.PerFemale + "%",
+            ageRange[i].VeryFat.Sum,
             ageRange[i].VeryFat.PerSum === "NaN"
               ? "0%"
               : ageRange[i].VeryFat.PerSum + "%",
