@@ -15,23 +15,23 @@ const initialState = {
   allEldery: [],
   informationEld: [],
   isFetching: null,
-  inError: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case HTTP_ELD_FETCHING:
-      return { ...state, isFetching: true, inError: false };
+      return { ...state, isFetching: true, isError: false };
     case HTTP_ELD_SUCCESS:
-      return { ...state, result: payload, isFetching: false, inError: false };
+      return { ...state, result: payload, isFetching: false, isError: false };
     case HTTP_ELD_FAILED:
-      return { ...state, result: [], isFetching: false, inError: true };
+      return { ...state, result: [], isFetching: false, isError: true };
     case HTTP_ELD_SELECTED:
       return {
         ...state,
         resultSelected: payload,
         isFetching: false,
-        inError: false,
+        isError: false,
       };
     case GET_HISTORY_EDL:
       return {

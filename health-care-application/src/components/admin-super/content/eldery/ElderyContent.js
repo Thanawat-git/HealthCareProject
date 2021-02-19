@@ -6,6 +6,7 @@ import * as eldAction from "../../../../actions/elderly.action";
 import ShowElderyInfo from "./ShowElderyInfo";
 import SearchIcon from "@material-ui/icons/Search";
 import Skeleton from '@material-ui/lab/Skeleton';
+import notfound from '../../../images/notfound.svg'
 
 export default function ElderyContent() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function ElderyContent() {
     elderlyReducer.allEldery.length === 0 && dispatch(eldAction.getAllEldery());
   }, []);
 
-  const { allEldery, isFetching } = elderlyReducer;
+  const { allEldery, isFetching, isError } = elderlyReducer;
   const createRow = () => {
     try {
       return (
@@ -107,6 +108,14 @@ export default function ElderyContent() {
               }
               </tbody>
             </table>
+
+            {
+              isFetching === false && isError === false && allEldery.length === 0 && 
+              <div className="nodata-display">
+              <img src={notfound} className="nodata-img" />
+              <h4>ไม่พบข้อมูล</h4>
+              </div>
+            }
           </div>
         </div>
       </section>
