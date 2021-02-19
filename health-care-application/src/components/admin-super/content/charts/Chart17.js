@@ -36,44 +36,44 @@ const StyledTableRow = withStyles((theme) => ({
 function creactData(
   โรคประจำตัว,
   ช่วงอายุ6064,
-  ช่วงอายุ6569,
-  ช่วงอายุ7074,
-  ช่วงอายุ7579,
-  ช่วงอายุ8084,
-  ช่วงอายุ8590,
-  ช่วงอายุ9094,
-  ช่วงอายุ95ขึ้นไป,
-รวม,
   เปอร์เซ็นต์ช่วงอายุ6064,
+  ช่วงอายุ6569,
   เปอร์เซ็นต์ช่วงอายุ6569,
+  ช่วงอายุ7074,
   เปอร์เซ็นต์ช่วงอายุ7074,
+  ช่วงอายุ7579,
   เปอร์เซ็นต์ช่วงอายุ7579,
+  ช่วงอายุ8084,
   เปอร์เซ็นต์ช่วงอายุ8084,
+  ช่วงอายุ8590,
   เปอร์เซ็นต์ช่วงอายุ8589,
+  ช่วงอายุ9094,
   เปอร์เซ็นต์ช่วงอายุ9094,
+  ช่วงอายุ95ขึ้นไป,
   เปอร์เซ็นต์ช่วงอายุ95ขึ้นไป,
-  เปอร์เซ็นต์รวม,
+รวม,
+เปอร์เซ็นต์รวม,
 ) {
   return {
     โรคประจำตัว,
     ช่วงอายุ6064,
-    ช่วงอายุ6569,
-    ช่วงอายุ7074,
-    ช่วงอายุ7579,
-    ช่วงอายุ8084,
-    ช่วงอายุ8590,
-    ช่วงอายุ9094,
-    ช่วงอายุ95ขึ้นไป,
-    รวม,
     เปอร์เซ็นต์ช่วงอายุ6064,
+    ช่วงอายุ6569,
     เปอร์เซ็นต์ช่วงอายุ6569,
+    ช่วงอายุ7074,
     เปอร์เซ็นต์ช่วงอายุ7074,
+    ช่วงอายุ7579,
     เปอร์เซ็นต์ช่วงอายุ7579,
+    ช่วงอายุ8084,
     เปอร์เซ็นต์ช่วงอายุ8084,
+    ช่วงอายุ8590,
     เปอร์เซ็นต์ช่วงอายุ8589,
+    ช่วงอายุ9094,
     เปอร์เซ็นต์ช่วงอายุ9094,
+    ช่วงอายุ95ขึ้นไป,
     เปอร์เซ็นต์ช่วงอายุ95ขึ้นไป,
-    เปอร์เซ็นต์รวม,
+  รวม,
+  เปอร์เซ็นต์รวม,
   };
 }
 
@@ -90,23 +90,23 @@ const ShowChart = React.forwardRef((props, ref) => {
           row.push(
             creactData(
                 element.DisName, 
-                element.a6064.Elder, 
+                element.a6064.Elder,
+                element.a6064.PerElder === "NaN" ? "0" : element.a6064.PerElder,  
                 element.a6569.Elder,
-                element.a7074.Elder, 
-                element.a7579.Elder,
-                element.a8084.Elder, 
-                element.a8589.Elder,
-                element.a9094.Elder, 
-                element.a95.Elder,
-                element.Summary.Elder,
-                element.a6064.PerElder === "NaN" ? "0" : element.a6064.PerElder, 
                 element.a6569.PerElder === "NaN" ? "0" :element.a6569.PerElder,
-                element.a7074.PerElder === "NaN" ? "0" :element.a7074.PerElder, 
+                element.a7074.Elder,
+                element.a7074.PerElder === "NaN" ? "0" :element.a7074.PerElder,  
+                element.a7579.Elder,
                 element.a7579.PerElder === "NaN" ? "0" :element.a7579.PerElder,
+                element.a8084.Elder,
                 element.a8084.PerElder === "NaN" ? "0" :element.a8084.PerElder, 
+                element.a8589.Elder,
                 element.a8589.PerElder === "NaN" ? "0" :element.a8589.PerElder,
-                element.a9094.PerElder === "NaN" ? "0" :element.a9094.PerElder, 
+                element.a9094.Elder,
+                element.a9094.PerElder === "NaN" ? "0" :element.a9094.PerElder,  
+                element.a95.Elder,
                 element.a95.PerElder === "NaN" ? "0" :element.a95.PerElder,
+                element.Summary.Elder, 
                 element.Summary.PerElder === "NaN" ? "0" :element.Summary.PerElder,
                 )
           );
@@ -211,7 +211,7 @@ export default function Chart17() {
     <div className="col-12">
       <div className="card card-light collapsed-card">
         <div className="card-header">
-          <h3 className="card-title">
+          <h3 className="card-title">CH17
          จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบ จำแนกตามช่วงอายุ
           </h3>
           <div className="card-tools">
