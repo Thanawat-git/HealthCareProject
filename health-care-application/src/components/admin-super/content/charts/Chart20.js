@@ -156,7 +156,7 @@ export default function Chart20() {
               className="btn btn-tool"
               data-card-widget="collapse"
             >
-              <i className="fas fa-minus"></i>
+              <i className="fas fa-plus"></i>
             </button>
             <Tooltip
               disableFocusListener

@@ -361,7 +361,7 @@ export default function Chart4() {
               className="btn btn-tool"
               data-card-widget="collapse"
             >
-              <i className="fas fa-minus"></i>
+              <i className="fas fa-plus"></i>
             </button>
             <Tooltip
               disableFocusListener
