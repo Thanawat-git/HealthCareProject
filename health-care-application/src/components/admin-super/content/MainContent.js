@@ -46,23 +46,23 @@ export default function MainContent() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
-    dispatch(getDataChart1())
-    dispatch(getDataChart2("ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้"))
-    dispatch(getDataChart3("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart4("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart5("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
-    dispatch(getDataChart7("เบิกต้นสังกัด"))
-    dispatch(getDataChart8("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart1())
+    // dispatch(getDataChart2("ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้"))
+    // dispatch(getDataChart3("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart4("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
+    // dispatch(getDataChart7("เบิกต้นสังกัด"))
+    // dispatch(getDataChart8("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart9());
     // dispatch(getDataChart10());
     // dispatch(getDataChart11());
     // dispatch(getDataChart14("ทุกชุมชน"));
-    dispatch(getDataChart16());
-    dispatch(getDataChart17());
-    dispatch(getDataChart18("ทุกชุมชน"));
-     dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+    // dispatch(getDataChart16());
+    // dispatch(getDataChart17());
+    // dispatch(getDataChart18("ทุกชุมชน"));
+    //  dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+    // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart22("ทุกชุมชน"));
   }, []);
   return (
@@ -125,24 +125,24 @@ export default function MainContent() {
               </div>
             </div>
 
-            <Chart1 />
-            <Chart2 />
-            <Chart3 />
-            <Chart4 />
-            <Chart5 />
-            <Chart6 />
-            <Chart7 />
-            <Chart8 /> 
+            {/* <Chart1 /> */}
+            {/* <Chart2 /> */}
+            {/* <Chart3 /> */}
+            {/* <Chart4 /> */}
+            {/* <Chart5 /> */}
+            {/* <Chart6 /> */}
+            {/* <Chart7 /> */}
+            {/* <Chart8 />  */}
             {/* //ส่วนที่2 */}
             {/* <Chart9 /> */}
             {/* <Chart10 /> */}
             {/* <Chart11 /> */}
             {/* <Chart14 /> */}
-            <Chart16 />
-            <Chart17 />
-            <Chart18 />
-            <Chart20 />
-            <Chart21 />
+            {/* <Chart16 /> */}
+            {/* <Chart17 /> */}
+            {/* <Chart18 /> */}
+            {/* <Chart20 /> */}
+            {/* <Chart21 /> */}
             {/* //ส่วนที่3 */}
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}

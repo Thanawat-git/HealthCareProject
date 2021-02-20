@@ -168,9 +168,9 @@ const[err,seterr]= useState(false);
     const elderlyBirthday = `${yea}-${numMon}-${day}`;
     // cal Age
     const nowDate = new Date();
-    const nowDay = nowDate.getDate();
-    const nowMonth = nowDate.getMonth() + 1;
-    const nowYear = nowDate.getFullYear() + 543;
+    // const nowDay = nowDate.getDate();
+    // const nowMonth = nowDate.getMonth() + 1;
+    // const nowYear = nowDate.getFullYear() + 543;
     // var Age = nowYear - parseInt(yea);
     // if (numMon == nowMonth) {
     //   parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);

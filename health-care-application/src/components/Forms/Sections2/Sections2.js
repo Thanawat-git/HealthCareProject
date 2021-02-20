@@ -151,23 +151,56 @@ console.log("Nofood 1 : ", noFood)
   const calbmi = () => {
     setBmi((parseFloat(weight) / (parseFloat(high) / 100) ** 2).toFixed(2));
   };
+
   const calbloodPressure = () => {
-    if (bloodPressure1 < 140 && bloodPressure2 < 90) {
-      setbloodPressureResult("ปรับพฤติกรรม");
-      setchecktosend1(false);
-    } else if (bloodPressure1 < 180 && bloodPressure2 < 110) {
-      setbloodPressureResult(
-        "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
-      );
+    // if (bloodPressure1 < 140 && bloodPressure2 < 90) {
+    //   setbloodPressureResult("ปรับพฤติกรรม");
+    //   setchecktosend1(false);
+    // } else if (bloodPressure1 < 180 && bloodPressure2 < 110) {
+    //   setbloodPressureResult(
+    //     "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
+    //   );
+    //   setTopicblood("ความดันโลหิต");
+    //   calDate2(2);
+    //   setdateblood(toDay2);
+    //   setchecktosend1(true);
+    // } else {
+    //   setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
+    //   setchecktosend1(false);
+    // }
+
+    if(bloodPressure1<=139){
+      if(bloodPressure2<80){
+        // ปกติ
+        setbloodPressureResult("ปกติ");
+      }
+      if(bloodPressure2>=80 && bloodPressure2<110){
+        // เสี่ยง
+        setbloodPressureResult("ปรับพฤติกรรม");
+      } else {
+        // พบแพทย์
+        setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
+      }
+      setchecktosend1(false); // send follow
+    }
+
+    if(bloodPressure1>=140 && bloodPressure1<=179){
+      // ติดตาม
+      setbloodPressureResult("วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์");
       setTopicblood("ความดันโลหิต");
       calDate2(2);
       setdateblood(toDay2);
       setchecktosend1(true);
-    } else {
+    }
+
+    if(bloodPressure1>=180){
+      // พบแพทย์
       setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
       setchecktosend1(false);
     }
+
   };
+
   const calsugar = () => {
     console.log("sugar in cal Sugar ",sugar)
     if (noFood) {//noFood == true
