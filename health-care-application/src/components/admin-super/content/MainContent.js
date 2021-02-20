@@ -62,7 +62,7 @@ export default function MainContent() {
     dispatch(getDataChart17());
     dispatch(getDataChart18("ทุกชุมชน"));
      dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart22("ทุกชุมชน"));
   }, []);
   return (

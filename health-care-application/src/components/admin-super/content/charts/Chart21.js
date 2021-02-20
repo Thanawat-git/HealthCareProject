@@ -147,7 +147,7 @@ export default function Chart21() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ
+          จำนวนและรายชื่อของผู้สูงอายุที่มีความดันโลหิตสูง จำแนกตามชุมชน
           </h3>
           <div className="card-tools">
             <button
@@ -155,7 +155,7 @@ export default function Chart21() {
               className="btn btn-tool"
               data-card-widget="collapse"
             >
-              <i className="fas fa-minus"></i>
+              <i className="fas fa-plus"></i>
             </button>
             <Tooltip
               disableFocusListener
