@@ -141,8 +141,8 @@ export default function MainContent() {
             {/* <Chart16 /> */}
             {/* <Chart17 /> */}
             {/* <Chart18 /> */}
-            <Chart20 />
-            <Chart21 />
+            {/* <Chart20 /> */}
+            {/* <Chart21 /> */}
             {/* //ส่วนที่3 */}
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}
