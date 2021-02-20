@@ -16,11 +16,11 @@ import {
   TableFooter,
   TablePagination,
 } from "@material-ui/core";
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -123,71 +123,71 @@ TablePaginationActions.propTypes = {
 function createData(
   โรคประจำตัว,
   ผู้ชาย6064,
-  ผู้หญิง6064,
   เปอร์เซนต์ชาย6064,
+  ผู้หญิง6064,
   เปอร์เซนต์หญิง6064,
   ผู้ชาย6569,
-  ผู้หญิง6569,
   เปอร์เซนต์ชาย6569,
+  ผู้หญิง6569,
   เปอร์เซนต์หญิง6569,
   ผู้ชาย7074,
-  ผู้หญิง7074,
   เปอร์เซนต์ชาย7074,
+  ผู้หญิง7074,
   เปอร์เซนต์หญิง7074,
   ผู้ชาย7579,
-  ผู้หญิง7579,
   เปอร์เซนต์ชาย7579,
+  ผู้หญิง7579,
   เปอร์เซนต์หญิง7579,
   ผู้ชาย8084,
-  ผู้หญิง8084,
   เปอร์เซนต์ชาย8084,
+  ผู้หญิง8084,
   เปอร์เซนต์หญิง8084,
   ผู้ชาย8589,
-  ผู้หญิง8589,
   เปอร์เซนต์ชาย8589,
+  ผู้หญิง8589,
   เปอร์เซนต์หญิง8589,
   ผู้ชาย9094,
-  ผู้หญิง9094,
   เปอร์เซนต์ชาย9094,
+  ผู้หญิง9094,
   เปอร์เซนต์หญิง9094,
   ผู้ชาย95,
-  ผู้หญิง95,
   เปอร์เซนต์ชาย95,
+  ผู้หญิง95,
   เปอร์เซนต์หญิง95
 ) {
   return {
     โรคประจำตัว,
     ผู้ชาย6064,
-    ผู้หญิง6064,
     เปอร์เซนต์ชาย6064,
+    ผู้หญิง6064,
     เปอร์เซนต์หญิง6064,
     ผู้ชาย6569,
-    ผู้หญิง6569,
     เปอร์เซนต์ชาย6569,
+    ผู้หญิง6569,
     เปอร์เซนต์หญิง6569,
     ผู้ชาย7074,
-    ผู้หญิง7074,
     เปอร์เซนต์ชาย7074,
+    ผู้หญิง7074,
     เปอร์เซนต์หญิง7074,
     ผู้ชาย7579,
-    ผู้หญิง7579,
     เปอร์เซนต์ชาย7579,
+    ผู้หญิง7579,
     เปอร์เซนต์หญิง7579,
     ผู้ชาย8084,
-    ผู้หญิง8084,
     เปอร์เซนต์ชาย8084,
+    ผู้หญิง8084,
     เปอร์เซนต์หญิง8084,
     ผู้ชาย8589,
-    ผู้หญิง8589,
     เปอร์เซนต์ชาย8589,
+    ผู้หญิง8589,
     เปอร์เซนต์หญิง8589,
     ผู้ชาย9094,
-    ผู้หญิง9094,
     เปอร์เซนต์ชาย9094,
+    ผู้หญิง9094,
     เปอร์เซนต์หญิง9094,
     ผู้ชาย95,
-    ผู้หญิง95,
     เปอร์เซนต์ชาย95,
+    ผู้หญิง95,
     เปอร์เซนต์หญิง95,
   };
 }
@@ -211,66 +211,66 @@ const ShowChart = React.forwardRef((props, ref) => {
             createData(
               element.DisName,
               element.a6064.ElderMale,
-              element.a6064.ElderFemale,
               element.a6064.PerElderMale === "NaN"
                 ? "0%"
                 : element.a6064.PerElderMale + "%",
+              element.a6064.ElderFemale,
               element.a6064.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a6064.PerElderFemale + "%",
               element.a6569.ElderMale,
-              element.a6569.ElderFemale,
               element.a6569.PerElderMale === "NaN"
                 ? "0%"
                 : element.a6569.PerElderMale + "%",
+              element.a6569.ElderFemale,
               element.a6569.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a6569.PerElderFemale + "%",
               element.a7074.ElderMale,
-              element.a7074.ElderFemale,
               element.a7074.PerElderMale === "NaN"
                 ? "0%"
                 : element.a7074.PerElderMale + "%",
+              element.a7074.ElderFemale,
               element.a7074.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a7074.PerElderFemale + "%",
               element.a7579.ElderMale,
-              element.a7579.ElderFemale,
               element.a7579.PerElderMale === "NaN"
                 ? "0%"
                 : element.a7579.PerElderMale + "%",
+              element.a7579.ElderFemale,
               element.a7579.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a7579.PerElderFemale + "%",
               element.a8084.ElderMale,
-              element.a8084.ElderFemale,
               element.a8084.PerElderMale === "NaN"
                 ? "0%"
                 : element.a8084.PerElderMale + "%",
+              element.a8084.ElderFemale,
               element.a8084.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a8084.PerElderFemale + "%",
               element.a8589.ElderMale,
-              element.a8589.ElderFemale,
               element.a8589.PerElderMale === "NaN"
                 ? "0%"
                 : element.a8589.PerElderMale + "%",
+              element.a8589.ElderFemale,
               element.a8589.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a8589.PerElderFemale + "%",
               element.a9094.ElderMale,
-              element.a9094.ElderFemale,
               element.a9094.PerElderMale === "NaN"
                 ? "0%"
                 : element.a9094.PerElderMale + "%",
+              element.a9094.ElderFemale,
               element.a9094.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a9094.PerElderFemale + "%",
               element.a95.ElderMale,
-              element.a95.ElderFemale,
               element.a95.PerElderMale === "NaN"
                 ? "0%"
                 : element.a95.PerElderMale + "%",
+              element.a95.ElderFemale,
               element.a95.PerElderFemale === "NaN"
                 ? "0%"
                 : element.a95.PerElderFemale + "%"
@@ -340,29 +340,30 @@ const ShowChart = React.forwardRef((props, ref) => {
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center" colSpan={18}>
-                จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบจำแนกตามเพศและช่วงอายุของชุมชน{community}
+                <StyledTableCell align="center" colSpan={10}>
+                  จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบจำแนกตามเพศและช่วงอายุของชุมชน
+                  {community}
                 </StyledTableCell>
               </TableRow>
               <TableRow>
                 <StyledTableCell>โรคประจำตัว</StyledTableCell>
                 <StyledTableCell align="center"></StyledTableCell>
                 <StyledTableCell align="right">60-64</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left"></StyledTableCell> */}
                 <StyledTableCell align="right">65-69</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
                 <StyledTableCell align="right">70-74</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
                 <StyledTableCell align="right">75-79</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
                 <StyledTableCell align="right">80-84</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
                 <StyledTableCell align="right">85-89</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
                 <StyledTableCell align="right">90-94</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
                 <StyledTableCell align="right">95+</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
+                {/* <StyledTableCell align="left">%</StyledTableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -377,101 +378,88 @@ const ShowChart = React.forwardRef((props, ref) => {
                   <StyledTableRow>
                     <StyledTableCell>{v.โรคประจำตัว}</StyledTableCell>
                     <StyledTableCell>
-                      ชาย <br /> หญิง
+                      ชาย <br />
+                      เปอร์เซ็นต์ชาย <br />
+                      หญิง<br />
+                      เปอร์เซ็นต์หญิง
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย6064}
-                      <br />
+                      <br /> 
+                      {v.เปอร์เซนต์ชาย6064}           
+                       <br />
                       {v.ผู้หญิง6064}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {v.เปอร์เซนต์ชาย6064}
                       <br />
                       {v.เปอร์เซนต์หญิง6064}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย6569}
-                      <br />
-                      {v.ผู้หญิง6569}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย6569}
                       <br />
+                      {v.ผู้หญิง6569}
+                      <br />                      
                       {v.เปอร์เซนต์หญิง6569}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย7074}
-                      <br />
-                      {v.ผู้หญิง7074}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย7074}
                       <br />
+                      {v.ผู้หญิง7074}
+                      <br />                     
                       {v.เปอร์เซนต์หญิง7074}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย7579}
-                      <br />
-                      {v.ผู้หญิง7579}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย7579}
                       <br />
+                      {v.ผู้หญิง7579}
+                      <br />                      
                       {v.เปอร์เซนต์หญิง7579}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย8084}
-                      <br />
-                      {v.ผู้หญิง8084}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย8084}
                       <br />
+                      {v.ผู้หญิง8084}
+                      <br />                      
                       {v.เปอร์เซนต์หญิง8084}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย8589}
-                      <br />
-                      {v.ผู้หญิง8589}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย8589}
                       <br />
+                      {v.ผู้หญิง8589}
+                      <br />                      
                       {v.เปอร์เซนต์หญิง8589}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย9094}
-                      <br />
-                      {v.ผู้หญิง9094}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย9094}
                       <br />
+                      {v.ผู้หญิง9094}
+                      <br />                      
                       {v.เปอร์เซนต์หญิง9094}
                       <br />
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {v.ผู้ชาย95}
-                      <br />
-                      {v.ผู้หญิง95}
-                      <br />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
+                      <br />                      
                       {v.เปอร์เซนต์ชาย95}
                       <br />
+                      {v.ผู้หญิง95}
+                      <br />                      
                       {v.เปอร์เซนต์หญิง95}
                       <br />
                     </StyledTableCell>
@@ -512,7 +500,7 @@ export default function Chart18() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบ
+            CH18 จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบ
             จำแนกตามเพศและช่วงอายุ ของชุมชน
           </h3>
           <div className="card-tools">

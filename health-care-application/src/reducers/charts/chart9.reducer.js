@@ -2958,8 +2958,8 @@ const initialState = {
       }
       
   },
-  isFetching: false,
-  isError: false,
+  isFetching: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {
