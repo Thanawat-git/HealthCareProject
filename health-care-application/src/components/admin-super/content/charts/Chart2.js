@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { withStyles, makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Tooltip,
   Table,
@@ -9,9 +10,16 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Select,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
-import { Chart } from "react-google-charts";
+import Skeleton from '@material-ui/lab/Skeleton';
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
+// import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +34,6 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: 18,
   },
 }))(TableCell);
-
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
@@ -42,6 +49,82 @@ const useStyles = makeStyles({
     fontSize: 20,
   },
 });
+
+const useStyles1 = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  const handleFirstPageButtonClick = (event) => {
+    onChangePage(event, 0);
+  };
+
+  const handleBackButtonClick = (event) => {
+    onChangePage(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event) => {
+    onChangePage(event, page + 1);
+  };
+
+  const handleLastPageButtonClick = (event) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
+
 function createData(
   ชุมชน,
   ผู้ชาย6064,
@@ -103,7 +186,6 @@ function createData(
 const ShowChart = React.forwardRef((props, ref) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(0);
-  const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
   const chart2Reducer = useSelector(({ chart2Reducer }) => chart2Reducer);
   const {
     ชุมชนมณีแก้ว,
@@ -203,6 +285,16 @@ const ShowChart = React.forwardRef((props, ref) => {
     setOpen(row.length)
   }, [chart2Reducer.isFetching])
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <React.Fragment>
       <div className="card-body">
@@ -242,7 +334,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-              {row.map((value) => {
+              {chart2Reducer.isFetching === false ?
+              (rowsPerPage > 0
+                ? row.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : row).map((value) => {
                   return (
                     <StyledTableRow>
                       <StyledTableCell>{value.ชุมชน}</StyledTableCell>
@@ -296,8 +394,34 @@ const ShowChart = React.forwardRef((props, ref) => {
                       </StyledTableCell>
                     </StyledTableRow>
                   );
-                })}
+                }): <React.Fragment>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    </React.Fragment>
+                }
               </TableBody>
+              <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={11}
+                  count={row.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
             </Table>
           </TableContainer>
         </div>

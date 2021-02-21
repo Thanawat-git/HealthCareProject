@@ -33,3 +33,7 @@
   padding-right: 17px;
   padding-bottom: 10px;
 }
+
+.table-per-padding .MuiTableCell-root{
+  padding: 20px 5px;
+}

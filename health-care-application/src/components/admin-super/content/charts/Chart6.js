@@ -11,11 +11,12 @@ import {
   Select,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import { Chart } from "react-google-charts";
+import Skeleton from '@material-ui/lab/Skeleton';
+// import { Chart } from "react-google-charts";
 import { EDUCATIONS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataChart6 } from "../../../../actions/charts.action";
+// import { getDataChart6 } from "../../../../actions/charts.action";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import { CSVLink } from "react-csv";
@@ -317,16 +318,13 @@ const ShowChart = React.forwardRef((props, ref) => {
   return (
     <React.Fragment>
       <div className="card-body">
-        <div className="csv-link">
+        <div className="row justify-content-between csv-link-select">
           <CSVLink
             data={rows}
             filename={"จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับการศึกษา.csv"}
           >
             Download CSV
           </CSVLink>
-        </div>
-        <br />
-        <div ref={ref}>
           <FormControlLabel
             control={
               <Switch
@@ -337,9 +335,13 @@ const ShowChart = React.forwardRef((props, ref) => {
             }
             label="คิดเป็นร้อยละ"
           />
+        </div>
+        <br />
+        <div ref={ref}>
+          
           {openPaper ? (
             <TableContainer component={Paper}>
-              <Table className="table-report" aria-label="customized table">
+              <Table className="table-report table-per-padding" aria-label="customized table">
                 {/*%%%%%%%%%%%%%%%%%%%%% */}
                 <TableHead>
                 <TableRow>
@@ -391,7 +393,7 @@ const ShowChart = React.forwardRef((props, ref) => {
                       <StyledTableCell align="center" colSpan={2}>
                         ชาย <br /> หญิง <br /> รวม
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {" "}
                         {/* 6064 */}
                         {row.เปอร์เซ็นต์ผู้ชาย6064} %
@@ -400,56 +402,56 @@ const ShowChart = React.forwardRef((props, ref) => {
                         <br />
                         {row.เปอร์เซ็นต์รวม6064} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย6569} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง6569} %
                         <br />
                         {row.เปอร์เซ็นต์รวม6569} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย7074} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง7074} %
                         <br />
                         {row.เปอร์เซ็นต์รวม7074} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย7579} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง7579} %
                         <br />
                         {row.เปอร์เซ็นต์รวม7579} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย8084} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง8084} %
                         <br />
                         {row.เปอร์เซ็นต์รวม8084} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย8590} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง8590} %
                         <br />
                         {row.เปอร์เซ็นต์รวม8590} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย9094} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง9094} %
                         <br />
                         {row.เปอร์เซ็นต์รวม9094} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์ผู้ชาย95} %
                         <br />
                         {row.เปอร์เซ็นต์ผู้หญิง95} %
                         <br />
                         {row.เปอร์เซ็นต์รวม95} %
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.เปอร์เซ็นต์รวมทั้งหมดผู้ชาย} %
                         <br />
                         {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิง} %
@@ -495,7 +497,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
+                  {chart6Reducer.isFetching === false 
+                    ?rows.map((row) => (
                     <StyledTableRow key={row.ระดับการศึกษา}>
                       <StyledTableCell component="th" scope="row">
                         {row.ระดับการศึกษา == "Uneducate"
@@ -515,7 +518,7 @@ const ShowChart = React.forwardRef((props, ref) => {
                       <StyledTableCell align="center" colSpan={2}>
                         ชาย <br /> หญิง <br /> รวม
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {" "}
                         {/* 6064 */}
                         {row.ผู้ชาย6064}
@@ -524,55 +527,55 @@ const ShowChart = React.forwardRef((props, ref) => {
                         <br />
                         {row.รวม6064}{" "}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย6569}
                         <br />
                         {row.ผู้หญิง6569}
                         <br />
                         {row.รวม6569}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย7074}
                         <br />
                         {row.ผู้หญิง7074}
                         <br />
                         {row.รวม7074}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย7579}
                         <br />
                         {row.ผู้หญิง7579}
                         <br />
                         {row.รวม7579}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย8084} <br />
                         {row.ผู้หญิง8084}
                         <br />
                         {row.รวม8084}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย8590}
                         <br />
                         {row.ผู้หญิง8590}
                         <br />
                         {row.รวม8590}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย9094}
                         <br />
                         {row.ผู้หญิง9094}
                         <br />
                         {row.รวม9094}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.ผู้ชาย95}
                         <br />
                         {row.ผู้หญิง95}
                         <br />
                         {row.รวม95}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
+                      <StyledTableCell align="right">
                         {row.รวมทั้งหมดผู้ชาย}
                         <br />
                         {row.รวมทั้งหมดผู้หญิง}
@@ -580,7 +583,14 @@ const ShowChart = React.forwardRef((props, ref) => {
                         {row.รวมทั้งหมด}
                       </StyledTableCell>
                     </StyledTableRow>
-                  ))}
+                  )): <React.Fragment>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  </React.Fragment>
+                  }
                 </TableBody>
               </Table>
             </TableContainer>

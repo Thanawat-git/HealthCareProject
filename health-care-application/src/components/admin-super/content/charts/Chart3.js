@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { getDataChart3 } from "../../../../actions/charts.action";
+import PropTypes from "prop-types";
+import { withStyles, makeStyles, useTheme } from "@material-ui/core/styles";
+// import { getDataChart3 } from "../../../../actions/charts.action";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Tooltip,
@@ -11,9 +12,16 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Select,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
-import { Chart } from "react-google-charts";
+// import { Chart } from "react-google-charts";
+import Skeleton from '@material-ui/lab/Skeleton';
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -37,6 +45,81 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
+
+const useStyles1 = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  const handleFirstPageButtonClick = (event) => {
+    onChangePage(event, 0);
+  };
+
+  const handleBackButtonClick = (event) => {
+    onChangePage(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event) => {
+    onChangePage(event, page + 1);
+  };
+
+  const handleLastPageButtonClick = (event) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
 
 function createData(
   ชุมชน,
@@ -62,7 +145,6 @@ function createData(
 
 const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
-  const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
   const chart3Reducer = useSelector(({ chart3Reducer }) => chart3Reducer);
   const {
     ชุมชนมณีแก้ว,
@@ -92,10 +174,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     ชุมชนบ้านแหลมแท่น,
   } = chart3Reducer.results;
   const dispatch = useDispatch();
-  const handleChange = (e) => {
-    setCommunity(e.target.value);
-    dispatch(getDataChart3(e.target.value));
-  };
+ 
 
   const communi = [
     ชุมชนมณีแก้ว,
@@ -149,9 +228,17 @@ const ShowChart = React.forwardRef((props, ref) => {
     console.log("row length ", rows.length);
     setOpen(rows.length);
   }, [chart3Reducer.isFetching]);
-  React.useEffect(() => {
-    setRow([]);
-  }, [community]);
+ 
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <React.Fragment>
@@ -177,32 +264,33 @@ const ShowChart = React.forwardRef((props, ref) => {
                   </StyledTableCell>
                 </TableRow>
                 <TableRow>
-                  <StyledTableCell colSpan={3}>ชุมชน&nbsp;</StyledTableCell>
-                  <StyledTableCell>ประชากรผู้สูงอายุ&nbsp;</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell>จำนวนที่สำรวจได้</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell>ร้อยละที่สำรวจได้</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell colSpan={2}>ชุมชน</StyledTableCell>
+                  <StyledTableCell align="center" colSpan={3}>ประชากรผู้สูงอายุ</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell align="center" colSpan={3}>จำนวนที่สำรวจได้</StyledTableCell>
+                  <StyledTableCell align="center" colSpan={2}>ร้อยละที่สำรวจได้</StyledTableCell>
                 </TableRow>
                 <TableRow>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
                   <StyledTableCell>ชาย</StyledTableCell>
                   <StyledTableCell>หญิง</StyledTableCell>
                   <StyledTableCell>รวม</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
                   <StyledTableCell>ชาย</StyledTableCell>
                   <StyledTableCell>หญิง</StyledTableCell>
                   <StyledTableCell>รวม</StyledTableCell>
-                  <StyledTableCell>(%)</StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
+                  <StyledTableCell colSpan={2}>(%)</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {chart3Reducer.isFetching === false ?
+              (rowsPerPage > 0
+                ? rows.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : rows).map((row) => (
                   <StyledTableRow key={row.ชุมชน}>
                     <StyledTableCell component="th" scope="row">
                       {row.ชุมชน}
@@ -227,13 +315,38 @@ const ShowChart = React.forwardRef((props, ref) => {
                     <StyledTableCell align="center">
                       {row.รวมจำนวนที่สำรวจได้}
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell colSpan={2} align="center">
                       {row.เปอร์เซ็นต์ที่สำรวจได้} %
                     </StyledTableCell>
-                    <StyledTableCell>&nbsp;</StyledTableCell>
                   </StyledTableRow>
-                ))}
+                )): <React.Fragment>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                    </React.Fragment>
+                }
               </TableBody>
+              <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={18}
+                  count={rows.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
             </Table>
           </TableContainer>
         </div>

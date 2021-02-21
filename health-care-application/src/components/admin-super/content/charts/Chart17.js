@@ -249,7 +249,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             </TableHead>
             <TableBody>
               {
-                chart17Reducer.isFetching === false ?
+              chart17Reducer.isFetching === false ?
               (rowsPerPage > 0
                 ? row.slice(
                     page * rowsPerPage,
