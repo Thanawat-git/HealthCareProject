@@ -53,8 +53,8 @@ const initialState = {
       PerFemale: 0,
     },
   },
-  isFetching: false,
-  isError: false,
+  isFetching: null,
+  isError: null,
 };
 
 export default (state = initialState, { type, payload }) => {

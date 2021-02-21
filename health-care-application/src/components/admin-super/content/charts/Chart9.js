@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { withStyles, makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Tooltip,
   Table,
@@ -9,17 +10,22 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Select,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
-import { Chart } from "react-google-charts";
+import Skeleton from '@material-ui/lab/Skeleton';
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
+// import { Chart } from "react-google-charts";
 import {
-  TREATMENT,
   PRINT_THIS_SECTION,
-  COMMUNITYS,
 } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataChart9 } from "../../../../actions/charts.action";
+// import { getDataChart9 } from "../../../../actions/charts.action";
 import { CSVLink } from "react-csv";
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -44,6 +50,81 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
+
+const useStyles1 = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  const handleFirstPageButtonClick = (event) => {
+    onChangePage(event, 0);
+  };
+
+  const handleBackButtonClick = (event) => {
+    onChangePage(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event) => {
+    onChangePage(event, page + 1);
+  };
+
+  const handleLastPageButtonClick = (event) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
 
 function createData(
   ชุมชน,
@@ -213,7 +294,7 @@ function createData(
 
 const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
-  const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
+  // const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
   const [openPaper, setopenPaper] = React.useState(false);
   const [genderLabel ,setGenderLabel] = React.useState("เพศชาย")
   const chart9Reducer = useSelector(({ chart9Reducer }) => chart9Reducer);
@@ -250,10 +331,6 @@ const ShowChart = React.forwardRef((props, ref) => {
     openPaper ? setGenderLabel("เพศหญิง") : setGenderLabel("เพศชาย")
   },[openPaper])
 
-  const handleChange = (e) => {
-    setCommunity(e.target.value);
-    dispatch(getDataChart9(e.target.value));
-  };
   const toggleChecked = () => {
     setopenPaper((prev) => !prev);
   };
@@ -381,24 +458,29 @@ const ShowChart = React.forwardRef((props, ref) => {
     console.log("row length ", rows.length);
     setOpen(rows.length);
   }, [chart9Reducer.isFetching]);
-  React.useEffect(() => {
-    setRow([]);
-  }, [community]);
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
   
   return (
     <React.Fragment>
       
       <div className="card-body">
-        <div className="csv-link" >
+        <div className="row justify-content-between csv-link-select" >
           <CSVLink 
           data={rows}
           filename={
             "จำนวนและร้อยละของผู้สูงอายุจำแนกตามเส้นรอบเอวช่วงอายุเพศและชุมชน.csv"
           }
           >Download CSV</CSVLink>
-        </div>
-        <div ref={ref}>
-        <FormControlLabel
+          <FormControlLabel
           control={
             <Switch
               size="medium"
@@ -408,6 +490,8 @@ const ShowChart = React.forwardRef((props, ref) => {
           }
           label={genderLabel}
         />
+        </div>
+        <div ref={ref}>
         {openPaper ? (
           <TableContainer component={Paper}>
             <Table className="table-report" aria-label="customized table">
@@ -430,7 +514,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {chart9Reducer.isFetching === false 
+                ? (rowsPerPage > 0
+                  ? rows.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : rows).map((row) => (
                   <StyledTableRow key={row.ชุมชน}>
                     <StyledTableCell component="th" scope="row">
                       {row.ชุมชน}
@@ -438,93 +528,120 @@ const ShowChart = React.forwardRef((props, ref) => {
                     <StyledTableCell align="left">
                       ปกติ <br />ปกติ(%) <br /> เกิน <br /> เกิน(%)
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {" "}
                       {/* 6064 */}
                       {row.ผู้ชายปกติ6064} 
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ6064} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ6064} 
                       <br />
                       {row.ผู้ชายเกิน6064}                    
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน6064} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน6064} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ6569}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ6569} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ6569} 
                       <br />
                       {row.ผู้ชายเกิน6569}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน6569} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน6569} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ7074}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ7074} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ7074} 
                       <br />
                       {row.ผู้ชายเกิน7074}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน7074} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน7074} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ7579}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ7579} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ7579} 
                       <br />
                       {row.ผู้ชายเกิน7579}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน7579} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน7579} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ8084}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ8084} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ8084} 
                       <br />
                       {row.ผู้ชายเกิน8084}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน8084} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน8084} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ8589}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ8589} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ8589} 
                       <br />
                       {row.ผู้ชายเกิน8589}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน8589} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน8589} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ9094}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ9094} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ9094} 
                       <br />
                       {row.ผู้ชายเกิน9094}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน9094} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน9094} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้ชายปกติ95}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายปกติ95} %
+                      {row.เปอร์เซ็นต์ผู้ชายปกติ95} 
                       <br />
                       {row.ผู้ชายเกิน95}
                       <br />
-                      {row.เปอร์เซ็นต์ผู้ชายเกิน95} %
+                      {row.เปอร์เซ็นต์ผู้ชายเกิน95} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.รวมทั้งหมดผู้ชายปกติ} 
                       <br /> 
-                      {row.เปอร์เซ็นรวมทั้งหมดผู้ชายปกติ} %
+                      {row.เปอร์เซ็นรวมทั้งหมดผู้ชายปกติ} 
                       <br />
                       {row.รวมทั้งหมดผู้ชายเกิน} 
                       <br />
-                      {row.เปอร์เซ็นรวมทั้งหมดผู้ชายเกิน} %
+                      {row.เปอร์เซ็นรวมทั้งหมดผู้ชายเกิน} 
                       
                     </StyledTableCell>
                   </StyledTableRow>
-                ))}
+                ))
+                : <React.Fragment>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  </React.Fragment>
+                }
               </TableBody>
+              <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={18}
+                  count={rows.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
             </Table>
           </TableContainer>
            ) : (
@@ -550,7 +667,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {chart9Reducer.isFetching === false 
+                ? (rowsPerPage > 0
+                  ? rows.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : rows).map((row) => (
                   <StyledTableRow key={row.ชุมชน}>
                     <StyledTableCell component="th" scope="row">
                       {row.ชุมชน}
@@ -558,93 +681,119 @@ const ShowChart = React.forwardRef((props, ref) => {
                     <StyledTableCell align="left">
                       ปกติ <br />ปกติ(%) <br /> เกิน <br /> เกิน(%)
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {" "}
                       {/* 6064 */}
                       {row.ผู้หญิงปกติ6064} 
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ6064} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ6064} 
                       <br />
                       {row.ผู้หญิงเกิน6064}                    
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน6064} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน6064} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ6569}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ6569} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ6569} 
                       <br />
                       {row.ผู้หญิงเกิน6569}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน6569} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน6569} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ7074}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ7074} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ7074} 
                       <br />
                       {row.ผู้หญิงเกิน7074}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน7074} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน7074} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ7579}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ7579} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ7579} 
                       <br />
                       {row.ผู้หญิงเกิน7579}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน7579} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน7579} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ8084}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ8084} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ8084} 
                       <br />
                       {row.ผู้หญิงเกิน8084}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน8084} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน8084} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ8589}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ8589} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ8589} 
                       <br />
                       {row.ผู้หญิงเกิน8589}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน8589} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน8589} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ9094}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ9094} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ9094} 
                       <br />
                       {row.ผู้หญิงเกิน9094}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน9094} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน9094} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.ผู้หญิงปกติ95}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงปกติ95} %
+                      {row.เปอร์เซ็นผู้หญิงปกติ95} 
                       <br />
                       {row.ผู้หญิงเกิน95}
                       <br />
-                      {row.เปอร์เซ็นผู้หญิงเกิน95} %
+                      {row.เปอร์เซ็นผู้หญิงเกิน95} 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
+                    <StyledTableCell align="right">
                       {row.รวมทั้งหมดผู้หญิงปกติ} 
                       <br /> 
-                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิงปกติ} % 
+                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิงปกติ} 
                       <br />
                       {row.รวมทั้งหมดผู้หญิงเกิน} 
                       <br />
-                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิงเกิน} % 
+                      {row.เปอร์เซ็นต์รวมทั้งหมดผู้หญิงเกิน} 
                       
                     </StyledTableCell>
                   </StyledTableRow>
-                ))}
+                )): <React.Fragment>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  </React.Fragment>
+                }
               </TableBody>
+              <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={18}
+                  count={rows.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
             </Table>
             </TableContainer>
           )}

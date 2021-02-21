@@ -1,5 +1,6 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { withStyles, makeStyles, useTheme } from "@material-ui/core/styles";
 // import { getDataChart14 } from "../../../../actions/charts.action";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,8 +12,15 @@ import {
   TableHead,
   TableRow,
   Paper,
-  //   Select,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
 // import { Chart } from "react-google-charts";
 import { PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
@@ -36,6 +44,81 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+const useStyles1 = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  const handleFirstPageButtonClick = (event) => {
+    onChangePage(event, 0);
+  };
+
+  const handleBackButtonClick = (event) => {
+    onChangePage(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event) => {
+    onChangePage(event, page + 1);
+  };
+
+  const handleLastPageButtonClick = (event) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
+
 function creactData(โรคประจำตัว, จำนวน, ร้อยละ) {
   return {
     โรคประจำตัว,
@@ -53,7 +136,7 @@ const ShowChart = React.forwardRef((props, ref) => {
       for (const key in chart16Reducer.results) {
         if (Object.hasOwnProperty.call(chart16Reducer.results, key)) {
           const element = chart16Reducer.results[key];
-          console.log("element ",element)
+          console.log("element ", element);
           row.push(
             creactData(element.DisName, element.DisCount, element.DisPer)
           );
@@ -63,6 +146,16 @@ const ShowChart = React.forwardRef((props, ref) => {
       setOpen(row.length);
     }
   }, [chart16Reducer.isFetching]);
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <div className="card-body">
@@ -77,10 +170,15 @@ const ShowChart = React.forwardRef((props, ref) => {
         )}
       </div>
       <div ref={ref} className="report-container">
-        <h4>จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัว ที่สำรวจพบ</h4>
+        {/* <h4>จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัว ที่สำรวจพบ</h4> */}
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
+              <TableRow>
+                <StyledTableCell align="center" colSpan={3}>
+                  จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัว ที่สำรวจพบ
+                </StyledTableCell>
+              </TableRow>
               <TableRow>
                 <StyledTableCell>โรคประจำตัว</StyledTableCell>
                 <StyledTableCell align="">จำนวน</StyledTableCell>
@@ -88,16 +186,77 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
-                return (
+              {chart16Reducer.isFetching === false ? (
+                (rowsPerPage > 0
+                  ? row.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : row
+                ).map((value) => {
+                  return (
+                    <StyledTableRow>
+                      <StyledTableCell>{value.โรคประจำตัว}</StyledTableCell>
+                      <StyledTableCell>{value.จำนวน}</StyledTableCell>
+                      <StyledTableCell>{value.ร้อยละ}</StyledTableCell>
+                    </StyledTableRow>
+                  );
+                })
+              ) : (
+                <React.Fragment>
                   <StyledTableRow>
-                    <StyledTableCell>{value.โรคประจำตัว}</StyledTableCell>
-                    <StyledTableCell>{value.จำนวน}</StyledTableCell>
-                    <StyledTableCell>{value.ร้อยละ}</StyledTableCell>
+                    <StyledTableCell colSpan={3}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
                   </StyledTableRow>
-                )
-              })}
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={3}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={3}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={3}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={3}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
+
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={18}
+                  count={row.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
           </Table>
         </TableContainer>
       </div>

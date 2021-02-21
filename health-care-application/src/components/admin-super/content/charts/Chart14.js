@@ -13,6 +13,7 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
+import Skeleton from '@material-ui/lab/Skeleton';
 // import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
@@ -253,13 +254,15 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>
+        {/* <h4>
           จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุ เพศ
           และระดับดัชนีมวลกายของ{community}
-        </h4>
+        </h4> */}
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
+              <TableRow><StyledTableCell align="center" colSpan={13}> จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุ เพศ
+          และระดับดัชนีมวลกายของ{community} </StyledTableCell></TableRow>
               <TableRow>
                 <StyledTableCell>ช่วงอายุ (ปี)</StyledTableCell>
                 <StyledTableCell align="center"></StyledTableCell>
@@ -278,7 +281,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart14Reducer.isFetching === null ?
+              row.map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell>{value.ช่วงอายุ}</StyledTableCell>
@@ -358,7 +362,15 @@ const ShowChart = React.forwardRef((props, ref) => {
                     <StyledTableCell align="right">{value.รวม}</StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              })
+              : <React.Fragment>
+              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              </React.Fragment>
+              }
             </TableBody>
           </Table>
         </TableContainer>

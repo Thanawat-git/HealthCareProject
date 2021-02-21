@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { withStyles, makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Tooltip,
   Table,
@@ -9,13 +10,18 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Select,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
-import { Chart } from "react-google-charts";
+import Skeleton from '@material-ui/lab/Skeleton';
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
+// import { Chart } from "react-google-charts";
 import {
-  TREATMENT,
   PRINT_THIS_SECTION,
-  COMMUNITYS,
 } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +37,6 @@ const StyledTableCell = withStyles((theme) => ({
     fontSize: 18,
   },
 }))(TableCell);
-
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
@@ -40,6 +45,81 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
+
+const useStyles1 = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  const handleFirstPageButtonClick = (event) => {
+    onChangePage(event, 0);
+  };
+
+  const handleBackButtonClick = (event) => {
+    onChangePage(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event) => {
+    onChangePage(event, page + 1);
+  };
+
+  const handleLastPageButtonClick = (event) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
 
 function createData(
   ชุมชน,
@@ -172,6 +252,15 @@ const ShowChart = React.forwardRef((props, ref) => {
     setRow([]);
   }, [community]);
   
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (    
   <React.Fragment>
@@ -183,68 +272,98 @@ const ShowChart = React.forwardRef((props, ref) => {
       > 
       Download CSV 
       </CSVLink>
-</div>
+    </div>
       <div ref={ref}>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
             <TableRow>
-                  <StyledTableCell align="center" colSpan={10}>
+                  <StyledTableCell align="center" colSpan={9}>
                   จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษา และชุมชน
                   </StyledTableCell>
                 </TableRow>
               <TableRow>
-                <StyledTableCell>ชุมชน&nbsp;</StyledTableCell>
-                <StyledTableCell align="center">&nbsp;</StyledTableCell>
+                <StyledTableCell>ชุมชน</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
                 <StyledTableCell align="center">เบิกต้นสังกัด</StyledTableCell>
                 <StyledTableCell align="center">ชำระเงินเอง</StyledTableCell>
                 <StyledTableCell align="center">บัตรทอง</StyledTableCell>
                 <StyledTableCell align="center">บัตรผู้พิการ</StyledTableCell>
                 <StyledTableCell align="center">บัตรประกันสังคม</StyledTableCell>
                 <StyledTableCell align="center">อื่นๆ</StyledTableCell>
-                <StyledTableCell align="center">&nbsp;</StyledTableCell>
                 <StyledTableCell align="center">รวม</StyledTableCell>
                 
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {chart8Reducer.isFetching === false ?
+              (rowsPerPage > 0
+                ? rows.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                :rows).map((row) => (
                 <StyledTableRow key={row.ชุมชน}>
                   <StyledTableCell  component="th" scope="row">
                     {row.ชุมชน}
                   </StyledTableCell>
                   <StyledTableCell align="left">จำนวน<br />เปอร์เซ็นต์</StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.เบิกต้นสังกัด}  <br />
                     {row.เปอร์เซ็นต์เบิกต้นสังกัด} % 
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.ชำระเงินเอง}  <br />
                     {row.เปอร์เซ็นต์ชำระเงินเอง} %
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.บัตรทอง}  <br />
                     {row.เปอร์เซ็นต์บัตรทอง} %
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.บัตรผู้พิการ}  <br />
                     {row.เปอร์เซ็นต์บัตรผู้พิการ} %
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.บัตรประกันสังคม}  <br />
                     {row.เปอร์เซ็นต์บัตรประกันสังคม} %
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.อื่นๆ}  <br />
                     {row.เปอร์เซ็นต์อื่นๆ} %
                   </StyledTableCell>
-                  <StyledTableCell>&nbsp;</StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="right">
                     {row.รวม}
                   </StyledTableCell>
                 </StyledTableRow>
-              ))}
+              )): <React.Fragment>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              </React.Fragment>
+              }
             </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={18}
+                  count={rows.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
           </Table>
         </TableContainer>
       </div>

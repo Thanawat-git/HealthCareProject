@@ -53,7 +53,7 @@ export default function MainContent() {
     // dispatch(getDataChart5("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart6("ไม่ได้เรียนหนังสือ"))
     // dispatch(getDataChart7("เบิกต้นสังกัด"))
-    // dispatch(getDataChart8("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart8("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart9());
     // dispatch(getDataChart10());
     // dispatch(getDataChart11());
@@ -132,7 +132,7 @@ export default function MainContent() {
             {/* <Chart5 /> */}
             {/* <Chart6 /> */}
             {/* <Chart7 /> */}
-            {/* <Chart8 />  */}
+            <Chart8 /> 
             {/* //ส่วนที่2 */}
             {/* <Chart9 /> */}
             {/* <Chart10 /> */}
