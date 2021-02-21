@@ -46,7 +46,7 @@ export default function MainContent() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
-    dispatch(getDataChart1())
+    // dispatch(getDataChart1())
     // dispatch(getDataChart2("ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้"))
     // dispatch(getDataChart3("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
     // dispatch(getDataChart4("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
@@ -125,7 +125,7 @@ export default function MainContent() {
               </div>
             </div>
 
-            <Chart1 />
+            {/* <Chart1 /> */}
             {/* <Chart2 /> */}
             {/* <Chart3 /> */}
             {/* <Chart4 /> */}
