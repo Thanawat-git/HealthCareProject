@@ -61,8 +61,8 @@ export default function MainContent() {
     // dispatch(getDataChart16());
     // dispatch(getDataChart17());
     // dispatch(getDataChart18("ทุกชุมชน"));
-    //  dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart22("ทุกชุมชน"));
   }, []);
   return (
@@ -141,8 +141,8 @@ export default function MainContent() {
             {/* <Chart16 /> */}
             {/* <Chart17 /> */}
             {/* <Chart18 /> */}
-            {/* <Chart20 /> */}
-            {/* <Chart21 /> */}
+            <Chart20 />
+            <Chart21 />
             {/* //ส่วนที่3 */}
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}

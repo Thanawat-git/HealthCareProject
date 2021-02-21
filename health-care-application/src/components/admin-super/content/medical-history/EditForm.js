@@ -40,8 +40,9 @@ export default function EditForm({ value }) {
       type: "VIS_ID",
       payload: data,
     });
+    dispatch(getAction.getEducate(value.ELD_ID_NUMBER));
     dispatch(getAction.getCollect(value.VIS_ID));
-    dispatch(getAction.getAllResult(value.VIS_ID));
+    // dispatch(getAction.getAllResult(value.VIS_ID));
     dispatch(getAction.getDisease(value.ELD_ID_NUMBER));
     setTimeout(() => {
       setOpen(true);

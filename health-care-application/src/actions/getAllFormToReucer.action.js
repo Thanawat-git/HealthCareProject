@@ -474,6 +474,7 @@ export const getDataTai = (visId) => {
   };
 };
 export const getDataSec7 = (history,visId, url) => {
+  console.log("res.data 7 ", visId);
   return (dispatch) => {
     return Axios.get(`${apiBase}/alzheimer/findOne/${visId}`)
       .then((res) => {
@@ -815,7 +816,7 @@ export const getEducate = (peopleId) => {
         console.log(res.data.ELD_EDU);
       })
       .catch((error) => {
-        console.log("err ", error);
+        console.log("err getEducate", error);
       });
   };
 };

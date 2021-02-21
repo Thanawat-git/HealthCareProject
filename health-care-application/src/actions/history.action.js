@@ -32,10 +32,11 @@ export const getAllAssessmentForms = ()=>{
 
 export const getHistorySelected = (id)=>{
     return dispatch => {
-        // dispatch(setHistoryToFetching())
+        dispatch(setHistoryToFetching())
         return Axios.get(`${apiEld}/examsummary/forhistory/${id}`).then(res=>{
             dispatch(setHistorySelected(res.data))
         }).catch(error=>{
+            console.log("history err ", error)
             dispatch(setHistoryToFailed(error))
         })
     }

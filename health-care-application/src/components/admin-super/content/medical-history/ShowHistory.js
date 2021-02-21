@@ -20,6 +20,8 @@ import {
   Grid,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import somethingwrongImg from '../../../images/something_wrong.svg'
+
 import "moment/locale/th";
 
 moment.locale("th");
@@ -30,6 +32,7 @@ export default function ShowHistory({ value }) {
   const dispatch = useDispatch();
   const historyReducer = useSelector(({ historyReducer }) => historyReducer);
   const [open, setOpen] = useState(false);
+  const [openPicon, setOpenPicon] = useState(false);
   const [openAll, setopenAll] = useState(false);
   const [openState, setopenState] = useState({
     open1: false,
@@ -54,6 +57,13 @@ export default function ShowHistory({ value }) {
     open9,
   } = openState;
 
+  useEffect(() => {
+    open ? setTimeout(() => {
+      setOpenPicon(true)
+    }, 100)
+    : setOpenPicon(false)
+  }, [open])
+
   const handleClick = (name, value) => {
     // console.log('event.target.value ',value)
     setopenState({ ...openState, [name]: !value });
@@ -73,21 +83,24 @@ export default function ShowHistory({ value }) {
     });
   }, [openAll]);
   const selectHistory = (id) => {
-    dispatch(getAll.getEducate(id));
-    dispatch(historyAction.getHistorySelected(id));
-    dispatch(getAll.getDataSec2("null",id,"mainmenu"));
-    dispatch(getAll.getDataSec3("null",id,"mainmenu"));
-    dispatch(getAll.getDataSec4("null",id,"mainmenu"));
-    dispatch(getAll.getDataSec5("null",id,"mainmenu"));
-    dispatch(getAll.getDataSec6("null",id,"mainmenu"));
-    dispatch(getAll.getDataTai(id));
-    dispatch(getAll.getDataSec7("null",id,"mainmenu"));
-    dispatch(getAll.getDatammse(id));
-    dispatch(getAll.getDataSec8("null",id,"mainmenu"));
-    dispatch(getAll.getDataSec9("null",id,"mainmenu"));
-    dispatch(getAll.getDataSec92(id));
-    dispatch(getAll.getDataSec10("null",id,"mainmenu"));
+    // dispatch(getAll.getEducate(id));
     setOpen(true);
+    // setTimeout(() => {
+    //   dispatch(historyAction.getHistorySelected(id));
+    // }, 100);
+
+    // dispatch(getAll.getDataSec2("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec3("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec4("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec5("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec6("null",id,"mainmenu"));
+    // dispatch(getAll.getDataTai(id));
+    dispatch(getAll.getDataSec7("null",id,"mainmenu"));
+    // dispatch(getAll.getDatammse("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec8("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec9("null",id,"mainmenu"));
+    // dispatch(getAll.getDataSec92(id));
+    // dispatch(getAll.getDataSec10("null",id,"mainmenu"));
   };
   const handleClose = () => {
     setOpen(false);
@@ -497,9 +510,11 @@ export default function ShowHistory({ value }) {
       );
     } else {
       return (
-        <Typography style={{ textAlign: "center" }} color="textSecondary">
-          ไม่สามารถดูข้อมูลได้
-        </Typography>
+        <React.Fragment>
+          <img src={somethingwrongImg} className="err-img"/>
+          <h4 style={{textAlign: "center"}} >เกิดข้อผิดพลาด</h4>
+        </React.Fragment>
+        
       );
     }
   };
@@ -513,6 +528,7 @@ export default function ShowHistory({ value }) {
       >
         ดูข้อมูล
       </button>
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -523,19 +539,25 @@ export default function ShowHistory({ value }) {
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title" style={{ textAlign: "center" }}>
-          ข้อมูลการตรวจสุขภาพของคุณ {value.ELD_NAME}{" "}
-          {/* {moment(value.VIS_DATE).format("LLLL")} */}
-          วัน{moment(value.VIS_DATE).format("dddd")} ที่{" "}
+          ข้อมูลการตรวจสุขภาพของคุณ {value.ELD_NAME} วัน
+          {moment(value.VIS_DATE).format("dddd")} ที่{" "}
           {moment(value.VIS_DATE).format("LL")}
         </DialogTitle>
         <DialogContent dividers="paper">
           <Grid container justify="space-between">
-            <div>
-              <div style={{ marginBottom: 10 }}>
-                <PrintResultOnly name="พิมพ์เฉพาะข้อมูลผลการตรวจของครั้งนี้" value={value} />{" "}
-              </div>
-              <PrintAllForm name="พิมพ์ข้อมูลการตรวจทั้งหมดของครั้งนี้" />
-              <br />
+            <div className="">
+            {openPicon ? (
+              <React.Fragment>
+                <div style={{ marginBottom: 10 }}>
+                  <PrintResultOnly
+                    name="พิมพ์เฉพาะข้อมูลผลการตรวจของครั้งนี้"
+                    value={value}
+                  />{" "}
+                </div>
+                <PrintAllForm name="พิมพ์ข้อมูลการตรวจทั้งหมดของครั้งนี้" />
+                <br />
+              </React.Fragment>
+            ):"loading..."}
             </div>
             <FormControlLabel
               control={

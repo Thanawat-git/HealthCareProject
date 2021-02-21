@@ -35,11 +35,12 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function creactData(รายชื่อ, จำนวน) {
-  return {
-    รายชื่อ,
-    จำนวน,
-  };
+function creactData(เสี่ยง, ปกติ, รวม) {
+  return {เสี่ยง, ปกติ, รวม};
+}
+
+function createData2(รายชื่อ, ผลการตรวจ) {
+  return {รายชื่อ, ผลการตรวจ};
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
@@ -48,22 +49,34 @@ const ShowChart = React.forwardRef((props, ref) => {
   const [community, setCommunity] = React.useState("ชุมชนมณีแก้ว");
   const chart21Reducer = useSelector(({ chart21Reducer }) => chart21Reducer);
   const [row, setRow] = React.useState([]);
+  const [row2, setRow2] = React.useState([]);
   const dispatch = useDispatch();
+
   React.useEffect(() => {
     if (chart21Reducer.isFetching === false) {
       for (const key in chart21Reducer.results) {
         if (Object.hasOwnProperty.call(chart21Reducer.results, key)) {
           const element = chart21Reducer.results[key];
           console.log("element ", element);
-          row.push(creactData(element.ElderName, element.Elder));
+          row.push(creactData(element.Risk, element.Normal, element.Elder));
+
+          element.RiskName.map((v)=>{
+            row2.push(createData2(v, "เสี่ยง"));
+          })
+          element.NormalName.map((v)=>{
+            row2.push(createData2(v, "ปกติ"));
+          })
+          
         }
       }
-      console.log("row ", row);
-      setOpen1(row.length);
+      console.log("row2 ", row2);
+      setOpen1(row2.length);
     }
   }, [chart21Reducer.isFetching]);
+
   React.useEffect(() => {
     setRow([]);
+    setRow2([]);
   }, [community]);
   const handleChange = (e) => {
     setCommunity(e.target.value);
@@ -75,8 +88,8 @@ const ShowChart = React.forwardRef((props, ref) => {
         <div className="">
           {open1 !== 0 && (
             <CSVLink
-              data={row}
-              filename={`จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
+              data={row2}
+              filename={`จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคความดันโลหิตสูงของ${community}.csv`}
             >
               Download CSV
             </CSVLink>
@@ -108,15 +121,18 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>
-        จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ{community}
-        </h4>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">รายชื่อ</StyledTableCell>
-                <StyledTableCell align="center">จำนวน</StyledTableCell>
+                <StyledTableCell align="center" colSpan={3}>
+                จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคความดันโลหิตสูงของ{community}
+                </StyledTableCell>
+              </TableRow>
+              <TableRow>
+                <StyledTableCell align="center">เสี่ยง (คน) </StyledTableCell>
+                <StyledTableCell align="center">ปกติ (คน) </StyledTableCell>
+                <StyledTableCell align="center">รวม (คน) </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -124,10 +140,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="center">
-                      {value.รายชื่อ}
+                      {value.เสี่ยง}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {value.จำนวน}
+                      {value.ปกติ}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {value.รวม}
                     </StyledTableCell>
                   </StyledTableRow>
                 );
@@ -147,7 +166,7 @@ export default function Chart21() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-          จำนวนและรายชื่อของผู้สูงอายุที่มีความดันโลหิตสูง จำแนกตามชุมชน
+            จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคความดันโลหิตสูง จำแนกตามชุมชน
           </h3>
           <div className="card-tools">
             <button
