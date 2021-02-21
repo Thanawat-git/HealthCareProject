@@ -1,5 +1,6 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { withStyles, makeStyles, useTheme } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Tooltip,
@@ -10,7 +11,15 @@ import {
   TableHead,
   TableRow,
   Paper,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
+import Skeleton from '@material-ui/lab/Skeleton';
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
 import { PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -32,6 +41,81 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
+
+const useStyles1 = makeStyles((theme) => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}));
+function TablePaginationActions(props) {
+  const classes = useStyles1();
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onChangePage } = props;
+
+  const handleFirstPageButtonClick = (event) => {
+    onChangePage(event, 0);
+  };
+
+  const handleBackButtonClick = (event) => {
+    onChangePage(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event) => {
+    onChangePage(event, page + 1);
+  };
+
+  const handleLastPageButtonClick = (event) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
+
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </div>
+  );
+}
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
 
 function creactData(
   โรคประจำตัว,
@@ -117,6 +201,16 @@ const ShowChart = React.forwardRef((props, ref) => {
     }
   }, [chart17Reducer.isFetching]);
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <div className="card-body">
       <div className="csv-link">
@@ -130,13 +224,18 @@ const ShowChart = React.forwardRef((props, ref) => {
         )}
       </div>
       <div ref={ref} className="report-container">
-        <h4 style={{marginLeft:"21%"}}>ช่วงอายุ</h4>
+        {/* <h4 style={{marginLeft:"21%"}}>ช่วงอายุ</h4> */}
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
+                <StyledTableCell align="center" colSpan={11}>
+                จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบจำแนกตามช่วงอายุ
+                </StyledTableCell>
+              </TableRow>
+              <TableRow>
                 <StyledTableCell>โรคประจำตัว</StyledTableCell>
-                <StyledTableCell align="center"></StyledTableCell>
+                <StyledTableCell align="center">ช่วงอายุ (ปี)</StyledTableCell>
                 <StyledTableCell align="center">60-64</StyledTableCell>
                   <StyledTableCell align="center">65-69</StyledTableCell>
                   <StyledTableCell align="center">70-74</StyledTableCell>
@@ -149,7 +248,14 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {
+                chart17Reducer.isFetching === false ?
+              (rowsPerPage > 0
+                ? row.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : row).map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="left">{value.โรคประจำตัว}</StyledTableCell>
@@ -157,47 +263,74 @@ const ShowChart = React.forwardRef((props, ref) => {
                     จำนวน<br />
                     เปอร์เซ็นต์
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ6064}<br />{value.เปอร์เซ็นต์ช่วงอายุ6064} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ6064}<br />{value.เปอร์เซ็นต์ช่วงอายุ6064}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ6569}<br />{value.เปอร์เซ็นต์ช่วงอายุ6569} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ6569}<br />{value.เปอร์เซ็นต์ช่วงอายุ6569}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ7074}<br />{value.เปอร์เซ็นต์ช่วงอายุ7074} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ7074}<br />{value.เปอร์เซ็นต์ช่วงอายุ7074}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ7579}<br />{value.เปอร์เซ็นต์ช่วงอายุ7579} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ7579}<br />{value.เปอร์เซ็นต์ช่วงอายุ7579}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ8084}<br />{value.เปอร์เซ็นต์ช่วงอายุ8084} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ8084}<br />{value.เปอร์เซ็นต์ช่วงอายุ8084}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ8590}<br />{value.เปอร์เซ็นต์ช่วงอายุ8589} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ8590}<br />{value.เปอร์เซ็นต์ช่วงอายุ8589}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ9094}<br />{value.เปอร์เซ็นต์ช่วงอายุ9094} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ9094}<br />{value.เปอร์เซ็นต์ช่วงอายุ9094}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.ช่วงอายุ95ขึ้นไป}<br />{value.เปอร์เซ็นต์ช่วงอายุ95ขึ้นไป} %
+                    <StyledTableCell align="right">
+                        {value.ช่วงอายุ95ขึ้นไป}<br />{value.เปอร์เซ็นต์ช่วงอายุ95ขึ้นไป}
 
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                        {value.รวม}<br />{value.เปอร์เซ็นต์รวม} %
+                    <StyledTableCell align="right">
+                        {value.รวม}<br />{value.เปอร์เซ็นต์รวม}
 
                     </StyledTableCell>
 
                   </StyledTableRow>
                 );
-              })}
+              })
+            : <React.Fragment>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>
+              </React.Fragment>
+            }
             </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={18}
+                  count={row.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
           </Table>
         </TableContainer>
       </div>
@@ -211,7 +344,7 @@ export default function Chart17() {
     <div className="col-12">
       <div className="card card-light collapsed-card">
         <div className="card-header">
-          <h3 className="card-title">CH17
+          <h3 className="card-title">
          จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบ จำแนกตามช่วงอายุ
           </h3>
           <div className="card-tools">
