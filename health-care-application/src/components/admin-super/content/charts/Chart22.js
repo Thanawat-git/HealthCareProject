@@ -35,10 +35,27 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function creactData(ชุมชน, เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก,รวม,เปอร์เซ็นต์เสี่ยง,เปอร์เซ็นต์เสี่ยงสูง,เปอร์เซ็นต์เสี่ยงสูงมาก,เปอร์เซ็นต์รวม) {
+function creactData(
+  ชุมชน,
+  เสี่ยง,
+  เปอร์เซ็นต์เสี่ยง,
+  เสี่ยงสูง,
+  เปอร์เซ็นต์เสี่ยงสูง,
+  เสี่ยงสูงมาก,
+  เปอร์เซ็นต์เสี่ยงสูงมาก,
+  รวม,
+  เปอร์เซ็นต์รวม
+) {
   return {
     ชุมชน,
-    เสี่ยง,เสี่ยงสูง,เสี่ยงสูงมาก,รวม,เปอร์เซ็นต์เสี่ยง,เปอร์เซ็นต์เสี่ยงสูง,เปอร์เซ็นต์เสี่ยงสูงมาก,เปอร์เซ็นต์รวม
+    เสี่ยง,
+    เปอร์เซ็นต์เสี่ยง,
+    เสี่ยงสูง,
+    เปอร์เซ็นต์เสี่ยงสูง,
+    เสี่ยงสูงมาก,
+    เปอร์เซ็นต์เสี่ยงสูงมาก,
+    รวม,
+    เปอร์เซ็นต์รวม
   };
 }
 
@@ -102,26 +119,27 @@ const ShowChart = React.forwardRef((props, ref) => {
     ชุมชนมุขแสนเจริญ2,
     ชุมชนเขาสามมุข,
     ชุมชนบ้านแหลมแท่น,
-  ]
+  ];
   React.useEffect(() => {
     if (chart22Reducer.isFetching === false) {
-      for (let i = 1; i < communi.length; i++) {
-       
-          row.push(creactData(Object.keys(chart22Reducer.results)[i],
-            communi[i].Risk, 
+      for (let i = 0; i < communi.length; i++) {
+        row.push(
+          creactData(
+            Object.keys(chart22Reducer.results)[i + 1],
+            communi[i].Risk,
+            communi[i].PerRisk==="NaN"?"0":communi[i].PerRisk,
             communi[i].RiskII,
-            communi[i].RiskIII, 
+            communi[i].PerRiskII==="NaN"?"0":communi[i].PerRiskII,
+            communi[i].RiskIII,
+            communi[i].PerRiskIII==="NaN"?"0":communi[i].PerRiskIII,
             communi[i].ElderCardio,
-            communi[i].PerRisk, 
-            communi[i].PerRiskII,
-            communi[i].PerRiskIII, 
-            communi[i].PerElderCardio,                       
-            ));
-        
+            communi[i].PerElderCardio==="NaN"?"0":communi[i].PerElderCardio
+          )
+        );
       }
     }
-      console.log("row ", row);
-      setOpen1(row.length);
+    console.log("row ", row);
+    setOpen1(row.length);
   }, [chart22Reducer.isFetching]);
   React.useEffect(() => {
     setRow([]);
@@ -147,13 +165,14 @@ const ShowChart = React.forwardRef((props, ref) => {
 
       <div ref={ref} className="report-container">
         <h4>
-        จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
+          จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
         </h4>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
                 <StyledTableCell align="left">ชุมชน</StyledTableCell>
+                <StyledTableCell align="left">จำนวน/เปอร์เซ็นต์</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูงมาก</StyledTableCell>
@@ -164,20 +183,23 @@ const ShowChart = React.forwardRef((props, ref) => {
               {row.map((value) => {
                 return (
                   <StyledTableRow>
-                    <StyledTableCell align="center">
-                     {value.ชุมชน}
+                    <StyledTableCell align="left">
+                      {value.ชุมชน}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      จำนวน<br />เปอร์เซ็นต์
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {value.เสี่ยง}
+                      {value.เสี่ยง}<br />{value.เปอร์เซ็นต์เสี่ยง}%
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {value.เสี่ยงสูง}
+                      {value.เสี่ยงสูง}<br />{value.เปอร์เซ็นต์เสี่ยงสูง}%
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {value.เสี่ยงสูงมาก}
+                      {value.เสี่ยงสูงมาก}<br />{value.เปอร์เซ็นต์เสี่ยงสูงมาก}%
                     </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {value.รวม}
+                    <StyledTableCell align="center" >
+                      {value.รวม}<br />{value.เปอร์เซ็นต์รวม}%
                     </StyledTableCell>
                   </StyledTableRow>
                 );
@@ -197,7 +219,7 @@ export default function Chart22() {
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
-            จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ
+            CH22 จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ
           </h3>
           <div className="card-tools">
             <button

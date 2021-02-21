@@ -40,6 +40,7 @@ import {
   getDataChart20,
   getDataChart21,
   getDataChart22,
+  getDataChart23,
 } from "../../../actions/charts.action";
 
 export default function MainContent() {
@@ -64,6 +65,7 @@ export default function MainContent() {
     // dispatch(getDataChart20("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart22("ทุกชุมชน"));
+    // dispatch(getDataChart23());
   }, []);
   return (
     <React.Fragment>
