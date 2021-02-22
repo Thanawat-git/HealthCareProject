@@ -175,6 +175,7 @@ function Sections8_1() {
         open={show}
         scroll="paper"
         maxWidth="xs"
+        onClose={()=>setShow(false)}
         fullWidth={true}
       >
         <DialogTitle>

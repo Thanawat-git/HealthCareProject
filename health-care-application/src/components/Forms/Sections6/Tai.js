@@ -316,6 +316,7 @@ export default function Sections6_Tai() {
           scroll="paper"
           maxWidth="xs"
           fullWidth={true}
+          onClose={()=>setShow(false)}
           onClick={saveDataToServer}
         >
         <DialogTitle style={{ textAlign: "center" }}>
