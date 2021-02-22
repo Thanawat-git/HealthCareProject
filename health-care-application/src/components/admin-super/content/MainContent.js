@@ -20,6 +20,13 @@ import {
   Chart21,
   Chart22,
   Chart23,
+  Chart31,
+Chart32,
+Chart33,
+Chart34,
+Chart35,
+Chart36,
+Chart37,
 } from "./charts";
 import {
   getDataChart1,
@@ -74,7 +81,7 @@ export default function MainContent() {
     // dispatch(getDataChart22("ทุกชุมชน"));
     //dispatch(getDataChart23());
 
-    // dispatch(getDataChart31())
+   dispatch(getDataChart31('ชุมชนมณีแก้ว'))
     // dispatch(getDataChart32(""))
     // dispatch(getDataChart33(""))
     // dispatch(getDataChart34(""))
@@ -164,7 +171,7 @@ export default function MainContent() {
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}
 
-{/* <Chart31 /> */}
+<Chart31 />
             {/* <Chart32 /> */}
             {/* <Chart33 /> */}
             {/* <Chart34 /> */}
