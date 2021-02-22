@@ -86,21 +86,21 @@ export default function ShowHistory({ value }) {
     // dispatch(getAll.getEducate(id));
     setOpen(true);
     // setTimeout(() => {
-    //   dispatch(historyAction.getHistorySelected(id));
+      dispatch(historyAction.getHistorySelected(id));
     // }, 100);
 
-    // dispatch(getAll.getDataSec2("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec3("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec4("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec5("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec6("null",id,"mainmenu"));
-    // dispatch(getAll.getDataTai(id));
+    dispatch(getAll.getDataSec2("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec3("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec4("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec5("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec6("null",id,"mainmenu"));
+    dispatch(getAll.getDataTai(id));
     dispatch(getAll.getDataSec7("null",id,"mainmenu"));
-    // dispatch(getAll.getDatammse("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec8("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec9("null",id,"mainmenu"));
-    // dispatch(getAll.getDataSec92(id));
-    // dispatch(getAll.getDataSec10("null",id,"mainmenu"));
+    dispatch(getAll.getDatammse("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec8("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec9("null",id,"mainmenu"));
+    dispatch(getAll.getDataSec92(id));
+    dispatch(getAll.getDataSec10("null",id,"mainmenu"));
   };
   const handleClose = () => {
     setOpen(false);

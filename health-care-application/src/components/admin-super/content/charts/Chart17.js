@@ -316,7 +316,7 @@ const ShowChart = React.forwardRef((props, ref) => {
               <TableRow>
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                  colSpan={18}
+                  colSpan={11}
                   count={row.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
