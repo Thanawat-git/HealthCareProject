@@ -1,4 +1,4 @@
-import { CREATE_NEW_FORMS7M, GET_DATA_S7M, GET_RESULT_S7M, SET_MMSE_TO_DEFAULT } from "../constants";
+import { CREATE_NEW_FORMS7M, GET_DATA_S7M, GET_RESULT_S7M, SET_MMSE_TO_DEFAULT, GET_COLLECT_MMSE } from "../constants";
 
 const initialState = {
   ans1: 0,
@@ -157,6 +157,8 @@ export default (state = initialState, { type, payload }) => {
         group: null,
         isFetching: null,
       }
+    case GET_COLLECT_MMSE:
+      return {...state, collect:payload}
     default:
       return state;
   }

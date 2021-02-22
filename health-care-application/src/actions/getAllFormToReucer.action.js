@@ -26,6 +26,7 @@ import {
   GET_COLLECT_S7,
   GET_COLLECT_S8,
   GET_COLLECT_S9,
+  GET_COLLECT_MMSE,
   GET_RESULT_S10,
   GET_RESULT_S2,
   GET_RESULT_S3,
@@ -123,6 +124,7 @@ export const getCollect = (visId) => {
           dispatch({ type: GET_COLLECT_S8, payload: res.data.dep_correct });
           dispatch({ type: GET_COLLECT_S9, payload: res.data.bone_correct });
           dispatch({ type: GET_COLLECT_S10, payload: res.data.uri_correct });
+          dispatch({ type: GET_COLLECT_MMSE, payload: res.data.mmse_correct });
         })
         .catch((error) => {
           console.log("visId in error ", visId);
@@ -143,6 +145,7 @@ export const resetCollectFromReducer = () => {
     dispatch({ type: GET_COLLECT_S8, payload: false });
     dispatch({ type: GET_COLLECT_S9, payload: false });
     dispatch({ type: GET_COLLECT_S10, payload: false });
+    dispatch({ type: GET_COLLECT_MMSE, payload: false });
   };
 };
 

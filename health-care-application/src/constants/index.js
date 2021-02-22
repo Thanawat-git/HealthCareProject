@@ -47,6 +47,7 @@ export const GET_COLLECT_S7 = 'GET_COLLECT_S7';
 export const GET_COLLECT_S8 = 'GET_COLLECT_S8';
 export const GET_COLLECT_S9 = 'GET_COLLECT_S9';
 export const GET_COLLECT_S10 = 'GET_COLLECT_S10';
+export const GET_COLLECT_MMSE = 'GET_COLLECT_MMSE';
 
 //get result only
 export const GET_RESULT_S2 = 'GET_RESULT_S2';
