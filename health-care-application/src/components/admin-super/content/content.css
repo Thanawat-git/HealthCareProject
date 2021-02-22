@@ -17,7 +17,7 @@
     padding-right: 1rem;
 }
 
-.MuiDialog-container .MuiDialog-paperScrollPaper{
+.dialog-size-pc .MuiDialog-container .MuiDialog-paperScrollPaper{
     display: flex;
     height: calc(100% - 64px);
     flex-direction: column;
