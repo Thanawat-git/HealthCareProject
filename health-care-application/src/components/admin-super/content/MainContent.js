@@ -81,9 +81,9 @@ export default function MainContent() {
     // dispatch(getDataChart22("ทุกชุมชน"));
     //dispatch(getDataChart23());
 
-  //  dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+    //dispatch(getDataChart31("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart32(""))
-    // dispatch(getDataChart33(""))
+    //  dispatch(getDataChart33(""))
     // dispatch(getDataChart34(""))
     // dispatch(getDataChart35())
     // dispatch(getDataChart36(""))
