@@ -258,6 +258,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุ เพศ
           และระดับดัชนีมวลกายของ{community}
         </h4> */}
+        
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
@@ -374,6 +375,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             </TableBody>
           </Table>
         </TableContainer>
+      
       </div>
     </div>
   );
