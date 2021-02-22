@@ -61,6 +61,10 @@ import {
   CHART22_GET_SUCCRESS,
   CHART22_DEF_FETCHING,
   CHART22_ERROR,
+  CHART23_FETCHING,
+  CHART23_GET_SUCCRESS,
+  CHART23_DEF_FETCHING,
+  CHART23_ERROR,
   
 } from "../constants";
 
@@ -356,37 +360,37 @@ export const getDataChart21 = community => {
 }
 
 export const getDataChart22 = community => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART22_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report03/22-bp/${community}`) //ไม่แน่ใจว่าพาทถูกมั้ยนะ
-  //     console.log("chart 22 ", data.data)
-  //     await dispatch({
-  //       type: CHART22_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //     await dispatch({ type: CHART22_DEF_FETCHING });
-  //   } catch (error) {
-  //     dispatch({ type: CHART22_ERROR });
-  //     console.log("error chart22 ", error);
-  //   }
-  // }
+  return async dispatch=> {
+    await dispatch({ type: CHART22_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report03/22-cardio`) //ไม่แน่ใจว่าพาทถูกมั้ยนะ
+      console.log("chart 22 ", data.data)
+      await dispatch({
+        type: CHART22_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART22_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART22_ERROR });
+      console.log("error chart22 ", error);
+    }
+  }
 }
 
 export const getDataChart23 = community => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART22_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report03/23-cardio?`)
-  //     console.log("chart 22 ", data.data)
-  //     await dispatch({
-  //       type: CHART22_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //     await dispatch({ type: CHART22_DEF_FETCHING });
-  //   } catch (error) {
-  //     dispatch({ type: CHART22_ERROR });
-  //     console.log("error chart22 ", error);
-  //   }
-  // }
+  return async dispatch=> {
+    await dispatch({ type: CHART23_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+      console.log("chart 23 ", data.data)
+      await dispatch({
+        type: CHART23_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART23_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART23_ERROR });
+      console.log("error chart23 ", error);
+    }
+  }
 }
