@@ -505,22 +505,22 @@ export const getDataChart34 = (community) => {
   //   }
   // }
 };
-export const getDataChart35 = (community) => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART23_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
-  //     console.log("chart 23 ", data.data)
-  //     await dispatch({
-  //       type: CHART23_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //     await dispatch({ type: CHART23_DEF_FETCHING });
-  //   } catch (error) {
-  //     dispatch({ type: CHART23_ERROR });
-  //     console.log("error chart23 ", error);
-  //   }
-  // }
+export const getDataChart35 = () => {
+  return async dispatch=> {
+    await dispatch({ type: CHART35_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report07/35-alzheimer`)
+      console.log("chart 35 ", data.data)
+      await dispatch({
+        type: CHART35_GET_SUCCRESS,
+        payload: data.data,
+      });
+      // await dispatch({ type: CHART35_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART35_ERROR });
+      console.log("error chart35 ", error);
+    }
+  }
 };
 export const getDataChart36 = (community) => {
   return async dispatch=> {
