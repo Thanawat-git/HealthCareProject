@@ -200,13 +200,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </StyledTableCell>
               </TableRow>
               <TableRow>
-                <StyledTableCell align="center" colSpan={1} rowSpan={2}>
+                <StyledTableCell align="center" colSpan={1} rowSpan={2} style={{backgroundColor: "#91a2ff"}}>
                   ช่วงอายุ (ปี)
                 </StyledTableCell>
                 <StyledTableCell align="center" colSpan={4}>
                   เพศชาย
                 </StyledTableCell>
-                <StyledTableCell align="center" colSpan={4}>
+                <StyledTableCell align="center" colSpan={4} style={{backgroundColor: "#91a2ff"}} >
                   เพศหญิง
                 </StyledTableCell>
                 <StyledTableCell align="center" colSpan={4}>
@@ -214,16 +214,20 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </StyledTableCell>
               </TableRow>
               <TableRow>
-                {[1, 1, 1].map(() => {
-                  return (
-                    <React.Fragment>
-                      <StyledTableCell align="center">กลุ่ม1 {per?"":"(คน)"}</StyledTableCell>
-                      <StyledTableCell align="center">กลุ่ม2 {per?"":"(คน)"}</StyledTableCell>
-                      <StyledTableCell align="center">กลุ่ม3 {per?"":"(คน)"}</StyledTableCell>
-                      <StyledTableCell align="center">รวม {per?"":"(คน)"}</StyledTableCell>
-                    </React.Fragment>
-                  );
-                })}
+                  <StyledTableCell align="center">กลุ่ม1 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center">กลุ่ม2 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center">กลุ่ม3 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center">รวม {per?"":"(คน)"}</StyledTableCell>
+
+                  <StyledTableCell align="center" style={{backgroundColor: "#91a2ff"}}>กลุ่ม1 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center" style={{backgroundColor: "#91a2ff"}}>กลุ่ม2 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center" style={{backgroundColor: "#91a2ff"}}>กลุ่ม3 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center" style={{backgroundColor: "#91a2ff"}}>รวม {per?"":"(คน)"}</StyledTableCell>
+
+                  <StyledTableCell align="center">กลุ่ม1 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center">กลุ่ม2 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center">กลุ่ม3 {per?"":"(คน)"}</StyledTableCell>
+                  <StyledTableCell align="center">รวม {per?"":"(คน)"}</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -281,6 +285,7 @@ export default function Chart33() {
   const componentRef = React.useRef();
   return (
     <div className="col-12">
+      {/* <div className="card card-light collapsed-card"> */}
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
