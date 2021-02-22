@@ -394,3 +394,123 @@ export const getDataChart23 = community => {
     }
   }
 }
+
+export const getDataChart31 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}
+export const getDataChart32 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}
+export const getDataChart33 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}
+export const getDataChart34 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}
+export const getDataChart35 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}
+export const getDataChart36 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}
+export const getDataChart37 = community => {
+  // return async dispatch=> {
+  //   await dispatch({ type: CHART23_FETCHING });
+  //   try {
+  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
+  //     console.log("chart 23 ", data.data)
+  //     await dispatch({
+  //       type: CHART23_GET_SUCCRESS,
+  //       payload: data.data,
+  //     });
+  //     await dispatch({ type: CHART23_DEF_FETCHING });
+  //   } catch (error) {
+  //     dispatch({ type: CHART23_ERROR });
+  //     console.log("error chart23 ", error);
+  //   }
+  // }
+}

@@ -41,6 +41,13 @@ import {
   getDataChart21,
   getDataChart22,
   getDataChart23,
+  getDataChart31,
+  getDataChart32,
+  getDataChart33,
+  getDataChart34,
+  getDataChart35,
+  getDataChart36,
+  getDataChart37,
 } from "../../../actions/charts.action";
 
 export default function MainContent() {
@@ -65,7 +72,15 @@ export default function MainContent() {
     // dispatch(getDataChart20("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart22("ทุกชุมชน"));
-    // dispatch(getDataChart23());
+    //dispatch(getDataChart23());
+
+    dispatch(getDataChart31())
+    dispatch(getDataChart32(""))
+    dispatch(getDataChart33(""))
+    dispatch(getDataChart34(""))
+    dispatch(getDataChart35(""))
+    dispatch(getDataChart36(""))
+    dispatch(getDataChart37(""))
   }, []);
   return (
     <React.Fragment>
@@ -148,6 +163,16 @@ export default function MainContent() {
             {/* //ส่วนที่3 */}
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}
+
+{/* <Chart31 /> */}
+            {/* <Chart32 /> */}
+            {/* <Chart33 /> */}
+            {/* <Chart34 /> */}
+            {/* <Chart35 /> */}
+            {/* <Chart36 /> */}
+            {/* <Chart37 /> */}
+
+
           </div>
         </div>
       </section>
