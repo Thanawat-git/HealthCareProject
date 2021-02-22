@@ -74,13 +74,13 @@ export default function MainContent() {
     // dispatch(getDataChart22("ทุกชุมชน"));
     //dispatch(getDataChart23());
 
-    dispatch(getDataChart31())
-    dispatch(getDataChart32(""))
-    dispatch(getDataChart33(""))
-    dispatch(getDataChart34(""))
-    dispatch(getDataChart35(""))
-    dispatch(getDataChart36(""))
-    dispatch(getDataChart37(""))
+    // dispatch(getDataChart31())
+    // dispatch(getDataChart32(""))
+    // dispatch(getDataChart33(""))
+    // dispatch(getDataChart34(""))
+    // dispatch(getDataChart35(""))
+    // dispatch(getDataChart36(""))
+    // dispatch(getDataChart37(""))
   }, []);
   return (
     <React.Fragment>
