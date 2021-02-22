@@ -39,8 +39,8 @@ function creactData(ส่งต่อ, ไม่ส่งต่อ) {
   return {ส่งต่อ, ไม่ส่งต่อ};
 }
 
-function createData2(รายชื่อ, ผลการตรวจ) {
-  return {รายชื่อ, ผลการตรวจ};
+function createData2(รายชื่อ, ผลการตรวจบริการรักษาทางทันตกรรม) {
+  return {รายชื่อ, ผลการตรวจบริการรักษาทางทันตกรรม};
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
@@ -61,10 +61,10 @@ const ShowChart = React.forwardRef((props, ref) => {
           row.push(creactData(element.Risk, element.NotRisk, element.Elder));
 
           element.RiskName.map((v)=>{
-            row2.push(createData2(v, "เสี่ยง"));
+            row2.push(createData2(v, "ส่งต่อ"));
           })
           element.NotRiskName.map((v)=>{
-            row2.push(createData2(v, "ปกติ"));
+            row2.push(createData2(v, "ไม่ส่งต่อ"));
           })
           
         }
