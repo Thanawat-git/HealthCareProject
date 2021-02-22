@@ -562,6 +562,7 @@ console.log("Nofood 1 : ", noFood)
       open={show}
       scroll="paper"
       maxWidth="xs"
+      onClose={()=>setShow(false)}
       fullWidth={true}
     >
         <DialogTitle>

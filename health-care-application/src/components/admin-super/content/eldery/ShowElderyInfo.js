@@ -94,7 +94,7 @@ export default function ShowElderyInfo({ data }) {
         fullWidth={true}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
-        // className={classes.root}
+        className="dialog-size-pc"
       >
         <DialogTitle id="scroll-dialog-title" style={{ textAlign: "center" }}>
           ข้อมูลของคุณ {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}

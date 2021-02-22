@@ -1106,6 +1106,7 @@ export default function Sections9_2() {
       open={show}
       scroll="paper"
       maxWidth="xs"
+      onClose={()=>setShow(false)}
       fullWidth={true}
       >
         <DialogTitle>

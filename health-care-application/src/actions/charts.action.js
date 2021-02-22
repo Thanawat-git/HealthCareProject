@@ -471,40 +471,33 @@ export const getDataChart32 = () => {
     }
   }
 };
-export const getDataChart33 = () => {
+export const getDataChart33 = (community) => {
   return async dispatch=> {
     await dispatch({ type: CHART33_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report06/33-abi`)
-      console.log("chart 33 ", data.data)
-      await dispatch({
-        type: CHART33_GET_SUCCRESS,
-        payload: data.data,
-      });
+      let data =
+        community === "ทุกชุมชน"
+          ? await Axios.get(
+              `${apiBase}/report06/33-abi`
+            )
+          : await Axios.get(`${apiBase}/report06/34-abi/${community}`);
+      community === "ทุกชุมชน"
+        ? console.log("chart 33 ", data.data)
+        : console.log("chart 34 ", data.data);
+        await dispatch({
+          type: CHART33_GET_SUCCRESS,
+          payload: data.data,
+        })
       await dispatch({ type: CHART33_DEF_FETCHING });
     } catch (error) {
       dispatch({ type: CHART33_ERROR });
-      console.log("error chart33 ", error);
+      community === "ทุกชุมชน"
+        ? console.log("error chart33 ", error)
+        : console.log("error chart34 ", error);
     }
   }
 };
-export const getDataChart34 = (community) => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART23_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
-  //     console.log("chart 23 ", data.data)
-  //     await dispatch({
-  //       type: CHART23_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //     await dispatch({ type: CHART23_DEF_FETCHING });
-  //   } catch (error) {
-  //     dispatch({ type: CHART23_ERROR });
-  //     console.log("error chart23 ", error);
-  //   }
-  // }
-};
+
 export const getDataChart35 = () => {
   return async dispatch=> {
     await dispatch({ type: CHART35_FETCHING });

@@ -395,6 +395,7 @@ export default function Sections3() {
       scroll="paper"
       maxWidth="xs"
       fullWidth={true}
+      onClose={()=>setShow(false)}
       onClick={saveDataToServer}
     >
       <DialogTitle style={{ textAlign: "center" }}>

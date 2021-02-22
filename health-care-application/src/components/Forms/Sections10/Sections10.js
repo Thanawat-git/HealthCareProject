@@ -101,6 +101,7 @@ export default function Sections10() {
           open={show}
           scroll="paper"
           maxWidth="xs"
+          onClose={()=>setShow(false)}
           fullWidth={true}
           onClick={()=>formAction.upadateExa10Urination([visId,ans10,results,collect])}
         >

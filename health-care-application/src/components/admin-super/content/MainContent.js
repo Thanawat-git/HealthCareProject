@@ -23,7 +23,6 @@ import {
   Chart31,
 Chart32,
 Chart33,
-Chart34,
 Chart35,
 Chart36,
 Chart37,
@@ -51,7 +50,6 @@ import {
   getDataChart31,
   getDataChart32,
   getDataChart33,
-  getDataChart34,
   getDataChart35,
   getDataChart36,
   getDataChart37,
@@ -83,8 +81,7 @@ export default function MainContent() {
 
   //  dispatch(getDataChart31("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart32(""))
-    //  dispatch(getDataChart33(""))
-    // dispatch(getDataChart34(""))
+    //  dispatch(getDataChart33("ทุกชุมชน"))
     // dispatch(getDataChart35())
     // dispatch(getDataChart36(""))
     dispatch(getDataChart37(""))
@@ -174,7 +171,6 @@ export default function MainContent() {
             {/* <Chart31 /> */}
             {/* <Chart32 /> */}
             {/* <Chart33 /> */}
-            {/* <Chart34 /> */}
             {/* <Chart35 /> */}
             {/* <Chart36 /> */}
             <Chart37 />
