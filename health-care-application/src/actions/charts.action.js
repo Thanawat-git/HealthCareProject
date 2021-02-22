@@ -438,21 +438,21 @@ export const getDataChart23 = (community) => {
 };
 
 export const getDataChart31 = (community) => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART23_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
-  //     console.log("chart 23 ", data.data)
-  //     await dispatch({
-  //       type: CHART23_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //     await dispatch({ type: CHART23_DEF_FETCHING });
-  //   } catch (error) {
-  //     dispatch({ type: CHART23_ERROR });
-  //     console.log("error chart23 ", error);
-  //   }
-  // }
+  return async dispatch=> {
+    await dispatch({ type: CHART31_FETCHING });
+    try {
+      let data = await Axios.get(`${apiBase}/report05/31-oral/${community}`)
+      console.log("chart 31 ", data.data)
+      await dispatch({
+        type: CHART31_GET_SUCCRESS,
+        payload: data.data,
+      });
+      await dispatch({ type: CHART31_DEF_FETCHING });
+    } catch (error) {
+      dispatch({ type: CHART31_ERROR });
+      console.log("error chart31 ", error);
+    }
+  }
 };
 export const getDataChart32 = (community) => {
   // return async dispatch=> {

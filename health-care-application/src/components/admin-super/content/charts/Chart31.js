@@ -52,27 +52,27 @@ const ShowChart = React.forwardRef((props, ref) => {
   const [row2, setRow2] = React.useState([]);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    if (chart31Reducer.isFetching === false) {
-      for (const key in chart31Reducer.results) {
-        if (Object.hasOwnProperty.call(chart31Reducer.results, key)) {
-          const element = chart31Reducer.results[key];
-          console.log("element ", element);
-          row.push(creactData(element.Risk, element.Normal, element.Elder));
+//   React.useEffect(() => {
+//     if (chart31Reducer.isFetching === false) {
+//       for (const key in chart31Reducer.results) {
+//         if (Object.hasOwnProperty.call(chart31Reducer.results, key)) {
+//           const element = chart31Reducer.results[key];
+//           console.log("element ", element);
+//           row.push(creactData(element.Risk, element.Normal, element.Elder));
 
-          element.RiskName.map((v)=>{
-            row2.push(createData2(v, "เสี่ยง"));
-          })
-          element.NormalName.map((v)=>{
-            row2.push(createData2(v, "ปกติ"));
-          })
+//           element.RiskName.map((v)=>{
+//             row2.push(createData2(v, "เสี่ยง"));
+//           })
+//           element.NormalName.map((v)=>{
+//             row2.push(createData2(v, "ปกติ"));
+//           })
           
-        }
-      }
-      console.log("row2 ", row2);
-      setOpen1(row2.length);
-    }
-  }, [chart31Reducer.isFetching]);
+//         }
+//       }
+//       console.log("row2 ", row2);
+//       setOpen1(row2.length);
+//     }
+//   }, [chart31Reducer.isFetching]);
 
   React.useEffect(() => {
     setRow([]);
