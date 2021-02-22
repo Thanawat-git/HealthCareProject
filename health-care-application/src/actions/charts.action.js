@@ -497,23 +497,7 @@ export const getDataChart33 = (community) => {
     }
   }
 };
-export const getDataChart34 = (community) => {
-  // return async dispatch=> {
-  //   await dispatch({ type: CHART23_FETCHING });
-  //   try {
-  //     let data = await Axios.get(`${apiBase}/report03/23-cardio`)
-  //     console.log("chart 23 ", data.data)
-  //     await dispatch({
-  //       type: CHART23_GET_SUCCRESS,
-  //       payload: data.data,
-  //     });
-  //     await dispatch({ type: CHART23_DEF_FETCHING });
-  //   } catch (error) {
-  //     dispatch({ type: CHART23_ERROR });
-  //     console.log("error chart23 ", error);
-  //   }
-  // }
-};
+
 export const getDataChart35 = () => {
   return async dispatch=> {
     await dispatch({ type: CHART35_FETCHING });
