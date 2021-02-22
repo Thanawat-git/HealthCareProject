@@ -87,7 +87,7 @@ export default function MainContent() {
     // dispatch(getDataChart34(""))
     // dispatch(getDataChart35())
     // dispatch(getDataChart36(""))
-    // dispatch(getDataChart37(""))
+    dispatch(getDataChart37(""))
   }, []);
   return (
     <React.Fragment>
@@ -177,7 +177,7 @@ export default function MainContent() {
             {/* <Chart34 /> */}
             {/* <Chart35 /> */}
             {/* <Chart36 /> */}
-            {/* <Chart37 /> */}
+            <Chart37 />
 
 
           </div>
