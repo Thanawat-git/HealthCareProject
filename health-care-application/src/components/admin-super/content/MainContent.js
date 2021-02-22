@@ -81,11 +81,11 @@ export default function MainContent() {
     // dispatch(getDataChart22("ทุกชุมชน"));
     //dispatch(getDataChart23());
 
-   dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+  //  dispatch(getDataChart31("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart32(""))
     // dispatch(getDataChart33(""))
     // dispatch(getDataChart34(""))
-    // dispatch(getDataChart35(""))
+    // dispatch(getDataChart35())
     // dispatch(getDataChart36(""))
     // dispatch(getDataChart37(""))
   }, []);
@@ -171,7 +171,7 @@ export default function MainContent() {
             {/* <Chart22 /> */}
             {/* <Chart23 /> */}
 
-<Chart31 />
+            {/* <Chart31 /> */}
             {/* <Chart32 /> */}
             {/* <Chart33 /> */}
             {/* <Chart34 /> */}
