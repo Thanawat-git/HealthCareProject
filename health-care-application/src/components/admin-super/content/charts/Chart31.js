@@ -35,8 +35,8 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function creactData(เสี่ยง, ปกติ, รวม) {
-  return {เสี่ยง, ปกติ, รวม};
+function creactData(ส่งต่อ, ไม่ส่งต่อ) {
+  return {ส่งต่อ, ไม่ส่งต่อ};
 }
 
 function createData2(รายชื่อ, ผลการตรวจ) {
@@ -52,27 +52,27 @@ const ShowChart = React.forwardRef((props, ref) => {
   const [row2, setRow2] = React.useState([]);
   const dispatch = useDispatch();
 
-//   React.useEffect(() => {
-//     if (chart31Reducer.isFetching === false) {
-//       for (const key in chart31Reducer.results) {
-//         if (Object.hasOwnProperty.call(chart31Reducer.results, key)) {
-//           const element = chart31Reducer.results[key];
-//           console.log("element ", element);
-//           row.push(creactData(element.Risk, element.Normal, element.Elder));
+  React.useEffect(() => {
+    if (chart31Reducer.isFetching === false) {
+      for (const key in chart31Reducer.results) {
+        if (Object.hasOwnProperty.call(chart31Reducer.results, key)) {
+          const element = chart31Reducer.results[key];
+          console.log("element ", element);
+          row.push(creactData(element.Risk, element.NotRisk, element.Elder));
 
-//           element.RiskName.map((v)=>{
-//             row2.push(createData2(v, "เสี่ยง"));
-//           })
-//           element.NormalName.map((v)=>{
-//             row2.push(createData2(v, "ปกติ"));
-//           })
+          element.RiskName.map((v)=>{
+            row2.push(createData2(v, "เสี่ยง"));
+          })
+          element.NotRiskName.map((v)=>{
+            row2.push(createData2(v, "ปกติ"));
+          })
           
-//         }
-//       }
-//       console.log("row2 ", row2);
-//       setOpen1(row2.length);
-//     }
-//   }, [chart31Reducer.isFetching]);
+        }
+      }
+      console.log("row2 ", row2);
+      setOpen1(row2.length);
+    }
+  }, [chart31Reducer.isFetching]);
 
   React.useEffect(() => {
     setRow([]);
@@ -130,9 +130,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </StyledTableCell>
               </TableRow>
               <TableRow>
-                <StyledTableCell align="center">เสี่ยง (คน) </StyledTableCell>
-                <StyledTableCell align="center">ปกติ (คน) </StyledTableCell>
-                <StyledTableCell align="center">รวม (คน) </StyledTableCell>
+                <StyledTableCell align="center">ส่งต่อบริการรักษาทางทันตกรรม (คน) </StyledTableCell>
+                <StyledTableCell align="center">ไม่ส่งต่อบริการรักษาทางทันตกรรม (คน) </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -140,13 +139,10 @@ const ShowChart = React.forwardRef((props, ref) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="center">
-                      {value.เสี่ยง}
+                      {value.ส่งต่อ}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {value.ปกติ}
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {value.รวม}
+                      {value.ไม่ส่งต่อ}
                     </StyledTableCell>
                   </StyledTableRow>
                 );
