@@ -227,8 +227,7 @@ export default function Chart35() {
   const componentRef = React.useRef();
   return (
     <div className="col-12">
-      {/* <div className="card card-light collapsed-card"> */}
-      <div className="card card-light">
+      <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
             จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามเพศและช่วงอายุ

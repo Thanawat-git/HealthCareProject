@@ -11,11 +11,10 @@ import {
   TableRow,
   Paper,
   Select,
-  Checkbox,
-  TableFooter,
-  TablePagination,
+  Switch,
+  FormControlLabel
 } from "@material-ui/core";
-import Skeleton from '@material-ui/lab/Skeleton';
+import Skeleton from "@material-ui/lab/Skeleton";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -40,7 +39,7 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 function creactData(
-  เพศ,
+  ช่วงอายุ,
   กลุ่ม1เพศชาย,
   เปอร์เซ็นต์กลุ่ม1เพศชาย,
   กลุ่ม2เพศชาย,
@@ -67,7 +66,7 @@ function creactData(
   เปอร์เซ็นต์รวมทั้งหมด
 ) {
   return {
-    เพศ,
+    ช่วงอายุ,
     กลุ่ม1เพศชาย,
     เปอร์เซ็นต์กลุ่ม1เพศชาย,
     กลุ่ม2เพศชาย,
@@ -98,183 +97,61 @@ function creactData(
 const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(0);
+  const [per, setPer] = React.useState(false);
   const [community, setCommunity] = React.useState("ทุกชุมชน");
   const chart33Reducer = useSelector(({ chart33Reducer }) => chart33Reducer);
   const [row, setRow] = React.useState([]);
   const dispatch = useDispatch();
-  const { Male, Female, Summary } = chart33Reducer.results;
 
-  const listGender = [Male, Female, Summary];
-  const ageRange = [6064, 6569, 7074, 7579, 8084, 8589, 9094, 95];
   React.useEffect(() => {
-    for (const key in chart33Reducer.results) {
-//      if (Object.hasOwnProperty.call(chart33Reducer.results, key)) {
+    if(chart33Reducer.isFetching===false){
+      for (const key in chart33Reducer.results) {
+        if (Object.hasOwnProperty.call(chart33Reducer.results, key)) {
           const element = chart33Reducer.results[key];
-          console.log(element)
-//          }
+          console.log(key+" ",element)
+          row.push(creactData(
+            key==="g95"?key.substring(1, 3)+"+":key.substring(1, 3)+"-" +key.substring(3),
+
+            element.G1.Male,
+            element.G1.PerMale==="NaN"?"0.0":element.G1.PerMale,
+            element.G2.Male,
+            element.G2.PerMale==="NaN"?"0.0":element.G2.PerMale,
+            element.G3.Male,
+            element.G3.PerMale==="NaN"?"0.0":element.G3.PerMale,
+            element.Summary.Male,
+            element.Summary.PerMale==="NaN"?"0.0":element.Summary.PerMale,
+
+            element.G1.Female,
+            element.G1.PerFemale==="NaN"?"0.0":element.G1.PerFemale,
+            element.G2.Female,
+            element.G2.PerFemale==="NaN"?"0.0":element.G2.PerFemale,
+            element.G3.Female,
+            element.G3.PerFemale==="NaN"?"0.0":element.G3.PerFemale,
+            element.Summary.Female,
+            element.Summary.PerFemale==="NaN"?"0.0":element.Summary.PerFemale,
+
+            element.G1.Sum,
+            element.G1.PerSum==="NaN"?"0.0":element.G1.PerSum,
+            element.G2.Sum,
+            element.G2.PerSum==="NaN"?"0.0":element.G2.PerSum,
+            element.G3.Sum,
+            element.G3.PerSum==="NaN"?"0.0":element.G3.PerSum,
+            element.Summary.Sum,
+            element.Summary.PerSum==="NaN"?"0.0":element.Summary.PerSum,
+          ))
+        }
+      }
     }
-//     if (chart33Reducer.isFetching === false) {
-//       for (let i = 0; i < listGender.length; i++) {
-//         row.push(
-//           creactData(
-//             Object.keys(chart33Reducer.results)[i],
-//             chart33Reducer.results[i].Male.a6064.G1,
-//             listGender.a6064.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a6064.G1Per + "%",
-//             listGender.a6064.G2,
-//             listGender.a6064.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a6064.G2Per + "%",
-//             listGender.a6064.G3,
-//             listGender.a6064.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a6064.G3Per + "%",
-//             listGender.a6064.Sum,
-//             listGender.a6064.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a6064.SumPer + "%",
-
-//             listGender.a6569.G1,
-//             listGender.a6569.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a6569.G1Per + "%",
-//             listGender.a6569.G2,
-//             listGender.a6569.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a6569.G2Per + "%",
-//             listGender.a6569.G3,
-//             listGender.a6569.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a6569.G3Per + "%",
-//             listGender.a6569.Sum,
-//             listGender.a6569.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a6569.SumPer + "%",
-//             listGender.a6569.G1,
-//             listGender.a6569.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a6569.G1Per + "%",
-//             listGender.a6569.G2,
-//             listGender.a6569.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a6569.G2Per + "%",
-//             listGender.a6569.G3,
-//             listGender.a6569.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a6569.G3Per + "%",
-//             listGender.a6569.Sum,
-//             listGender.a6569.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a6569.SumPer + "%",
-
-//             listGender.a7074.G1,
-//             listGender.a7074.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a7074.G1Per + "%",
-//             listGender.a7074.G2,
-//             listGender.a7074.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a7074.G2Per + "%",
-//             listGender.a7074.G3,
-//             listGender.a7074.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a7074.G3Per + "%",
-//             listGender.a7074.Sum,
-//             listGender.a7074.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a7074.SumPer + "%",
-
-//             listGender.a7579.G1,
-//             listGender.a7579.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a7579.G1Per + "%",
-//             listGender.a7579.G2,
-//             listGender.a7579.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a7579.G2Per + "%",
-//             listGender.a7579.G3,
-//             listGender.a7579.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a7579.G3Per + "%",
-//             listGender.a7579.Sum,
-//             listGender.a7579.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a7579.SumPer + "%",
-
-//             listGender.a8084.G1,
-//             listGender.a8084.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a8084.G1Per + "%",
-//             listGender.a8084.G2,
-//             listGender.a8084.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a8084.G2Per + "%",
-//             listGender.a8084.G3,
-//             listGender.a8084.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a8084.G3Per + "%",
-//             listGender.a8084.Sum,
-//             listGender.a8084.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a8084.SumPer + "%",
-
-//             listGender.a8589.G1,
-//             listGender.a8589.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a8589.G1Per + "%",
-//             listGender.a8589.G2,
-//             listGender.a8589.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a8589.G2Per + "%",
-//             listGender.a8589.G3,
-//             listGender.a8589.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a8589.G3Per + "%",
-//             listGender.a8589.Sum,
-//             listGender.a8589.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a8589.SumPer + "%",
-
-//             listGender.a9094.G1,
-//             listGender.a9094.G1Per === "NaN"
-//               ? "0%"
-//               : listGender.a9094.G1Per + "%",
-//             listGender.a9094.G2,
-//             listGender.a9094.G2Per === "NaN"
-//               ? "0%"
-//               : listGender.a9094.G2Per + "%",
-//             listGender.a9094.G3,
-//             listGender.a9094.G3Per === "NaN"
-//               ? "0%"
-//               : listGender.a9094.G3Per + "%",
-//             listGender.a9094.Sum,
-//             listGender.a9094.SumPer === "NaN"
-//               ? "0%"
-//               : listGender.a9094.SumPer + "%",
-
-//             listGender.a95.G1,
-//             listGender.a95.G1Per === "NaN" ? "0%" : listGender.a95.G1Per + "%",
-//             listGender.a95.G2,
-//             listGender.a95.G2Per === "NaN" ? "0%" : listGender.a95.G2Per + "%",
-//             listGender.a95.G3,
-//             listGender.a95.G3Per === "NaN" ? "0%" : listGender.a95.G3Per + "%",
-//             listGender.a95.Sum,
-//             listGender.a95.SumPer === "NaN" ? "0%" : listGender.a95.SumPer + "%"
-//           )
-//         );
-//      }
-//     }
-    console.log("row ", row);
+    // console.log("row ", row);
     setOpen1(row.length);
   }, [chart33Reducer.isFetching]);
   React.useEffect(() => {
-                    setRow([]);
-                  }, [community]);
-                  const handleChange = (e) => {
-                    setCommunity(e.target.value);
-                    dispatch(getDataChart33(e.target.value));
-                  };
+    setRow([]);
+  }, [community]);
+  const handleChange = (e) => {
+    setCommunity(e.target.value);
+    dispatch(getDataChart33(e.target.value));
+  };
   return (
     <div className="card-body">
       <div className="row justify-content-between csv-link-select">
@@ -282,13 +159,17 @@ const ShowChart = React.forwardRef((props, ref) => {
           {open1 !== 0 && (
             <CSVLink
               data={row}
-              filename={`จำนวนและชุมชนของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
+              filename={`จำนวนและร้อยละของผู้สูงอายุจำแนกตามเพศช่วงอายุและระดับความสามารถในการประกอบกิจวัตรประจำวันของ${community}.csv`}
             >
               Download CSV
             </CSVLink>
           )}
         </div>
         <div className="">
+        <FormControlLabel
+        control={<Switch checked={per} onChange={()=>setPer(!per)} name="checkedA" />}
+        label="แสดงแบบร้อยละ"
+        />
           เลือกชุมชน &emsp;
           <Select
             native
@@ -310,126 +191,87 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>
-          จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
-        </h4>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
-            <TableHead>
-              <TableRow><StyledTableCell align="center" colSpan={13}> จำนวนและร้อยละของผู้สูงอายุแจกแจงตามช่วงอายุ เพศ
-          และระดับดัชนีมวลกายของ{community} </StyledTableCell></TableRow>
+          <TableHead>
               <TableRow>
-                <StyledTableCell>ช่วงอายุ (ปี)</StyledTableCell>
-                <StyledTableCell align="center"></StyledTableCell>
-                <StyledTableCell align="right">ผอม</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
-                <StyledTableCell align="right">ปกติ</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
-                <StyledTableCell align="right">ท้วม</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
-                <StyledTableCell align="right">อ้วน</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
-                <StyledTableCell align="right">อ้วนมาก</StyledTableCell>
-                <StyledTableCell align="left">%</StyledTableCell>
-                <StyledTableCell align="right">รวม</StyledTableCell>
-                {/* <StyledTableCell align="right">%</StyledTableCell> */}
+                <StyledTableCell align="center" colSpan={13}>
+                  จำนวน{per&&"ร้อยละ"}ของผู้สูงอายุจำแนกตามเพศช่วงอายุและระดับความสามารถในการประกอบกิจวัตรประจำวันของ{community}
+                </StyledTableCell>
+              </TableRow>
+              <TableRow>
+                <StyledTableCell align="center" colSpan={1} rowSpan={2}>
+                  ช่วงอายุ (ปี)
+                </StyledTableCell>
+                <StyledTableCell align="center" colSpan={4}>
+                  เพศชาย
+                </StyledTableCell>
+                <StyledTableCell align="center" colSpan={4}>
+                  เพศหญิง
+                </StyledTableCell>
+                <StyledTableCell align="center" colSpan={4}>
+                  รวม
+                </StyledTableCell>
+              </TableRow>
+              <TableRow>
+                {[1, 1, 1].map(() => {
+                  return (
+                    <React.Fragment>
+                      <StyledTableCell align="center">กลุ่ม1 {per?"":"(คน)"}</StyledTableCell>
+                      <StyledTableCell align="center">กลุ่ม2 {per?"":"(คน)"}</StyledTableCell>
+                      <StyledTableCell align="center">กลุ่ม3 {per?"":"(คน)"}</StyledTableCell>
+                      <StyledTableCell align="center">รวม {per?"":"(คน)"}</StyledTableCell>
+                    </React.Fragment>
+                  );
+                })}
               </TableRow>
             </TableHead>
             <TableBody>
-              {chart33Reducer.isFetching === null ?
-              row.map((value) => {
-                return (
+            {chart33Reducer.isFetching === null 
+                ? row.map((v)=>{
+                    return (
+                    <StyledTableRow>
+                      <StyledTableCell align="center">{v.ช่วงอายุ}</StyledTableCell>
+
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์กลุ่ม1เพศชาย+" %":v.กลุ่ม1เพศชาย}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นตกลุ่ม2เพศชาย+" %":v.กลุ่ม2เพศชาย}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์กลุ่ม3เพศชาย+" %":v.กลุ่ม3เพศชาย}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์รวมเพศชาย+" %":v.รวมเพศชาย}</StyledTableCell>
+                     
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์กลุ่ม1เพศหญิง+" %":v.กลุ่ม1เพศหญิง}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นตกลุ่ม2เพศหญิง+" %":v.กลุ่ม2เพศหญิง}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์กลุ่ม3เพศหญิง+" %":v.กลุ่ม3เพศหญิง}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์รวมเพศหญิง+" %":v.รวมเพศหญิง}</StyledTableCell>
+
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์กลุ่ม1รวมทั้งหมด+" %":v.กลุ่ม1รวมทั้งหมด}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นตกลุ่ม2รวมทั้งหมด+" %":v.กลุ่ม2รวมทั้งหมด}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์กลุ่ม3รวมทั้งหมด+" %":v.กลุ่ม3รวมทั้งหมด}</StyledTableCell>
+                      <StyledTableCell align="center">{per?v.เปอร์เซ็นต์รวมทั้งหมด+" %":v.รวมทั้งหมด}</StyledTableCell>
+
+                    </StyledTableRow>
+                    )
+                }): (
+                <React.Fragment>
                   <StyledTableRow>
-                    <StyledTableCell>{value.ageRange}</StyledTableCell>
-                    <StyledTableCell>
-                      ชาย <br /> หญิง <br /> รวม
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {Male.a6064.G1}
-                      <br />
-                      {value.หญิงผอม}
-                      <br />
-                      {value.รวมผอม}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {value.เปอร์เซ็นต์ชายผอม}
-                      <br />
-                      {value.เปอร์เซ็นต์หญิงผอม}
-                      <br />
-                      {value.เปอร์เซ็นต์รวมผอม}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {value.ชายปกติ}
-                      <br />
-                      {value.หญิงปกติ}
-                      <br />
-                      {value.รวมปกติ}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {value.เปอร์เซ็นต์ชายปกติ}
-                      <br />
-                      {value.เปอร์เซ็นต์หญิงปกติ}
-                      <br />
-                      {value.เปอร์เซ็นต์รวมปกติ}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {value.ชายท้วม}
-                      <br />
-                      {value.หญิงท้วม}
-                      <br />
-                      {value.รวมท้วม}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {value.เปอร์เซ็นต์ชายท้วม}
-                      <br />
-                      {value.เปอร์เซ็นต์หญิงท้วม}
-                      <br />
-                      {value.เปอร์เซ็นต์รวมท้วม}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {value.ชายอ้วน}
-                      <br />
-                      {value.หญิงอ้วน}
-                      <br />
-                      {value.รวมอ้วน}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {value.เปอร์เซ็นต์ชายอ้วน}
-                      <br />
-                      {value.เปอร์เซ็นต์หญิงอ้วน}
-                      <br />
-                      {value.เปอร์เซ็นต์รวมอ้วน}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {value.ชายอ้วนมาก}
-                      <br />
-                      {value.หญิงอ้วนมาก}
-                      <br />
-                      {value.รวมอ้วนมาก}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {value.เปอร์เซ็นต์ชายอ้วนมาก}
-                      <br />
-                      {value.เปอร์เซ็นต์หญิงอ้วนมาก}
-                      <br />
-                      {value.เปอร์เซ็นต์รวมอ้วนมาก}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">{value.รวม}</StyledTableCell>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
                   </StyledTableRow>
-                );
-              })
-              : <React.Fragment>
-              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
-              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
-              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
-              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
-              <StyledTableRow><StyledTableCell colSpan={13}> <Skeleton/> </StyledTableCell></StyledTableRow>
-              </React.Fragment>
-              }
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
-      
       </div>
     </div>
   );
@@ -442,7 +284,8 @@ export default function Chart33() {
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
-            CH33 จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ
+            จำนวนและร้อยละของผู้สูงอายุจำแนกตามเพศ ช่วงอายุ
+            และระดับความสามารถในการประกอบกิจวัตรประจำวัน
           </h3>
           <div className="card-tools">
             <button

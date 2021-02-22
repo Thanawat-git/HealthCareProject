@@ -83,7 +83,7 @@ export default function MainContent() {
 
     //dispatch(getDataChart31("ชุมชนมณีแก้ว"))
     // dispatch(getDataChart32(""))
-    //  dispatch(getDataChart33(""))
+     dispatch(getDataChart33("ทุกชุมชน"))
     // dispatch(getDataChart34(""))
     // dispatch(getDataChart35())
     // dispatch(getDataChart36(""))
@@ -173,7 +173,7 @@ export default function MainContent() {
 
             {/* <Chart31 /> */}
             {/* <Chart32 /> */}
-            {/* <Chart33 /> */}
+            <Chart33 />
             {/* <Chart34 /> */}
             {/* <Chart35 /> */}
             {/* <Chart36 /> */}
