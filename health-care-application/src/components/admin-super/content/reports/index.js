@@ -33,25 +33,25 @@ export default function Index() {
     return <Redirect to={`${path}/report-menu`} />;
   };
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(getDataChart9());
-    dispatch(getDataChart10());
-    dispatch(getDataChart11());
-    dispatch(getDataChart14("ทุกชุมชน"));
-    dispatch(getDataChart16());
-    dispatch(getDataChart17());
-    dispatch(getDataChart18("ทุกชุมชน"));
-    dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart22());
-    dispatch(getDataChart23());
-    dispatch(getDataChart31("ชุมชนมณีแก้ว"))
-    dispatch(getDataChart32())
-    dispatch(getDataChart33("ทุกชุมชน"))
-    dispatch(getDataChart35())
-    dispatch(getDataChart36())
-    dispatch(getDataChart37())
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(getDataChart9());
+  //   dispatch(getDataChart10());
+  //   dispatch(getDataChart11());
+  //   dispatch(getDataChart14("ทุกชุมชน"));
+  //   dispatch(getDataChart16());
+  //   dispatch(getDataChart17());
+  //   dispatch(getDataChart18("ทุกชุมชน"));
+  //   dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+  //   dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+  //   dispatch(getDataChart22());
+  //   dispatch(getDataChart23());
+  //   dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+  //   dispatch(getDataChart32())
+  //   dispatch(getDataChart33("ทุกชุมชน"))
+  //   dispatch(getDataChart35())
+  //   dispatch(getDataChart36())
+  //   dispatch(getDataChart37())
+  // }, []);
 
   // --------------- ส่วนนี้ไม่ได้ใช้ มีไว้ทำ loading แต่ไม่ได้ทำ ---------------//
   const [loading1, setLoading1] = React.useState(false);
@@ -123,6 +123,13 @@ export default function Index() {
         dispatch(getDataChart35())
         dispatch(getDataChart36())
         dispatch(getDataChart37())
+        break;
+      case "โรค":
+        dispatch(getDataChart16());
+        dispatch(getDataChart17());
+        dispatch(getDataChart18("ทุกชุมชน"));
+        dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+        dispatch(getDataChart21("ชุมชนมณีแก้ว"));
         break;
       default:
         break;
@@ -202,7 +209,12 @@ export default function Index() {
               loading={loading7}
             />
           </Link>
-          {/* <ReportMenuBox title="MMSE" eachImg="11" /> */}
+          <Link onClick={() => handleClick("โรค")}>
+            <ReportMenuBox
+              title="โรคต่างๆ"
+              eachImg="11"
+            />
+          </Link>
           {/* <ReportMenuBox title="โรคซึมเศร้า" eachImg="12" /> */}
           {/* <ReportMenuBox title="สุขภาพกระดูกและกล้ามเนื้อ" eachImg="13" /> */}
           {/* <ReportMenuBox title="การกลั้นปัสสาวะ" eachImg="14" /> */}

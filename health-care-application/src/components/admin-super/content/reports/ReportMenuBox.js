@@ -11,6 +11,7 @@ import Eye from "../../../images/eye.svg";
 import Toilet from "../../../images/toilet.svg";
 import Bad from "../../../images/bad.svg";
 import Mouth from "../../../images/mouth.svg";
+import Bacteria from "../../../images/bacteria.svg";
 import { Button, Paper } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
@@ -45,7 +46,7 @@ export default function ReportMenuBox({ title, eachImg, loading }) {
               eachImg=='8' ? <img src={Day} />:
               eachImg=='9' ? <img src={BodySize} />:
               eachImg=='10' ? <img src={Brain} />:
-              eachImg=='11' ? <img src={BodySize} />:
+              eachImg=='11' ? <img src={Bacteria} />:
               eachImg=='12' ? <img src={Bad} />:
               eachImg=='13' ? <img src={Bone} />:
               <img src={Toilet} />

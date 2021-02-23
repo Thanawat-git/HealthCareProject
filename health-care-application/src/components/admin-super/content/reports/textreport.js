@@ -12,6 +12,11 @@ import {
   Chart35,
   Chart36,
   Chart37,
+  Chart16,
+  Chart17,
+  Chart18,
+  Chart20,
+  Chart21,
 } from "../charts";
 
 
@@ -44,15 +49,21 @@ export default function Textreport({ selectShowTable }) {
               <Chart32 />
               <Chart33 />
             </React.Fragment>
-          ) : (
-            selectShowTable === "ภาวะสมองเสื่อม" && (
+          ) : selectShowTable === "ภาวะสมองเสื่อม" ? 
               <React.Fragment>
                 <Chart35 />
                 <Chart36 />
                 <Chart37 />
               </React.Fragment>
-            )
-          )}
+            : selectShowTable === "โรค" && 
+              <React.Fragment>
+                <Chart16 />
+                <Chart17 />
+                <Chart18 />
+                <Chart20 />
+                <Chart21 />
+              </React.Fragment>
+          }
         </div>
       </div>
     </section>
