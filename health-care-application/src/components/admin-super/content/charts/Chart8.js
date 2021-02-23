@@ -278,7 +278,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           <Table className="table-report" aria-label="customized table">
             <TableHead>
             <TableRow>
-                  <StyledTableCell align="center" colSpan={9}>
+                  <StyledTableCell align="center" colSpan={10}>
                   จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษา และชุมชน
                   </StyledTableCell>
                 </TableRow>
@@ -292,6 +292,7 @@ const ShowChart = React.forwardRef((props, ref) => {
                 <StyledTableCell align="center">บัตรประกันสังคม</StyledTableCell>
                 <StyledTableCell align="center">อื่นๆ</StyledTableCell>
                 <StyledTableCell align="center">รวม</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
                 
               </TableRow>
             </TableHead>
@@ -308,33 +309,34 @@ const ShowChart = React.forwardRef((props, ref) => {
                     {row.ชุมชน}
                   </StyledTableCell>
                   <StyledTableCell align="left">จำนวน<br />เปอร์เซ็นต์</StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.เบิกต้นสังกัด}  <br />
                     {row.เปอร์เซ็นต์เบิกต้นสังกัด} % 
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.ชำระเงินเอง}  <br />
                     {row.เปอร์เซ็นต์ชำระเงินเอง} %
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.บัตรทอง}  <br />
                     {row.เปอร์เซ็นต์บัตรทอง} %
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.บัตรผู้พิการ}  <br />
                     {row.เปอร์เซ็นต์บัตรผู้พิการ} %
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.บัตรประกันสังคม}  <br />
                     {row.เปอร์เซ็นต์บัตรประกันสังคม} %
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.อื่นๆ}  <br />
                     {row.เปอร์เซ็นต์อื่นๆ} %
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">
                     {row.รวม}
                   </StyledTableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
                 </StyledTableRow>
               )): <React.Fragment>
               <StyledTableRow><StyledTableCell colSpan={11}> <Skeleton/> </StyledTableCell></StyledTableRow>

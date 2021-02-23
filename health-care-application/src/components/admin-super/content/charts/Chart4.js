@@ -301,7 +301,7 @@ const ShowChart = React.forwardRef((props, ref) => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell align="center" colSpan={5}>
-                    จำนวนและร้อยละของผู้สูงอายุที่มีผู้ดูแลและไม่มีดูแลของแต่ละชุมชน
+                    จำนวนและร้อยละของผู้สูงอายุที่มีผู้ดูแลและไม่มีผู้ดูแลของแต่ละชุมชน
                   </StyledTableCell>
                 </TableRow>
                 <TableRow>
