@@ -19,10 +19,7 @@ import {
   Chart21,
 } from "../charts";
 
-
 export default function Textreport({ selectShowTable }) {
- 
-
   return (
     <section className="content">
       <div className="container-fluid">
