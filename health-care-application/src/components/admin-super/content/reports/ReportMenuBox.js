@@ -24,34 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ReportMenuBox({ title, eachImg }) {
+export default function ReportMenuBox({ title, eachImg, loading }) {
   const classes = useStyles();
-  const [loading, setLoading] = React.useState(true)
-  const f0 = useSelector(({ chart9Reducer }) => chart9Reducer.isFetching);
-  const f1 = useSelector(({ chart10Reducer }) => chart10Reducer.isFetching);
-  const f2 = useSelector(({ chart11Reducer }) => chart11Reducer.isFetching);
-  const f3 = useSelector(({ chart14Reducer }) => chart14Reducer.isFetching);
-  const f4 = useSelector(({ chart16Reducer }) => chart16Reducer.isFetching);
-  const f5 = useSelector(({ chart17Reducer }) => chart17Reducer.isFetching);
-  const f6 = useSelector(({ chart18Reducer }) => chart18Reducer.isFetching);
-  const f7 = useSelector(({ chart20Reducer }) => chart20Reducer.isFetching);
-  const f8 = useSelector(({ chart21Reducer }) => chart21Reducer.isFetching);
-  const f9 = useSelector(({ chart22Reducer }) => chart22Reducer.isFetching);
-  const f10 = useSelector(({ chart23Reducer }) => chart23Reducer.isFetching);
-  const f11 = useSelector(({ chart31Reducer }) => chart31Reducer.isFetching);
-  const f12 = useSelector(({ chart32Reducer }) => chart32Reducer.isFetching);
-  const f13 = useSelector(({ chart33Reducer }) => chart33Reducer.isFetching);
-  const f14 = useSelector(({ chart35Reducer }) => chart35Reducer.isFetching);
-  const f15 = useSelector(({ chart36Reducer }) => chart36Reducer.isFetching);
-  const f16 = useSelector(({ chart37Reducer }) => chart37Reducer.isFetching);
-
-  React.useEffect(()=>{
-    if(f0&&f1&&f2&&f3&&f4&&f5&&f6&&f7&&f8&&f9&&f10&&f11&&f12&&f13&&f14&&f15&&f16){
-
-    } else {
-      setLoading(false)
-    }
-  },[f0,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16])
 
   return (
     <div className={classes.root}>

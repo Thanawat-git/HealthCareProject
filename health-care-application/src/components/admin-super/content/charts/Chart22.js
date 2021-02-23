@@ -10,8 +10,8 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Select,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -125,7 +125,7 @@ const ShowChart = React.forwardRef((props, ref) => {
       for (let i = 0; i < communi.length; i++) {
         row.push(
           creactData(
-            Object.keys(chart22Reducer.results)[i + 1],
+            Object.keys(chart22Reducer.results)[i],
             communi[i].Risk,
             communi[i].PerRisk==="NaN"?"0":communi[i].PerRisk,
             communi[i].RiskII,
@@ -155,7 +155,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           {open1 !== 0 && (
             <CSVLink
               data={row}
-              filename={`จำนวนและชุมชนของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
+              filename={`จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน.csv`}
             >
               Download CSV
             </CSVLink>
@@ -164,12 +164,14 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>
-          จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
-        </h4>
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
+            <TableRow>
+              <StyledTableCell align="center" colSpan={6} >
+              จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
+              </StyledTableCell>
+            </TableRow>
               <TableRow>
                 <StyledTableCell align="left">ชุมชน</StyledTableCell>
                 <StyledTableCell align="left">จำนวน/เปอร์เซ็นต์</StyledTableCell>
@@ -180,7 +182,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart22Reducer.isFetching===false ?
+              row.map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="left">
@@ -203,7 +206,18 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              })
+              : <React.Fragment>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                </React.Fragment>
+              }
             </TableBody>
           </Table>
         </TableContainer>
@@ -219,7 +233,7 @@ export default function Chart22() {
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
-            CH22 จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ
+            จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
           </h3>
           <div className="card-tools">
             <button

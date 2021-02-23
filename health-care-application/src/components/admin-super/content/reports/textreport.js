@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart9, Chart10, Chart11, Chart14 } from "../charts";
+import { Chart9, Chart10, Chart11, Chart14, Chart22, Chart23, Chart31, Chart32, Chart33, Chart35, Chart36, Chart37 } from "../charts";
 
 export default function Textreport({ selectShowTable }) {
   return (
@@ -13,18 +13,28 @@ export default function Textreport({ selectShowTable }) {
             </React.Fragment>
           : selectShowTable === "bmi" 
           ? <React.Fragment>
-            <Chart10 /> <Chart11 /> <Chart14 /> 
+              <Chart10 /> <Chart11 /> <Chart14 /> 
             </React.Fragment> 
-          : selectShowTable === "ค่าความดันโลหิต" 
-          ? <React.Fragment></React.Fragment>
           : selectShowTable === "cardio" 
-          ? <React.Fragment></React.Fragment>
+          ? <React.Fragment>
+              <Chart22 />
+              <Chart23 />
+            </React.Fragment>
           : selectShowTable === "สุขภาพช่องปาก" 
-          ? <React.Fragment></React.Fragment>
+          ? <React.Fragment>
+              <Chart31 />
+            </React.Fragment>
           : selectShowTable === "abl" 
-          ? <React.Fragment></React.Fragment>
+          ? <React.Fragment>
+              <Chart32 />
+              <Chart33 />
+            </React.Fragment>
           : selectShowTable === "ภาวะสมองเสื่อม" 
-          && <React.Fragment></React.Fragment>
+          && <React.Fragment>
+              <Chart35 />
+              <Chart36 />
+              <Chart37 />
+             </React.Fragment>
           
         }
         </div>

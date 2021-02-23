@@ -401,17 +401,17 @@ export const getDataChart21 = (community) => {
   };
 };
 
-export const getDataChart22 = (community) => {
+export const getDataChart22 = () => {
   return async (dispatch) => {
     await dispatch({ type: CHART22_FETCHING });
     try {
-      let data = await Axios.get(`${apiBase}/report03/22-cardio`); //ไม่แน่ใจว่าพาทถูกมั้ยนะ
+      let data = await Axios.get(`${apiBase}/report03/22-cardio`);
       console.log("chart 22 ", data.data);
       await dispatch({
         type: CHART22_GET_SUCCRESS,
         payload: data.data,
       });
-      await dispatch({ type: CHART22_DEF_FETCHING });
+      // await dispatch({ type: CHART22_DEF_FETCHING });
     } catch (error) {
       dispatch({ type: CHART22_ERROR });
       console.log("error chart22 ", error);
@@ -419,7 +419,7 @@ export const getDataChart22 = (community) => {
   };
 };
 
-export const getDataChart23 = (community) => {
+export const getDataChart23 = () => {
   return async (dispatch) => {
     await dispatch({ type: CHART23_FETCHING });
     try {
@@ -429,7 +429,7 @@ export const getDataChart23 = (community) => {
         type: CHART23_GET_SUCCRESS,
         payload: data.data,
       });
-      await dispatch({ type: CHART23_DEF_FETCHING });
+      // await dispatch({ type: CHART23_DEF_FETCHING });
     } catch (error) {
       dispatch({ type: CHART23_ERROR });
       console.log("error chart23 ", error);
