@@ -84,7 +84,7 @@ export default function MainContent() {
     //  dispatch(getDataChart33("ทุกชุมชน"))
     // dispatch(getDataChart35())
     // dispatch(getDataChart36(""))
-    dispatch(getDataChart37(""))
+    // dispatch(getDataChart37(""))
   }, []);
   return (
     <React.Fragment>
@@ -173,7 +173,7 @@ export default function MainContent() {
             {/* <Chart33 /> */}
             {/* <Chart35 /> */}
             {/* <Chart36 /> */}
-            <Chart37 />
+            {/* <Chart37 /> */}
 
 
           </div>
