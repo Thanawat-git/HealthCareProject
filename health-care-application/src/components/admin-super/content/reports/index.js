@@ -90,7 +90,7 @@ export default function Index() {
     if (f32 === false && !f33) {
       setLoading6(false);
     }
-    if (f35 === false && f36 === false && f37 === false ) {
+    if (f35 === false && f36 === false && f37 === false) {
       setLoading7(false);
     }
   }, [
@@ -129,16 +129,16 @@ export default function Index() {
         dispatch(getDataChart23());
         break;
       case "สุขภาพช่องปาก":
-        dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+        dispatch(getDataChart31("ชุมชนมณีแก้ว"));
         break;
       case "abl":
-        dispatch(getDataChart32())
-        dispatch(getDataChart33("ทุกชุมชน"))
+        dispatch(getDataChart32());
+        dispatch(getDataChart33("ทุกชุมชน"));
         break;
       case "ภาวะสมองเสื่อม":
-        dispatch(getDataChart35())
-        dispatch(getDataChart36())
-        dispatch(getDataChart37())
+        dispatch(getDataChart35());
+        dispatch(getDataChart36());
+        dispatch(getDataChart37());
         break;
       default:
         break;

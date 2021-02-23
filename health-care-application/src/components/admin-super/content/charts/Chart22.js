@@ -55,7 +55,7 @@ function creactData(
     เสี่ยงสูงมาก,
     เปอร์เซ็นต์เสี่ยงสูงมาก,
     รวม,
-    เปอร์เซ็นต์รวม
+    เปอร์เซ็นต์รวม,
   };
 }
 
@@ -127,13 +127,15 @@ const ShowChart = React.forwardRef((props, ref) => {
           creactData(
             Object.keys(chart22Reducer.results)[i],
             communi[i].Risk,
-            communi[i].PerRisk==="NaN"?"0":communi[i].PerRisk,
+            communi[i].PerRisk === "NaN" ? "0" : communi[i].PerRisk,
             communi[i].RiskII,
-            communi[i].PerRiskII==="NaN"?"0":communi[i].PerRiskII,
+            communi[i].PerRiskII === "NaN" ? "0" : communi[i].PerRiskII,
             communi[i].RiskIII,
-            communi[i].PerRiskIII==="NaN"?"0":communi[i].PerRiskIII,
+            communi[i].PerRiskIII === "NaN" ? "0" : communi[i].PerRiskIII,
             communi[i].ElderCardio,
-            communi[i].PerElderCardio==="NaN"?"0":communi[i].PerElderCardio
+            communi[i].PerElderCardio === "NaN"
+              ? "0"
+              : communi[i].PerElderCardio
           )
         );
       }
@@ -167,14 +169,16 @@ const ShowChart = React.forwardRef((props, ref) => {
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
-            <TableRow>
-              <StyledTableCell align="center" colSpan={6} >
-              จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
-              </StyledTableCell>
-            </TableRow>
+              <TableRow>
+                <StyledTableCell align="center" colSpan={6}>
+                  จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
+                </StyledTableCell>
+              </TableRow>
               <TableRow>
                 <StyledTableCell align="left">ชุมชน</StyledTableCell>
-                <StyledTableCell align="left">จำนวน/เปอร์เซ็นต์</StyledTableCell>
+                <StyledTableCell align="left">
+                  จำนวน/เปอร์เซ็นต์
+                </StyledTableCell>
                 <StyledTableCell align="center">เสี่ยง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูงมาก</StyledTableCell>
@@ -182,42 +186,93 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {chart22Reducer.isFetching===false ?
-              row.map((value) => {
-                return (
+              {chart22Reducer.isFetching === false ? (
+                row.map((value) => {
+                  return (
+                    <StyledTableRow>
+                      <StyledTableCell align="left">
+                        {value.ชุมชน}
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        จำนวน
+                        <br />
+                        เปอร์เซ็นต์
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {value.เสี่ยง}
+                        <br />
+                        {value.เปอร์เซ็นต์เสี่ยง}%
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {value.เสี่ยงสูง}
+                        <br />
+                        {value.เปอร์เซ็นต์เสี่ยงสูง}%
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {value.เสี่ยงสูงมาก}
+                        <br />
+                        {value.เปอร์เซ็นต์เสี่ยงสูงมาก}%
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {value.รวม}
+                        <br />
+                        {value.เปอร์เซ็นต์รวม}%
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  );
+                })
+              ) : (
+                <React.Fragment>
                   <StyledTableRow>
-                    <StyledTableCell align="left">
-                      {value.ชุมชน}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      จำนวน<br />เปอร์เซ็นต์
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {value.เสี่ยง}<br />{value.เปอร์เซ็นต์เสี่ยง}%
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {value.เสี่ยงสูง}<br />{value.เปอร์เซ็นต์เสี่ยงสูง}%
-                    </StyledTableCell>
-                    <StyledTableCell align="center">
-                      {value.เสี่ยงสูงมาก}<br />{value.เปอร์เซ็นต์เสี่ยงสูงมาก}%
-                    </StyledTableCell>
-                    <StyledTableCell align="center" >
-                      {value.รวม}<br />{value.เปอร์เซ็นต์รวม}%
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
                     </StyledTableCell>
                   </StyledTableRow>
-                );
-              })
-              : <React.Fragment>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
-                <StyledTableRow><StyledTableCell colSpan={6}> <Skeleton/> </StyledTableCell></StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}>
+                      {" "}
+                      <Skeleton />{" "}
+                    </StyledTableCell>
+                  </StyledTableRow>
                 </React.Fragment>
-              }
+              )}
             </TableBody>
           </Table>
         </TableContainer>
