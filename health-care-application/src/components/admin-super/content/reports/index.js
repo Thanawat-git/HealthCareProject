@@ -3,7 +3,7 @@ import { Redirect, Route, useRouteMatch, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import "./report.css";
 import ReportMenuBox from "./ReportMenuBox";
-import Textreport from "./Textreport";
+import ShowReport from "./ShowReport";
 import {
   getDataChart9,
   getDataChart10,
@@ -149,7 +149,7 @@ export default function Index() {
         </div>
       </div>
       <Route path={`${path}/textreport`}>
-        <Textreport selectShowTable={selectShowTable} />
+        <ShowReport selectShowTable={selectShowTable} />
       </Route>
 
       <Route path={`${path}/report-menu`}>

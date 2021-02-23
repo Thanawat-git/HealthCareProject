@@ -518,8 +518,8 @@ export default function Chart18() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            CH18 จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบ
-            จำแนกตามเพศและช่วงอายุ ของชุมชน
+            จำนวนและร้อยละของผู้สูงอายุที่มีโรคประจำตัวที่สำรวจพบ
+            จำแนกตามเพศและช่วงอายุ ชุมชน
           </h3>
           <div className="card-tools">
             <button
