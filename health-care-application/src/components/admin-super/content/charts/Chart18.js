@@ -16,6 +16,7 @@ import {
   TableFooter,
   TablePagination,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
@@ -365,7 +366,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {(rowsPerPage > 0
+              {chart18Reducer.isFetching === null 
+              ?(rowsPerPage > 0
                 ? row.slice(
                     page * rowsPerPage,
                     page * rowsPerPage + rowsPerPage
@@ -463,7 +465,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={13}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
             <TableFooter>
               <TableRow>

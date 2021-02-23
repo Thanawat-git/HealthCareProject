@@ -515,7 +515,7 @@ export const getDataChart35 = () => {
     }
   }
 };
-export const getDataChart36 = (community) => {
+export const getDataChart36 = () => {
   return async dispatch=> {
     await dispatch({ type: CHART36_FETCHING });
     try {

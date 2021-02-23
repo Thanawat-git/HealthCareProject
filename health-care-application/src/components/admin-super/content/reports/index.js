@@ -33,81 +33,116 @@ export default function Index() {
     return <Redirect to={`${path}/report-menu`} />;
   };
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(getDataChart9());
-    dispatch(getDataChart10());
-    dispatch(getDataChart11());
-    dispatch(getDataChart14("ทุกชุมชน"));
-    dispatch(getDataChart16());
-    dispatch(getDataChart17());
-    dispatch(getDataChart18("ทุกชุมชน"));
-    dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart22());
-    dispatch(getDataChart23());
-    dispatch(getDataChart31("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart32(""));
-    dispatch(getDataChart33("ทุกชุมชน"));
-    dispatch(getDataChart35());
-    dispatch(getDataChart36(""));
-    dispatch(getDataChart37(""));
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(getDataChart9());
+  //   dispatch(getDataChart10());
+  //   dispatch(getDataChart11());
+  //   dispatch(getDataChart14("ทุกชุมชน"));
+  //   dispatch(getDataChart16());
+  //   dispatch(getDataChart17());
+  //   dispatch(getDataChart18("ทุกชุมชน"));
+  //   dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+  //   dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+  //   dispatch(getDataChart22());
+  //   dispatch(getDataChart23());
+  //   dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+  //   dispatch(getDataChart32())
+  //   dispatch(getDataChart33("ทุกชุมชน"))
+  //   dispatch(getDataChart35())
+  //   dispatch(getDataChart36())
+  //   dispatch(getDataChart37())
+  // }, []);
 
-  const [loading1, setLoading1] = React.useState(true);
-  const [loading2, setLoading2] = React.useState(true);
-  const [loading3, setLoading3] = React.useState(true);
-  const [loading4, setLoading4] = React.useState(true);
-  const [loading5, setLoading5] = React.useState(true);
-  const [loading6, setLoading6] = React.useState(true);
-  const [loading7, setLoading7] = React.useState(true);
-  const f0 = useSelector(({ chart9Reducer }) => chart9Reducer.isFetching);
-  const f1 = useSelector(({ chart10Reducer }) => chart10Reducer.isFetching);
-  const f2 = useSelector(({ chart11Reducer }) => chart11Reducer.isFetching);
-  const f3 = useSelector(({ chart14Reducer }) => chart14Reducer.isFetching);
-  const f4 = useSelector(({ chart16Reducer }) => chart16Reducer.isFetching);
-  const f5 = useSelector(({ chart17Reducer }) => chart17Reducer.isFetching);
-  const f6 = useSelector(({ chart18Reducer }) => chart18Reducer.isFetching);
-  const f7 = useSelector(({ chart20Reducer }) => chart20Reducer.isFetching);
-  const f8 = useSelector(({ chart21Reducer }) => chart21Reducer.isFetching);
-  const f9 = useSelector(({ chart22Reducer }) => chart22Reducer.isFetching);
-  const f10 = useSelector(({ chart23Reducer }) => chart23Reducer.isFetching);
-  const f11 = useSelector(({ chart31Reducer }) => chart31Reducer.isFetching);
-  const f12 = useSelector(({ chart32Reducer }) => chart32Reducer.isFetching);
-  const f13 = useSelector(({ chart33Reducer }) => chart33Reducer.isFetching);
-  const f14 = useSelector(({ chart35Reducer }) => chart35Reducer.isFetching);
-  const f15 = useSelector(({ chart36Reducer }) => chart36Reducer.isFetching);
-  const f16 = useSelector(({ chart37Reducer }) => chart37Reducer.isFetching);
+  const [loading1, setLoading1] = React.useState(false);
+  const [loading2, setLoading2] = React.useState(false);
+
+  const [loading4, setLoading4] = React.useState(false);
+  const [loading5, setLoading5] = React.useState(false);
+  const [loading6, setLoading6] = React.useState(false);
+  const [loading7, setLoading7] = React.useState(false);
+  const f9 = useSelector(({ chart9Reducer }) => chart9Reducer.isFetching);
+  const f10 = useSelector(({ chart10Reducer }) => chart10Reducer.isFetching);
+  const f11 = useSelector(({ chart11Reducer }) => chart11Reducer.isFetching);
+  const f14 = useSelector(({ chart14Reducer }) => chart14Reducer.isFetching); //
+  const f16 = useSelector(({ chart16Reducer }) => chart16Reducer.isFetching); // n
+  const f17 = useSelector(({ chart17Reducer }) => chart17Reducer.isFetching); // n
+  const f18 = useSelector(({ chart18Reducer }) => chart18Reducer.isFetching); // n
+  const f20 = useSelector(({ chart20Reducer }) => chart20Reducer.isFetching); // n
+  const f21 = useSelector(({ chart21Reducer }) => chart21Reducer.isFetching); // n
+  const f22 = useSelector(({ chart22Reducer }) => chart22Reducer.isFetching);
+  const f23 = useSelector(({ chart23Reducer }) => chart23Reducer.isFetching);
+  const f31 = useSelector(({ chart31Reducer }) => chart31Reducer.isFetching); //
+  const f32 = useSelector(({ chart32Reducer }) => chart32Reducer.isFetching);
+  const f33 = useSelector(({ chart33Reducer }) => chart33Reducer.isFetching); //
+  const f35 = useSelector(({ chart35Reducer }) => chart35Reducer.isFetching);
+  const f36 = useSelector(({ chart36Reducer }) => chart36Reducer.isFetching);
+  const f37 = useSelector(({ chart37Reducer }) => chart37Reducer.isFetching);
 
   React.useEffect(() => {
-    f0 === false && setLoading1(false);
-    if (f1 === false && f2 === false && !f3) {
+    f9 === false && setLoading1(false);
+    if (f10 === false && f11 === false && !f14) {
       setLoading2(false);
     }
-    if (f9 === false && f10 === false) {
+    if (f22 === false && f23 === false) {
       setLoading4(false);
     }
+    f31 === false && setLoading5(false);
+    if (f32 === false && !f33) {
+      setLoading6(false);
+    }
+    if (f35 === false && f36 === false && f37 === false ) {
+      setLoading7(false);
+    }
   }, [
-    f0,
-    f1,
-    f2,
-    f3,
-    f4,
-    f5,
-    f6,
-    f7,
-    f8,
     f9,
     f10,
     f11,
-    f12,
-    f13,
     f14,
-    f15,
     f16,
+    f17,
+    f18,
+    f20,
+    f21,
+    f22,
+    f23,
+    f31,
+    f32,
+    f33,
+    f35,
+    f36,
+    f37,
   ]);
 
   const handleClick = (x) => {
     setSelectShowTable(x);
+    switch (x) {
+      case "เอว":
+        dispatch(getDataChart9());
+        break;
+      case "bmi":
+        dispatch(getDataChart10());
+        dispatch(getDataChart11());
+        dispatch(getDataChart14("ทุกชุมชน"));
+        break;
+      case "cardio":
+        dispatch(getDataChart22());
+        dispatch(getDataChart23());
+        break;
+      case "สุขภาพช่องปาก":
+        dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+        break;
+      case "abl":
+        dispatch(getDataChart32())
+        dispatch(getDataChart33("ทุกชุมชน"))
+        break;
+      case "ภาวะสมองเสื่อม":
+        dispatch(getDataChart35())
+        dispatch(getDataChart36())
+        dispatch(getDataChart37())
+        break;
+      default:
+        break;
+    }
     history.push(`${path}/textreport`);
   };
 
@@ -188,7 +223,6 @@ export default function Index() {
           {/* <ReportMenuBox title="สุขภาพกระดูกและกล้ามเนื้อ" eachImg="13" /> */}
           {/* <ReportMenuBox title="การกลั้นปัสสาวะ" eachImg="14" /> */}
         </div>
-        <Link to={`${path}/report3`}>To report3</Link>
       </Route>
       <Route
         exact={true}

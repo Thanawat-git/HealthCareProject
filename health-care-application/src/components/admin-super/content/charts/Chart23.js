@@ -14,6 +14,7 @@ import {
   TableFooter,
   TablePagination,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -245,17 +246,18 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>
-          จำนวน{openPaper&&"ร้อยละ"}ของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามช่วงอายุและเพศ{label}
-        </h4>
         {openPaper === false ? (
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="left">ช่วงอายุ</StyledTableCell>
-                <StyledTableCell align="left">
+                <StyledTableCell align="center" colSpan={6} >
+                จำนวน{openPaper&&"ร้อยละ"}ของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามช่วงอายุและเพศ{label}
                 </StyledTableCell>
+              </TableRow>
+              <TableRow>
+                <StyledTableCell align="left">ช่วงอายุ</StyledTableCell>
+                <StyledTableCell align="left"></StyledTableCell>
                 <StyledTableCell align="center">เสี่ยง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูงมาก</StyledTableCell>
@@ -263,7 +265,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart23Reducer.isFetching === false 
+              ? row.map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="left">
@@ -580,7 +583,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -588,6 +609,11 @@ const ShowChart = React.forwardRef((props, ref) => {
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
+              <TableRow>
+                <StyledTableCell align="center" colSpan={6} >
+                จำนวน{openPaper&&"ร้อยละ"}ของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามช่วงอายุและเพศ{label}
+                </StyledTableCell>
+              </TableRow>
               <TableRow>
                 <StyledTableCell align="left">ช่วงอายุ</StyledTableCell>
                 <StyledTableCell align="left">
@@ -600,7 +626,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart23Reducer.isFetching === false 
+              ? row.map((value) => {
                 return (
                     <StyledTableRow>
                     <StyledTableCell align="left">
@@ -917,7 +944,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>

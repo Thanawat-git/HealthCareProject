@@ -12,6 +12,7 @@ import {
   TableRow,
   Paper,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
@@ -255,7 +256,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {chart36Reducer.isFetching === false
+                ? rows.map((row) => (
                   <StyledTableRow key={row.ชุมชน}>
                     <StyledTableCell component="th" scope="row">
                       {row.ชุมชน}
@@ -279,7 +281,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                       {row.เปอร์เซ็นต์รวม}
                     </StyledTableCell>
                   </StyledTableRow>
-                ))}
+                )): (
+                  <React.Fragment>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={5}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={5}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={5}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={5}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={5}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                  </React.Fragment>
+                )}
               </TableBody>
             </Table>
           </TableContainer>

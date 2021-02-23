@@ -12,6 +12,7 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -135,7 +136,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart31Reducer.isFetching === null
+              ? row.map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="center">
@@ -146,7 +148,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={3}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>

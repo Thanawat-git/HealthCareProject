@@ -5,7 +5,9 @@ import LeftSideBarMenu from "./LeftSideBarMenu";
 import Content from "./content/content";
 import Footer from "./Footer";
 
+
 export default function SuperAdminPage() {
+  
   return( 
   <React.Fragment>
     <div className="wrapper">
