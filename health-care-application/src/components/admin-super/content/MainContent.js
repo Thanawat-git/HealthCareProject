@@ -59,14 +59,14 @@ export default function MainContent() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
-    // dispatch(getDataChart1())
-    // dispatch(getDataChart2("ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้"))
-    // dispatch(getDataChart3("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
-    // dispatch(getDataChart4("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
-    // dispatch(getDataChart5("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
-    // dispatch(getDataChart6("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
-    // dispatch(getDataChart7("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
-    // dispatch(getDataChart8("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
+    dispatch(getDataChart1())
+    dispatch(getDataChart2("ใส่อะไรก็ได้แต่ต้องใส่เพราะไอ้บิ๊กไม่ยอมแก้"))
+    dispatch(getDataChart3("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
+    dispatch(getDataChart4("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
+    dispatch(getDataChart5("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
+    dispatch(getDataChart6("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
+    dispatch(getDataChart7("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
+    dispatch(getDataChart8("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
     // dispatch(getDataChart9());
     // dispatch(getDataChart10());
     // dispatch(getDataChart11());
@@ -76,15 +76,14 @@ export default function MainContent() {
     // dispatch(getDataChart18("ทุกชุมชน"));
     // dispatch(getDataChart20("ชุมชนมณีแก้ว"));
     // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
-    dispatch(getDataChart22());
-    //dispatch(getDataChart23());
-
-  //  dispatch(getDataChart31("ชุมชนมณีแก้ว"))
-    // dispatch(getDataChart32(""))
-    //  dispatch(getDataChart33("ทุกชุมชน"))
+    // dispatch(getDataChart22());
+    // dispatch(getDataChart23());
+    // dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+    // dispatch(getDataChart32())
+    // dispatch(getDataChart33("ทุกชุมชน"))
     // dispatch(getDataChart35())
-    // dispatch(getDataChart36(""))
-    // dispatch(getDataChart37(""))
+    // dispatch(getDataChart36())
+    // dispatch(getDataChart37())
   }, []);
   return (
     <React.Fragment>
@@ -146,34 +145,34 @@ export default function MainContent() {
               </div>
             </div>
 
-            {/* <Chart1 /> */}
-            {/* <Chart2 /> */}
-            {/* <Chart3 /> */}
-            {/* <Chart4 /> */}
-            {/* <Chart5 /> */}
-            {/* <Chart6 /> */}
-            {/* <Chart7 /> */}
-            {/* <Chart8 />  */}
+            <Chart1 />
+            <Chart2 />
+            <Chart3 />
+            <Chart4 />
+            <Chart5 />
+            <Chart6 />
+            <Chart7 />
+            <Chart8 /> 
             {/* //ส่วนที่2 */}
-            {/* <Chart9 /> */}
-            {/* <Chart10 /> */}
-            {/* <Chart11 /> */}
-            {/* <Chart14 /> */}
-            {/* <Chart16 /> */}
-            {/* <Chart17 /> */}
-            {/* <Chart18 /> */}
-            {/* <Chart20 /> */}
-            {/* <Chart21 /> */}
+            {/* <Chart9 />
+            <Chart10 />
+            <Chart11 />
+            <Chart14 />
+            <Chart16 />
+            <Chart17 /> */}
+            {/* <Chart18 />
+            <Chart20 />
+            <Chart21 /> */}
             {/* //ส่วนที่3 */}
-            <Chart22 />
-            {/* <Chart23 /> */}
+            {/* <Chart22 />
+            <Chart23 />
 
-            {/* <Chart31 /> */}
-            {/* <Chart32 /> */}
-            {/* <Chart33 /> */}
-            {/* <Chart35 /> */}
-            {/* <Chart36 /> */}
-            {/* <Chart37 /> */}
+            <Chart31 />
+            <Chart32 /> */}
+            {/* <Chart33 />
+            <Chart35 />
+            <Chart36 />
+            <Chart37 /> */}
 
 
           </div>
