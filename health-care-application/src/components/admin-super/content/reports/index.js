@@ -56,12 +56,12 @@ export default function Index() {
           <ReportMenuBox title="สุขภาพตา" eachImg="6" />
           <ReportMenuBox title="สุขภาพช่องปาก" eachImg="7" />
           <ReportMenuBox title="ความสามารถในการทำกิจวัตรประจำวัน" eachImg="8" />
-          <ReportMenuBox title="TAI" eachImg="9" />
+          {/* <ReportMenuBox title="TAI" eachImg="9" /> */}
           <ReportMenuBox title="ภาวะสมองเสื่อม" eachImg="10" />
-          <ReportMenuBox title="MMSE" eachImg="11" />
+          {/* <ReportMenuBox title="MMSE" eachImg="11" /> */}
           <ReportMenuBox title="โรคซึมเศร้า" eachImg="12" />
           <ReportMenuBox title="สุขภาพกระดูกและกล้ามเนื้อ" eachImg="13" />
-          <ReportMenuBox title="การกลั้นปัสสาวะ" eachImg="14" />
+          {/* <ReportMenuBox title="การกลั้นปัสสาวะ" eachImg="14" /> */}
         </div>
         <Link to={`${path}/report3`}>To report3</Link>
       </Route>
