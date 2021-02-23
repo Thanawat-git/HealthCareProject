@@ -33,26 +33,27 @@ export default function Index() {
     return <Redirect to={`${path}/report-menu`} />;
   };
   const dispatch = useDispatch();
-  // React.useEffect(() => {
-  //   dispatch(getDataChart9());
-  //   dispatch(getDataChart10());
-  //   dispatch(getDataChart11());
-  //   dispatch(getDataChart14("ทุกชุมชน"));
-  //   dispatch(getDataChart16());
-  //   dispatch(getDataChart17());
-  //   dispatch(getDataChart18("ทุกชุมชน"));
-  //   dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-  //   dispatch(getDataChart21("ชุมชนมณีแก้ว"));
-  //   dispatch(getDataChart22());
-  //   dispatch(getDataChart23());
-  //   dispatch(getDataChart31("ชุมชนมณีแก้ว"))
-  //   dispatch(getDataChart32())
-  //   dispatch(getDataChart33("ทุกชุมชน"))
-  //   dispatch(getDataChart35())
-  //   dispatch(getDataChart36())
-  //   dispatch(getDataChart37())
-  // }, []);
+  React.useEffect(() => {
+    dispatch(getDataChart9());
+    dispatch(getDataChart10());
+    dispatch(getDataChart11());
+    dispatch(getDataChart14("ทุกชุมชน"));
+    dispatch(getDataChart16());
+    dispatch(getDataChart17());
+    dispatch(getDataChart18("ทุกชุมชน"));
+    dispatch(getDataChart20("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart21("ชุมชนมณีแก้ว"));
+    dispatch(getDataChart22());
+    dispatch(getDataChart23());
+    dispatch(getDataChart31("ชุมชนมณีแก้ว"))
+    dispatch(getDataChart32())
+    dispatch(getDataChart33("ทุกชุมชน"))
+    dispatch(getDataChart35())
+    dispatch(getDataChart36())
+    dispatch(getDataChart37())
+  }, []);
 
+  // --------------- ส่วนนี้ไม่ได้ใช้ มีไว้ทำ loading แต่ไม่ได้ทำ ---------------//
   const [loading1, setLoading1] = React.useState(false);
   const [loading2, setLoading2] = React.useState(false);
 
@@ -93,25 +94,8 @@ export default function Index() {
     if (f35 === false && f36 === false && f37 === false ) {
       setLoading7(false);
     }
-  }, [
-    f9,
-    f10,
-    f11,
-    f14,
-    f16,
-    f17,
-    f18,
-    f20,
-    f21,
-    f22,
-    f23,
-    f31,
-    f32,
-    f33,
-    f35,
-    f36,
-    f37,
-  ]);
+  }, [f9,f10,f11,f14,f16,f17,f18,f20,f21,f22,f23,f31,f32,f33,f35,f36,f37]);
+  // --------------- ส่วนนี้ไม่ได้ใช้ มีไว้ทำ loading แต่ไม่ได้ทำ ---------------//
 
   const handleClick = (x) => {
     setSelectShowTable(x);
