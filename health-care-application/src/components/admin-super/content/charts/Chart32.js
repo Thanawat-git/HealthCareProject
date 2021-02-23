@@ -280,7 +280,8 @@ const ShowChart = React.forwardRef((props, ref) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {chart32Reducer.isFetching === false 
+                ?rows.map((row) => (
                   <StyledTableRow key={row.ชุมชน}>
                     <StyledTableCell component="th" scope="row">
                       {row.ชุมชน}
@@ -307,7 +308,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                     <StyledTableCell align="center">{row.รวม}</StyledTableCell>
                   </StyledTableRow>
-                ))}
+                )): (
+                  <React.Fragment>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={12}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={12}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={12}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={12}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                    <StyledTableRow>
+                      <StyledTableCell colSpan={12}><Skeleton /></StyledTableCell>
+                    </StyledTableRow>
+                  </React.Fragment>
+                )}
               </TableBody>
             </Table>
           </TableContainer>

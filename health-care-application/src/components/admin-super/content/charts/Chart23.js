@@ -14,6 +14,7 @@ import {
   TableFooter,
   TablePagination,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -110,6 +111,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     g9094,
     g95,
   } = chart23Reducer.results;
+  
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: true,
@@ -124,6 +126,27 @@ const ShowChart = React.forwardRef((props, ref) => {
   const toggleChecked = () => {
     setopenPaper((prev) => !prev);
   };
+  const [label, setLabel] = React.useState("");
+  React.useEffect(()=>{
+    if(state.checkedA&&state.checkedB&&state.checkedC){
+      setLabel("ของทั้งหมด (ชาย หญิง รวม)")
+    } else if(state.checkedA&&state.checkedB){
+      setLabel("ของชายและหญิง")
+    } else if(state.checkedA&&state.checkedC){
+      setLabel("ของชายและรวม")
+    } else if(state.checkedB&&state.checkedC){
+      setLabel("ของหญิงและรวม")
+    } else if(state.checkedA){
+      setLabel("ของชาย")
+    } else if(state.checkedB){
+      setLabel("ของหญิง")
+    } else if(state.checkedC){
+      setLabel("ของทั้งหมด")
+    } else {
+      setLabel("ของทั้งหมด")
+    }
+  },[state.checkedA,state.checkedB,state.checkedC])
+
   const listAge = [g6064, g6569, g7074, g7579, g8084, g8589, g9094, g95];
   React.useEffect(() => {
     if (chart23Reducer.isFetching === false) {
@@ -172,6 +195,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     console.log("row ", row);
     setOpen1(row.length);
   }, [chart23Reducer.isFetching]);
+  
   return (
     <div className="card-body">
       <div className="row justify-content-between csv-link-select">
@@ -179,7 +203,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           {open1 !== 0 && (
             <CSVLink
               data={row}
-              filename={`จำนวนและชุมชนของผู้สูงอายุที่มีความเสี่ยงความดันโลหิตสูงจำแนกตามชุมชนของ${community}.csv`}
+              filename={`จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามเพศและช่วงอายุ.csv`}
             >
               Download CSV
             </CSVLink>
@@ -222,17 +246,18 @@ const ShowChart = React.forwardRef((props, ref) => {
       </div>
 
       <div ref={ref} className="report-container">
-        <h4>
-          จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามชุมชน
-        </h4>
         {openPaper === false ? (
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="left">ช่วงอายุ</StyledTableCell>
-                <StyledTableCell align="left">
+                <StyledTableCell align="center" colSpan={6} >
+                จำนวน{openPaper&&"ร้อยละ"}ของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามช่วงอายุและเพศ{label}
                 </StyledTableCell>
+              </TableRow>
+              <TableRow>
+                <StyledTableCell align="left">ช่วงอายุ</StyledTableCell>
+                <StyledTableCell align="left"></StyledTableCell>
                 <StyledTableCell align="center">เสี่ยง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูง</StyledTableCell>
                 <StyledTableCell align="center">เสี่ยงสูงมาก</StyledTableCell>
@@ -240,7 +265,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart23Reducer.isFetching === false 
+              ? row.map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="left">
@@ -557,7 +583,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -565,6 +609,11 @@ const ShowChart = React.forwardRef((props, ref) => {
         <TableContainer component={Paper}>
           <Table className="table-report" aria-label="customized table">
             <TableHead>
+              <TableRow>
+                <StyledTableCell align="center" colSpan={6} >
+                จำนวน{openPaper&&"ร้อยละ"}ของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามช่วงอายุและเพศ{label}
+                </StyledTableCell>
+              </TableRow>
               <TableRow>
                 <StyledTableCell align="left">ช่วงอายุ</StyledTableCell>
                 <StyledTableCell align="left">
@@ -577,7 +626,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart23Reducer.isFetching === false 
+              ? row.map((value) => {
                 return (
                     <StyledTableRow>
                     <StyledTableCell align="left">
@@ -894,7 +944,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={6}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -911,7 +979,7 @@ export default function Chart23() {
       <div className="card card-light ">
         <div className="card-header">
           <h3 className="card-title">
-            CH23 จำนวนและร้อยละของผู้สูงอายุจำแนกตามโรคประจำตัวที่สำรวจพบ
+            จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงต่อโรคหัวใจและหลอดเลือดจำแนกตามเพศและช่วงอายุ
           </h3>
           <div className="card-tools">
             <button

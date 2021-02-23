@@ -12,6 +12,7 @@ import {
   Paper,
   Select,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";
@@ -89,7 +90,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           {open1 !== 0 && (
             <CSVLink
               data={row2}
-              filename={`จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคความดันโลหิตสูงของ${community}.csv`}
+              filename={`จำนวนและรายชื่อของผู้สูงอายุที่ต้องส่งต่อเพื่อได้รับบริการรักษาทางทันตกรรมจำแนกตามเรื่องที่ต้องส่งต่อและชุมชน.csv`}
             >
               Download CSV
             </CSVLink>
@@ -126,7 +127,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center" colSpan={3}>
-                จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคความดันโลหิตสูงของ{community}
+                จำนวนและรายชื่อของผู้สูงอายุที่ต้องส่งต่อเพื่อได้รับบริการรักษาทางทันตกรรม จำแนกตามเรื่องที่ต้องส่งต่อและชุมชน
                 </StyledTableCell>
               </TableRow>
               <TableRow>
@@ -135,7 +136,8 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {row.map((value) => {
+              {chart31Reducer.isFetching === null
+              ? row.map((value) => {
                 return (
                   <StyledTableRow>
                     <StyledTableCell align="center">
@@ -146,7 +148,13 @@ const ShowChart = React.forwardRef((props, ref) => {
                     </StyledTableCell>
                   </StyledTableRow>
                 );
-              })}
+              }): (
+                <React.Fragment>
+                  <StyledTableRow>
+                    <StyledTableCell colSpan={3}><Skeleton /></StyledTableCell>
+                  </StyledTableRow>
+                </React.Fragment>
+              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -162,7 +170,7 @@ export default function Chart31() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            จำนวนและรายชื่อของผู้สูงอายุที่มีความเสี่ยงเป็นโรคความดันโลหิตสูง จำแนกตามชุมชน
+            จำนวนและรายชื่อของผู้สูงอายุที่ต้องส่งต่อเพื่อได้รับบริการรักษาทางทันตกรรม จำแนกตามเรื่องที่ต้องส่งต่อและชุมชน
           </h3>
           <div className="card-tools">
             <button
