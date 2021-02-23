@@ -253,7 +253,7 @@ const ShowChart = React.forwardRef((props, ref) => {
           <CSVLink
             data={rows}
             filename={
-              "จำนวนและร้อยละของผู้สูงอายุจำแนกตามเส้นรอบเอวช่วงอายุเพศและชุมชน.csv"
+              "จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับความสามารถในการประกอบกิจวัตรประจำวันและชุมชน.csv"
             }
           >
             Download CSV
@@ -324,7 +324,7 @@ export default function Chart32() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-            CH32
+            
             จำนวนและร้อยละของผู้สูงอายุจำแนกตามระดับความสามารถในการประกอบกิจวัตรประจำวันและชุมชน
           </h3>
           <div className="card-tools">
