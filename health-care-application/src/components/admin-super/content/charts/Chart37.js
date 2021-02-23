@@ -11,6 +11,8 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Switch,
+  FormControlLabel
 } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
@@ -117,99 +119,202 @@ TablePaginationActions.propTypes = {
 };
 
 function createData(
-  ชุมชน,
-  จำนวนปกติ,
-  เปอร์เซ็นต์จำนวนปกติ,
-  จำนวนผิดปกติ,
-  เปอร์เซ็นต์จำนวนผิดปกติ,
-  รวม,
-  เปอร์เซ็นต์รวม
+  ช่วงอายุ,
+  ปกติกลุ่ม1เพศชาย,
+  เปอร์เซ็นต์ปกติกลุ่ม1เพศชาย,
+  ปกติกลุ่ม1เพศหญิง,
+  เปอร์เซ็นต์ปกติกลุ่ม1เพศหญิง,
+  ปกติกลุ่ม1รวม,
+  เปอร์เซ็นต์ปกติกลุ่ม1รวม,
+
+  ปกติกลุ่ม2เพศชาย,
+  เปอร์เซ็นต์ปกติกลุ่ม2เพศชาย,
+  ปกติกลุ่ม2เพศหญิง,
+  เปอร์เซ็นต์ปกติกลุ่ม2เพศหญิง,
+  ปกติกลุ่ม2รวม,
+  เปอร์เซ็นต์ปกติกลุ่ม2รวม,
+
+  ปกติกลุ่ม3เพศชาย,
+  เปอร์เซ็นต์ปกติกลุ่ม3เพศชาย,
+  ปกติกลุ่ม3เพศหญิง,
+  เปอร์เซ็นต์ปกติกลุ่ม3เพศหญิง,
+  ปกติกลุ่ม3รวม,
+  เปอร์เซ็นต์ปกติกลุ่ม3รวม,
+
+  ผิดปกติกลุ่ม1เพศชาย,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม1เพศชาย,
+  ผิดปกติกลุ่ม1เพศหญิง,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม1เพศหญิง,
+  ผิดปกติกลุ่ม1รวม,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม1รวม,
+
+  ผิดปกติกลุ่ม2เพศชาย,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม2เพศชาย,
+  ผิดปกติกลุ่ม2เพศหญิง,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม2เพศหญิง,
+  ผิดปกติกลุ่ม2รวม,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม2รวม,
+
+  ผิดปกติกลุ่ม3เพศชาย,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม3เพศชาย,
+  ผิดปกติกลุ่ม3เพศหญิง,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม3เพศหญิง,
+  ผิดปกติกลุ่ม3รวม,
+  เปอร์เซ็นต์ผิดปกติกลุ่ม3รวม
 ) {
   return {
-    ชุมชน,
-    จำนวนปกติ,
-    เปอร์เซ็นต์จำนวนปกติ,
-    จำนวนผิดปกติ,
-    เปอร์เซ็นต์จำนวนผิดปกติ,
-    รวม,
-    เปอร์เซ็นต์รวม,
+    ช่วงอายุ,
+    ปกติกลุ่ม1เพศชาย,
+    เปอร์เซ็นต์ปกติกลุ่ม1เพศชาย,
+    ปกติกลุ่ม1เพศหญิง,
+    เปอร์เซ็นต์ปกติกลุ่ม1เพศหญิง,
+    ปกติกลุ่ม1รวม,
+    เปอร์เซ็นต์ปกติกลุ่ม1รวม,
+
+    ปกติกลุ่ม2เพศชาย,
+    เปอร์เซ็นต์ปกติกลุ่ม2เพศชาย,
+    ปกติกลุ่ม2เพศหญิง,
+    เปอร์เซ็นต์ปกติกลุ่ม2เพศหญิง,
+    ปกติกลุ่ม2รวม,
+    เปอร์เซ็นต์ปกติกลุ่ม2รวม,
+
+    ปกติกลุ่ม3เพศชาย,
+    เปอร์เซ็นต์ปกติกลุ่ม3เพศชาย,
+    ปกติกลุ่ม3เพศหญิง,
+    เปอร์เซ็นต์ปกติกลุ่ม3เพศหญิง,
+    ปกติกลุ่ม3รวม,
+    เปอร์เซ็นต์ปกติกลุ่ม3รวม,
+
+    ผิดปกติกลุ่ม1เพศชาย,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม1เพศชาย,
+    ผิดปกติกลุ่ม1เพศหญิง,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม1เพศหญิง,
+    ผิดปกติกลุ่ม1รวม,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม1รวม,
+
+    ผิดปกติกลุ่ม2เพศชาย,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม2เพศชาย,
+    ผิดปกติกลุ่ม2เพศหญิง,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม2เพศหญิง,
+    ผิดปกติกลุ่ม2รวม,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม2รวม,
+
+    ผิดปกติกลุ่ม3เพศชาย,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม3เพศชาย,
+    ผิดปกติกลุ่ม3เพศหญิง,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม3เพศหญิง,
+    ผิดปกติกลุ่ม3รวม,
+    เปอร์เซ็นต์ผิดปกติกลุ่ม3รวม,
   };
 }
 
 const ShowChart = React.forwardRef((props, ref) => {
   const [open, setOpen] = React.useState(false);
   const chart37Reducer = useSelector(({ chart37Reducer }) => chart37Reducer);
-  const {
-    ชุมชนมณีแก้ว,
-    ชุมชนดอนบน,
-    ชุมชนบางแสนทาวเวอร์,
-    ชุมชนตาลล้อม1,
-    ชุมชนตาลล้อม2,
-    ชุมชนบ้านเหมือง,
-    ชุมชนพัฒนา2,
-    ชุมชนดอนนารา,
-    ชุมชนวัดกลางดอน,
-    ชุมชนแสนสุข,
-    ชุมชนมาบมะยม,
-    ชุมชนท้ายตลาด,
-    ชุมชนร่วมใจพัฒนา,
-    ชุมชนบางแสนบน,
-    ชุมชนหาดวอนนภา,
-    ชุมชนบางเป้ง,
-    ชุมชนหน้ามอ,
-    ชุมชนโชคดี,
-    ชุมชนสมใจนึก,
-    ชุมชนหน้าเทศบาล,
-    ชุมชนวัดแสนสุข,
-    ชุมชนมุขแสนเจริญ1,
-    ชุมชนมุขแสนเจริญ2,
-    ชุมชนเขาสามมุข,
-    ชุมชนบ้านแหลมแท่น,
-  } = chart37Reducer.results;
   const dispatch = useDispatch();
-
-  const communi = [
-    ชุมชนมณีแก้ว,
-    ชุมชนดอนบน,
-    ชุมชนบางแสนทาวเวอร์,
-    ชุมชนตาลล้อม1,
-    ชุมชนตาลล้อม2,
-    ชุมชนบ้านเหมือง,
-    ชุมชนพัฒนา2,
-    ชุมชนดอนนารา,
-    ชุมชนวัดกลางดอน,
-    ชุมชนแสนสุข,
-    ชุมชนมาบมะยม,
-    ชุมชนท้ายตลาด,
-    ชุมชนร่วมใจพัฒนา,
-    ชุมชนบางแสนบน,
-    ชุมชนหาดวอนนภา,
-    ชุมชนบางเป้ง,
-    ชุมชนหน้ามอ,
-    ชุมชนโชคดี,
-    ชุมชนสมใจนึก,
-    ชุมชนหน้าเทศบาล,
-    ชุมชนวัดแสนสุข,
-    ชุมชนมุขแสนเจริญ1,
-    ชุมชนมุขแสนเจริญ2,
-    ชุมชนเขาสามมุข,
-    ชุมชนบ้านแหลมแท่น,
-  ];
+  const [per, setPer] = React.useState(false);
+  const {
+    a6064,
+    a6569,
+    a7074,
+    a7579,
+    a8084,
+    a8589,
+    a9094,
+    a95,
+  } = chart37Reducer.results;
+  const ageRange = [a6064, a6569, a7074, a7579, a8084, a8589, a9094, a95];
   const [rows, setRow] = useState([]);
   React.useEffect(() => {
-    console.log("communi.length ", communi.length);
+    console.log("ageRange.length ", ageRange);
     if (chart37Reducer.isFetching === false) {
-      for (let i = 0; i < communi.length; i++) {
+      for (let i = 0; i < ageRange.length; i++) {
         rows.push(
           createData(
-            Object.keys(chart37Reducer.results)[i + 2],
-            communi[i].Elder.Risk,
-            communi[i].Elder.PerRisk === "NaN" ? "0%" : communi[i].Elder.PerRisk+"%",
-            communi[i].Elder.NotRisk,
-            communi[i].Elder.PerNotRisk === "NaN" ? "0%" : communi[i].Elder.PerNotRisk+"%",
-            communi[i].Elder.Sum,
-            communi[i].Elder.PerSum === "NaN" ? "0%" : communi[i].Elder.PerSum+"%"
-          )
+            i < 7
+              ? Object.keys(chart37Reducer.results)[i].substring(1, 3) +
+                  "-" +
+                  Object.keys(chart37Reducer.results)[i].substring(3)
+              : Object.keys(chart37Reducer.results)[i].substring(1, 3) + "+",
+            ageRange[i].NotRisk.g1.Male,
+            ageRange[i].NotRisk.g1.PerMale === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g1.PerMale+"%",
+            ageRange[i].NotRisk.g1.Female,
+            ageRange[i].NotRisk.g1.PerFemale === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g1.PerFemale+"%",
+            ageRange[i].NotRisk.g1.Sum,
+            ageRange[i].NotRisk.g1.PerSum === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g1.PerSum+"%",
+
+            ageRange[i].NotRisk.g2.Male,
+            ageRange[i].NotRisk.g2.PerMale === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g2.PerMale+"%",
+            ageRange[i].NotRisk.g2.Female,
+            ageRange[i].NotRisk.g2.PerFemale === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g2.PerFemale+"%",
+            ageRange[i].NotRisk.g2.Sum,
+            ageRange[i].NotRisk.g2.PerSum === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g2.PerSum+"%",
+
+            ageRange[i].NotRisk.g3.Male,
+            ageRange[i].NotRisk.g3.PerMale === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g3.PerMale+"%",
+            ageRange[i].NotRisk.g3.Female,
+            ageRange[i].NotRisk.g3.PerFemale === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g3.PerFemale+"%",
+            ageRange[i].NotRisk.g3.Sum,
+            ageRange[i].NotRisk.g3.PerSum === "NaN"
+              ? "0%"
+              : ageRange[i].NotRisk.g3.PerSum+"%",
+
+            //
+            ageRange[i].Risk.g1.Male,
+            ageRange[i].Risk.g1.PerMale === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g1.PerMale+"%",
+            ageRange[i].Risk.g1.Female,
+            ageRange[i].Risk.g1.PerFemale === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g1.PerFemale+"%",
+            ageRange[i].Risk.g1.Sum,
+            ageRange[i].Risk.g1.PerSum === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g1.PerSum+"%",
+
+            ageRange[i].Risk.g2.Male,
+            ageRange[i].Risk.g2.PerMale === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g2.PerMale+"%",
+            ageRange[i].Risk.g2.Female,
+            ageRange[i].Risk.g2.PerFemale === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g2.PerFemale+"%",
+            ageRange[i].Risk.g2.Sum,
+            ageRange[i].Risk.g2.PerSum === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g2.PerSum+"%",
+
+            ageRange[i].Risk.g3.Male,
+            ageRange[i].Risk.g3.PerMale === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g3.PerMale+"%",
+            ageRange[i].Risk.g3.Female,
+            ageRange[i].Risk.g3.PerFemale === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g3.PerFemale+"%",
+            ageRange[i].Risk.g3.Sum,
+            ageRange[i].Risk.g3.PerSum === "NaN"
+              ? "0%"
+              : ageRange[i].Risk.g3.PerSum+"%"
+           )
         );
       }
     }
@@ -218,8 +323,6 @@ const ShowChart = React.forwardRef((props, ref) => {
     setOpen(rows.length);
   }, [chart37Reducer.isFetching]);
 
-
-
   return (
     <React.Fragment>
       <div className="card-body">
@@ -227,11 +330,15 @@ const ShowChart = React.forwardRef((props, ref) => {
           <CSVLink
             data={rows}
             filename={
-              "จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามชุมชน.csv"
+              "จำนวนและร้อยละของผู้สูงอายุที่มีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามเพศช่วงอายุและความสามารถในการประกอบกิจวัตรประจำวัน.csv"
             }
           >
             Download CSV
           </CSVLink>
+          <FormControlLabel
+        control={<Switch checked={per} onChange={()=>setPer(!per)} name="checkedA" />}
+        label="แสดงแบบร้อยละ"
+        />
         </div>
 
         <div ref={ref}>
@@ -242,48 +349,84 @@ const ShowChart = React.forwardRef((props, ref) => {
             >
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="center" colSpan={7}>
-                    จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามชุมชน
+                  <StyledTableCell align="center" colSpan={8}>
+                    จำนวน{per&&"ร้อยละ"}ของผู้สูงอายุที่มีความเสี่ยงของภาวะสมองเสื่อม จำแนกตามเพศ ช่วงอายุ และความสามารถในการประกอบกิจวัตรประจำวัน
                   </StyledTableCell>
                 </TableRow>
                 <TableRow>
-                  <StyledTableCell align="left" rowSpan={2}>อายุ</StyledTableCell>
-                  <StyledTableCell align="center"colSpan={3}>ปกติ</StyledTableCell>
-                  <StyledTableCell align="center"colSpan={4}>ผิดปกติ</StyledTableCell>
+                  <StyledTableCell align="left" rowSpan={2}>
+                    อายุ
+                  </StyledTableCell>
+                  <StyledTableCell align="center" colSpan={4}>
+                    ปกติ
+                  </StyledTableCell>
+                  <StyledTableCell align="center" colSpan={3}>
+                    ผิดปกติ
+                  </StyledTableCell>
                 </TableRow>
                 <TableRow>
-                  <StyledTableCell align="center">กลุ่ม1</StyledTableCell>
+                <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">กลุ่ม1</StyledTableCell>                 
                   <StyledTableCell align="center">กลุ่ม2</StyledTableCell>
                   <StyledTableCell align="center">กลุ่ม3</StyledTableCell>
                   <StyledTableCell align="center">กลุ่ม1</StyledTableCell>
                   <StyledTableCell align="center">กลุ่ม2</StyledTableCell>
-                  <StyledTableCell align="center">กลุ่ม3</StyledTableCell>
-
+                  <StyledTableCell align="center" >กลุ่ม3</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <StyledTableRow key={row.ชุมชน}>
+                  <StyledTableRow key={row.ช่วงอายุ}>
                     <StyledTableCell component="th" scope="row">
-                      {row.ชุมชน}
+                      {row.ช่วงอายุ}
                     </StyledTableCell>
                     <StyledTableCell align="left">
                       ชาย <br /> หญิง
+                      <br />
+                      รวม
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.จำนวนปกติ}
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม1เพศชาย:row.ปกติกลุ่ม1เพศชาย}
                       <br />
-                      {row.เปอร์เซ็นต์จำนวนปกติ}
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม1เพศหญิง:row.ปกติกลุ่ม1เพศหญิง}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม1รวม:row.ปกติกลุ่ม1รวม}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.จำนวนผิดปกติ}
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม2เพศชาย:row.ปกติกลุ่ม2เพศชาย}
                       <br />
-                      {row.เปอร์เซ็นต์จำนวนผิดปกติ}
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม2เพศหญิง:row.ปกติกลุ่ม2เพศหญิง}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม2รวม:row.ปกติกลุ่ม2รวม}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {row.รวม}
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม3เพศชาย:row.ปกติกลุ่ม3เพศชาย}
                       <br />
-                      {row.เปอร์เซ็นต์รวม}
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม3เพศหญิง:row.ปกติกลุ่ม3เพศหญิง}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ปกติกลุ่ม3รวม:row.ปกติกลุ่ม3รวม}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม1เพศชาย:row.ผิดปกติกลุ่ม1เพศชาย}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม1เพศหญิง:row.ผิดปกติกลุ่ม1เพศหญิง}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม1รวม:row.ผิดปกติกลุ่ม1รวม}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม2เพศชาย:row.ผิดปกติกลุ่ม2เพศชาย}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม2เพศหญิง:row.ผิดปกติกลุ่ม2เพศหญิง}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม2รวม:row.ผิดปกติกลุ่ม2รวม}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม3เพศชาย:row.ผิดปกติกลุ่ม3เพศชาย}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม3เพศหญิง:row.ผิดปกติกลุ่ม3เพศหญิง}
+                      <br />
+                      {per?row.เปอร์เซ็นต์ผิดปกติกลุ่ม3รวม:row.ผิดปกติกลุ่ม3รวม}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -306,7 +449,7 @@ export default function Chart37() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h3 className="card-title">
-          จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามชุมชน
+          จำนวนและร้อยละของผู้สูงอายุที่มีความเสี่ยงของภาวะสมองเสื่อม จำแนกตามเพศ ช่วงอายุ และความสามารถในการประกอบกิจวัตรประจำวัน
           </h3>
           <div className="card-tools">
             <button
