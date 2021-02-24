@@ -12,7 +12,6 @@ import {
   TableRow,
   Paper,
 } from "@material-ui/core";
-import { Chart } from "react-google-charts";
 import { CSVLink } from "react-csv";
 import { PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";

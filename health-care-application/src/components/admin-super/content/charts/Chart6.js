@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Skeleton from '@material-ui/lab/Skeleton';
-// import { Chart } from "react-google-charts";
 import { EDUCATIONS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";

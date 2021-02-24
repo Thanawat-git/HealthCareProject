@@ -15,7 +15,6 @@ import {
   TableFooter,
   TablePagination,
 } from "@material-ui/core";
-// import { Chart } from "react-google-charts";
 import Skeleton from '@material-ui/lab/Skeleton';
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from "@material-ui/icons/FirstPage";

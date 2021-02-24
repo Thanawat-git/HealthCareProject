@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Tooltip,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper,Select } from "@material-ui/core";
-// import { Chart } from "react-google-charts";
 import { TREATMENT, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import Skeleton from '@material-ui/lab/Skeleton';

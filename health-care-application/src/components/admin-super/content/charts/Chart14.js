@@ -14,7 +14,6 @@ import {
   Select,
 } from "@material-ui/core";
 import Skeleton from '@material-ui/lab/Skeleton';
-// import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { CSVLink } from "react-csv";

@@ -20,7 +20,6 @@ import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
-// import { Chart } from "react-google-charts";
 import { COMMUNITYS, PRINT_THIS_SECTION } from "../../../../constants";
 import { useReactToPrint } from "react-to-print";
 import { useDispatch, useSelector } from "react-redux";
