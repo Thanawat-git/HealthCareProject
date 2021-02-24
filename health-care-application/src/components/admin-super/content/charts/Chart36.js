@@ -11,6 +11,8 @@ import {
   TableHead,
   TableRow,
   Paper,
+  TableFooter,
+  TablePagination,
 } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import IconButton from "@material-ui/core/IconButton";
@@ -219,7 +221,15 @@ const ShowChart = React.forwardRef((props, ref) => {
     setOpen(rows.length);
   }, [chart36Reducer.isFetching]);
 
-
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <React.Fragment>
@@ -257,7 +267,12 @@ const ShowChart = React.forwardRef((props, ref) => {
               </TableHead>
               <TableBody>
                 {chart36Reducer.isFetching === false
-                ? rows.map((row) => (
+                ? (rowsPerPage > 0
+                  ? rows.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : rows).map((row) => (
                   <StyledTableRow key={row.ชุมชน}>
                     <StyledTableCell component="th" scope="row">
                       {row.ชุมชน}
@@ -301,6 +316,25 @@ const ShowChart = React.forwardRef((props, ref) => {
                   </React.Fragment>
                 )}
               </TableBody>
+              <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                  colSpan={10}
+                  count={rows.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "จำนวนต่อหน้า" },
+                    native: true,
+                  }}
+                  labelRowsPerPage="จำนวนต่อหน้า"
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
             </Table>
           </TableContainer>
         </div>

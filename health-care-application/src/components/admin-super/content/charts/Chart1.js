@@ -101,7 +101,7 @@ const ShowChart = React.forwardRef((props, ref) => {
         <div className="csv-link">
           <CSVLink
             data={row}
-            filename={"จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ.csv"}
+            filename={"จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุจำแนกตามเพศ.csv"}
           >
             Download CSV
           </CSVLink>
@@ -112,7 +112,7 @@ const ShowChart = React.forwardRef((props, ref) => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell align="center" colSpan={6}>
-                    จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ
+                    จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ จำแนกตามเพศ
                   </StyledTableCell>
                 </TableRow>
                 <TableRow>
@@ -173,7 +173,7 @@ export default function Chart1() {
       <div className="card card-light collapsed-card">
         <div className="card-header">
           <h2 className="card-title">
-            จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ
+            จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุ จำแนกตามเพศ
           </h2>
           <div className="card-tools">
             <button
