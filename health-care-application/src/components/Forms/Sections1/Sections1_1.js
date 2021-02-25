@@ -243,7 +243,7 @@ const[err,seterr]= useState(false);
           <div className="row">
             <div className="col-12 col-xl-6 mb-15">
               <TextField
-                id=""
+                id="firstname"
                 pattern="^[ก-๏\s]+$"
                 label="*ชื่อ"
                 variant="outlined"
@@ -257,7 +257,7 @@ const[err,seterr]= useState(false);
             </div>
             <div className="col-12 col-xl-6">
               <TextField
-                id=""
+                id="lastname"
                 label="*นามสกุล"
                 variant="outlined"
                 placeholder="นามสกุล"
@@ -289,12 +289,12 @@ const[err,seterr]= useState(false);
               <FormControlLabel
                 className="radio-space"
                 value="ชาย"
-                control={<Radio color="primary" />}
+                control={<Radio id="rmale" color="primary" />}
                 label="ชาย"
               />
               <FormControlLabel
                 value="หญิง"
-                control={<Radio color="primary" />}
+                control={<Radio id="fmale" color="primary" />}
                 label="หญิง"
               />
             </RadioGroup>
@@ -339,6 +339,7 @@ const[err,seterr]= useState(false);
                     getOptionLabel={(option) => option}
                     disableClearable={true}
                     //   style={{ width: 300 }}
+                    freeSolo
                     onInputChange={handleInputYearChange}
                     defaultValue={forms1p1Reducer.year}
                     renderInput={(params) => (
@@ -362,6 +363,7 @@ const[err,seterr]= useState(false);
                     disableClearable={true}
                     //   style={{ width: 300 }}
                     //   value={mon}
+                    freeSolo
                     onInputChange={handleInputMonthChange}
                     defaultValue={forms1p1Reducer.month}
                     renderInput={(params) => (
@@ -383,6 +385,7 @@ const[err,seterr]= useState(false);
                     getOptionLabel={(option) => option}
                     disableClearable={true}
                     //   style={{ width: 300 }}
+                    freeSolo
                     onInputChange={handleInputDayChange}
                     defaultValue={forms1p1Reducer.day}
                     renderInput={(params) => (
