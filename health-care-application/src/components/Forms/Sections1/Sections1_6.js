@@ -78,11 +78,12 @@ export default function Sections1_6() {
             <div className="col-9">
               <Autocomplete
                 id="SimpleDisease"
-                options={SIMPLEDISEASE}
-                getOptionLabel={(option) => option.name}
-                inputValue={disease}
+                // options={SimpleDisease}
+                freeSolo
+                options={SIMPLEDISEASE.map((option) => option.name)}
+                // getOptionLabel={(option) => option}
+                value={disease}
                 size="small"
-                // freeSolo
                 onInputChange={(event, value)=>setdisease(value)}
                 renderInput={(params) => (
                   <TextField {...params} variant="outlined" />
@@ -186,36 +187,36 @@ export default function Sections1_6() {
 }
 
 const SimpleDisease = [
-  { name: "ความดันโลหิตสูง" },
-  { name: "เบาหวาน" },
-  { name: "ไขมันในเส้นเลือดสูง" },
-  { name: "โรคหัวใจ" },
-  { name: "อัมพฤตษ์ อัมพาต" },
-  { name: "หลอดเลือดในสมอง" },
-  { name: "หลอดเลือดหัวใจ" },
-  { name: "กระดูกพรุน" },
-  { name: "ข้อเข่าเสื่อม/อักเสบ" },
-  { name: "กระดูกทับเส้น" },
-  { name: "กล้ามเนื้ออ่อนแรง/ชา" },
-  { name: "เก๊าท์" },
-  { name: "รูมาตอยด์" },
-  { name: "ปวดเมื่อยกล้ามเนื้อ" },
-  { name: "ไตเรื้อรัง" },
-  { name: "นิ่วในไต" },
-  { name: "ต่อมลูกหมากโต" },
-  { name: "หอบหืด/หลอดลมตีบ/ภูมิแพ้/ไซนัส" },
-  { name: "ปอด" },
-  { name: "โรคกระเพาะ/กรดไหลย้อน/ลำไส้" },
-  { name: "ริดสีดวง" },
-  { name: "ตับ/ถุงน้ำดี" },
-  { name: "โรคตา" },
-  { name: "หูพิการ" },
-  { name: "พิการ" },
-  { name: "ลมชัก" },
-  { name: "พากินสัน" },
-  { name: "ไมเกรน" },
-  { name: "โรคประสาท" },
-  { name: "Hypothyroid" },
-  { name: "มะเร็ง/เนื้องอก" },
-  { name: "โลหิตจาง" },
+  'ความดันโลหิตสูง',
+  'เบาหวาน',
+  'ไขมันในเส้นเลือดสูง',
+  'โรคหัวใจ',
+  'อัมพฤตษ์ อัมพาต',
+  'หลอดเลือดในสมอง',
+  'หลอดเลือดหัวใจ',
+  'กระดูกพรุน',
+  'ข้อเข่าเสื่อม/อักเสบ',
+  'กระดูกทับเส้น',
+  'กล้ามเนื้ออ่อนแรง/ชา',
+  'เก๊าท์',
+  'รูมาตอยด์',
+  'ปวดเมื่อยกล้ามเนื้อ',
+  'ไตเรื้อรัง',
+  'นิ่วในไต',
+  'ต่อมลูกหมากโต',
+  'หอบหืด/หลอดลมตีบ/ภูมิแพ้/ไซนัส',
+  'ปอด',
+  'โรคกระเพาะ/กรดไหลย้อน/ลำไส้',
+  'ริดสีดวง',
+  'ตับ/ถุงน้ำดี',
+  'โรคตา',
+  'หูพิการ',
+  'พิการ',
+  'ลมชัก',
+  'พากินสัน',
+  'ไมเกรน',
+  'โรคประสาท',
+  'Hypothyroid',
+  'มะเร็ง/เนื้องอก',
+  'โลหิตจาง',
 ];
