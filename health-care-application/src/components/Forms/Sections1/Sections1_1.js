@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../form-style.css";
+import Axios from "axios";
 import "./Sections1.css";
 import {
   TextField,
@@ -7,13 +8,14 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  Button,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import FormHelperText from '@material-ui/core/FormHelperText';
+import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms1p1.action";
-import { USER } from "../../../constants";
+import { apiBase } from "../../../constants";
 
 function Sections1_1(props) {
   const forms1p1Reducer = useSelector(({ forms1p1Reducer }) => forms1p1Reducer);
@@ -24,6 +26,7 @@ function Sections1_1(props) {
   const [elderlyGender, setElderlyGender] = useState(
     forms1p1Reducer.elderlyGender
   );
+  const [open, setopen] = useState(false);
   const [nickname, setNickname] = useState(forms1p1Reducer.nickname);
   const [yea, setYea] = useState(forms1p1Reducer.year);
   const [mon, setMon] = useState(forms1p1Reducer.month);
@@ -32,11 +35,17 @@ function Sections1_1(props) {
   const handleChange = (event) => {
     setElderlyGender(event.target.value);
   };
-
-const[err,seterr]= useState(false);
-
-
-
+  const handleChange2 = (e) => {
+    setPID(e.target.value);
+  };
+  const getRandom = () => {
+    Axios.get(`${apiBase}/elder/gen`).then((res) => {
+      console.log("result.data", res.data);
+      setopen(true)
+      setPID(res.data);
+    });
+  };
+  const [err, seterr] = useState(false);
 
   // DatePicker
   const [years, setYears] = useState([]);
@@ -193,7 +202,7 @@ const[err,seterr]= useState(false);
     function emptyValue() {
       e.preventDefault();
       //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
-      seterr(true)
+      seterr(true);
       return;
     }
     formAction.createAllElder(data);
@@ -216,25 +225,37 @@ const[err,seterr]= useState(false);
               <InputLabel htmlFor="">
                 <span className="text-danger">*</span>
                 <strong>รหัสบัตรประชาชน 13 หลัก</strong>{" "}
+                <p style={{ margin: 20 }}>
+                  ในกรณีที่ผู้สูงอายุไม่มีรหัสบัตรประจำตัวประชาชน กรุณาคลิก
+                </p>
               </InputLabel>
+              <button
+                type="button"
+                className="btn form-btn btn-primary btn-lg"
+                onClick={getRandom}
+              >
+                ไม่มีรหัสบัตรตัวประชาชน
+              </button>
             </div>
             <div className="col-12">
               <TextField
                 id="PID"
-                // name='PID'
                 type="number"
                 label="รหัสบัตรประชาชน 13 หลัก"
                 variant="outlined"
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
                 error={err}
+                InputLabelProps={{
+                  shrink: open,
+                }}
+                value={PID}
                 helperText={err ? "กรุณากรอกรหัสบัตรประชาชน" : ""}
                 defaultValue={forms1p1Reducer.peopleID}
                 onInput={(e) => {
                   e.target.value = e.target.value.slice(0, 13);
                 }} //fix13digit
-                // value={forms1p1Reducer.peopleID}
-                onChange={(e) => setPID(e.target.value)}
+                onChange={handleChange2}
               />
             </div>
           </div>
@@ -299,7 +320,9 @@ const[err,seterr]= useState(false);
               />
             </RadioGroup>
           </div>
-          <FormHelperText style={{color:'red'}} >{err ? "กรุณาระบุเพศ" : ""}</FormHelperText>
+          <FormHelperText style={{ color: "red" }}>
+            {err ? "กรุณาระบุเพศ" : ""}
+          </FormHelperText>
           <br />
           {/* row-4 */}
           <div className="row">
@@ -349,7 +372,7 @@ const[err,seterr]= useState(false);
                         variant="outlined"
                         // value={yea}
                         error={err}
-                helperText={err ? "กรุณากรอกปี พ.ศ" : ""}
+                        helperText={err ? "กรุณากรอกปี พ.ศ" : ""}
                         onClick={getyear}
                       />
                     )}
@@ -372,7 +395,7 @@ const[err,seterr]= useState(false);
                         label="เดือน"
                         variant="outlined"
                         error={err}
-                helperText={err ? "กรุณากรอกเดือน" : ""}
+                        helperText={err ? "กรุณากรอกเดือน" : ""}
                         //   onClick={(e) => setMon(e.target.value)}
                       />
                     )}
