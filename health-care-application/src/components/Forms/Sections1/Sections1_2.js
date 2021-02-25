@@ -168,6 +168,8 @@ export default function Sections1_2(props) {
                 getOptionLabel={(option) => option}
                 disableClearable={true}
                 // size="small"
+                autoSelect={true}
+                autoHighlight={true}
                 defaultValue={area}
                 onInputChange={(event, value) => setArea(value)}
                 renderInput={(params) => (
@@ -269,10 +271,13 @@ export default function Sections1_2(props) {
                 </div>
                 <div className="col-xl-6 col-12 mb-15">
                   <Autocomplete
+                    id="Areas"
                     options={Areas}
                     getOptionLabel={(option) => option}
                     disableClearable={true}
                     // size="small"
+                    autoSelect={true}
+                    autoHighlight={true}
                     defaultValue={curArea}
                     onInputChange={(event, value) => setCurArea(value)}
                     renderInput={(params) => (

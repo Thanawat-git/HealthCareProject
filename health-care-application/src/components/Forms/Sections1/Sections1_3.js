@@ -135,10 +135,10 @@ export default function Sections1_3() {
             <FormControlLabel
               value="yes1"
               className="radio-space"
-              control={<Radio color="primary" />}
+              control={<Radio id="yes1" color="primary" />}
               label="มี"
             />
-            <FormControlLabel value="no1" control={<Radio />} label="ไม่มี" />
+            <FormControlLabel value="no1" control={<Radio id="no1" />} label="ไม่มี" />
           </RadioGroup>
           <br />
           {firstNeighbor === "yes1" ? (
@@ -317,12 +317,12 @@ export default function Sections1_3() {
                 <FormControlLabel
                   value="yes2"
                   className="radio-space"
-                  control={<Radio color="primary" />}
+                  control={<Radio id="yes2" color="primary" />}
                   label="มี"
                 />
                 <FormControlLabel
                   value="no2"
-                  control={<Radio />}
+                  control={<Radio id="no2" />}
                   label="ไม่มี"
                 />
               </RadioGroup>

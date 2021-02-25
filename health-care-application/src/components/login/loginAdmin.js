@@ -34,6 +34,7 @@ class LoginAdmin extends Component {
               <div className="input-field">
                 <i className="fas fa-user"/>
                 <input
+                  id="username"
                   type="text"
                   placeholder="Username"
                   onChange={(e) => this.setState({ username: e.target.value })}
@@ -42,6 +43,7 @@ class LoginAdmin extends Component {
               <div className="input-field">
                 <i className="fas fa-lock"/>
                 <input
+                  id="password"
                   type="password"
                   placeholder="Password"
                   onChange={(e) => this.setState({ password: e.target.value })}
