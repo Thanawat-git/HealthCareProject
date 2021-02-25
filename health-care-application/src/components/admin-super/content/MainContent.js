@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import {
   Chart1,
   Chart2,
@@ -9,23 +9,7 @@ import {
   Chart6,
   Chart7,
   Chart8,
-  Chart9,
-  Chart10,
-  Chart11,
-  Chart14,
-  Chart16,
-  Chart17,
-  Chart18,
-  Chart20,
-  Chart21,
-  Chart22,
-  Chart23,
-  Chart31,
-Chart32,
-Chart33,
-Chart35,
-Chart36,
-Chart37,
+
 } from "./charts";
 import {
   getDataChart1,
@@ -36,23 +20,7 @@ import {
   getDataChart6,
   getDataChart7,
   getDataChart8,
-  getDataChart9,
-  getDataChart10,
-  getDataChart11,
-  getDataChart14,
-  getDataChart16,
-  getDataChart17,
-  getDataChart18,
-  getDataChart20,
-  getDataChart21,
-  getDataChart22,
-  getDataChart23,
-  getDataChart31,
-  getDataChart32,
-  getDataChart33,
-  getDataChart35,
-  getDataChart36,
-  getDataChart37,
+
 } from "../../../actions/charts.action";
 
 export default function MainContent() {
@@ -67,23 +35,7 @@ export default function MainContent() {
     dispatch(getDataChart6("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
     dispatch(getDataChart7("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
     dispatch(getDataChart8("ไม่จำเป็นต้องส่งอะไรว่างๆก็ลบได้"))
-    // dispatch(getDataChart9());
-    // dispatch(getDataChart10());
-    // dispatch(getDataChart11());
-    // dispatch(getDataChart14("ทุกชุมชน"));
-    // dispatch(getDataChart16());
-    // dispatch(getDataChart17());
-    // dispatch(getDataChart18("ทุกชุมชน"));
-    // dispatch(getDataChart20("ชุมชนมณีแก้ว"));
-    // dispatch(getDataChart21("ชุมชนมณีแก้ว"));
-    // dispatch(getDataChart22());
-    // dispatch(getDataChart23());
-    // dispatch(getDataChart31("ชุมชนมณีแก้ว"))
-    // dispatch(getDataChart32())
-    // dispatch(getDataChart33("ทุกชุมชน"))
-    // dispatch(getDataChart35())
-    // dispatch(getDataChart36())
-    // dispatch(getDataChart37())
+
   }, []);
   return (
     <React.Fragment>
@@ -122,7 +74,7 @@ export default function MainContent() {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-md-3">
+            {/* <div className="col-12 col-sm-6 col-md-3">
               <div className="info-box mb-3">
                 <span className="info-box-icon bg-success elevation-1">
                   <i className="fas fa-star-of-life" />
@@ -132,7 +84,7 @@ export default function MainContent() {
                   <span className="info-box-number">12</span>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="col-12 col-sm-6 col-md-3">
               <div className="info-box mb-3">
                 <span className="info-box-icon bg-warning elevation-1">
@@ -153,27 +105,6 @@ export default function MainContent() {
             <Chart6 />
             <Chart7 />
             <Chart8 /> 
-            {/* //ส่วนที่2 */}
-            {/* <Chart9 />
-            <Chart10 />
-            <Chart11 />
-            <Chart14 />
-            <Chart16 />
-            <Chart17 /> */}
-            {/* <Chart18 />
-            <Chart20 />
-            <Chart21 /> */}
-            {/* //ส่วนที่3 */}
-            {/* <Chart22 />
-            <Chart23 />
-
-            <Chart31 />
-            <Chart32 /> */}
-            {/* <Chart33 />
-            <Chart35 />
-            <Chart36 />
-            <Chart37 /> */}
-
 
           </div>
         </div>
