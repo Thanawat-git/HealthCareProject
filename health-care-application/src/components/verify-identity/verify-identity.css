@@ -1,13 +1,25 @@
 .form-verify{
+    margin-top: 10% !important;
     max-width: 350px;
     min-width: 300px;
+    height: 50vh;
 }
 
+.form-verify h1{
+    text-align: center;
+}
+
+.form-verify .field-data{
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
+}
+
+/* 
 .form-verify .bt-verify{
     border-radius: 10px;
-}
+} */
 
-.form-verify input[type="text"],
+/* .form-verify input[type="text"],
 select.form-control {
     padding: 20px;
     border: 1px solid #ccc;
@@ -37,8 +49,8 @@ select.form-control:focus {
     border: 1px solid #555;
     -webkit-box-shadow: none;
     box-shadow: none;
-}
+} */
 
-.titel {
+.form-verify .titel {
     text-align: center;
 }

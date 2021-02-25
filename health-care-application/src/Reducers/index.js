@@ -54,6 +54,7 @@ import chart33Reducer from "./charts/chart33.reducer";
 import chart35Reducer from "./charts/chart35.reducer";
 import chart36Reducer from "./charts/chart36.reducer";
 import chart37Reducer from "./charts/chart37.reducer";
+import checkuserReducer from "./checkuser.reducer";
 
 
 export default combineReducers({
@@ -111,4 +112,5 @@ export default combineReducers({
     chart35Reducer,
     chart36Reducer,
     chart37Reducer,
+    checkuserReducer
 })
