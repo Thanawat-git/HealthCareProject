@@ -56,7 +56,7 @@ export default function LeftSideBarMenu() {
               <li className="nav-item">
                 <Link to={`${url}/eldery`} className="nav-link">
                   <i className="nav-icon fas fa-users" />
-                  <p>ผู้สูงอายุ</p>
+                  <p>จัดการผู้สูงอายุ</p>
                 </Link>
               </li>
 
@@ -75,7 +75,7 @@ export default function LeftSideBarMenu() {
               <li className="nav-item">
                 <Link to={`${url}/reports`} className="nav-link">
                   <i className="nav-icon fas fa-file-alt" />
-                  <p>Report</p>
+                  <p>รายงาน</p>
                 </Link>
               </li>
 

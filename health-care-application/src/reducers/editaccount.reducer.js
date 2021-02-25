@@ -1,8 +1,9 @@
-import {CREATE_NEW_EDITACCOUNT } from "../constants"
+import {CREATE_NEW_EDITACCOUNT,UPDATE_EDITACCOUNT } from "../constants"
 
 const initialState = {
-                    uploadedImage:null,
-                    imageUploader:null
+    firstname:"",
+    lastanme:"",
+    phone:"",
 }
  
 export default (state = initialState, { type, payload }) => {
@@ -10,11 +11,14 @@ export default (state = initialState, { type, payload }) => {
 
     case CREATE_NEW_EDITACCOUNT:
         return {
-                    uploadedImage:payload[0],
-                    imageUploader:payload[1],
-
+            firstname:payload[0],
+            lastanme:payload[1],
+            phone:payload[2],
         }
-
+        // case UPDATE_EDITACCOUNT:
+        //     return { firstname:payload[0],
+        //         lastanme:payload[1],
+        //         phone:payload[2],};
     default:
         return state
     }

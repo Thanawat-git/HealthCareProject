@@ -1,17 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Avatar, Button, Divider, Drawer, Fab, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@material-ui/core';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MenuIcon from '@material-ui/icons/Menu';
-import './volunteer.css'
-import { Link,useRouteMatch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  AppBar,
+  Avatar,
+  Button,
+  Divider,
+  Drawer,
+  Fab,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import MenuIcon from "@material-ui/icons/Menu";
+import "./volunteer.css";
+import { Link, useRouteMatch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { geteditAccount } from "../../actions/editaccount.action";
 import { logout } from "../../actions/auth.action";
-import { resetDateAllForm, resetCollectFromReducer, setDataToDefaultForAllSection } from "../../actions/getAllFormToReucer.action";
+import {
+  resetDateAllForm,
+  resetCollectFromReducer,
+  setDataToDefaultForAllSection,
+} from "../../actions/getAllFormToReucer.action";
 import { getEldByKeyword } from "../../actions/elderly.action";
+import Editpassword from "./Editaccount";
 
 const useStyles = makeStyles({
   root: {
@@ -41,15 +60,25 @@ const useStyles = makeStyles({
 export default function Header() {
   const classes = useStyles();
   const { url } = useRouteMatch();
+  const volunteerReducer = useSelector(({volunteerReducer}) => volunteerReducer)
   const [state, setState] = useState({
     left: false,
   });
   const { isLoggedIn, user } = useSelector((state) => state.authReducer);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  // const {result} = volunteerReducer
   const logOut = () => {
-    dispatch(logout())
+    dispatch(logout());
     window.location.reload();
   };
+  const editaccount = () => {
+    if(user.Role=="VOLUNTEER"){
+    dispatch(geteditAccount(user.Id));
+    }
+    console.log("VOL_ID_NUMBER : ",user)
+  };
+  
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -71,7 +100,7 @@ export default function Header() {
           <ListItem button>
             <ListItemIcon>
               {" "}
-              <Avatar>{user.Fullname.substring(0,1)}</Avatar>{" "}
+              <Avatar>{user.Fullname.substring(0, 1)}</Avatar>{" "}
             </ListItemIcon>
             <ListItemText primary={user.Fullname} />
           </ListItem>
@@ -79,25 +108,25 @@ export default function Header() {
       </List>
       <Divider />
       <List className="link">
-        {/* <Link to={`${url}/editaccount`}> */}
-        {/* <Link to="/editaccount"> */}
-          <ListItem button disabled>
-            <ListItemIcon>
-              {" "}
-              <AccountBoxIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary="แก้ไขข้อมูลส่วนตัว" />
-          </ListItem>
-        {/* </Link> */}
-        {/* <Link to="/editpassword"> */}
-          <ListItem button disabled>
+        <Link to={`${url}/editaccount`}>
+          <Link to="/editaccount" onClick={editaccount}>
+            <ListItem button>
+              <ListItemIcon>
+                {" "}
+                <AccountBoxIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="แก้ไขข้อมูลส่วนตัว" />
+            </ListItem>
+          </Link>
+          <Link to="/editpassword" > 
+          <ListItem button >
             <ListItemIcon>
               {" "}
               <VpnKeyIcon />{" "}
             </ListItemIcon>
             <ListItemText primary="เปลี่ยนรหัสผ่าน" />
           </ListItem>
-        {/* </Link> */}
+        </Link>
         <Link to="/login" onClick={logOut}>
           <ListItem button>
             <ListItemIcon>
@@ -105,6 +134,7 @@ export default function Header() {
             </ListItemIcon>
             <ListItemText primary="ออกจากระบบ" />
           </ListItem>
+        </Link>
         </Link>
       </List>
     </div>
@@ -124,20 +154,22 @@ export default function Header() {
             >
               {list("left")}
             </Drawer>
-          
+
             <Typography variant="h6" className={classes.title}>
-                <Link to="/volunteerpage/search" 
-                onClick={()=>{
-                  dispatch(resetDateAllForm())
-                  dispatch(resetCollectFromReducer())
-                  dispatch(setDataToDefaultForAllSection())
-                  dispatch(getEldByKeyword(""))
-                }} >
-              Project Name
-               </Link>
+              <Link
+                to="/volunteerpage/search"
+                onClick={() => {
+                  dispatch(resetDateAllForm());
+                  dispatch(resetCollectFromReducer());
+                  dispatch(setDataToDefaultForAllSection());
+                  dispatch(getEldByKeyword(""));
+                }}
+              >
+                Project Name
+              </Link>
             </Typography>
-           
-            <Link to="/login" onClick={logOut} >
+
+            <Link to="/login" onClick={logOut}>
               <Button color="inherit">
                 <ExitToAppIcon />
               </Button>

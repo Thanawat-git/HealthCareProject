@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "./volunteer.css";
-import Header from "./Header"
+import Header from "./Header";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 // import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import { Avatar } from "@material-ui/core";
-import { useDispatch, useSelector } from 'react-redux';
-import * as formAction from "../../../src/actions/editaccount.action"
-import {
-  blue,
-  grey,
-} from "@material-ui/core/colors";
+import { useDispatch, useSelector } from "react-redux";
+import * as formAction from "../../../src/actions/editaccount.action";
+import { useHistory } from "react-router-dom";
+import { blue, grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,11 +34,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Editpassword() {
   const classes = useStyles();
-  const dispatch = useDispatch()
-  //const editaccountReducer = useSelector(({editaccountReducer}) => editaccountReducer)
-  const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  const dispatch = useDispatch();
+  const editaccountReducer = useSelector(({ editaccountReducer }) => editaccountReducer);
+  const { user } = useSelector((state) => state.authReducer);
+  // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  const [firstname, setFirstname] = React.useState(null);
+  const [xx, setxx] = React.useState(null)
+  const [lastanme, setLastname] = useState(null);
+  const [phone, setphone] = useState(null);
   const [open, setOpen] = useState(false);
 
+  React.useEffect(() => {
+    console.log(editaccountReducer.firstname);
+    setFirstname(editaccountReducer.firstname);
+    setLastname(editaccountReducer.lastanme);
+    setphone(editaccountReducer.phone);
+
+  },[editaccountReducer.firstname]);
   const uploadedImage = useState();
   const imageUploader = useState();
 
@@ -57,9 +66,12 @@ export default function Editpassword() {
       reader.readAsDataURL(file);
     }
   };
-
+  let history = useHistory();
   const handleClickOpen = () => {
     setOpen(true);
+    dispatch(formAction.updateVolunteer(user.Id, firstname, lastanme, phone));
+    history.push("/volunteerpage/search");
+  
   };
   const handleClose = () => {
     setOpen(false);
@@ -69,9 +81,12 @@ export default function Editpassword() {
   //   ]
   //   dispatch(formAction.add(data))
   // }
+  const xxxxx =(e)=>{
+    setFirstname(e.target.value)
+  }
   return (
     <div className="vtcontainer">
-      <Header /> <br/> <br/>
+      <Header /> <br /> <br />
       <div className="nav-vtcontainer linkicon">
         {/* <Header /> */}
         <h3>
@@ -87,15 +102,17 @@ export default function Editpassword() {
             ref={imageUploader}
           />
 
-          <label htmlFor="icon-button-file" >
+          <label htmlFor="icon-button-file">
             <Avatar
               color="primary"
               aria-label="upload picture"
               component="span"
               style={{ width: 90, height: 90 }}
-             
             >
-              <PhotoCamera style={{ fontSize: 40 }} onClick={() => imageUploader.current.click()} />
+              <PhotoCamera
+                style={{ fontSize: 40 }}
+                onClick={() => imageUploader.current.click()}
+              />
               <img
                 ref={uploadedImage}
                 style={{
@@ -109,23 +126,38 @@ export default function Editpassword() {
         </div>
         <div className="TextField" style={{ textAlign: "center" }}>
           <div className={classes.root}>
-            <TextField id="outlined-basic" label="ชื่อ" variant="outlined" />
-            <TextField id="outlined-basic" label="นามสกุล" variant="outlined" />
+            <TextField
+              id="firstname"
+              value={firstname}
+              label="ชื่อ"
+              variant="outlined"             
+              onChange={(e)=>setFirstname(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              id="lastanme"
+              value={lastanme}
+              label="นามสกุล"
+              variant="outlined"
+              onChange={(e) => setLastname(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </div>
         </div>
         <div className="TextField1" style={{ textAlign: "center" }}>
           <TextField
-            id="outlined-basic"
-            label="ชื่อผู้ใช้งาน"
-            variant="outlined"
-            fullWidth
-            style={{ marginBottom: 20 }}
-          />
-
-          <TextField
-            id="outlined-basic"
+            id="phone"
             label="เบอร์โทรศัพท์"
             variant="outlined"
+            value={phone}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setphone(e.target.value)}
             fullWidth
           />
         </div>
