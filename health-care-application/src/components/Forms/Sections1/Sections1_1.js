@@ -394,7 +394,7 @@ const[err,seterr]= useState(false);
                         label="วัน"
                         variant="outlined"
                         error={err}
-                helperText={err ? "กรุณากรอกวัน" : ""}
+                        helperText={err ? "กรุณากรอกวัน" : ""}
                         onClick={getday}
                       />
                     )}
