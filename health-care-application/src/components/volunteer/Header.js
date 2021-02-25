@@ -72,9 +72,9 @@ export default function Header() {
     window.location.reload();
   };
   const editaccount = () => {
-    if(user.Role=="VOLUNTEER"){
-    dispatch(geteditAccount(user.Id));
-    }
+  
+    dispatch(geteditAccount(user.Id,user.Role));
+    
     console.log("VOL_ID_NUMBER : ",user)
   };
   

@@ -58,12 +58,12 @@ export default function HeaderSA({ name }) {
             </a>
 
             <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">  
-            {/* <Link to={`${url}/profile`}> */}
+            <Link to={`${url}/profile`} >
               <a href="#" className="dropdown-item disabled" >
                 <i className="fas fa-user" style={{ paddingRight: 10 }}></i>
                 ข้อมูลส่วนตัว
               </a>
-               {/* </Link> */}
+               </Link>
                {/* <Link to={`${url}/editpassadmin`}> */}
                 <a href="#" className="dropdown-item disabled">
                   <i class="fas fa-key" style={{ paddingRight: 10 }}></i>

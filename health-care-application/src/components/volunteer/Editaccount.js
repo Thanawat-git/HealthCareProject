@@ -10,7 +10,7 @@ import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import { Avatar } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../src/actions/editaccount.action";
-import { useHistory } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { blue, grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
@@ -68,9 +68,9 @@ export default function Editpassword() {
   };
   let history = useHistory();
   const handleClickOpen = () => {
-    setOpen(true);
-    dispatch(formAction.updateVolunteer(user.Id, firstname, lastanme, phone));
-    history.push("/volunteerpage/search");
+    // setOpen(true);
+    dispatch(formAction.updateVolunteer([user.Id, firstname, lastanme, phone]));
+    // history.push("/");
   
   };
   const handleClose = () => {
@@ -81,9 +81,7 @@ export default function Editpassword() {
   //   ]
   //   dispatch(formAction.add(data))
   // }
-  const xxxxx =(e)=>{
-    setFirstname(e.target.value)
-  }
+
   return (
     <div className="vtcontainer">
       <Header /> <br /> <br />
@@ -163,6 +161,7 @@ export default function Editpassword() {
         </div>
 
         <div className="bt-edit">
+          <Link to="/volunteerpage/search">
           <Button
             style={{
               backgroundColor: blue[500],
@@ -175,6 +174,7 @@ export default function Editpassword() {
           >
             บันทึก
           </Button>
+          </Link>
         </div>
         <div></div>
       </div>
