@@ -1,60 +1,72 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import "./volunteer.css";
+import Axios from "axios";
 import Header from "./Header"
-//import InputLabel from "@material-ui/core/InputLabel";
-import TextField from "@material-ui/core/TextField";
-import { Button, Link } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-import Dialog from "@material-ui/core/Dialog";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import EmojiEmotionsTwoToneIcon from "@material-ui/icons/EmojiEmotionsTwoTone";
-import { yellow, blue, grey } from "@material-ui/core/colors";
-import { useRouteMatch, Redirect } from "react-router-dom";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    hover: false,
-  },
-  icon: {
-    marginLeft: theme.spacing(1),
-  },
-  closeButton: {
-    position: "absolute",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
-  title: {
-    textAlign: "center",
-    minWidth: 350,
-  },
-}));
+import Swal from "sweetalert2"; // ทำ alert
+import withReactContent from "sweetalert2-react-content";
+import { Button, TextField } from "@material-ui/core";
+import { blue, grey } from "@material-ui/core/colors";
+import { useSelector,useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import {changePassword} from "../../actions/editpassword.action"
+import { apiBase, CHANGE_PASS_STATE_DEF } from "../../constants";
+const MySwal = withReactContent(Swal);
 
-const DialogTitle = withStyles(useStyles)((props) => {
-  const { children, classes, onClose, ...other } = props;
-  return (
-    <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h3">{children}</Typography>
-    </MuiDialogTitle>
-  );
-});
+
 
 export default function Editpassword() {
-  const classes = useStyles();
-  const { url } = useRouteMatch();
-  const [open, setOpen] = useState(false);
+  const [oldPass, setOldPass] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [conNewPass, setConNewPass] = useState("");
+  const [checkPassSame, setChackPassSame] = useState(null)
+  const [toCheckOldPass, setToChackOldPass] = useState(false)
+  const { user } = useSelector((state) => state.authReducer);
+  const checkuserReducer = useSelector(({checkuserReducer}) => checkuserReducer)
+  const dispatch = useDispatch()
+  let history = useHistory();
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClick = () => {
+    if(checkPassSame===false&&newPass!==""&&conNewPass!=="") {
+      Axios.get(`${apiBase}/checkuser/id/${user.Id}`).then((res)=>{
+        if(res.data+""===oldPass){
+          console.log("math ")
+          setToChackOldPass(false)
+          dispatch(changePassword(user.Id, user.Role, newPass ))
+        } else {
+          console.log("not math ")
+          setToChackOldPass(true)
+        }
+      })
+      
+    }
   };
-  const handleClose = () => {
-    setOpen(false);
-    //  return <Redirect to={`${url}/search`}/>
-  };
+
+  useEffect(()=>{
+    if(checkuserReducer.isSuccess){
+      MySwal.fire({
+        position: 'center-center',
+        icon: 'success',
+        title: 'แก้ไขรหัสผ่านสำเร็จ',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      history.goBack();
+      dispatch({
+        type: CHANGE_PASS_STATE_DEF
+      })
+    }
+   
+  },[checkuserReducer.isSuccess])
+
+  useEffect(() => {
+    if(newPass!=="" && conNewPass!== ""){
+      if(newPass!==conNewPass){
+        setChackPassSame(true)
+      }else{
+        setChackPassSame(false)
+      }
+    }
+  }, [newPass,conNewPass])
 
   return (
     <div className="vtcontainer">
@@ -67,6 +79,11 @@ export default function Editpassword() {
           <TextField
             id="outlined-basic"
             label="รหัสผ่านปัจจุบัน"
+            type="password"
+            value={oldPass}
+            error={toCheckOldPass}
+            helperText={toCheckOldPass && "รหัสผ่านไม่ถูกต้อง"}
+            onChange={(e)=>setOldPass(e.target.value)}
             fullWidth
             variant="outlined"
           />
@@ -74,13 +91,24 @@ export default function Editpassword() {
           <TextField
             id="outlined-basic"
             label="รหัสผ่านใหม่"
+            type="password"
+            value={newPass}
+            error={checkPassSame}
+            helperText={checkPassSame && "รหัสผ่านไม่ตรงกัน"}
+            onChange={(e)=>setNewPass(e.target.value)}
             fullWidth
             variant="outlined"
           />
+          
           <br></br>
           <TextField
             id="outlined-basic"
             label="ยืนยันรหัสผ่านใหม่"
+            type="password"
+            value={conNewPass}
+            error={checkPassSame}
+            helperText={checkPassSame && "รหัสผ่านไม่ตรงกัน"}
+            onChange={(e)=>setConNewPass(e.target.value)}
             fullWidth
             variant="outlined"
           />
@@ -94,49 +122,11 @@ export default function Editpassword() {
               height: 40,
               width: 90,
             }}
-            onClick={handleClickOpen}
+            onClick={handleClick}
           >
             บันทึก
           </Button>
         </div>
-        
-          <Dialog
-            className={classes.title}
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="customized-dialog-title"
-          >
-            <div style={{ width: 300, height: 300 }}>
-              <DialogTitle
-                id="customized-dialog-title"
-                onClose={handleClose}
-              ></DialogTitle>
-
-              <EmojiEmotionsTwoToneIcon
-                style={{ fontSize: 100, color: yellow[700] }}
-              >
-                {" "}
-              </EmojiEmotionsTwoToneIcon>
-              <Typography
-                gutterBottom
-                style={{ fontSize: 20, color: "#28be1a" }}
-              >
-                เปลี่ยนรหัสผ่านสำเร็จ
-              </Typography>
-              <div className="bt-searchInfo">
-                <Button
-                  style={{
-                    backgroundColor: blue[500],
-                    color: grey[50],
-                    margin: 20,
-                  }}
-                  onClick={handleClose}
-                >
-                  ยืนยัน
-                </Button>
-              </div>
-            </div>
-          </Dialog>
         </div>
       </div>
   );

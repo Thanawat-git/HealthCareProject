@@ -2,6 +2,7 @@ import {
   CHECK_USER,
   CHECK_USER_ERROR,
   CHANGE_PASS_SUCCESS,
+  CHANGE_PASS_STATE_DEF,
 } from "../constants";
 
 const initialState = {
@@ -19,6 +20,8 @@ export default (state = initialState, { type, payload }) => {
       return { id: null, role: null, isError: true };
     case CHANGE_PASS_SUCCESS:
       return { id: null, role: null, isError: false, isSuccess: true };
+    case CHANGE_PASS_STATE_DEF:
+      return { id: null, role: null, isError: false, isSuccess: null };
     default:
       return state;
   }

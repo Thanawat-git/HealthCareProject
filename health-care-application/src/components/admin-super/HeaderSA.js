@@ -1,8 +1,8 @@
 import React from "react";
-import { Avatar} from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
-import { Link,useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth.action";
 
@@ -17,9 +17,9 @@ export default function HeaderSA({ name }) {
   const classes = useStyles();
   const { url } = useRouteMatch();
   const { user } = useSelector((state) => state.authReducer);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const logOut = () => {
-    dispatch(logout())
+    dispatch(logout());
     window.location.reload();
   };
   return (
@@ -50,32 +50,43 @@ export default function HeaderSA({ name }) {
           <li className="nav-item dropdown">
             <a className="nav-link" data-toggle="dropdown">
               <i className="user-panel d-flex">
-                <Avatar className={classes.orange}>{name.substring(0,1)}</Avatar>
+                <Avatar className={classes.orange}>
+                  {name.substring(0, 1)}
+                </Avatar>
                 <i className="info">
                   <a className="d-block">{name}</a>
                 </i>
               </i>
             </a>
 
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">  
-            <Link to={`${url}/profile`} >
-              <a href="#" className="dropdown-item disabled" >
-                <i className="fas fa-user" style={{ paddingRight: 10 }}></i>
-                ข้อมูลส่วนตัว
-              </a>
-               </Link>
-               {/* <Link to={`${url}/editpassadmin`}> */}
-                <a href="#" className="dropdown-item disabled">
-                  <i class="fas fa-key" style={{ paddingRight: 10 }}></i>
-                  เปลี่ยนรหัสผ่าน
-                </a>
-            {/* </Link> */}
-              <div
-                className="dropdown-divider"
-                onClick={logOut}
-              />
+            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              {user.Role !== "SUPERADMIN" && (
+                <React.Fragment>
+                  <Link to={`${url}/profile`}>
+                    <a href="#" className="dropdown-item disabled">
+                      <i
+                        className="fas fa-user"
+                        style={{ paddingRight: 10 }}
+                      ></i>
+                      ข้อมูลส่วนตัว
+                    </a>
+                  </Link>
+                  <Link to={`${url}/editpassadmin`}>
+                    <a href="#" className="dropdown-item">
+                      <i class="fas fa-key" style={{ paddingRight: 10 }}></i>
+                      เปลี่ยนรหัสผ่าน
+                    </a>
+                  </Link>
+                </React.Fragment>
+              )}
+
+              <div className="dropdown-divider" onClick={logOut} />
               <a href="/login" className="dropdown-item" onClick={logOut}>
-                <i className="fas fa-sign-out-alt" style={{ paddingRight: 10 }} onClick={logOut}></i>
+                <i
+                  className="fas fa-sign-out-alt"
+                  style={{ paddingRight: 10 }}
+                  onClick={logOut}
+                ></i>
                 ออกจากระบบ
               </a>
             </div>

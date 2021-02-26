@@ -21,7 +21,7 @@ export const checkUser = (pid, data, history) => {
 
 export const changePassword = (pid, role, pass) => {
   return (dispatch) => {
-    if (role === "volunteer") {
+    if (role === "volunteer" || role === "VOLUNTEER") {
         console.log("volunteer")
       Axios.put(`${apiVol}/update/${pid}`, {
         VOL_PASSWORD: pass,
@@ -50,3 +50,4 @@ export const changePassword = (pid, role, pass) => {
   };
 };
 // 01/01/1977
+
