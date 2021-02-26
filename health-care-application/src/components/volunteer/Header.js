@@ -96,7 +96,7 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to="/editaccount">
+        <Link to="/editaccount" onClick={editaccount}>
           <ListItem button>
             <ListItemIcon>
               {" "}
