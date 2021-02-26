@@ -1,75 +1,66 @@
 import React, { useEffect, useState } from "react";
-import './admin.css'
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import PhotoCamera from "@material-ui/icons/PhotoCamera";
-import { Avatar } from "@material-ui/core";
-import { useDispatch, useSelector } from 'react-redux';
+// import PhotoCamera from "@material-ui/icons/PhotoCamera";
+// import { Avatar } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import * as formAction from "../../../../actions/editaccount.action";
+import { Link,useHistory } from "react-router-dom";
+import { blue, grey } from "@material-ui/core/colors";
 
-import {
-  blue,
-  grey,
-} from "@material-ui/core/colors";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 410,
-      minWidth:200
-    },
-  },
-  input: {
-    display: "none",
-  },
-  icon: {
-    marginLeft: theme.spacing(1),
-  },
-  title: {
-    textAlign: "center",
-    minWidth: 350,
-  },
-}));
 export default function Profileadmin() {
-  const classes = useStyles();
-  const dispatch = useDispatch()
-  //const editaccountReducer = useSelector(({editaccountReducer}) => editaccountReducer)
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const editaccountReducer = useSelector(({ editaccountReducer }) => editaccountReducer);
+  const { user } = useSelector((state) => state.authReducer);
+  // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  const [firstname, setFirstname] = React.useState(null);
+  const [lastanme, setLastname] = useState(null);
+  const [phone, setphone] = useState(null);
 
-  const uploadedImage = useState();
-  const imageUploader = useState();
+  React.useEffect(() => {
+    console.log(editaccountReducer.firstname);
+    setFirstname(editaccountReducer.firstname);
+    setLastname(editaccountReducer.lastanme);
+    setphone(editaccountReducer.phone);
 
-  const handleImageUpload = (e) => {
-    const [file] = e.target.files;
-    if (file) {
-      const reader = new FileReader();
-      const { current } = uploadedImage;
-      current.file = file;
-      reader.onload = (e) => {
-        current.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  },[editaccountReducer.firstname]);
+  // const uploadedImage = useState();
+  // const imageUploader = useState();
 
+  // const handleImageUpload = (e) => {
+  //   const [file] = e.target.files;
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     const { current } = uploadedImage;
+  //     current.file = file;
+  //     reader.onload = (e) => {
+  //       current.src = e.target.result;
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+  let history = useHistory();
   const handleClickOpen = () => {
-    setOpen(true);
+    // setOpen(true);
+    dispatch(formAction.updateVolunteer(
+      [user, firstname, lastanme, phone]
+    ));
+    history.goBack();
   };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  
   // const handleSubmit = ()=>{
   //   const data = [imageUploader
   //   ]
   //   dispatch(formAction.add(data))
   // }
+
   return (
-    <div className="add-staff">
-      <h2>ข้อมูลส่วนตัว</h2>
-<div className="content"> 
-      <div style={{ textAlign: "center" }}>
+    <div className="vtcontainer" style={{ minHeight: "100%" }}>
+      <div className="nav-vtcontainer linkicon edit-pass-pc">
+        <h3>
+          <b> แก้ไขข้อมูลส่วนตัว </b>
+        </h3>
+        {/* <div style={{ textAlign: "center" }}>
           <input
             accept="image/*"
             className={classes.input}
@@ -79,15 +70,17 @@ export default function Profileadmin() {
             ref={imageUploader}
           />
 
-          <label htmlFor="icon-button-file" >
+          <label htmlFor="icon-button-file">
             <Avatar
               color="primary"
               aria-label="upload picture"
               component="span"
               style={{ width: 90, height: 90 }}
-             
             >
-              <PhotoCamera style={{ fontSize: 40 }} onClick={() => imageUploader.current.click()} />
+              <PhotoCamera
+                style={{ fontSize: 40 }}
+                onClick={() => imageUploader.current.click()}
+              />
               <img
                 ref={uploadedImage}
                 style={{
@@ -98,27 +91,46 @@ export default function Profileadmin() {
               />
             </Avatar>
           </label>
-        </div>
-        <div className="TextField" style={{ textAlign: "center" }}>
-          <div className={classes.root}>
-            <TextField id="outlined-basic" type="text" label="ชื่อ" variant="outlined" />
-            <TextField id="outlined-basic" type="text" label="นามสกุล" variant="outlined" />
-          </div>
-        </div>
-        <div className="TextField1" style={{ textAlign: "center" }}>
+        </div> */}
+
+        <div className="TextField">
+            <TextField
+              id="firstname"
+              value={firstname}
+              label="ชื่อ"
+              variant="outlined"             
+              onChange={(e)=>setFirstname(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <br></br>
+            <TextField
+              id="lastanme"
+              value={lastanme}
+              label="นามสกุล"
+              variant="outlined"
+              onChange={(e) => setLastname(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <br></br>
           <TextField
-            id="outlined-basic"
+            id="phone"
             label="เบอร์โทรศัพท์"
             variant="outlined"
-            type="number"
+            value={phone}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setphone(e.target.value)}
             fullWidth
-            onInput = {(e) =>{
-              e.target.value = e.target.value.slice(0,10)
-          }}//fix13digit
           />
         </div>
 
         <div className="bt-edit">
+          {/* <Link to="/volunteerpage/search"> */}
           <Button
             style={{
               backgroundColor: blue[500],
@@ -131,11 +143,10 @@ export default function Profileadmin() {
           >
             บันทึก
           </Button>
+          {/* </Link> */}
         </div>
-      
-  
-      
+        <div></div>
       </div>
-      </div>
+    </div>
   );
 }

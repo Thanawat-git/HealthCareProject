@@ -1,48 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import "./volunteer.css";
 import Header from "./Header";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-// import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-
-import PhotoCamera from "@material-ui/icons/PhotoCamera";
-import { Avatar } from "@material-ui/core";
+// import PhotoCamera from "@material-ui/icons/PhotoCamera";
+// import { Avatar } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../src/actions/editaccount.action";
 import { Link,useHistory } from "react-router-dom";
 import { blue, grey } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-  input: {
-    display: "none",
-  },
-  icon: {
-    marginLeft: theme.spacing(1),
-  },
-  title: {
-    textAlign: "center",
-    minWidth: 350,
-  },
-}));
-
-export default function Editpassword() {
-  const classes = useStyles();
+export default function Editaccount() {
   const dispatch = useDispatch();
   const editaccountReducer = useSelector(({ editaccountReducer }) => editaccountReducer);
   const { user } = useSelector((state) => state.authReducer);
   // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const [firstname, setFirstname] = React.useState(null);
-  const [xx, setxx] = React.useState(null)
   const [lastanme, setLastname] = useState(null);
   const [phone, setphone] = useState(null);
-  const [open, setOpen] = useState(false);
 
   React.useEffect(() => {
     console.log(editaccountReducer.firstname);
@@ -51,31 +26,30 @@ export default function Editpassword() {
     setphone(editaccountReducer.phone);
 
   },[editaccountReducer.firstname]);
-  const uploadedImage = useState();
-  const imageUploader = useState();
+  // const uploadedImage = useState();
+  // const imageUploader = useState();
 
-  const handleImageUpload = (e) => {
-    const [file] = e.target.files;
-    if (file) {
-      const reader = new FileReader();
-      const { current } = uploadedImage;
-      current.file = file;
-      reader.onload = (e) => {
-        current.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleImageUpload = (e) => {
+  //   const [file] = e.target.files;
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     const { current } = uploadedImage;
+  //     current.file = file;
+  //     reader.onload = (e) => {
+  //       current.src = e.target.result;
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
   let history = useHistory();
   const handleClickOpen = () => {
     // setOpen(true);
-    dispatch(formAction.updateVolunteer([user.Id, firstname, lastanme, phone]));
+    dispatch(formAction.updateVolunteer(
+      [user, firstname, lastanme, phone]
+    ));
     // history.push("/");
+  };
   
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
   // const handleSubmit = ()=>{
   //   const data = [imageUploader
   //   ]
@@ -86,11 +60,10 @@ export default function Editpassword() {
     <div className="vtcontainer">
       <Header /> <br /> <br />
       <div className="nav-vtcontainer linkicon">
-        {/* <Header /> */}
         <h3>
           <b> แก้ไขข้อมูลส่วนตัว </b>
         </h3>
-        <div style={{ textAlign: "center" }}>
+        {/* <div style={{ textAlign: "center" }}>
           <input
             accept="image/*"
             className={classes.input}
@@ -121,9 +94,9 @@ export default function Editpassword() {
               />
             </Avatar>
           </label>
-        </div>
-        <div className="TextField" style={{ textAlign: "center" }}>
-          <div className={classes.root}>
+        </div> */}
+
+        <div className="TextField">
             <TextField
               id="firstname"
               value={firstname}
@@ -134,6 +107,7 @@ export default function Editpassword() {
                 shrink: true,
               }}
             />
+            <br></br>
             <TextField
               id="lastanme"
               value={lastanme}
@@ -144,9 +118,7 @@ export default function Editpassword() {
                 shrink: true,
               }}
             />
-          </div>
-        </div>
-        <div className="TextField1" style={{ textAlign: "center" }}>
+            <br></br>
           <TextField
             id="phone"
             label="เบอร์โทรศัพท์"

@@ -3,6 +3,8 @@ import {
   apiVol,
   UPDATE_EDITACCOUNT,
   apiAdmin,
+  USER,
+  HTTP_LOGIN_SUCCESS,
 } from "../constants";
 import Axios from "axios";
 
@@ -51,15 +53,42 @@ export const geteditAccount =  (payload,role) => {
   };
 };
 export const updateVolunteer = (payload) => {
-    console.log("updateVolunteer data ",payload)
-    Axios.put(`${apiVol}/update/${payload[0]}`,{
+    // console.log("updateVolunteer data ",payload)
+    
+    if(payload[0].Role==="VOLUNTEER"){
+      Axios.put(`${apiVol}/update/${payload[0].Id}`,{
         VOL_FIRSTNAME: payload[1],
         VOL_LASTNAME: payload[2],
         VOL_PHONE: payload[3],
-        })
-        .then((res)=>{
-            console.log(res.data);
-            // localStorage.setItem(USER, JSON.stringify(response.data))
-        })
+      })
+      .then((res)=>{
+          console.log("res.data updateVolunteer ",res.data);
+          // localStorage.setItem(USER, {Id:})
+      })
+    } else {
+      Axios.put(`${apiAdmin}/update/${payload[0].Id}`,{
+        ADM_FIRSTNAME: payload[1],
+        ADM_LASTNAME: payload[2],
+        ADM_PHONE: payload[3],
+      })
+      .then((res)=>{
+          console.log("res.data updateAdmin ",res.data);
+          // localStorage.setItem(USER, {Id:})
+      })
+    }
+    let data = {
+      Id:payload[0].Id, 
+      Password:payload[0].Password, 
+      Fullname:payload[1]+" "+payload[2], 
+      Role:payload[0].Role 
+    }
+    localStorage.setItem(USER, JSON.stringify(data))
+    return dispatch => {
+      dispatch({
+        type: HTTP_LOGIN_SUCCESS,
+        payload: { user: data },
+      });
+    }
+    
 
 }

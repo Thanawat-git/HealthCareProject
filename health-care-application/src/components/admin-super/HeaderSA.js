@@ -5,6 +5,7 @@ import { deepOrange } from "@material-ui/core/colors";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth.action";
+import {geteditAccount} from "../../actions/editaccount.action"
 
 const useStyles = makeStyles((theme) => ({
   orange: {
@@ -21,6 +22,10 @@ export default function HeaderSA({ name }) {
   const logOut = () => {
     dispatch(logout());
     window.location.reload();
+  };
+  const editaccount = () => {
+    dispatch(geteditAccount(user.Id,user.Role));
+    // console.log("VOL_ID_NUMBER : ",user)
   };
   return (
     <React.Fragment>
@@ -62,8 +67,8 @@ export default function HeaderSA({ name }) {
             <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               {user.Role !== "SUPERADMIN" && (
                 <React.Fragment>
-                  <Link to={`${url}/profile`}>
-                    <a href="#" className="dropdown-item disabled">
+                  <Link to={`${url}/profile`} onClick={editaccount} >
+                    <a href="#" className="dropdown-item">
                       <i
                         className="fas fa-user"
                         style={{ paddingRight: 10 }}
