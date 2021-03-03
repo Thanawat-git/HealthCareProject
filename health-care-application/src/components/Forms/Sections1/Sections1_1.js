@@ -246,8 +246,9 @@ function Sections1_1(props) {
                 placeholder="รหัสบัตรประชาชน 13 หลัก"
                 className="TextField"
                 error={err}
+                autoFocus={true}
                 InputLabelProps={{
-                  shrink: open,
+                  shrink: true,
                 }}
                 value={PID}
                 helperText={err ? "กรุณากรอกรหัสบัตรประชาชน" : ""}

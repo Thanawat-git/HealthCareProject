@@ -80,8 +80,8 @@ export default function AddNewAdmin() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false); //preName
   const [open3, setOpen3] = useState(false); // position
-  const [imagePreview, setImagePreview] = useState(null);
-  const [imageUploaad, setImageUpload] = useState(null);
+  // const [imagePreview, setImagePreview] = useState(null); // ไม่ได้ใช้ เราไว้ใช้เกี่ยวกับรูปประจำตัว
+  // const [imageUploaad, setImageUpload] = useState(null); // ไม่ได้ใช้ เราไว้ใช้เกี่ยวกับรูปประจำตัว
   const [state, setState] = useState({
     adminId:'',fName:'',lName:'',phone:'',email:''
   });
@@ -238,10 +238,10 @@ export default function AddNewAdmin() {
   }
 
   const submitNewStaff = () => {
-    const nowDate = new Date();
-    const nowDay = nowDate.getDate();
-    const nowMonth = nowDate.getMonth() + 1;
-    const nowYear = nowDate.getFullYear() + 543;
+    // const nowDate = new Date();
+    // const nowDay = nowDate.getDate();
+    // const nowMonth = nowDate.getMonth() + 1;
+    // const nowYear = nowDate.getFullYear() + 543;
     
     const elderlyBirthday = `${yea}-${numMon}-${day}`
     // var Age = nowYear - parseInt(yea);
@@ -252,13 +252,13 @@ export default function AddNewAdmin() {
     // } else {
     //   Age = Age;
     // }
-    const data = [adminId,fName,lName,phone,email,preName,elderlyBirthday,position,imageUploaad]
+    const data = [adminId,fName,lName,phone,email,preName,elderlyBirthday,position]
     dispatch(adminAction.createAdmin(data))
     onClose()
   };
   const onClose = ()=>{
-    setImagePreview(null)
-    setImageUpload(null)
+    // setImagePreview(null)
+    // setImageUpload(null)
     setpreName(null)
     setPosition(null)
     setYea('')
@@ -310,7 +310,7 @@ export default function AddNewAdmin() {
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
-            <div className="image-input">
+            {/* <div className="image-input">
             <Badge
               overlap="circle"
               anchorOrigin={{
@@ -332,10 +332,9 @@ export default function AddNewAdmin() {
                 </label>
                 </SmallAvatar>}
             >
-              {/* Preview Image */}
               <Avatar src={imagePreview} style={{width:100, height:100}} /> 
             </Badge>
-            </div>
+            </div> */}
             <div className="info-inputFill row">
               <div className="col-12 inputFill">
                 <TextField

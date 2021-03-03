@@ -231,25 +231,25 @@ export default function EditVolunteerInfo({selectValue}) {
     count==0 && submitNewStaff()
   }
   const submitNewStaff = () => {
-    const nowDate = new Date();
-    const nowDay = nowDate.getDate();
-    const nowMonth = nowDate.getMonth() + 1;
-    const nowYear = nowDate.getFullYear() + 543;
-    var Age = nowYear - parseInt(yea);
+    // const nowDate = new Date();
+    // const nowDay = nowDate.getDate();
+    // const nowMonth = nowDate.getMonth() + 1;
+    // const nowYear = nowDate.getFullYear() + 543;
+    // var Age = nowYear - parseInt(yea);
     const volBirthday = `${yea}-${numMon}-${day}`
-    if (numMon == nowMonth) {
-      parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
-    } else if (numMon > nowMonth) {
-      Age = Age - 1;
-    } else {
-      Age = Age;
-    }
+    // if (numMon == nowMonth) {
+    //   parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
+    // } else if (numMon > nowMonth) {
+    //   Age = Age - 1;
+    // } else {
+    //   Age = Age;
+    // }
 
     const data = [
       selectValue.VOL_ID_NUMBER,volId,
       selectValue.VOLUNTEER.VOL_PASSWORD,
       fName,lName,phone,line,facebook,reference,
-      preName,Age,volBirthday,homeNumber,alley,street,subDistrict,area
+      preName,volBirthday,homeNumber,alley,street,subDistrict,area
     ];
     dispatch(volAction.updateVolunteer(data));
     setOpen(false)
@@ -284,7 +284,7 @@ export default function EditVolunteerInfo({selectValue}) {
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
-            <div className="image-input">
+            {/* <div className="image-input">
             <Badge
               overlap="circle"
               anchorOrigin={{
@@ -306,10 +306,9 @@ export default function EditVolunteerInfo({selectValue}) {
                 </label>
                 </SmallAvatar>}
             >
-              {/* Preview Image */}
               <Avatar src={imagePreview} style={{width:100, height:100}} /> 
             </Badge>
-            </div>
+            </div> */}
             <div className="info-inputFill row">
               <div className="col-12 inputFill">
                 <TextField

@@ -66,13 +66,12 @@ export const updateVolunteer = (payload) => {
         await Axios.put(`${apiVol}/information/update/${payload[0]}`, {
           VOL_ID_NUMBER: payload[1],
           VOL_GENDER: payload[9],
-          VOL_AGE: payload[10],
-          VOL_BIRTHDATE: payload[11],
-          VOL_ADDR_NUMBER: payload[12],
-          VOL_ADDR_ALLEY: payload[13],
-          VOL_ADDR_STREET: payload[14],
-          VOL_ADDR_SUB_DISTRICT: payload[15],
-          VOL_ADDR_AREA: payload[16],
+          VOL_BIRTHDATE: payload[10],
+          VOL_ADDR_NUMBER: payload[11],
+          VOL_ADDR_ALLEY: payload[12],
+          VOL_ADDR_STREET: payload[13],
+          VOL_ADDR_SUB_DISTRICT: payload[14],
+          VOL_ADDR_AREA: payload[15],
         })
         await doGetVolunteer(dispatch);
     }

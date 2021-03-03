@@ -189,14 +189,14 @@ function BasicInfo({ data }) {
           <hr />
           <h5>{data.Elder_Information.ELD_AGE} ปี</h5> <hr />
           <h5>{data.Elder_Information.ELD_GENDER}</h5> <hr />
-          <h5>{data.Elder_Information.ELD_STATUS}</h5> <hr />
+          <h5>{data.Elder_Information.ELD_STATUS?data.Elder_Information.ELD_STATUS:"-"}</h5> <hr />
           <h5>{!data.ELD_PHONE ? "-" : data.ELD_PHONE}</h5> <hr />
-          <h5>{data.Elder_Information.ELD_RELIGION}</h5> <hr />
-          <h5>{data.Elder_Information.ELD_JOB}</h5> <hr />
-          <h5>{data.Elder_Information.ELD_INCOME} บาท</h5> <hr />
-          <h5>{data.Elder_Information.ELD_EDUCATION}</h5> <hr />
+          <h5>{data.Elder_Information.ELD_RELIGION?data.Elder_Information.ELD_RELIGION:"-"}</h5> <hr />
+          <h5>{data.Elder_Information.ELD_JOB?data.Elder_Information.ELD_JOB:"-"}</h5> <hr />
+          <h5>{data.Elder_Information.ELD_INCOME?data.Elder_Information.ELD_INCOME:"-"} บาท</h5> <hr />
+          <h5>{data.Elder_Information.ELD_EDUCATION?data.Elder_Information.ELD_EDUCATION:"-"}</h5> <hr />
           <h5>
-            {data.Elder_Information.ELD_TREATMENT}{" "}
+            {data.Elder_Information.ELD_TREATMENT?data.Elder_Information.ELD_TREATMENT:"-"}{" "}
             {data.Elder_Information.ELD_TREATMENT_HOSPITAL !== null &&
               `โรงพยาบาล${data.Elder_Information.ELD_TREATMENT_HOSPITAL}`}
           </h5>{" "}

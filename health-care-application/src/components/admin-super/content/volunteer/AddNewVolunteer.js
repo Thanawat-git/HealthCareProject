@@ -80,8 +80,8 @@ const DialogActions = withStyles((theme) => ({
 export default function AddNewVolunteer() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [imageUpload, setImageUpload] = useState(null);
+  // const [imagePreview, setImagePreview] = useState(null);
+  // const [imageUpload, setImageUpload] = useState(null);
   // useEffect(() => {
   //   image && console.log('image', image)
   //   image && console.log('image name', image.name)
@@ -244,10 +244,10 @@ export default function AddNewVolunteer() {
     count==0 && submitNewStaff()
   }
   const submitNewStaff = () => {
-    const nowDate = new Date();
-    const nowDay = nowDate.getDate();
-    const nowMonth = nowDate.getMonth() + 1;
-    const nowYear = nowDate.getFullYear() + 543;
+    // const nowDate = new Date();
+    // const nowDay = nowDate.getDate();
+    // const nowMonth = nowDate.getMonth() + 1;
+    // const nowYear = nowDate.getFullYear() + 543;
     
     const volBirthday = `${yea}-${numMon}-${day}`
     // var Age = nowYear - parseInt(yea);
@@ -266,8 +266,8 @@ export default function AddNewVolunteer() {
   };
 
   const onClose = ()=>{
-    setImagePreview(null)
-    setImageUpload(null)
+    // setImagePreview(null)
+    // setImageUpload(null)
     setYea('')
     setMon('')
     setDay('')
@@ -316,7 +316,7 @@ export default function AddNewVolunteer() {
         </DialogTitle>
         <DialogContent dividers className="customized-dialog-content">
           <div className="container-add-staff-dialog">
-            <div className="image-input">
+            {/* <div className="image-input">
             <Badge
               overlap="circle"
               anchorOrigin={{
@@ -338,10 +338,9 @@ export default function AddNewVolunteer() {
                 </label>
                 </SmallAvatar>}
             >
-              {/* Preview Image */}
               <Avatar src={imagePreview} style={{width:100, height:100}} /> 
             </Badge>
-            </div>
+            </div> */}
             <div className="info-inputFill row">
               <div className="col-12 inputFill">
                 <TextField

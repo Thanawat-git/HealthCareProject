@@ -56,7 +56,7 @@ class LoginSuperAdmin extends Component {
               }}
               />
               </Link>
-              <Link to="/verify" >ลืมรหัสผ่าน</Link>
+              {/* <Link to="/verify" >ลืมรหัสผ่าน</Link> */}
             </form>
           </div>
         </div>

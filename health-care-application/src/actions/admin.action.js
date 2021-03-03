@@ -31,7 +31,7 @@ export const createAdmin = (payload) => {
       ADM_GENDER: payload[5],
       ADM_BIRTHDATE: payload[6],
       ADM_POSITION: payload[7],
-      ADM_PHOTO: payload[8],
+      // ADM_PHOTO: payload[8],
       ADM_STATUS: true,
     });
     await doGetAdmin(dispatch);
@@ -42,7 +42,7 @@ export const updateAdmin = (payload) => {
   return async dispatch=>{
     await Axios.put(`${apiAdmin}/update/${payload[0]}`, {
       ADM_ID_NUMBER: payload[1],
-      ADM_PASSWORD: payload[10],
+      ADM_PASSWORD: payload[9],
       ADM_FIRSTNAME: payload[2],
       ADM_LASTNAME: payload[3],
       ADM_PHONE: payload[4],
@@ -50,7 +50,7 @@ export const updateAdmin = (payload) => {
       ADM_GENDER: payload[6],
       ADM_BIRTHDATE: payload[7],
       ADM_POSITION: payload[8],
-      ADM_PHOTO: payload[9],
+      // ADM_PHOTO: payload[9],
       ADM_STATUS: true,
     })
     await doGetAdmin(dispatch)
