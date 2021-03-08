@@ -142,7 +142,7 @@ export default function EditInfo() {
     <div className="editcontainer">
       <form action="#" className="shadow p-3 mb-5 bg-white rounded">
         <div className="ettitle">
-          <h3>แก้ไขข้อมูล</h3>
+          <h3>แก้ไขข้อมูลพื้นฐานผู้สูงอายุ</h3>
           <h4>{elderlyReducer.resultSelected.ELD_ID_NUMBER}</h4>
         </div>
         {
