@@ -234,7 +234,7 @@ function Sections1_1(props) {
                 className="btn form-btn btn-primary btn-lg"
                 onClick={getRandom}
               >
-                ไม่มีรหัสบัตรตัวประชาชน
+                ไม่มีรหัสบัตรประชาชน
               </button>
             </div>
             <div className="col-12">
