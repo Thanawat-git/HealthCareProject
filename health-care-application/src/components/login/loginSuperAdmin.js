@@ -29,6 +29,7 @@ class LoginSuperAdmin extends Component {
             <form action="#" className="login-form sign-in-form">
               <img src={logo1} className="company-logo" />
               {this.props.messageReducer.message === "User Not found." && <Alert2/>}
+              {this.props.messageReducer.message === "Username or password Invalid!" && <Alert2/>}
               <div className="input-field">
                 <i className="fas fa-user"/>
                 <input
@@ -65,7 +66,7 @@ class LoginSuperAdmin extends Component {
           <div className="panel left-panel">
             <div className="nlcontent">
               <h3>Hello Super Admin</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui atque dolore minus fugiat dolores, beatae, animi doloremque molestias nam ex quisquam iusto aliquam, sed ipsa commodi quod dolor in.</p>
+              {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis qui atque dolore minus fugiat dolores, beatae, animi doloremque molestias nam ex quisquam iusto aliquam, sed ipsa commodi quod dolor in.</p> */}
             </div>
             <img src={loginImg} className="login-img" alt=""/>
           </div>
