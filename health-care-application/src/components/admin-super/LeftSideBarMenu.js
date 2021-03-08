@@ -18,7 +18,7 @@ export default function LeftSideBarMenu() {
             alt="Logo"
             className="brand-image img-circle elevation-3"
           />
-          <span className="brand-text font-weight-light">Project Name</span>
+          <span className="brand-text font-weight-light">ระบบคัดกรอกสุขภาพ</span>
         </Link>
         {/* Sidebar */}
         <div className="sidebar">
