@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from 'axios'
 import { useDispatch} from "react-redux";
 import {
   Chart1,
@@ -22,9 +23,20 @@ import {
   getDataChart8,
 
 } from "../../../actions/charts.action";
+import { apiEld } from "../../../constants";
 
 export default function MainContent() {
   const dispatch = useDispatch();
+  const [countAdmin, setCountAdmin] = React.useState(0)
+  const [countVolunteer, setCountVolunteer] = React.useState(0)
+  const [countEdler, setCountEdler] = React.useState(0)
+  React.useEffect(()=>{
+    Axios.get(`${apiEld}/examsummary/countAllUser`).then(res=>{
+      setCountAdmin(res.data.AdminCount)
+      setCountVolunteer(res.data.VolunteerCount)
+      setCountEdler(res.data.ElderCount)
+    })
+  },[])
   React.useEffect(() => {
     console.log("in mainmenu use Effect");
     dispatch(getDataChart1())
@@ -59,7 +71,7 @@ export default function MainContent() {
                 </span>
                 <div className="info-box-content">
                   <span className="info-box-text">จำนวนผู้ดูแลระบบ</span>
-                  <span className="info-box-number">10</span>
+                  <span className="info-box-number">{countAdmin}</span>
                 </div>
               </div>
             </div>
@@ -70,7 +82,7 @@ export default function MainContent() {
                 </span>
                 <div className="info-box-content">
                   <span className="info-box-text">จำนวนอาสาสมัคร</span>
-                  <span className="info-box-number">20</span>
+                  <span className="info-box-number">{countVolunteer}</span>
                 </div>
               </div>
             </div>
@@ -92,7 +104,7 @@ export default function MainContent() {
                 </span>
                 <div className="info-box-content">
                   <span className="info-box-text">จำนวนผู้สูงอายุ</span>
-                  <span className="info-box-number">1000</span>
+                  <span className="info-box-number">{countEdler}</span>
                 </div>
               </div>
             </div>
