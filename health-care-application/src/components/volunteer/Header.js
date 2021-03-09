@@ -165,7 +165,7 @@ export default function Header() {
                   dispatch(getEldByKeyword(""));
                 }}
               >
-                ระบบคัดกรอกสุขภาพผู้สูงอายุ
+                ระบบคัดกรองสุขภาพผู้สูงอายุ
               </Link>
             </Typography>
 
