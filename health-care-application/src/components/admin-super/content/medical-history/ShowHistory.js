@@ -318,7 +318,7 @@ export default function ShowHistory({ value }) {
               id="additional-actions5-header"
             >
               <Typography>
-                แบบประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ
+                แบบประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำวัน
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
