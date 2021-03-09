@@ -363,7 +363,8 @@ function Sections1_1(props) {
                     getOptionLabel={(option) => option}
                     disableClearable={true}
                     //   style={{ width: 300 }}
-                    freeSolo
+                    autoSelect={true}
+                    autoHighlight={true}
                     onInputChange={handleInputYearChange}
                     defaultValue={forms1p1Reducer.year}
                     renderInput={(params) => (
@@ -387,7 +388,8 @@ function Sections1_1(props) {
                     disableClearable={true}
                     //   style={{ width: 300 }}
                     //   value={mon}
-                    freeSolo
+                    autoSelect={true}
+                    autoHighlight={true}
                     onInputChange={handleInputMonthChange}
                     defaultValue={forms1p1Reducer.month}
                     renderInput={(params) => (
@@ -409,7 +411,8 @@ function Sections1_1(props) {
                     getOptionLabel={(option) => option}
                     disableClearable={true}
                     //   style={{ width: 300 }}
-                    freeSolo
+                    autoSelect={true}
+                    autoHighlight={true}
                     onInputChange={handleInputDayChange}
                     defaultValue={forms1p1Reducer.day}
                     renderInput={(params) => (

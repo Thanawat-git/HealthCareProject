@@ -254,7 +254,7 @@ const ShowChart = React.forwardRef((props, ref) => {
               "จำนวนและร้อยละของผู้สูงอายุที่มีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามเพศช่วงอายุและความสามารถในการประกอบกิจวัตรประจำวัน.csv"
             }
           >
-            Download CSV
+            ดาวน์โหลดรายงาน
           </CSVLink>
           <FormControlLabel
         control={<Switch checked={per} onChange={()=>setPer(!per)} name="checkedA" />}

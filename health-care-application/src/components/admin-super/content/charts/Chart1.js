@@ -103,7 +103,7 @@ const ShowChart = React.forwardRef((props, ref) => {
             data={row}
             filename={"จำนวนและร้อยละของประชากรผู้สูงอายุในแต่ละช่วงอายุจำแนกตามเพศ.csv"}
           >
-            Download CSV
+            ดาวน์โหลดรายงาน
           </CSVLink>
         </div>
         <div ref={ref}>

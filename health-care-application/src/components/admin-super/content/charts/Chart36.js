@@ -241,7 +241,7 @@ const ShowChart = React.forwardRef((props, ref) => {
               "จำนวนและร้อยละของผู้สูงอายุที่น่าจะมีความเสี่ยงของภาวะสมองเสื่อมจำแนกตามชุมชน.csv"
             }
           >
-            Download CSV
+            ดาวน์โหลดรายงาน
           </CSVLink>
         </div>
 

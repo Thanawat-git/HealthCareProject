@@ -321,7 +321,7 @@ const ShowChart = React.forwardRef((props, ref) => {
     filename={
       "จำนวนและร้อยละของผู้สูงอายุจำแนกตามสิทธิการรักษาช่วงอายุและเพศ.csv"
     }
-    > Download CSV </CSVLink>
+    > ดาวน์โหลดรายงาน </CSVLink>
     <FormControlLabel
           control={
             <Switch
