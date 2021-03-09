@@ -218,7 +218,7 @@ function MainMenu({ fname, lname }) {
               <ListItemIcon>
                 <CheckCircleIcon className={colorIcon.i6} />
               </ListItemIcon>
-              การประเมินความสามารถในการทำกิจวัตรประจำ
+              การประเมินความสามารถในการทำกิจวัตรประจำวัน
             </ListItem>
           </Link>{" "}
           <hr />

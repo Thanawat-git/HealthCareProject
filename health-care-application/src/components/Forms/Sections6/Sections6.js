@@ -141,7 +141,7 @@ export default function Sections6() {
   return (
     <div className="css-form">
       <form className="shadow-lg p-3 mb-5 bg-white rounded">
-        <h2>ส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ</h2>
+        <h2>ส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำวัน</h2>
         <div className="question">
           {/* content */}
           <p>กินอาหารได้เอง เมื่อเตรียมสำรับไว้ให้ต่อหน้า</p>
@@ -452,7 +452,7 @@ export default function Sections6() {
         fullWidth={true}
       >
         <DialogTitle>
-          ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำ
+          ผลส่วนที่ 6 การประเมินสมรรถนะ / ความสามารถ ในการทำกิจวัตรประจำวัน
         </DialogTitle>
 
         <DialogContent>
