@@ -404,7 +404,7 @@ export default function ShowHistory({ value }) {
                   {" "}
                   {dep_result !== null ? (
                     <React.Fragment>
-                      {dep_result != "ปกติ" && dep_9q_result}
+                      {dep_result != "ปกติ" ? dep_9q_result:dep_result}
                     </React.Fragment>
                   ) : (
                     noResult
