@@ -150,18 +150,50 @@ export default function Sections2F() {
     setBmi((parseFloat(weight) / (parseFloat(high) / 100) ** 2).toFixed(2));
   };
   const calbloodPressure = () => {
-    if (bloodPressure1 < 140 && bloodPressure2 < 90) {
-      setbloodPressureResult("ปรับพฤติกรรม");
-      setchecktosend1(false);
-    } else if (bloodPressure1 < 180 && bloodPressure2 < 110) {
-      setbloodPressureResult(
-        "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
-      );
+    // if (bloodPressure1 < 140 && bloodPressure2 < 90) {
+    //   setbloodPressureResult("ปรับพฤติกรรม");
+    //   setchecktosend1(false);
+    // } else if (bloodPressure1 < 180 && bloodPressure2 < 110) {
+    //   setbloodPressureResult(
+    //     "วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์"
+    //   );
+    //   setTopicblood("ความดันโลหิต");
+    //   calDate2(2);
+    //   setdateblood(toDay2);
+    //   setchecktosend1(true);
+    // } else {
+    //   setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
+    //   setchecktosend1(false);
+    // }
+    if(bloodPressure1<=139){
+      console.log("bloodPressure1 <=139 ",bloodPressure1)
+      if(bloodPressure2<80){
+        // ปกติ
+        console.log("bloodPressure2 <80 ",bloodPressure2)
+        setbloodPressureResult("ปกติ");
+      }else if(bloodPressure2>=80 && bloodPressure2<110){
+        // เสี่ยง
+        console.log("bloodPressure2 กลาง ",bloodPressure2)
+        setbloodPressureResult("ปรับพฤติกรรม");
+      } else {
+        // พบแพทย์
+        console.log("bloodPressure2 สุดท้าย ",bloodPressure2)
+        setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
+      }
+      setchecktosend1(false); // send follow
+    }
+
+    if(bloodPressure1>=140 && bloodPressure1<=179){
+      // ติดตาม
+      setbloodPressureResult("วัดซ้ำใน 2 สัปดาห์ เพื่อยืนยัน *แจ้งเตือน 2 สัปดาห์");
       setTopicblood("ความดันโลหิต");
       calDate2(2);
       setdateblood(toDay2);
       setchecktosend1(true);
-    } else {
+    }
+
+    if(bloodPressure1>=180){
+      // พบแพทย์
       setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
       setchecktosend1(false);
     }
