@@ -108,7 +108,7 @@ export default function FollowUp() {
               <th>หัวข้อ</th>
               <th>วันที่</th>
               <th>สถานะ</th>
-              <th>ชื่อ อสม.</th>
+              <th>ชื่อผู้เก็บข้อมูล</th>
               <th style={{ textAlign: "center" }}>Action</th>
             </tr>
           </thead>

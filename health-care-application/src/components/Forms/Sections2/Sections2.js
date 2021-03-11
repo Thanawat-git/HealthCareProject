@@ -170,15 +170,18 @@ console.log("Nofood 1 : ", noFood)
     // }
 
     if(bloodPressure1<=139){
+      console.log("bloodPressure1 <=139 ",bloodPressure1)
       if(bloodPressure2<80){
         // ปกติ
+        console.log("bloodPressure2 <80 ",bloodPressure2)
         setbloodPressureResult("ปกติ");
-      }
-      if(bloodPressure2>=80 && bloodPressure2<110){
+      }else if(bloodPressure2>=80 && bloodPressure2<110){
         // เสี่ยง
+        console.log("bloodPressure2 กลาง ",bloodPressure2)
         setbloodPressureResult("ปรับพฤติกรรม");
       } else {
         // พบแพทย์
+        console.log("bloodPressure2 สุดท้าย ",bloodPressure2)
         setbloodPressureResult("ส่งพบผู้เชี่ยวชาญทันที");
       }
       setchecktosend1(false); // send follow

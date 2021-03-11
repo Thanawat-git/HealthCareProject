@@ -106,10 +106,10 @@ export default function Sections1_6() {
                 {diseases.map((value, index) => {
                   return (
                     <div className="listItem">
-                      <div className="">
-                        <li key={index}> {`${value}`}</li>
+                      <div>
+                        <li key={index}> {value}</li>
                       </div>
-                      <div className="">
+                      <div>
                         <Button
                           variant="outlined"
                           color="secondary"
