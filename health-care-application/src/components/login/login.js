@@ -68,7 +68,7 @@ class Login extends Component {
         <div className="panels-nlcontainer">
           <div className="panel left-panel">
             <div className="nlcontent">
-              <h3>Hello Volunteers</h3>
+              <h3>Hello Volunteers test edit after build</h3>
               {/* <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
                 qui atque dolore minus fugiat dolores, beatae, animi doloremque
