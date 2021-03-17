@@ -124,7 +124,7 @@ export default function Sections9_2() {
     ) {
       setCollect(true);
     }
-    let counter = 5;
+    let counter = 0;
     let countR = 0;
     let countL = 0;
     var x = document.getElementById("myDIV");
@@ -132,43 +132,42 @@ export default function Sections9_2() {
     parseInt(ans1_1);
     parseInt(ans1_2);
     if (collect) {
-      console.log(ans1R, " ", ans2R, " ", ans3R, " ", ans4R, " ", ans5R);
-      ans1L == true && countL++;
-      ans2L == true && countL++;
-      ans3L == true && countL++;
-      ans4L == true && countL++;
-      ans5L == true && countL++;
-      ans1R == true && countR++;
-      ans2R == true && countR++;
-      ans3R == true && countR++;
-      ans4R == true && countR++;
-      ans5R == true && countR++;
-      ans1N && counter--;
-      ans2N && counter--;
-      ans3N && counter--;
-      ans4N && counter--;
-      ans5N && counter--;
+      ans1L == true ? countL++ : countL--;
+      ans2L == true ? countL++ : countL--;
+      ans3L == true ? countL++ : countL--;
+      ans4L == true ? countL++ : countL--;
+      ans5L == true ? countL++ : countL--;
+      ans1R == true ? countR++ : countR--;
+      ans2R == true ? countR++ : countR--;
+      ans3R == true ? countR++ : countR--;
+      ans4R == true ? countR++ : countR--;
+      ans5R == true ? countR++ : countR--;
+      ans1N == true ? counter++ : counter--;
+      ans2N == true ? counter++ : counter--;
+      ans3N == true ? counter++ : counter--;
+      ans4N == true ? counter++ : counter--;
+      ans5N == true ? counter++ : counter--;
       setCount(countL);
       setCount(countR);
       setCount(counter);
-      if(countL >= 2 && countR >= 2){ 
+      if (countL >= 2 && countR >= 2) {
         console.log("------------1-------------");
         setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ทั้งสองข้าง)");
-      }else{ 
-      if (countL >= 2) {
-        console.log("------------2-------------");
-        setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างซ้าย)"); //ใช่มากกว่า 3 ข้อ :
-      }else
-      if (countR >= 2) {
-        console.log("------------3-------------");
-        setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)"); //ใช่มากกว่า 3 ข้อ :
-      }else
-      if (counter < 3) {
-        console.log("------------4-------------");
-        setresults("ปกติ"); //ใช่น้อยกว่า 3 ข้อ :
+      } else {
+        if (countL >= 2) {
+          console.log("------------2-------------");
+          setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างซ้าย)"); //ใช่มากกว่า 3 ข้อ :
+        } else if (countR >= 2) {
+          console.log("------------3-------------");
+          setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)"); //ใช่มากกว่า 3 ข้อ :
+        } else if (countL == 1 && countR == 1 && counter > 3) {
+          console.log("------------4-------------");
+          setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบบข้างได้)"); //ใช่น้อยกว่า 3 ข้อ :
+        } else if (counter > 3) {
+          console.log("------------5-------------");
+          setresults("ปกติ"); //ใช่น้อยกว่า 3 ข้อ :
+        }
       }
-
-    }
 
       const sum =
         parseInt(ans3_1) +
