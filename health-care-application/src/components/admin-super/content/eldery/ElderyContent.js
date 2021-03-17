@@ -28,9 +28,12 @@ export default function ElderyContent() {
               <td>{index + 1}</td>
               <td>{value.ELD_ID_NUMBER}</td>
               <td>
-                {value.Elder_Information.ELD_GENDER === "ชาย" ? "นาย" 
+                {
+                value.Elder_Information !== null ?
+                value.Elder_Information.ELD_GENDER === "ชาย" ? "นาย" 
                 : value.Elder_Information.ELD_STATUS === "โสด" ? "นางสาว"
                 : "นาง"
+                : "-"
                 }
                 {value.ELD_FIRSTNAME} {value.ELD_LASTNAME}
               </td>

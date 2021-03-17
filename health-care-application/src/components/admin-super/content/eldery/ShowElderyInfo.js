@@ -174,11 +174,15 @@ function BasicInfo({ data }) {
         </div>
         <div className="col-6 align-self-start" style={{ paddingLeft: 0 }}>
           <h5>
-            {data.Elder_Information.ELD_GENDER === "ชาย"
+            {
+            data.Elder_Information !== null ?
+            data.Elder_Information.ELD_GENDER === "ชาย"
               ? "นาย"
               : data.Elder_Information.ELD_STATUS === "โสด"
               ? "นางสาว"
-              : "นาง"}
+              : "นาง"
+              : "-"
+              }
             {data.ELD_FIRSTNAME} {data.ELD_LASTNAME}
           </h5>
           <hr />
