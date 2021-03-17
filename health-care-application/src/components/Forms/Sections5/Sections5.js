@@ -103,7 +103,7 @@ export default function Sections5_1() {
         parseInt(ans5_13) +
         parseInt(ans5_14) +
         parseInt(ans5_15);
-        if(c === 5){
+        if(c >=1){
           setresults("ส่งต่อเพื่อดูแลรักษาช่องปาก")
           settopicsec5("ตรวจสุขภาพช่องปาก");
           calDate(1)
