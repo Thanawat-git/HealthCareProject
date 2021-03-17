@@ -143,8 +143,8 @@ const forms10Reducer = useSelector(({ forms10Reducer }) => forms10Reducer);
            {/* ประเมินผลการเดิน */}
           <h5 style={{ color: "#A9A9A9"}}> ประเมินผลการเดิน:  </h5><h5>{forms9Reducer.result2}</h5>
 
-          <h5 style={{ color: "#A9A9A9"}}> ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อมเบื่องต้น:  </h5><h5>{forms92Reducer.results}</h5>
-          <h5 style={{ color: "#A9A9A9"}}> ตอนที่ 2 คัดกรองข้อเข่าเสื่อมทางคลินิค:  </h5><h5>{forms92Reducer.results2}</h5>
+          <h5 style={{ color: "#A9A9A9"}}> ตอนที่ 1 คัดกรองโรคข้อเข่าเสื่อมเบื่องต้น:  </h5><h5>{forms92Reducer.results2}</h5>
+          <h5 style={{ color: "#A9A9A9"}}> ตอนที่ 2 คัดกรองข้อเข่าเสื่อมทางคลินิค:  </h5><h5>{forms92Reducer.results}</h5>
           <h5 style={{ color: "#A9A9A9"}}> ตอนที่ 3 แบบประเมินระดับความรุนแรงของโรคข้อเข่าเสื่อม (Oxford Knee Score):  </h5><h5>{forms92Reducer.results3}</h5>
           <hr />
           {/* sec10 */}
