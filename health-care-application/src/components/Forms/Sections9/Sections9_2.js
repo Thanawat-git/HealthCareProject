@@ -132,21 +132,38 @@ export default function Sections9_2() {
     parseInt(ans1_1);
     parseInt(ans1_2);
     if (collect) {
-      ans1L == true ? countL++ : countL--;
-      ans2L == true ? countL++ : countL--;
-      ans3L == true ? countL++ : countL--;
-      ans4L == true ? countL++ : countL--;
-      ans5L == true ? countL++ : countL--;
-      ans1R == true ? countR++ : countR--;
-      ans2R == true ? countR++ : countR--;
-      ans3R == true ? countR++ : countR--;
-      ans4R == true ? countR++ : countR--;
-      ans5R == true ? countR++ : countR--;
-      ans1N == true ? counter++ : counter--;
-      ans2N == true ? counter++ : counter--;
-      ans3N == true ? counter++ : counter--;
-      ans4N == true ? counter++ : counter--;
-      ans5N == true ? counter++ : counter--;
+      // ans1L == true ? countL++ : countL--;
+      // ans2L == true ? countL++ : countL--;
+      // ans3L == true ? countL++ : countL--;
+      // ans4L == true ? countL++ : countL--;
+      // ans5L == true ? countL++ : countL--;
+      // ans1R == true ? countR++ : countR--;
+      // ans2R == true ? countR++ : countR--;
+      // ans3R == true ? countR++ : countR--;
+      // ans4R == true ? countR++ : countR--;
+      // ans5R == true ? countR++ : countR--;
+      // ans1N == true ? counter++ : counter--;
+      // ans2N == true ? counter++ : counter--;
+      // ans3N == true ? counter++ : counter--;
+      // ans4N == true ? counter++ : counter--;
+      // ans5N == true ? counter++ : counter--;
+      
+      ans1L == true && countL++  
+      ans2L == true && countL++  
+      ans3L == true && countL++  
+      ans4L == true && countL++  
+      ans5L == true && countL++  
+      ans1R == true && countR++ 
+      ans2R == true && countR++ 
+      ans3R == true && countR++ 
+      ans4R == true && countR++ 
+      ans5R == true && countR++ 
+      ans1N == true && counter++ 
+      ans2N == true && counter++ 
+      ans3N == true && counter++ 
+      ans4N == true && counter++ 
+      ans5N == true && counter++ 
+      
       setCount(countL);
       setCount(countR);
       setCount(counter);
