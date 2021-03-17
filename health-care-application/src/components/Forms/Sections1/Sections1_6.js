@@ -6,6 +6,11 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p6.action";
+import {
+  resetDateAllForm,
+  resetCollectFromReducer,
+  setDataToDefaultForAllSection,
+} from "../../../actions/getAllFormToReucer.action";
 import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 import { SIMPLEDISEASE } from "../../../constants";
 
@@ -46,6 +51,11 @@ export default function Sections1_6() {
     setdiseases([...diseases]);
   };
   const createNewForm = (eldId) => {
+    // clear form
+    dispatch(resetDateAllForm())
+    dispatch(resetCollectFromReducer())
+    dispatch(setDataToDefaultForAllSection())
+
     console.log("eldId ", eldId);
     const d = new Date();
     const visDate = `${d.getFullYear() + 543}-${
