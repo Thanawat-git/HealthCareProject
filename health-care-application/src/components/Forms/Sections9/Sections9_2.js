@@ -70,7 +70,7 @@ export default function Sections9_2() {
   const [results2, setresults2] = useState(forms92Reducer.results2);
   const [results3, setresults3] = useState(forms92Reducer.results3);
   const [show, setShow] = useState(false);
-  const [count, setCount] = useState(forms92Reducer.count);
+  // const [count, setCount] = useState(forms92Reducer.count);
   const [point, setPoint] = useState(forms92Reducer.point);
 
   const [dis1Y, setdis1Y] = useState(false);
@@ -97,11 +97,87 @@ export default function Sections9_2() {
   const [ans3_10, setAns3_10] = useState(forms92Reducer.ans3_10);
   const [ans3_11, setAns3_11] = useState(forms92Reducer.ans3_11);
   const [ans3_12, setAns3_12] = useState(forms92Reducer.ans3_12);
+  
+  const [countClick, setCountClick] = useState(0);
+  const [counter, setcounter] = useState(0);
+  const [countR, setcountR] = useState(0);
+  const [countL, setcountL] = useState(0);
 
   const handleChange = (event) => {
     console.log(event.target.name, " ", event.target.value);
     setstateCheck({ ...stateCheck, [event.target.name]: event.target.checked });
+    if((event.target.name).charAt(4)==="R"){
+      event.target.checked ? cR(1) : cR(-1);
+    } else if((event.target.name).charAt(4)==="L"){
+      event.target.checked ? cL(1) : cL(-1);
+    } else if((event.target.name).charAt(4)==="N") {
+      event.target.checked ? cN(1) : cN(-1);
+    }
   };
+
+  const cR = num =>{
+    setcountR(countR + num)
+  }
+  const cL = num =>{
+    setcountL(countL + num)
+  }
+  const cN = num =>{
+    setcounter(counter + num)
+  }
+
+  useEffect(() => {
+    if (countL >= 2 && countR >= 2) {
+      console.log("------------1-------------");
+      setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ทั้งสองข้าง)");
+    } else {
+      if (countL >= 2) {
+        console.log("------------2-------------");
+        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างซ้าย)"); 
+      } else if (countR >= 2) {
+        console.log("------------3-------------");
+        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)");
+      } else if (countL == 1 && countR == 1 && counter >= 3) {
+        console.log("------------4-------------");
+        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบบข้างได้)"); 
+      } else if (counter > 3) {
+        console.log("------------5-------------");
+        setresults2("ปกติ");
+      }
+    }
+    console.log("countL ",countL)
+    console.log("countR ",countR)
+    console.log("counter ",counter)
+  }, [counter,countR,countL])
+
+  useEffect(() => {
+    console.log("countClick useeff ",countClick)
+    let l=countL
+    let r=countR
+    let n=counter
+      if(countClick==1){
+        console.log("countClick if")
+        ans1L == true && l++
+        ans2L == true && l++
+        ans3L == true && l++
+        ans4L == true && l++
+        ans5L == true && l++
+        ans1R == true && r++
+        ans2R == true && r++
+        ans3R == true && r++
+        ans4R == true && r++
+        ans5R == true && r++
+        ans1N == true && n++
+        ans2N == true && n++
+        ans3N == true && n++
+        ans4N == true && n++
+        ans5N == true && n++
+      } 
+    
+      setcountL(l)
+      setcountR(r)
+      setcounter(n)
+      console.log("countClick in ",countClick)
+  }, [countClick])
 
   useEffect(() => {
     console.log("ansL", ans1L);
@@ -124,68 +200,16 @@ export default function Sections9_2() {
     ) {
       setCollect(true);
     }
-    let counter = 0;
-    let countR = 0;
-    let countL = 0;
+    // let counter = 0;
+    // let countR = 0;
+    // let countL = 0;
+    setCountClick(countClick+1)
     var x = document.getElementById("myDIV");
     x.style.display = "none";
     parseInt(ans1_1);
     parseInt(ans1_2);
-    if (collect) {
-      // ans1L == true ? countL++ : countL--;
-      // ans2L == true ? countL++ : countL--;
-      // ans3L == true ? countL++ : countL--;
-      // ans4L == true ? countL++ : countL--;
-      // ans5L == true ? countL++ : countL--;
-      // ans1R == true ? countR++ : countR--;
-      // ans2R == true ? countR++ : countR--;
-      // ans3R == true ? countR++ : countR--;
-      // ans4R == true ? countR++ : countR--;
-      // ans5R == true ? countR++ : countR--;
-      // ans1N == true ? counter++ : counter--;
-      // ans2N == true ? counter++ : counter--;
-      // ans3N == true ? counter++ : counter--;
-      // ans4N == true ? counter++ : counter--;
-      // ans5N == true ? counter++ : counter--;
-      
-      ans1L == true && countL++  
-      ans2L == true && countL++  
-      ans3L == true && countL++  
-      ans4L == true && countL++  
-      ans5L == true && countL++  
-      ans1R == true && countR++ 
-      ans2R == true && countR++ 
-      ans3R == true && countR++ 
-      ans4R == true && countR++ 
-      ans5R == true && countR++ 
-      ans1N == true && counter++ 
-      ans2N == true && counter++ 
-      ans3N == true && counter++ 
-      ans4N == true && counter++ 
-      ans5N == true && counter++ 
-
-      setCount(countL);
-      setCount(countR);
-      setCount(counter);
-      if (countL >= 2 && countR >= 2) {
-        console.log("------------1-------------");
-        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ทั้งสองข้าง)");
-      } else {
-        if (countL >= 2) {
-          console.log("------------2-------------");
-          setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างซ้าย)"); //ใช่มากกว่า 3 ข้อ :
-        } else if (countR >= 2) {
-          console.log("------------3-------------");
-          setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)"); //ใช่มากกว่า 3 ข้อ :
-        } else if (countL == 1 && countR == 1 && counter > 3) {
-          console.log("------------4-------------");
-          setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบบข้างได้)"); //ใช่น้อยกว่า 3 ข้อ :
-        } else if (counter > 3) {
-          console.log("------------5-------------");
-          setresults2("ปกติ"); //ใช่น้อยกว่า 3 ข้อ :
-        }
-      }
-
+    console.log("countClick ",countClick)
+    if (collect==true) {
       const sum =
         parseInt(ans3_1) +
         parseInt(ans3_2) +
