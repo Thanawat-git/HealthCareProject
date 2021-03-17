@@ -163,26 +163,26 @@ export default function Sections9_2() {
       ans3N == true && counter++ 
       ans4N == true && counter++ 
       ans5N == true && counter++ 
-      
+
       setCount(countL);
       setCount(countR);
       setCount(counter);
       if (countL >= 2 && countR >= 2) {
         console.log("------------1-------------");
-        setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ทั้งสองข้าง)");
+        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ทั้งสองข้าง)");
       } else {
         if (countL >= 2) {
           console.log("------------2-------------");
-          setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างซ้าย)"); //ใช่มากกว่า 3 ข้อ :
+          setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างซ้าย)"); //ใช่มากกว่า 3 ข้อ :
         } else if (countR >= 2) {
           console.log("------------3-------------");
-          setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)"); //ใช่มากกว่า 3 ข้อ :
+          setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)"); //ใช่มากกว่า 3 ข้อ :
         } else if (countL == 1 && countR == 1 && counter > 3) {
           console.log("------------4-------------");
-          setresults("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบบข้างได้)"); //ใช่น้อยกว่า 3 ข้อ :
+          setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบบข้างได้)"); //ใช่น้อยกว่า 3 ข้อ :
         } else if (counter > 3) {
           console.log("------------5-------------");
-          setresults("ปกติ"); //ใช่น้อยกว่า 3 ข้อ :
+          setresults2("ปกติ"); //ใช่น้อยกว่า 3 ข้อ :
         }
       }
 
@@ -224,17 +224,17 @@ export default function Sections9_2() {
     }
     if (x.style.display == "block") {
       if (ans1_2 == "0") {
-        setresults2("ไม่เจ็บ");
+        setresults("ไม่เจ็บ");
       } else if (ans1_2 == "2") {
-        setresults2("เจ็บเล็กน้อย");
+        setresults("เจ็บเล็กน้อย");
       } else if (ans1_2 == "4") {
-        setresults2("เจ็บปานกลาง");
+        setresults("เจ็บปานกลาง");
       } else if (ans1_2 == "6") {
-        setresults2("เจ็บมาก");
+        setresults("เจ็บมาก");
       } else if (ans1_2 == "8") {
-        setresults2("เจ็บมากที่สุด");
+        setresults("เจ็บมากที่สุด");
       } else if (ans1_2 == "10") {
-        setresults2("เจ็บอย่างรุนเเรง");
+        setresults("เจ็บอย่างรุนเเรง");
       }
     }
   }, [
@@ -315,7 +315,7 @@ export default function Sections9_2() {
     formAction.updateExa9_1Osteoarthritis([
       ans1_1,
       parseInt(ans1_2),
-      results2,
+      results,
       ans1R,
       ans1L,
       ans1N,
@@ -331,7 +331,7 @@ export default function Sections9_2() {
       ans5R,
       ans5L,
       ans5N,
-      results,
+      results2,
       ans3_1,
       ans3_2,
       ans3_3,
@@ -1199,7 +1199,7 @@ export default function Sections9_2() {
             </div>
             <div className="col-12 col-xl-6 result-result">
               <strong>
-                <p> {forms92Reducer.results2} </p>
+                <p> {forms92Reducer.results} </p>
               </strong>
             </div>
             <hr />
@@ -1208,7 +1208,7 @@ export default function Sections9_2() {
             </div>
             <div className="col-12 col-xl-6 result-result">
               <strong>
-                <p> {forms92Reducer.results} </p>
+                <p> {forms92Reducer.results2} </p>
               </strong>
             </div>
             <div className="col-12 col-xl-6 title-result">
