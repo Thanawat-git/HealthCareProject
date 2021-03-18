@@ -330,9 +330,9 @@ function Sections1_1(props) {
             <div className="col-12">
               <TextField
                 id=""
-                label="ชื่อเล่น"
+                label="ชื่อเล่น (ถ้ามี)"
                 variant="outlined"
-                placeholder="ชื่อเล่น"
+                placeholder="ชื่อเล่น (ถ้ามี)"
                 className="TextField"
                 value={forms1p1Reducer.nickname}
                 onChange={(e) => setNickname(e.target.value)}

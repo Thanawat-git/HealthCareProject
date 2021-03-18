@@ -138,7 +138,7 @@ export default function Sections9_2() {
         setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ข้างขวา)");
       } else if (countL == 1 && countR == 1 && counter >= 3) {
         console.log("------------4-------------");
-        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบบข้างได้)"); 
+        setresults2("มีโอกาสเป็นโรคข้อเข่าเสื่อมสูง (ไม่สามารถระบุข้างได้)"); 
       } else if (counter > 3) {
         console.log("------------5-------------");
         setresults2("ปกติ");
