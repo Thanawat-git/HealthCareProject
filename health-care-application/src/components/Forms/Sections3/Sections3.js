@@ -12,7 +12,8 @@ import { CancelBT } from "../../AppButtons";
 
 export default function Sections3() {
   const forms3Reducer = useSelector(({ forms3Reducer }) => forms3Reducer);
-  const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
+  const f2Re = useSelector(({ forms2Reducer }) => forms2Reducer);
+  // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const visId = useSelector(({ visitID }) => visitID.visiId);
   const peopleId = useSelector(({ visitID }) => visitID.peopleId);
   const forms1p6Reducer = useSelector(
@@ -47,7 +48,16 @@ export default function Sections3() {
   const [datesec3, setdateSec3] = useState();
   const [topicsec3, settopicsec3] = useState();
 
-
+  useEffect(()=>{
+    if(f2Re.bloodPressureResult!=="ปกติ") {
+      setAns3_2("1")
+      setdis1N(true)
+    }
+    if(f2Re.sugarResult!=="ไม่เสี่ยง"){
+      setAns3_3("1")
+      setdis2N(true)
+    }
+  },[])
 
   useEffect(() => {
     forms2Reducer === "อ้วนลงพุง" && setAns3_5("1");
