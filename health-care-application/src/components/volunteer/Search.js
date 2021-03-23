@@ -152,6 +152,9 @@ export default function Asynchronous() {
             keepMounted
             onClose={() => {
               setOpen(false)
+              dispatch(getAction.resetDateAllForm())
+              dispatch(getAction.resetCollectFromReducer())
+              dispatch(getAction.setDataToDefaultForAllSection())
               setTimeout(() => {
                 setswitchShow("main")
               }, 200);
