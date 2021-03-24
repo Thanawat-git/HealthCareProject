@@ -14,7 +14,7 @@ export const add = (payload) => {
 
 // create new elder table
 const createElder = async (payload) => {
-  await Axios.post(`${apiEld}/create`, {
+  let res = await Axios.post(`${apiEld}/create`, {
     ELD_ID_NUMBER: payload[0],
     ELD_FIRSTNAME: payload[1],
     ELD_LASTNAME: payload[2],
@@ -28,8 +28,9 @@ const createElder = async (payload) => {
     ELD_GENDER: payload[3],
   })
 
-  // console.log("res ",res);
-  // console.log("res.data ",res.data);
+  console.log("res ",res);
+  console.log("res.data ",res.data);
+  console.log("res.status ",res.status);
 };
 
 // update elder
