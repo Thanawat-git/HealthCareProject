@@ -27,7 +27,9 @@ const createElder = async (payload) => {
     ELD_BIRTHDATE: payload[5],
     ELD_GENDER: payload[3],
   })
-  console.log("Elder Success");
+
+  // console.log("res ",res);
+  // console.log("res.data ",res.data);
 };
 
 // update elder

@@ -348,7 +348,7 @@ export const createVisitTable = (payload) => {
       // updateBy: USERLOGIN.Fullname, //fix
     });
     console.log("Visit Create Success");
-    await createAllDatabase(res.data.VIS_ID);
+    // await createAllDatabase(res.data.VIS_ID);
     await dispatch({
       type: "VIS_ID",
       payload: [res.data.VIS_ID, payload[1]],
