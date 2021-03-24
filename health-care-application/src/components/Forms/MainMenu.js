@@ -104,7 +104,7 @@ function MainMenu(props) {
   });
   const colorIcon = useStyles2();
   const visitID = useSelector(({ visitID }) => visitID.visiId);
-  // console.log('visitID ',visitID)
+   console.log('visitID ',visitID)
   const peopleID = useSelector(({ visitID }) => visitID.peopleId);
   useEffect(() => {
     dispatch(getAction.getEducate(peopleID));
@@ -124,71 +124,38 @@ function MainMenu(props) {
         break;
       case "sec3":
         dispatch(getAction.getDataSec3(history, visitID, `${url}/sec3`));
-        // if (!forms3Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec3`);
-        //   }, 200);
-        // }
+
         break;
       case "sec4":
         dispatch(getAction.getDataSec4(history, visitID, `${url}/sec4`));
-        // if (!forms4Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec4`);
-        //   }, 200);
-        // }
+  
         break;
       case "sec5":
         dispatch(getAction.getDataSec5(history, visitID, `${url}/sec5`));
-        // if (!forms5Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec5`);
-        //   }, 200);
-        // }
+
         break;
       case "sec6":
         dispatch(getAction.getDataSec6(history, visitID, `${url}/sec6`));
         dispatch(getAction.getDataTai(visitID));
-        // if (!forms6Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec6`);
-        //   }, 200);
-        // }
+    
         break;
       case "sec7":
         dispatch(getAction.getDataSec7(history, visitID, `${url}/sec7`));
-        // dispatch(getAction.getEducate(peopleID))
         dispatch(getAction.getDatammse(visitID));
-        // if (!forms7Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec7`);
-        //   }, 200);
-        // }
+  
         break;
       case "sec8":
         dispatch(getAction.getDataSec8(history, visitID, `${url}/sec8_1`));
-        // if (!forms8Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec8_1`);
-        //   }, 200);
-        // }
+  
         break;
       case "sec9":
         dispatch(getAction.getDataSec9(history, visitID, `${url}/sec9`));
         dispatch(getAction.getDataSec92(visitID));
-        // if (!forms9Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec9`);
-        //   }, 200);
-        // }
+  
         break;
       case "sec10":
         dispatch(getAction.getDataSec10(history, visitID, `${url}/sec10`));
-        // if (!forms10Reducer.isFetching) {
-        //   setTimeout(() => {
-        //     history.push(`${url}/sec10`);
-        //   }, 200);
-        // }
+   
         break;
       case "mmsi":
         dispatch(getAction.getDatammse(history, visitID, `${url}/mmsi`));
