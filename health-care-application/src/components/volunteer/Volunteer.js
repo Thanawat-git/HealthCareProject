@@ -7,20 +7,16 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import './volunteer.css'
 import Search from './Search'
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetDataFromReducer } from "../../actions/resetDataSec1.action";
+import ConnectAlert from "../connectionAlert"
+import { isReachable } from "../../services/ServerReachable"
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
-  list: {
-    width: 250,
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: 'center',
-  },
+  
   appBar: {
     top: 'auto',
     bottom: 0,
@@ -39,12 +35,20 @@ const useStyles = makeStyles({
 export default function Volunteer() {
   const classes = useStyles();
   let history = useHistory();
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const dispatch = useDispatch()
   const creactNewEld = () => {
-    dispatch(resetDataFromReducer())
-    setTimeout(() => {
-      history.push("/sec1-page1");
-    }, 200);
+
+    isReachable(dispatch)
+    if(!netErr){
+      dispatch(resetDataFromReducer())
+      setTimeout(() => {
+        history.push("/sec1-page1");
+      }, 200);
+    } else {
+      ConnectAlert("/volunteerpage/search")
+    }
+    
     
   }
 

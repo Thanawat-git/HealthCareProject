@@ -12,7 +12,8 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FormHelperText from '@material-ui/core/FormHelperText';
-
+import ConnectAlert from "../../connectionAlert"
+import { isReachable } from "../../../services/ServerReachable"
 import * as formAction from "../../../actions/forms1p5.action";
 
 export default function Sections1_5() {
@@ -29,7 +30,7 @@ export default function Sections1_5() {
   const [drug, setdrug] = useState("");
   const [foods, setfoods] = useState(forms1p5Reducer.foods); //array
   const [drugs, setdrugs] = useState(forms1p5Reducer.drugs); //array
-
+  useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
   const confirmdrug = () => {
     formAction.createDrug([peopleID, drug]);
     drug && setdrugs([...drugs, drug]);
@@ -40,21 +41,25 @@ export default function Sections1_5() {
     food && setfoods([...foods, food]);
     setfood("");
   };
-
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const handleSubmit = (e) => {
-    drugAllergy === null && emptyValue();
-    foodAllergy === null && emptyValue();
-    drugAllergy == "drugallergic" && drugs.length == 0 && emptyValue();
-    foodAllergy == "foodallergic" && foods.length == 0 && emptyValue();
-    const data = [drugAllergy, drugs, foodAllergy, foods];
-    dispatch(formAction.add(data));
-
-    function emptyValue() {
-      e.preventDefault();
-      //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
-      seterr(true)
-      // return;
+    isReachable(dispatch)
+    if(!netErr){
+      drugAllergy === null && emptyValue();
+      foodAllergy === null && emptyValue();
+      drugAllergy == "drugallergic" && drugs.length == 0 && emptyValue();
+      foodAllergy == "foodallergic" && foods.length == 0 && emptyValue();
+      const data = [drugAllergy, drugs, foodAllergy, foods];
+      dispatch(formAction.add(data));
+  
+      function emptyValue() {
+        e.preventDefault();
+        seterr(true)
+      }
+    } else {
+      ConnectAlert("/volunteerpage/search")
     }
+    
   };
 
   const [disabled, setdisabled] = useState(false);

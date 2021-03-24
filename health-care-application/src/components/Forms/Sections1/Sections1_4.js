@@ -6,6 +6,8 @@ import { TextField, FormControlLabel, Radio, RadioGroup } from '@material-ui/cor
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import FormHelperText from '@material-ui/core/FormHelperText';
+import ConnectAlert from "../../connectionAlert"
+import { isReachable } from "../../../services/ServerReachable"
 
 import * as formAction from "../../../actions/forms1p4.action";
 
@@ -34,72 +36,77 @@ function Sections1_4(props) {
     useEffect(() => {
       elderlyBeing === "ไม่ได้อยู่ลำพัง" && setElderlyBeingDetail(null)
     }, [elderlyBeing])
-    
+    const netErr = useSelector(({ networkCheck }) => networkCheck.err)
+    useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
     const handleSubmit = (e)=>{
-      const data = [
-        elderlyStatus, 
-        elderlyBeing, 
-        elderlyBeingDetail, 
-        neighborName, 
-        religion, educations, careers, 
-        treatment, hospital, otherTreatment, 
-        salary, otherReligion, otherCareers
-      ]
-      let re = religion === "อื่นๆ ระบุ" ? otherReligion : religion
-      let job = careers==="อื่นๆ ระบุ" ? otherCareers : careers
-      let tre = treatment==="อื่นๆ" ? otherTreatment : treatment
-      formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,re,educations,
-        job,tre,hospital,salary
-        ])
-
-      elderlyStatus===null && emptyValue()
-
-      if(elderlyBeing!==null){
-        if(elderlyBeing=="อยู่ลำพัง"){
-          if(elderlyBeingDetail!==null){
-            if(elderlyBeingDetail!= "ทั้งกลางวันและกลางคืน"){
-              if(neighborName===null)emptyValue()
-            }
-          }else {emptyValue()}
-        } else {
-          if(neighborName===null)emptyValue()
-        }
-      } else {emptyValue()}
-
-      if(religion!==null){
-        if(religion=="อื่นๆ ระบุ"){
-          if(otherReligion===null)emptyValue()
-        }
-      } else {emptyValue()}
-
-      educations===null && emptyValue()
-
-      if(careers!==null){
-        if(careers=="อื่นๆ ระบุ"){
-          if(otherCareers===null)emptyValue()
-        }
-      }else {emptyValue()}
-
-      if(treatment!==null){
-        if(treatment!="เบิกต้นสังกัด" && treatment!="ชำระเงินเอง") {
-          if(treatment=="อื่นๆ"){
-            if(otherTreatment===null){emptyValue()}
+      isReachable(dispatch)
+      if(!netErr){
+        const data = [
+          elderlyStatus, 
+          elderlyBeing, 
+          elderlyBeingDetail, 
+          neighborName, 
+          religion, educations, careers, 
+          treatment, hospital, otherTreatment, 
+          salary, otherReligion, otherCareers
+        ]
+        let re = religion === "อื่นๆ ระบุ" ? otherReligion : religion
+        let job = careers==="อื่นๆ ระบุ" ? otherCareers : careers
+        let tre = treatment==="อื่นๆ" ? otherTreatment : treatment
+        formAction.updateElderinfo([peopleID,elderlyStatus,elderlyBeing,elderlyBeingDetail,neighborName,re,educations,
+          job,tre,hospital,salary
+          ])
+  
+        elderlyStatus===null && emptyValue()
+  
+        if(elderlyBeing!==null){
+          if(elderlyBeing=="อยู่ลำพัง"){
+            if(elderlyBeingDetail!==null){
+              if(elderlyBeingDetail!= "ทั้งกลางวันและกลางคืน"){
+                if(neighborName===null)emptyValue()
+              }
+            }else {emptyValue()}
           } else {
-            if(hospital===null){emptyValue()}
+            if(neighborName===null)emptyValue()
+          }
+        } else {emptyValue()}
+  
+        if(religion!==null){
+          if(religion=="อื่นๆ ระบุ"){
+            if(otherReligion===null)emptyValue()
+          }
+        } else {emptyValue()}
+  
+        educations===null && emptyValue()
+  
+        if(careers!==null){
+          if(careers=="อื่นๆ ระบุ"){
+            if(otherCareers===null)emptyValue()
+          }
+        }else {emptyValue()}
+  
+        if(treatment!==null){
+          if(treatment!="เบิกต้นสังกัด" && treatment!="ชำระเงินเอง") {
+            if(treatment=="อื่นๆ"){
+              if(otherTreatment===null){emptyValue()}
+            } else {
+              if(hospital===null){emptyValue()}
+            }
           }
         }
+        else {emptyValue()}
+  
+        salary===null && emptyValue()
+  
+        dispatch(formAction.add(data))
+        function emptyValue(){
+          e.preventDefault(); 
+          seterr(true)
+        }
+      } else {
+        ConnectAlert("/volunteerpage/search")
       }
-      else {emptyValue()}
-
-      salary===null && emptyValue()
-
-      dispatch(formAction.add(data))
-      function emptyValue(){
-        e.preventDefault(); 
-        seterr(true)
-        //alert('กรุณากรอกข้อมูลให้ครบทุกข้อ'); 
-        // return;
-      }
+      
     }
     
     return (

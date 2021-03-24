@@ -16,6 +16,8 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import * as formAction from "../../../actions/forms1p1.action";
 import { apiBase } from "../../../constants";
+import ConnectAlert from "../../connectionAlert"
+import { isReachable } from "../../../services/ServerReachable"
 
 function Sections1_1(props) {
   const forms1p1Reducer = useSelector(({ forms1p1Reducer }) => forms1p1Reducer);
@@ -31,6 +33,7 @@ function Sections1_1(props) {
   const [yea, setYea] = useState(forms1p1Reducer.year);
   const [mon, setMon] = useState(forms1p1Reducer.month);
   const [day, setDay] = useState(forms1p1Reducer.day);
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
 
   const handleChange = (event) => {
     setElderlyGender(event.target.value);
@@ -74,29 +77,19 @@ function Sections1_1(props) {
   };
 
   const getday = () => {
-    // console.log(yea);
-    // console.log(mon);
-    // console.log(a)
     if (mon != undefined) {
-      // console.log(2);
-      // console.log(typeof mon);
-      // console.log(mon);
       if (mon === "กุมภาพันธ์") {
         console.log(5);
         if (yea === undefined) {
-          // console.log(3);
           loopDays(28);
         } else {
-          // console.log(4);
           var a = parseInt(yea) - 543;
           if (
             (a % 4 == 0 && a % 100 != 0) ||
             (a % 4 == 0 && a % 100 == 0 && a % 400 == 0)
           ) {
-            // console.log(5.1);
             loopDays(29);
           } else {
-            // console.log(5.2);
             loopDays(28);
           }
         }
@@ -106,26 +99,19 @@ function Sections1_1(props) {
         mon === "กันยายน" ||
         mon === "พฤศจิกายน"
       ) {
-        // console.log(6);
-        // setDays([])
         loopDays(30);
       } else {
-        // console.log(7);
         loopDays(31);
       }
     }
   };
 
   const loopDays = (d) => {
-    // setDays([])
     var x = 0;
     const countDay = (s) => {
       return s + 1;
     };
-    // console.log(`mon ${mon}`);
-    // console.log(`d ${d}`);
-    // console.log(`length day ${days.length}`);
-    // days.length!=d || days === undefined ? setCD(true) : setCD(false)
+    
     if (days.length != d || days === undefined || days.length / 2 != d) {
       setCD(true);
       setDays([]);
@@ -151,7 +137,6 @@ function Sections1_1(props) {
         setNumMon(index + 1);
       }
     });
-    // console.log(`numMon = ${numMon}`)
   }
   function handleInputYearChange(event, value) {
     setYea(value);
@@ -159,53 +144,43 @@ function Sections1_1(props) {
   function handleInputDayChange(event, value) {
     setDay(value);
   }
-
   // Redux Hooks
+  useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
   const handleSubmit = (e) => {
-    if (
-      PID === null ||
-      firstname === null ||
-      lastanme === null ||
-      elderlyGender === null ||
-      yea === null ||
-      mon === null ||
-      day === null
-    ) {
-      emptyValue();
+    isReachable(dispatch)
+    if(!netErr){
+      if (
+        PID === null ||
+        firstname === null ||
+        lastanme === null ||
+        elderlyGender === null ||
+        yea === null ||
+        mon === null ||
+        day === null
+      ) {
+        emptyValue();
+      }
+  
+      const elderlyBirthday = `${yea}-${numMon}-${day}`;
+      const data = [
+        PID,
+        firstname,
+        lastanme,
+        elderlyGender,
+        nickname,
+        elderlyBirthday,
+      ];
+      dispatch(formAction.add(data));
+      function emptyValue() {
+        e.preventDefault();
+        seterr(true);
+        return;
+      }
+      formAction.createAllElder(data);
+    } else {
+      ConnectAlert("/volunteerpage/search")
     }
-
-    const elderlyBirthday = `${yea}-${numMon}-${day}`;
-    // cal Age
-    const nowDate = new Date();
-    // const nowDay = nowDate.getDate();
-    // const nowMonth = nowDate.getMonth() + 1;
-    // const nowYear = nowDate.getFullYear() + 543;
-    // var Age = nowYear - parseInt(yea);
-    // if (numMon == nowMonth) {
-    //   parseInt(day) >= nowDay ? (Age = Age) : (Age = Age - 1);
-    // } else if (numMon > nowMonth) {
-    //   Age = Age - 1;
-    // } else {
-    //   Age = Age;
-    // }
-    const data = [
-      PID,
-      firstname,
-      lastanme,
-      elderlyGender,
-      nickname,
-      elderlyBirthday,
-      // Age,
-    ];
-    dispatch(formAction.add(data));
-    // dispatch(savePID.addPidOnly(PID))
-    function emptyValue() {
-      e.preventDefault();
-      //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
-      seterr(true);
-      return;
-    }
-    formAction.createAllElder(data);
+    
   };
 
   return (

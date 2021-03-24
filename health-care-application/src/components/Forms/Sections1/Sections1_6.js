@@ -13,6 +13,8 @@ import {
 } from "../../../actions/getAllFormToReucer.action";
 import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 import { SIMPLEDISEASE } from "../../../constants";
+import ConnectAlert from "../../connectionAlert"
+import { isReachable } from "../../../services/ServerReachable"
 
 export default function Sections1_6() {
   const [open, setOpen] = useState(false); // open dialog
@@ -32,16 +34,21 @@ export default function Sections1_6() {
     setdisease("");
     console.log(disease);
   };
-
+  useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
   useEffect(() => {
-    // setdisease('')
     console.log(disease);
   }, [disease]);
-
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const handleSubmit = () => {
-    const data = [diseases, date];
-    dispatch(formAction.add(data));
-    setOpen(true);
+    isReachable(dispatch)
+      if(!netErr){
+        const data = [diseases, date];
+        dispatch(formAction.add(data));
+        setOpen(true);
+      } else {
+        ConnectAlert("/volunteerpage/search")
+      }
+    
   };
 
   const deletedisease = (index, value) => {
@@ -69,7 +76,6 @@ export default function Sections1_6() {
         forms1p1Reducer.lastname,
       ])
     );
-    // formAction.updateLastVisDate(data);
   };
 
   return (

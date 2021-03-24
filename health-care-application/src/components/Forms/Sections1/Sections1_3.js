@@ -13,12 +13,15 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FormHelperText from '@material-ui/core/FormHelperText';
 import * as formAction from "../../../actions/forms1p3.action";
+import ConnectAlert from "../../connectionAlert"
+import { isReachable } from "../../../services/ServerReachable"
 
 export default function Sections1_3() {
   const [firstNeighbor, setFirstNeighbor] = useState("no1");
   const [secondNeighbor, setSecondNeighbor] = useState("no2");
   const[err,seterr]= useState(false);
-
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
+  useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
   const handleChange = (event) => {
     switch (event.target.value) {
       case "yes1":
@@ -50,72 +53,68 @@ export default function Sections1_3() {
   const [neighborPhoneNumber2, setneighborPhoneNumber2] = useState(forms1p3Reducer.neighborPhoneNumber2);
 
   const handleSubmit = (e)=>{
-    if(firstNeighbor=='yes1'){
-      if(neighborFirstName1 === null || 
-        neighborLastName1 === null ||
-        neighborGender1=== null ||
-        neighbortime1=== null ||
-        neighborRelative1=== null
-        ){   emptyValue()   }
-      else{formAction.updateElderRelative([
-        peopleID,
+    isReachable(dispatch)
+    if(!netErr){
+      if(firstNeighbor=='yes1'){
+        if(neighborFirstName1 === null || 
+          neighborLastName1 === null ||
+          neighborGender1=== null ||
+          neighbortime1=== null ||
+          neighborRelative1=== null
+          ){   emptyValue()   }
+        else{formAction.updateElderRelative([
+          peopleID,
+          neighborFirstName1,
+          neighborLastName1,
+          neighborGender1,
+          neighbortime1,
+          neighborRelative1,
+          neighborPhoneNumber1])}
+      } 
+  
+      if(secondNeighbor=='yes2'){
+        if(neighborFirstName2 === null || 
+          neighborLastName2 === null ||
+          neighborGender2=== null ||
+          neighbortime2=== null ||
+          neighborRelative2=== null
+          ){   emptyValue()   }
+        else{
+          formAction.createElderRelative2([
+          neighborFirstName2,
+          neighborLastName2,
+          neighborGender2,
+          neighbortime2,
+          neighborRelative2,
+          neighborPhoneNumber2,
+          peopleID
+        ])}
+      } 
+  
+      const data = [
         neighborFirstName1,
         neighborLastName1,
         neighborGender1,
         neighbortime1,
         neighborRelative1,
-        neighborPhoneNumber1])}
-    } 
-
-    if(secondNeighbor=='yes2'){
-      if(neighborFirstName2 === null || 
-        neighborLastName2 === null ||
-        neighborGender2=== null ||
-        neighbortime2=== null ||
-        neighborRelative2=== null
-        ){   emptyValue()   }
-      else{
-        formAction.createElderRelative2([
+        neighborPhoneNumber1,
         neighborFirstName2,
         neighborLastName2,
         neighborGender2,
         neighbortime2,
         neighborRelative2,
-        neighborPhoneNumber2,
-        peopleID
-      ])}
-    } 
-
-    const data = [
-      neighborFirstName1,
-      neighborLastName1,
-      neighborGender1,
-      neighbortime1,
-      neighborRelative1,
-      neighborPhoneNumber1,
-      neighborFirstName2,
-      neighborLastName2,
-      neighborGender2,
-      neighbortime2,
-      neighborRelative2,
-      neighborPhoneNumber2
-    ]
-
-    dispatch(formAction.add(data))
-    // function emptyValue(){
-    //   e.preventDefault(); 
-    //   seterr(true)
-    // }
+        neighborPhoneNumber2
+      ]
+  
+      dispatch(formAction.add(data))
+    } else {
+      ConnectAlert("/volunteerpage/search")
+    }
+    
   }
   const emptyValue = ()=>{
     seterr(true)
   }
-
-  // useEffect(() => {
-  //   neighborFirstName1 !== null && setFirstNeighbor("yes1");
-  //   neighborFirstName2 !== null && setSecondNeighbor("yes2");
-  // }, [neighborFirstName1, neighborFirstName2])
-
 
   return (
     <div className="css-form">

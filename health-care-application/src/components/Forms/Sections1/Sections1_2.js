@@ -11,13 +11,15 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms1p2.action";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import ConnectAlert from "../../connectionAlert"
+import { isReachable } from "../../../services/ServerReachable"
 
 export default function Sections1_2(props) {
   const [radioValue, setRadioValue] = useState("yes");
   const handleChange = (event) => {
     setRadioValue(event.target.value);
   };
-
+  useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
   // Redux hook
   const forms1p2Reducer = useSelector(({ forms1p2Reducer }) => forms1p2Reducer);
   const peopleID = useSelector(
@@ -43,65 +45,69 @@ export default function Sections1_2(props) {
   const [curArea, setCurArea] = useState(forms1p2Reducer.curArea); // ชุมชน
   const [phoneNumber, setPhoneNumber] = useState(forms1p2Reducer.phoneNumber);
   const [err, seterr] = useState(false);
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const handleSubmit = (e) => {
-    if (
-      homeNumber === null &&
-      alley === null &&
-      street === null &&
-      subDistrict === null &&
-      area === null
-    ) {
-      emptyValue();
+    isReachable(dispatch)
+    if(!netErr){
+      if (
+        homeNumber === null &&
+        alley === null &&
+        street === null &&
+        subDistrict === null &&
+        area === null
+      ) {
+        emptyValue();
+      }
+      const data = [
+        homeNumber,
+        alley,
+        street,
+        subDistrict,
+        area,
+        curHomeNumber,
+        curAlley,
+        curStreet,
+        curSubDistrict,
+        curArea,
+        phoneNumber,
+      ];
+  
+      phoneNumber && formAction.updateElder([peopleID, phoneNumber]);
+      formAction.updateElderIdCurrent([
+        peopleID,
+        homeNumber,
+        alley,
+        street,
+        subDistrict,
+        area,
+      ]);
+      radioValue == "no"
+        ? formAction.updateElderCurrent([
+            peopleID,
+            curHomeNumber,
+            curAlley,
+            curStreet,
+            curSubDistrict,
+            curArea,
+          ])
+        : formAction.updateElderCurrent([
+            peopleID,
+            homeNumber,
+            alley,
+            street,
+            subDistrict,
+            area,
+          ]);
+  
+      dispatch(formAction.add(data));
+      function emptyValue() {
+        e.preventDefault();
+        seterr(true);
+      }
+    } else {
+      ConnectAlert("/volunteerpage/search")
     }
-    const data = [
-      homeNumber,
-      alley,
-      street,
-      subDistrict,
-      area,
-      curHomeNumber,
-      curAlley,
-      curStreet,
-      curSubDistrict,
-      curArea,
-      phoneNumber,
-    ];
-
-    phoneNumber && formAction.updateElder([peopleID, phoneNumber]);
-    formAction.updateElderIdCurrent([
-      peopleID,
-      homeNumber,
-      alley,
-      street,
-      subDistrict,
-      area,
-    ]);
-    radioValue == "no"
-      ? formAction.updateElderCurrent([
-          peopleID,
-          curHomeNumber,
-          curAlley,
-          curStreet,
-          curSubDistrict,
-          curArea,
-        ])
-      : formAction.updateElderCurrent([
-          peopleID,
-          homeNumber,
-          alley,
-          street,
-          subDistrict,
-          area,
-        ]);
-
-    dispatch(formAction.add(data));
-    function emptyValue() {
-      e.preventDefault();
-      //alert("กรุณากรอกข้อมูลให้ครบทุกข้อ");
-      // return;
-
-      seterr(true);
-    }
+    
   };
   return (
     <div className="css-form">

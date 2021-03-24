@@ -1,4 +1,4 @@
-import { FORMS1P2_ADD_NEW, apiEld } from "../constants";
+import { FORMS1P2_ADD_NEW, apiEld, apiBase } from "../constants";
 import Axios from 'axios';
 
 export const setStateToAdd = (payload) => ({
@@ -30,7 +30,7 @@ export const updateElderCurrent = async (payload) => {
     ELD_CUR_AREA: payload[5],
     // updateBy: null
   })
-  console.log("Update ElderCurrent Success");
+  // console.log("Update ElderCurrent Success");
 };
 
 export const updateElderIdCurrent = async (payload) => {
@@ -45,5 +45,7 @@ export const updateElderIdCurrent = async (payload) => {
       // updateBy: null
     }
   )
-  console.log("Update Elder ID Currentaddress Success");
+  // console.log("Update Elder ID Currentaddress Success");
 };
+
+
