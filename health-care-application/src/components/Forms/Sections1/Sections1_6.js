@@ -27,20 +27,28 @@ export default function Sections1_6() {
   const [disease, setdisease] = useState(null);
   const [diseases, setdiseases] = useState(forms1p6Reducer.diseases);
   const [date, setdate] = useState(new Date());
-
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const confirm = () => {
+    isReachable(dispatch)
     formAction.createDisease([peopleID, disease]);
     disease && setdiseases([...diseases, disease]);
     setdisease("");
     console.log(disease);
   };
-  useEffect(() => {netErr && ConnectAlert("/volunteerpage/search")})
+  useEffect(() => {
+    console.log("netErr 1 ")
+    console.log("netErr 1 ",netErr)
+    netErr && ConnectAlert("/volunteerpage/search")
+  },[])
   useEffect(() => {
     console.log(disease);
   }, [disease]);
-  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
+  
   const handleSubmit = () => {
+    console.log("กดปุ่ม")
     isReachable(dispatch)
+    
+    // setTimeout(() => {
       if(!netErr){
         const data = [diseases, date];
         dispatch(formAction.add(data));
@@ -48,7 +56,7 @@ export default function Sections1_6() {
       } else {
         ConnectAlert("/volunteerpage/search")
       }
-    
+    // }, 200);
   };
 
   const deletedisease = (index, value) => {
@@ -144,19 +152,6 @@ export default function Sections1_6() {
           </div>
 
           <br />
-          {/* <div className="row justify-content-center">
-            <div className="col-4">
-              <strong>วันที่สำรวจ</strong>
-            </div>
-            <div className="col-6">
-              <DatePicker
-                dateFormat="dd/MM/yyyy"
-                onChange={setdate}
-                value={date}
-              />
-            </div>
-          </div> */}
-          {/* content */}
         </div>
 
         {/* bt */}

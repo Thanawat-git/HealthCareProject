@@ -21,6 +21,7 @@ export default function Sections1_5() {
   const peopleID = useSelector(
     ({ forms1p1Reducer }) => forms1p1Reducer.peopleID
   );
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const dispatch = useDispatch();
   const[err,seterr]= useState(false);
   const [drugAllergy, setdrugAllergy] = useState(forms1p5Reducer.drugAllergy);
@@ -41,7 +42,7 @@ export default function Sections1_5() {
     food && setfoods([...foods, food]);
     setfood("");
   };
-  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
+  
   const handleSubmit = (e) => {
     isReachable(dispatch)
     if(!netErr){

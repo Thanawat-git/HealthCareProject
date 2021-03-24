@@ -49,11 +49,11 @@ export default function Sections3() {
   const [topicsec3, settopicsec3] = useState();
 
   useEffect(()=>{
-    if(f2Re.bloodPressureResult!=="ปกติ") {
+    if(f2Re.bloodPressureResult!=="ปกติ" && f2Re.bloodPressureResult) {
       setAns3_2("1")
       setdis1N(true)
     }
-    if(f2Re.sugarResult!=="ไม่เสี่ยง"){
+    if(f2Re.sugarResult!=="ไม่เสี่ยง" && f2Re.sugarResult){
       setAns3_3("1")
       setdis2N(true)
     }
@@ -66,35 +66,24 @@ export default function Sections3() {
       disf2 == true ? setdisf2(false) : setdisf2(true);
     }
     forms1p6Reducer.map((value) => {
-      // value == "ความดันโลหิตสูง" && setAns3_2("1");
-      // value == "เบาหวาน" && setAns3_3("1");
-      // value == "ไขมันในเส้นเลือดสูง" && setAns3_4("1");
-      // value == "โรคหัวใจ" && setAns3_6("1");
-
-      switch (value) {
-        case "ความดันโลหิตสูง":
-          setAns3_2("1")
-          setdis1N(true)
-          break;
-        case "เบาหวาน":
-          setAns3_3("1");
-          setdis2N(true)
-          break;
-        case "ไขมันในเส้นเลือดสูง":
-          setAns3_4("1");
-          setdis3N(true)
-          break;
-        case "โรคหัวใจ":
-            setAns3_6("1");
-            setdis4N(true)
-            break;
-        case "อัมพฤตษ์ อัมพาต":
-              setAns3_6("1");
-              setdis4N(true)
-              break;
-        default:
-          break;
+      console.log(value)
+      if(value==="ความดันโลหิตสูง"){
+        setAns3_2("1")
+        setdis1N(true)
       }
+      if(value==="เบาหวาน"){
+        setAns3_3("1");
+        setdis2N(true)
+      }
+      if(value==="ไขมันในเส้นเลือดสูง"){
+        setAns3_4("1");
+        setdis3N(true)
+      }
+      if(value==="โรคหัวใจ" || value==="อัมพฤตษ์ อัมพาต"){
+        setAns3_6("1");
+        setdis4N(true)
+      }
+      
     });
   }, []);
 

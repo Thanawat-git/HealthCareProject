@@ -16,6 +16,7 @@ import { isReachable } from "../../../services/ServerReachable"
 
 export default function Sections1_2(props) {
   const [radioValue, setRadioValue] = useState("yes");
+  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
   const handleChange = (event) => {
     setRadioValue(event.target.value);
   };
@@ -45,7 +46,7 @@ export default function Sections1_2(props) {
   const [curArea, setCurArea] = useState(forms1p2Reducer.curArea); // ชุมชน
   const [phoneNumber, setPhoneNumber] = useState(forms1p2Reducer.phoneNumber);
   const [err, seterr] = useState(false);
-  const netErr = useSelector(({ networkCheck }) => networkCheck.err)
+  
   const handleSubmit = (e) => {
     isReachable(dispatch)
     if(!netErr){
