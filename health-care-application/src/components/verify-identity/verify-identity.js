@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-import MomentUtils from "@date-io/moment";
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+// import MomentUtils from "@date-io/moment";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import "./verify-identity.css";
@@ -31,7 +30,6 @@ function ShowPage(){
 
   const toCheckUser = ()=>{
     const elderlyBirthday = `${yea}-${numMon}-${day}`;
-    // dispatch(checkUser(pid,moment(elderlyBirthday).add(543, 'year').format("YYYY-MM-DD"),history ))
     dispatch(checkUser(pid,moment(elderlyBirthday).format("YYYY-MM-DD"),history ))
   }
   const [yea, setYea] = React.useState();
@@ -145,20 +143,7 @@ function ShowPage(){
         
         <div className="col-12 field-data">
           <p>วัน/เดือน/ปีเกิด</p>
-          {/* <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} locale="th">
-            <KeyboardDatePicker
-              id="date-picker-dialog"
-              format="DD/MM/yyyy"
-              fullWidth
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                'aria-label': 'change date',
-              }}
-              inputVariant="outlined"
-              invalidDateMessage=" "
-            />
-          </MuiPickersUtilsProvider> */}
+          
           <div className="row">
                 <div className="col-12 col-xl-12 mb-15">
                   <Autocomplete
@@ -166,7 +151,6 @@ function ShowPage(){
                     options={years}
                     getOptionLabel={(option) => option}
                     disableClearable={true}
-                    //   style={{ width: 300 }}
                     autoSelect={true}
                     autoHighlight={true}
                     onInputChange={handleInputYearChange}
@@ -175,7 +159,6 @@ function ShowPage(){
                         {...params}
                         label="ปี พ.ศ."
                         variant="outlined"
-                        // value={yea}
                         error={err}
                         helperText={err ? "กรุณากรอกปี พ.ศ" : ""}
                         onClick={getyear}
@@ -189,8 +172,6 @@ function ShowPage(){
                     options={Months}
                     getOptionLabel={(option) => option}
                     disableClearable={true}
-                    //   style={{ width: 300 }}
-                    //   value={mon}
                     autoSelect={true}
                     autoHighlight={true}
                     onInputChange={handleInputMonthChange}
@@ -201,7 +182,6 @@ function ShowPage(){
                         variant="outlined"
                         error={err}
                         helperText={err ? "กรุณากรอกเดือน" : ""}
-                        //   onClick={(e) => setMon(e.target.value)}
                       />
                     )}
                   />
@@ -212,7 +192,6 @@ function ShowPage(){
                     options={days}
                     getOptionLabel={(option) => option}
                     disableClearable={true}
-                    //   style={{ width: 300 }}
                     autoSelect={true}
                     autoHighlight={true}
                     onInputChange={handleInputDayChange}

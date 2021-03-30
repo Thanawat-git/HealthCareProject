@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import moment from "moment";
+import ConvertDate from "../../ConvertDate";
 import {
   RadioGroup,
   Radio,
@@ -19,10 +19,7 @@ import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../actions/forms7.action";
-import 'moment/locale/th';
 import { CancelBT } from "../../AppButtons";
-
-moment.locale("th");
 
 const useStyles = makeStyles({
   root: {
@@ -110,12 +107,6 @@ export default function Sections7_1() {
         parseInt(ans7_8) +
         parseInt(ans7_9) +
         parseInt(ans7_10);
-      // count <= 7
-      //   ? setresults(
-      //       "การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002" +
-      //         setlinkTommse(true)
-      //     )
-      //   : setresults("การรู้คิดปกติ") && setlinkTommse(false);
         if(count <= 7){
           setresults("การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002")
           setlinkTommse(true)
@@ -149,12 +140,6 @@ export default function Sections7_1() {
         parseInt(ans7_8) +
         parseInt(ans7_9) +
         parseInt(ans7_10);
-      // count <= 7
-      //   ? setresults(
-      //       "การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002" +
-      //         setlinkTommse(true)
-      //     )
-      //   : setresults("การรู้คิดปกติ") && setlinkTommse(false);
         if(count <= 7){
           setresults("การรู้คิดผิดปกติ ส่งต่อเจ้าหน้าที่ทำแบบประเมิน MMSE-Thai 2002")
           setlinkTommse(true)
@@ -512,7 +497,9 @@ export default function Sections7_1() {
               </RadioGroup>
             </div>
             <div className="col-12">
-              <p>เฉลย: <strong className="text-success" > วัน{moment(eldBirthday).format("dddd")} ที่ {moment(eldBirthday).format("LL")} </strong> </p>
+              <p>เฉลย: <strong className="text-success" >
+                {ConvertDate(eldBirthday)}
+              </strong> </p>
             </div>
             <div className="col-12">
               <p>คำตอบของผู้สูงอายุ</p>

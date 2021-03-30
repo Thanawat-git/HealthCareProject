@@ -1,10 +1,9 @@
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
 import * as elderly from "../../actions/elderly.action";
-// import Icon from "@mdi/react";
+import ConvertDate from "../ConvertDate";
 import {
   Button,
   Dialog,
@@ -20,17 +19,13 @@ import { Link, useHistory } from "react-router-dom";
 import * as formAction from "../../actions/forms1p6.action";
 import Axios from "axios";
 import { apiEld } from "../../constants/index";
-// import { mdiAccount } from "@mdi/js";
-// import mdi from "@mdi/js"
 import * as getAction from "../../actions/getAllFormToReucer.action";
 import { updateLastVisDate } from "../../actions/forms1p6.action";
 import * as followUpAction from "../../actions/followUp.action";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import searchImg from '../images/search.svg'
 import nodataM from '../images/no_dataM.svg'
-import "moment/locale/th";
 
-moment.locale("th");
 
 const useStyles = makeStyles({
   title: {
@@ -130,7 +125,7 @@ export default function Asynchronous() {
               <div>
                 <Paper
                   className="paper-show"
-                  onClick={() => {
+                  onClick={()=>{
                     handleClickOpen(value)
                     dispatch(getAction.getDisease(value.ELD_ID_NUMBER))
                     dispatch(getAction.getEducate(value.ELD_ID_NUMBER))
@@ -178,9 +173,11 @@ export default function Asynchronous() {
                     {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
                   </DialogContentText>
                   <DialogContentText>
-                    ตรวจเยี่ยมครั้งล่าสุด{" "} 
-                    {/* {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).add(543, 'year').format("LL")} */}
-                    {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).format("dddd")} ที่ {moment(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE).format("LL")}
+                    ตรวจเยี่ยมครั้งล่าสุด{" "} <br/>
+                    {
+                      ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)
+                      // convertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)
+                    } <br/>
                   </DialogContentText>
                   <DialogContentText>
                     ตรวจโดย {elderlyReducer.resultSelected.updateBy}
@@ -190,7 +187,6 @@ export default function Asynchronous() {
                 {isVisId ? (
                   <div className="bt-searchInfo">
                     <Link className="bt-searchInfo-link">
-                      {/* <Button className="bt1" onClick={saveSelected}> */}
                       <Button 
                       className="bt1" 
                       variant="contained" 
@@ -290,7 +286,7 @@ export default function Asynchronous() {
                                 }
                               }}
                               fullWidth>
-                                การตรวจวัน{moment(value.VIS_DATE).format("dddd")} ที่ {moment(value.VIS_DATE).format("LL")}
+                                การตรวจ{ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)} <br/>
                               </Button>
                             </Link>
                           </div>
@@ -325,7 +321,7 @@ export default function Asynchronous() {
                                 // }, 300);
                               }}
                               fullWidth>
-                                ติดตามผลวัน{moment(value.APPOINT_DATE).format("dddd")} ที่ {moment(value.APPOINT_DATE).format("LL")} {value.APP_NAME}
+                                ติดตามผล{ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)}
                               </Button>
                             </Link>
                           </div>

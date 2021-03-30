@@ -10,6 +10,7 @@ import withReactContent from "sweetalert2-react-content";
 import 'moment/locale/th';
 import * as FpAction from "../../../../actions/followUp.action";
 import { useDispatch } from "react-redux";
+import ConvertDate from "../../../ConvertDate";
 const MySwal = withReactContent(Swal);
 
 moment.locale("th");
@@ -17,23 +18,11 @@ moment.locale("th");
 export default function EditFollowup({ value,headKey }) {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch()
-    // const FpReducer = useSelector(({followUpReducer}) => followUpReducer)
     const [isFetching, setisFetching] = useState(true)
     const [selectedDate, handleDateChange] = useState("null");
-    // useEffect(() => {
-    //   setfollowUp(FpReducer.result)
-    //   return () => {
-    //     setisFetching(true)
-    //   }
-    // }, [isFetching])
-    
     const updateFollowUpDate =()=>{
       const elderlyBirthday = `${yea}-${numMon}-${day}`;
-      // handleDateChange(`${yea}-${numMon}-${day}`)
-      // setTimeout(() => {
         if(selectedDate!=="null"){
-          // console.log('selectedDate on Update ', moment(selectedDate).add(543, 'year').format("YYYY-MM-DD"))
-          
           dispatch(FpAction.updateFollowUp(value.APP_ID, headKey, moment(elderlyBirthday).format("YYYY-MM-DD")))
           handleClose()
           MySwal.fire({
@@ -46,7 +35,6 @@ export default function EditFollowup({ value,headKey }) {
         } else {
           handleDateChange(false)
         }
-      // }, 500);
       
     }
     const handleClose = () => {
@@ -184,24 +172,10 @@ export default function EditFollowup({ value,headKey }) {
         <DialogTitle style={{ textAlign: "center" }}>{"แก้ไขการนัดหมายของ"} คุณ{value.ELDER.FIRSTNAME} {value.ELDER.LASTNAME}</DialogTitle>
         <DialogContent >
           <DialogContentText id="alert-dialog-description">
-            <Grid container justify="center">วันนัดหมายเดิม{": "}<strong>วัน{moment(value.APPOINT_DATE).format("dddd")} ที่ {moment(value.APPOINT_DATE).format("LL")}</strong></Grid>
+            <Grid container justify="center">วันนัดหมายเดิม{": "}<strong> {ConvertDate(value.APPOINT_DATE)}</strong></Grid>
             <Grid container justify="center"> การนัดหมาย{": "}<strong>ติดตามผล{value.APP_NAME}</strong></Grid>
             <br/>
               <Grid container justify="space-around">
-              {/* <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} locale="th">
-                <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="วันนัดหมายใหม่"
-                  format="DD/MM/yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                  invalidDateMessage=" "
-                />
-              </MuiPickersUtilsProvider> */}
               <div className="row">
               <div className="col-12 col-xl-12 mb-15">
                   <Autocomplete
@@ -209,7 +183,6 @@ export default function EditFollowup({ value,headKey }) {
                     options={years}
                     getOptionLabel={(option) => option}
                     disableClearable={true}
-                    //   style={{ width: 300 }}
                     autoSelect={true}
                     autoHighlight={true}
                     onInputChange={handleInputYearChange}
@@ -218,7 +191,6 @@ export default function EditFollowup({ value,headKey }) {
                         {...params}
                         label="ปี พ.ศ."
                         variant="outlined"
-                        // value={yea}
                         error={err}
                         helperText={err ? "กรุณากรอกปี พ.ศ" : ""}
                         onClick={getyear}

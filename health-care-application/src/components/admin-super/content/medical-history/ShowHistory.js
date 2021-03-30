@@ -1,9 +1,9 @@
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { PrintResultOnly, PrintAllForm } from "./PrintPage";
 import * as historyAction from "../../../../actions/history.action";
 import * as getAll from "../../../../actions/getAllFormToReucer.action";
 import { useDispatch, useSelector } from "react-redux";
+import ConvertDate from "../../../ConvertDate"
 import {
   Button,
   Dialog,
@@ -22,9 +22,6 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import somethingwrongImg from '../../../images/something_wrong.svg'
 
-import "moment/locale/th";
-
-moment.locale("th");
 let noResult = "ไม่มีผลการประเมิน";
 let noData = "ไม่มีข้อมูล";
 
@@ -539,9 +536,7 @@ export default function ShowHistory({ value }) {
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title" style={{ textAlign: "center" }}>
-          ข้อมูลการตรวจสุขภาพของคุณ {value.ELD_NAME} วัน
-          {moment(value.VIS_DATE).format("dddd")} ที่{" "}
-          {moment(value.VIS_DATE).format("LL")}
+          ข้อมูลการตรวจสุขภาพของคุณ {value.ELD_NAME} {ConvertDate(value.VIS_DATE)}
         </DialogTitle>
         <DialogContent dividers="paper">
           <Grid container justify="space-between">

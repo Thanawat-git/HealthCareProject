@@ -8,7 +8,6 @@ import {
 import { blue, red, grey } from "@material-ui/core/colors";
 import RoomSharpIcon from "@material-ui/icons/RoomSharp";
 import RecentActorsSharpIcon from "@material-ui/icons/RecentActorsSharp";
-import moment from "moment";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,11 +17,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import NoDataImg from "../../../images/no_data.svg";
-import "moment/locale/th";
+import ConvertDate from "../../../ConvertDate";
 
-// use css from content.css
-
-moment.locale("th");
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -187,8 +183,7 @@ function BasicInfo({ data }) {
           </h5>
           <hr />
           <h5>
-            วัน{moment(data.Elder_Information.ELD_BIRTHDATE).format("dddd")} ที่{" "}
-            {moment(data.Elder_Information.ELD_BIRTHDATE).format("LL")}
+            {ConvertDate(data.Elder_Information.ELD_BIRTHDATE)}
           </h5>{" "}
           <hr />
           <h5>{data.Elder_Information.ELD_AGE} ปี</h5> <hr />

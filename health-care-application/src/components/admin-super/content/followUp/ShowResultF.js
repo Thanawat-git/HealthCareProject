@@ -1,4 +1,3 @@
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import * as fAction from "../../../../actions/followUp.action";
 import * as getAll from "../../../../actions/getAllFormToReucer.action";
@@ -19,11 +18,9 @@ import {
   Grid,
   Tooltip,
 } from "@material-ui/core";
-import "moment/locale/th";
+import ConvertDate from "../../../ConvertDate"
 import { useReactToPrint } from "react-to-print";
 import { PRINT_THIS_SECTION } from "../../../../constants";
-
-moment.locale("th");
 
 let noData = "ไม่มีข้อมูล";
 
@@ -56,8 +53,7 @@ const ShowResult = React.forwardRef((props, ref) => {
           </b>
         </p>
         <p style={{ textAlign: "center" }}>
-          วัน{moment(props.value.APPOINT_DATE).format("dddd")} ที่{" "}
-          {moment(props.value.APPOINT_DATE).format("LL")} เรื่อง{" "}
+          {ConvertDate(props.value.APPOINT_DATE)} เรื่อง{" "}
           {props.value.APP_NAME}{" "}
         </p>
 

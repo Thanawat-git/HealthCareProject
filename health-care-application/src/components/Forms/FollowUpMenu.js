@@ -1,7 +1,6 @@
-import moment from "moment";
-import "moment/locale/th";
 import React from "react";
 import Header from "../volunteer/Header";
+import ConvertDate from "../ConvertDate"
 import { Sec2F } from "../Forms/Sections2";
 import { Sec3F } from "../Forms/Sections3";
 import { Sec5F } from "../Forms/Sections5";
@@ -14,9 +13,6 @@ import Swal from "sweetalert2"; // ทำ alert
 import withReactContent from "sweetalert2-react-content";
 import { SELECT_SECTION } from "../../constants";
 const MySwal = withReactContent(Swal);
-
-
-moment.locale("th");
 
 const useStyles = makeStyles({
   root: {
@@ -78,8 +74,7 @@ function Menu() {
       
       <Card className={classes.root}>
         <h4 style={{ textAlign: "center", paddingTop: 10 }}>การติดตามผลการตรวจคุณ {selectFollowUp.ELDER.FIRSTNAME} {selectFollowUp.ELDER.LASTNAME} </h4>
-        <p style={{ textAlign: "center", fontSize: 18 }} className="text-secondary" >วัน{moment(selectFollowUp.APPOINT_DATE).format("dddd")} ที่{" "}
-          {moment(selectFollowUp.APPOINT_DATE).format("LL")} เรื่อง {selectFollowUp.APP_NAME} 
+        <p style={{ textAlign: "center", fontSize: 18 }} className="text-secondary" >{ConvertDate(selectFollowUp.APPOINT_DATE)} เรื่อง {selectFollowUp.APP_NAME} 
         </p>
         <CardContent>
           <Link
