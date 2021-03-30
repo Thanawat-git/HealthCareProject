@@ -15,10 +15,12 @@ export default (state = initialState, { type, payload }) => {
             lastanme:payload[1],
             phone:payload[2],
         }
-        // case UPDATE_EDITACCOUNT:
-        //     return { firstname:payload[0],
-        //         lastanme:payload[1],
-        //         phone:payload[2],};
+    case "DEAFALUT_ACCOUNT" :
+        return {
+            firstname:"",
+            lastanme:"",
+            phone:"",
+        }
     default:
         return state
     }

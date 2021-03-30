@@ -29,13 +29,20 @@ export default function Sections8_9Q() {
     const[point,setPoint] = useState()
 
     useEffect(() => {
-        if(ans8_9q_1 && ans8_9q_2 && ans8_9q_3 && ans8_9q_4 && ans8_9q_5 && ans8_9q_6 && ans8_9q_7 && ans8_9q_8 && ans8_9q_9){
+      console.log("in useEffect for set collect")
+      console.log(typeof(ans8_9q_1))
+      console.log(ans8_9q_4)
+
+        if(ans8_9q_1!=="null" && ans8_9q_2!=="null" && ans8_9q_3!=="null" && ans8_9q_4!=="null" && ans8_9q_5!=="null" && ans8_9q_6!=="null" && ans8_9q_7!=="null" && ans8_9q_8!=="null" && ans8_9q_9!=="null"){
+          console.log(" set collect")
           setCollect(true)
         }
     }, [ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9])
     useEffect(() => {
+      console.log(collect)
         let count = 0
         if(collect){
+          console.log("collect true")
           count = parseInt(ans8_9q_1)+parseInt(ans8_9q_2)+parseInt(ans8_9q_3)+parseInt(ans8_9q_4)+parseInt(ans8_9q_5)+parseInt(ans8_9q_6)+parseInt(ans8_9q_7)+parseInt(ans8_9q_8)+parseInt(ans8_9q_9)
           setPoint(count)
           count<7? setresults('ไม่มีอาการโรคซึมเศร้า หรือ มีอาการโรคซึมเศร้าน้อยมาก'):
@@ -215,32 +222,20 @@ export default function Sections8_9Q() {
 
             {/* bt */}
             <div className="row justify-content-center">
-              {/* <button type="button" className="btn form-btn btn-back btn-lg">ย้อนกลับ</button> */}
-            {/* <Link to="/mainmenu"> */}
               <button type="button" className="btn btn-primary btn-lg"
               onClick={handleSubmit}>บันทึก</button>
-            {/* </Link> */}
             </div>
           </form>
 
-          {/* <ShowResultPopup
-          title='ผลการประเมินการคัดกรองโรคซึมเศร้า 9Q' 
-          result={results}
-          show={show}
-          onHide={()=>setShow(false)}
-          onClick={()=>formAction.updateDepressionScreening9q([visId,ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
-            point,results])}
-          backdrop="static"
-          keyboard={false}
-        /> */}
         <Dialog
           open={show}
           scroll="paper"
           maxWidth="xs"
           fullWidth={true}
           onClose={()=>setShow(false)}
-          onClick={()=>formAction.updateDepressionScreening9q([visId,ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
-            point,results])}
+          onClick={()=>formAction.updateDepressionScreening9q([
+            visId,ans8_9q_1,ans8_9q_2,ans8_9q_3,ans8_9q_4,ans8_9q_5,ans8_9q_6,ans8_9q_7,ans8_9q_8,ans8_9q_9,
+            point,results,collect ])}
         >
         <DialogTitle style={{ textAlign: "center" }}>
         ผลการประเมินการคัดกรองโรคซึมเศร้า 9Q

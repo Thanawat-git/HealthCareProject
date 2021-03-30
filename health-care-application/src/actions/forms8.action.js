@@ -27,7 +27,7 @@ export const updateDepressionScreening = async (payload)=>{
       DEP_NOT_ENJOYING: payload[2],
       DEP_CHECK:payload[3],
       DEP_RESULT: payload[4],
-      DEP_CORRECT_FORM:payload[5],
+      DEP_CORRECT_FORM: payload[4] === "ปกติ"? payload[5] : !payload[5],
       updateBy: USERLOGIN.Fullname
     })
     console.log("Depression_Screening Update Success")

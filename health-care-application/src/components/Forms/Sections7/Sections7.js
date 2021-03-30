@@ -35,19 +35,18 @@ export default function Sections7_1() {
   const selectFormSection = useSelector(
     ({ selectFormSection }) => selectFormSection
   );
-  // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
 
   const [age, setAge] = useState(null);
   const [eldBirthday, seteldBirthday] = useState(null);
   useEffect(() => {
-    // Axios.get(`${apiBase}/alzheimer/findOneElderForAge/${elderlyReducer.resultSelected.ELD_ID_NUMBER}`)
     Axios.get(`${apiBase}/alzheimer/findOneElderForAge/${peopleId}`)
     .then(res=>{
       console.log(res.data)
       setAge(res.data.ELD_AGE)
-      seteldBirthday(res.data.ELD_BIRTHDATE)
+      
+      seteldBirthday(ConvertDate(res.data.ELD_BIRTHDATE))
     }).catch(error=>{
       console.log('error in sec7 ',error)
     })
@@ -498,7 +497,7 @@ export default function Sections7_1() {
             </div>
             <div className="col-12">
               <p>เฉลย: <strong className="text-success" >
-                {ConvertDate(eldBirthday)}
+                {eldBirthday}
               </strong> </p>
             </div>
             <div className="col-12">

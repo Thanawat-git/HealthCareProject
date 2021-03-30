@@ -3,8 +3,6 @@ import "./volunteer.css";
 import Header from "./Header";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-// import PhotoCamera from "@material-ui/icons/PhotoCamera";
-// import { Avatar } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import * as formAction from "../../../src/actions/editaccount.action";
 import { Link,useHistory } from "react-router-dom";
@@ -14,47 +12,26 @@ export default function Editaccount() {
   const dispatch = useDispatch();
   const editaccountReducer = useSelector(({ editaccountReducer }) => editaccountReducer);
   const { user } = useSelector((state) => state.authReducer);
-  // const elderlyReducer = useSelector(({ elderlyReducer }) => elderlyReducer);
-  const [firstname, setFirstname] = React.useState(null);
-  const [lastanme, setLastname] = useState(null);
-  const [phone, setphone] = useState(null);
+  const [firstname, setFirstname] = useState(editaccountReducer.firstname);
+  const [lastanme, setLastname] = useState(editaccountReducer.lastanme);
+  const [phone, setphone] = useState(editaccountReducer.phone);
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(editaccountReducer.firstname);
     setFirstname(editaccountReducer.firstname);
     setLastname(editaccountReducer.lastanme);
     setphone(editaccountReducer.phone);
 
   },[editaccountReducer.firstname]);
-  // const uploadedImage = useState();
-  // const imageUploader = useState();
-
-  // const handleImageUpload = (e) => {
-  //   const [file] = e.target.files;
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     const { current } = uploadedImage;
-  //     current.file = file;
-  //     reader.onload = (e) => {
-  //       current.src = e.target.result;
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+  
   let history = useHistory();
   const handleClickOpen = () => {
-    // setOpen(true);
     dispatch(formAction.updateVolunteer(
       [user, firstname, lastanme, phone]
     ));
-    // history.push("/");
+    dispatch({ type: "DEAFALUT_ACCOUNT" })
   };
   
-  // const handleSubmit = ()=>{
-  //   const data = [imageUploader
-  //   ]
-  //   dispatch(formAction.add(data))
-  // }
 
   return (
     <div className="vtcontainer">
@@ -63,38 +40,6 @@ export default function Editaccount() {
         <h3>
           <b> แก้ไขข้อมูลส่วนตัว </b>
         </h3>
-        {/* <div style={{ textAlign: "center" }}>
-          <input
-            accept="image/*"
-            className={classes.input}
-            id="icon-button-file"
-            type="file"
-            onChange={handleImageUpload}
-            ref={imageUploader}
-          />
-
-          <label htmlFor="icon-button-file">
-            <Avatar
-              color="primary"
-              aria-label="upload picture"
-              component="span"
-              style={{ width: 90, height: 90 }}
-            >
-              <PhotoCamera
-                style={{ fontSize: 40 }}
-                onClick={() => imageUploader.current.click()}
-              />
-              <img
-                ref={uploadedImage}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "absolute",
-                }}
-              />
-            </Avatar>
-          </label>
-        </div> */}
 
         <div className="TextField">
             <TextField

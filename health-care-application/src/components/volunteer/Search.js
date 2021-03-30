@@ -173,10 +173,9 @@ export default function Asynchronous() {
                     {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
                   </DialogContentText>
                   <DialogContentText>
-                    ตรวจเยี่ยมครั้งล่าสุด{" "} <br/>
+                    ตรวจเยี่ยมครั้งล่าสุด{" "}
                     {
-                      ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)
-                      // convertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)
+                      elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE ? ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE) : "ไม่พบข้อมูล"
                     } <br/>
                   </DialogContentText>
                   <DialogContentText>
@@ -262,6 +261,7 @@ export default function Asynchronous() {
                 </DialogTitle>
                 <DialogContent>
                     {elderlyReducer.history.map(value=>{
+                      console.log(value)
                       return (
                         <React.Fragment>
                           <div className="bt-searchInfo">
@@ -286,7 +286,7 @@ export default function Asynchronous() {
                                 }
                               }}
                               fullWidth>
-                                การตรวจ{ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)} <br/>
+                                การตรวจ{ConvertDate(value.VIS_DATE)} <br/>
                               </Button>
                             </Link>
                           </div>
@@ -299,10 +299,11 @@ export default function Asynchronous() {
               <React.Fragment>
                 <DialogTitle>
                   <ArrowBackIcon onClick={()=>setswitchShow("main")}/> การติดการผล คุณ
-                  {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`}
+                  {`${elderlyReducer.resultSelected.ELD_FIRSTNAME} ${elderlyReducer.resultSelected.ELD_LASTNAME}`} 
                 </DialogTitle>
                 <DialogContent>
                     {followUp.map(value=>{
+                      console.log(value)
                       return (
                         <React.Fragment>
                           {
@@ -321,7 +322,7 @@ export default function Asynchronous() {
                                 // }, 300);
                               }}
                               fullWidth>
-                                ติดตามผล{ConvertDate(elderlyReducer.resultSelected.ELD_LAST_VISIT_DATE)}
+                                ติดตามผล{ConvertDate(value.APPOINT_DATE)} เรื่อง {value.APP_NAME}
                               </Button>
                             </Link>
                           </div>
