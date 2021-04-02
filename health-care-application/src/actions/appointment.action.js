@@ -2,12 +2,14 @@ import Axios from "axios";
 import { apiBase, USERLOGIN } from "../constants";
 
 export const clearAppointment = async (fid) => {
+  console.log("submitAppointment desktop in action")
   await Axios.put(`${apiBase}/appointment/update/${fid}`, {
     APP_FLAG: true,
     adderRole: USERLOGIN.Role,
     updateBy: USERLOGIN.Fullname,
-  }).then(()=>{
+  }).then((res)=>{
     console.log("APP_FLAG update success!")
+    console.log("return when update Flag appoint ",res.data)
   })
 }
 

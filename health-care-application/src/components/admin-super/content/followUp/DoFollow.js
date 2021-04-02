@@ -42,6 +42,7 @@ export default function DoFollow({ value,headKey }) {
   };
   const submitAppointment = ()=> {
     setOpen(false);
+    console.log("submitAppointment desktop")
     appAction.clearAppointment(selectFollowUp.APP_ID)
     dispatch(getAction.setDataToDefaultForAllSection());
     
