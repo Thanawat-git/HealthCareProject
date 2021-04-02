@@ -3,9 +3,10 @@ import { apiBase, USERLOGIN } from "../constants";
 
 export const clearAppointment = async (fid) => {
   console.log("submitAppointment desktop in action")
+  console.log(USERLOGIN)
   await Axios.put(`${apiBase}/appointment/update/${fid}`, {
     APP_FLAG: true,
-    adderRole: USERLOGIN.Role,
+    // adderRole: USERLOGIN.Role,
     updateBy: USERLOGIN.Fullname,
   }).then((res)=>{
     console.log("APP_FLAG update success!")
@@ -31,7 +32,7 @@ export const createAppointment = async (payload, x) => {
       APPOINT_DATE: payload[0],
       APP_NAME: payload[1],
       adderRole: USERLOGIN.Role,
-      updateBy: USERLOGIN.Fullname,
+      updateBy: USERLOGIN.Role === "SUPERADMIN" ? "SUPERADMIN": USERLOGIN.Fullname,
     });
     console.log("update appointment success! ");
   } else { // ถ้าไม่เจอ appointment ให้สร้างใหม่
@@ -41,7 +42,7 @@ export const createAppointment = async (payload, x) => {
       APP_NAME: payload[1],
       APP_STATUS: null,
       adderRole: USERLOGIN.Role,
-      updateBy: USERLOGIN.Fullname,
+      updateBy: USERLOGIN.Role === "SUPERADMIN" ? "SUPERADMIN": USERLOGIN.Fullname,
       ELD_ID_NUMBER: payload[2],
       ADDER_ID_NUMBER: USERLOGIN.Id,
       APP_FLAG: false,
